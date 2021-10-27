@@ -13,7 +13,7 @@ public class Move extends Behaviour{
     private ArrayList<Place> jurney = new ArrayList<Place>();
     private int currentPositionOfTravel = 0;
     public Move(Game game, Creature creature, Place destination) {
-        super(game, 0, 0, creature, null);
+        super(game, 0, 0, creature);
         this.destination = destination;
         Place actualPlace = creature.getPosition();
         Place place = actualPlace;
@@ -52,7 +52,7 @@ public class Move extends Behaviour{
 
     @Override
     public String canCreatureDoThis() {
-        if(destination.map != creature.getPosition().map)return "Cant find the way! The destination is not in this map.";
+        if(destination.map != creature.getPosition().map)return "cant_find_the_way!_The_destination_is_not_in_this_map.";
         return null;
     }
     
@@ -64,7 +64,7 @@ public class Move extends Behaviour{
 		float durationOfTravel = (1000f / speed) / 3f;
 		
 		// influence by health of player
-		durationOfTravel += (150f - (2.1f * (float)creature.actualCondition.getHealth()) + (0.006f * ((float)creature.actualCondition.getHealth() * (float)creature.actualCondition.getHealth()))) / 3f;		
+		durationOfTravel += (150f - (2.1f * (float)creature.abilityCondition.getHealth()) + (0.006f * ((float)creature.abilityCondition.getHealth() * (float)creature.abilityCondition.getHealth()))) / 3f;		
 		return (int)durationOfTravel; 
 	} 
 

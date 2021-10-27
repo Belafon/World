@@ -1,21 +1,22 @@
 package Game.Calendar.Events;
 
-import Game.Time.DailyLoop;
 import Game.Time.DailyLoop.PartOfDay;
+import Game.Time.DailyLoop.namePartOfDay;
 import Game.Game;
-import Game.Creatures.Player;
+import Game.Creatures.Creature;
 
 public class EventPartOfDay extends Event{
-    private DailyLoop.PartOfDay partOfDay;
-    public EventPartOfDay(int date, DailyLoop.PartOfDay partOfDay, Game game) {
+    private PartOfDay partOfDay;
+    public EventPartOfDay(int date, PartOfDay partOfDay, Game game) {
         super(date, game);
         this.partOfDay = partOfDay;
     }
 
     @Override
     public void action(Game game) {
-        for(Player player : game.players) player.client.writer.setPartOfDay(partOfDay.name());
-        if(partOfDay == PartOfDay.night)game.dailyLoop.addPlanToNextDay();
+        game.time.partOfDay = partOfDay;
+        for(Creature creature : game.creatures) creature.writer.surrounding.setPartOfDay(partOfDay.name.name());
+        if(partOfDay.name == namePartOfDay.night)game.dailyLoop.addPlanToNextDay();
     }
 
     @Override

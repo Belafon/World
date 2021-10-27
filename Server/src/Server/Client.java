@@ -5,11 +5,12 @@ import java.net.Socket;
 import Game.Creatures.Player;
 import Game.Game;
 import Server.MatchMakingSystems.MatchMakingSystem;
+import Server.SendMessage.SendMessagePlayer;
 
 public class Client {
 	// object which is used to send new messages to the client
 	public String name;
-	public volatile SendMessage writer;
+	public volatile SendMessagePlayer writer;
 	public volatile Game actual_game;
 	public volatile boolean disconnected = false;
 	public volatile Player player;
@@ -31,6 +32,6 @@ public class Client {
 	}
 
 	public void bindNewSendMessage(Socket clientSocket) {
-		writer = new SendMessage(clientSocket, this);
+		writer = new SendMessagePlayer(clientSocket, this);
 	}
 }

@@ -49,7 +49,7 @@ public class PlayersGear extends Gear{
                 legs = clothes;
 				break;
 		}
-		((Player)clothes.owner).client.writer.ClothesPutOn(clothes);
+		((Player)clothes.owner).client.writer.inventory.ClothesPutOn(clothes);
         return false;
     }
 
@@ -79,7 +79,7 @@ public class PlayersGear extends Gear{
                 legs = null;
 				break;
 		}
-		((Player)clothes.owner).client.writer.ClothesPutOff(clothes);
+		((Player)clothes.owner).client.writer.inventory.ClothesPutOff(clothes);
         return false;
     }
 }

@@ -26,6 +26,7 @@ public class BasicMatchMakingSystem extends MatchMakingSystem {
 			new Thread(new Runnable() {
 				@Override
 				public void run() {
+                    Thread.currentThread().setName("StartGame");
 					new_game.start();
 					new_game = new Game(server);
 					setNumberOfPlayers(0);
@@ -48,7 +49,7 @@ public class BasicMatchMakingSystem extends MatchMakingSystem {
     public synchronized void setNumberOfPlayers(int numberOfPalyers){
         this.numberOfPlayers = numberOfPalyers;
 		for(Player player : new_game.players)
-				player.client.writer.setNumberOfPlayersInQueue(numberOfPlayersToStart - numberOfPalyers);
+				player.client.writer.server.setNumberOfPlayersInQueue(numberOfPlayersToStart - numberOfPalyers);
 
     }
 }

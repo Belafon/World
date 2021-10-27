@@ -8,7 +8,17 @@ public class DailyLoop {
         this.game = game;
         addToCalendar(0);
     }
-    public enum PartOfDay{
+    public PartOfDay[] partsOfDay = {
+        new PartOfDay(60, namePartOfDay.after_midnight, -5),
+        new PartOfDay(110, namePartOfDay.sunrise_1, -4),
+        new PartOfDay(125, namePartOfDay.sunrise_2, -3),
+        new PartOfDay(140, namePartOfDay.morning, -2),
+        new PartOfDay(300, namePartOfDay.afternoon, 0),
+        new PartOfDay(370, namePartOfDay.sunset_1, -2),
+        new PartOfDay(385, namePartOfDay.sunset_2, -3),
+        new PartOfDay(400, namePartOfDay.night, -4)
+    };
+    public enum namePartOfDay{
         after_midnight, // starts at 3.0 hours today -> 60 of ticks today
         sunrise_1,      // 5.5 -> 110
         sunrise_2,      // 6.25 -> 125
@@ -24,13 +34,18 @@ public class DailyLoop {
         addToCalendar(startOfnextDayInTicks);
     }
     private void addToCalendar(int startOfnextDayInTicks) {
-        game.calendar.add(new EventPartOfDay(startOfnextDayInTicks + 60, PartOfDay.after_midnight, game));
-        game.calendar.add(new EventPartOfDay(startOfnextDayInTicks + 110, PartOfDay.sunrise_1, game));
-        game.calendar.add(new EventPartOfDay(startOfnextDayInTicks + 125, PartOfDay.sunrise_2, game));
-        game.calendar.add(new EventPartOfDay(startOfnextDayInTicks + 140, PartOfDay.morning, game));
-        game.calendar.add(new EventPartOfDay(startOfnextDayInTicks + 300, PartOfDay.afternoon, game));
-        game.calendar.add(new EventPartOfDay(startOfnextDayInTicks + 370, PartOfDay.sunset_1, game));
-        game.calendar.add(new EventPartOfDay(startOfnextDayInTicks + 385, PartOfDay.sunset_2, game));
-        game.calendar.add(new EventPartOfDay(startOfnextDayInTicks + 400, PartOfDay.night, game));
+        for (PartOfDay partOfDay : partsOfDay)
+            game.calendar.add(new EventPartOfDay(partOfDay.start + startOfnextDayInTicks, partOfDay, game));
+    }
+
+    public class PartOfDay{
+        public final int start;
+        public final namePartOfDay name;
+        public final int temperatureChange; // 0 ->  temperature in the noon
+        public PartOfDay(int start, namePartOfDay name, int temperatureChange){
+            this.start = start;
+            this.name = name;
+            this.temperatureChange = temperatureChange;
+        }
     }
 }

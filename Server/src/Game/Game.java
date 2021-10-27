@@ -1,22 +1,24 @@
 package Game;
 
 import java.util.ArrayList;
+
+import Game.Creatures.Creature;
 import Game.Creatures.Player;
 import Game.Calendar.Calendar;
 import Server.Server;
 import Game.Time.DailyLoop;
 import Game.Time.Time;
-import Game.Time.Loop;
+import Game.Time.CalendaryLoop;
 import Game.Maps.Maps;
 
 public class Game {
     public volatile boolean isRunning = false;
     public final Server server;
-    public final ArrayList<Player> players = new ArrayList<Player>();
     public GameCondition condition = GameCondition.preparing;
-    //public final ArrayList<Creature> creatures = new ArrayList<Creature>();
+    public final ArrayList<Player> players = new ArrayList<Player>();
+    public final ArrayList<Creature> creatures = new ArrayList<Creature>();
     public Time time;
-    public final Loop loop = new Loop(this);
+    public final CalendaryLoop loop = new CalendaryLoop(this);
     public final Calendar calendar = new Calendar(this);
     public final DailyLoop dailyLoop = new DailyLoop(this);
     public final Maps maps = new Maps(this);
@@ -33,7 +35,7 @@ public class Game {
 	}
 
     public void start(){
-        for(Player player : players)player.client.writer.startGame();
+        for(Player player : players)player.client.writer.server.startGame();
 
         try {
             Thread.sleep(500);
@@ -41,7 +43,7 @@ public class Game {
             e.printStackTrace();
         }
 
-        time = new Time(server.clocks);
+        time = new Time(this, server.clocks, dailyLoop);
         isRunning = true;
         Thread loopThread = new Thread(loop);
 		loopThread.start();

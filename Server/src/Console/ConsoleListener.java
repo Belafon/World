@@ -13,7 +13,7 @@ public class ConsoleListener implements Runnable{
     }
     @Override
     public void run() {
-        
+        Thread.currentThread().setName("ConsoleListener");
         ConsolePrint.serverInfo("Listener is waiting for text in console input...");
 		Scanner sc = new Scanner(System.in);
         while(server.isServerRunning) {
@@ -74,7 +74,7 @@ public class ConsoleListener implements Runnable{
 				else log += server.games.get(0).maps.maps[0].sky.directionOfWind;
 			break;
 			case "health":
-				log += server.games.get(0).players.get(0).actualCondition.getHealth();
+				log += server.games.get(0).players.get(0).abilityCondition.getHealth();
 			break;
 			case "move":
 				if(message.length == 4){
@@ -89,6 +89,9 @@ public class ConsoleListener implements Runnable{
 			case "map":
 				if(message.length >= 3)log = server.games.get(0).maps.maps[Integer.valueOf(message[2])].logMap();
 				else log = server.games.get(0).maps.maps[0].logMap();
+			case "temp":
+				log += "\n" + server.games.get(0).maps.maps[0].logTemperature();
+			break;
 			default:
 				return;
 		}

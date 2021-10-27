@@ -4,11 +4,11 @@ import Console.ConsolePrint;
 import Game.Game;
 import Game.Calendar.Events.Event;
 
-public class Loop  implements Runnable{
+public class CalendaryLoop  implements Runnable{
     private Game game;
     public Thread loopThread;
 
-    public Loop(Game game){
+    public CalendaryLoop(Game game){
         this.game = game;
     }
 
@@ -17,7 +17,7 @@ public class Loop  implements Runnable{
     @Override
     public void run() {
         loopThread = Thread.currentThread();
-        Thread.currentThread().setName("Loop");
+        Thread.currentThread().setName("CalendaryLoop");
         while(game.isRunning){
             Thread.interrupted();
             Event nextEvent = game.calendar.getNextEvent();
@@ -44,5 +44,5 @@ public class Loop  implements Runnable{
                 }
             }
         }
-    } 
+    }
 }

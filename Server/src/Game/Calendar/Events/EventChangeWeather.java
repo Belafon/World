@@ -14,11 +14,13 @@ public class EventChangeWeather extends Event{
 
     private final boolean printInLoop; 
 
+    private volatile int threadCounter = 0;
     @Override
     public void action(Game game) {
         new Thread(new Runnable(){
             @Override
             public void run() {
+                Thread.currentThread().setName("SetWeather " + threadCounter++);
                 if(printInLoop){
                     ConsolePrint.gameInfo("before weather change:");
                     ConsolePrint.gameInfo(sky.printWeathers());    

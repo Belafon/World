@@ -4,6 +4,7 @@ import Game.Game;
 import Game.Creatures.Behaviour.Behaviour;
 import Game.Creatures.Condition.AbilityCondition;
 import Game.Maps.Place.Place;
+import Server.SendMessage.SendMessage;
 import Game.Creatures.Condition.ActualCondition;
 import Game.Creatures.Inventory.Inventory;
 public abstract class Creature {
@@ -16,16 +17,17 @@ public abstract class Creature {
 	public volatile Inventory inventory;
 	public volatile Game game;
 	public volatile int id;
+    public final SendMessage writer;
 
-    public Creature(Game game, String name, Place position, int id, String appearence){
+    public Creature(Game game, String name, Place position, int id, String appearence, SendMessage sendMessage){
 		this.id = id;
     	this.game = game;
         this.appearence = appearence;
-    	//inventory = new Inventory(this);
     	actualCondition = new ActualCondition(this);
-        abilityCondition = new AbilityCondition(100, 100, 100, 100, 100, 100, 100);
+        abilityCondition = new AbilityCondition(this, 100, 100, 100, 100, 100, 100, 100);
         this.position = position;
         this.name = name;
+        this.writer = sendMessage;
     }
     public void setAbilityCondition(int strength, int agility, int speed_of_walk, int speed_of_run, int hearing, int observation, int vision) {
 		// strength, agility, speed_of_walk, speed_of_run, hearing, observation, vision
@@ -47,7 +49,7 @@ public abstract class Creature {
     }
     public void setPosition(Place position) {
         this.position = position;
-        if(this instanceof Player)((Player)this).client.writer.setPosition(position);
+        writer.surrounding.setPosition(position);
     }
 }
 

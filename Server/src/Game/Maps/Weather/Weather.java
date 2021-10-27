@@ -1,6 +1,6 @@
 package Game.Maps.Weather;
 
-import Game.Creatures.Player;
+import Game.Creatures.Creature;
 import Game.Maps.Place.Place;
 
 public class Weather {
@@ -10,6 +10,7 @@ public class Weather {
     public volatile int durationOfRain = 0; 
     private volatile int clouds;
     private int weather = 0;
+    public volatile int visibility = 0; // can be changed by fog for example
     public Weather(int durationOfRain, int clouds, int weather) {
         this.durationOfRain = durationOfRain;
         this.clouds = clouds;
@@ -20,14 +21,17 @@ public class Weather {
     }
     public void setWeather(int weather, Place place) {
         this.weather = weather;
-        for(Player player : place.players)player.client.writer.setWeather(this);
+        for(Creature creature : place.creatures)creature.writer.surrounding.setWeather(this);
     }
     public int getClouds() {
         return clouds;
     }
     public void setClouds(int clouds, Place place) {
         this.clouds = clouds;
-        for(Player player : place.players)player.client.writer.setClouds(player.getPosition());
+        for(Creature creature : place.creatures)creature.writer.surrounding.setClouds(creature.getPosition());
 
+    }
+    public int getVisibility() {
+        return visibility;
     }
 }

@@ -3,7 +3,6 @@ package Game.Creatures.Inventory;
 import java.util.ArrayList;
 import Game.Items.Types.*;
 import Game.Creatures.Creature;
-import Game.Creatures.Player;
 import Game.Items.Item;
 
 public class Inventory {
@@ -39,8 +38,7 @@ public class Inventory {
 		else basicItemsInBag.add(item);
 
 		// lets send info about it
-		if(creature != null && creature instanceof Player)
-            ((Player)creature).client.writer.setAddItem(item);
+		creature.writer.inventory.setAddItem(item);
 	}
 
 	public synchronized void removeItem(Item item) {
@@ -51,7 +49,6 @@ public class Inventory {
 		else basicItemsInBag.remove(item);
 
 		// lets send info about it
-		if(creature != null && creature instanceof Player)
-            ((Player)creature).client.writer.setRemoveItem(item);
+		creature.writer.inventory.setRemoveItem(item);
 	}
 }

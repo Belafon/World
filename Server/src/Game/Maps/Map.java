@@ -38,4 +38,14 @@ public class Map {
         }
         return log;
     }
+
+    public String logTemperature(){
+        String log = "";
+        for (int i = 0; i < sizeX; i++) {
+            for (int j = 0; j < sizeY; j++)
+                log += places[i][j].getTemperature() + " ";
+            log += "\n";
+        }
+        return log;
+    }
 }

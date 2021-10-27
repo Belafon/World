@@ -42,7 +42,7 @@ public class Client {
 		Thread thread = new Thread(new Runnable() {
 			@Override
 			public void run() {
-	
+				Thread.currentThread().setName("Client");
 				while(true) {
 				//	System.out.println("Lets chack server message...");
 					String s = "";

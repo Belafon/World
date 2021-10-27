@@ -1,5 +1,8 @@
 package Game.Time;
 
+import Game.Game;
+import Game.Time.DailyLoop.PartOfDay;
+
 /* It has all methods to transfer number of ticks to our well known time, 
     It also has also has method getTime which returns number of ticks of the Game,
     when the Game is started, the current time from Clocks is saved, 
@@ -7,9 +10,11 @@ package Game.Time;
 public class Time {
     private int inception;
     private Clocks clocks;
-    public Time(Clocks clocks){
+    public volatile PartOfDay partOfDay;
+    public Time(Game game, Clocks clocks, DailyLoop dailyLoop){
         inception = clocks.time;
         this.clocks = clocks;
+        partOfDay = dailyLoop.partsOfDay[0];
     }
     public int getTime(){
         return clocks.time - inception;

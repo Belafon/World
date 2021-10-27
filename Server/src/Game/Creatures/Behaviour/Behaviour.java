@@ -10,12 +10,11 @@ public abstract class Behaviour {
 	protected final int bodyStrain;
     protected final Creature creature;
     protected EventBehaviour event;
-    public Behaviour(Game game, int duration, int bodyStrain, Creature creature, EventBehaviour event) {
+    public Behaviour(Game game, int duration, int bodyStrain, Creature creature) {
         this.game = game;
         this.duration = duration;
         this.bodyStrain = bodyStrain;
         this.creature = creature;
-        this.event = event;
     }
     public abstract void execute();
     public abstract void interrupt();
