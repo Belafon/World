@@ -1,12 +1,12 @@
 package Game.Calendar.Events;
 
 import Console.ConsolePrint;
-import Game.Game;
+import Game.World;
 import Game.Maps.Weather.Sky;
 
 public class EventChangeWeather extends Event{
     private Sky sky;
-    public EventChangeWeather(int date, Game game, Sky sky, boolean printInLoop) {
+    public EventChangeWeather(int date, World game, Sky sky, boolean printInLoop) {
         super(date, game);
         this.sky = sky;
         this.printInLoop = printInLoop;
@@ -16,7 +16,7 @@ public class EventChangeWeather extends Event{
 
     private volatile int threadCounter = 0;
     @Override
-    public void action(Game game) {
+    public void action(World game) {
         new Thread(new Runnable(){
             @Override
             public void run() {
@@ -35,7 +35,7 @@ public class EventChangeWeather extends Event{
     }
 
     @Override
-    public void interrupt(Game game) {
+    public void interrupt(World game) {
         
     }
     

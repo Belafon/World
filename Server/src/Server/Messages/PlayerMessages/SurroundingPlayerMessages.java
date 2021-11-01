@@ -47,17 +47,17 @@ public class SurroundingPlayerMessages  extends SurroundingMessages{
     public void setResources(Place position) {
 		String message = "surrounding resources ";
 		for(Resource resource : position.resourcesSorted)
-			if(resource.durationOfFinding == 0) message +=  resource.typeOfResourceWithPressence.typeOfResource.name;
+			if(resource.durationOfFinding == 0) message +=  resource.typeOfResourceOfTypeOfPlace.typeOfResource.name;
 		else break;
 		sendMessage.client.writer.sendLetter(message);
 	}
 	@Override
 	public void setResource(Resource resource){
-		sendMessage.client.writer.sendLetter("surrounding resource " + resource.typeOfResourceWithPressence.typeOfResource.name);
+		sendMessage.client.writer.sendLetter("surrounding resource " + resource.typeOfResourceOfTypeOfPlace.typeOfResource.name);
 	}
 	@Override
 	public void setResourceNotFound(Resource resource){
-		sendMessage.client.writer.sendLetter("surrounding resourceNotFound " + resource.typeOfResourceWithPressence.typeOfResource.name);
+		sendMessage.client.writer.sendLetter("surrounding resourceNotFound " + resource.typeOfResourceOfTypeOfPlace.typeOfResource.name);
 	}
 	@Override
 	public void setItems(Place position){

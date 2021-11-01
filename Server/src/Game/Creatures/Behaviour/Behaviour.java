@@ -1,16 +1,16 @@
 package Game.Creatures.Behaviour;
 
-import Game.Game;
+import Game.World;
 import Game.Calendar.Events.EventBehaviour;
 import Game.Creatures.Creature;
 
 public abstract class Behaviour {
-    protected Game game;
+    protected World game;
 	protected int duration;
 	protected final int bodyStrain;
     protected final Creature creature;
     protected EventBehaviour event;
-    public Behaviour(Game game, int duration, int bodyStrain, Creature creature) {
+    public Behaviour(World game, int duration, int bodyStrain, Creature creature) {
         this.game = game;
         this.duration = duration;
         this.bodyStrain = bodyStrain;

@@ -19,7 +19,7 @@ import Game.Players.Player;
 import Game.Time.Timer;
 import Game.maps.Place;*/
 import Game.Time.Clocks;
-import Game.Game;
+import Game.World;
 import Server.MatchMakingSystems.BasicMatchMakingSystem;
 import Server.MatchMakingSystems.MatchMakingSystem;
 
@@ -28,7 +28,7 @@ public class Server {
 	private int port = 25555;
 	public volatile boolean isServerRunning = true;
 
-	public final ArrayList<Game> games = new ArrayList<Game>();
+	public final ArrayList<World> games = new ArrayList<World>();
 	public final int numberOfPlayersForStartTheGame = 1;
 	public final MatchMakingSystem matchMaking = new BasicMatchMakingSystem(this, numberOfPlayersForStartTheGame);
 	public final ConsoleListener consoleListener = new ConsoleListener(this);

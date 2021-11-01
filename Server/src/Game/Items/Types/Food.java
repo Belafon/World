@@ -1,6 +1,6 @@
 package Game.Items.Types;
 
-import Game.Game;
+import Game.World;
 import Game.Calendar.Events.Event;
 import Game.Calendar.Events.EventItemChange;
 import Game.Items.Item;
@@ -15,7 +15,7 @@ public class Food extends Item{
     public ArrayList<SpecialFoodsProperties> specialProperties;
     EventItemChange changeFreshness;
     EventItemChange changeWarm;
-	public Food(Game game, int warm, int freshness, SpecialFoodsProperties[] specialProperties,  FoodTypeItem type) {
+	public Food(World game, int warm, int freshness, SpecialFoodsProperties[] specialProperties,  FoodTypeItem type) {
         super(game, type);
         this.setFreshness(freshness, game);
         this.setWarm(warm, game);
@@ -25,7 +25,7 @@ public class Food extends Item{
     public int getWarm() {
         return warm;
     }
-    public void setWarm(int warm, Game game) {
+    public void setWarm(int warm, World game) {
         if(warm < 0)warm = 0;
         this.warm = warm;
         if(warm > 0 && changeWarm == null){
@@ -36,7 +36,7 @@ public class Food extends Item{
     public int getFreshness() {
         return freshness;
     }
-    public void setFreshness(int freshness, Game game) {
+    public void setFreshness(int freshness, World game) {
         if(freshness < 0)freshness = 0;
         this.freshness = freshness;
         if(freshness > 0 && changeFreshness == null){
@@ -49,7 +49,7 @@ public class Food extends Item{
     }
 
     @Override
-    public synchronized int changeStats(Event event, Game game) { // 0 -> stop it, else add to calendar
+    public synchronized int changeStats(Event event, World game) { // 0 -> stop it, else add to calendar
         /*if(event == changeFreshness){
             setFreshness(freshness - 1, game);
             if(freshness != 0) return getType().speedOfDecay;

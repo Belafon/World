@@ -1,7 +1,7 @@
 package Game.Creatures.Behaviour.Behaviours;
 
 import Console.ConsolePrint;
-import Game.Game;
+import Game.World;
 import Game.Calendar.Events.EventBehaviour;
 import Game.Creatures.Creature;
 import Game.Creatures.Behaviour.Behaviour;
@@ -13,7 +13,7 @@ public class FindConcreteResource extends Behaviour{
     private final TypeOfResource typeOfResource;
     private boolean found = false;
     private int durationOfFinding; // -1 will not be found
-    public FindConcreteResource(Game game, int duration, int bodyStrain, Creature creature, TypeOfResource typeResource) {
+    public FindConcreteResource(World game, int duration, int bodyStrain, Creature creature, TypeOfResource typeResource) {
         super(game, duration, bodyStrain, creature);
         this.typeOfResource = typeResource;
         resource = creature.getPosition().resources.get(typeResource);

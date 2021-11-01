@@ -1,6 +1,6 @@
 package Game.Creatures;
 
-import Game.Game;
+import Game.World;
 import Game.Creatures.Inventory.Inventory;
 import Game.Creatures.Inventory.PlayersGear;
 import Game.Items.ListOfAllItemTypes;
@@ -14,7 +14,7 @@ import Game.Items.ListOfAllItemTypes.NamesOfFoodItemTypes;
 public class Player extends Creature{
     public final Client client;
     public volatile boolean isReady = false; 
-    public Player(Client client, Game game, String name, Place position, int id, String appearence){
+    public Player(Client client, World game, String name, Place position, int id, String appearence){
         super(game, name, position, id, appearence, client.writer);
         this.client = client;
         //super(position, client.name, game, id);

@@ -4,12 +4,16 @@ import Game.Maps.PlaceEffects.PlaceEffect;
 
 public class TypeOfResource {
     // final stats
-    public final String name;
+    public final ListOfAllTypesOfResources.NamesOfTypesOfResources name;
     public final PlaceEffect[] effects;
-    public final int conspicuousness; // (in cz "nápadnoost"), than with more resources with heigher consp., to find the resource it takes more time (viz. speedOfFinding in Resource)   
-    public TypeOfResource(String name, PlaceEffect[] effects, int speedOfFinding) {
+    
+    // (in cz "nápadnoost"), than with more resources with heigher consp., to find the resource with less consicousness it takes more time (viz. speedOfFinding in Resource)   
+    // differece of conspiciousness = nuber of ticks to wait to find it
+    public final int conspicuousness;
+    
+    public TypeOfResource(ListOfAllTypesOfResources.NamesOfTypesOfResources name, PlaceEffect[] effects, int conspicuousness) {
         this.name = name;
         this.effects = effects;
-        this.conspicuousness = speedOfFinding;
+        this.conspicuousness = conspicuousness;
     }
 }

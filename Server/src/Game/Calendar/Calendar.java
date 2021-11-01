@@ -1,12 +1,12 @@
 package Game.Calendar;
 
-import Game.Game;
+import Game.World;
 import Game.Calendar.Events.*;
 import java.util.concurrent.PriorityBlockingQueue;
 
 public class Calendar {
-    private Game game;
-    public Calendar(Game game){
+    private World game;
+    public Calendar(World game){
         this.game = game;
     }
     public volatile PriorityBlockingQueue<Event> heap = new PriorityBlockingQueue<Event>();

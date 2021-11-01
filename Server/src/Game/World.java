@@ -11,7 +11,7 @@ import Game.Time.Time;
 import Game.Time.CalendaryLoop;
 import Game.Maps.Maps;
 
-public class Game {
+public class World {
     public volatile boolean isRunning = false;
     public final Server server;
     public GameCondition condition = GameCondition.preparing;
@@ -28,7 +28,7 @@ public class Game {
 		hasEnded
 	}
 
-    public Game(Server server) {
+    public World(Server server) {
 		this.server = server;
         server.games.add(this);
         // start();

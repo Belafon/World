@@ -2,7 +2,7 @@ package Game.Creatures.Behaviour.Behaviours;
 
 import java.util.ArrayList;
 
-import Game.Game;
+import Game.World;
 import Game.Calendar.Events.EventBehaviour;
 import Game.Creatures.Creature;
 import Game.Creatures.Behaviour.Behaviour;
@@ -12,7 +12,7 @@ public class Move extends Behaviour{
     public final Place destination;
     private ArrayList<Place> jurney = new ArrayList<Place>();
     private int currentPositionOfTravel = 0;
-    public Move(Game game, Creature creature, Place destination) {
+    public Move(World game, Creature creature, Place destination) {
         super(game, 0, 0, creature);
         this.destination = destination;
         Place actualPlace = creature.getPosition();
@@ -61,10 +61,10 @@ public class Move extends Behaviour{
 		
 		// draha / rychlost = cas (+ hodiny musim prevest na minuty) 
 		// 20 jednotek = 1 hodina -> 1/3 jednotky za minutu
-		float durationOfTravel = (1000f / speed) / 3f;
+		float durationOfTravel = 1000f / speed;
 		
 		// influence by health of player
-		durationOfTravel += (150f - (2.1f * (float)creature.abilityCondition.getHealth()) + (0.006f * ((float)creature.abilityCondition.getHealth() * (float)creature.abilityCondition.getHealth()))) / 3f;		
+		durationOfTravel += 150f - (2.1f * (float)creature.abilityCondition.getHealth()) + (0.006f * ((float)creature.abilityCondition.getHealth() * (float)creature.abilityCondition.getHealth()));		
 		return (int)durationOfTravel; 
 	} 
 

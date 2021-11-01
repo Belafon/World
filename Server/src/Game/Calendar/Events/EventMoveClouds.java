@@ -1,12 +1,12 @@
 package Game.Calendar.Events;
 
 import Console.ConsolePrint;
-import Game.Game;
+import Game.World;
 import Game.Maps.Map;
 
 public class EventMoveClouds extends Event{
     private final Map map;
-    public EventMoveClouds(int date, Game game, Map map, boolean printInLoop) {
+    public EventMoveClouds(int date, World game, Map map, boolean printInLoop) {
         super(date, game);
         this.map = map;
         this.printInLoop = printInLoop;
@@ -15,7 +15,7 @@ public class EventMoveClouds extends Event{
     private final boolean printInLoop; 
 
     @Override
-    public void action(Game game) {
+    public void action(World game) {
         if(printInLoop){
             ConsolePrint.gameInfo("before CLOUD change:");
             ConsolePrint.gameInfo(map.sky.printClouds());
@@ -28,7 +28,7 @@ public class EventMoveClouds extends Event{
     }
 
     @Override
-    public void interrupt(Game game) {
+    public void interrupt(World game) {
         
     }
     

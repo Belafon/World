@@ -1,23 +1,24 @@
 package Game.Creatures.Condition;
 
 import Game.Creatures.Creature;
-import Game.Game;
+import Game.World;
 import Game.Calendar.Events.EventCreatureActualCondition;
 
 public class ActualCondition{
 	private int hunger = 100;
 	private EventCreatureActualCondition eventHunger;
-	private final int HUNGER_SPEED = 6; // 15 hours, 15 * 20 / 100
+	private final int HUNGER_SPEED = 18; // 15 hours, 15 * 20 / 100
 	private int fatigueMax; // = bariera pro odpo�inek, v��e zv��it fatigue nem��e, jedin� sp�nkem , about 
 	private EventCreatureActualCondition eventMaxFatigue; //private int energy; // - > d� se snadno na�erpat odpo�inkem, nap�. p�i boji  --- nen� t�eba
-	private final int MAX_FATIGUE_SPEED = 15; // 3 days, 3 * 24 * 20 / 100 = 14.4
+	private final int MAX_FATIGUE_SPEED = 45; // 3 days, 3 * 24 * 20 / 100 = 14.4
 	private int heat = 100;
 	private EventCreatureActualCondition eventHeat;
 	private final int BODY_BORDER_HEAT = 24; // degree of celsius of ideal temperature 
 	private final int HEAT_CONST = 1;
+	private final int BODY_HEAT_SPEED = 15;
 	private int bleeding = 10; 
 	private EventCreatureActualCondition eventBleeding;
-	private final int BLEEDING_SPEED = 2;
+	private final int BLEEDING_SPEED = 6;
 
 	//private ArrayList<Disease> diseases;
 	//private ArrayList<Injury> injuries;
@@ -26,7 +27,7 @@ public class ActualCondition{
 		this.creature = creature;
 		//diseases = new ArrayList<>();
 		//injuries = new ArrayList<>();
-		Game game = creature.game;
+		World game = creature.game;
 		int duration = 0;
 		if(game.time == null) duration = 1;
 		else duration = game.time.getTime(); 
@@ -43,27 +44,27 @@ public class ActualCondition{
 	// methods called by Event
 	public void setEventHunger(Object object){
 		setHunger(getHunger() - 1);
-		Game game = creature.game;
+		World game = creature.game;
 		int duration = HUNGER_SPEED;
 		if(creature.abilityCondition.getHealth() != 0)game.calendar.add(new EventCreatureActualCondition(game.time.getTime() + duration, game, this::setEventHunger));
 	}
 	public void setEventMaxFatigue(Object object){
 		setFatigueMax(getFatigueMax() - 1);
-		Game game = creature.game;
+		World game = creature.game;
 		int duration = MAX_FATIGUE_SPEED;
 		if(fatigueMax != 0)game.calendar.add(new EventCreatureActualCondition(game.time.getTime() + duration, game, this::setEventMaxFatigue));
 	}
 	public void setEventHeat(Object object){
-		Game game = creature.game;
+		World game = creature.game;
 		int temperatureDifference = BODY_BORDER_HEAT + creature.abilityCondition.getCurrentEnergyOutput() + creature.inventory.gear.warm - creature.getPosition().getTemperature();
-		int speed = temperatureDifference * HEAT_CONST; // / weight of creature
+		int speed = temperatureDifference * HEAT_CONST; // TODO / weight of creature
 		setHeat(getHeat() - speed);
-		game.calendar.add(new EventCreatureActualCondition(game.time.getTime() + 10, game, this::setEventHeat));
+		game.calendar.add(new EventCreatureActualCondition(game.time.getTime() + BODY_HEAT_SPEED, game, this::setEventHeat));
 	}
 	public void setEventBleeding(Object object){
 		creature.abilityCondition.setHealth(creature.abilityCondition.getHealth() - 1);
 		setBleeding(getBleeding() - 1);
-		Game game = creature.game;
+		World game = creature.game;
 		int duration = BLEEDING_SPEED;
 		if(bleeding != 0)game.calendar.add(new EventCreatureActualCondition(game.time.getTime() + duration, game, this::setEventBleeding));
 	}

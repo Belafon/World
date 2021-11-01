@@ -1,6 +1,6 @@
 package Game.Creatures.Behaviour;
 
-import Game.Game;
+import Game.World;
 import Game.Creatures.Player;
 import Game.Maps.Place.Place;
 import likeliness.Dice;
@@ -11,7 +11,7 @@ public class PlayersLookAround {
 	private Place[][] visiblePlaces = new Place[7][7];
 	
 	// returns the map of places, which the player cen see
-	public static String look(Game game, Player player, Place place) {
+	public static String look(World game, Player player, Place place) {
 		 // sledov�n� okoln�ch pol�, a� vzd�lenost 2 okolo hr��e
 		PlayersLookAround lookAround = new PlayersLookAround();
 		

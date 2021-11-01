@@ -2,12 +2,14 @@ package Game.Maps.Resources;
 
 import likeliness.Dice;
 
-public class TypeOfResourceWithPressence {
+public class TypeOfResourceOfTypeOfPlace {
     public final int likelinessOfPressence; // 0 - 100, ...of the resource in specific place, more means heigher probability
     public final TypeOfResource typeOfResource;
-    public TypeOfResourceWithPressence(int likelinessOfPressence, TypeOfResource typeOfResource) {
+    public int startAmount;
+    public TypeOfResourceOfTypeOfPlace(int likelinessOfPressence, int startAmount, TypeOfResource typeOfResource) {
         this.likelinessOfPressence = likelinessOfPressence;
         this.typeOfResource = typeOfResource;
+        this.startAmount = startAmount;
     }
 
     public boolean isHereResourceGenerate(){

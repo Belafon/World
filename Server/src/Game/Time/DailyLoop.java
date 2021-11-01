@@ -1,22 +1,22 @@
 package Game.Time;
 
-import Game.Game;
+import Game.World;
 import Game.Calendar.Events.EventPartOfDay;
 public class DailyLoop {
-    private Game game;
-    public DailyLoop(Game game){
+    private World game;
+    public DailyLoop(World game){
         this.game = game;
         addToCalendar(0);
     }
     public PartOfDay[] partsOfDay = {
-        new PartOfDay(60, namePartOfDay.after_midnight, -5),
-        new PartOfDay(110, namePartOfDay.sunrise_1, -4),
-        new PartOfDay(125, namePartOfDay.sunrise_2, -3),
-        new PartOfDay(140, namePartOfDay.morning, -2),
-        new PartOfDay(300, namePartOfDay.afternoon, 0),
-        new PartOfDay(370, namePartOfDay.sunset_1, -2),
-        new PartOfDay(385, namePartOfDay.sunset_2, -3),
-        new PartOfDay(400, namePartOfDay.night, -4)
+        new PartOfDay(180, namePartOfDay.after_midnight, -5),
+        new PartOfDay(330, namePartOfDay.sunrise_1, -4),
+        new PartOfDay(375, namePartOfDay.sunrise_2, -3),
+        new PartOfDay(420, namePartOfDay.morning, -2),
+        new PartOfDay(900, namePartOfDay.afternoon, 0),
+        new PartOfDay(1110, namePartOfDay.sunset_1, -2),
+        new PartOfDay(1155, namePartOfDay.sunset_2, -3),
+        new PartOfDay(1200, namePartOfDay.night, -4)
     };
     public enum namePartOfDay{
         after_midnight, // starts at 3.0 hours today -> 60 of ticks today

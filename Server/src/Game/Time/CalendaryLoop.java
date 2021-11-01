@@ -1,14 +1,14 @@
 package Game.Time;
 
 import Console.ConsolePrint;
-import Game.Game;
+import Game.World;
 import Game.Calendar.Events.Event;
 
 public class CalendaryLoop  implements Runnable{
-    private Game game;
+    private World game;
     public Thread loopThread;
 
-    public CalendaryLoop(Game game){
+    public CalendaryLoop(World game){
         this.game = game;
     }
 
@@ -22,7 +22,7 @@ public class CalendaryLoop  implements Runnable{
             Thread.interrupted();
             Event nextEvent = game.calendar.getNextEvent();
             if(nextEvent == null)
-                try {
+                try { // calendar is empty, lets just wait
                     if(!Thread.interrupted())Thread.sleep(Long.MAX_VALUE);
                     else continue;
                 } catch (InterruptedException e) {

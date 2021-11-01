@@ -4,7 +4,7 @@ import Console.ConsolePrint;
 
 public class Clocks extends Thread{
     public volatile int time = 0;
-    public final int delay = 100;
+    public final int delay = 33;
     @Override
     public void run() {
         Thread.currentThread().setName("Clocks");

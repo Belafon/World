@@ -1,13 +1,13 @@
 package Game.Creatures.Behaviour.Behaviours;
 
-import Game.Game;
+import Game.World;
 import Game.Creatures.Creature;
 import Game.Creatures.Behaviour.Behaviour;
 import Game.Items.Types.Food;
 
 public class Eat extends Behaviour{
     private final Food food;
-    public Eat(Game game, Creature creature, Food food) {
+    public Eat(World game, Creature creature, Food food) {
         super(game, 0, 0, creature);
         this.food = food;
     }

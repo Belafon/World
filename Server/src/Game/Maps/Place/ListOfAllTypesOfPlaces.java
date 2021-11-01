@@ -3,7 +3,7 @@ package Game.Maps.Place;
 import java.util.Hashtable;
 
 import Game.Maps.Resources.ListOfAllTypesOfResources;
-import Game.Maps.Resources.TypeOfResourceWithPressence;
+import Game.Maps.Resources.TypeOfResourceOfTypeOfPlace;
 import Game.Maps.Resources.ListOfAllTypesOfResources.NamesOfTypesOfResources;
 import likeliness.Dice;
 
@@ -16,19 +16,23 @@ public class ListOfAllTypesOfPlaces {
         typeOfPlaces.put( NamesOfTypesOfPlaces.forest_leafy,  new TypeOfPlace(NamesOfTypesOfPlaces.forest_leafy, 
             new String[]{"forest_leafy_1", "forest_leafy_2", "forest_leafy_3"}, 
             new String[]{"forest_leafy_1", "forest_leafy_2", "forest_leafy_3"}, new int[]{0, 1, 2, 3},
-            new TypeOfResourceWithPressence[]{ new TypeOfResourceWithPressence(50 , ListOfAllTypesOfResources.typesOfResources.get(NamesOfTypesOfResources.blueberry)) }, 
+            new TypeOfResourceOfTypeOfPlace[]{ 
+                new TypeOfResourceOfTypeOfPlace(50, 100, ListOfAllTypesOfResources.typesOfResources.get(NamesOfTypesOfResources.blueberry)), 
+                new TypeOfResourceOfTypeOfPlace(50, 100, ListOfAllTypesOfResources.typesOfResources.get(NamesOfTypesOfResources.mushrooms)), 
+                new TypeOfResourceOfTypeOfPlace(100, 100, ListOfAllTypesOfResources.typesOfResources.get(NamesOfTypesOfResources.treeOak))
+            }, 
             2, 0x6dff2e, "Fresh deciduous forest covered with fallen leaves and forest plants."));
 
         typeOfPlaces.put( NamesOfTypesOfPlaces.meadow,  new TypeOfPlace(NamesOfTypesOfPlaces.meadow, 
             new String[]{"meadow_1", "meadow_2", "meadow_3"}, 
             new String[]{"meadow_1"}, new int[]{0, 1, 2},
-            new TypeOfResourceWithPressence[0], 
+            new TypeOfResourceOfTypeOfPlace[0], 
             3, 0xb8fc30, "Meadow abounding with tall grass and full of buzzing insects."));
 
         typeOfPlaces.put( NamesOfTypesOfPlaces.mountein_meadow,  new TypeOfPlace(NamesOfTypesOfPlaces.mountein_meadow, 
             new String[]{"meadow_4", "meadow_5", "meadow_6"}, 
             new String[]{"meadow_2"}, new int[]{3, 4},
-            new TypeOfResourceWithPressence[0], 
+            new TypeOfResourceOfTypeOfPlace[0], 
             2, 0xc6f538, "Mountain slope overgrown with tall grass and mountain aromatic herbs."));
 
         for (int i = 0; i < typeOfPlacesInTheSpecificAltitude.length; i++)

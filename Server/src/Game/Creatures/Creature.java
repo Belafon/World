@@ -1,6 +1,6 @@
 package Game.Creatures;
 
-import Game.Game;
+import Game.World;
 import Game.Creatures.Behaviour.Behaviour;
 import Game.Creatures.Condition.AbilityCondition;
 import Game.Maps.Place.Place;
@@ -15,11 +15,11 @@ public abstract class Creature {
 	public final ActualCondition actualCondition;
 	public volatile Behaviour currentBehaviour = null; // idle condition ;
 	public volatile Inventory inventory;
-	public volatile Game game;
+	public volatile World game;
 	public volatile int id;
     public final SendMessage writer;
 
-    public Creature(Game game, String name, Place position, int id, String appearence, SendMessage sendMessage){
+    public Creature(World game, String name, Place position, int id, String appearence, SendMessage sendMessage){
 		this.id = id;
     	this.game = game;
         this.appearence = appearence;

@@ -2,16 +2,16 @@ package Server.MatchMakingSystems;
 
 import Server.Client;
 import Server.Server;
-import Game.Game;
+import Game.World;
 import Game.Creatures.Player;
 
 public class BasicMatchMakingSystem extends MatchMakingSystem {
     // the object of game is already created
 	// it waits to all players
-	private volatile Game new_game;
+	private volatile World new_game;
     public BasicMatchMakingSystem(Server server, int numberOfPlayersForStartTheGame){
         super(server, numberOfPlayersForStartTheGame);
-        new_game = new Game(server);
+        new_game = new World(server);
     }
 
     @Override
@@ -28,7 +28,7 @@ public class BasicMatchMakingSystem extends MatchMakingSystem {
 				public void run() {
                     Thread.currentThread().setName("StartGame");
 					new_game.start();
-					new_game = new Game(server);
+					new_game = new World(server);
 					setNumberOfPlayers(0);
 				}
 			}).start();

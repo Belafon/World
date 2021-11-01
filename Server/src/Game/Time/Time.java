@@ -1,6 +1,6 @@
 package Game.Time;
 
-import Game.Game;
+import Game.World;
 import Game.Time.DailyLoop.PartOfDay;
 
 /* It has all methods to transfer number of ticks to our well known time, 
@@ -11,7 +11,7 @@ public class Time {
     private int inception;
     private Clocks clocks;
     public volatile PartOfDay partOfDay;
-    public Time(Game game, Clocks clocks, DailyLoop dailyLoop){
+    public Time(World game, Clocks clocks, DailyLoop dailyLoop){
         inception = clocks.time;
         this.clocks = clocks;
         partOfDay = dailyLoop.partsOfDay[0];
@@ -25,15 +25,15 @@ public class Time {
      * 24x20, 480 ticks corresponds to 1 day
      * 30x24x20, 1440 ticks corrensponds to 1 month*/
     public int ticksOfToday(){
-        return getTime() % 480;
+        return getTime() % 1440;
     }
 
     public int tickOfThisMonth(){
-        return getTime() % 14400; 
+        return getTime() % 43200; 
     }
 
     public int ticksOfThisHour(){
-        return getTime() % 20;
+        return getTime() % 60;
     }
 
     public String getDate(){
@@ -41,43 +41,43 @@ public class Time {
     }
 
     public static int getMinutes(int numberOfTicks){
-        return numberOfTicks * 3;
+        return numberOfTicks;
     }
 
     public static float getHoursFloat(int numberOfTicks){
-        return ((float) numberOfTicks) / 20f;
+        return ((float) numberOfTicks) / 60f;
     }
 
     public static int getHours(int numberOfTicks){
-        return numberOfTicks / 20;
+        return numberOfTicks / 60;
     }
 
     public static float getDayFloat(int numberOfTicks){
-        return ((float) numberOfTicks) / 480f;
+        return ((float) numberOfTicks) / 1440f;
     }
 
     public static int getDay(int numberOfTicks){
-        return numberOfTicks / 480;
+        return numberOfTicks / 1440;
     }
 
     public static float getMonthFloat(int numberOfTicks){
-        return ((float) numberOfTicks) / 14400f;
+        return ((float) numberOfTicks) / 43200f;
     }
 
     public static int getMonth(int numberOfTicks){
-        return numberOfTicks / 14400;
+        return numberOfTicks / 43200;
     }
 
     public static int hoursToTicks(int hours){
-        return hours * 20;
+        return hours * 60;
     }
 
     public static int daysToTicks(int days){
-        return days * 480;
+        return days * 1440;
     }
 
     public static int monthsToTicks(int months){
-        return months * 14400;
+        return months * 43200;
     }
 }
 

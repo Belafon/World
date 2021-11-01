@@ -1,6 +1,6 @@
 package Game.Maps;
 
-import Game.Game;
+import Game.World;
 import Game.Maps.MapGenerators.MapGenerator;
 import Game.Maps.Place.Place;
 import Game.Maps.Weather.Sky;
@@ -12,8 +12,8 @@ public class Map {
     /*public Map(String pathToFile){
 
     }*/
-    public Game game;
-    public Map(int sizeX, int sizeY, MapGenerator mapGenerator, int directionOfWind, int strengthOfWind, Game game){
+    public World game;
+    public Map(int sizeX, int sizeY, MapGenerator mapGenerator, int directionOfWind, int strengthOfWind, World game){
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.game = game;
