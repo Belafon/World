@@ -1,0 +1,84 @@
+\babel@toc {czech}{}
+\contentsline {chapter}{\numberline {1}\IeC {\'U}vod}{4}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}Zad\IeC {\'a}n\IeC {\'\i }}{4}{section.1.1}% 
+\contentsline {part}{I\hspace {1em}U\IeC {\v z}ivatelsk\IeC {\'a} \IeC {\v c}\IeC {\'a}st}{5}{part.1}% 
+\contentsline {chapter}{\numberline {2}Server}{6}{chapter.2}% 
+\contentsline {paragraph}{}{6}{section*.2}% 
+\contentsline {paragraph}{}{6}{section*.3}% 
+\contentsline {chapter}{\numberline {3}aplikace}{7}{chapter.3}% 
+\contentsline {paragraph}{}{7}{section*.4}% 
+\contentsline {part}{II\hspace {1em}Program\IeC {\'a}torsk\IeC {\'a} \IeC {\v c}\IeC {\'a}st}{8}{part.2}% 
+\contentsline {chapter}{\numberline {4}Server}{9}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Objektov\IeC {\'y} n\IeC {\'a}vrh}{9}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}App}{11}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}Objekt Server}{11}{section.4.3}% 
+\contentsline {section}{\numberline {4.4}Clocks}{11}{section.4.4}% 
+\contentsline {section}{\numberline {4.5}ConsoleListener}{11}{section.4.5}% 
+\contentsline {section}{\numberline {4.6}MatchMaking}{11}{section.4.6}% 
+\contentsline {section}{\numberline {4.7}Client}{11}{section.4.7}% 
+\contentsline {section}{\numberline {4.8}Game}{12}{section.4.8}% 
+\contentsline {section}{\numberline {4.9}Time}{12}{section.4.9}% 
+\contentsline {section}{\numberline {4.10}DailyLoop}{12}{section.4.10}% 
+\contentsline {section}{\numberline {4.11}Loop}{12}{section.4.11}% 
+\contentsline {section}{\numberline {4.12}Calendar}{12}{section.4.12}% 
+\contentsline {paragraph}{}{13}{section*.5}% 
+\contentsline {paragraph}{}{13}{section*.6}% 
+\contentsline {paragraph}{}{13}{section*.7}% 
+\contentsline {paragraph}{}{13}{section*.8}% 
+\contentsline {section}{\numberline {4.13}Event}{13}{section.4.13}% 
+\contentsline {subsection}{\numberline {4.13.1}EventPartOfDay}{14}{subsection.4.13.1}% 
+\contentsline {subsection}{\numberline {4.13.2}EventItemChange}{14}{subsection.4.13.2}% 
+\contentsline {subsection}{\numberline {4.13.3}EventMoveClouds}{14}{subsection.4.13.3}% 
+\contentsline {paragraph}{}{14}{section*.9}% 
+\contentsline {subsection}{\numberline {4.13.4}EventChangeWeather}{14}{subsection.4.13.4}% 
+\contentsline {subsection}{\numberline {4.13.5}EventBehaviour}{14}{subsection.4.13.5}% 
+\contentsline {section}{\numberline {4.14}Maps}{15}{section.4.14}% 
+\contentsline {section}{\numberline {4.15}Map}{15}{section.4.15}% 
+\contentsline {section}{\numberline {4.16}Sky}{15}{section.4.16}% 
+\contentsline {section}{\numberline {4.17}Weather}{15}{section.4.17}% 
+\contentsline {section}{\numberline {4.18}MapGenerator}{15}{section.4.18}% 
+\contentsline {section}{\numberline {4.19}BasicMapGenerator}{15}{section.4.19}% 
+\contentsline {section}{\numberline {4.20}Place}{16}{section.4.20}% 
+\contentsline {subsection}{\numberline {4.20.1}temperature}{16}{subsection.4.20.1}% 
+\contentsline {subsection}{\numberline {4.20.2}Visibility}{16}{subsection.4.20.2}% 
+\contentsline {subsubsection}{getVisibility()}{16}{section*.10}% 
+\contentsline {section}{\numberline {4.21}TypeOfPlace}{17}{section.4.21}% 
+\contentsline {paragraph}{}{17}{section*.11}% 
+\contentsline {section}{\numberline {4.22}Resource}{17}{section.4.22}% 
+\contentsline {subsection}{\numberline {4.22.1}speedOfFinding}{17}{subsection.4.22.1}% 
+\contentsline {subsubsection}{hodnoty}{17}{section*.12}% 
+\contentsline {subsubsection}{v\IeC {\'y}po\IeC {\v c}et durationOfFinding}{18}{section*.13}% 
+\contentsline {subsubsection}{Pozorov\IeC {\'a}n\IeC {\'\i }}{18}{section*.14}% 
+\contentsline {subsection}{\numberline {4.22.2}Skupiny}{18}{subsection.4.22.2}% 
+\contentsline {subsubsection}{motivace}{18}{section*.15}% 
+\contentsline {subsubsection}{implementace}{18}{section*.16}% 
+\contentsline {section}{\numberline {4.23}TypeOfResource}{18}{section.4.23}% 
+\contentsline {section}{\numberline {4.24}PlaceEffect}{19}{section.4.24}% 
+\contentsline {section}{\numberline {4.25}Creture}{19}{section.4.25}% 
+\contentsline {paragraph}{}{19}{section*.17}% 
+\contentsline {section}{\numberline {4.26}Player}{19}{section.4.26}% 
+\contentsline {section}{\numberline {4.27}Condition}{19}{section.4.27}% 
+\contentsline {subsection}{\numberline {4.27.1}ActualCondition}{19}{subsection.4.27.1}% 
+\contentsline {paragraph}{HeatEvent}{19}{section*.18}% 
+\contentsline {subsection}{\numberline {4.27.2}AbilityCondition}{20}{subsection.4.27.2}% 
+\contentsline {section}{\numberline {4.28}Item}{20}{section.4.28}% 
+\contentsline {subsection}{\numberline {4.28.1}Food}{20}{subsection.4.28.1}% 
+\contentsline {subsection}{\numberline {4.28.2}Clothes}{20}{subsection.4.28.2}% 
+\contentsline {subsection}{\numberline {4.28.3}Tool}{20}{subsection.4.28.3}% 
+\contentsline {subsection}{\numberline {4.28.4}QuestItem}{20}{subsection.4.28.4}% 
+\contentsline {section}{\numberline {4.29}TypeItem}{20}{section.4.29}% 
+\contentsline {subsection}{\numberline {4.29.1}FoodTypeItem}{20}{subsection.4.29.1}% 
+\contentsline {subsection}{\numberline {4.29.2}ClothesTypeItem}{21}{subsection.4.29.2}% 
+\contentsline {subsection}{\numberline {4.29.3}ToolTypeItem}{21}{subsection.4.29.3}% 
+\contentsline {section}{\numberline {4.30}Inventory}{21}{section.4.30}% 
+\contentsline {section}{\numberline {4.31}Behaviour}{21}{section.4.31}% 
+\contentsline {subsection}{\numberline {4.31.1}FindConcreteResource}{21}{subsection.4.31.1}% 
+\contentsline {section}{\numberline {4.32}CreatureMemory}{21}{section.4.32}% 
+\contentsline {chapter}{\numberline {5}Client}{22}{chapter.5}% 
+\contentsline {paragraph}{}{22}{section*.19}% 
+\contentsline {chapter}{\numberline {6}Z\IeC {\'a}v\IeC {\v e}r}{23}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Klient}{23}{section.6.1}% 
+\contentsline {paragraph}{}{23}{section*.20}% 
+\contentsline {section}{\numberline {6.2}Server}{23}{section.6.2}% 
+\contentsline {subparagraph}{}{23}{section*.21}% 
+\contentsline {chapter}{P\IeC {\v r}\IeC {\'\i }lohy}{24}{chapter*.22}% 
