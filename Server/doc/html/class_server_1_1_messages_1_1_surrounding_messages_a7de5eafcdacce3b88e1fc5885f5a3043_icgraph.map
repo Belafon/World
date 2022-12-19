@@ -1,0 +1,6 @@
+<map id="Server.Messages.SurroundingMessages.setWeather" name="Server.Messages.SurroundingMessages.setWeather">
+<area shape="rect" id="node1" title=" " alt="" coords="777,5,972,45"/>
+<area shape="rect" id="node2" href="$class_game_1_1_maps_1_1_weather_1_1_weather.html#ac971469725bef3802e7e5be8e4d47199" title=" " alt="" coords="508,5,729,45"/>
+<area shape="rect" id="node3" href="$class_game_1_1_maps_1_1_weather_1_1_sky.html#a10bd914ffee191894ab9a4651cbc2093" title=" " alt="" coords="244,5,460,45"/>
+<area shape="rect" id="node4" href="$class_game_1_1_calendar_1_1_events_1_1_event_change_weather.html#a168bbe3ef3727cbfab814ea6b86c4ad3" title=" " alt="" coords="5,5,196,45"/>
+</map>

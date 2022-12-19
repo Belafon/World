@@ -1,0 +1,6 @@
+<map id="Server.MatchMakingSystems.BasicMatchMakingSystem.setNumberOfPlayers" name="Server.MatchMakingSystems.BasicMatchMakingSystem.setNumberOfPlayers">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,251,60"/>
+<area shape="rect" id="node2" href="$class_server_1_1_messages_1_1_player_messages_1_1_server_player_messages.html#a81e33d779d420bf3649e2b383e3fdc63" title=" " alt="" coords="299,5,577,60"/>
+<area shape="rect" id="node3" href="$class_server_1_1_send_message_1_1_send_message_player.html#a95a440bd6619a12bcfc671d81809ac15" title=" " alt="" coords="625,13,857,53"/>
+<area shape="rect" id="node4" href="$class_console_1_1_console_print.html#ab11dda42e5369950983803ebd836b858" title=" " alt="" coords="905,13,1109,53"/>
+</map>

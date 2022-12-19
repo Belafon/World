@@ -1,0 +1,6 @@
+<map id="Game.Maps.MapGenerators.BasicGenerator.generateMap" name="Game.Maps.MapGenerators.BasicGenerator.generateMap">
+<area shape="rect" id="node1" title=" " alt="" coords="5,63,196,103"/>
+<area shape="rect" id="node2" href="$class_game_1_1_maps_1_1_map_generators_1_1_basic_generator.html#abad9189b3e3a62f0dd26cec8f4194c2a" title=" " alt="" coords="276,5,467,45"/>
+<area shape="rect" id="node3" href="$classlikeliness_1_1_dice.html#ad43a710e994946579f4312733caf3040" title=" " alt="" coords="547,70,681,95"/>
+<area shape="rect" id="node4" href="$class_game_1_1_maps_1_1_place_1_1_list_of_all_types_of_places.html#a763bc4a86827bebf306051d5afb475ec" title=" " alt="" coords="244,121,499,175"/>
+</map>

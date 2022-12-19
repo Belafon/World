@@ -1,0 +1,7 @@
+<map id="Game.Maps.Resources.TypeOfResource" name="Game.Maps.Resources.TypeOfResource">
+<area shape="rect" id="node1" title=" " alt="" coords="852,42,1043,82"/>
+<area shape="rect" id="node2" href="$class_game_1_1_maps_1_1_resources_1_1_list_of_all_types_of_resources.html" title=" " alt="" coords="531,13,715,53"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,5,360,60"/>
+<area shape="rect" id="node4" href="$class_game_1_1_maps_1_1_place_effects_1_1_place_effect.html" title=" " alt="" coords="520,103,727,143"/>
+<area shape="rect" id="node5" href="$class_game_1_1_maps_1_1_place_effects_1_1_place_effects.html" title=" " alt="" coords="844,119,1051,159"/>
+</map>

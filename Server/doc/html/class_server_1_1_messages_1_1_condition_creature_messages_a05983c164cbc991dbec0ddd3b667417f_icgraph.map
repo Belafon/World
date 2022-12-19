@@ -1,0 +1,6 @@
+<map id="Server.Messages.ConditionCreatureMessages.setHeat" name="Server.Messages.ConditionCreatureMessages.setHeat">
+<area shape="rect" id="node1" title=" " alt="" coords="475,37,655,77"/>
+<area shape="rect" id="node2" href="$class_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#ac14f05400ee798af0d1fc2c29b0b925a" title=" " alt="" coords="248,37,427,77"/>
+<area shape="rect" id="node3" href="$class_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_eat.html#af57772e019e48fc96eafdd0f0f8fae7e" title=" " alt="" coords="12,5,193,45"/>
+<area shape="rect" id="node4" href="$class_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#a64f58d6b18b35a24e2619467c5ab61ea" title=" " alt="" coords="5,69,200,109"/>
+</map>

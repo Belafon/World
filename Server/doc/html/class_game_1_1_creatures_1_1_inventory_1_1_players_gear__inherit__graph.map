@@ -1,0 +1,4 @@
+<map id="Game.Creatures.Inventory.PlayersGear" name="Game.Creatures.Inventory.PlayersGear">
+<area shape="rect" id="node1" title=" " alt="" coords="19,79,195,119"/>
+<area shape="rect" id="node2" href="$class_game_1_1_creatures_1_1_inventory_1_1_gear.html" title=" " alt="" coords="5,5,209,31"/>
+</map>

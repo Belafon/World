@@ -1,0 +1,5 @@
+<map id="Game.Items.Types.Clothes.getType" name="Game.Items.Types.Clothes.getType">
+<area shape="rect" id="node1" title=" " alt="" coords="229,45,460,70"/>
+<area shape="rect" id="node2" href="$class_game_1_1_creatures_1_1_inventory_1_1_players_gear.html#a86bcbcb6b7d063a59ba6b81bcddb71cd" title=" " alt="" coords="5,5,181,45"/>
+<area shape="rect" id="node3" href="$class_game_1_1_creatures_1_1_inventory_1_1_players_gear.html#a7024513ab32b0ef2996d3deefadb1d4f" title=" " alt="" coords="5,69,181,109"/>
+</map>

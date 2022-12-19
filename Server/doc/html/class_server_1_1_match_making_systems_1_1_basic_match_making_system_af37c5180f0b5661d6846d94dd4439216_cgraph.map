@@ -1,0 +1,7 @@
+<map id="Server.MatchMakingSystems.BasicMatchMakingSystem.removeClient" name="Server.MatchMakingSystems.BasicMatchMakingSystem.removeClient">
+<area shape="rect" id="node1" title=" " alt="" coords="5,13,261,53"/>
+<area shape="rect" id="node2" href="$class_server_1_1_match_making_systems_1_1_basic_match_making_system.html#ae45e2dcdd43fb7002ebd42b67cbc9250" title=" " alt="" coords="309,5,555,60"/>
+<area shape="rect" id="node3" href="$class_server_1_1_messages_1_1_player_messages_1_1_server_player_messages.html#a81e33d779d420bf3649e2b383e3fdc63" title=" " alt="" coords="603,5,881,60"/>
+<area shape="rect" id="node4" href="$class_server_1_1_send_message_1_1_send_message_player.html#a95a440bd6619a12bcfc671d81809ac15" title=" " alt="" coords="929,13,1161,53"/>
+<area shape="rect" id="node5" href="$class_console_1_1_console_print.html#ab11dda42e5369950983803ebd836b858" title=" " alt="" coords="1209,13,1413,53"/>
+</map>

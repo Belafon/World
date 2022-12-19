@@ -1,0 +1,5 @@
+<map id="Game.Maps.Place.Place.getVisibility" name="Game.Maps.Place.Place.getVisibility">
+<area shape="rect" id="node1" title=" " alt="" coords="5,37,195,77"/>
+<area shape="rect" id="node2" href="$class_game_1_1_maps_1_1_weather_1_1_weather.html#a2792a84327e75967baf7946a036f5be1" title=" " alt="" coords="243,5,464,45"/>
+<area shape="rect" id="node3" href="$class_game_1_1_maps_1_1_weather_1_1_sky.html#a4ba9b78166542ac54d899875907cbd68" title=" " alt="" coords="256,69,451,109"/>
+</map>

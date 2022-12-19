@@ -1,0 +1,9 @@
+<map id="Game.Time.CalendaryLoop.run" name="Game.Time.CalendaryLoop.run">
+<area shape="rect" id="node1" title=" " alt="" coords="5,112,207,137"/>
+<area shape="rect" id="node2" href="$class_game_1_1_calendar_1_1_calendar.html#a177768ad3c2a72a75cc09042b8f0f6f8" title=" " alt="" coords="258,5,465,31"/>
+<area shape="rect" id="node3" href="$class_console_1_1_console_print.html#add5f9fdbc5e39f4cf36672b72da57b5b" title=" " alt="" coords="260,55,463,80"/>
+<area shape="rect" id="node4" href="$class_game_1_1_calendar_1_1_calendar.html#a96f9fb787b31501334f414c06a27e4aa" title=" " alt="" coords="267,105,456,145"/>
+<area shape="rect" id="node5" href="$class_game_1_1_time_1_1_time.html#a059cc2427765bf5ce520e689a6e46807" title=" " alt="" coords="520,169,691,195"/>
+<area shape="rect" id="node6" href="$class_game_1_1_calendar_1_1_events_1_1_event.html#a54c03eec72e3d1006fa46e1f445567bb" title=" " alt="" coords="255,219,468,259"/>
+<area shape="rect" id="node7" href="$class_game_1_1_time_1_1_clocks.html#a9be6903791d3b820b89d8ebc57da292e" title=" " alt="" coords="516,219,695,259"/>
+</map>

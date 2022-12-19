@@ -1,0 +1,5 @@
+<map id="Game.Maps.PlaceEffects.PlaceEffects" name="Game.Maps.PlaceEffects.PlaceEffects">
+<area shape="rect" id="node1" title=" " alt="" coords="5,108,212,148"/>
+<area shape="rect" id="node2" href="$class_game_1_1_maps_1_1_place_effects_1_1_place_effect.html" title=" " alt="" coords="136,5,343,45"/>
+<area shape="rect" id="node3" href="$class_game_1_1_maps_1_1_place_effects_1_1_place_effects.html" title=" " alt="" coords="236,108,443,148"/>
+</map>

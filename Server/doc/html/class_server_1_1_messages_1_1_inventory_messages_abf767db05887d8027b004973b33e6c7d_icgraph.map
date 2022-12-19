@@ -1,0 +1,5 @@
+<map id="Server.Messages.InventoryMessages.setAddItem" name="Server.Messages.InventoryMessages.setAddItem">
+<area shape="rect" id="node1" title=" " alt="" coords="472,5,649,45"/>
+<area shape="rect" id="node2" href="$class_game_1_1_creatures_1_1_inventory_1_1_inventory.html#a796a159a5535f1bc28c458473ed3d1b4" title=" " alt="" coords="248,5,424,45"/>
+<area shape="rect" id="node3" href="$class_game_1_1_creatures_1_1_player.html#af6c162d7c54ec6a056198598690bc6b1" title=" " alt="" coords="5,5,200,45"/>
+</map>

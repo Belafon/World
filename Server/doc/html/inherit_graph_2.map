@@ -1,0 +1,10 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,173,96,198"/>
+<area shape="rect" id="node2" href="$class_game_1_1_calendar_1_1_events_1_1_event.html" title=" " alt="" coords="144,173,335,198"/>
+<area shape="rect" id="node3" href="$class_game_1_1_calendar_1_1_events_1_1_event_behaviour.html" title=" " alt="" coords="383,5,573,45"/>
+<area shape="rect" id="node4" href="$class_game_1_1_calendar_1_1_events_1_1_event_change_weather.html" title=" " alt="" coords="383,69,573,109"/>
+<area shape="rect" id="node5" href="$class_game_1_1_calendar_1_1_events_1_1_event_creature_actual_condition.html" title=" " alt="" coords="383,133,573,173"/>
+<area shape="rect" id="node6" href="$class_game_1_1_calendar_1_1_events_1_1_event_item_change.html" title=" " alt="" coords="383,197,573,237"/>
+<area shape="rect" id="node7" href="$class_game_1_1_calendar_1_1_events_1_1_event_move_clouds.html" title=" " alt="" coords="383,261,573,301"/>
+<area shape="rect" id="node8" href="$class_game_1_1_calendar_1_1_events_1_1_event_part_of_day.html" title=" " alt="" coords="383,325,573,365"/>
+</map>

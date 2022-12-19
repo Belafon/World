@@ -1,0 +1,15 @@
+<map id="Game.Maps.Weather.Weather.getClouds" name="Game.Maps.Weather.Weather.getClouds">
+<area shape="rect" id="node1" title=" " alt="" coords="921,160,1143,200"/>
+<area shape="rect" id="node2" href="$class_game_1_1_maps_1_1_place_1_1_place.html#aeb060061620ccb2fe608dba1b04dbcb7" title=" " alt="" coords="653,63,843,103"/>
+<area shape="rect" id="node6" href="$class_game_1_1_maps_1_1_weather_1_1_sky.html#a4f72521fd43b5465825ba94bf0258184" title=" " alt="" coords="647,127,849,167"/>
+<area shape="rect" id="node8" href="$class_server_1_1_messages_1_1_player_messages_1_1_surrounding_player_messages.html#ac7ce85e204ee29587320ac04deeb213d" title=" " alt="" coords="623,192,873,232"/>
+<area shape="rect" id="node12" href="$class_game_1_1_maps_1_1_weather_1_1_sky.html#a10bd914ffee191894ab9a4651cbc2093" title=" " alt="" coords="640,260,856,300"/>
+<area shape="rect" id="node3" href="$class_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#a64f58d6b18b35a24e2619467c5ab61ea" title=" " alt="" coords="345,5,540,45"/>
+<area shape="rect" id="node4" href="$class_game_1_1_items_1_1_types_1_1_food.html#a0cbc931ce429551d3daebc04b87d81b4" title=" " alt="" coords="331,70,554,95"/>
+<area shape="rect" id="node5" href="$class_game_1_1_items_1_1_types_1_1_food.html#ace13cc5bcf205affb49918690724599c" title=" " alt="" coords="35,70,233,95"/>
+<area shape="rect" id="node7" href="$class_game_1_1_calendar_1_1_events_1_1_event_move_clouds.html#a8536b454e519fb07c6e5c238c0642e3d" title=" " alt="" coords="347,120,538,160"/>
+<area shape="rect" id="node9" href="$class_server_1_1_messages_1_1_player_messages_1_1_surrounding_player_messages.html#a39a737745f68c3d83151786337e378ad" title=" " alt="" coords="311,185,575,239"/>
+<area shape="rect" id="node10" href="$class_game_1_1_creatures_1_1_player.html#af6c162d7c54ec6a056198598690bc6b1" title=" " alt="" coords="37,160,231,200"/>
+<area shape="rect" id="node11" href="$class_server_1_1_messages_1_1_player_messages_1_1_surrounding_player_messages.html#a5d36a393034b198802f334c569f21149" title=" " alt="" coords="5,224,263,264"/>
+<area shape="rect" id="node13" href="$class_game_1_1_calendar_1_1_events_1_1_event_change_weather.html#a168bbe3ef3727cbfab814ea6b86c4ad3" title=" " alt="" coords="347,264,538,304"/>
+</map>

@@ -1,0 +1,14 @@
+<map id="likeliness.Dice.toss" name="likeliness.Dice.toss">
+<area shape="rect" id="node1" title=" " alt="" coords="839,233,973,258"/>
+<area shape="rect" id="node2" href="$class_game_1_1_maps_1_1_map_generators_1_1_basic_generator.html#ac8487c7164adbd667472342ab97c5110" title=" " alt="" coords="560,5,767,45"/>
+<area shape="rect" id="node3" href="$class_game_1_1_maps_1_1_map_generators_1_1_basic_generator.html#a1665b2f5dc0860d26551e9c9093194ac" title=" " alt="" coords="277,120,468,160"/>
+<area shape="rect" id="node4" href="$class_game_1_1_maps_1_1_map_generators_1_1_basic_generator.html#abad9189b3e3a62f0dd26cec8f4194c2a" title=" " alt="" coords="568,120,759,160"/>
+<area shape="rect" id="node5" href="$class_game_1_1_maps_1_1_place_1_1_type_of_place.html#a417b2ed06207a885ae7b36f44c7d19f0" title=" " alt="" coords="257,245,488,285"/>
+<area shape="rect" id="node7" href="$class_game_1_1_maps_1_1_place_1_1_type_of_place.html#abd63295564a070f02f9f28e6373320f9" title=" " alt="" coords="257,309,488,349"/>
+<area shape="rect" id="node8" href="$class_game_1_1_maps_1_1_place_1_1_list_of_all_types_of_places.html#a763bc4a86827bebf306051d5afb475ec" title=" " alt="" coords="536,185,791,239"/>
+<area shape="rect" id="node9" href="$class_game_1_1_maps_1_1_resources_1_1_type_of_resource_of_type_of_place.html#ac8953eeb1eb05f7efbd659a195b9feb2" title=" " alt="" coords="554,366,773,421"/>
+<area shape="rect" id="node11" href="$class_game_1_1_maps_1_1_weather_1_1_sky.html#a10bd914ffee191894ab9a4651cbc2093" title=" " alt="" coords="555,445,771,485"/>
+<area shape="rect" id="node6" href="$class_game_1_1_maps_1_1_place_1_1_place.html#a4454a03f7615d397707811a687fc8723" title=" " alt="" coords="5,317,209,342"/>
+<area shape="rect" id="node10" href="$class_game_1_1_maps_1_1_place_1_1_place.html#abdf96402773b2984cb54db51d62ae72f" title=" " alt="" coords="278,373,467,413"/>
+<area shape="rect" id="node12" href="$class_game_1_1_calendar_1_1_events_1_1_event_change_weather.html#a168bbe3ef3727cbfab814ea6b86c4ad3" title=" " alt="" coords="277,445,468,485"/>
+</map>

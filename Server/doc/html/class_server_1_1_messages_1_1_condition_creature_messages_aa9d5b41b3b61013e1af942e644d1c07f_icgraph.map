@@ -1,0 +1,5 @@
+<map id="Server.Messages.ConditionCreatureMessages.setFatigueMax" name="Server.Messages.ConditionCreatureMessages.setFatigueMax">
+<area shape="rect" id="node1" title=" " alt="" coords="539,5,760,45"/>
+<area shape="rect" id="node2" href="$class_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#ae4e911f5930d869e72f246151782ef5c" title=" " alt="" coords="288,5,491,45"/>
+<area shape="rect" id="node3" href="$class_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#a3af22e1ca9e7db6801a5b4feb54a2b9f" title=" " alt="" coords="5,5,240,45"/>
+</map>

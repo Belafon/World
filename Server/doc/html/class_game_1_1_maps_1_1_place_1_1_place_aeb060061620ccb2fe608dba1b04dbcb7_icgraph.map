@@ -1,0 +1,6 @@
+<map id="Game.Maps.Place.Place.getTemperature" name="Game.Maps.Place.Place.getTemperature">
+<area shape="rect" id="node1" title=" " alt="" coords="523,35,712,75"/>
+<area shape="rect" id="node2" href="$class_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#a64f58d6b18b35a24e2619467c5ab61ea" title=" " alt="" coords="266,5,461,45"/>
+<area shape="rect" id="node3" href="$class_game_1_1_items_1_1_types_1_1_food.html#a0cbc931ce429551d3daebc04b87d81b4" title=" " alt="" coords="252,70,475,95"/>
+<area shape="rect" id="node4" href="$class_game_1_1_items_1_1_types_1_1_food.html#ace13cc5bcf205affb49918690724599c" title=" " alt="" coords="5,70,204,95"/>
+</map>

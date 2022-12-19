@@ -1,0 +1,5 @@
+<map id="Game.Creatures.Condition.AbilityCondition.setSpeedOfWalk" name="Game.Creatures.Condition.AbilityCondition.setSpeedOfWalk">
+<area shape="rect" id="node1" title=" " alt="" coords="492,5,707,45"/>
+<area shape="rect" id="node2" href="$class_game_1_1_creatures_1_1_creature.html#a00640ec1840c5b8aaf12009b51706709" title=" " alt="" coords="252,5,444,45"/>
+<area shape="rect" id="node3" href="$class_game_1_1_creatures_1_1_player.html#a22950182b5351fdb226d68b7f734898a" title=" " alt="" coords="5,13,204,38"/>
+</map>

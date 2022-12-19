@@ -1,0 +1,27 @@
+<map id="Game.Time.Time.getTime" name="Game.Time.Time.getTime">
+<area shape="rect" id="node1" title=" " alt="" coords="573,562,744,587"/>
+<area shape="rect" id="node2" href="$class_game_1_1_calendar_1_1_events_1_1_event_item_change.html#acd3d9397aa1b83b4608f65cd47db87c0" title=" " alt="" coords="295,5,485,45"/>
+<area shape="rect" id="node3" href="$class_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#af7eb6381bb6ecc972e08e1e5850dcbf3" title=" " alt="" coords="286,69,494,109"/>
+<area shape="rect" id="node4" href="$class_game_1_1_time_1_1_daily_loop.html#accb80de4f721b00a0148eee5e94a0b2e" title=" " alt="" coords="289,133,491,173"/>
+<area shape="rect" id="node6" href="$class_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_move.html#aee7236b1711b6e1e90a8c9f403036d7c" title=" " alt="" coords="299,197,481,237"/>
+<area shape="rect" id="node8" href="$class_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_find_concrete_resource.html#a2562859d31f5dc7a62e974897cbfed27" title=" " alt="" coords="255,261,525,301"/>
+<area shape="rect" id="node9" href="$class_game_1_1_time_1_1_time.html#a187f5ca22462f7bf015a6e9151e89087" title=" " alt="" coords="21,847,191,873"/>
+<area shape="rect" id="node10" href="$class_game_1_1_calendar_1_1_events_1_1_event.html#a54c03eec72e3d1006fa46e1f445567bb" title=" " alt="" coords="283,325,497,365"/>
+<area shape="rect" id="node11" href="$class_game_1_1_time_1_1_calendary_loop.html#a20dbfcdad6f2826d1a1c38c28208094f" title=" " alt="" coords="5,361,207,386"/>
+<area shape="rect" id="node12" href="$class_game_1_1_maps_1_1_weather_1_1_sky.html#aaf69773d4d9cecf9ea869a03e5e95c24" title=" " alt="" coords="287,440,493,480"/>
+<area shape="rect" id="node14" href="$class_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#a86512e42701643df0fd41abfb323dcd6" title=" " alt="" coords="281,555,499,595"/>
+<area shape="rect" id="node15" href="$class_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#a64f58d6b18b35a24e2619467c5ab61ea" title=" " alt="" coords="293,619,487,659"/>
+<area shape="rect" id="node16" href="$class_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#a4edb2e913dd468103d09ad3c9529f0ad" title=" " alt="" coords="286,683,494,723"/>
+<area shape="rect" id="node17" href="$class_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#a3af22e1ca9e7db6801a5b4feb54a2b9f" title=" " alt="" coords="273,747,507,787"/>
+<area shape="rect" id="node18" href="$class_game_1_1_items_1_1_types_1_1_food.html#a16fe919b834acac277e1a5184d226f90" title=" " alt="" coords="297,975,483,1015"/>
+<area shape="rect" id="node20" href="$class_game_1_1_items_1_1_types_1_1_food.html#a0cbc931ce429551d3daebc04b87d81b4" title=" " alt="" coords="279,1039,501,1065"/>
+<area shape="rect" id="node21" href="$class_game_1_1_time_1_1_time.html#ae4788971cb21532b286208d810a19cc1" title=" " alt="" coords="299,811,481,851"/>
+<area shape="rect" id="node22" href="$class_game_1_1_time_1_1_time.html#afbf80fc32ff126aefb40a63ec7cf29bf" title=" " alt="" coords="281,875,499,901"/>
+<area shape="rect" id="node23" href="$class_game_1_1_time_1_1_time.html#af7dd9dbb7a5bc087c8ffa2aa2ee62775" title=" " alt="" coords="289,925,491,950"/>
+<area shape="rect" id="node24" href="$class_game_1_1_maps_1_1_weather_1_1_sky.html#a10bd914ffee191894ab9a4651cbc2093" title=" " alt="" coords="282,1089,498,1129"/>
+<area shape="rect" id="node5" href="$class_game_1_1_calendar_1_1_events_1_1_event_part_of_day.html#a7c78e264b3e5b2e87aa77ce6370ed4c6" title=" " alt="" coords="11,133,201,173"/>
+<area shape="rect" id="node7" href="$class_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_move.html#a43616f2b9fd5824ac20215b2a570ae04" title=" " alt="" coords="15,197,197,237"/>
+<area shape="rect" id="node13" href="$class_game_1_1_calendar_1_1_events_1_1_event_move_clouds.html#a8536b454e519fb07c6e5c238c0642e3d" title=" " alt="" coords="11,440,201,480"/>
+<area shape="rect" id="node19" href="$class_game_1_1_items_1_1_types_1_1_food.html#ace13cc5bcf205affb49918690724599c" title=" " alt="" coords="7,1010,205,1035"/>
+<area shape="rect" id="node25" href="$class_game_1_1_calendar_1_1_events_1_1_event_change_weather.html#a168bbe3ef3727cbfab814ea6b86c4ad3" title=" " alt="" coords="11,1089,201,1129"/>
+</map>

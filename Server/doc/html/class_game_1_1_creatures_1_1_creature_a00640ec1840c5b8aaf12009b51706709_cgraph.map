@@ -1,0 +1,10 @@
+<map id="Game.Creatures.Creature.setAbilityCondition" name="Game.Creatures.Creature.setAbilityCondition">
+<area shape="rect" id="node1" title=" " alt="" coords="5,197,197,237"/>
+<area shape="rect" id="node2" href="$class_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#aa002d238925a2cdfcbd5680b9ed759d5" title=" " alt="" coords="263,5,442,45"/>
+<area shape="rect" id="node3" href="$class_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#aaf97d837cea5afe33346a5206cc11091" title=" " alt="" coords="263,69,442,109"/>
+<area shape="rect" id="node4" href="$class_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#a26387e740d85454679f246390a331307" title=" " alt="" coords="251,133,454,173"/>
+<area shape="rect" id="node5" href="$class_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#ab815ca4065668713d0d9f07ff21fc8fd" title=" " alt="" coords="249,197,456,237"/>
+<area shape="rect" id="node6" href="$class_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#ab5c8e116a6f2fd7d10926ac9fd2b4399" title=" " alt="" coords="245,261,460,301"/>
+<area shape="rect" id="node7" href="$class_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#a48935009cf5c9826607fa6dbc9aee490" title=" " alt="" coords="261,325,444,365"/>
+<area shape="rect" id="node8" href="$class_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#ab32ef5c5951ea316ab4a90d0590c35d0" title=" " alt="" coords="263,389,442,429"/>
+</map>
