@@ -10,7 +10,13 @@ public class PlayersLookAround {
 	private int[][] placesChangedAltitudes = new int[7][7];
 	private Place[][] visiblePlaces = new Place[7][7];
 	
-	// returns the map of places, which the player cen see
+	/**
+     * 
+     * @param game
+     * @param player
+     * @param place
+     * @return the map of places, which the player cen see
+     */ 
 	public static String look(World game, Player player, Place place) {
 		 // sledov�n� okoln�ch pol�, a� vzd�lenost 2 okolo hr��e
 		PlayersLookAround lookAround = new PlayersLookAround();
@@ -70,7 +76,7 @@ public class PlayersLookAround {
 								}
 							}
 						}
-					}else {
+					} else {
 						// place out of the map ->
 						lookAround.visiblePlaces[i - place.positionX + sizeOfView][j - place.positionY + sizeOfView] = null;
 					}		
@@ -82,35 +88,35 @@ public class PlayersLookAround {
 
 	// create message for one place
 	private static String makeMessage(PlayersLookAround lookAround, Player player) {
-		String look = "";
+		StringBuilder look = new StringBuilder("");
 		int numberOfNullInRow = 0;
 		for(int i  = 0; i < 7; i++) {
 			for(int j = 0; j < 7; j++) {
 				if(lookAround.visiblePlaces[i][j] != null) {
 					if(numberOfNullInRow > 0) { // data compress dat, when there is more null places in row
-						look += "x " + numberOfNullInRow + " ; ";
+						look.append("x " + numberOfNullInRow + " ; ");
 						numberOfNullInRow = 0;
 					}
-					look += getView(lookAround.visiblePlaces[i][j], player);
+					look.append(getView(lookAround.visiblePlaces[i][j], player));
 				} else {
 					numberOfNullInRow++;
 				}
 			}
 		}
 		if(numberOfNullInRow > 0) // data compress dat, when there is more null places in row
-			look += "x " + numberOfNullInRow + " ; ";
-		return look;
+			look.append("x " + numberOfNullInRow + " ; ");
+		return look.toString();
 	}
 
 	// info about distant place
-	private static String getView(Place place, Player player) {
-		String message = place.typeOfPlace.name.name();
+	private static StringBuilder getView(Place place, Player player) {
+		StringBuilder message = new StringBuilder(place.typeOfPlace.name.name());
 		for(int i = 0; i < place.effects.size(); i++) {
 			int visibility = place.effects.get(i).visibility;
 			if(visibility <= 200 && new Dice(visibility).toss() > 20)
-				message += " " + place.effects.get(i).name;
+				message.append(" " + place.effects.get(i).name);
 		}
-		message +=" ; ";
+		message.append(" ; ");
 		return message;
 	}
 

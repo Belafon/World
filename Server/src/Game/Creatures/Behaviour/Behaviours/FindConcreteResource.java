@@ -29,7 +29,7 @@ public class FindConcreteResource extends Behaviour{
         if(resource != null && resource.durationOfFinding != -1) {
             found = true;
             durationOfFinding += resource.durationOfFinding; // lower means I will find it earlier
-            // TODO possiable extension gauss function a*e^(-(x-posun_doprava)/2*const^2), posun_doprava by the durationOfFinding
+            // TODO possiable extension gauss function a*e^(-(x-posun_doprava)/2*const^2), shift left by the durationOfFinding
         } else durationOfFinding += getDurationOfFindingOfResourceWhichIsNotHere(creature.getPosition(), typeOfResource); // duration of when Creature finds out that, there is nothing
         if(durationOfFinding < 0)durationOfFinding = 0;
         super.event = new EventBehaviour(game.time.getTime() + durationOfFinding, game, this);

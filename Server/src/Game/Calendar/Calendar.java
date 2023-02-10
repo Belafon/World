@@ -9,7 +9,7 @@ public class Calendar {
     public Calendar(World game){
         this.game = game;
     }
-    public volatile PriorityBlockingQueue<Event> heap = new PriorityBlockingQueue<Event>();
+    public PriorityBlockingQueue<Event> heap = new PriorityBlockingQueue<Event>();
 
     public void add(Event event){
         heap.add(event);
