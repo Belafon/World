@@ -6,7 +6,7 @@ import Game.Maps.Map;
 
 public class EventMoveClouds extends Event{
     private final Map map;
-    public EventMoveClouds(int date, World game, Map map, boolean printInLoop) {
+    public EventMoveClouds(long date, World game, Map map, boolean printInLoop) {
         super(date, game);
         this.map = map;
         this.printInLoop = printInLoop;

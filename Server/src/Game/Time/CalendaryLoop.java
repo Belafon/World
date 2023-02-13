@@ -29,7 +29,7 @@ public class CalendaryLoop  implements Runnable{
                     continue;
                 }
             else{
-                int durationOfSleep = nextEvent.getTimeToWait(game.server.clocks, game.time);
+                long durationOfSleep = nextEvent.getTimeToWait(game.server.clocks, game.time);
                 if(logLoopThread) ConsolePrint.gameInfo("Loop is waiting for ... " + nextEvent.getClass().getSimpleName() + " duration of sleep = " + durationOfSleep);
                 if(durationOfSleep > 0)
                     try {

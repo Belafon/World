@@ -11,7 +11,7 @@ import Game.Items.Types.Food;
 import Game.Items.ListOfAllItemTypes.NamesOfFoodItemTypes;
 
 
-public class Player extends Creature{
+public class Player extends Creature {
     public final Client client;
     public volatile boolean isReady = false; 
     public Player(Client client, World game, String name, Place position, int id, String appearence){

@@ -15,7 +15,7 @@ public class Move extends Behaviour{
     public Move(World game, Creature creature, Place destination) {
         super(game, 0, 0, creature);
         this.destination = destination;
-        Place actualPlace = creature.getPosition();
+        Place actualPlace = creature.getLocation();
         Place place = actualPlace;
         int x = place.positionX;
         int y = place.positionY;
@@ -41,7 +41,7 @@ public class Move extends Behaviour{
 
     @Override
     public void cease() {
-        if(currentPositionOfTravel > 0) creature.setPosition(jurney.get(currentPositionOfTravel - 1));
+        if(currentPositionOfTravel > 0) creature.setLocation(jurney.get(currentPositionOfTravel - 1));
         if(currentPositionOfTravel < jurney.size()){
             duration = getDurationOfTravel(creature);
             event = new EventBehaviour(game.time.getTime() + duration, game, this);
@@ -52,7 +52,7 @@ public class Move extends Behaviour{
 
     @Override
     public String canCreatureDoThis() {
-        if(destination.map != creature.getPosition().map)return "cant_find_the_way!_The_destination_is_not_in_this_map.";
+        if(destination.map != creature.getLocation().map)return "cant_find_the_way!_The_destination_is_not_in_this_map.";
         return null;
     }
     
@@ -72,7 +72,7 @@ public class Move extends Behaviour{
 		Place nextPlace = jurney.get(currentPositionOfTravel);
 		
 		// influence by Object altitude;
-		int differenceOfAltitudes = nextPlace.altitude - creature.getPosition().altitude;
+		int differenceOfAltitudes = nextPlace.altitude - creature.getLocation().altitude;
 		float averageRoadDegree = (float) Math.atan(((float)differenceOfAltitudes * 3f)/1000f);
 		float averageSpeed = (float) (6 * Math.exp(-(3/2) * Math.abs(Math.tan(averageRoadDegree + (1/20))))); // Tobler's hiking function
 		//averageSpeed *= (50/3); // translation killometers per hour to meters per minutes

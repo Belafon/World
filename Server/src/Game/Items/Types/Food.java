@@ -29,7 +29,7 @@ public class Food extends Item{
         if(warm < 0)warm = 0;
         this.warm = warm;
         if(warm > 0 && changeWarm == null){
-            changeWarm = new EventItemChange(game.time.getTime() + owner.getPosition().getTemperature(), game, this);
+            changeWarm = new EventItemChange(game.time.getTime() + owner.getLocation().getTemperature(), game, this);
             game.calendar.add(changeWarm);
         }else if(warm == 0)changeWarm = null;
     }

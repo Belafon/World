@@ -5,7 +5,7 @@ import Game.Items.Item;
 
 public class EventItemChange extends Event{
     private Item item;
-    public EventItemChange(int date, World game, Item item) {
+    public EventItemChange(long date, World game, Item item) {
         super(date, game);
         this.item = item;
     }

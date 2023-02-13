@@ -7,10 +7,10 @@ import Game.Items.ListOfAllItemTypes.NamesOfFoodItemTypes;
 
 public class FoodTypeItem extends TypeItem{
     private volatile int filling;
-    public final int speedOfDecay; // less is faster
+    public final long speedOfDecay; // less is faster
     public SpecialFoodsProperties[] startSpecialProperties;
     public final NamesOfFoodItemTypes foodName;
-    public FoodTypeItem(NamesOfFoodItemTypes name, int weight, int toss, int visibility, String look, int filling, int speedOfDecay) {
+    public FoodTypeItem(NamesOfFoodItemTypes name, int weight, int toss, int visibility, String look, int filling, long speedOfDecay) {
         super(name.name(), weight, toss, visibility, look);
         this.setFilling(filling);
         this.speedOfDecay = speedOfDecay;

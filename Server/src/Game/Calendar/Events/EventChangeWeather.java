@@ -6,7 +6,7 @@ import Game.Maps.Weather.Sky;
 
 public class EventChangeWeather extends Event{
     private Sky sky;
-    public EventChangeWeather(int date, World game, Sky sky, boolean printInLoop) {
+    public EventChangeWeather(long date, World game, Sky sky, boolean printInLoop) {
         super(date, game);
         this.sky = sky;
         this.printInLoop = printInLoop;

@@ -3,8 +3,8 @@ package Game.Time;
 import Console.ConsolePrint;
 
 public class Clocks extends Thread{
-    public volatile int time = 0;
-    public final int delay = 33;
+    public volatile long time = 0;
+    public final long delay = 33;
     @Override
     public void run() {
         Thread.currentThread().setName("Clocks");
@@ -16,7 +16,7 @@ public class Clocks extends Thread{
             time++;
         }
     }
-    public int ticksToMillis(int ticks) {
+    public long ticksToMillis(long ticks) {
         return ticks * delay;
     }
 }

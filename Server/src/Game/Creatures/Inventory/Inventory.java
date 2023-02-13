@@ -42,10 +42,10 @@ public class Inventory {
 	}
 
 	public synchronized void removeItem(Item item) {
-		if(item instanceof Food) foodInBag.remove((Food)item);
-		else if(item instanceof Clothes) clothesInBag.remove((Clothes)item);
-		else if(item instanceof Tool) toolsInBag.remove((Tool)item);
-		else if(item instanceof QuestItem) questItemsInBag.remove((QuestItem)item);
+		if(item instanceof Food food) foodInBag.remove(food);
+		else if(item instanceof Clothes clothes) clothesInBag.remove(clothes);
+		else if(item instanceof Tool tool) toolsInBag.remove(tool);
+		else if(item instanceof QuestItem questItem) questItemsInBag.remove(questItem);
 		else basicItemsInBag.remove(item);
 
 		// lets send info about it

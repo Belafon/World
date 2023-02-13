@@ -29,11 +29,11 @@ public class DailyLoop {
         night           // 20.0 -> 400
     }
     public void addPlanToNextDay(){
-        int startOfnextDayInTicks = Time.getDay(game.time.getTime()) + 1; // number of next day
+        long startOfnextDayInTicks = Time.getDay(game.time.getTime()) + 1; // number of next day
         startOfnextDayInTicks = Time.daysToTicks(startOfnextDayInTicks); // transfer days to ticks
         addToCalendar(startOfnextDayInTicks);
     }
-    private void addToCalendar(int startOfnextDayInTicks) {
+    private void addToCalendar(long startOfnextDayInTicks) {
         for (PartOfDay partOfDay : partsOfDay)
             game.calendar.add(new EventPartOfDay(partOfDay.start + startOfnextDayInTicks, partOfDay, game));
     }

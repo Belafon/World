@@ -7,7 +7,7 @@ import Game.Creatures.Creature;
 
 public class EventPartOfDay extends Event{
     private PartOfDay partOfDay;
-    public EventPartOfDay(int date, PartOfDay partOfDay, World game) {
+    public EventPartOfDay(long date, PartOfDay partOfDay, World game) {
         super(date, game);
         this.partOfDay = partOfDay;
     }

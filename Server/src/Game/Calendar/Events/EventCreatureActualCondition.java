@@ -7,7 +7,7 @@ import Game.World;
 public class EventCreatureActualCondition extends Event{
     Consumer<Object> method;
 
-    public EventCreatureActualCondition(int date, World game, Consumer<Object> method) {
+    public EventCreatureActualCondition(long date, World game, Consumer<Object> method) {
         super(date, game);
         this.method = method;
     }

@@ -4,10 +4,11 @@ import Game.World;
 import Game.Creatures.Behaviour.Behaviour;
 import Game.Creatures.Condition.AbilityCondition;
 import Game.Maps.Place.Place;
+import Game.ObjectsMemory.Visible;
 import Server.SendMessage.SendMessage;
 import Game.Creatures.Condition.ActualCondition;
 import Game.Creatures.Inventory.Inventory;
-public abstract class Creature {
+public abstract class Creature implements Visible {
     public volatile String name;
     protected volatile Place position;
     public final String appearence;
@@ -40,16 +41,23 @@ public abstract class Creature {
         abilityCondition.setVision(vision);
 	}
     protected abstract void setInventory();
-    public void setBehaviour(Behaviour behaviour){
+
+    public void setBehaviour(Behaviour behaviour) {
         currentBehaviour = behaviour;
         behaviour.execute();
     }
-    public Place getPosition() {
-        return position;
-    }
-    public void setPosition(Place position) {
+    
+    public void setLocation(Place position) {
         this.position = position;
         writer.surrounding.setPosition(position);
+
+        // all players watching that have to get notice that
     }
+    
+    @Override
+    public Place getLocation() {
+        return position;
+    }
+
 }
 

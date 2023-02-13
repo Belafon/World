@@ -5,7 +5,7 @@ import Game.Creatures.Behaviour.Behaviour;
 
 public class EventBehaviour extends Event{
     private final Behaviour behaviour;
-    public EventBehaviour(int date, World game, Behaviour behaviour) {
+    public EventBehaviour(long date, World game, Behaviour behaviour) {
         super(date, game);
         this.behaviour = behaviour;
     }

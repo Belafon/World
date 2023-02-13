@@ -28,7 +28,7 @@ public class Weather {
     }
     public void setClouds(int clouds, Place place) {
         this.clouds = clouds;
-        for(Creature creature : place.creatures)creature.writer.surrounding.setClouds(creature.getPosition());
+        for(Creature creature : place.creatures)creature.writer.surrounding.setClouds(creature.getLocation());
 
     }
     public int getVisibility() {
