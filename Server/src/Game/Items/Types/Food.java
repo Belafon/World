@@ -6,6 +6,8 @@ import Game.Calendar.Events.EventItemChange;
 import Game.Items.Item;
 import Game.Items.ItemsSpecialStats.SpecialFoodsProperties;
 import Game.Items.TypeItem.FoodTypeItem;
+import Game.ObjectsMemory.ObjectsMemoryCell;
+import Game.ObjectsMemory.ItemsMemory.FoodItemsMemory;
 
 import java.util.ArrayList;
 
@@ -15,6 +17,7 @@ public class Food extends Item{
     public ArrayList<SpecialFoodsProperties> specialProperties;
     EventItemChange changeFreshness;
     EventItemChange changeWarm;
+    public final FoodItemsMemory memory = new FoodItemsMemory();
 	public Food(World game, int warm, int freshness, SpecialFoodsProperties[] specialProperties,  FoodTypeItem type) {
         super(game, type);
         this.setFreshness(freshness, game);
@@ -26,7 +29,10 @@ public class Food extends Item{
         return warm;
     }
     public void setWarm(int warm, World game) {
-        if(warm < 0)warm = 0;
+        if (warm < 0)
+            warm = 0;
+        memory.warm.add(new ObjectsMemoryCell<Integer>(location.map.game.time.getTime(), warm));
+        
         this.warm = warm;
         if(warm > 0 && changeWarm == null){
             changeWarm = new EventItemChange(game.time.getTime() + owner.getLocation().getTemperature(), game, this);
@@ -38,6 +44,7 @@ public class Food extends Item{
     }
     public void setFreshness(int freshness, World game) {
         if(freshness < 0)freshness = 0;
+        memory.freshness.add(new ObjectsMemoryCell<Integer>(location.map.game.time.getTime(), freshness));
         this.freshness = freshness;
         if(freshness > 0 && changeFreshness == null){
             changeFreshness = new EventItemChange(game.time.getTime() + getType().speedOfDecay, game, this);

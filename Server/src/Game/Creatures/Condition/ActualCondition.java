@@ -1,6 +1,8 @@
 package Game.Creatures.Condition;
 
 import Game.Creatures.Creature;
+import Game.ObjectsMemory.ObjectsMemoryCell;
+import Game.ObjectsMemory.CreaturesMemory.ActualConditionMemory;
 import Game.World;
 import Game.Calendar.Events.EventCreatureActualCondition;
 
@@ -22,7 +24,9 @@ public class ActualCondition{
 
 	//private ArrayList<Disease> diseases;
 	//private ArrayList<Injury> injuries;
-	private Creature creature;
+    private Creature creature;
+    public final ActualConditionMemory memory = new ActualConditionMemory();
+    
 	public ActualCondition(Creature creature) {
 		this.creature = creature;
 		//diseases = new ArrayList<>();
@@ -73,22 +77,28 @@ public class ActualCondition{
 	public synchronized int getHunger() {
 		return hunger;
 	}
-	public synchronized void setHunger(int hunger) {
-		if(hunger > 100)hunger = 100;
+
+    public synchronized void setHunger(int hunger) {
+        
+        if(hunger > 100)hunger = 100;
 		if(hunger < 0) {
 			creature.abilityCondition.setHealth(creature.abilityCondition.getHealth() + hunger);
 			hunger = 0;
 		}
 		if(hunger != this.hunger)creature.writer.condition.setHunger(hunger);
+        memory.hunger.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), hunger));
 		this.hunger = hunger;
 	}
 	public synchronized int getBleeding() {
 		return bleeding;
 	}
-	public synchronized void setBleeding(int bleeding) {
-		if(bleeding > 100)bleeding = 100;
+
+    public synchronized void setBleeding(int bleeding) {
+        
+        if(bleeding > 100)bleeding = 100;
 		else if(bleeding < 0)bleeding = 0;
 		if(bleeding != this.bleeding)creature.writer.condition.setBleeding(bleeding);
+        memory.bleeding.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), bleeding));
 		this.bleeding = bleeding;
 	}
 	public synchronized int getHeat() {
@@ -106,8 +116,10 @@ public class ActualCondition{
 	public synchronized int getFatigueMax() {
 		return fatigueMax;
 	}
-	public synchronized void setFatigueMax(int fatigueMax) {
-		if(fatigueMax > 100)fatigueMax = 100;
+
+    public synchronized void setFatigueMax(int fatigueMax) {
+        
+        if(fatigueMax > 100)fatigueMax = 100;
 		if(fatigueMax < 10) { // pass away
 			/*for(Behaviour behaviour : Creature.getCurrentBehaviour()) {
 				game.calendar.deletePlayersCurrentBehaviourAction(Creature, Creature.getBehaviourPositionInArray(behaviour));
@@ -116,6 +128,7 @@ public class ActualCondition{
 			fatigueMax = 0;
 		}
 		if(fatigueMax != this.fatigueMax) creature.writer.condition.setFatigueMax(fatigueMax);
+        memory.fatigueMax.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), fatigueMax));
 		this.fatigueMax = fatigueMax;
 	}
 }

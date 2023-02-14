@@ -4,7 +4,9 @@ import Game.World;
 import Game.Creatures.Behaviour.Behaviour;
 import Game.Creatures.Condition.AbilityCondition;
 import Game.Maps.Place.Place;
+import Game.ObjectsMemory.ObjectsMemoryCell;
 import Game.ObjectsMemory.Visible;
+import Game.ObjectsMemory.CreaturesMemory.CreaturesMemory;
 import Server.SendMessage.SendMessage;
 import Game.Creatures.Condition.ActualCondition;
 import Game.Creatures.Inventory.Inventory;
@@ -19,7 +21,7 @@ public abstract class Creature implements Visible {
 	public volatile World game;
 	public volatile int id;
     public final SendMessage writer;
-
+    public final CreaturesMemory memory = new CreaturesMemory();
     public Creature(World game, String name, Place position, int id, String appearence, SendMessage sendMessage){
 		this.id = id;
     	this.game = game;
@@ -48,9 +50,10 @@ public abstract class Creature implements Visible {
     }
     
     public void setLocation(Place position) {
+        memory.position.add(new ObjectsMemoryCell<Place>(game.time.getTime(), position));
         this.position = position;
         writer.surrounding.setPosition(position);
-
+        
         // all players watching that have to get notice that
     }
     
