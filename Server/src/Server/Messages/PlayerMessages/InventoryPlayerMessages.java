@@ -27,7 +27,7 @@ public class InventoryPlayerMessages extends InventoryMessages{
 		if(item instanceof Food){
 			nextValues += ((Food)item).getFreshness() + " " + ((FoodTypeItem)item.type).getFilling() + " " + ((Food)item).getWarm();
 		}else if(item instanceof Tool){
-			nextValues += ((Tool)item).quality;
+			nextValues += ((Tool)item).getQuality();
 		}else if(item instanceof Clothes){
 
 		}else if(item instanceof QuestItem){
