@@ -28,7 +28,7 @@ public class ActualCondition{
 		//diseases = new ArrayList<>();
 		//injuries = new ArrayList<>();
 		World game = creature.game;
-		int duration = 0;
+		long duration = 0;
 		if(game.time == null) duration = 1;
 		else duration = game.time.getTime(); 
 		eventHunger = new EventCreatureActualCondition(duration, game, this::setEventHunger);
@@ -56,7 +56,7 @@ public class ActualCondition{
 	}
 	public void setEventHeat(Object object){
 		World game = creature.game;
-		int temperatureDifference = BODY_BORDER_HEAT + creature.abilityCondition.getCurrentEnergyOutput() + creature.inventory.gear.warm - creature.getPosition().getTemperature();
+		int temperatureDifference = BODY_BORDER_HEAT + creature.abilityCondition.getCurrentEnergyOutput() + creature.inventory.gear.warm - creature.getLocation().getTemperature();
 		int speed = temperatureDifference * HEAT_CONST; // TODO / weight of creature
 		setHeat(getHeat() - speed);
 		game.calendar.add(new EventCreatureActualCondition(game.time.getTime() + BODY_HEAT_SPEED, game, this::setEventHeat));
