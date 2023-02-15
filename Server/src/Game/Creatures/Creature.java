@@ -21,8 +21,10 @@ public abstract class Creature implements Visible {
 	public volatile World game;
 	public volatile int id;
     public final SendMessage writer;
+    private volatile int weight;
+
     public final CreaturesMemory memory = new CreaturesMemory();
-    public Creature(World game, String name, Place position, int id, String appearence, SendMessage sendMessage){
+    public Creature(World game, String name, Place position, int id, String appearence, SendMessage sendMessage, int weight){
 		this.id = id;
     	this.game = game;
         this.appearence = appearence;
@@ -31,8 +33,9 @@ public abstract class Creature implements Visible {
         this.position = position;
         this.name = name;
         this.writer = sendMessage;
+        this.weight = weight;
     }
-    public void setAbilityCondition(int strength, int agility, int speed_of_walk, int speed_of_run, int hearing, int observation, int vision) {
+    public synchronized void setAbilityCondition(int strength, int agility, int speed_of_walk, int speed_of_run, int hearing, int observation, int vision) {
 		// strength, agility, speed_of_walk, speed_of_run, hearing, observation, vision
 		this.abilityCondition.setStrength(strength);
         this.abilityCondition.setAgility(agility);
@@ -44,18 +47,28 @@ public abstract class Creature implements Visible {
 	}
     protected abstract void setInventory();
 
-    public void setBehaviour(Behaviour behaviour) {
+    public synchronized void setBehaviour(Behaviour behaviour) {
         currentBehaviour = behaviour;
         behaviour.execute();
     }
     
-    public void setLocation(Place position) {
+    public synchronized void setLocation(Place position) {
         memory.position.add(new ObjectsMemoryCell<Place>(game.time.getTime(), position));
         this.position = position;
         writer.surrounding.setPosition(position);
-        
+
         // all players watching that have to get notice that
     }
+    
+    public int getWeight() {
+        return weight;
+    }
+
+    public synchronized void setWeight(int weight) {
+        memory.weight.add(new ObjectsMemoryCell<Integer>(game.time.getTime(), weight));
+        this.weight = weight;
+    }
+
     
     @Override
     public Place getLocation() {

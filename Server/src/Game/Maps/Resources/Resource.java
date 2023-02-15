@@ -1,8 +1,5 @@
 package Game.Maps.Resources;
 
-import java.util.ArrayList;
-
-import Game.Creatures.Creature;
 import Game.Creatures.Behaviour.Behaviours.FindConcreteResource;
 import Game.Maps.Place.Place;
 import Game.ObjectsMemory.Visible;
