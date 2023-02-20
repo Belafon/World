@@ -36,91 +36,91 @@ public class AbilityCondition {
 		return currentEnergyOutput;
 	}
 
-    public synchronized void setCurrentEnergyOutput(int currentEnergyOutput) {
-        memory.currentEnergyOutput.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), currentEnergyOutput));
+    public void setCurrentEnergyOutput(int currentEnergyOutput) {
+        memory.addCurrentEnergyOutput(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), currentEnergyOutput));
         this.currentEnergyOutput = currentEnergyOutput;
 	}
 	public int getStrength() {
 		return strength;
 	}
 
-    public synchronized void setStrength(int strength) {
-        memory.strength.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), strength));
+    public void setStrength(int strength) {
+        memory.addStrength(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), strength));
         
         this.strength = strength;
 	}
 	public int getAgility() {
 		return agility;
 	}
-	public synchronized void setAgility(int agility) {
-        memory.agility.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), agility));
+	public void setAgility(int agility) {
+        memory.addAgility(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), agility));
         this.agility = agility;
 	}
 	public int getSpeedOfWalk() {
 		return speedOfWalk;
 	}
-	public synchronized void setSpeedOfWalk(int speedOfWalk) {
-        memory.speedOfWalk.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), speedOfWalk));
+	public void setSpeedOfWalk(int speedOfWalk) {
+        memory.addSpeedOfWalk(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), speedOfWalk));
         this.speedOfWalk = speedOfWalk;
 	}
 	public int getSpeedOfRun() {
 		return speedOfRun;
 	}
-	public synchronized void setSpeedOfRun(int speedOfRun) {
-        memory.speedOfRun.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), speedOfRun));
+	public void setSpeedOfRun(int speedOfRun) {
+        memory.addSpeedOfRun(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), speedOfRun));
         this.speedOfRun = speedOfRun;
 	}
 	public int getHearing() {
 		return hearing;
 	}
-	public synchronized void setHearing(int hearing) {
-        memory.hearing.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), hearing));
+	public void setHearing(int hearing) {
+        memory.addHearing(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), hearing));
         this.hearing = hearing;
 	}
 	public int getObservation() {
 		return observation;
 	}
-	public synchronized void setObservation(int observation) {
-        memory.observation.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), observation));
+	public void setObservation(int observation) {
+        memory.addObservation(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), observation));
         this.observation = observation;
 	}
 	public int getVision() {
 		return vision;
 	}
-	public synchronized void setVision(int vision) {
-        memory.vision.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), vision));
+	public void setVision(int vision) {
+        memory.addVision(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), vision));
         this.vision = vision;
 	}
 	public int getCurrent_speed() {
 		return currentSpeed;
 	}
-	public synchronized void setCurrentSpeed(int currentSpeed) {
-        memory.currentSpeed.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), currentSpeed));
+	public void setCurrentSpeed(int currentSpeed) {
+        memory.addCurrentSpeed(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), currentSpeed));
         this.currentSpeed = currentSpeed;
 	}
 	public int getLoudness() {
 		return loudness;
 	}
-	public synchronized void setLoudness(int loudness) {
-        memory.loudness.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), loudness));
+	public void setLoudness(int loudness) {
+        memory.addLoudness(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), loudness));
         this.loudness = loudness;
 	}
-	public synchronized int getHealth() {
+	public int getHealth() {
 		return health;
 	}
-	public synchronized void setHealth(int health) {
+	public void setHealth(int health) {
         if(health < 0)health = 0;
 		if(health > 100)health = 100;
 		if(health != this.health)creature.writer.condition.setHealth(health);
-        memory.health.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), health));
+        memory.addHealth(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), health));
 		this.health = health;
 	}
-	public synchronized int getFatigue() {
+	public int getFatigue() {
 		if(creature.actualCondition.getFatigueMax() < fatigue)
 			setFatigue(creature.actualCondition.getFatigueMax());
 		return fatigue;
 	}
-	public synchronized void setFatigue(int fatigue) {
+	public void setFatigue(int fatigue) {
         if(fatigue > 100)fatigue = 100;
 		if(fatigue < 0) {
 			// v p��pad�, �e fatigue max bude ji� men��, jak 10, hr�� omdl�, i kdy� n�hl� energie m� hodn�
@@ -140,16 +140,16 @@ public class AbilityCondition {
 			}
 			fatigue = 0;
 		}
-        memory.fatigue.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), fatigue));
+        memory.addFatigue(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), fatigue));
 		this.fatigue = fatigue;
 	}
-	public synchronized int getAttention() {
+	public int getAttention() {
 		return attention;
 	}
 
-	public synchronized void setAttention(int attention) {
+	public void setAttention(int attention) {
         if(attention < 0)attention = 0;
-        memory.attention.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), attention));
+        memory.addAttention(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), attention));
 		this.attention = attention;
 	}
 }

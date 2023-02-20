@@ -53,7 +53,7 @@ public abstract class Creature implements Visible {
     }
     
     public synchronized void setLocation(Place position) {
-        memory.position.add(new ObjectsMemoryCell<Place>(game.time.getTime(), position));
+        memory.addPosition(new ObjectsMemoryCell<Place>(game.time.getTime(), position));
         this.position = position;
         writer.surrounding.setPosition(position);
 
@@ -65,7 +65,7 @@ public abstract class Creature implements Visible {
     }
 
     public synchronized void setWeight(int weight) {
-        memory.weight.add(new ObjectsMemoryCell<Integer>(game.time.getTime(), weight));
+        memory.addWeight(new ObjectsMemoryCell<Integer>(game.time.getTime(), weight));
         this.weight = weight;
     }
 

@@ -33,7 +33,23 @@ public class ListOfAllTypesOfPlaces {
             new String[]{"meadow_4", "meadow_5", "meadow_6"}, 
             new String[]{"meadow_2"}, new int[]{3, 4},
             new TypeOfResourceOfTypeOfPlace[0], 
-            2, 0xc6f538, "Mountain slope overgrown with tall grass and mountain aromatic herbs."));
+                2, 0xc6f538, "Mountain slope overgrown with tall grass and mountain aromatic herbs."));
+
+                
+        
+        typeOfPlaces.put( NamesOfTypesOfPlaces.back_space,  new TypeOfPlace(NamesOfTypesOfPlaces.back_space, 
+            new String[]{}, 
+            new String[]{},
+            new int[]{},
+            new TypeOfResourceOfTypeOfPlace[0], 
+            2, 0xc6f538, "Smelly musty leather bag."));
+
+        typeOfPlaces.put( NamesOfTypesOfPlaces.leather_bag,  new TypeOfPlace(NamesOfTypesOfPlaces.leather_bag, 
+            new String[]{}, 
+            new String[]{},
+            new int[]{},
+            new TypeOfResourceOfTypeOfPlace[0], 
+            2, 0xc6f538, "Smelly musty leather bag."));
 
         for (int i = 0; i < typeOfPlacesInTheSpecificAltitude.length; i++)
             typeOfPlacesInTheSpecificAltitude[i] = new AList();
@@ -41,7 +57,8 @@ public class ListOfAllTypesOfPlaces {
         for(TypeOfPlace typeOfPlace : typeOfPlaces.values())
             for(int altitude : typeOfPlace.altitudesOfPressence)typeOfPlacesInTheSpecificAltitude[altitude].list.add(typeOfPlace.name);
     }
-    public enum NamesOfTypesOfPlaces{
+
+    public enum NamesOfTypesOfPlaces {
         forest_leafy,
         forest_smrk,
         forest_borovice,
@@ -52,15 +69,20 @@ public class ListOfAllTypesOfPlaces {
         mountain_river,
         mountain_stream,
         mountein_meadow,
-        wetland, 
+        wetland,
         swamp_land,
-        moorland, 
+        moorland,
         meadow,
         cave,
         cliff,
         rock_land,
-        plateau_of_bushes
-    } 
+        plateau_of_bushes,
+        
+        // names of types of space items
+        back_space,
+        leather_bag
+    }
+    
     public static TypeOfPlace getRandomTypeOfPlaceAtAltitude(int altitude){
         Dice dice = new Dice(typeOfPlacesInTheSpecificAltitude[altitude].list.size());
         NamesOfTypesOfPlaces name = typeOfPlacesInTheSpecificAltitude[altitude].list.get(dice.toss() - 1);

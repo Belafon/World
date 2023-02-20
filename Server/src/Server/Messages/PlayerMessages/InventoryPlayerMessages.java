@@ -33,7 +33,7 @@ public class InventoryPlayerMessages extends InventoryMessages{
 		}else if(item instanceof QuestItem){
 
 		}
-		sendMessage.sendLetter("item addItem " + item.id + " " + item.type.name + " " + item.type.weight + " " + item.type.visibility + " " + item.type.toss + " " + nextValues);
+		sendMessage.sendLetter("item addItem " + item.id + " " + item.type.name + " " + item.type.regularWeight + " " + item.type.visibility + " " + item.type.toss + " " + nextValues);
     }
 	@Override
 	public void setRemoveItem(Item item) {

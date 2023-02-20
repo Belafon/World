@@ -2,6 +2,7 @@ package Game.Items;
 
 import Game.Items.TypeItem.TypeItem;
 import Game.Maps.Place.Place;
+import Game.Maps.Place.UnboundedPlace;
 import Game.ObjectsMemory.Visible;
 import Game.World;
 import Game.Calendar.Events.Event;
@@ -13,7 +14,7 @@ public class Item implements Visible{
     public final TypeItem type;
     public volatile Creature owner;
     public volatile EventItemChange eventItemChange;
-    public Place location; // TODO change location, when is moving
+    public UnboundedPlace location; // TODO change location, when is moving
     private int weight;
 
     
@@ -36,7 +37,7 @@ public class Item implements Visible{
     }
     
     @Override
-    public Place getLocation() {
+    public UnboundedPlace getLocation() {
         return location;
     }
 }

@@ -19,7 +19,7 @@ public class Tool extends Item {
         return quality;
     }
     public void setQuality(int quality) {
-        memory.quality.add(new ObjectsMemoryCell<Integer>(location.map.game.time.getTime(), this.quality));
+        memory.quality.add(new ObjectsMemoryCell<Integer>(location.game.time.getTime(), this.quality));
         this.quality = quality;
     }
 

@@ -1,7 +1,7 @@
 package Game.ObjectsMemory;
 
-import Game.Maps.Place.Place;
+import Game.Maps.Place.UnboundedPlace;
 
 public interface Visible {
-    public Place getLocation();
+    public UnboundedPlace getLocation();
 }

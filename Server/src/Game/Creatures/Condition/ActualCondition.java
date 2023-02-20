@@ -86,7 +86,7 @@ public class ActualCondition{
 			hunger = 0;
 		}
 		if(hunger != this.hunger)creature.writer.condition.setHunger(hunger);
-        memory.hunger.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), hunger));
+        memory.addHunger(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), hunger));
 		this.hunger = hunger;
 	}
 	public synchronized int getBleeding() {
@@ -98,7 +98,7 @@ public class ActualCondition{
         if(bleeding > 100)bleeding = 100;
 		else if(bleeding < 0)bleeding = 0;
 		if(bleeding != this.bleeding)creature.writer.condition.setBleeding(bleeding);
-        memory.bleeding.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), bleeding));
+        memory.addBleeding(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), bleeding));
 		this.bleeding = bleeding;
 	}
 	public synchronized int getHeat() {
@@ -128,7 +128,7 @@ public class ActualCondition{
 			fatigueMax = 0;
 		}
 		if(fatigueMax != this.fatigueMax) creature.writer.condition.setFatigueMax(fatigueMax);
-        memory.fatigueMax.add(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), fatigueMax));
+        memory.addFatigueMax(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), fatigueMax));
 		this.fatigueMax = fatigueMax;
 	}
 }

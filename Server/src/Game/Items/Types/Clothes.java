@@ -24,7 +24,7 @@ public class Clothes extends Item{
     }
 
     public void setDirty(int dirty) {
-        memory.dirty.add(new ObjectsMemoryCell<Integer>(location.map.game.time.getTime(), dirty));
+        memory.dirty.add(new ObjectsMemoryCell<Integer>(location.game.time.getTime(), dirty));
         this.dirty = dirty;
     }
 }

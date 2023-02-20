@@ -8,8 +8,11 @@ import Game.Calendar.Events.EventBehaviour;
 import Game.Creatures.Creature;
 import Game.Creatures.Behaviour.Behaviour;
 import Game.Maps.Place.Place;
+import Game.Maps.Place.UnboundedPlace;
 import Game.Maps.Resources.Resource;
 import Game.Maps.Resources.TypeOfResource;
+import Game.ObjectsMemory.ObjectsMemoryCell;
+import Game.ObjectsMemory.Visible;
 
 public class FindConcreteResource extends Behaviour {
     private final Resource resource;
@@ -50,7 +53,7 @@ public class FindConcreteResource extends Behaviour {
     public void cease() {
         if (found) {
             ConsolePrint.success("Resource was found!!!");
-            resource.creatureListKnowsAboutLocation.add(creature);
+            creature.memory.addVisibleObjectSpotted(new ObjectsMemoryCell<Visible>(creature.game.time.getTime(), resource));
             creature.writer.surrounding.setResource(resource);
         } else {
             ConsolePrint.success("Ressource was NOT found!!!");
@@ -76,7 +79,7 @@ public class FindConcreteResource extends Behaviour {
         return sum - i * anonymConspicuousnessOfFindingResource;
     }
 
-    public static synchronized void setResourcesDurationOfFinding(Place place, Resource resource) throws Exception {
+    public static synchronized void setResourcesDurationOfFinding(UnboundedPlace place, Resource resource) throws Exception {
         int lastIndex = Arrays.asList(place.resourcesSorted).indexOf(resource);
         if (lastIndex == -1)
             throw new Exception("Value exception");

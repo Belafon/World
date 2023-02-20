@@ -1,7 +1,7 @@
 package Game.Maps.Resources;
 
 import Game.Creatures.Behaviour.Behaviours.FindConcreteResource;
-import Game.Maps.Place.Place;
+import Game.Maps.Place.UnboundedPlace;
 import Game.ObjectsMemory.Visible;
 
 public class Resource implements Visible {
@@ -18,7 +18,7 @@ public class Resource implements Visible {
         return (typeOfResource.conspicuousness * amount) / 100;
     }
 
-    public void setAmount(int amount, Place place) {
+    public void setAmount(int amount, UnboundedPlace place) {
         this.amount = amount;
         try {
             FindConcreteResource.setResourcesDurationOfFinding(place, this);
@@ -28,7 +28,7 @@ public class Resource implements Visible {
     }
     
     @Override
-    public Place getLocation() {
+    public UnboundedPlace getLocation() {
         return null;
     }
 }
