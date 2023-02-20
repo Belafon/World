@@ -10,7 +10,7 @@ import Game.Items.TypeItem.FoodTypeItem;
 import Game.Items.TypeItem.QuestTypeItem;
 import Game.Items.TypeItem.SpaceTypeItem;
 
-public class ListOfAllItemTypes {
+public class ListOfAllItemTypes{
     public static void setUpItems(){
         setUpTool();
         setUpFood();
@@ -22,22 +22,24 @@ public class ListOfAllItemTypes {
 
     public static Map<NamesOfSpaceItemTypes, SpaceTypeItem> spaceItems = new Hashtable<>(); 
 
-    public enum NamesOfSpaceItemTypes {
-        Bag
+    public enum NamesOfSpaceItemTypes{
+        leather_bag,
+        back_space
     }
     
-    private static void setUpSpaceItems() {
-        spaceItems.put(NamesOfSpaceItemTypes.Bag, new SpaceTypeItem(NamesOfSpaceItemTypes.Bag, 320, 0, 35, "Huge leather bag", 300)); // speedOfDecay will be 0 after 1 month
+    private static void setUpSpaceItems(){
+        spaceItems.put(NamesOfSpaceItemTypes.leather_bag, new SpaceTypeItem(NamesOfSpaceItemTypes.leather_bag, 320, 0, 35, "Huge leather bag", 300)); // speedOfDecay will be 0 after 1 month
+        spaceItems.put(NamesOfSpaceItemTypes.back_space, new SpaceTypeItem(NamesOfSpaceItemTypes.back_space, 0, 0, 0, "Back space", 300)); // speedOfDecay will be 0 after 1 month
     }
 
 
     public static Map<NamesOfFoodItemTypes, FoodTypeItem> foodTypes = new Hashtable<>(); 
     public enum NamesOfFoodItemTypes{
-        Apple
+        apple
     }
 
     private static void setUpFood(){
-        foodTypes.put(NamesOfFoodItemTypes.Apple, new FoodTypeItem(NamesOfFoodItemTypes.Apple, 120, 1, 15, "Rounded apple", 25, Time.monthsToTicks(1) / 100)); // speedOfDecay will be 0 after 1 month
+        foodTypes.put(NamesOfFoodItemTypes.apple, new FoodTypeItem(NamesOfFoodItemTypes.apple, 120, 1, 15, "Rounded apple", 25, Time.monthsToTicks(1) / 100)); // speedOfDecay will be 0 after 1 month
     }
 
 
