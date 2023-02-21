@@ -1,5 +1,8 @@
 package Game.Creatures;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import Game.World;
 import Game.Creatures.Behaviour.Behaviour;
 import Game.Creatures.Condition.AbilityCondition;
@@ -9,6 +12,7 @@ import Game.ObjectsMemory.Visible;
 import Game.ObjectsMemory.CreaturesMemory.CreaturesMemory;
 import Server.SendMessage.SendMessage;
 import Game.Creatures.Condition.ActualCondition;
+import Game.Creatures.Condition.Knowledge.Knowledge;
 import Game.Creatures.Inventory.Inventory;
 public abstract class Creature implements Visible {
     public volatile String name;
@@ -22,6 +26,7 @@ public abstract class Creature implements Visible {
 	public volatile int id;
     public final SendMessage writer;
     private volatile int weight;
+    private final Set<Knowledge> knowledge = new HashSet<>();
 
     public final CreaturesMemory memory = new CreaturesMemory();
     public Creature(World game, String name, Place position, int id, String appearence, SendMessage sendMessage, int weight){
