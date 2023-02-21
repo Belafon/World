@@ -33,7 +33,9 @@ public class FindConcreteResource extends Behaviour {
         durationOfFinding = -creature.abilityCondition.getVision() + creature.getLocation().getVisibility(); // for example fog ;
         if (resource != null && resource.durationOfFinding != -1) {
             found = true;
-            durationOfFinding += resource.durationOfFinding; // lower means I will find it earlier
+
+            // lower means I will find it earlier
+            durationOfFinding += resource.durationOfFinding; 
             // TODO possiable extension gauss function a*e^(-(x-posun_doprava)/2*const^2), shift left by the durationOfFinding
         } else
             durationOfFinding += getDurationOfFindingOfResourceWhichIsNotHere(creature.getLocation(), typeOfResource); // duration of when Creature finds out that, there is nothing
@@ -79,6 +81,14 @@ public class FindConcreteResource extends Behaviour {
         return sum - i * anonymConspicuousnessOfFindingResource;
     }
 
+    /**
+     * 
+     * @param place
+     * @param resource
+     * @throws Exception
+     * 
+     * this method sets duration of finding concrete resource in concrete place
+     */
     public static synchronized void setResourcesDurationOfFinding(UnboundedPlace place, Resource resource) throws Exception {
         int lastIndex = Arrays.asList(place.resourcesSorted).indexOf(resource);
         if (lastIndex == -1)
@@ -98,6 +108,7 @@ public class FindConcreteResource extends Behaviour {
             Resource last = resource;
             for (int i = newIndex; i <= lastIndex - 1; i++) {
                 Resource actual = place.resourcesSorted[i];
+                
                 place.resourcesSorted[i] = last;
                 last = actual;
             }
