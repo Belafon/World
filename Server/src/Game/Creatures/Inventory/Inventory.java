@@ -34,6 +34,7 @@ public class Inventory {
             ConsolePrint.error("Try to add item to inventory without bag");
         }
         backSpace.getSpace().items.add(item);
+        creature.addBehavioursProperty(item.type);
 
         // lets send info about it
         creature.writer.inventory.setAddItem(item);

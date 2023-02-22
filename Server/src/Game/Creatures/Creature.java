@@ -1,10 +1,13 @@
 package Game.Creatures;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import Game.World;
 import Game.Creatures.Behaviour.Behaviour;
+import Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequirement;
 import Game.Creatures.Condition.AbilityCondition;
 import Game.Maps.Place.Place;
 import Game.ObjectsMemory.ObjectsMemoryCell;
@@ -14,6 +17,7 @@ import Server.SendMessage.SendMessage;
 import Game.Creatures.Condition.ActualCondition;
 import Game.Creatures.Condition.Knowledge.Knowledge;
 import Game.Creatures.Inventory.Inventory;
+import Game.Items.TypeItem.TypeItem;
 public abstract class Creature implements Visible {
     public volatile String name;
     protected volatile Place position;
@@ -27,6 +31,7 @@ public abstract class Creature implements Visible {
     public final SendMessage writer;
     private volatile int weight;
     private final Set<Knowledge> knowledge = new HashSet<>();
+    private final ConcurrentHashMap<BehavioursPossibleRequirement, ArrayList<?>> behavioursProperties = new ConcurrentHashMap<>(); 
 
     public final CreaturesMemory memory = new CreaturesMemory();
     public Creature(World game, String name, Place position, int id, String appearence, SendMessage sendMessage, int weight){
@@ -78,6 +83,8 @@ public abstract class Creature implements Visible {
     @Override
     public Place getLocation() {
         return position;
+    }
+    public void addBehavioursProperty(TypeItem type) {
     }
 
 }
