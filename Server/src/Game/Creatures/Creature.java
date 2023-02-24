@@ -1,12 +1,13 @@
 package Game.Creatures;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 import Game.World;
 import Game.Creatures.Behaviour.Behaviour;
+import Game.Creatures.Behaviour.Behaviours.BehavioursPossibleIngredients;
 import Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequirement;
 import Game.Creatures.Condition.AbilityCondition;
 import Game.Maps.Place.Place;
@@ -17,7 +18,6 @@ import Server.SendMessage.SendMessage;
 import Game.Creatures.Condition.ActualCondition;
 import Game.Creatures.Condition.Knowledge.Knowledge;
 import Game.Creatures.Inventory.Inventory;
-import Game.Items.TypeItem.TypeItem;
 public abstract class Creature implements Visible {
     public volatile String name;
     protected volatile Place position;
@@ -30,9 +30,9 @@ public abstract class Creature implements Visible {
 	public volatile int id;
     public final SendMessage writer;
     private volatile int weight;
-    private final Set<Knowledge> knowledge = new HashSet<>();
-    private final ConcurrentHashMap<BehavioursPossibleRequirement, ArrayList<?>> behavioursProperties = new ConcurrentHashMap<>(); 
-
+    private Set<Knowledge> knowledge = new ConcurrentSkipListSet<>();
+    private final ConcurrentHashMap<BehavioursPossibleRequirement, ArrayList<BehavioursPossibleIngredients>> behavioursProperties = new ConcurrentHashMap<>(); 
+    
     public final CreaturesMemory memory = new CreaturesMemory();
     public Creature(World game, String name, Place position, int id, String appearence, SendMessage sendMessage, int weight){
 		this.id = id;
@@ -84,7 +84,23 @@ public abstract class Creature implements Visible {
     public Place getLocation() {
         return position;
     }
-    public void addBehavioursProperty(TypeItem type) {
+
+    public void addBehavioursPossibleRequirement(BehavioursPossibleRequirement behavioursPossibleRequirement, BehavioursPossibleIngredients behavioursPossibleIngredients) {
+        if (behavioursProperties.containsKey(behavioursPossibleRequirement)) {
+            behavioursProperties.get(behavioursPossibleRequirement).add(behavioursPossibleIngredients);
+        } else {
+            ArrayList<BehavioursPossibleIngredients> list = new ArrayList<>();
+            list.add(behavioursPossibleIngredients);
+            behavioursProperties.put(behavioursPossibleRequirement, list);
+        }
+    }
+    
+    public Set<Knowledge> getKnowledge() {
+        return knowledge;
+    }
+    public void addKnowledge(Knowledge knowledge) {
+        this.knowledge.add(knowledge);
+        addBehavioursPossibleRequirement(knowledge.type, knowledge);
     }
 
 }

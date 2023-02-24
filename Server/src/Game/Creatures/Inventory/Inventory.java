@@ -7,6 +7,9 @@ import Game.Maps.Place.UnboundedPlace;
 import Game.Creatures.Creature;
 import Game.Items.Item;
 import Game.Items.ListOfAllItemTypes;
+import Game.Items.TypeItem.ToolTypeItem;
+import Game.Items.TypeItem.TypeItem;
+import Game.Items.TypeItem.Tools.ToolsUtilization;
 
 public class Inventory {
     public volatile int totalWeight;
@@ -34,8 +37,16 @@ public class Inventory {
             ConsolePrint.error("Try to add item to inventory without bag");
         }
         backSpace.getSpace().items.add(item);
-        creature.addBehavioursProperty(item.type);
-
+        creature.addBehavioursPossibleRequirement(item.type, item);
+        
+        
+        if (item instanceof Tool tool) {
+            if(tool.type instanceof ToolTypeItem toolType){
+                for (ToolsUtilization toolsUtilization : toolType.toolsUtilizations) {
+                    creature.addBehavioursPossibleRequirement(toolsUtilization, item);
+                }
+            }
+        }
         // lets send info about it
         creature.writer.inventory.setAddItem(item);
     }

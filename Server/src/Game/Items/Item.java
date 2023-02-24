@@ -8,8 +8,9 @@ import Game.World;
 import Game.Calendar.Events.Event;
 import Game.Calendar.Events.EventItemChange;
 import Game.Creatures.Creature;
+import Game.Creatures.Behaviour.Behaviours.BehavioursPossibleIngredients;
 
-public class Item implements Visible{
+public class Item implements Visible, BehavioursPossibleIngredients{
     public final int id;
     public final TypeItem type;
     public volatile Creature owner;
