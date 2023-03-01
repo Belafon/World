@@ -1,5 +1,6 @@
 package Game.Maps.Resources;
 
+import Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequirement;
 import Game.Creatures.Behaviour.Behaviours.FindConcreteResource;
 import Game.Maps.Place.UnboundedPlace;
 import Game.ObjectsMemory.Visible;
@@ -30,5 +31,10 @@ public class Resource implements Visible {
     @Override
     public UnboundedPlace getLocation() {
         return null;
+    }
+
+    @Override
+    public BehavioursPossibleRequirement getBehavioursPossibleRequirementType() {
+        return typeOfResource;
     }
 }

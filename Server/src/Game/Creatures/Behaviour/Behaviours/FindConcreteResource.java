@@ -55,7 +55,7 @@ public class FindConcreteResource extends Behaviour {
     public void cease() {
         if (found) {
             ConsolePrint.success("Resource was found!!!");
-            creature.memory.addVisibleObjectSpotted(new ObjectsMemoryCell<Visible>(creature.game.time.getTime(), resource));
+            creature.memory.addVisibleObjectSpotted(new ObjectsMemoryCell<Visible>(creature.game.time.getTime(), resource), resource.getLocation(), creature);
             creature.writer.surrounding.setResource(resource);
         } else {
             ConsolePrint.success("Ressource was NOT found!!!");

@@ -1,16 +1,15 @@
 package Game.Items;
 
 import Game.Items.TypeItem.TypeItem;
-import Game.Maps.Place.Place;
 import Game.Maps.Place.UnboundedPlace;
 import Game.ObjectsMemory.Visible;
 import Game.World;
 import Game.Calendar.Events.Event;
 import Game.Calendar.Events.EventItemChange;
 import Game.Creatures.Creature;
-import Game.Creatures.Behaviour.Behaviours.BehavioursPossibleIngredients;
+import Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequirement;
 
-public class Item implements Visible, BehavioursPossibleIngredients{
+public class Item implements Visible{
     public final int id;
     public final TypeItem type;
     public volatile Creature owner;
@@ -40,5 +39,10 @@ public class Item implements Visible, BehavioursPossibleIngredients{
     @Override
     public UnboundedPlace getLocation() {
         return location;
+    }
+
+    @Override
+    public BehavioursPossibleRequirement getBehavioursPossibleRequirementType() {
+        return type;
     }
 }

@@ -1,24 +1,33 @@
 package Game.ObjectsMemory.CreaturesMemory;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
+import Game.Creatures.Creature;
 import Game.Maps.Place.Place;
+import Game.Maps.Place.UnboundedPlace;
 import Game.ObjectsMemory.ObjectsMemoryCell;
 import Game.ObjectsMemory.Visible;
 
 public class CreaturesMemory {
     private final List<ObjectsMemoryCell<String>> name = new ArrayList<>();
-    private final ReentrantLock mutexName = new ReentrantLock();
+    public final ReentrantLock mutexName = new ReentrantLock();
     private final List<ObjectsMemoryCell<Place>> position = new ArrayList<>();
-    private final ReentrantLock mutexPosition = new ReentrantLock();
+    public final ReentrantLock mutexPosition = new ReentrantLock();
     private final List<ObjectsMemoryCell<String>> appearance = new ArrayList<>();
-    private final ReentrantLock mutexAppearance = new ReentrantLock();
+    public final ReentrantLock mutexAppearance = new ReentrantLock();
+
+    private final Hashtable<Place, List<ObjectsMemoryCell<Visible>>> lastVisiblesPositionWhenVisionLost = new Hashtable<>();
+    private final ReentrantLock mutexlastVisiblesPositionWhenVisionLost = new ReentrantLock();
+
     private final List<ObjectsMemoryCell<Visible>> visibleObjectSpotted = new ArrayList<>();
-    private final ReentrantLock mutexVisibleObjectSpotted = new ReentrantLock();
+    public final ReentrantLock mutexVisibleObjectSpotted = new ReentrantLock();
+
     private final List<ObjectsMemoryCell<Integer>> weight = new ArrayList<>();
-    private final ReentrantLock mutexWeight = new ReentrantLock();
+    public final ReentrantLock mutexWeight = new ReentrantLock();
+
     public ObjectsMemoryCell<String> getName(int i) {
         mutexName.lock();
         try {
@@ -37,6 +46,18 @@ public class CreaturesMemory {
         }
     }
 
+    public ObjectsMemoryCell<Place> getLatestPosition() {
+        mutexPosition.lock();
+        try {
+            if (position.size() > 0)
+                return position.get(position.size() - 1);
+            else
+                return null;
+        } finally {
+            mutexPosition.unlock();
+        }
+    }
+
     public ObjectsMemoryCell<String> getAppearance(int i) {
         mutexAppearance.lock();
         try {
@@ -46,7 +67,16 @@ public class CreaturesMemory {
         }
     }
 
-    public ObjectsMemoryCell<Visible> getVisibleObjectSpotted(int i) {
+    public List<ObjectsMemoryCell<Visible>> getVisibleObjectSpotted(Place place) {
+        mutexlastVisiblesPositionWhenVisionLost.lock();
+        try {
+            return lastVisiblesPositionWhenVisionLost.get(place);
+        } finally {
+            mutexlastVisiblesPositionWhenVisionLost.unlock();
+        }
+    }
+
+    public ObjectsMemoryCell<Visible> getVisibleObjectLostFromSight(int i) {
         mutexVisibleObjectSpotted.lock();
         try {
             return visibleObjectSpotted.get(i);
@@ -91,7 +121,27 @@ public class CreaturesMemory {
         }
     }
 
-    public void addVisibleObjectSpotted(ObjectsMemoryCell<Visible> value) {
+    public void addVisibleObjectSpotted(ObjectsMemoryCell<Visible> value, UnboundedPlace place, Creature creature) {
+        mutexlastVisiblesPositionWhenVisionLost.lock();
+        try {
+            lastVisiblesPositionWhenVisionLost.get(place).add(value);
+            creature.addBehavioursPossibleRequirement(value.object().getBehavioursPossibleRequirementType(),
+                    value.object());
+        } finally {
+            mutexlastVisiblesPositionWhenVisionLost.unlock();
+        }
+    }
+
+    public int getVisibleObjectSpottedSize() {
+        mutexlastVisiblesPositionWhenVisionLost.lock();
+        try {
+            return lastVisiblesPositionWhenVisionLost.size();
+        } finally {
+            mutexlastVisiblesPositionWhenVisionLost.unlock();
+        }
+    }
+
+    public void addVisibleObjectLostFromSight(ObjectsMemoryCell<Visible> value) {
         mutexVisibleObjectSpotted.lock();
         try {
             visibleObjectSpotted.add(value);
@@ -108,5 +158,4 @@ public class CreaturesMemory {
             mutexWeight.unlock();
         }
     }
-
 }
