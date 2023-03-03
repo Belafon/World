@@ -2,6 +2,7 @@ package Game.Creatures;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
@@ -34,7 +35,7 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
     public final SendMessage writer;
     private volatile int weight;
     private Set<Knowledge> knowledge = new ConcurrentSkipListSet<>();
-    private final ConcurrentHashMap<BehavioursPossibleRequirement, ArrayList<BehavioursPossibleIngredients>> behavioursProperties = new ConcurrentHashMap<>();
+    private final Map<BehavioursPossibleRequirement, ArrayList<BehavioursPossibleIngredients>> behavioursProperties = new ConcurrentHashMap<>();
     
     private final Set<Visible> currentlyVisibleObjects = new HashSet<>();
     private final ReentrantLock mutexCurrentlyVisibleObjects = new ReentrantLock();
@@ -95,10 +96,24 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
 
     /**
      * checks wether the creature can do some other behaviour.
+     * 
      * This is called when behavioursProperties keys updated,
      * or when new Visible spotted, or lost from sight 
      */
     public void addBehavioursPossibleRequirement(BehavioursPossibleRequirement behavioursPossibleRequirement,
+            BehavioursPossibleIngredients behavioursPossibleIngredients) {
+
+        if (behavioursProperties.containsKey(behavioursPossibleRequirement)) {
+            behavioursProperties.get(behavioursPossibleRequirement).add(behavioursPossibleIngredients);
+        } else {
+            ArrayList<BehavioursPossibleIngredients> list = new ArrayList<>();
+            list.add(behavioursPossibleIngredients);
+            behavioursProperties.put(behavioursPossibleRequirement, list);
+        }
+        checkPossibleBehavioursAfterNewBehavioursPossibleRequirementAdding(behavioursPossibleRequirement);
+    }
+    
+    public void removeBehavioursPossibleRequirement(BehavioursPossibleRequirement behavioursPossibleRequirement,
             BehavioursPossibleIngredients behavioursPossibleIngredients) {
 
         if (behavioursProperties.containsKey(behavioursPossibleRequirement)) {
@@ -118,6 +133,7 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
     public void addKnowledge(Knowledge knowledge) {
         this.knowledge.add(knowledge);
         addBehavioursPossibleRequirement(knowledge.type, knowledge);
+        writer.condition.addKnowledge(knowledge);
     }
 
 

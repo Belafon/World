@@ -1,5 +1,6 @@
 package Server.Messages.PlayerMessages;
 
+import Game.Creatures.Condition.Knowledge.Knowledge;
 import Server.Messages.ConditionCreatureMessages;
 import Server.SendMessage.SendMessagePlayer;
 
@@ -29,5 +30,10 @@ public class ConditionPlayerMessages extends ConditionCreatureMessages{
     @Override
     public void setFatigueMax(int fatigueMax) {
 		  sendMessage.sendLetter("player actualCondition fatigueMax " + fatigueMax);
+        }
+        
+    @Override
+    public void addKnowledge(Knowledge knowledge) {
+        sendMessage.sendLetter("player knowledge add " + knowledge.degree + " " + knowledge.type.name);
     }
 }
