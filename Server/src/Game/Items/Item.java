@@ -42,7 +42,7 @@ public class Item implements Visible{
     }
 
     @Override
-    public BehavioursPossibleRequirement getBehavioursPossibleRequirementType() {
-        return type;
+    public BehavioursPossibleRequirement[] getBehavioursPossibleRequirementType() {
+        return new BehavioursPossibleRequirement[]{type};
     }
 }

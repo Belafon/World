@@ -1,5 +1,6 @@
 package Server.SendMessage;
 
+import Server.Messages.BehavioursMessages;
 import Server.Messages.ConditionCreatureMessages;
 import Server.Messages.InventoryMessages;
 import Server.Messages.ServerMessages;
@@ -10,11 +11,13 @@ public abstract class SendMessage {
 	public SurroundingMessages surrounding;
 	public ConditionCreatureMessages condition;
 	public InventoryMessages inventory;
+    public BehavioursMessages behavioursMessages; 
 	protected void setSendMessage(ServerMessages server, SurroundingMessages surrounding, ConditionCreatureMessages condition,
-		InventoryMessages inventory){
+		InventoryMessages inventory, BehavioursMessages behavioursMessages){
 		this.server = server;
 		this.surrounding = surrounding;
 		this.condition = condition;
 		this.inventory = inventory;
+        this.behavioursMessages = behavioursMessages;
 	}
 }

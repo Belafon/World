@@ -8,6 +8,7 @@ import java.net.Socket;
 
 import Console.ConsolePrint;
 import Server.Client;
+import Server.Messages.PlayerMessages.BehavioursPlayersMessages;
 import Server.Messages.PlayerMessages.ConditionPlayerMessages;
 import Server.Messages.PlayerMessages.InventoryPlayerMessages;
 import Server.Messages.PlayerMessages.ServerPlayerMessages;
@@ -21,8 +22,9 @@ public class SendMessagePlayer extends SendMessage{
 	public final SurroundingPlayerMessages surrounding = new SurroundingPlayerMessages(this);
 	public final ConditionPlayerMessages condition = new ConditionPlayerMessages(this);
 	public final InventoryPlayerMessages inventory = new InventoryPlayerMessages(this);
+    public final BehavioursPlayersMessages behaviour = new BehavioursPlayersMessages(this);
 	public SendMessagePlayer(Socket clientSocket, Client client) {
-        super.setSendMessage(server, surrounding, condition, inventory);
+        super.setSendMessage(server, surrounding, condition, inventory, behaviour);
 		this.clientSocket = clientSocket;
 		this.client = client;
 		try {

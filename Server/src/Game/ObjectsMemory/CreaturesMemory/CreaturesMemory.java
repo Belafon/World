@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
 import Game.Creatures.Creature;
+import Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequirement;
 import Game.Maps.Place.Place;
 import Game.Maps.Place.UnboundedPlace;
 import Game.ObjectsMemory.ObjectsMemoryCell;
@@ -125,8 +126,9 @@ public class CreaturesMemory {
         mutexlastVisiblesPositionWhenVisionLost.lock();
         try {
             lastVisiblesPositionWhenVisionLost.get(place).add(value);
-            creature.addBehavioursPossibleRequirement(value.object().getBehavioursPossibleRequirementType(),
-                    value.object());
+            for (BehavioursPossibleRequirement requirement : value.object().getBehavioursPossibleRequirementType()) {
+                creature.addBehavioursPossibleRequirement(requirement, value.object());
+            }
         } finally {
             mutexlastVisiblesPositionWhenVisionLost.unlock();
         }

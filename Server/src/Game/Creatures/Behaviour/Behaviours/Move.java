@@ -1,17 +1,27 @@
 package Game.Creatures.Behaviour.Behaviours;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import Game.World;
 import Game.Calendar.Events.EventBehaviour;
 import Game.Creatures.Creature;
 import Game.Creatures.Behaviour.Behaviour;
+import Game.Creatures.Behaviour.BehaviourType;
+import Game.Creatures.Behaviour.BehaviourTypeBuilder;
 import Game.Maps.Place.Place;
 
-public class Move extends Behaviour{
+public class Move extends Behaviour {
     public final Place destination;
     private ArrayList<Place> jurney = new ArrayList<Place>();
     private int currentPositionOfTravel = 0;
+    
+    public static final BehaviourType type; 
+    static {
+        type = new BehaviourTypeBuilder(Move.class)
+            .build();
+    }
+
     public Move(World game, Creature creature, Place destination) {
         super(game, 0, 0, creature);
         this.destination = destination;
@@ -59,12 +69,14 @@ public class Move extends Behaviour{
     public int getDurationOfTravel(Creature creature) {
 		float speed = getCurrentSpeed(creature);
 		
-		// draha / rychlost = cas (+ hodiny musim prevest na minuty) 
+		// distance / speed = time (+ hours have to be transfered to minutes) 
 		// 20 jednotek = 1 hodina -> 1/3 jednotky za minutu
 		float durationOfTravel = 1000f / speed;
 		
 		// influence by health of player
-		durationOfTravel += 150f - (2.1f * (float)creature.abilityCondition.getHealth()) + (0.006f * ((float)creature.abilityCondition.getHealth() * (float)creature.abilityCondition.getHealth()));		
+        durationOfTravel += 150f - (2.1f * (float) creature.abilityCondition.getHealth()) + (0.006f
+                * ((float) creature.abilityCondition.getHealth() * (float) creature.abilityCondition.getHealth()));
+
 		return (int)durationOfTravel; 
 	} 
 
@@ -80,4 +92,19 @@ public class Move extends Behaviour{
 		averageSpeed *= 10;
 		return averageSpeed;
 	}
+
+    @Override
+    public Map<BehavioursPossibleRequirement, Integer> getRequirements() {
+        return type.requirements;
+    }
+
+    @Override
+    public BehaviourType getType() {
+        return type;
+    }
+
+    @Override
+    public Map<ConsumableBehavioursPossibleRequirement, Integer> getConsumableRequirements() {
+        return type.consumableRequirements;
+    }
 }

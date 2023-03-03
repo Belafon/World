@@ -34,7 +34,7 @@ public class Resource implements Visible {
     }
 
     @Override
-    public BehavioursPossibleRequirement getBehavioursPossibleRequirementType() {
-        return typeOfResource;
+    public BehavioursPossibleRequirement[] getBehavioursPossibleRequirementType() {
+        return new BehavioursPossibleRequirement[]{typeOfResource};
     }
 }

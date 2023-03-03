@@ -1,8 +1,8 @@
 package Game.Items.TypeItem;
 
-import Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequirement;
+import Game.Creatures.Behaviour.Behaviours.ConsumableBehavioursPossibleRequirement;
 
-public abstract class TypeItem implements BehavioursPossibleRequirement.Consumable{
+public abstract class TypeItem extends ConsumableBehavioursPossibleRequirement{
     public final String name;
     public final int regularWeight;
     public final int toss; // > 0 -> throwable, more describes demage

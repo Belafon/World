@@ -3,7 +3,7 @@ package Game.Maps.Resources;
 import Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequirement;
 import Game.Maps.PlaceEffects.PlaceEffect;
 
-public class TypeOfResource implements BehavioursPossibleRequirement {
+public class TypeOfResource extends BehavioursPossibleRequirement {
     // final stats
     public final ListOfAllTypesOfResources.NamesOfTypesOfResources name;
     public final PlaceEffect[] effects;

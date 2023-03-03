@@ -8,7 +8,6 @@ import Game.Creatures.Creature;
 import Game.Items.Item;
 import Game.Items.ListOfAllItemTypes;
 import Game.Items.TypeItem.ToolTypeItem;
-import Game.Items.TypeItem.TypeItem;
 import Game.Items.TypeItem.Tools.ToolsUtilization;
 
 public class Inventory {

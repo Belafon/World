@@ -1,12 +1,15 @@
 package Game.Creatures.Behaviour.Behaviours;
 
 import java.util.Arrays;
+import java.util.Map;
 
 import Console.ConsolePrint;
 import Game.World;
 import Game.Calendar.Events.EventBehaviour;
 import Game.Creatures.Creature;
 import Game.Creatures.Behaviour.Behaviour;
+import Game.Creatures.Behaviour.BehaviourType;
+import Game.Creatures.Behaviour.BehaviourTypeBuilder;
 import Game.Maps.Place.Place;
 import Game.Maps.Place.UnboundedPlace;
 import Game.Maps.Resources.Resource;
@@ -20,6 +23,12 @@ public class FindConcreteResource extends Behaviour {
     private boolean found = false;
     private int durationOfFinding; // -1 will not be found
 
+    public static final BehaviourType type; 
+    static {
+        type = new BehaviourTypeBuilder(FindConcreteResource.class)
+            .build();
+    }
+    
     public FindConcreteResource(World game, int duration, int bodyStrain, Creature creature,
             TypeOfResource typeResource) {
         super(game, duration, bodyStrain, creature);
@@ -114,6 +123,23 @@ public class FindConcreteResource extends Behaviour {
             }
             place.resourcesSorted[lastIndex] = last;
         } // else do nothing
+    }
+
+    @Override
+    public Map<BehavioursPossibleRequirement, Integer> getRequirements() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getRequirements'");
+    }
+
+    @Override
+    public BehaviourType getType() {
+        return type;
+    }
+
+    @Override
+    public Map<ConsumableBehavioursPossibleRequirement, Integer> getConsumableRequirements() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getConsumableRequirements'");
     }
 
 }

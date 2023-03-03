@@ -3,6 +3,7 @@ package Game.Items.Types;
 import Game.World;
 import Game.Calendar.Events.Event;
 import Game.Calendar.Events.EventItemChange;
+import Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequirement;
 import Game.Items.Item;
 import Game.Items.ItemsSpecialStats.SpecialFoodsProperties;
 import Game.Items.TypeItem.FoodTypeItem;
@@ -18,6 +19,7 @@ public class Food extends Item{
     EventItemChange changeFreshness;
     EventItemChange changeWarm;
     public final FoodItemsMemory memory = new FoodItemsMemory();
+    public static final BehavioursPossibleRequirement REQUIREMENT = new BehavioursPossibleRequirement(){};
 	public Food(World game, int warm, int freshness, SpecialFoodsProperties[] specialProperties,  FoodTypeItem type) {
         super(game, type);
         this.setFreshness(freshness, game);
@@ -66,5 +68,10 @@ public class Food extends Item{
             if(warm != 0) return owner.getPosition().getTemperature(); 
         }*/
         return 0;
+    }
+
+    @Override
+    public BehavioursPossibleRequirement[] getBehavioursPossibleRequirementType() {
+        return new BehavioursPossibleRequirement[]{type, REQUIREMENT};
     }
 }
