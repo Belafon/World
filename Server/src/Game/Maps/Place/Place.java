@@ -29,7 +29,7 @@ public class Place extends UnboundedPlace {
     }
 
     public int getTemperature() {
-        int temperature = 30 - (altitude / 80) + map.game.time.partOfDay.temperatureChange; // altitude = 1000, ->  30 - (1000 / 80) = 30 - 12 = 8 degrees celsius
+        int temperature = 30 - (altitude / 80) + map.game.time.partOfDay.temperatureChange(); // altitude = 1000, ->  30 - (1000 / 80) = 30 - 12 = 8 degrees celsius
         if(map.sky != null){
             Weather weather = map.sky.getWeather(this);
             temperature -= weather.getClouds();

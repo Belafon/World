@@ -15,8 +15,8 @@ public class EventPartOfDay extends Event{
     @Override
     public void action(World game) {
         game.time.partOfDay = partOfDay;
-        for(Creature creature : game.creatures) creature.writer.surrounding.setPartOfDay(partOfDay.name.name());
-        if(partOfDay.name == namePartOfDay.night)game.dailyLoop.addPlanToNextDay();
+        for(Creature creature : game.creatures) creature.writer.surrounding.setPartOfDay(partOfDay.name().name());
+        if(partOfDay.name() == namePartOfDay.night)game.dailyLoop.addPlanToNextDay();
     }
 
     @Override

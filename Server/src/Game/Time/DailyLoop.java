@@ -38,14 +38,5 @@ public class DailyLoop {
             game.calendar.add(new EventPartOfDay(partOfDay.start + startOfnextDayInTicks, partOfDay, game));
     }
 
-    public class PartOfDay{
-        public final int start;
-        public final namePartOfDay name;
-        public final int temperatureChange; // 0 ->  temperature in the noon
-        public PartOfDay(int start, namePartOfDay name, int temperatureChange){
-            this.start = start;
-            this.name = name;
-            this.temperatureChange = temperatureChange;
-        }
-    }
+    public record PartOfDay(int start, namePartOfDay name, int temperatureChange){}
 }

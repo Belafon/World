@@ -12,7 +12,12 @@ public class Clocks extends Thread{
         while(true){
             try {
                 Thread.sleep(delay);
-            } catch (InterruptedException e) {}
+            } catch (InterruptedException e) {
+                if (time == Long.MAX_VALUE) {
+                    ConsolePrint.error_big("Clocks have overflowed!");
+                    throw new Error(e);
+                }
+            }
             time++;
         }
     }
