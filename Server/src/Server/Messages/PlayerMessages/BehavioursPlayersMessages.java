@@ -2,12 +2,12 @@ package Server.Messages.PlayerMessages;
 
 import Game.Creatures.Behaviour.BehaviourType;
 import Server.Messages.BehavioursMessages;
-import Server.SendMessage.SendMessagePlayer;
+import Server.SendMessage.PlayersMessageSender;
 
 public class BehavioursPlayersMessages extends BehavioursMessages{
-    public final SendMessagePlayer sendMessage;
+    public final PlayersMessageSender sendMessage;
 
-    public BehavioursPlayersMessages(SendMessagePlayer sendMessage) {
+    public BehavioursPlayersMessages(PlayersMessageSender sendMessage) {
         this.sendMessage = sendMessage;
     }
 

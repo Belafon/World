@@ -6,13 +6,13 @@ import Server.Messages.InventoryMessages;
 import Server.Messages.ServerMessages;
 import Server.Messages.SurroundingMessages;
 
-public abstract class SendMessage {
+public abstract class MessageSender {
 	public ServerMessages server;
 	public SurroundingMessages surrounding;
 	public ConditionCreatureMessages condition;
 	public InventoryMessages inventory;
     public BehavioursMessages behavioursMessages; 
-	protected void setSendMessage(ServerMessages server, SurroundingMessages surrounding, ConditionCreatureMessages condition,
+	protected void setMessageSender(ServerMessages server, SurroundingMessages surrounding, ConditionCreatureMessages condition,
 		InventoryMessages inventory, BehavioursMessages behavioursMessages){
 		this.server = server;
 		this.surrounding = surrounding;

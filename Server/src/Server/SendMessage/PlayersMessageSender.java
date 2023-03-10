@@ -14,7 +14,7 @@ import Server.Messages.PlayerMessages.InventoryPlayerMessages;
 import Server.Messages.PlayerMessages.ServerPlayerMessages;
 import Server.Messages.PlayerMessages.SurroundingPlayerMessages;
 
-public class SendMessagePlayer extends SendMessage{
+public class PlayersMessageSender extends MessageSender {
     public PrintWriter output;
 	public Client client;
 	public Socket clientSocket;
@@ -23,12 +23,12 @@ public class SendMessagePlayer extends SendMessage{
 	public final ConditionPlayerMessages condition = new ConditionPlayerMessages(this);
 	public final InventoryPlayerMessages inventory = new InventoryPlayerMessages(this);
     public final BehavioursPlayersMessages behaviour = new BehavioursPlayersMessages(this);
-	public SendMessagePlayer(Socket clientSocket, Client client) {
-        super.setSendMessage(server, surrounding, condition, inventory, behaviour);
+	public PlayersMessageSender(Socket clientSocket, Client client) {
+        super.setMessageSender(server, surrounding, condition, inventory, behaviour);
 		this.clientSocket = clientSocket;
 		this.client = client;
 		try {
-			output = new PrintWriter(new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream())),true);
+            output = new PrintWriter(new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream())), true);
 		} catch (IOException e) {
 			ConsolePrint.error("SendMessage: Message ERROR in players connection :: " + client.name + " :: ->\n " + e);
 			e.printStackTrace();

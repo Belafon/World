@@ -14,6 +14,7 @@ public class ConsoleListener implements Runnable{
     private Server server;
     public ConsoleListener(Server server){
         this.server = server;
+        new Thread(this).start();
     }
     @Override
     public void run() {

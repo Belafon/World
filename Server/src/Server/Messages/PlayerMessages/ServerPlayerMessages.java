@@ -1,12 +1,12 @@
 package Server.Messages.PlayerMessages;
 
 import Server.Messages.ServerMessages;
-import Server.SendMessage.SendMessagePlayer;
+import Server.SendMessage.PlayersMessageSender;
 
 public class ServerPlayerMessages extends ServerMessages{
-  public final SendMessagePlayer sendMessage;
+  public final PlayersMessageSender sendMessage;
 
-  public ServerPlayerMessages(SendMessagePlayer sendMessage) {
+  public ServerPlayerMessages(PlayersMessageSender sendMessage) {
     this.sendMessage = sendMessage;
   }
   @Override

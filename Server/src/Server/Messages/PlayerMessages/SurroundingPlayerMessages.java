@@ -4,13 +4,13 @@ import Game.Maps.Place.Place;
 import Game.Maps.Resources.Resource;
 import Game.Maps.Weather.Weather;
 import Server.Messages.SurroundingMessages;
-import Server.SendMessage.SendMessagePlayer;
+import Server.SendMessage.PlayersMessageSender;
 import Game.Creatures.Behaviour.PlayersLookAround;
 
 public class SurroundingPlayerMessages  extends SurroundingMessages{
-    public final SendMessagePlayer sendMessage;
+    public final PlayersMessageSender sendMessage;
 
-    public SurroundingPlayerMessages(SendMessagePlayer sendMessage) {
+    public SurroundingPlayerMessages(PlayersMessageSender sendMessage) {
         this.sendMessage = sendMessage;
     }
 	@Override
@@ -65,7 +65,7 @@ public class SurroundingPlayerMessages  extends SurroundingMessages{
 	}
 	@Override
 	public void setInfoAboutSurroundingLookAround(Place position) {
-		String look = PlayersLookAround.look(sendMessage.client.actual_game, sendMessage.client.player, position);
+		String look = PlayersLookAround.look(sendMessage.client.actualGame, sendMessage.client.player, position);
 		String message = "behaviour lookAround " +  look;
 		sendMessage.client.writer.sendLetter(message);
 	}

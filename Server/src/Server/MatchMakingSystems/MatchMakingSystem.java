@@ -14,8 +14,8 @@ public abstract class MatchMakingSystem {
 		this.server = server;
 		//new_game = new Game(number_of_players, server, sizeOfMap);
     }
-    protected abstract void addClient(Client client);
-    protected abstract void removeClient(Client client);
+    public abstract void addClient(Client client);
+    public abstract void removeClient(Client client);
     protected synchronized void setNumberOfPlayers(int numberOfPalyers){
         this.numberOfPlayers = numberOfPalyers;
     }
@@ -25,9 +25,4 @@ public abstract class MatchMakingSystem {
 		waitingInQueue,
 		playing
 	}
-
-    public synchronized void changeQueue(boolean b, Client client) {
-        if(b) addClient(client);
-        else removeClient(client);
-    }
 }

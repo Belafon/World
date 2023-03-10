@@ -1,15 +1,15 @@
 package Server.Messages.PlayerMessages;
 
 import Server.Messages.InventoryMessages;
-import Server.SendMessage.SendMessagePlayer;
+import Server.SendMessage.PlayersMessageSender;
 import Game.Items.Types.*;
 import Game.Items.Item;
 import Game.Items.TypeItem.FoodTypeItem;
 
 public class InventoryPlayerMessages extends InventoryMessages{
-    public final SendMessagePlayer sendMessage;
+    public final PlayersMessageSender sendMessage;
 
-    public InventoryPlayerMessages(SendMessagePlayer sendMessage) {
+    public InventoryPlayerMessages(PlayersMessageSender sendMessage) {
         this.sendMessage = sendMessage;
     }
 

@@ -1,26 +1,20 @@
 package Game.Creatures;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.locks.ReentrantLock;
 
-import Console.ConsolePrint;
 import Game.World;
 import Game.Creatures.Behaviour.Behaviour;
 import Game.Creatures.Behaviour.BehaviourCondition;
-import Game.Creatures.Behaviour.BehaviourType;
-import Game.Creatures.Behaviour.Behaviours.BehavioursPossibleIngredients;
 import Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequirement;
 import Game.Creatures.Condition.AbilityCondition;
 import Game.Maps.Place.Place;
 import Game.ObjectsMemory.ObjectsMemoryCell;
 import Game.ObjectsMemory.Visible;
 import Game.ObjectsMemory.CreaturesMemory.CreaturesMemory;
-import Server.SendMessage.SendMessage;
+import Server.SendMessage.MessageSender;
 import Game.Creatures.Condition.ActualCondition;
 import Game.Creatures.Condition.Knowledge.Knowledge;
 import Game.Creatures.Inventory.Inventory;
@@ -35,7 +29,7 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
 	public volatile Inventory inventory;
 	public volatile World game;
 	public volatile int id;
-    public final SendMessage writer;
+    public final MessageSender writer;
     private volatile int weight;
     private Set<Knowledge> knowledge = new ConcurrentSkipListSet<>();
     
@@ -44,7 +38,7 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
 
     
     public final CreaturesMemory memory = new CreaturesMemory();
-    public Creature(World game, String name, Place position, int id, String appearence, SendMessage sendMessage, int weight){
+    public Creature(World game, String name, Place position, int id, String appearence, MessageSender sendMessage, int weight){
 		this.id = id;
     	this.game = game;
         this.appearence = appearence;

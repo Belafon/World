@@ -9,18 +9,18 @@ import Game.Calendar.Events.EventCreatureActualCondition;
 public class ActualCondition{
 	private int hunger = 100;
 	private EventCreatureActualCondition eventHunger;
-	private final int HUNGER_SPEED = 18; // 15 hours, 15 * 20 / 100
+	private static final int HUNGER_SPEED = 18; // 15 hours, 15 * 20 / 100
 	private int fatigueMax; // = bariera pro odpo�inek, v��e zv��it fatigue nem��e, jedin� sp�nkem , about 
 	private EventCreatureActualCondition eventMaxFatigue; //private int energy; // - > d� se snadno na�erpat odpo�inkem, nap�. p�i boji  --- nen� t�eba
-	private final int MAX_FATIGUE_SPEED = 45; // 3 days, 3 * 24 * 20 / 100 = 14.4
+	private static final int MAX_FATIGUE_SPEED = 45; // 3 days, 3 * 24 * 20 / 100 = 14.4
 	private int heat = 100;
 	private EventCreatureActualCondition eventHeat;
 	private final int BODY_BORDER_HEAT = 24; // degree of celsius of ideal temperature 
 	private final int HEAT_CONST = 1;
-	private final int BODY_HEAT_SPEED = 15;
+	private static final int BODY_HEAT_SPEED = 15;
 	private int bleeding = 10; 
 	private EventCreatureActualCondition eventBleeding;
-	private final int BLEEDING_SPEED = 6;
+	private static final int BLEEDING_SPEED = 6;
 
 	//private ArrayList<Disease> diseases;
 	//private ArrayList<Injury> injuries;

@@ -11,7 +11,7 @@ import Game.Time.Time;
 import Game.Time.CalendaryLoop;
 import Game.Maps.Maps;
 
-public class World {
+public class World implements Runnable {
     public volatile boolean isRunning = false;
     public final Server server;
     public GameCondition condition = GameCondition.preparing;
@@ -29,12 +29,13 @@ public class World {
 	}
 
     public World(Server server) {
-		this.server = server;
+        this.server = server;
         server.games.add(this);
         // start();
-	}
-
-    public void start(){
+    }
+    
+    @Override
+    public void run() {
         for(Player player : players)player.client.writer.server.startGame();
 
         try {
@@ -46,7 +47,7 @@ public class World {
         time = new Time(this, server.clocks, dailyLoop);
         isRunning = true;
         Thread loopThread = new Thread(loop);
-		loopThread.start();
+        loopThread.start();
 
         for(Player player : players)player.gameStart();
     }
@@ -64,4 +65,5 @@ public class World {
     public synchronized int ItemId() {
         return nextItemId++;
     }
+
 }

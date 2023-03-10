@@ -2,12 +2,12 @@ package Server.Messages.PlayerMessages;
 
 import Game.Creatures.Condition.Knowledge.Knowledge;
 import Server.Messages.ConditionCreatureMessages;
-import Server.SendMessage.SendMessagePlayer;
+import Server.SendMessage.PlayersMessageSender;
 
 public class ConditionPlayerMessages extends ConditionCreatureMessages{
-    public final SendMessagePlayer sendMessage;
+    public final PlayersMessageSender sendMessage;
 
-    public ConditionPlayerMessages(SendMessagePlayer sendMessage) {
+    public ConditionPlayerMessages(PlayersMessageSender sendMessage) {
       this.sendMessage = sendMessage;
     }
 

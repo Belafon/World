@@ -21,14 +21,15 @@ public class CalendaryLoop  implements Runnable{
         while(game.isRunning){
             Thread.interrupted();
             Event nextEvent = game.calendar.getNextEvent();
-            if(nextEvent == null)
+            if(nextEvent == null){
                 try { // calendar is empty, lets just wait
                     if(!Thread.interrupted())Thread.sleep(Long.MAX_VALUE);
                     else continue;
                 } catch (InterruptedException e) {
                     continue;
                 }
-            else{
+
+            } else {
                 long durationOfSleep = nextEvent.getTimeToWait(game.server.clocks, game.time);
                 if(logLoopThread) ConsolePrint.gameInfo("Loop is waiting for ... " + nextEvent.getClass().getSimpleName() + " duration of sleep = " + durationOfSleep);
                 if(durationOfSleep > 0)
