@@ -9,6 +9,7 @@ import Game.Creatures.Creature;
 import Game.Creatures.Behaviour.Behaviour;
 import Game.Creatures.Behaviour.BehaviourType;
 import Game.Creatures.Behaviour.BehaviourTypeBuilder;
+import Game.Creatures.Behaviour.BehaviourType.IngredientsCounts;
 import Game.Maps.Place.Place;
 
 public class Move extends Behaviour {
@@ -94,17 +95,12 @@ public class Move extends Behaviour {
 	}
 
     @Override
-    public Map<BehavioursPossibleRequirement, Integer> getRequirements() {
+    public Map<BehavioursPossibleRequirement, IngredientsCounts> getRequirements() {
         return type.requirements;
     }
 
     @Override
     public BehaviourType getType() {
         return type;
-    }
-
-    @Override
-    public Map<ConsumableBehavioursPossibleRequirement, Integer> getConsumableRequirements() {
-        return type.consumableRequirements;
     }
 }

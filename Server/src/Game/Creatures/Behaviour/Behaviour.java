@@ -5,6 +5,7 @@ import java.util.Map;
 import Game.World;
 import Game.Calendar.Events.EventBehaviour;
 import Game.Creatures.Creature;
+import Game.Creatures.Behaviour.BehaviourType.IngredientsCounts;
 import Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequirement;
 import Game.Creatures.Behaviour.Behaviours.ConsumableBehavioursPossibleRequirement;
 
@@ -14,16 +15,14 @@ public abstract class Behaviour {
     protected final int bodyStrain;
     protected final Creature creature;
     protected EventBehaviour event;
-    public ConsumableBehavioursPossibleRequirement[] consumableProperties;
-    public BehavioursPossibleRequirement[] nonConsumableProperties;
+    public BehavioursPossibleRequirement[] requirements;
 
     public Behaviour(World game, int duration, int bodyStrain, Creature creature) {
         this.game = game;
         this.duration = duration;
         this.bodyStrain = bodyStrain;
         this.creature = creature;
-        consumableProperties = new ConsumableBehavioursPossibleRequirement[0];
-        nonConsumableProperties = new BehavioursPossibleRequirement[0];
+        requirements = new BehavioursPossibleRequirement[0];
     }
 
     public Behaviour(World game, int duration, int bodyStrain, Creature creature,
@@ -32,8 +31,7 @@ public abstract class Behaviour {
         this.duration = duration;
         this.bodyStrain = bodyStrain;
         this.creature = creature;
-        this.consumableProperties = consumableProperties;
-        this.nonConsumableProperties = nonConsumableProperties;
+        this.requirements = nonConsumableProperties;
     }
 
     public abstract void execute();
@@ -44,9 +42,7 @@ public abstract class Behaviour {
 
     public abstract String canCreatureDoThis();
 
-    public abstract Map<BehavioursPossibleRequirement, Integer> getRequirements();
-
-    public abstract Map<ConsumableBehavioursPossibleRequirement, Integer> getConsumableRequirements();
+    public abstract Map<BehavioursPossibleRequirement, IngredientsCounts> getRequirements();
 
 
     public abstract BehaviourType getType();

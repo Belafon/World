@@ -36,13 +36,13 @@ public class Inventory {
             ConsolePrint.error("Try to add item to inventory without bag");
         }
         backSpace.getSpace().items.add(item);
-        creature.addBehavioursPossibleRequirement(item.type, item);
-        
+        // creature.behaviourCondition.addBehavioursPossibleRequirement(item.type, item); -> wrong 
+        // because that item could be reachable before that
         
         if (item instanceof Tool tool) {
             if(tool.type instanceof ToolTypeItem toolType){
                 for (ToolsUtilization toolsUtilization : toolType.toolsUtilizations) {
-                    creature.addBehavioursPossibleRequirement(toolsUtilization, item);
+                    creature.behaviourCondition.addBehavioursPossibleRequirement(toolsUtilization, item);
                 }
             }
         }

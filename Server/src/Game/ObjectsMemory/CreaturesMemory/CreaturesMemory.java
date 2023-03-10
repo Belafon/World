@@ -127,7 +127,7 @@ public class CreaturesMemory {
         try {
             lastVisiblesPositionWhenVisionLost.get(place).add(value);
             for (BehavioursPossibleRequirement requirement : value.object().getBehavioursPossibleRequirementType()) {
-                creature.addBehavioursPossibleRequirement(requirement, value.object());
+                creature.behaviourCondition.addBehavioursPossibleRequirement(requirement, value.object());
             }
         } finally {
             mutexlastVisiblesPositionWhenVisionLost.unlock();

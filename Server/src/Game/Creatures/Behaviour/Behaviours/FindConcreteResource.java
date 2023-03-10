@@ -10,6 +10,7 @@ import Game.Creatures.Creature;
 import Game.Creatures.Behaviour.Behaviour;
 import Game.Creatures.Behaviour.BehaviourType;
 import Game.Creatures.Behaviour.BehaviourTypeBuilder;
+import Game.Creatures.Behaviour.BehaviourType.IngredientsCounts;
 import Game.Maps.Place.Place;
 import Game.Maps.Place.UnboundedPlace;
 import Game.Maps.Resources.Resource;
@@ -126,7 +127,7 @@ public class FindConcreteResource extends Behaviour {
     }
 
     @Override
-    public Map<BehavioursPossibleRequirement, Integer> getRequirements() {
+    public Map<BehavioursPossibleRequirement, IngredientsCounts> getRequirements() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getRequirements'");
     }
@@ -134,13 +135,7 @@ public class FindConcreteResource extends Behaviour {
     @Override
     public BehaviourType getType() {
         return type;
-    }
-
-    @Override
-    public Map<ConsumableBehavioursPossibleRequirement, Integer> getConsumableRequirements() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getConsumableRequirements'");
-    }
+}
 
 }
 

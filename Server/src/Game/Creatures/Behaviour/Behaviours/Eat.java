@@ -7,6 +7,7 @@ import Game.Creatures.Creature;
 import Game.Creatures.Behaviour.Behaviour;
 import Game.Creatures.Behaviour.BehaviourType;
 import Game.Creatures.Behaviour.BehaviourTypeBuilder;
+import Game.Creatures.Behaviour.BehaviourType.IngredientsCounts;
 import Game.Items.ListOfAllItemTypes;
 import Game.Items.Types.Food;
 
@@ -16,7 +17,7 @@ public class Eat extends Behaviour{
     public static final BehaviourType type; 
     static {
         type = new BehaviourTypeBuilder(Eat.class)
-            .addConsumableRequirement(ListOfAllItemTypes.foodTypes.get(Food.REQUIREMENT), 1)
+            .addRequirement(ListOfAllItemTypes.foodTypes.get(Food.REQUIREMENT), new IngredientsCounts(1, 0))
             .build();
     }
 
@@ -47,15 +48,10 @@ public class Eat extends Behaviour{
     }
 
     @Override
-    public Map<BehavioursPossibleRequirement, Integer> getRequirements() {
+    public Map<BehavioursPossibleRequirement, IngredientsCounts> getRequirements() {
         return type.requirements;
     }
     
-    @Override
-    public Map<ConsumableBehavioursPossibleRequirement, Integer> getConsumableRequirements() {
-        return type.consumableRequirements;
-    }
-
     @Override
     public BehaviourType getType() {
         return type;

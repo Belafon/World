@@ -4,19 +4,16 @@ import java.util.Collections;
 import java.util.Map;
 
 import Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequirement;
-import Game.Creatures.Behaviour.Behaviours.ConsumableBehavioursPossibleRequirement;
 
 public class BehaviourType {
-    public final Map<BehavioursPossibleRequirement, Integer> requirements;
-    public final Map<ConsumableBehavioursPossibleRequirement, Integer> consumableRequirements;
+    public record IngredientsCounts(int consumable, int unconsumable) {}
+    public final Map<BehavioursPossibleRequirement, IngredientsCounts> requirements;
     public final Class<? extends Behaviour> behaviourClass; 
-    protected BehaviourType(Map<BehavioursPossibleRequirement, Integer> requirements,
-            Map<ConsumableBehavioursPossibleRequirement, Integer> consumableRequirements,
+    protected BehaviourType(Map<BehavioursPossibleRequirement, IngredientsCounts> requirements,
             Class<? extends Behaviour> behaviourClass) {
 
         this.behaviourClass = behaviourClass;
         this.requirements = Collections.unmodifiableMap(requirements);
-        this.consumableRequirements = Collections.unmodifiableMap(consumableRequirements);
     }
     
 }

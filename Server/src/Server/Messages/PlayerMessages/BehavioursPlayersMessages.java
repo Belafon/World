@@ -15,5 +15,10 @@ public class BehavioursPlayersMessages extends BehavioursMessages{
     public void newFeasibleBehaviour(BehaviourType behaviourType) {
 		sendMessage.sendLetter("player feasibleCondition add " + behaviourType.behaviourClass.getSimpleName());
     }
+
+    @Override
+    public void removeFeasibleBehaviour(BehaviourType behaviourType) {
+        sendMessage.sendLetter("player feasibleCondition remove " + behaviourType.behaviourClass.getSimpleName());
+    }
     
 }

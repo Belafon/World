@@ -8,8 +8,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.locks.ReentrantLock;
 
+import Console.ConsolePrint;
 import Game.World;
 import Game.Creatures.Behaviour.Behaviour;
+import Game.Creatures.Behaviour.BehaviourCondition;
 import Game.Creatures.Behaviour.BehaviourType;
 import Game.Creatures.Behaviour.Behaviours.BehavioursPossibleIngredients;
 import Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequirement;
@@ -27,7 +29,8 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
     protected volatile Place position;
     public final String appearence;
 	public final AbilityCondition abilityCondition;
-	public final ActualCondition actualCondition;
+    public final ActualCondition actualCondition;
+    public final BehaviourCondition behaviourCondition;
 	public volatile Behaviour currentBehaviour = null; // idle 
 	public volatile Inventory inventory;
 	public volatile World game;
@@ -35,11 +38,9 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
     public final SendMessage writer;
     private volatile int weight;
     private Set<Knowledge> knowledge = new ConcurrentSkipListSet<>();
-    private final Map<BehavioursPossibleRequirement, ArrayList<BehavioursPossibleIngredients>> behavioursProperties = new ConcurrentHashMap<>();
     
     private final Set<Visible> currentlyVisibleObjects = new HashSet<>();
     private final ReentrantLock mutexCurrentlyVisibleObjects = new ReentrantLock();
-    private final Set<BehaviourType> feasibleBehaviours = new ConcurrentSkipListSet<>();
 
     
     public final CreaturesMemory memory = new CreaturesMemory();
@@ -49,12 +50,13 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
         this.appearence = appearence;
     	actualCondition = new ActualCondition(this);
         abilityCondition = new AbilityCondition(this, 100, 100, 100, 100, 100, 100, 100);
+        behaviourCondition = new BehaviourCondition(this);
         this.position = position;
         this.name = name;
         this.writer = sendMessage;
         this.weight = weight;
     }
-    public synchronized void setAbilityCondition(int strength, int agility, int speed_of_walk, int speed_of_run, int hearing, int observation, int vision) {
+    public void setAbilityCondition(int strength, int agility, int speed_of_walk, int speed_of_run, int hearing, int observation, int vision) {
 		// strength, agility, speed_of_walk, speed_of_run, hearing, observation, vision
 		this.abilityCondition.setStrength(strength);
         this.abilityCondition.setAgility(agility);
@@ -66,12 +68,12 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
 	}
     protected abstract void setInventory();
 
-    public synchronized void setBehaviour(Behaviour behaviour) {
+    public void setBehaviour(Behaviour behaviour) {
         currentBehaviour = behaviour;
         behaviour.execute();
     }
     
-    public synchronized void setLocation(Place position) {
+    public void setLocation(Place position) {
         memory.addPosition(new ObjectsMemoryCell<Place>(game.time.getTime(), position));
         this.position = position;
         writer.surrounding.setPosition(position);
@@ -83,7 +85,7 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
         return weight;
     }
 
-    public synchronized void setWeight(int weight) {
+    public void setWeight(int weight) {
         memory.addWeight(new ObjectsMemoryCell<Integer>(game.time.getTime(), weight));
         this.weight = weight;
     }
@@ -94,91 +96,24 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
         return position;
     }
 
-    /**
-     * checks wether the creature can do some other behaviour.
-     * 
-     * This is called when behavioursProperties keys updated,
-     * or when new Visible spotted, or lost from sight 
-     */
-    public void addBehavioursPossibleRequirement(BehavioursPossibleRequirement behavioursPossibleRequirement,
-            BehavioursPossibleIngredients behavioursPossibleIngredients) {
-
-        if (behavioursProperties.containsKey(behavioursPossibleRequirement)) {
-            behavioursProperties.get(behavioursPossibleRequirement).add(behavioursPossibleIngredients);
-        } else {
-            ArrayList<BehavioursPossibleIngredients> list = new ArrayList<>();
-            list.add(behavioursPossibleIngredients);
-            behavioursProperties.put(behavioursPossibleRequirement, list);
-        }
-        checkPossibleBehavioursAfterNewBehavioursPossibleRequirementAdding(behavioursPossibleRequirement);
-    }
-    
-    public void removeBehavioursPossibleRequirement(BehavioursPossibleRequirement behavioursPossibleRequirement,
-            BehavioursPossibleIngredients behavioursPossibleIngredients) {
-
-        if (behavioursProperties.containsKey(behavioursPossibleRequirement)) {
-            behavioursProperties.get(behavioursPossibleRequirement).add(behavioursPossibleIngredients);
-        } else {
-            ArrayList<BehavioursPossibleIngredients> list = new ArrayList<>();
-            list.add(behavioursPossibleIngredients);
-            behavioursProperties.put(behavioursPossibleRequirement, list);
-        }
-        checkPossibleBehavioursAfterNewBehavioursPossibleRequirementAdding(behavioursPossibleRequirement);
-    }
-    
     public Set<Knowledge> getKnowledge() {
         return knowledge;
     }
 
     public void addKnowledge(Knowledge knowledge) {
         this.knowledge.add(knowledge);
-        addBehavioursPossibleRequirement(knowledge.type, knowledge);
+        behaviourCondition.addBehavioursPossibleRequirement(knowledge.type, knowledge);
         writer.condition.addKnowledge(knowledge);
     }
-
-
-    /**
-     * sends informations to creature if it is 
-     * capable to do some new behaviour.  
-     * @param newRequirement
-     */
-    private void checkPossibleBehavioursAfterNewBehavioursPossibleRequirementAdding(
-            BehavioursPossibleRequirement newRequirement) {
-
-        // lets get all behaviours, that needs requirement for execution
-        Set<BehaviourType> behavioursTypes = newRequirement.behaviours;
-
-        for (BehaviourType behaviourType : behavioursTypes) {
-            boolean consumableSatisfies = behaviourType.consumableRequirements.entrySet().stream().filter((x) -> {
-                if (behavioursProperties.containsKey(x.getKey())
-                        && behavioursProperties.get(x.getKey()).size() >= x.getValue())
-                    return false;
-                return true;
-            }).count() > 0 ? false : true;
-
-            boolean unconsumableSatisfies = behaviourType.requirements.entrySet().stream().filter((x) -> {
-                if (behavioursProperties.containsKey(x.getKey())
-                        && behavioursProperties.get(x.getKey()).size() >= x.getValue())
-                    return false;
-                return true;
-            }).count() > 0 ? false : true;
-
-            if (consumableSatisfies && unconsumableSatisfies) {
-                addNewFeasibleBehaviour(behaviourType);
-            }
-        }
-
+    public void removeKnowledge(Knowledge knowledge) {
+        this.knowledge.remove(knowledge);
+        behaviourCondition.removeBehavioursPossibleRequirement(knowledge.type, knowledge);
+        writer.condition.addKnowledge(knowledge);
     }
-
-    private void addNewFeasibleBehaviour(BehaviourType behaviourType) {
-        feasibleBehaviours.add(behaviourType);
-        writer.behavioursMessages.newFeasibleBehaviour(behaviourType);
-    }
-       
     /**
      *  Adds new visible object to creatures vision.
      *  This information is also saved in {@link Game.ObjectsMemory.CreaturesMemory.CreaturesMemory.visibleObjectSpotted}
-     *  and also in {@link Game.ObjectsMemory.CreaturesMemory.CreaturesMemory.lastVisiblesPositionWhenVisionLost} 
+     *  and also in {@link Game.ObjectsMemory.CreaturesMemory.CreaturesMemory.lastVisiblesPositionWhenVisionLost}
      *  Also, the set of currently possible behaviours is updated 
      * @param value
      */
@@ -193,7 +128,7 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
                 value.getLocation(), this);
 
         for (BehavioursPossibleRequirement requirement : value.getBehavioursPossibleRequirementType()) {
-            addBehavioursPossibleRequirement(requirement, value);
+            behaviourCondition.addBehavioursPossibleRequirement(requirement, value);
         }
     }
 
@@ -203,6 +138,10 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
             currentlyVisibleObjects.remove(value);
         } finally {
             mutexCurrentlyVisibleObjects.unlock();
+        }
+        memory.addVisibleObjectLostFromSight(new ObjectsMemoryCell<Visible>(game.time.getTime(), value));
+        for (BehavioursPossibleRequirement requirement : value.getBehavioursPossibleRequirementType()) {
+            behaviourCondition.addBehavioursPossibleRequirement(requirement, value);
         }
     }
 
