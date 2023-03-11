@@ -21,7 +21,7 @@ public class MessageReceiver implements Runnable{
         client.disconnected = false;
 
         // starts to receave the messages from the client
-        server.executor.submit(this);
+        new Thread(this).start();
     }
     
     
@@ -58,7 +58,7 @@ public class MessageReceiver implements Runnable{
 	
 	public void decomposeTheString(String value, Socket clientSocket, Server server) {
 		String[] message = value.split(" ");
-		ConsolePrint.new_message(value, clientSocket.getInetAddress().getHostAddress().toString());
+		ConsolePrint.new_message(value, client);
 		switch(message[0]) {
 		case "game":
 		getGameMessage(message, clientSocket, server);

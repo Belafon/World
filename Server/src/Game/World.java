@@ -2,6 +2,7 @@ package Game;
 
 import java.util.ArrayList;
 
+import Console.ConsolePrint;
 import Game.Creatures.Creature;
 import Game.Creatures.Player;
 import Game.Calendar.Calendar;
@@ -31,11 +32,12 @@ public class World implements Runnable {
     public World(Server server) {
         this.server = server;
         server.games.add(this);
-        // start();
+        time = new Time(this, Server.clocks, dailyLoop);
     }
     
     @Override
     public void run() {
+        ConsolePrint.gameInfo("World: new world starts...");
         for(Player player : players)player.client.writer.server.startGame();
 
         try {
@@ -44,10 +46,9 @@ public class World implements Runnable {
             e.printStackTrace();
         }
 
-        time = new Time(this, server.clocks, dailyLoop);
         isRunning = true;
-        Thread loopThread = new Thread(loop);
-        loopThread.start();
+        
+        new Thread(loop).start();
 
         for(Player player : players)player.gameStart();
     }

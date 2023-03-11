@@ -37,7 +37,9 @@ public class Time {
     }
 
     public String getDate(){
-        return "Now is " + (getMonth(getTime()) + 1) + "th Month, " + (getDay(tickOfThisMonth()) + 1) + "th Day of this Month, " + (getHours(ticksOfToday()) + 1) + "th hour of this day and " + (getMinutes(ticksOfThisHour()) + 1) + "th minute of this hour." ;
+        return "Now is " + (getMonth(getTime()) + 1) + "th Month, " + (getDay(tickOfThisMonth()) + 1)
+                + "th Day of this Month, " + (getHours(ticksOfToday()) + 1) + "th hour of this day and "
+                + (getMinutes(ticksOfThisHour()) + 1) + "th minute of this hour.";
     }
 
     public static long getMinutes(long numberOfTicks){

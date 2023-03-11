@@ -113,7 +113,11 @@ public class AbilityCondition {
 		if(health > 100)health = 100;
 		if(health != this.health)creature.writer.condition.setHealth(health);
         memory.addHealth(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), health));
-		this.health = health;
+        this.health = health;
+        if (health == 0) {
+            // TODO creature has died
+            creature.actualCondition.cancelAllEvents();
+        }
 	}
 	public int getFatigue() {
 		if(creature.actualCondition.getFatigueMax() < fatigue)

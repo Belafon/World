@@ -15,7 +15,7 @@ public class ActualCondition{
 	private static final int MAX_FATIGUE_SPEED = 45; // 3 days, 3 * 24 * 20 / 100 = 14.4
 	private int heat = 100;
 	private EventCreatureActualCondition eventHeat;
-	private final int BODY_BORDER_HEAT = 24; // degree of celsius of ideal temperature 
+	private final int BODY_BORDER_HEAT_IN_CELSIUS = 24; // degree of celsius of ideal temperature 
 	private final int HEAT_CONST = 1;
 	private static final int BODY_HEAT_SPEED = 15;
 	private int bleeding = 10; 
@@ -46,32 +46,48 @@ public class ActualCondition{
 	}
 
 	// methods called by Event
-	public void setEventHunger(Object object){
+	private void setEventHunger(Object object){
 		setHunger(getHunger() - 1);
 		World game = creature.game;
 		int duration = HUNGER_SPEED;
-		if(creature.abilityCondition.getHealth() != 0)game.calendar.add(new EventCreatureActualCondition(game.time.getTime() + duration, game, this::setEventHunger));
+        if (creature.abilityCondition.getHealth() != 0) {
+            eventHunger =  new EventCreatureActualCondition(game.time.getTime() + duration, game, this::setEventHunger);
+            game.calendar.add(eventHunger);
+        }
 	}
 	public void setEventMaxFatigue(Object object){
 		setFatigueMax(getFatigueMax() - 1);
 		World game = creature.game;
 		int duration = MAX_FATIGUE_SPEED;
-		if(fatigueMax != 0)game.calendar.add(new EventCreatureActualCondition(game.time.getTime() + duration, game, this::setEventMaxFatigue));
+        if (fatigueMax != 0) {
+            eventMaxFatigue = new EventCreatureActualCondition(game.time.getTime() + duration, game,
+                    this::setEventMaxFatigue);
+            game.calendar.add(eventMaxFatigue);
+        }
 	}
 	public void setEventHeat(Object object){
 		World game = creature.game;
-		int temperatureDifference = BODY_BORDER_HEAT + creature.abilityCondition.getCurrentEnergyOutput() + creature.inventory.gear.warm - creature.getLocation().getTemperature();
+        int temperatureDifference = BODY_BORDER_HEAT_IN_CELSIUS + creature.abilityCondition.getCurrentEnergyOutput()
+                + creature.inventory.gear.warm - creature.getLocation().getTemperature();
+        
 		int speed = temperatureDifference * HEAT_CONST; // TODO / weight of creature
-		setHeat(getHeat() - speed);
-		game.calendar.add(new EventCreatureActualCondition(game.time.getTime() + BODY_HEAT_SPEED, game, this::setEventHeat));
+        setHeat(getHeat() - speed);
+        
+        if (creature.abilityCondition.getHealth() > 0) {
+            eventHeat = new EventCreatureActualCondition(game.time.getTime() + BODY_HEAT_SPEED, game, this::setEventHeat);
+            game.calendar.add(eventHeat);
+        }
 	}
 	public void setEventBleeding(Object object){
 		creature.abilityCondition.setHealth(creature.abilityCondition.getHealth() - 1);
 		setBleeding(getBleeding() - 1);
 		World game = creature.game;
-		int duration = BLEEDING_SPEED;
-		if(bleeding != 0)game.calendar.add(new EventCreatureActualCondition(game.time.getTime() + duration, game, this::setEventBleeding));
-	}
+        int duration = BLEEDING_SPEED;
+        if (bleeding != 0 && creature.abilityCondition.getHealth() > 0) {
+            eventBleeding = new EventCreatureActualCondition(game.time.getTime() + duration, game, this::setEventBleeding);
+            game.calendar.add(eventBleeding);
+        }
+    }
 
 	// getters and setters
 	public synchronized int getHunger() {
@@ -118,17 +134,38 @@ public class ActualCondition{
 	}
 
     public synchronized void setFatigueMax(int fatigueMax) {
-        
-        if(fatigueMax > 100)fatigueMax = 100;
-		if(fatigueMax < 10) { // pass away
-			/*for(Behaviour behaviour : Creature.getCurrentBehaviour()) {
-				game.calendar.deletePlayersCurrentBehaviourAction(Creature, Creature.getBehaviourPositionInArray(behaviour));
-				game.behavior.make_sleep(5 * 20, Creature);
-			}*/
-			fatigueMax = 0;
-		}
-		if(fatigueMax != this.fatigueMax) creature.writer.condition.setFatigueMax(fatigueMax);
+
+        if (fatigueMax > 100)
+            fatigueMax = 100;
+        if (fatigueMax < 10) { // pass away
+            /*for(Behaviour behaviour : Creature.getCurrentBehaviour()) {
+            	game.calendar.deletePlayersCurrentBehaviourAction(Creature, Creature.getBehaviourPositionInArray(behaviour));
+            	game.behavior.make_sleep(5 * 20, Creature);
+            }*/
+            fatigueMax = 0;
+        }
+        if (fatigueMax != this.fatigueMax)
+            creature.writer.condition.setFatigueMax(fatigueMax);
         memory.addFatigueMax(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), fatigueMax));
-		this.fatigueMax = fatigueMax;
-	}
+        this.fatigueMax = fatigueMax;
+    }
+
+    public synchronized void cancelHungerEvent() {
+        eventHunger.cancelEvent(creature.game);
+    }
+    public synchronized void cancelMaxFatigueEvent() {
+        eventMaxFatigue.cancelEvent(creature.game);
+    }
+    public synchronized void cancelHeatEvent() {
+        eventHeat.cancelEvent(creature.game);
+    }
+    public synchronized void cancelBleedingEvent() {
+        eventBleeding.cancelEvent(creature.game);
+    }
+    public synchronized void cancelAllEvents() {
+        cancelBleedingEvent();
+        cancelHeatEvent();
+        cancelHungerEvent();
+        cancelMaxFatigueEvent();
+    }
 }

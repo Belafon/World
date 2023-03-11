@@ -12,7 +12,9 @@ public class Client {
     public Socket clientSocket;
     
 	BufferedWriter out;
-	Scanner in;
+    Scanner in;
+    private static int clientIDCounter = 0;
+    public final int ID = clientIDCounter++;
 	
 	public Client() { // It will automatically bind connection with server on localhost and on port which was written to console
         int port = 25555;
@@ -49,7 +51,7 @@ public class Client {
 					try {
 						s = in.nextLine();
 					//	System.out.println("Server message detected");
-					}catch(Exception e) {
+					} catch(Exception e) {
 						System.out.println("Connection interupted " + e);
 						System.exit(0);
 						break;
@@ -71,7 +73,7 @@ public class Client {
 			public void run() {
 			    try {
 			    	out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
-					out.write("server name clientName" + "\r\n");
+					out.write("server name clientName_"  + ID + "\r\n");
 					out.flush();
 					try {
 						Thread.sleep(1000);

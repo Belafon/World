@@ -34,7 +34,7 @@ public class Server {
 	public final MatchMakingSystem matchMaking = new BasicMatchMakingSystem(this, numberOfPlayersForStartTheGame);
 	public final ConsoleListener consoleListener = new ConsoleListener(this);
 	public final Map<String, Client> allClients = new Hashtable<String, Client>(); // is accsessed via more threads 
-    public final Clocks clocks = new Clocks();
+    public static final Clocks clocks = new Clocks();
     public ExecutorService executor = Executors.newFixedThreadPool(THREADS_COUNT);
     public static final int THREADS_COUNT = Runtime.getRuntime().availableProcessors();
 
@@ -46,18 +46,17 @@ public class Server {
         ConsolePrint.serverInfo("Executor uses " + THREADS_COUNT + " threads.");
         ConsolePrint.serverInfo("Server is waiting for clients...");
 
-        while (isServerRunning) {
-            Socket socket = null;
-            try (ServerSocket serverSocket = new ServerSocket(port)) {
-                ConsolePrint.serverInfo("Server: New Server created on port " + port);
-                socket = serverSocket.accept();
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
+            ConsolePrint.serverInfo("Server: New Server created on port " + port);
+            while (isServerRunning) {
+                Socket socket = serverSocket.accept();
                 handleClient(socket);
-            } catch (IOException e) {
-                ConsolePrint.error_big("Server: Server stoped new client acception! ");
-                e.printStackTrace();
-            } finally {
-                executor.shutdown();
             }
+        } catch (IOException e) {
+            ConsolePrint.error_big("Server: Server stoped new client acception! ");
+            e.printStackTrace();
+        } finally {
+            executor.shutdown();
         }
 
     }
@@ -65,16 +64,16 @@ public class Server {
     private void handleClient(Socket clientSocket) {
         String ip = clientSocket.getInetAddress().getHostAddress().toString();
         Client client = allClients.get(ip);
-        if (client == null) {
+        //if (client == null) {
             ConsolePrint.serverInfo("Server: New device connected :: " + ip);
             client = createClient(clientSocket);
             new MessageReceiver(clientSocket, this, client); // recever of new messages
-        } else {
+        /* } else {
             ConsolePrint.serverInfo("Server: Device connected again :: " + ip);
             client.bindNewSendMessage(clientSocket);
             if (client.disconnected)
                 new MessageReceiver(clientSocket, this, client);
-        }
+        }*/
     }
 	
     private Client createClient(Socket clientSocket) {

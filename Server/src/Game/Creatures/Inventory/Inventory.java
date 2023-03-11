@@ -30,6 +30,7 @@ public class Inventory {
     public volatile Tool leftHand;
 	public volatile Tool workHand;
 
+    // item has moved
     public synchronized void addItem(Item item) {
         if (backSpace == null) {
             // TODO call unsupported operation
@@ -38,6 +39,8 @@ public class Inventory {
         backSpace.getSpace().items.add(item);
         // creature.behaviourCondition.addBehavioursPossibleRequirement(item.type, item); -> wrong 
         // because that item could be reachable before that
+
+        item.location = backSpace.getLocation();
         
         if (item instanceof Tool tool) {
             if(tool.type instanceof ToolTypeItem toolType){

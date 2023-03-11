@@ -34,7 +34,7 @@ public class Food extends Item{
         if (warm < 0)
             warm = 0;
 
-        memory.warm.add(new ObjectsMemoryCell<Integer>(location.game.time.getTime(), warm));
+        memory.warm.add(new ObjectsMemoryCell<Integer>(game.time.getTime(), warm));
         this.warm = warm;
         if(warm > 0 && changeWarm == null){
             changeWarm = new EventItemChange(game.time.getTime() + owner.getLocation().getTemperature(), game, this);
@@ -47,7 +47,7 @@ public class Food extends Item{
     public void setFreshness(int freshness, World game) {
         if (freshness < 0)
             freshness = 0;
-        memory.freshness.add(new ObjectsMemoryCell<Integer>(location.game.time.getTime(), freshness));
+        memory.freshness.add(new ObjectsMemoryCell<Integer>(game.time.getTime(), freshness));
         this.freshness = freshness;
         if(freshness > 0 && changeFreshness == null){
             changeFreshness = new EventItemChange(game.time.getTime() + getType().SPEED_OF_DECAY, game, this);

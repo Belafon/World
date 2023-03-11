@@ -3,6 +3,7 @@ package Game.Time;
 import Console.ConsolePrint;
 import Game.World;
 import Game.Calendar.Events.Event;
+import Server.Server;
 
 public class CalendaryLoop  implements Runnable{
     private World game;
@@ -30,15 +31,16 @@ public class CalendaryLoop  implements Runnable{
                 }
 
             } else {
-                long durationOfSleep = nextEvent.getTimeToWait(game.server.clocks, game.time);
+                long durationOfSleep = nextEvent.getTimeToWait(Server.clocks, game.time);
                 if(logLoopThread) ConsolePrint.gameInfo("Loop is waiting for ... " + nextEvent.getClass().getSimpleName() + " duration of sleep = " + durationOfSleep);
-                if(durationOfSleep > 0)
+                if (durationOfSleep > 0) {
                     try {
                         if(!Thread.interrupted())Thread.sleep(durationOfSleep);
                         else continue;
                     } catch (InterruptedException e) {
                         continue;
                     }
+                }
                 if(nextEvent == game.calendar.getNextEvent() && game.calendar.heap.peek().getDate() <= game.time.getTime()){
                     if(logLoopThread) ConsolePrint.gameInfo("done " + game.calendar.heap.peek().getDate() + " " + game.time.getTime() + " " + (game.calendar.heap.peek().getDate() - game.time.getTime()));
                     game.calendar.check();

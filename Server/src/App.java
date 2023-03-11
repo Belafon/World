@@ -17,7 +17,9 @@ public class App {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				//new Client();
+                for (int i = 0; i < 1; i++) {
+                    new Client();                    
+                }
 			}
 			
 		}).start();

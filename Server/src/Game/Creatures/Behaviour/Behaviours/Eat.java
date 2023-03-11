@@ -8,7 +8,6 @@ import Game.Creatures.Behaviour.Behaviour;
 import Game.Creatures.Behaviour.BehaviourType;
 import Game.Creatures.Behaviour.BehaviourTypeBuilder;
 import Game.Creatures.Behaviour.BehaviourType.IngredientsCounts;
-import Game.Items.ListOfAllItemTypes;
 import Game.Items.Types.Food;
 
 public class Eat extends Behaviour{
@@ -17,7 +16,7 @@ public class Eat extends Behaviour{
     public static final BehaviourType type; 
     static {
         type = new BehaviourTypeBuilder(Eat.class)
-            .addRequirement(ListOfAllItemTypes.foodTypes.get(Food.REQUIREMENT), new IngredientsCounts(1, 0))
+            .addRequirement(Food.REQUIREMENT, new IngredientsCounts(1, 0))
             .build();
     }
 

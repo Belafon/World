@@ -4,8 +4,8 @@ import Server.Client;
 import Server.Server;
 
 public abstract class MatchMakingSystem {
-    public int numberOfPlayers; // in queue
-    public int numberOfPlayersToStart;
+    public volatile int numberOfPlayers; // in queue
+    public volatile int numberOfPlayersToStart;
     public Server server;
     //private volatile Game new_game;
 

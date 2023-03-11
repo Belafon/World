@@ -18,7 +18,11 @@ public class EventCreatureActualCondition extends Event{
     }
 
     @Override
-    public void interrupt(World game) {        
+    public void interrupt(World game) {
+    }
+
+    public void cancelEvent(World game) {
+        game.calendar.remove(this);
     }
     
 }

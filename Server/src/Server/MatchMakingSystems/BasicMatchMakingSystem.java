@@ -22,8 +22,8 @@ public class BasicMatchMakingSystem extends MatchMakingSystem {
         client.actualGame = game;
         if(numberOfPlayersToStart > numberOfPlayers + 1) setNumberOfPlayers(numberOfPlayers + 1);
 		else { // lets start the game...
-			setNumberOfPlayers(numberOfPlayersToStart);
-            server.executor.execute(game);
+            setNumberOfPlayers(numberOfPlayersToStart);
+            new Thread(game).start();
             game = new World(server);
             setNumberOfPlayers(0);
 		}

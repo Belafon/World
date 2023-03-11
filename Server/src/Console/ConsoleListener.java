@@ -33,7 +33,7 @@ public class ConsoleListener implements Runnable{
 						}catch(Exception e){
 							ConsolePrint.error_small("Wrong log input!");
 						}
-					}else {
+					} else {
                         for(Player player : server.games.get(0).players)player.client.writer.sendLetter(message);
                     }
                 }
@@ -87,7 +87,7 @@ public class ConsoleListener implements Runnable{
 					server.games.get(0).maps.maps[0].places[Integer.parseInt(message[2])][Integer.parseInt(message[3])]));
 				}
 			break;
-			case "loop":
+			case "calendar":
 				if(message.length >= 3 && message[2].equals("loop")) server.games.get(0).loop.logLoopThread = true;
 				else if(message.length >= 3 && message[2].equals("stop")) server.games.get(0).loop.logLoopThread = false;
 			break;
