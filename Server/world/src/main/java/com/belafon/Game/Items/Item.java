@@ -9,7 +9,8 @@ import com.belafon.Game.Calendar.Events.EventItemChange;
 import com.belafon.Game.Creatures.Creature;
 import com.belafon.Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequirement;
 
-public class Item implements Visible{
+public class Item implements Visible {
+    public static final BehavioursPossibleRequirement REQUIREMENT = new BehavioursPossibleRequirement(){};
     public final int id;
     public final TypeItem type;
     public volatile Creature owner;
@@ -43,6 +44,6 @@ public class Item implements Visible{
 
     @Override
     public BehavioursPossibleRequirement[] getBehavioursPossibleRequirementType() {
-        return new BehavioursPossibleRequirement[]{type};
+        return new BehavioursPossibleRequirement[]{type, REQUIREMENT};
     }
 }
