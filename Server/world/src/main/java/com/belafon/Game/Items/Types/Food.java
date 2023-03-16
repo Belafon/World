@@ -72,6 +72,6 @@ public class Food extends Item{
 
     @Override
     public BehavioursPossibleRequirement[] getBehavioursPossibleRequirementType() {
-        return new BehavioursPossibleRequirement[]{type, REQUIREMENT};
+        return new BehavioursPossibleRequirement[]{type, Item.REQUIREMENT, REQUIREMENT};
     }
 }

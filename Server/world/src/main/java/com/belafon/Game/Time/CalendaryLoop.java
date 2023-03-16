@@ -32,7 +32,10 @@ public class CalendaryLoop  implements Runnable{
 
             } else {
                 long durationOfSleep = nextEvent.getTimeToWait(Server.clocks, game.time);
-                if(logLoopThread) ConsolePrint.gameInfo("Loop is waiting for ... " + nextEvent.getClass().getSimpleName() + " duration of sleep = " + durationOfSleep);
+                if (logLoopThread)
+                    ConsolePrint.gameInfo("Loop is waiting for ... " + nextEvent.getClass().getSimpleName()
+                            + " duration of sleep = " + durationOfSleep);
+                
                 if (durationOfSleep > 0) {
                     try {
                         if(!Thread.interrupted())Thread.sleep(durationOfSleep);
@@ -42,7 +45,10 @@ public class CalendaryLoop  implements Runnable{
                     }
                 }
                 if(nextEvent == game.calendar.getNextEvent() && game.calendar.heap.peek().getDate() <= game.time.getTime()){
-                    if(logLoopThread) ConsolePrint.gameInfo("done " + game.calendar.heap.peek().getDate() + " " + game.time.getTime() + " " + (game.calendar.heap.peek().getDate() - game.time.getTime()));
+                    if (logLoopThread)
+                        ConsolePrint.gameInfo("done " + game.calendar.heap.peek().getDate() + " " + game.time.getTime()
+                                + " " + (game.calendar.heap.peek().getDate() - game.time.getTime()));
+                    
                     game.calendar.check();
                 }
             }

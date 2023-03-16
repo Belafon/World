@@ -40,11 +40,3 @@ public class EventChangeWeather extends Event{
     }
     
 }
-/*
-
-git clone https://github.com/Belafon/World.git
-Username: Belafon
-Password: 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
-
-
-*/
