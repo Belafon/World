@@ -1,57 +1,59 @@
-package com.example;
+package com.example.client;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
-import java.net.InetAddress;
 
-public class DumbClient {
-    public String name;
+import com.example.Panels;
+import com.example.Stats;
+import com.example.client.chatListener.ChatListener;
+
+public class Client {
     public Socket clientSocket;
-    
-	BufferedWriter out;
-    Scanner in;
+	private BufferedWriter out;
+    private Scanner in;
     private static int clientIDCounter = 0;
     public final int ID = clientIDCounter++;
-	
-	public DumbClient() { // It will automatically bind connection with server on localhost and on port which was written to console
+    public final ChatListener listener;
+    
+    public Client(Panels panels, Stats stats) {
         int port = 25555;
-		while(true) {
-			try {
-				//port = Integer.parseInt(sc.nextLine().toString());
-				port = 25555;
-				break;
-			} catch(Exception e) {
-				System.out.println("Wrong input!");
-			}
-		}
 
-        
-        try {
-            this.clientSocket = new Socket(String.valueOf(InetAddress.getLocalHost().getHostAddress()), port);
-            this.in = new Scanner(clientSocket.getInputStream());
-        }catch (UnknownHostException e){
-            e.printStackTrace();	
-        }catch (IOException e) {
-            e.printStackTrace();
+        listener = new ChatListener(stats);
+
+        while (true) {
+            try {
+                this.clientSocket = new Socket(String.valueOf(InetAddress.getLocalHost().getHostAddress()), port);
+                this.in = new Scanner(clientSocket.getInputStream());
+                break;
+            } catch (UnknownHostException e) {
+            } catch (IOException e) {
+            }
+
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-        startListener(in);
+        panels.mainWindow.setTitleCondition(new StringBuilder("connected"));
+        startListener(in, panels);
+        sendIntroductionInfo();
     }
-	
-	private void startListener(final Scanner in) {
+    
+    private void startListener(final Scanner in, final Panels panels) {
 		Thread thread = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				Thread.currentThread().setName("Client");
 				while(true) {
-				//	System.out.println("Lets chack server message...");
 					String s = "";
 					try {
 						s = in.nextLine();
-					//	System.out.println("Server message detected");
 					} catch(Exception e) {
 						System.out.println("Connection interupted " + e);
 						System.exit(0);
@@ -59,15 +61,15 @@ public class DumbClient {
 					}
 
 					if(s != null) {
-						//System.out.println("Message -> " + s);
+                        listener.listen(s, panels);
 					}
 				}
 			}
 		});
-		thread.start();
-		
-		
-	
+		thread.start();			
+	}
+
+    private void sendIntroductionInfo() {
         try {
             out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
             out.write("server name clientName_"  + ID + "\r\n");
@@ -93,6 +95,5 @@ public class DumbClient {
         } catch (IOException e1) {
             e1.printStackTrace();
         }
-			
-	}
+    }
 }

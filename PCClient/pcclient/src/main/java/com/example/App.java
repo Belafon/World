@@ -1,13 +1,15 @@
 package com.example;
 
-import com.example.MainWindow.MainWindow;
+import com.example.client.Client;
 
 public class App {
-    private static final int MAIN_SCREEN = 0;
-    private static final int SECONDARY_SCREEN = 1;
+    public static void main(String[] args) {
+        Stats stats = new Stats();
+        Panels panels = new Panels(stats);
 
-    private static final int PREFERED_SCREEN = MAIN_SCREEN;
-    public static void main( String[] args ) {
-        new MainWindow(PREFERED_SCREEN);
+        panels.mainWindow.displayPanels(panels);
+        stats.body.setStatsLists();
+
+        new Client(panels, stats);
     }
 }
