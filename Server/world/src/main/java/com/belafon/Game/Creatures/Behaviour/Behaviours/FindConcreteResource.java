@@ -24,12 +24,12 @@ public class FindConcreteResource extends Behaviour {
     private boolean found = false;
     private int durationOfFinding; // -1 will not be found
 
-    public static final BehaviourType type; 
+    public static final BehaviourType type;
     static {
         type = new BehaviourTypeBuilder(FindConcreteResource.class)
-            .build();
+                .build();
     }
-    
+
     public FindConcreteResource(World game, int duration, int bodyStrain, Creature creature,
             TypeOfResource typeResource) {
         super(game, duration, bodyStrain, creature);
@@ -39,16 +39,28 @@ public class FindConcreteResource extends Behaviour {
 
     @Override
     public void execute() {
-        // 0 -> finds instantly p=1, -1 -> cant find,  p=100/(x+100)  p=0.5 -> x=100
-        durationOfFinding = -creature.abilityCondition.getVision() + creature.getLocation().getVisibility(); // for example fog ;
+        // 0 -> finds instantly p=1, -1 -> cant find, p=100/(x+100) p=0.5 -> x=100
+        durationOfFinding = -creature.abilityCondition.getVision() + creature.getLocation().getVisibility(); // for
+                                                                                                             // example
+                                                                                                             // fog ;
         if (resource != null && resource.durationOfFinding != -1) {
             found = true;
 
             // lower means I will find it earlier
-            durationOfFinding += resource.durationOfFinding; 
-            // TODO possiable extension gauss function a*e^(-(x-posun_doprava)/2*const^2), shift left by the durationOfFinding
+            durationOfFinding += resource.durationOfFinding;
+            // TODO possiable extension gauss function a*e^(-(x-posun_doprava)/2*const^2),
+            // shift left by the durationOfFinding
         } else
-            durationOfFinding += getDurationOfFindingOfResourceWhichIsNotHere(creature.getLocation(), typeOfResource); // duration of when Creature finds out that, there is nothing
+            durationOfFinding += getDurationOfFindingOfResourceWhichIsNotHere(creature.getLocation(), typeOfResource); // duration
+                                                                                                                       // of
+                                                                                                                       // when
+                                                                                                                       // Creature
+                                                                                                                       // finds
+                                                                                                                       // out
+                                                                                                                       // that,
+                                                                                                                       // there
+                                                                                                                       // is
+                                                                                                                       // nothing
         if (durationOfFinding < 0)
             durationOfFinding = 0;
         super.event = new EventBehaviour(game.time.getTime() + durationOfFinding, game, this);
@@ -65,7 +77,9 @@ public class FindConcreteResource extends Behaviour {
     public void cease() {
         if (found) {
             ConsolePrint.success("Resource was found!!!");
-            creature.memory.addVisibleObjectSpotted(new ObjectsMemoryCell<Visible>(creature.game.time.getTime(), resource), resource.getLocation(), creature);
+            creature.memory.addVisibleObjectLostFromSight(
+                    new ObjectsMemoryCell<Visible>(creature.game.time.getTime(), resource), resource.getLocation(),
+                    creature);
             creature.writer.surrounding.setResource(resource);
         } else {
             ConsolePrint.success("Ressource was NOT found!!!");
@@ -97,9 +111,11 @@ public class FindConcreteResource extends Behaviour {
      * @param resource
      * @throws Exception
      * 
-     * this method sets duration of finding concrete resource in concrete place
+     *                   this method sets duration of finding concrete resource in
+     *                   concrete place
      */
-    public static synchronized void setResourcesDurationOfFinding(UnboundedPlace place, Resource resource) throws Exception {
+    public static synchronized void setResourcesDurationOfFinding(UnboundedPlace place, Resource resource)
+            throws Exception {
         int lastIndex = Arrays.asList(place.resourcesSorted).indexOf(resource);
         if (lastIndex == -1)
             throw new Exception("Value exception");
@@ -118,7 +134,7 @@ public class FindConcreteResource extends Behaviour {
             Resource last = resource;
             for (int i = newIndex; i <= lastIndex - 1; i++) {
                 Resource actual = place.resourcesSorted[i];
-                
+
                 place.resourcesSorted[i] = last;
                 last = actual;
             }
@@ -135,7 +151,6 @@ public class FindConcreteResource extends Behaviour {
     @Override
     public BehaviourType getType() {
         return type;
-}
+    }
 
 }
-

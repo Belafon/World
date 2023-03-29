@@ -1,9 +1,6 @@
 package com.belafon.Console;
 
 
-
-import java.net.Socket;
-
 import com.belafon.Server.Client;
 
 public class ConsolePrint {

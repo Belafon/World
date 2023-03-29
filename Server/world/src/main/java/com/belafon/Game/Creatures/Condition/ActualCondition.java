@@ -10,7 +10,7 @@ public class ActualCondition{
 	private int hunger = 100;
 	private EventCreatureActualCondition eventHunger;
 	private static final int HUNGER_SPEED = 18; // 15 hours, 15 * 20 / 100
-	private int fatigueMax; // = bariera pro odpo�inek, v��e zv��it fatigue nem��e, jedin� sp�nkem , about 
+	private int fatigueMax; // = barrier for rest, v��e zv��it fatigue nem��e, jedin� sp�nkem , about 
 	private EventCreatureActualCondition eventMaxFatigue; //private int energy; // - > d� se snadno na�erpat odpo�inkem, nap�. p�i boji  --- nen� t�eba
 	private static final int MAX_FATIGUE_SPEED = 45; // 3 days, 3 * 24 * 20 / 100 = 14.4
 	private int heat = 100;
