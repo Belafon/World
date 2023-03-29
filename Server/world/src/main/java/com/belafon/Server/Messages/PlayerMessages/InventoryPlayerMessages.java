@@ -6,7 +6,7 @@ import com.belafon.Game.Items.Types.*;
 import com.belafon.Game.Items.Item;
 import com.belafon.Game.Items.TypeItem.FoodTypeItem;
 
-public class InventoryPlayerMessages extends InventoryMessages{
+public class InventoryPlayerMessages implements InventoryMessages{
     public final PlayersMessageSender sendMessage;
 
     public InventoryPlayerMessages(PlayersMessageSender sendMessage) {

@@ -18,31 +18,35 @@ import com.belafon.Server.SendMessage.MessageSender;
 import com.belafon.Game.Creatures.Condition.ActualCondition;
 import com.belafon.Game.Creatures.Condition.Knowledge.Knowledge;
 import com.belafon.Game.Creatures.Inventory.Inventory;
-public abstract class Creature extends BehavioursPossibleRequirement implements Visible {
+
+public abstract class Creature extends Visible {
+    public static final BehavioursPossibleRequirement REQUIREMENT = new BehavioursPossibleRequirement() {
+    };
     public volatile String name;
     protected volatile Place position;
     public final String appearence;
-	public final AbilityCondition abilityCondition;
+    public final AbilityCondition abilityCondition;
     public final ActualCondition actualCondition;
     public final BehaviourCondition behaviourCondition;
-	public volatile Behaviour currentBehaviour = null; // idle 
-	public volatile Inventory inventory;
-	public volatile World game;
-	public volatile int id;
+    public volatile Behaviour currentBehaviour = null; // idle
+    public volatile Inventory inventory;
+    public volatile World game;
+    public volatile int id;
     public final MessageSender writer;
     private volatile int weight;
     private Set<Knowledge> knowledge = new ConcurrentSkipListSet<>();
-    
+
     private final Set<Visible> currentlyVisibleObjects = new HashSet<>();
     private final ReentrantLock mutexCurrentlyVisibleObjects = new ReentrantLock();
 
-    
     public final CreaturesMemory memory = new CreaturesMemory();
-    public Creature(World game, String name, Place position, int id, String appearence, MessageSender sendMessage, int weight){
-		this.id = id;
-    	this.game = game;
+
+    public Creature(World game, String name, Place position, int id, String appearence, MessageSender sendMessage,
+            int weight) {
+        this.id = id;
+        this.game = game;
         this.appearence = appearence;
-    	actualCondition = new ActualCondition(this);
+        actualCondition = new ActualCondition(this);
         abilityCondition = new AbilityCondition(this, 100, 100, 100, 100, 100, 100, 100);
         behaviourCondition = new BehaviourCondition(this);
         this.position = position;
@@ -50,23 +54,26 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
         this.writer = sendMessage;
         this.weight = weight;
     }
-    public void setAbilityCondition(int strength, int agility, int speed_of_walk, int speed_of_run, int hearing, int observation, int vision) {
-		// strength, agility, speed_of_walk, speed_of_run, hearing, observation, vision
-		this.abilityCondition.setStrength(strength);
+
+    public void setAbilityCondition(int strength, int agility, int speed_of_walk, int speed_of_run, int hearing,
+            int observation, int vision) {
+        // strength, agility, speed_of_walk, speed_of_run, hearing, observation, vision
+        this.abilityCondition.setStrength(strength);
         this.abilityCondition.setAgility(agility);
         abilityCondition.setSpeedOfWalk(speed_of_walk);
         abilityCondition.setSpeedOfRun(speed_of_run);
         abilityCondition.setObservation(observation);
         abilityCondition.setHearing(hearing);
         abilityCondition.setVision(vision);
-	}
+    }
+
     protected abstract void setInventory();
 
     public void setBehaviour(Behaviour behaviour) {
         currentBehaviour = behaviour;
         behaviour.execute();
     }
-    
+
     public void setLocation(Place position) {
         memory.addPosition(new ObjectsMemoryCell<Place>(game.time.getTime(), position));
         this.position = position;
@@ -74,7 +81,7 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
 
         // all players watching that have to get notice that
     }
-    
+
     public int getWeight() {
         return weight;
     }
@@ -84,7 +91,6 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
         this.weight = weight;
     }
 
-    
     @Override
     public Place getLocation() {
         return position;
@@ -99,16 +105,24 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
         behaviourCondition.addBehavioursPossibleRequirement(knowledge.type, knowledge);
         writer.condition.addKnowledge(knowledge);
     }
+
     public void removeKnowledge(Knowledge knowledge) {
         this.knowledge.remove(knowledge);
         behaviourCondition.removeBehavioursPossibleRequirement(knowledge.type, knowledge);
         writer.condition.addKnowledge(knowledge);
     }
+
     /**
-     *  Adds new visible object to creatures vision.
-     *  This information is also saved in {@link Game.ObjectsMemory.CreaturesMemory.CreaturesMemory.visibleObjectSpotted}
-     *  and also in {@link Game.ObjectsMemory.CreaturesMemory.CreaturesMemory.lastVisiblesPositionWhenVisionLost}
-     *  Also, the set of currently possible behaviours is updated 
+     * Adds new visible object to creatures vision.
+     * This information is also saved in
+     * {@link Game.ObjectsMemory.CreaturesMemory.CreaturesMemory.visibleObjectSpotted}
+     * and also in
+     * {@link Game.ObjectsMemory.CreaturesMemory.CreaturesMemory.lastVisiblesPositionWhenVisionLost}
+     * Also, the set of currently possible behaviours is updated
+     * 
+     * Also, the viewed object memorizes the information in
+     * {@link Game.ObjectsMemory.Visible.watchers}
+     * 
      * @param value
      */
     public void addVisibleObjects(Visible value) {
@@ -118,11 +132,26 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
         } finally {
             mutexCurrentlyVisibleObjects.unlock();
         }
-        memory.addVisibleObjectSpotted(new ObjectsMemoryCell<Visible>(game.time.getTime(), value),
-                value.getLocation(), this);
+
+        memory.addVisibleObjectSpotted(new ObjectsMemoryCell<Visible>(game.time.getTime(), value));
+
+        value.addWatcher(this);
 
         for (BehavioursPossibleRequirement requirement : value.getBehavioursPossibleRequirementType()) {
             behaviourCondition.addBehavioursPossibleRequirement(requirement, value);
+        }
+    }
+
+    @FunctionalInterface
+    public interface ActionGetCurremtlyObjectSpotted {
+        void doJob(Set<Visible> visibleObjectSpotted);
+    }
+    public void getCurrentlyVisibleObjectSpotted(ActionGetCurremtlyObjectSpotted visibles) {
+        mutexCurrentlyVisibleObjects.lock();
+        try {
+            visibles.doJob(currentlyVisibleObjects);
+        } finally {
+            mutexCurrentlyVisibleObjects.unlock();
         }
     }
 
@@ -133,7 +162,12 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
         } finally {
             mutexCurrentlyVisibleObjects.unlock();
         }
-        memory.addVisibleObjectLostFromSight(new ObjectsMemoryCell<Visible>(game.time.getTime(), value));
+
+        memory.addVisibleObjectLostFromSight(new ObjectsMemoryCell<Visible>(game.time.getTime(), value),
+                value.getLocation(), this);
+
+        value.removeWatcher(this);
+
         for (BehavioursPossibleRequirement requirement : value.getBehavioursPossibleRequirementType()) {
             behaviourCondition.addBehavioursPossibleRequirement(requirement, value);
         }
@@ -148,10 +182,9 @@ public abstract class Creature extends BehavioursPossibleRequirement implements 
         }
     }
 
-    
     @Override
     public BehavioursPossibleRequirement[] getBehavioursPossibleRequirementType() {
-        return new BehavioursPossibleRequirement[]{this};
+        return new BehavioursPossibleRequirement[] { REQUIREMENT };
     }
-}
 
+}

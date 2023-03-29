@@ -15,7 +15,6 @@ import com.belafon.Game.Maps.Maps;
 public class World implements Runnable {
     public volatile boolean isRunning = false;
     public final Server server;
-    public GameCondition condition = GameCondition.preparing;
     public final ArrayList<Player> players = new ArrayList<Player>();
     public final ArrayList<Creature> creatures = new ArrayList<Creature>();
     public Time time;
@@ -23,11 +22,6 @@ public class World implements Runnable {
     public final Calendar calendar = new Calendar(this);
     public final DailyLoop dailyLoop = new DailyLoop(this);
     public final Maps maps = new Maps(this);
-    public static enum GameCondition{
-		preparing,
-		running,
-		hasEnded
-	}
 
     public World(Server server) {
         this.server = server;
@@ -38,7 +32,8 @@ public class World implements Runnable {
     @Override
     public void run() {
         ConsolePrint.gameInfo("World: new world starts...");
-        for(Player player : players)player.client.writer.server.startGame();
+        for (Player player : players)
+            player.client.writer.server.startGame();
 
         try {
             Thread.sleep(500);
@@ -50,7 +45,8 @@ public class World implements Runnable {
         
         new Thread(loop).start();
 
-        for(Player player : players)player.gameStart();
+        for(Player player : players)
+            player.gameStart();
     }
 
     private int newEventId = 0;
@@ -67,4 +63,11 @@ public class World implements Runnable {
         return nextItemId++;
     }
 
+    private World() {
+        this.server = null;
+        time = new Time(this, Server.clocks, dailyLoop);
+    }
+    public static World testingWorld() {
+        return new World();
+    }
 }

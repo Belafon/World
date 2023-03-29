@@ -4,7 +4,7 @@ import com.belafon.Game.Creatures.Behaviour.BehaviourType;
 import com.belafon.Server.Messages.BehavioursMessages;
 import com.belafon.Server.SendMessage.PlayersMessageSender;
 
-public class BehavioursPlayersMessages extends BehavioursMessages{
+public class BehavioursPlayersMessages implements BehavioursMessages{
     public final PlayersMessageSender sendMessage;
 
     public BehavioursPlayersMessages(PlayersMessageSender sendMessage) {

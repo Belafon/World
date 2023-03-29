@@ -3,7 +3,7 @@ package com.belafon.Server.Messages.PlayerMessages;
 import com.belafon.Server.Messages.ServerMessages;
 import com.belafon.Server.SendMessage.PlayersMessageSender;
 
-public class ServerPlayerMessages extends ServerMessages{
+public class ServerPlayerMessages implements ServerMessages{
   public final PlayersMessageSender sendMessage;
 
   public ServerPlayerMessages(PlayersMessageSender sendMessage) {

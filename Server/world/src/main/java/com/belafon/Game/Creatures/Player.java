@@ -15,7 +15,7 @@ public class Player extends Creature {
     public final Client client;
     public volatile boolean isReady = false; 
     public Player(Client client, World game, String name, Place position, int id, String appearence){
-        super(game, name, position, id, appearence, client.writer, 100); // TODO weight
+        super(game, name, position, id, appearence, client.writer.sender, 100); // TODO weight
         this.client = client;
         //super(position, client.name, game, id);
     	setAbilityCondition(0, 0, 300, 600, 100, 0, 100);

@@ -5,7 +5,7 @@ import com.belafon.Game.Creatures.Behaviour.Behaviours.FindConcreteResource;
 import com.belafon.Game.Maps.Place.UnboundedPlace;
 import com.belafon.Game.ObjectsMemory.Visible;
 
-public class Resource implements Visible {
+public class Resource extends Visible {
     public volatile int durationOfFinding;
     public final TypeOfResource typeOfResource;
     private volatile int amount; // 100 -> 100% of durationOfFinding, 100 -> regular amount
@@ -35,6 +35,7 @@ public class Resource implements Visible {
 
     @Override
     public BehavioursPossibleRequirement[] getBehavioursPossibleRequirementType() {
-        return new BehavioursPossibleRequirement[]{typeOfResource};
+        return new BehavioursPossibleRequirement[] { typeOfResource };
     }
+    
 }

@@ -7,7 +7,7 @@ import com.belafon.Server.Messages.SurroundingMessages;
 import com.belafon.Server.SendMessage.PlayersMessageSender;
 import com.belafon.Game.Creatures.Behaviour.PlayersLookAround;
 
-public class SurroundingPlayerMessages  extends SurroundingMessages{
+public class SurroundingPlayerMessages implements SurroundingMessages{
     public final PlayersMessageSender sendMessage;
 
     public SurroundingPlayerMessages(PlayersMessageSender sendMessage) {

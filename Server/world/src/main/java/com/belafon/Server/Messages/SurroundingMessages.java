@@ -4,17 +4,29 @@ import com.belafon.Game.Maps.Place.Place;
 import com.belafon.Game.Maps.Resources.Resource;
 import com.belafon.Game.Maps.Weather.Weather;
 
-public abstract  class SurroundingMessages {
-    public abstract void setPartOfDay(String partOfDay);
-    public abstract void setWeather(Weather weather);
-    public abstract void setClouds(Place place);
-    public abstract void setPosition(Place position);
-	public abstract void setInfoAboutPlace(Place place);
-	public abstract void setInfoAboutSurrounding(Place position);
-    public abstract void setResources(Place position);
-	public abstract void setResource(Resource resource);
-	public abstract void setResourceNotFound(Resource resource);
-	public abstract void setItems(Place position);
-	public abstract void setInfoAboutSurroundingLookAround(Place position);
-	public abstract void setTypeOfPlaceInfoDrawableSound(Place position);
+public interface SurroundingMessages {
+    public default void setPartOfDay(String partOfDay) {
+    }
+    public default void setWeather(Weather weather) {
+    }
+    public default void setClouds(Place place) {
+    }
+    public default void setPosition(Place position) {
+	}
+	public default void setInfoAboutPlace(Place place){
+	}
+	public default void setInfoAboutSurrounding(Place position){
+	}
+    public default void setResources(Place position) {
+	}
+	public default void setResource(Resource resource){
+	}
+	public default void setResourceNotFound(Resource resource){
+	}
+	public default void setItems(Place position){
+	}
+	public default void setInfoAboutSurroundingLookAround(Place position) {
+	}
+	public default void setTypeOfPlaceInfoDrawableSound(Place position) {
+	}
 }

@@ -17,7 +17,7 @@ public class ListOfAllTypesOfPlaces {
             new String[]{"forest_leafy_1", "forest_leafy_2", "forest_leafy_3"}, 
             new String[]{"forest_leafy_1", "forest_leafy_2", "forest_leafy_3"}, new int[]{0, 1, 2, 3},
             new TypeOfResourceOfTypeOfPlace[]{ 
-                new TypeOfResourceOfTypeOfPlace(50, 100, ListOfAllTypesOfResources.typesOfResources.get(NamesOfTypesOfResources.blueberry)), 
+                new TypeOfResourceOfTypeOfPlace(50, 100, ListOfAllTypesOfResources.typesOfResources.get(NamesOfTypesOfResources.blueberry)),
                 new TypeOfResourceOfTypeOfPlace(50, 100, ListOfAllTypesOfResources.typesOfResources.get(NamesOfTypesOfResources.mushrooms)), 
                 new TypeOfResourceOfTypeOfPlace(100, 100, ListOfAllTypesOfResources.typesOfResources.get(NamesOfTypesOfResources.treeOak))
             }, 

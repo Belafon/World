@@ -3,13 +3,14 @@ package com.belafon.Game.Items;
 import com.belafon.Game.Items.TypeItem.TypeItem;
 import com.belafon.Game.Maps.Place.UnboundedPlace;
 import com.belafon.Game.ObjectsMemory.Visible;
+
 import com.belafon.Game.World;
 import com.belafon.Game.Calendar.Events.Event;
 import com.belafon.Game.Calendar.Events.EventItemChange;
 import com.belafon.Game.Creatures.Creature;
 import com.belafon.Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequirement;
 
-public class Item implements Visible {
+public class Item extends Visible {
     public static final BehavioursPossibleRequirement REQUIREMENT = new BehavioursPossibleRequirement(){};
     public final int id;
     public final TypeItem type;
@@ -46,4 +47,5 @@ public class Item implements Visible {
     public BehavioursPossibleRequirement[] getBehavioursPossibleRequirementType() {
         return new BehavioursPossibleRequirement[]{type, REQUIREMENT};
     }
+
 }
