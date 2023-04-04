@@ -5,6 +5,7 @@ import com.belafon.Game.Creatures.Inventory.Inventory;
 import com.belafon.Game.Creatures.Inventory.PlayersGear;
 import com.belafon.Game.Items.ListOfAllItemTypes;
 import com.belafon.Game.Items.ItemsSpecialStats.SpecialFoodsProperties;
+import com.belafon.Game.Maps.Map;
 import com.belafon.Game.Maps.Place.Place;
 import com.belafon.Server.Client;
 import com.belafon.Game.Items.Types.Food;
@@ -20,14 +21,22 @@ public class Player extends Creature {
         //super(position, client.name, game, id);
     	setAbilityCondition(0, 0, 300, 600, 100, 0, 100);
         setInventory();
-        
+        sendInfoAboutMaps();
     }
-	@Override
+
+    private void sendInfoAboutMaps() {
+        for (Map map : game.maps.maps) {
+            writer.surrounding.setNewMap(map.hashCode(), map.sizeX, map.sizeY);
+        }
+    }
+    @Override
 	protected void setInventory() {
 		inventory = new Inventory(new PlayersGear(), this);
 	}
     public void gameStart() {
-        inventory.addItem(new Food(game, 0, 100, new SpecialFoodsProperties[]{}, ListOfAllItemTypes.foodTypes.get(NamesOfFoodItemTypes.apple)));
+        inventory.addItem(new Food(game, 0, 100, new SpecialFoodsProperties[] {},
+                ListOfAllItemTypes.foodTypes.get(NamesOfFoodItemTypes.apple)));
+        
         client.writer.surrounding.setInfoAboutSurrounding(position);
         //setBehaviour(new Move(game, this, game.maps.maps[0].places[1][1]));
     }
