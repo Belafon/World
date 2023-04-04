@@ -20,7 +20,7 @@ public class ChatListenerPanel extends JPanel {
         add(scrollPane, BorderLayout.CENTER);
 
         // Set the panel properties
-        setPreferredSize(new Dimension(400, 300));
+        setPreferredSize(new Dimension(400, 75));
     }
 
     public synchronized void addMessage(String message) {

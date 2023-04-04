@@ -14,7 +14,13 @@ public class ChatListener {
         String[] args = message.split(" ");
         panels.listenerPanel.addMessage(message);
 
-        listenBase(args);
+        try {
+            listenBase(args);
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
     }
 
     private void listenBase(String[] args) {
@@ -36,6 +42,13 @@ public class ChatListener {
     }
 
     private void listenMap(String[] args) {
+        switch (args[1]) {
+            case "look_arround" -> stats.maps.lookAroundSurroundingPlaces(args);
+            case "new_map" -> stats.maps.addMap(args);
+            case "weather" -> stats.maps.addMap(args);
+            case "clouds" -> stats.maps.addMap(args);
+            case "partOfDay" -> stats.maps.addMap(args);
+        }
     }
 
     private void listenPlayer(String[] args) {
@@ -75,6 +88,12 @@ public class ChatListener {
     }
 
     private void listenItem(String[] args) {
+        switch(args[1]){
+            case "addItem" -> stats.inventory.addItem(
+                Integer.parseInt(args[2]), args[3], args[4], Integer.parseInt(args[5]),
+                Integer.parseInt(args[6]), Integer.parseInt(args[7]), args);
+            case "removeItem" -> stats.inventory.removeItem(Integer.parseInt(args[2]));
+        }
     }
 
     private void listenServer(String[] args) {

@@ -11,8 +11,8 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
+
+import com.example.mainWindow.MainWindow;
 
 public class CreatureStatisticsPanel extends JPanel {
 
@@ -24,10 +24,7 @@ public class CreatureStatisticsPanel extends JPanel {
         setLayout(new GridBagLayout());
 
         // Create a titled border for the panel
-        Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
-        TitledBorder titledBorder = BorderFactory.createTitledBorder(border, "Body stats");
-        titledBorder.setTitleFont(new Font("Arial", Font.BOLD, 16));
-        setBorder(titledBorder);
+        MainWindow.setTitleBorder("Body stats", this);
 
         // Set up the GridBagConstraints object
         GridBagConstraints gbc = new GridBagConstraints();
