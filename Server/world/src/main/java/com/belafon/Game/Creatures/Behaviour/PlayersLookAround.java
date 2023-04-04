@@ -6,12 +6,14 @@ import com.belafon.Game.Maps.Place.Place;
 import com.belafon.likeliness.Dice;
 
 public class PlayersLookAround {
-    public static final int sizeOfView = 3;
+    public static final int radiusOfView = 3;
     // the middle is the position of the viewer, "Relative map"
-	private int[][] placesChangedAltitudes = new int[sizeOfView * 2 + 1][sizeOfView * 2 + 1];
-	private Place[][] visiblePlaces = new Place[sizeOfView * 2 + 1][sizeOfView * 2 + 1];
-	
-	/**
+	private int[][] placesChangedAltitudes = new int[radiusOfView * 2 + 1][radiusOfView * 2 + 1];
+	private Place[][] visiblePlaces = new Place[radiusOfView * 2 + 1][radiusOfView * 2 + 1];
+	private PlayersLookAround() {
+    }
+
+    /**
      * 
      * @param game
      * @param player
@@ -19,12 +21,12 @@ public class PlayersLookAround {
      * @return the map of places, which the player cen see
      */ 
 	public static String look(World game, Player player, Place viewersPosition) {
-		 // sledov�n� okoln�ch pol�, a� vzd�lenost 2 okolo hr��e
+		 // watching surrounding places in radius of 3
 		PlayersLookAround lookAround = new PlayersLookAround();
 		
 		// we will look to ring of places around the players place and get know visiable places
-		// it goes from the smallest ring around plazers place to bigger rings
-		for(int numberOfCircle = 1; numberOfCircle <= sizeOfView; numberOfCircle++) { 
+		// it goes from the smallest ring around players place to bigger rings
+		for(int numberOfCircle = 0; numberOfCircle <= radiusOfView; numberOfCircle++) { 
 
 			// we go through all of the places in the square
 			for(int x = viewersPosition.positionX - numberOfCircle; x <= viewersPosition.positionX + numberOfCircle; x++) {
@@ -32,8 +34,8 @@ public class PlayersLookAround {
                         + numberOfCircle; y++) {
 					
                     // cordinates of current place in relative map, squared map (size according sizeOfView), which middle point is viewers place 
-                    int xInRelativeMap = x - viewersPosition.positionX + sizeOfView;
-                    int yInRelativeMap = y - viewersPosition.positionY + sizeOfView;
+                    int xInRelativeMap = x - viewersPosition.positionX + radiusOfView;
+                    int yInRelativeMap = y - viewersPosition.positionY + radiusOfView;
                     
                     // we have to pay attention to bounderies of map
 					if(x >= 0 && y >= 0 && x < viewersPosition.map.sizeX && y < viewersPosition.map.sizeY) {
@@ -49,7 +51,7 @@ public class PlayersLookAround {
 								int yCoordinateOfObstructedPlace = 0;
 							
 							// this will get coordinates of place, which could stand in the view of player, so
-							// the player can't se this place (according the altitude of places)
+							// the player can't see this place (according the altitude of places)
 							if(biggerCoordinate == Math.abs(y - viewersPosition.positionY)) {
 								if(y - viewersPosition.positionY > 0)yCoordinateOfObstructedPlace = y - viewersPosition.positionY - 1;
 								else if(y - viewersPosition.positionY < 0) yCoordinateOfObstructedPlace = y - viewersPosition.positionY + 1;
@@ -63,12 +65,12 @@ public class PlayersLookAround {
 							// the smallest ring the players allways see, there is nothing else between the player and the place
 							// +sizeOfView because, the player sees +sizeOfView circle places around him
 							// [3,3] is actual position of viewer
-							if(numberOfCircle == 1) {
+							if(numberOfCircle == 1 || numberOfCircle == 0) {
 								lookAround.visiblePlaces[xInRelativeMap][yInRelativeMap] = viewersPosition.map.places[x][y];
 								lookAround.placesChangedAltitudes[xInRelativeMap][yInRelativeMap] = viewersPosition.map.places[x][y].altitude;
 							}else {
-								if(viewersPosition.map.places[x][y].altitude > lookAround.placesChangedAltitudes[xCoordinateOfObstructedPlace + sizeOfView][yCoordinateOfObstructedPlace + sizeOfView]
-										|| viewersPosition.altitude > lookAround.placesChangedAltitudes[xCoordinateOfObstructedPlace + sizeOfView][yCoordinateOfObstructedPlace + sizeOfView]) {
+								if(viewersPosition.map.places[x][y].altitude > lookAround.placesChangedAltitudes[xCoordinateOfObstructedPlace + radiusOfView][yCoordinateOfObstructedPlace + radiusOfView]
+										|| viewersPosition.altitude > lookAround.placesChangedAltitudes[xCoordinateOfObstructedPlace + radiusOfView][yCoordinateOfObstructedPlace + radiusOfView]) {
 									// player sees
 									lookAround.placesChangedAltitudes[xInRelativeMap][yInRelativeMap] = viewersPosition.map.places[x][y].altitude;
 									lookAround.visiblePlaces[xInRelativeMap][yInRelativeMap] = viewersPosition.map.places[x][y];
@@ -76,8 +78,8 @@ public class PlayersLookAround {
 									// player doesn't see
 									// relative altitude = altitude of higher place + altitude of higher place / 10 * distance from the player
 									lookAround.placesChangedAltitudes[xInRelativeMap][yInRelativeMap] = 
-											lookAround.placesChangedAltitudes[xCoordinateOfObstructedPlace + sizeOfView][yCoordinateOfObstructedPlace + sizeOfView]
-													+ 	(((lookAround.placesChangedAltitudes[xCoordinateOfObstructedPlace + sizeOfView][yCoordinateOfObstructedPlace + sizeOfView] / 10) * numberOfCircle));
+											lookAround.placesChangedAltitudes[xCoordinateOfObstructedPlace + radiusOfView][yCoordinateOfObstructedPlace + radiusOfView]
+													+ 	(((lookAround.placesChangedAltitudes[xCoordinateOfObstructedPlace + radiusOfView][yCoordinateOfObstructedPlace + radiusOfView] / 10) * numberOfCircle));
 									lookAround.visiblePlaces[xInRelativeMap][yInRelativeMap] = null;
 								}
 							}

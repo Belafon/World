@@ -100,5 +100,4 @@ public class ConditionPlayerMessages implements ConditionCreatureMessages {
     public void setSpeedOfRun(int speedOfRun) {
         sendMessage.sendLetter("player abilityCondition speedOfRun " + speedOfRun);
     }
-
 }
