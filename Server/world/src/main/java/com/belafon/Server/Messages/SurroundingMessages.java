@@ -1,8 +1,10 @@
 package com.belafon.Server.Messages;
 
+import com.belafon.Game.Maps.Map;
 import com.belafon.Game.Maps.Place.Place;
 import com.belafon.Game.Maps.Resources.Resource;
 import com.belafon.Game.Maps.Weather.Weather;
+import com.belafon.Game.ObjectsMemory.Visible;
 
 public interface SurroundingMessages {
     public default void setPartOfDay(String partOfDay) {
@@ -41,6 +43,12 @@ public interface SurroundingMessages {
     public default void setTypeOfPlaceInfoDrawableSound(Place position) {
     }
 
-    public default void setNewMap(int hashCode, int sizeX, int sizeY) {
+    public default void setNewMap(Map map, int sizeX, int sizeY) {
+    }
+
+    public default void addVisibleInSight(Visible value) {
+    }
+
+    public default void removeVisibleFromSight(Visible value) {
     }
 }

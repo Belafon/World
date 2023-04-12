@@ -59,7 +59,7 @@ public final class MessageSender {
                 return this;
             }
             public MessageSender build(){
-                if(server == null || surrounding == null || condition == null 
+                if(surrounding == null || condition == null 
                     || inventory == null || behavioursMessages == null
                     || itemVIsible == null || resourceVisible == null || creatureVisible == null)
                     throw new Error("MessageSender: some messages are missing at the end of initialization");

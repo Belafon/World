@@ -23,20 +23,24 @@ public class InventoryPlayerMessages implements InventoryMessages{
     }
 	@Override
     public void setAddItem(Item item) {
-		String nextValues = "";
-		if(item instanceof Food){
-            nextValues += ((Food) item).getFreshness() + " " + ((FoodTypeItem) item.type).getFilling() + " "
-                    + ((Food) item).getWarm();
+        sendMessage.sendLetter("item addItem " + item.id + " " + item.type.getClass().getSimpleName() + " "
+                + item.type.name + " " + item.type.regularWeight + " "
+                + item.type.visibility + " " + item.type.toss + " " + getItemPropertiesMessage(item));
+    }
+
+    public static StringBuilder getItemPropertiesMessage(Item item) {
+        StringBuilder nextValues = new StringBuilder();
+        if(item instanceof Food){
+            nextValues.append(((Food) item).getFreshness() + " " + ((FoodTypeItem) item.type).getFilling() + " "
+                    + ((Food) item).getWarm());
 		}else if(item instanceof Tool){
-			nextValues += ((Tool)item).getQuality();
+			nextValues.append(((Tool)item).getQuality());
 		}else if(item instanceof Clothes){
 
 		}else if(item instanceof QuestItem){
 
 		}
-        sendMessage.sendLetter("item addItem " + item.id + " " + item.type.getClass().getSimpleName() + " "
-                + item.type.name + " " + item.type.regularWeight + " "
-                + item.type.visibility + " " + item.type.toss + " " + nextValues);
+        return nextValues;
     }
 	@Override
 	public void setRemoveItem(Item item) {
