@@ -7,16 +7,19 @@ import com.belafon.Game.ObjectsMemory.Visible;
 
 public class Resource extends Visible {
     public volatile int durationOfFinding;
-    public final TypeOfResource typeOfResource;
+    public final TypeOfResource type;
     private volatile int amount; // 100 -> 100% of durationOfFinding, 100 -> regular amount
+    public final int id;
 
+    private static int nextId = 0;
     public Resource(TypeOfResource typeOfResource, int amount) {
-        this.typeOfResource = typeOfResource;
+        this.type = typeOfResource;
         this.amount = amount;
+        this.id = nextId++;
     }
 
-    public int getConspicuousness(){
-        return (typeOfResource.conspicuousness * amount) / 100;
+    public int getConspicuousness() {
+        return (type.conspicuousness * amount) / 100;
     }
 
     public void setAmount(int amount, UnboundedPlace place) {
@@ -27,7 +30,7 @@ public class Resource extends Visible {
             e.printStackTrace();
         }
     }
-    
+
     @Override
     public UnboundedPlace getLocation() {
         return null;
@@ -35,7 +38,7 @@ public class Resource extends Visible {
 
     @Override
     public BehavioursPossibleRequirement[] getBehavioursPossibleRequirementType() {
-        return new BehavioursPossibleRequirement[] { typeOfResource };
+        return new BehavioursPossibleRequirement[] { type };
     }
-    
+
 }
