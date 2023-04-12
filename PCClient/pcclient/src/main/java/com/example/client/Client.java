@@ -23,7 +23,7 @@ public class Client {
     public Client(Panels panels, Stats stats) {
         int port = 25555;
 
-        listener = new ChatListener(stats);
+        listener = new ChatListener(stats, panels);
 
         while (true) {
             try {
@@ -61,7 +61,7 @@ public class Client {
 					}
 
 					if(s != null) {
-                        listener.listen(s, panels);
+                        listener.listen(s);
 					}
 				}
 			}

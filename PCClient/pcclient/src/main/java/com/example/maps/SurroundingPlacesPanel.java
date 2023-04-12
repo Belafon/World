@@ -14,11 +14,9 @@ public class SurroundingPlacesPanel extends JPanel {
             PlayersPlaceInfoPanel placePanelInfoPanel) {
         MainWindow.setTitleBorder("Surrounding map", this);
 
-        
         this.setLayout(new GridLayout(2, 1));
         this.add(surroundingPlacesComponent);
         if(placePanelInfoPanel != null)
             this.add(placePanelInfoPanel);
-
     }
 }

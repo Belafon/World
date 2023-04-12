@@ -3,7 +3,8 @@ package com.example.inventory;
 import java.util.Hashtable;
 import java.util.Map;
 
-import com.example.inventory.Item.Food;
+import com.example.visibles.items.Item;
+import com.example.visibles.items.Item.Food;
 
 public class Inventory {
     public Map<Integer, Item> items = new Hashtable<>();

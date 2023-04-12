@@ -5,12 +5,14 @@ import com.example.Stats;
 
 public class ChatListener {
     private Stats stats;
+    private Panels panels;
 
-    public ChatListener(Stats stats) {
+    public ChatListener(Stats stats, Panels panels) {
         this.stats = stats;
+        this.panels = panels;
     }
 
-    public void listen(String message, Panels panels) {
+    public void listen(String message) {
         String[] args = message.split(" ");
         panels.listenerPanel.addMessage(message);
 
@@ -35,7 +37,14 @@ public class ChatListener {
     }
 
     private void listenSurrounding(String[] args) {
-
+        switch (args[1]) {
+            case "add_item_in_sight" -> stats.visibles.addItem(args, panels);
+            case "add_creature_in_sight" -> stats.visibles.addCreature(args, panels);
+            case "add_resource_in_sight" -> stats.visibles.addResource(args, panels);
+            case "remove_item_in_sight" -> stats.visibles.removeItem(args, panels);
+            case "remove_creature_in_sight" -> stats.visibles.removeCreature(args, panels);
+            case "remove_resource_in_sight" -> stats.visibles.removeResource(args, panels);
+        }
     }
 
     private void listenBehaviour(String[] args) {
