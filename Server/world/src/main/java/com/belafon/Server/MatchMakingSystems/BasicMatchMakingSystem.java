@@ -17,7 +17,7 @@ public class BasicMatchMakingSystem extends MatchMakingSystem {
     @Override
     public synchronized void addClient(Client client) {
         if(client.queueCondition != Condition.idle) return; 
-        client.player = new Player(client, game, "name", game.maps.maps[0].places[0][0], game.getCreatureId(), "");
+        client.player = new Player(client, game, "name", game.maps.maps[0].places[0][0], "");
         game.players.add(client.player);
         client.actualGame = game;
         if(numberOfPlayersToStart > numberOfPlayers + 1) setNumberOfPlayers(numberOfPlayers + 1);
