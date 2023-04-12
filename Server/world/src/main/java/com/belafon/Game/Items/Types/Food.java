@@ -7,6 +7,7 @@ import com.belafon.Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequire
 import com.belafon.Game.Items.Item;
 import com.belafon.Game.Items.ItemsSpecialStats.SpecialFoodsProperties;
 import com.belafon.Game.Items.TypeItem.FoodTypeItem;
+import com.belafon.Game.Maps.Place.UnboundedPlace;
 import com.belafon.Game.ObjectsMemory.ObjectsMemoryCell;
 import com.belafon.Game.ObjectsMemory.ItemsMemory.FoodItemsMemory;
 
@@ -20,8 +21,10 @@ public class Food extends Item{
     EventItemChange changeWarm;
     public final FoodItemsMemory memory = new FoodItemsMemory();
     public static final BehavioursPossibleRequirement REQUIREMENT = new BehavioursPossibleRequirement(){};
-	public Food(World game, int warm, int freshness, SpecialFoodsProperties[] specialProperties,  FoodTypeItem type) {
-        super(game, type);
+
+    public Food(World game, int warm, int freshness, SpecialFoodsProperties[] specialProperties,
+            FoodTypeItem type, UnboundedPlace position) {
+        super(game, type, position);
         this.setFreshness(freshness, game);
         this.setWarm(warm, game);
         this.specialProperties = new ArrayList<SpecialFoodsProperties>();
@@ -37,7 +40,7 @@ public class Food extends Item{
         memory.warm.add(new ObjectsMemoryCell<Integer>(game.time.getTime(), warm));
         this.warm = warm;
         if(warm > 0 && changeWarm == null){
-            changeWarm = new EventItemChange(game.time.getTime() + owner.getLocation().getTemperature(), game, this);
+            changeWarm = new EventItemChange(game.time.getTime() + getLocation().getTemperature(), game, this);
             game.calendar.add(changeWarm);
         }else if(warm == 0)changeWarm = null;
     }

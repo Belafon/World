@@ -3,6 +3,7 @@ package com.belafon.Game.Items.Types;
 import com.belafon.Game.World;
 import com.belafon.Game.Items.Item;
 import com.belafon.Game.Items.TypeItem.ClothesTypeItem;
+import com.belafon.Game.Maps.Place.UnboundedPlace;
 import com.belafon.Game.ObjectsMemory.ObjectsMemoryCell;
 import com.belafon.Game.ObjectsMemory.ItemsMemory.ClothesItemMemory;
 
@@ -10,8 +11,8 @@ public class Clothes extends Item{
     private int dirty;
     public final ClothesItemMemory memory = new ClothesItemMemory();
 
-    public Clothes(World game, ClothesTypeItem type, int dirty) {
-        super(game, type);
+    public Clothes(World game, ClothesTypeItem type, int dirty, UnboundedPlace position) {
+        super(game, type, position);
         this.dirty = dirty;
     }
 

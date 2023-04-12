@@ -20,10 +20,11 @@ public class Item extends Visible {
     private int weight;
 
     
-    public Item(World game, TypeItem type) {
+    public Item(World game, TypeItem type, UnboundedPlace location) {
         this.id = game.ItemId();
         this.type = type;
         this.weight = type.regularWeight;
+        this.location = location;
     }
     
     public int getWeight() {

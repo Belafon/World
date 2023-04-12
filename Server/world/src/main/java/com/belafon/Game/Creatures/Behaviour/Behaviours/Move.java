@@ -11,6 +11,7 @@ import com.belafon.Game.Creatures.Behaviour.BehaviourType;
 import com.belafon.Game.Creatures.Behaviour.BehaviourTypeBuilder;
 import com.belafon.Game.Creatures.Behaviour.BehaviourType.IngredientsCounts;
 import com.belafon.Game.Maps.Place.Place;
+import com.belafon.Game.Maps.Place.UnboundedPlace;
 
 public class Move extends Behaviour {
     public final Place destination;
@@ -26,17 +27,20 @@ public class Move extends Behaviour {
     public Move(World game, Creature creature, Place destination) {
         super(game, 0, 0, creature);
         this.destination = destination;
-        Place actualPlace = creature.getLocation();
-        Place place = actualPlace;
-        int x = place.positionX;
-        int y = place.positionY;
-        while(place != destination){
-            if(x < destination.positionX) x++;
-            else if(x > destination.positionX) x--;
-            if(y < destination.positionY) y++;
-            else if(y > destination.positionY) y--;
-            place = destination.map.places[x][y];
-            jurney.add(place);
+        UnboundedPlace unboundedPlace = creature.getLocation();
+        if(unboundedPlace instanceof Place place){
+            int x = place.positionX;
+            int y = place.positionY;
+            while(place != destination){
+                if(x < destination.positionX) x++;
+                else if(x > destination.positionX) x--;
+                if(y < destination.positionY) y++;
+                else if(y > destination.positionY) y--;
+                place = destination.map.places[x][y];
+                jurney.add(place);
+            }
+        } else {
+            // TODO
         }
     }
 
@@ -63,8 +67,11 @@ public class Move extends Behaviour {
 
     @Override
     public String canCreatureDoThis() {
-        if(destination.map != creature.getLocation().map)return "cant_find_the_way!_The_destination_is_not_in_this_map.";
-        return null;
+        if (creature.getLocation() instanceof Place place) {
+            if (destination.map != place.map)
+                return "cant_find_the_way!_The_destination_is_not_in_this_map.";
+        }
+        return null; // TODO
     }
     
     public int getDurationOfTravel(Creature creature) {
@@ -82,16 +89,21 @@ public class Move extends Behaviour {
 	} 
 
     private float getCurrentSpeed(Creature creature) {
-		Place nextPlace = jurney.get(currentPositionOfTravel);
-		
-		// influence by Object altitude;
-		int differenceOfAltitudes = nextPlace.altitude - creature.getLocation().altitude;
-		float averageRoadDegree = (float) Math.atan(((float)differenceOfAltitudes * 3f)/1000f);
-		float averageSpeed = (float) (6 * Math.exp(-(3/2) * Math.abs(Math.tan(averageRoadDegree + (1/20))))); // Tobler's hiking function
-		//averageSpeed *= (50/3); // translation killometers per hour to meters per minutes
-		//averageSpeed *= (3/5); // hiking through the nature out of the road (its more difficult) -> 
-		averageSpeed *= 10;
-		return averageSpeed;
+        if (creature.getLocation() instanceof Place place) {
+            Place nextPlace = jurney.get(currentPositionOfTravel);
+            
+            // influence by Object altitude;
+            int differenceOfAltitudes = nextPlace.altitude - place.altitude;
+            float averageRoadDegree = (float) Math.atan(((float)differenceOfAltitudes * 3f)/1000f);
+            float averageSpeed = (float) (6 * Math.exp(-(3/2) * Math.abs(Math.tan(averageRoadDegree + (1/20))))); // Tobler's hiking function
+            //averageSpeed *= (50/3); // translation killometers per hour to meters per minutes
+            //averageSpeed *= (3/5); // hiking through the nature out of the road (its more difficult) -> 
+            averageSpeed *= 10;
+            return averageSpeed;
+        } else {
+            // TODO
+        }
+        return 0f;
 	}
 
     @Override
