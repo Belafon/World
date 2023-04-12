@@ -40,9 +40,9 @@ public class FindConcreteResource extends Behaviour {
     @Override
     public void execute() {
         // 0 -> finds instantly p=1, -1 -> cant find, p=100/(x+100) p=0.5 -> x=100
-        durationOfFinding = -creature.abilityCondition.getVision() + creature.getLocation().getVisibility(); // for
-                                                                                                             // example
-                                                                                                             // fog ;
+        // getVisibility -> for example fog ;
+        durationOfFinding = -creature.abilityCondition.getVision() + creature.getLocation().getVisibility();
+        
         if (resource != null && resource.durationOfFinding != -1) {
             found = true;
 
@@ -51,16 +51,9 @@ public class FindConcreteResource extends Behaviour {
             // TODO possiable extension gauss function a*e^(-(x-posun_doprava)/2*const^2),
             // shift left by the durationOfFinding
         } else
-            durationOfFinding += getDurationOfFindingOfResourceWhichIsNotHere(creature.getLocation(), typeOfResource); // duration
-                                                                                                                       // of
-                                                                                                                       // when
-                                                                                                                       // Creature
-                                                                                                                       // finds
-                                                                                                                       // out
-                                                                                                                       // that,
-                                                                                                                       // there
-                                                                                                                       // is
-                                                                                                                       // nothing
+            durationOfFinding += getDurationOfFindingOfResourceWhichIsNotHere(creature
+                    .getLocation(), typeOfResource);
+        // duration of when Creature finds out that, there is nothing
         if (durationOfFinding < 0)
             durationOfFinding = 0;
         super.event = new EventBehaviour(game.time.getTime() + durationOfFinding, game, this);
@@ -92,7 +85,8 @@ public class FindConcreteResource extends Behaviour {
     }
 
     // TODO can not be called when addResource() is called
-    public static int getDurationOfFindingOfResourceWhichIsNotHere(Place place, TypeOfResource typeOfResource) {
+    public static int getDurationOfFindingOfResourceWhichIsNotHere(UnboundedPlace place,
+            TypeOfResource typeOfResource) {
         int sum = 0;
         int i = 0;
         int anonymConspicuousnessOfFindingResource = typeOfResource.conspicuousness / 2; // amount of it is 50
@@ -110,9 +104,8 @@ public class FindConcreteResource extends Behaviour {
      * @param place
      * @param resource
      * @throws Exception
-     * 
-     *                   this method sets duration of finding concrete resource in
-     *                   concrete place
+     * this method sets duration of finding concrete resource in
+     * concrete place
      */
     public static synchronized void setResourcesDurationOfFinding(UnboundedPlace place, Resource resource)
             throws Exception {

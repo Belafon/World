@@ -101,7 +101,8 @@ public class ActualCondition{
 			creature.abilityCondition.setHealth(creature.abilityCondition.getHealth() + hunger);
 			hunger = 0;
 		}
-		if(hunger != this.hunger)creature.writer.condition.setHunger(hunger);
+        if (hunger != this.hunger)
+            creature.writer.condition.setHunger(hunger);
         memory.addHunger(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), hunger));
 		this.hunger = hunger;
 	}
@@ -113,7 +114,8 @@ public class ActualCondition{
         
         if(bleeding > 100)bleeding = 100;
 		else if(bleeding < 0)bleeding = 0;
-		if(bleeding != this.bleeding)creature.writer.condition.setBleeding(bleeding);
+        if (bleeding != this.bleeding)
+            creature.writer.condition.setBleeding(bleeding);
         memory.addBleeding(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), bleeding));
 		this.bleeding = bleeding;
 	}
