@@ -1,5 +1,6 @@
 package com.belafon.Settings;
 
+
 import com.belafon.Server.Messages.BehavioursMessages;
 import com.belafon.Server.Messages.ConditionCreatureMessages;
 import com.belafon.Server.Messages.CreatureVisibleMessages;

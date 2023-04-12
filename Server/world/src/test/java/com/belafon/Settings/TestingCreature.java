@@ -6,9 +6,9 @@ import com.belafon.Game.Maps.Place.Place;
 
 public class TestingCreature extends Creature {
 
-    public TestingCreature(World game, String name, Place position, int id, 
+    public TestingCreature(World game, String name, Place position, 
         String appearence, int weight) {
-        super(game, name, position, id, appearence,
+        super(game, name, position, appearence,
             TestingMessages.createMessageSender(), weight);
             
     }
