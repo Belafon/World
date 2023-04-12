@@ -11,6 +11,7 @@ import com.belafon.Game.Creatures.Behaviour.BehaviourCondition;
 import com.belafon.Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequirement;
 import com.belafon.Game.Creatures.Condition.AbilityCondition;
 import com.belafon.Game.Maps.Place.Place;
+import com.belafon.Game.Maps.Place.UnboundedPlace;
 import com.belafon.Game.ObjectsMemory.ObjectsMemoryCell;
 import com.belafon.Game.ObjectsMemory.Visible;
 import com.belafon.Game.ObjectsMemory.CreaturesMemory.CreaturesMemory;
@@ -41,17 +42,21 @@ public abstract class Creature extends Visible {
 
     public final CreaturesMemory memory = new CreaturesMemory();
 
-    public Creature(World game, String name, Place position, int id, String appearence, MessageSender sendMessage,
+    private static int nextId = 0;
+
+    public Creature(World game, String name, Place position,
+            String appearence, MessageSender sendMessage,
             int weight) {
-        this.id = id;
+        this.id = nextId++;
         this.game = game;
+        this.writer = sendMessage;
+        setInventory();
         this.appearence = appearence;
         actualCondition = new ActualCondition(this);
         abilityCondition = new AbilityCondition(this, 100, 100, 100, 100, 100, 100, 100);
         behaviourCondition = new BehaviourCondition(this);
         this.position = position;
         this.name = name;
-        this.writer = sendMessage;
         this.weight = weight;
     }
 
@@ -92,7 +97,7 @@ public abstract class Creature extends Visible {
     }
 
     @Override
-    public Place getLocation() {
+    public UnboundedPlace getLocation() {
         return position;
     }
 
@@ -125,7 +130,7 @@ public abstract class Creature extends Visible {
      * 
      * @param value
      */
-    public void addVisibleObjects(Visible value) {
+    public void addVisibleObject(Visible value) {
         mutexCurrentlyVisibleObjects.lock();
         try {
             currentlyVisibleObjects.add(value);
@@ -137,6 +142,8 @@ public abstract class Creature extends Visible {
 
         value.addWatcher(this);
 
+        this.writer.surrounding.addVisibleInSight(value);
+
         for (BehavioursPossibleRequirement requirement : value.getBehavioursPossibleRequirementType()) {
             behaviourCondition.addBehavioursPossibleRequirement(requirement, value);
         }
@@ -146,6 +153,7 @@ public abstract class Creature extends Visible {
     public interface ActionGetCurremtlyObjectSpotted {
         void doJob(Set<Visible> visibleObjectSpotted);
     }
+
     public void getCurrentlyVisibleObjectSpotted(ActionGetCurremtlyObjectSpotted visibles) {
         mutexCurrentlyVisibleObjects.lock();
         try {
@@ -167,6 +175,8 @@ public abstract class Creature extends Visible {
                 value.getLocation(), this);
 
         value.removeWatcher(this);
+
+        this.writer.surrounding.removeVisibleFromSight(value);
 
         for (BehavioursPossibleRequirement requirement : value.getBehavioursPossibleRequirementType()) {
             behaviourCondition.addBehavioursPossibleRequirement(requirement, value);

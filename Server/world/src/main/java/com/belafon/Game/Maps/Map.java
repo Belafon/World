@@ -5,6 +5,8 @@ import com.belafon.Game.Maps.MapGenerators.MapGenerator;
 import com.belafon.Game.Maps.Place.Place;
 import com.belafon.Game.Maps.Weather.Sky;
 public class Map {
+    public final int id;
+    private static int nextId = 0;
     public final int sizeX;
     public final int sizeY;
     public final Place[][] places;
@@ -13,7 +15,9 @@ public class Map {
 
     }*/
     public World game;
-    public Map(int sizeX, int sizeY, MapGenerator mapGenerator, int directionOfWind, int strengthOfWind, World game){
+
+    public Map(int sizeX, int sizeY, MapGenerator mapGenerator, int directionOfWind, int strengthOfWind, World game) {
+        this.id = nextId++;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.game = game;
@@ -21,7 +25,8 @@ public class Map {
         sky = new Sky(mapGenerator.generateClouds(sizeX, sizeY), directionOfWind, strengthOfWind, this);
     }
 
-    public Map(int sizeX, int sizeY, MapGenerator mapGenerator){
+    public Map(int sizeX, int sizeY, MapGenerator mapGenerator) {
+        this.id = nextId++;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         places = mapGenerator.generateMap(sizeX, sizeY, this);
