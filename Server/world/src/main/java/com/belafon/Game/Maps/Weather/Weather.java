@@ -9,7 +9,7 @@ public class Weather {
     }
 
     public volatile int durationOfRain = 0;
-    private volatile int clouds;
+    private volatile int clouds = 0;
     private int weather = 0;
     public volatile int visibility = 0; // can be changed by fog for example
 

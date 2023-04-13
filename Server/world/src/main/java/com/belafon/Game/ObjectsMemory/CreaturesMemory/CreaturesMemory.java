@@ -29,6 +29,9 @@ public class CreaturesMemory {
     private final List<ObjectsMemoryCell<Integer>> weight = new ArrayList<>();
     public final ReentrantLock mutexWeight = new ReentrantLock();
 
+    private volatile int lastSizeOfClouds = 0;
+    private volatile int lastWeather = 0;
+
     public ObjectsMemoryCell<String> getName(int i) {
         mutexName.lock();
         try {
@@ -179,5 +182,20 @@ public class CreaturesMemory {
         }
     }
 
-    
+    public int getLastSizeOfClouds() {
+        return lastSizeOfClouds;
+    }
+
+    public void setLastSizeOfClouds(int lastSizeOfClouds) {
+        this.lastSizeOfClouds = lastSizeOfClouds;
+    }
+
+    public int getLastWeather() {
+        return lastWeather;
+    }
+
+    public void setLastWeather(int lastWeather) {
+        this.lastWeather = lastWeather;
+    }
+
 }

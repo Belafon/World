@@ -7,6 +7,7 @@ import com.belafon.Game.Maps.Place.UnboundedPlace;
 import com.belafon.Game.Maps.Resources.Resource;
 import com.belafon.Game.Maps.Weather.Weather;
 import com.belafon.Game.ObjectsMemory.Visible;
+import com.belafon.Game.Time.DailyLoop.NamePartOfDay;
 import com.belafon.Server.Messages.SurroundingMessages;
 import com.belafon.Server.SendMessage.PlayersMessageSender;
 import com.belafon.Game.Creatures.Creature;
@@ -21,8 +22,8 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
     }
 
     @Override
-    public void setPartOfDay(String partOfDay) {
-        sendMessage.sendLetter("map partOfDay " + partOfDay);
+    public void setPartOfDay(NamePartOfDay partOfDay) {
+        sendMessage.sendLetter("map partOfDay " + partOfDay.name());
     }
 
     @Override

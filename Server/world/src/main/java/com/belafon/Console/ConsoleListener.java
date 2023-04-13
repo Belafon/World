@@ -119,7 +119,7 @@ public class ConsoleListener implements Runnable{
 			default:
 				return;
 		}
-		ConsolePrint.success(log);
+		ConsolePrint.success("ConsoleListener", log);
 	}
     
 }

@@ -58,6 +58,7 @@ public abstract class Creature extends Visible {
         this.position = position;
         this.name = name;
         this.weight = weight;
+        game.creatures.add(this);
     }
 
     public void setAbilityCondition(int strength, int agility, int speed_of_walk, int speed_of_run, int hearing,

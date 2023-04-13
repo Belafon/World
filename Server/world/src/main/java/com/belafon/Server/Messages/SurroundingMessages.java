@@ -5,9 +5,10 @@ import com.belafon.Game.Maps.Place.Place;
 import com.belafon.Game.Maps.Resources.Resource;
 import com.belafon.Game.Maps.Weather.Weather;
 import com.belafon.Game.ObjectsMemory.Visible;
+import com.belafon.Game.Time.DailyLoop.NamePartOfDay;
 
 public interface SurroundingMessages {
-    public default void setPartOfDay(String partOfDay) {
+    public default void setPartOfDay(NamePartOfDay partOfDay) {
     }
 
     public default void setWeather(Weather weather) {

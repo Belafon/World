@@ -19,8 +19,8 @@ public class ConsolePrint {
     public static void gameInfo(String message){
         System.out.println(ConsoleColors.CYAN + message + ConsoleColors.RESET);
     }
-    public static void success(String message){
-        System.out.println(ConsoleColors.GREEN + message + ConsoleColors.RESET);
+    public static void success(String TAG, String message){
+        System.out.println(ConsoleColors.WHITE_BOLD + TAG + ": " + ConsoleColors.GREEN + message + ConsoleColors.RESET);
     }
 
     public static void new_message(String message, Client sender) {

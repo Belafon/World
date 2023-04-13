@@ -69,13 +69,13 @@ public class FindConcreteResource extends Behaviour {
     @Override
     public void cease() {
         if (found) {
-            ConsolePrint.success("Resource was found!!!");
+            ConsolePrint.success("FindConcreteResource", "Resource was found!!!");
             creature.memory.addVisibleObjectLostFromSight(
                     new ObjectsMemoryCell<Visible>(creature.game.time.getTime(), resource), resource.getLocation(),
                     creature);
             creature.writer.surrounding.setResource(resource);
         } else {
-            ConsolePrint.success("Ressource was NOT found!!!");
+            ConsolePrint.success("FindConcreteResource", "Ressource was NOT found!!!");
         }
     }
 

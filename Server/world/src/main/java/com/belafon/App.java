@@ -9,7 +9,7 @@ public class App {
 		ListOfAllTypesOfResources.setUpAllResources();
 		ListOfAllTypesOfPlaces.setUpAllTypesOfPlaces();
 		ListOfAllItemTypes.setUpItems();
-		new Thread(new Runnable(){
+	/* 	new Thread(new Runnable(){
 
 			@Override
 			public void run() {
@@ -24,7 +24,7 @@ public class App {
                 }
 			}
 			
-		}).start();
-		new Server();
+		}).start(); */
+        new Server();
 	}
 }
