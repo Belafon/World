@@ -54,9 +54,9 @@ public class ChatListener {
         switch (args[1]) {
             case "look_arround" -> stats.maps.lookAroundSurroundingPlaces(args);
             case "new_map" -> stats.maps.addMap(args);
-            case "weather" -> stats.maps.addMap(args);
-            case "clouds" -> stats.maps.addMap(args);
-            case "partOfDay" -> stats.maps.addMap(args);
+            case "weather" -> stats.maps.weather.setWeather(args);
+            case "clouds" -> stats.maps.weather.setClouds(args);
+            case "partOfDay" -> stats.maps.weather.setPartOfDay(args);
         }
     }
 

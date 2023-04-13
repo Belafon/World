@@ -43,7 +43,7 @@ public class ResourcesPanel extends VisiblesListPanel {
 
         public ResourceInfoPanel() {
             setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // arrange components in a vertical column
-            setBackground(Color.WHITE); // set background color of panel
+            setBackground(Color.lightGray); // set background color of panel
             name.setBackground(new Color(217, 203, 116)); // set background color of label
             description.setBackground(new Color(147, 212, 214));
             id.setBackground(new Color(245, 163, 106));

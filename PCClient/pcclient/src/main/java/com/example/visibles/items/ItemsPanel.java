@@ -44,13 +44,7 @@ public class ItemsPanel extends VisiblesListPanel{
 
         public ItemInfoPanel() {
             setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // arrange components in a vertical column
-            setBackground(Color.WHITE); // set background color of panel
-            name.setBackground(new Color(217, 203, 116)); // set background color of label
-            description.setBackground(new Color(147, 212, 214));
-            id.setBackground(new Color(245, 163, 106));
-            weight.setBackground(new Color(196, 233, 160));
-            visibility.setBackground(new Color(252, 175, 198));
-            toss.setBackground(new Color(203, 180, 223));
+            setBackground(Color.lightGray); // set background color of panel
 
             // add the labels to the panel
             add(name);

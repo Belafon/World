@@ -1,5 +1,7 @@
 package com.example;
 
+import javax.swing.JPanel;
+
 import com.example.bodyStats.CreatureStatisticsPanel;
 import com.example.client.chatListener.ChatListenerPanel;
 import com.example.mainWindow.MainWindow;
@@ -20,6 +22,7 @@ public class Panels {
     public final ItemsPanel visibleItems;
     public final CreaturesPanel visibleCreatures;
     public final ResourcesPanel visibleResources;
+    public final JPanel weatherPanel;
 
     public Panels(Stats stats) {
         this.bodyStatistics = new CreatureStatisticsPanel(stats.body);
@@ -28,5 +31,6 @@ public class Panels {
         this.visibleItems = new ItemsPanel();
         this.visibleCreatures = new CreaturesPanel();
         this.visibleResources = new ResourcesPanel();
+        this.weatherPanel = stats.maps.weather.getPanel();
     }
 }

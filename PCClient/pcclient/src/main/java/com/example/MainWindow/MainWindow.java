@@ -67,39 +67,40 @@ public class MainWindow extends JFrame {
 
     public void displayPanels(Panels panels) {
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
-        
-        // add the bodyStatistics and surroundingPlaces panels to the top row
-        JSplitPane topRow = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, panels.bodyStatistics, panels.surroundingPlaces);
+
+        // add the bodyStatistics, weatherPanel, and surroundingPlaces panels to the top row
+        JSplitPane topRow = new JSplitPane(JSplitPane.VERTICAL_SPLIT, panels.bodyStatistics, panels.weatherPanel);
         topRow.setDividerSize(4);
-    
-        // add the visibleItems panel to the top row next to the surroundingPlaces panel
-        JSplitPane leftSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, topRow, panels.visibleItems.getPanel());
+
+        JSplitPane topRightRow = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, topRow, panels.surroundingPlaces);
+        topRightRow.setDividerSize(4);
+
+        // add the visibleItems panel to the top row next to the weatherPanel
+        JSplitPane leftSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, topRightRow, panels.visibleItems.getPanel());
         leftSplit.setDividerSize(4);
-        
+
         // add the visibleResources panel and visibleCreatures panel to the right of visibleItems panel
         JSplitPane rightSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftSplit, panels.visibleResources.getPanel());
         rightSplit.setDividerSize(4);
         JSplitPane mainSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, rightSplit, panels.visibleCreatures.getPanel());
         mainSplit.setDividerSize(4);
-    
+
         // add the listenerPanel to the bottom row
         JSplitPane bottomRow = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, panels.listenerPanel, null);
         bottomRow.setDividerSize(0); // set the divider size to 0
-    
+
         // add the leftSplit and bottomRow panels to the mainSplit panel
         JSplitPane outerSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT, mainSplit, bottomRow);
         outerSplit.setDividerSize(4);
-        
+
         getContentPane().add(outerSplit);
         pack();
-    
+
         setWindowSize();
         setVisible(true);
+    
+        
     }
-    
-    
-    
-    
 
 
 

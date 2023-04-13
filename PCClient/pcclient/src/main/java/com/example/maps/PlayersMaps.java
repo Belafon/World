@@ -8,6 +8,7 @@ import com.example.maps.playersPlacePanels.PlacePanel;
 import com.example.maps.playersPlacePanels.PlayersPlaceEffect;
 import com.example.maps.playersPlacePanels.PlayersPlaceInfoPanel;
 import com.example.maps.playersPlacePanels.TypePlace;
+import com.example.maps.weather.Weather;
 
 public class PlayersMaps {
     private Hashtable<Integer, PlayersMap> maps = new Hashtable<>();
@@ -17,7 +18,7 @@ public class PlayersMaps {
 
     private PlacePanel selectedPlacePanel = null;
     private PlayersPlaceInfoPanel infoPlacePanel = new PlayersPlaceInfoPanel("", "", new ArrayList<>()); 
-
+    public final Weather weather = new Weather();
     public PlayersMaps() {
         surroundingMap = new SurroundingMap(infoPlacePanel);
     }
