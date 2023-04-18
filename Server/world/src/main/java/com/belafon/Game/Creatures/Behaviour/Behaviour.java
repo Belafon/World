@@ -8,6 +8,9 @@ import com.belafon.Game.Creatures.Creature;
 import com.belafon.Game.Creatures.Behaviour.BehaviourType.IngredientsCounts;
 import com.belafon.Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequirement;
 
+/**
+ * Represents some action, which can be executed by a creature.
+ */
 public abstract class Behaviour {
     protected World game;
     protected int duration;

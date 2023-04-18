@@ -6,6 +6,9 @@ import java.util.Set;
 
 import com.belafon.Game.Creatures.Behaviour.BehaviourType;
 
+/** 
+ * The child could be required for some behaviour execution. 
+*/
 public abstract class BehavioursPossibleRequirement {
     public Set<BehaviourType> behaviours = new HashSet<>();
 
