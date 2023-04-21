@@ -1,4 +1,4 @@
-package com.belafon.Console;
+package com.belafon.console;
 
 
 

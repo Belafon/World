@@ -1,4 +1,4 @@
-package com.belafon.Server;
+package com.belafon.server;
 
 
 import java.io.BufferedReader;
@@ -17,13 +17,12 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-
-import com.belafon.Console.ConsoleListener;
-import com.belafon.Console.ConsolePrint;
-import com.belafon.Game.Time.Clocks;
-import com.belafon.Game.World;
-import com.belafon.Server.MatchMakingSystems.BasicMatchMakingSystem;
-import com.belafon.Server.MatchMakingSystems.MatchMakingSystem;
+import com.belafon.console.ConsoleListener;
+import com.belafon.console.ConsolePrint;
+import com.belafon.server.matchMakingSystems.BasicMatchMakingSystem;
+import com.belafon.server.matchMakingSystems.MatchMakingSystem;
+import com.belafon.world.World;
+import com.belafon.world.time.Clocks;
 
 
 public class Server {

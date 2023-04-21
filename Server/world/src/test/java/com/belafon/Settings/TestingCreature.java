@@ -1,8 +1,8 @@
-package com.belafon.Settings;
+package com.belafon.settings;
 
-import com.belafon.Game.World;
-import com.belafon.Game.Creatures.Creature;
-import com.belafon.Game.Maps.Place.Place;
+import com.belafon.world.World;
+import com.belafon.world.creatures.Creature;
+import com.belafon.world.maps.place.Place;
 
 public class TestingCreature extends Creature {
 

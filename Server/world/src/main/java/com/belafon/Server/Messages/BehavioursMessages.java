@@ -1,6 +1,6 @@
-package com.belafon.Server.Messages;
+package com.belafon.server.messages;
 
-import com.belafon.Game.Creatures.Behaviour.BehaviourType;
+import com.belafon.world.creatures.behaviour.BehaviourType;
 
 public interface BehavioursMessages{
     public default void newFeasibleBehaviour(BehaviourType behaviourType) {

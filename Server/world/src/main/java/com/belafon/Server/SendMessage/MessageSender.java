@@ -1,13 +1,13 @@
-package com.belafon.Server.SendMessage;
+package com.belafon.server.sendMessage;
 
-import com.belafon.Server.Messages.BehavioursMessages;
-import com.belafon.Server.Messages.ConditionCreatureMessages;
-import com.belafon.Server.Messages.CreatureVisibleMessages;
-import com.belafon.Server.Messages.InventoryMessages;
-import com.belafon.Server.Messages.ItemVisibleMessages;
-import com.belafon.Server.Messages.ResourceVisibleMessages;
-import com.belafon.Server.Messages.ServerMessages;
-import com.belafon.Server.Messages.SurroundingMessages;
+import com.belafon.server.messages.BehavioursMessages;
+import com.belafon.server.messages.ConditionCreatureMessages;
+import com.belafon.server.messages.CreatureVisibleMessages;
+import com.belafon.server.messages.InventoryMessages;
+import com.belafon.server.messages.ItemVisibleMessages;
+import com.belafon.server.messages.ResourceVisibleMessages;
+import com.belafon.server.messages.ServerMessages;
+import com.belafon.server.messages.SurroundingMessages;
 
 public final class MessageSender {
     private MessageSender(){}

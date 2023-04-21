@@ -1,4 +1,4 @@
-package com.belafon.Server.SendMessage;
+package com.belafon.server.sendMessage;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -6,16 +6,16 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-import com.belafon.Console.ConsolePrint;
-import com.belafon.Server.Client;
-import com.belafon.Server.Messages.PlayerMessages.BehavioursPlayersMessages;
-import com.belafon.Server.Messages.PlayerMessages.ConditionPlayerMessages;
-import com.belafon.Server.Messages.PlayerMessages.CreatureVisiblePlayerMessages;
-import com.belafon.Server.Messages.PlayerMessages.InventoryPlayerMessages;
-import com.belafon.Server.Messages.PlayerMessages.ItemVisiblePlayerMessages;
-import com.belafon.Server.Messages.PlayerMessages.ResourceVisiblePlayerMessages;
-import com.belafon.Server.Messages.PlayerMessages.ServerPlayerMessages;
-import com.belafon.Server.Messages.PlayerMessages.SurroundingPlayerMessages;
+import com.belafon.console.ConsolePrint;
+import com.belafon.server.Client;
+import com.belafon.server.messages.playerMessages.BehavioursPlayersMessages;
+import com.belafon.server.messages.playerMessages.ConditionPlayerMessages;
+import com.belafon.server.messages.playerMessages.CreatureVisiblePlayerMessages;
+import com.belafon.server.messages.playerMessages.InventoryPlayerMessages;
+import com.belafon.server.messages.playerMessages.ItemVisiblePlayerMessages;
+import com.belafon.server.messages.playerMessages.ResourceVisiblePlayerMessages;
+import com.belafon.server.messages.playerMessages.ServerPlayerMessages;
+import com.belafon.server.messages.playerMessages.SurroundingPlayerMessages;
 
 /**
  * Devides messages from server to concrete client 

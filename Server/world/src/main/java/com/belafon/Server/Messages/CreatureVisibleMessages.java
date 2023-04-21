@@ -1,6 +1,6 @@
-package com.belafon.Server.Messages;
+package com.belafon.server.messages;
 
-import com.belafon.Game.Creatures.Creature;
+import com.belafon.world.creatures.Creature;
 
 public interface CreatureVisibleMessages{
     public default void setCurrentEnergyOutput(int currentEnergyOutput, Creature creature) {

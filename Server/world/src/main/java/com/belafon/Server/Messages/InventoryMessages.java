@@ -1,7 +1,7 @@
-package com.belafon.Server.Messages;
+package com.belafon.server.messages;
 
-import com.belafon.Game.Items.Types.*;
-import com.belafon.Game.Items.Item;
+import com.belafon.world.items.Item;
+import com.belafon.world.items.types.*;
 public interface InventoryMessages {
 
     public default void ClothesPutOn(Clothes clothes) {

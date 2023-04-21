@@ -1,6 +1,6 @@
-package com.belafon.Server.MatchMakingSystems;
+package com.belafon.server.matchMakingSystems;
 
-import com.belafon.Server.Client;
+import com.belafon.server.Client;
 
 public abstract class MatchMakingSystem {
     public volatile int numberOfPlayers; // in queue

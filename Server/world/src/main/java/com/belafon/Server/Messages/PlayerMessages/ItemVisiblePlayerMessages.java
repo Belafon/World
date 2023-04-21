@@ -1,7 +1,7 @@
-package com.belafon.Server.Messages.PlayerMessages;
+package com.belafon.server.messages.playerMessages;
 
-import com.belafon.Server.Messages.ItemVisibleMessages;
-import com.belafon.Server.SendMessage.PlayersMessageSender;
+import com.belafon.server.messages.ItemVisibleMessages;
+import com.belafon.server.sendMessage.PlayersMessageSender;
 
 public class ItemVisiblePlayerMessages implements ItemVisibleMessages {
     public final PlayersMessageSender sender;

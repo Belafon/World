@@ -1,9 +1,9 @@
-package com.belafon.Server.MatchMakingSystems;
+package com.belafon.server.matchMakingSystems;
 
-import com.belafon.Server.Client;
-import com.belafon.Server.Server;
-import com.belafon.Game.World;
-import com.belafon.Game.Creatures.Player;
+import com.belafon.server.Client;
+import com.belafon.server.Server;
+import com.belafon.world.World;
+import com.belafon.world.creatures.Player;
 
 /**
  * This dumb matchmaking system just waits until there is at least 

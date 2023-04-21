@@ -1,9 +1,9 @@
 package com.belafon;
 
-import com.belafon.Game.Items.ListOfAllItemTypes;
-import com.belafon.Game.Maps.Place.ListOfAllTypesOfPlaces;
-import com.belafon.Game.Maps.Resources.ListOfAllTypesOfResources;
-import com.belafon.Server.Server;
+import com.belafon.server.Server;
+import com.belafon.world.items.ListOfAllItemTypes;
+import com.belafon.world.maps.place.ListOfAllTypesOfPlaces;
+import com.belafon.world.maps.resources.ListOfAllTypesOfResources;
 
 public class App {
 	public static void main(String[] args) {

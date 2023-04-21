@@ -1,15 +1,15 @@
-package com.belafon.Settings;
+package com.belafon.settings;
 
 
-import com.belafon.Server.Messages.BehavioursMessages;
-import com.belafon.Server.Messages.ConditionCreatureMessages;
-import com.belafon.Server.Messages.CreatureVisibleMessages;
-import com.belafon.Server.Messages.InventoryMessages;
-import com.belafon.Server.Messages.ItemVisibleMessages;
-import com.belafon.Server.Messages.ResourceVisibleMessages;
-import com.belafon.Server.Messages.ServerMessages;
-import com.belafon.Server.Messages.SurroundingMessages;
-import com.belafon.Server.SendMessage.MessageSender;
+import com.belafon.server.messages.BehavioursMessages;
+import com.belafon.server.messages.ConditionCreatureMessages;
+import com.belafon.server.messages.CreatureVisibleMessages;
+import com.belafon.server.messages.InventoryMessages;
+import com.belafon.server.messages.ItemVisibleMessages;
+import com.belafon.server.messages.ResourceVisibleMessages;
+import com.belafon.server.messages.ServerMessages;
+import com.belafon.server.messages.SurroundingMessages;
+import com.belafon.server.sendMessage.MessageSender;
 
 public class TestingMessages
     implements BehavioursMessages, ConditionCreatureMessages,

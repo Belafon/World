@@ -1,12 +1,12 @@
-package com.belafon.Server;
+package com.belafon.server;
 
 
 import java.net.Socket;
 
-import com.belafon.Game.Creatures.Player;
-import com.belafon.Game.World;
-import com.belafon.Server.MatchMakingSystems.MatchMakingSystem;
-import com.belafon.Server.SendMessage.PlayersMessageSender;
+import com.belafon.server.matchMakingSystems.MatchMakingSystem;
+import com.belafon.server.sendMessage.PlayersMessageSender;
+import com.belafon.world.World;
+import com.belafon.world.creatures.Player;
 
 public class Client {
 	// object which is used to send new messages to the client

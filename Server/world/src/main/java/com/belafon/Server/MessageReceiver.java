@@ -1,4 +1,4 @@
-package com.belafon.Server;
+package com.belafon.server;
 
 
 import java.io.BufferedReader;
@@ -8,8 +8,8 @@ import java.net.Socket;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import com.belafon.Console.ConsolePrint;
-import com.belafon.Server.MatchMakingSystems.MatchMakingSystem;
+import com.belafon.console.ConsolePrint;
+import com.belafon.server.matchMakingSystems.MatchMakingSystem;
 
 public class MessageReceiver implements Runnable{
     public Client client;

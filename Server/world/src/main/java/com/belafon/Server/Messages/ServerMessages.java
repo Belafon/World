@@ -1,4 +1,4 @@
-package com.belafon.Server.Messages;
+package com.belafon.server.messages;
 
 public interface ServerMessages {
     public default void setNumberOfPlayersInQueue(int number) {

@@ -1,8 +1,8 @@
-package com.belafon.Server.Messages.PlayerMessages;
+package com.belafon.server.messages.playerMessages;
 
-import com.belafon.Game.Creatures.Behaviour.BehaviourType;
-import com.belafon.Server.Messages.BehavioursMessages;
-import com.belafon.Server.SendMessage.PlayersMessageSender;
+import com.belafon.server.messages.BehavioursMessages;
+import com.belafon.server.sendMessage.PlayersMessageSender;
+import com.belafon.world.creatures.behaviour.BehaviourType;
 
 public class BehavioursPlayersMessages implements BehavioursMessages{
     public final PlayersMessageSender sendMessage;

@@ -1,7 +1,7 @@
-package com.belafon.Server.Messages.PlayerMessages;
+package com.belafon.server.messages.playerMessages;
 
-import com.belafon.Server.Messages.ServerMessages;
-import com.belafon.Server.SendMessage.PlayersMessageSender;
+import com.belafon.server.messages.ServerMessages;
+import com.belafon.server.sendMessage.PlayersMessageSender;
 
 public class ServerPlayerMessages implements ServerMessages{
   public final PlayersMessageSender sendMessage;

@@ -1,18 +1,18 @@
-package com.belafon.Server.Messages.PlayerMessages;
+package com.belafon.server.messages.playerMessages;
 
-import com.belafon.Game.Maps.Map;
-import com.belafon.Game.Maps.Place.ItemPlace;
-import com.belafon.Game.Maps.Place.Place;
-import com.belafon.Game.Maps.Place.UnboundedPlace;
-import com.belafon.Game.Maps.Resources.Resource;
-import com.belafon.Game.Maps.Weather.Weather;
-import com.belafon.Game.ObjectsMemory.Visible;
-import com.belafon.Game.Time.DailyLoop.NamePartOfDay;
-import com.belafon.Server.Messages.SurroundingMessages;
-import com.belafon.Server.SendMessage.PlayersMessageSender;
-import com.belafon.Game.Creatures.Creature;
-import com.belafon.Game.Creatures.Behaviour.PlayersLookAround;
-import com.belafon.Game.Items.Item;
+import com.belafon.server.messages.SurroundingMessages;
+import com.belafon.server.sendMessage.PlayersMessageSender;
+import com.belafon.world.creatures.Creature;
+import com.belafon.world.creatures.behaviour.PlayersLookAround;
+import com.belafon.world.items.Item;
+import com.belafon.world.maps.Map;
+import com.belafon.world.maps.place.ItemPlace;
+import com.belafon.world.maps.place.Place;
+import com.belafon.world.maps.place.UnboundedPlace;
+import com.belafon.world.maps.resources.Resource;
+import com.belafon.world.maps.weather.Weather;
+import com.belafon.world.objectsMemory.Visible;
+import com.belafon.world.time.DailyLoop.NamePartOfDay;
 
 public class SurroundingPlayerMessages implements SurroundingMessages {
     public final PlayersMessageSender sendMessage;

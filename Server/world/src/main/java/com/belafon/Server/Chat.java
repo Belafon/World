@@ -1,4 +1,4 @@
-package com.belafon.Server;
+package com.belafon.server;
 
 
 public class Chat {

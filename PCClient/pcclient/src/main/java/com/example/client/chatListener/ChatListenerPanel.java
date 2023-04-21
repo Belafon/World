@@ -19,7 +19,6 @@ public class ChatListenerPanel extends JPanel {
         scrollPane = new JScrollPane(messageList);
         add(scrollPane, BorderLayout.CENTER);
 
-        // Set the panel properties
         setPreferredSize(new Dimension(400, 75));
     }
 

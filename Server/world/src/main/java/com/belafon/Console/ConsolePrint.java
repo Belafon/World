@@ -1,7 +1,7 @@
-package com.belafon.Console;
+package com.belafon.console;
 
 
-import com.belafon.Server.Client;
+import com.belafon.server.Client;
 
 public class ConsolePrint {
     public static void error_small(String message){

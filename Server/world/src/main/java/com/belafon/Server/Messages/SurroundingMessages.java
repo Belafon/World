@@ -1,12 +1,12 @@
-package com.belafon.Server.Messages;
+package com.belafon.server.messages;
 
-import com.belafon.Game.Maps.Map;
-import com.belafon.Game.Maps.Place.Place;
-import com.belafon.Game.Maps.Place.UnboundedPlace;
-import com.belafon.Game.Maps.Resources.Resource;
-import com.belafon.Game.Maps.Weather.Weather;
-import com.belafon.Game.ObjectsMemory.Visible;
-import com.belafon.Game.Time.DailyLoop.NamePartOfDay;
+import com.belafon.world.maps.Map;
+import com.belafon.world.maps.place.Place;
+import com.belafon.world.maps.place.UnboundedPlace;
+import com.belafon.world.maps.resources.Resource;
+import com.belafon.world.maps.weather.Weather;
+import com.belafon.world.objectsMemory.Visible;
+import com.belafon.world.time.DailyLoop.NamePartOfDay;
 
 public interface SurroundingMessages {
     public default void setPartOfDay(NamePartOfDay partOfDay) {

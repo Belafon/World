@@ -1,8 +1,8 @@
-package com.belafon.Server.Messages.PlayerMessages;
+package com.belafon.server.messages.playerMessages;
 
-import com.belafon.Game.Creatures.Condition.Knowledge.Knowledge;
-import com.belafon.Server.Messages.ConditionCreatureMessages;
-import com.belafon.Server.SendMessage.PlayersMessageSender;
+import com.belafon.server.messages.ConditionCreatureMessages;
+import com.belafon.server.sendMessage.PlayersMessageSender;
+import com.belafon.world.creatures.condition.knowledge.Knowledge;
 
 public class ConditionPlayerMessages implements ConditionCreatureMessages {
     public final PlayersMessageSender sendMessage;

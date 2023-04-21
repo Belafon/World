@@ -1,8 +1,8 @@
-package com.belafon.Server.Messages.PlayerMessages;
+package com.belafon.server.messages.playerMessages;
 
-import com.belafon.Game.Creatures.Creature;
-import com.belafon.Server.Messages.CreatureVisibleMessages;
-import com.belafon.Server.SendMessage.PlayersMessageSender;
+import com.belafon.server.messages.CreatureVisibleMessages;
+import com.belafon.server.sendMessage.PlayersMessageSender;
+import com.belafon.world.creatures.Creature;
 
 public class CreatureVisiblePlayerMessages implements CreatureVisibleMessages {
     public final PlayersMessageSender sendMessage;

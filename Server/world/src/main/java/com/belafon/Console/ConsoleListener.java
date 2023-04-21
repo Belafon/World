@@ -1,14 +1,14 @@
-package com.belafon.Console;
+package com.belafon.console;
 
 import java.util.Scanner;
 
-import com.belafon.Game.World;
-import com.belafon.Game.Creatures.Player;
-import com.belafon.Game.Creatures.Behaviour.Behaviours.Move;
-import com.belafon.Game.Maps.Map;
-import com.belafon.Game.Maps.Resources.ListOfAllTypesOfResources;
-import com.belafon.Game.Maps.Resources.ListOfAllTypesOfResources.NamesOfTypesOfResources;
-import com.belafon.Server.Server;
+import com.belafon.server.Server;
+import com.belafon.world.World;
+import com.belafon.world.creatures.Player;
+import com.belafon.world.creatures.behaviour.behaviours.Move;
+import com.belafon.world.maps.Map;
+import com.belafon.world.maps.resources.ListOfAllTypesOfResources;
+import com.belafon.world.maps.resources.ListOfAllTypesOfResources.NamesOfTypesOfResources;
 
 /**
  * Handles console inputs from server provider.

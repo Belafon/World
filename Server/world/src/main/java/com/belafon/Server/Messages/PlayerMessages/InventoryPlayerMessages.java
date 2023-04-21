@@ -1,10 +1,10 @@
-package com.belafon.Server.Messages.PlayerMessages;
+package com.belafon.server.messages.playerMessages;
 
-import com.belafon.Server.Messages.InventoryMessages;
-import com.belafon.Server.SendMessage.PlayersMessageSender;
-import com.belafon.Game.Items.Types.*;
-import com.belafon.Game.Items.Item;
-import com.belafon.Game.Items.TypeItem.FoodTypeItem;
+import com.belafon.server.messages.InventoryMessages;
+import com.belafon.server.sendMessage.PlayersMessageSender;
+import com.belafon.world.items.Item;
+import com.belafon.world.items.typeItem.FoodTypeItem;
+import com.belafon.world.items.types.*;
 
 public class InventoryPlayerMessages implements InventoryMessages{
     public final PlayersMessageSender sendMessage;
