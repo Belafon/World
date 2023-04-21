@@ -1,10 +1,19 @@
 package com.example.visibles;
 
+import com.example.visibles.resources.ResourceTypes.ResourceType;
+
 public class Resource extends Visible {
-    final int id;
-    public Resource(String name, int id) {
-        super(name);
+    private final int id;
+    private final ResourceType type;
+    private final int mass;
+    public Resource(int id, ResourceType type, int mass) {
+        super(type.name());
+        this.type = type;
         this.id = id;
+        this.mass = mass;
+        if(mass >= type.masses().length)
+            throw new IllegalArgumentException(
+                "Resource: unsupported mass number: " + mass);
     }
 
     @Override
@@ -17,11 +26,11 @@ public class Resource extends Visible {
 	}
 
     public String getDescription() {
-        return null;
+        return type.description();
     }
 
     public String getMass() {
-        return null;
+        return type.masses()[mass];
     }
 
 }

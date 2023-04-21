@@ -7,10 +7,10 @@ import javax.swing.SwingUtilities;
 
 public class BodyStat {
     private final String name;
-    private String value;
+    private int value;
     private JList<BodyStat> list;
 
-    public BodyStat(String name, String value) {
+    public BodyStat(String name, int value) {
         this.name = name;
         this.value = value;
     }
@@ -19,8 +19,8 @@ public class BodyStat {
         return name;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setValue(String value) throws NumberFormatException {
+        this.value = Integer.parseInt(value);
         try {
             SwingUtilities.invokeAndWait(new Runnable() {
                 public void run() {       
@@ -32,7 +32,7 @@ public class BodyStat {
         }
     }
 
-    public String getValue() {
+    public int getValue() {
         return value;
     }
 

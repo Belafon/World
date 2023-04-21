@@ -68,7 +68,6 @@ public class WeatherPanel {
             this.lastClicked = lastClicked;
         }
 
-
         @Override
         public void mouseClicked(MouseEvent e) {
             JLabel label = (JLabel) e.getSource();

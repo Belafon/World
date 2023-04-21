@@ -29,7 +29,7 @@ public class GenerateVisibles {
         Resource mushrooms = place.addResource(
                 ListOfAllTypesOfResources.typesOfResources
                         .get(ListOfAllTypesOfResources.NamesOfTypesOfResources.mushrooms),
-                10);
+                3);
 
         synchronized (game.players) {
             for (Player player : game.players) {

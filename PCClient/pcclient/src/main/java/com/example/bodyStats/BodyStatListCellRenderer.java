@@ -7,6 +7,9 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
+/**
+ * Sets properties to Label of single BodyStat
+ */
 class BodyStatListCellRenderer extends JLabel implements ListCellRenderer<BodyStat> {
 
     public BodyStatListCellRenderer() {

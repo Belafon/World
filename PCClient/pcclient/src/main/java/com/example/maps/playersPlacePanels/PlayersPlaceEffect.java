@@ -5,6 +5,9 @@ import java.util.Map;
 
 import javax.swing.JComponent;
 
+/** 
+ * All possible place effects and their informations are held here 
+ */
 public class PlayersPlaceEffect {
     public final static Map<String, PlayersPlaceEffect> allPlaceEffects;
     public final PlaceEffectName name;

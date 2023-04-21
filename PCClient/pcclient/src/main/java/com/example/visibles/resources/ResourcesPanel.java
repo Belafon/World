@@ -26,13 +26,14 @@ public class ResourcesPanel extends VisiblesListPanel {
 
     public void selectVisiblePanel(VisiblePanel visiblePanel) {
         if (selectedVisiblePanel != null) {
-            selectedVisiblePanel.getTitlePanel().setBackground(null); // reset background color of previously selected
-                                                                      // visiblePanel
+            // reset background color of previously selected visiblePanel
+            selectedVisiblePanel.getTitlePanel().setBackground(null); 
         }
         selectedVisiblePanel = visiblePanel;
-        selectedVisiblePanel.getTitlePanel().setBackground(new Color(180, 180, 180)); // set background color of
-                                                                                      // selected visiblePanel
-        concreteInfoPanel.update((Resource) selectedVisiblePanel.getVisible()); // update item info panel with selected item
+        // set background color of selected visiblePanel
+        selectedVisiblePanel.getTitlePanel().setBackground(new Color(180, 180, 180)); 
+        // update item info panel with selected item
+        concreteInfoPanel.update((Resource) selectedVisiblePanel.getVisible()); 
     }
 
     private static final class ResourceInfoPanel extends JPanel {
@@ -42,14 +43,14 @@ public class ResourcesPanel extends VisiblesListPanel {
         private JLabel mass = new JLabel();
 
         public ResourceInfoPanel() {
-            setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // arrange components in a vertical column
-            setBackground(Color.lightGray); // set background color of panel
-            name.setBackground(new Color(217, 203, 116)); // set background color of label
+            // arrange components in a vertical column
+            setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); 
+            setBackground(Color.lightGray); 
+            name.setBackground(new Color(217, 203, 116)); 
             description.setBackground(new Color(147, 212, 214));
             id.setBackground(new Color(245, 163, 106));
             mass.setBackground(new Color(196, 233, 160));
 
-            // add the labels to the panel
             add(name);
             add(description);
             add(id);

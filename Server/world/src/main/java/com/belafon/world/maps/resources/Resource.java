@@ -41,4 +41,8 @@ public class Resource extends Visible {
         return new BehavioursPossibleRequirement[] { type };
     }
 
+    public int getAmount() {
+        return amount;
+    }
+
 }

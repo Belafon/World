@@ -129,7 +129,7 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
     }
 
     private StringBuilder getVisibleResourcePropertiesMessage(Resource resource) {
-        return new StringBuilder(resource.id + " " + resource.type.name);
+        return new StringBuilder(resource.id + " " + resource.type.name + " " + resource.getAmount());
     }
 
     private StringBuilder getVisibleCreaturePropertiesMessage(Creature creature) {

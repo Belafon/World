@@ -31,6 +31,8 @@ public abstract class VisiblesListPanel {
         JScrollPane scrollPane = new JScrollPane(visiblesList);
         scrollPane.setPreferredSize(new Dimension(200, 180));
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        // scroll without scrollbar displayied
         scrollPane.addMouseWheelListener(new MouseWheelListener() {
             @Override
             public void mouseWheelMoved(MouseWheelEvent e) {

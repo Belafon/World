@@ -30,8 +30,7 @@ public class CreaturesPanel extends VisiblesListPanel{
             // reset background color of previously selected visiblePanel
         }
         selectedVisiblePanel = visiblePanel;
-        selectedVisiblePanel.getTitlePanel().setBackground(new Color(180, 180, 180)); // set background color of
-                                                                                      // selected visiblePanel
+        selectedVisiblePanel.getTitlePanel().setBackground(new Color(180, 180, 180)); // set background color of selected visiblePanel
         concreteInfoPanel.update((Creature) selectedVisiblePanel.getVisible()); // update item info panel with selected item
     }
 

@@ -22,32 +22,33 @@ public class Weather {
         night, // 20.0 -> 400
         unknown
     }
+    private String[] cloudsNames = new String[]{
+        "cleare sky",
+        "cleare sky with few small clouds",
+        "sky with small clouds",
+        "slightly translucent",
+        "partly cloudy",
+        "cloudy",
+        "very cloudy",
+        "dark cloudy"
+    };
+
+    private String[] weatherNames = new String[]{
+        "idle",
+        "gentle rain",
+        "rain",
+        "heavy rain",
+        "storm"
+    };
 
     public void setClouds(String[] args) {
         clouds = Integer.parseInt(args[2]);
-        String cloudsTextDescription = switch (clouds) {
-            case 0 -> "cleare sky";
-            case 1 -> "cleare sky with few small clouds";
-            case 2 -> "sky with small clouds";
-            case 3 -> "slightly translucent";
-            case 4 -> "partly cloudy";
-            case 5 -> "cloudy";
-            case 6 -> "very cloudy";
-            case 7 -> "dark cloudy";
-            default -> throw new IllegalArgumentException("Unspported size of cloud");
-        };
+        String cloudsTextDescription = cloudsNames[clouds];
         panel.setClouds(cloudsTextDescription);
     }
     public void setWeather(String[] args) {
         weather = Integer.parseInt(args[2]);
-        String weatherTextDescription = switch(weather){
-            case 0 -> "idle";
-            case 1 -> "gentle rain";
-            case 2 -> "rain";
-            case 3 -> "heavy rain";
-            case 4 -> "storm";
-            default -> throw new IllegalArgumentException("unsupported weather");
-        };
+        String weatherTextDescription = weatherNames[weather];
         panel.setWeather(weatherTextDescription);
     }
 

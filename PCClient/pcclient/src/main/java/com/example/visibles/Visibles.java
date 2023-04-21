@@ -6,6 +6,7 @@ import com.example.Panels;
 import com.example.visibles.creatures.Creature;
 import com.example.visibles.items.Item;
 import com.example.visibles.items.Item.Food;
+import com.example.visibles.resources.ResourceTypes;
 
 public class Visibles {
     private final Hashtable<Integer, Item> items = new Hashtable<>();
@@ -60,7 +61,6 @@ public class Visibles {
             }
             case "itemPlace" -> {}
         }
-        // TODO: Create a new Creature object and add it to the client's view
         Creature creature = new Creature(name, id, appearance);
         panels.visibleCreatures.addVisibleTitlePanel(new VisiblePanel(creature));
 
@@ -69,10 +69,10 @@ public class Visibles {
     public void addResource(String[] args, Panels panels) {
         int id = Integer.parseInt(args[2]);
         String name = args[3];
-        Resource resource = new Resource(name, id);
+        var type = ResourceTypes.resorceTypes.get(name);
+        int mass = Integer.parseInt(args[4]);
+        Resource resource = new Resource(id, type, mass);
         panels.visibleResources.addVisibleTitlePanel(new VisiblePanel(resource));
-
-        // TODO: Create a new Resource object and add it to the client's view
     }
 
     public void removeItem(Item item) {
