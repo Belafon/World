@@ -39,4 +39,8 @@ public class Player extends Creature {
         client.writer.surrounding.setInfoAboutSurrounding(position);
         //setBehaviour(new Move(game, this, game.maps.maps[0].places[1][1]));
     }
+
+    public boolean isDisconnected() {
+        return client.isDisconnected();
+    }
 }

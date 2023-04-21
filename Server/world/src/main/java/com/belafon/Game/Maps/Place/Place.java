@@ -9,8 +9,6 @@ public class Place extends UnboundedPlace {
     public final Map map;
     public final int positionX;
     public final int positionY;
-    public String music;
-    public String picture;
     public int altitude;
 
     private static Map printNewPlaceOnlyOfOneMap;
@@ -23,8 +21,6 @@ public class Place extends UnboundedPlace {
         this.positionX = positionX;
         this.positionY = positionY;
         this.altitude = altitude;
-        music = typeOfPlace.getMusic();
-        picture = typeOfPlace.getPicture();
     }
 
     public int getTemperature() {

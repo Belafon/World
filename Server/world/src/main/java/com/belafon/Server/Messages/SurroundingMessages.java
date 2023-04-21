@@ -2,6 +2,7 @@ package com.belafon.Server.Messages;
 
 import com.belafon.Game.Maps.Map;
 import com.belafon.Game.Maps.Place.Place;
+import com.belafon.Game.Maps.Place.UnboundedPlace;
 import com.belafon.Game.Maps.Resources.Resource;
 import com.belafon.Game.Maps.Weather.Weather;
 import com.belafon.Game.ObjectsMemory.Visible;
@@ -23,10 +24,10 @@ public interface SurroundingMessages {
     public default void setInfoAboutPlace(Place place) {
     }
 
-    public default void setInfoAboutSurrounding(Place position) {
+    public default void setInfoAboutSurrounding(UnboundedPlace position) {
     }
 
-    public default void setResources(Place position) {
+    public default void setResources(UnboundedPlace position) {
     }
 
     public default void setResource(Resource resource) {
@@ -35,13 +36,13 @@ public interface SurroundingMessages {
     public default void setResourceNotFound(Resource resource) {
     }
 
-    public default void setItems(Place position) {
+    public default void setItems(UnboundedPlace position) {
     }
 
     public default void setInfoAboutSurroundingPlacesLookAround(Place position) {
     }
 
-    public default void setTypeOfPlaceInfoDrawableSound(Place position) {
+    public default void setTypeOfPlaceInfoDrawableSound(UnboundedPlace position) {
     }
 
     public default void setNewMap(Map map, int sizeX, int sizeY) {

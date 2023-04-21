@@ -41,4 +41,7 @@ public interface CreatureVisibleMessages{
 
     public default void setAttention(int attention, Creature creature) {
     }
+
+    public default void behaviourChanged(Creature creature) {
+    }
 }

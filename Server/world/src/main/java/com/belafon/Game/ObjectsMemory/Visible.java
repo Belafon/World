@@ -29,8 +29,9 @@ public abstract class Visible implements BehavioursPossibleIngredients{
             watchers.add(creature);
         }
     }
+
     public void removeWatcher(Creature creature) {
-        synchronized(watchers){
+        synchronized (watchers) {
             watchers.remove(creature);
         }
     }

@@ -13,7 +13,7 @@ public class Inventory {
     public volatile int totalWeight;
     public volatile int currentWeight;
 
-    private SpaceItem backSpace;
+    private final SpaceItem backSpace;
 
     public final Gear gear;
     public final Creature creature;
@@ -21,10 +21,10 @@ public class Inventory {
     public Inventory(Gear gear, Creature creature) {
         this.gear = gear;
         this.creature = creature;
-        backSpace =  new BuilderSpaceItem(creature.game,
+        backSpace = new BuilderSpaceItem(creature.game,
                 ListOfAllItemTypes.spaceItems.get(ListOfAllItemTypes.NamesOfSpaceItemTypes.back_space),
                 creature.getLocation())
-            .build(creature.game);
+                .build(creature.game);
     }
 
     public volatile Tool leftHand;
@@ -46,7 +46,7 @@ public class Inventory {
         if (item instanceof Tool tool) {
             if (tool.type instanceof ToolTypeItem toolType) {
                 for (ToolsUtilization toolsUtilization : toolType.toolsUtilizations) {
-                    creature.behaviourCondition.addBehavioursPossibleRequirement(toolsUtilization, item);
+                    creature.behaviourCondition.addBehavioursPossibleIngredient(toolsUtilization, item);
                 }
             }
         }

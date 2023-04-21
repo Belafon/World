@@ -6,12 +6,12 @@ import com.belafon.Game.Creatures.Inventory.Gear;
 import com.belafon.Game.Creatures.Inventory.Inventory;
 import com.belafon.Game.Creatures.Races.Animals.AnimalRaces.AnimalRace;
 import com.belafon.Game.Items.Types.Clothes;
-import com.belafon.Game.Maps.Place.Place;
+import com.belafon.Game.Maps.Place.UnboundedPlace;
 
 public class Animal extends Creature {
     public final AnimalRace race;
 
-    public Animal(World game, String name, Place position, String appearence,
+    public Animal(World game, String name, UnboundedPlace position, String appearence,
             int weight, AnimalRace race) {
         super(game, name, position, appearence, race.sendMessage, weight);
         this.race = race;

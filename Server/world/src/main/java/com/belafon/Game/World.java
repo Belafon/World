@@ -1,6 +1,8 @@
 package com.belafon.Game;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import com.belafon.Console.ConsolePrint;
 import com.belafon.Game.Creatures.Creature;
@@ -15,17 +17,21 @@ import com.belafon.Server.Server;
 import com.belafon.Game.Time.DailyLoop;
 import com.belafon.Game.Time.Time;
 import com.belafon.Game.Time.CalendaryLoop;
+import com.belafon.Game.Maps.GenerateVisibles;
 import com.belafon.Game.Maps.Maps;
+import com.belafon.Game.Maps.Place.Place;
+import com.belafon.Game.Maps.Place.UnboundedPlace;
 import com.belafon.Game.Maps.Resources.ListOfAllTypesOfResources;
 import com.belafon.Game.Maps.Resources.Resource;
 
 public class World implements Runnable {
     public volatile boolean isRunning = false;
     public final Server server;
-    public final ArrayList<Player> players = new ArrayList<Player>();
-    public final ArrayList<Creature> creatures = new ArrayList<Creature>();
+    public final VisibleIDs visibleIds = new VisibleIDs();
+    public final List<Player> players = Collections.synchronizedList(new ArrayList<Player>());
+    public final List<Creature> creatures = Collections.synchronizedList(new ArrayList<Creature>());
     public Time time;
-    public final CalendaryLoop loop = new CalendaryLoop(this);
+    public final CalendaryLoop calendarsLoop = new CalendaryLoop(this);
     public final Calendar calendar = new Calendar(this);
     public final DailyLoop dailyLoop = new DailyLoop(this);
     public final Maps maps = new Maps(this);
@@ -50,68 +56,17 @@ public class World implements Runnable {
 
         isRunning = true;
 
-        new Thread(loop).start();
+        new Thread(calendarsLoop).start();
 
         for (Player player : players)
             player.gameStart();
 
-        spawnMashrooms();
-        spawnDeer();
+        Place cornerPlace = maps.maps[0].places[0][0];
+        GenerateVisibles.spawnMashroomsAndAllCreaturesNotices(cornerPlace, this);
+        GenerateVisibles.spawnDeerAndAllCreaturesNotices(cornerPlace, this);
         for (int i = 0; i < 10; i++) {
-            spawnApple();
+            GenerateVisibles.spawnAppleAndAllCreaturesNotices(cornerPlace, this);
         }
-    }
-
-    private void spawnDeer() {
-        Animal deer = new Animal(this, "deer1", maps.maps[0].places[0][0],
-            "Nice brown wealthy deer", 5, AnimalRace.deer);
-        maps.maps[0].places[0][0].addCreature(deer);
-
-        for (Player player : players) {
-            player.addVisibleObject(deer);
-        }
-    }
-
-    private void spawnMashrooms() {
-        Resource mushrooms = maps.maps[0].places[0][0].addResource(
-                ListOfAllTypesOfResources.typesOfResources
-                        .get(ListOfAllTypesOfResources.NamesOfTypesOfResources.mushrooms),
-                newEventId);
-
-        for (Player player : players) {
-            player.addVisibleObject(mushrooms);
-        }
-    }
-
-    private void spawnApple() {
-        Food apple = new Food(this, 0, 0,
-                new SpecialFoodsProperties[0],
-                ListOfAllItemTypes.foodTypes.get(ListOfAllItemTypes.NamesOfFoodItemTypes.apple),
-                null);
-
-        maps.maps[0].places[0][0].addItem(apple);
-
-        for (Player player : players) {
-            player.addVisibleObject(apple);
-        }
-    }
-
-    private int newEventId = 0;
-
-    public int getNewEventId() {
-        return newEventId++;
-    }
-
-    private int nextCreatureId = 0;
-
-    public synchronized int getCreatureId() {
-        return nextCreatureId++;
-    }
-
-    private int nextItemId = 0;
-
-    public synchronized int ItemId() {
-        return nextItemId++;
     }
 
     private World() {
@@ -119,7 +74,32 @@ public class World implements Runnable {
         time = new Time(this, Server.clocks, dailyLoop);
     }
 
+    /**
+     * builder method for testing
+     */
     public static World testingWorld() {
         return new World();
+    }
+
+    /**
+     * Disconnects player from the game
+     */
+    public void disconnectPlayer() {
+        synchronized (players) {
+            for (Player player : players) {
+                if (!player.isDisconnected())
+                    return;
+            }
+        }
+
+        endTheWorld();
+    }
+
+    /**
+     * This ends the world. The calendar loop will stop.
+     */
+    private void endTheWorld() {
+        isRunning = false;
+        server.endTheWorld(this);
     }
 }

@@ -55,24 +55,26 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
     }
 
     @Override
-    public void setInfoAboutSurrounding(Place position) {
+    public void setInfoAboutSurrounding(UnboundedPlace position) {
         setTypeOfPlaceInfoDrawableSound(position);
-        setWeather(position.map.sky.getWeather(position.positionX, position.positionY));
-        setClouds(position);
-        setInfoAboutSurroundingPlacesLookAround(position);
+        if (position instanceof Place place) {
+            setWeather(place.map.sky.getWeather(place.positionX, place.positionY));
+            setClouds(place);
+            setInfoAboutSurroundingPlacesLookAround(place);
+        }
         setResources(position); // items which u can find
         setItems(position);
     }
 
     @Override
-    public void setResources(Place position) {
-        String message = "surrounding resources ";
+    public void setResources(UnboundedPlace position) {
+        StringBuilder message = new StringBuilder("surrounding resources");
         for (Resource resource : position.resourcesSorted)
             if (resource.durationOfFinding == 0)
-                message += resource.type.name;
+                message.append(" " + resource.type.name);
             else
                 break;
-        sendMessage.client.writer.sendLetter(message);
+        sendMessage.client.writer.sendLetter(message.toString());
     }
 
     @Override
@@ -86,12 +88,12 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
     }
 
     @Override
-    public void setItems(Place position) {
+    public void setItems(UnboundedPlace position) {
         // TODO fill setItems method
     }
 
     @Override
-    public void setTypeOfPlaceInfoDrawableSound(Place position) {
+    public void setTypeOfPlaceInfoDrawableSound(UnboundedPlace position) {
         sendMessage.sendLetter("soundDrawable " + position.music + " " + position.picture);
     }
 
@@ -101,40 +103,52 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
     }
 
     @Override
-    public void addVisibleInSight(Visible value) {
+    public void addVisibleInSight(Visible visible) {
         StringBuilder message = new StringBuilder("surrounding");
-        if (value instanceof Item item) {
+        if (visible instanceof Item item) {
             message.append(" add_item_in_sight "
-                + item.id + " " + item.type.getClass().getSimpleName() + " "
-                + item.type.name + " " + item.type.regularWeight + " "
-                + item.type.visibility + " " + item.type.toss + " "
-                + InventoryPlayerMessages.getItemPropertiesMessage(item));
-        } else if (value instanceof Creature creature) {
+                    + getVisibleItemPropertiesMessage(item));
+
+        } else if (visible instanceof Creature creature) {
             message.append(" add_creature_in_sight "
                     + getVisibleCreaturePropertiesMessage(creature));
 
-        } else if (value instanceof Resource resource) {
+        } else if (visible instanceof Resource resource) {
             message.append(" add_resource_in_sight "
                     + getVisibleResourcePropertiesMessage(resource));
         }
+        
         sendMessage.client.writer.sendLetter(message.toString());
     }
 
+    private StringBuilder getVisibleItemPropertiesMessage(Item item) {
+        return new StringBuilder(item.id + " " + item.type.getClass().getSimpleName() + " "
+                + item.type.name + " " + item.type.regularWeight + " "
+                + item.type.visibility + " " + item.type.toss + " "
+                + InventoryPlayerMessages.getItemPropertiesMessage(item));
+    }
+
     private StringBuilder getVisibleResourcePropertiesMessage(Resource resource) {
-        return new StringBuilder(resource.id + " " +  resource.type.name);
+        return new StringBuilder(resource.id + " " + resource.type.name);
     }
 
     private StringBuilder getVisibleCreaturePropertiesMessage(Creature creature) {
-        return new StringBuilder(creature.id  + " " + creature.name + " " 
-            + creature.appearence.replace(" ", "_") 
-            + " " + getMessageAboutPlace(creature.getLocation()));
+        StringBuilder creaturesBehaviour;
+        if (creature.currentBehaviour == null)
+            creaturesBehaviour = new StringBuilder("idle");
+        else
+            creaturesBehaviour = new StringBuilder(creature.currentBehaviour.getType().behaviourClass.getSimpleName());
+
+        return new StringBuilder(creature.id + " " + creature.name + " "
+                + creature.appearence.replace(" ", "_")
+                + " " + getMessageAboutPlace(creature.getLocation()) + " " + creaturesBehaviour);
     }
 
     private StringBuilder getMessageAboutPlace(UnboundedPlace place) {
         StringBuilder message = new StringBuilder();
         if (place instanceof Place p) {
             message.append("place " + p.map.id + " " + p.positionX + " " + p.positionX);
-        } else if(place instanceof ItemPlace p){
+        } else if (place instanceof ItemPlace p) {
             message.append("itemPlace " + p.getItem().id);
         }
         return message;

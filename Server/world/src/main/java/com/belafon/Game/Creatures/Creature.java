@@ -24,41 +24,45 @@ public abstract class Creature extends Visible {
     public static final BehavioursPossibleRequirement REQUIREMENT = new BehavioursPossibleRequirement() {
     };
     public volatile String name;
-    protected volatile Place position;
+    protected volatile UnboundedPlace position;
     public final String appearence;
     public final AbilityCondition abilityCondition;
     public final ActualCondition actualCondition;
     public final BehaviourCondition behaviourCondition;
-    public volatile Behaviour currentBehaviour = null; // idle
-    public volatile Inventory inventory;
-    public volatile World game;
-    public volatile int id;
+    public final InfluencingActivities influencingActivities;
+
+    /**
+     * null means idle, each creature can do just one behaviour, 
+     * which duration is not 0, in time. 
+     */
+    public Behaviour currentBehaviour = null; // idle
+    public Inventory inventory;
+    public final World game;
+    public final int id;
     public final MessageSender writer;
     private volatile int weight;
-    private Set<Knowledge> knowledge = new ConcurrentSkipListSet<>();
+    private final Set<Knowledge> knowledge = new ConcurrentSkipListSet<>();
 
     private final Set<Visible> currentlyVisibleObjects = new HashSet<>();
     private final ReentrantLock mutexCurrentlyVisibleObjects = new ReentrantLock();
 
     public final CreaturesMemory memory = new CreaturesMemory();
 
-    private static int nextId = 0;
-
-    public Creature(World game, String name, Place position,
+    public Creature(World game, String name, UnboundedPlace position,
             String appearence, MessageSender sendMessage,
             int weight) {
-        this.id = nextId++;
+        this.id = game.visibleIds.getCreatureId();
         this.game = game;
         this.writer = sendMessage;
+        influencingActivities = new InfluencingActivities(writer);
         setInventory();
         this.appearence = appearence;
-        actualCondition = new ActualCondition(this);
         abilityCondition = new AbilityCondition(this, 100, 100, 100, 100, 100, 100, 100);
         behaviourCondition = new BehaviourCondition(this);
+        actualCondition = new ActualCondition(this);
         this.position = position;
         this.name = name;
         this.weight = weight;
-        game.creatures.add(this);
     }
 
     public void setAbilityCondition(int strength, int agility, int speed_of_walk, int speed_of_run, int hearing,
@@ -78,6 +82,10 @@ public abstract class Creature extends Visible {
     public void setBehaviour(Behaviour behaviour) {
         currentBehaviour = behaviour;
         behaviour.execute();
+        getWatchers((watchers) -> {
+            for (Creature creature : watchers)
+                creature.influencingActivities.otherCreaturesBehaviourChanged(creature);
+        });
     }
 
     public void setLocation(Place position) {
@@ -108,7 +116,7 @@ public abstract class Creature extends Visible {
 
     public void addKnowledge(Knowledge knowledge) {
         this.knowledge.add(knowledge);
-        behaviourCondition.addBehavioursPossibleRequirement(knowledge.type, knowledge);
+        behaviourCondition.addBehavioursPossibleIngredient(knowledge.type, knowledge);
         writer.condition.addKnowledge(knowledge);
     }
 
@@ -129,24 +137,24 @@ public abstract class Creature extends Visible {
      * Also, the viewed object memorizes the information in
      * {@link Game.ObjectsMemory.Visible.watchers}
      * 
-     * @param value
+     * @param visible
      */
-    public void addVisibleObject(Visible value) {
+    public void addVisibleObject(Visible visible) {
         mutexCurrentlyVisibleObjects.lock();
         try {
-            currentlyVisibleObjects.add(value);
+            currentlyVisibleObjects.add(visible);
         } finally {
             mutexCurrentlyVisibleObjects.unlock();
         }
 
-        memory.addVisibleObjectSpotted(new ObjectsMemoryCell<Visible>(game.time.getTime(), value));
+        memory.addVisibleObjectSpotted(new ObjectsMemoryCell<Visible>(game.time.getTime(), visible));
 
-        value.addWatcher(this);
+        visible.addWatcher(this);
 
-        this.writer.surrounding.addVisibleInSight(value);
+        this.writer.surrounding.addVisibleInSight(visible);
 
-        for (BehavioursPossibleRequirement requirement : value.getBehavioursPossibleRequirementType()) {
-            behaviourCondition.addBehavioursPossibleRequirement(requirement, value);
+        for (BehavioursPossibleRequirement requirement : visible.getBehavioursPossibleRequirementType()) {
+            behaviourCondition.addBehavioursPossibleIngredient(requirement, visible);
         }
     }
 
@@ -180,7 +188,7 @@ public abstract class Creature extends Visible {
         this.writer.surrounding.removeVisibleFromSight(value);
 
         for (BehavioursPossibleRequirement requirement : value.getBehavioursPossibleRequirementType()) {
-            behaviourCondition.addBehavioursPossibleRequirement(requirement, value);
+            behaviourCondition.addBehavioursPossibleIngredient(requirement, value);
         }
     }
 
@@ -197,5 +205,4 @@ public abstract class Creature extends Visible {
     public BehavioursPossibleRequirement[] getBehavioursPossibleRequirementType() {
         return new BehavioursPossibleRequirement[] { REQUIREMENT };
     }
-
 }

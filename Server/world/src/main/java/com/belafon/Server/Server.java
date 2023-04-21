@@ -10,11 +10,12 @@ import java.net.Socket;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.lang.Runtime;
 
 
 import com.belafon.Console.ConsoleListener;
@@ -24,28 +25,31 @@ import com.belafon.Game.World;
 import com.belafon.Server.MatchMakingSystems.BasicMatchMakingSystem;
 import com.belafon.Server.MatchMakingSystems.MatchMakingSystem;
 
-/**
- * Each method is seriall.
- */
+
 public class Server {
 	private int port = 25555;
 	public volatile boolean isServerRunning = true;
 
-	public final ArrayList<World> games = new ArrayList<World>();
+	public final List<World> games = Collections.synchronizedList(new ArrayList<World>());
 	public final int numberOfPlayersForStartTheGame = 1;
 	public final MatchMakingSystem matchMaking = new BasicMatchMakingSystem(this, numberOfPlayersForStartTheGame);
 	public final ConsoleListener consoleListener = new ConsoleListener(this);
 	public final Map<String, Client> allClients = new Hashtable<String, Client>(); // is accsessed via more threads 
     public static final Clocks clocks = new Clocks();
-    public ExecutorService executor = Executors.newFixedThreadPool(THREADS_COUNT);
-    public static final int THREADS_COUNT = Runtime.getRuntime().availableProcessors();
 
+    // nuber of threads should be set to 1 to avoid message conflicts
+    public ExecutorService executor = Executors.newFixedThreadPool(EXECUTORS_THREAD_COUNT);
+    public static final int EXECUTORS_THREAD_COUNT = 1;
+
+    /**
+     * It creates the server, which starts to listen clients.
+     */
     public Server() {
         printIpAdresses();
 
         clocks.start();
 
-        ConsolePrint.serverInfo("Executor uses " + THREADS_COUNT + " threads.");
+        ConsolePrint.serverInfo("Executor uses " + EXECUTORS_THREAD_COUNT + " threads.");
         ConsolePrint.serverInfo("Server is waiting for clients...");
 
         try (ServerSocket serverSocket = new ServerSocket(port)) {
@@ -63,13 +67,17 @@ public class Server {
 
     }
     
+    /**
+     * new message from a client reveived.
+     * It checks if it is new connection.
+     */
     private void handleClient(Socket clientSocket) {
         String ip = clientSocket.getInetAddress().getHostAddress().toString();
         Client client = allClients.get(ip);
         //if (client == null) {
-            ConsolePrint.serverInfo("Server: New device connected :: " + ip);
-            client = createClient(clientSocket);
-            new MessageReceiver(clientSocket, this, client); // recever of new messages
+        ConsolePrint.serverInfo("Server: New device connected :: " + ip);
+        client = createClient(clientSocket);
+        new MessageReceiver(clientSocket, this, client); // recever of new messages
         /* } else {
             ConsolePrint.serverInfo("Server: Device connected again :: " + ip);
             client.bindNewSendMessage(clientSocket);
@@ -117,6 +125,10 @@ public class Server {
             }
         }
 	}
+
+    public void endTheWorld(World world) {
+        games.remove(world);
+    }
 
 
 	 

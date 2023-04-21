@@ -24,11 +24,17 @@ public abstract class UnboundedPlace {
     public volatile Resource[] resourcesSorted;
     public World game;
     protected volatile int visibility = 0;
+    public final String music;
+    public final String picture;
+    public final int id;
 
     public UnboundedPlace(TypeOfPlace typeOfPlace, World game) {
         this.typeOfPlace = typeOfPlace;
-        setStartResources(typeOfPlace);
         this.game = game;
+        setStartResources(typeOfPlace);
+        music = typeOfPlace.getMusic();
+        picture = typeOfPlace.getPicture();
+        id = game.visibleIds.getPlaceId();
     }
 
     public void recountResourcesDurationOfFinding() {
@@ -44,7 +50,7 @@ public abstract class UnboundedPlace {
 
     // TODO can not be called, when amount of some resource is changed
     public Resource addResource(TypeOfResource typeOfResource, int amount) {
-        Resource resource = new Resource(typeOfResource, amount);
+        Resource resource = new Resource(typeOfResource, amount, game);
 
         // we have to chack if there is resource with that typeOfResource
         if (resources.containsKey(typeOfResource)) {
@@ -84,7 +90,7 @@ public abstract class UnboundedPlace {
         for (TypeOfResourceOfTypeOfPlace typeOfResource : typeOfPlace.typeOfResources) // TODO needs debug
             if (typeOfResource.isHereResourceGenerate())
                 resources.put(typeOfResource.typeOfResource,
-                        new Resource(typeOfResource.typeOfResource, typeOfResource.startAmount));
+                        new Resource(typeOfResource.typeOfResource, typeOfResource.startAmount, game));
         resourcesSorted = resources.values().toArray(new Resource[resources.values().size()]);
 
         if (resourcesSorted.length < 1)

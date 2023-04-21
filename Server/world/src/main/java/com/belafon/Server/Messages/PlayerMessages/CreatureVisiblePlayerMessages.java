@@ -76,7 +76,11 @@ public class CreatureVisiblePlayerMessages implements CreatureVisibleMessages {
         sendMessage.sendLetter("creatureVisible abilityCondition " + creature.id + " attention " + attention);
     }
     
-
-    
-    
+    @Override
+    public void behaviourChanged(Creature creature) {
+        if (creature.currentBehaviour == null)
+            sendMessage.sendLetter("creatureVisible currentBehaviour " + creature.id + " behaviour idle");
+        else
+            sendMessage.sendLetter("creatureVisible currentBehaviour " + creature.id + " behaviour " + creature.currentBehaviour.getType().behaviourClass.getSimpleName());
+    }
 }

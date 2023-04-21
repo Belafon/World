@@ -88,7 +88,7 @@ public class CreaturesMemory {
             mutexVisibleObjectSpotted.unlock();
         }
     }
-    
+
     @FunctionalInterface
     public interface ActionGetObjectSpotted {
         void doJob(List<ObjectsMemoryCell<Visible>> visibleObjectSpotted);
@@ -143,12 +143,12 @@ public class CreaturesMemory {
             Creature creature) {
         mutexlastVisiblesPositionWhenVisionLost.lock();
         try {
-            if(!lastVisiblesPositionWhenVisionLost.containsKey(place))
+            if (!lastVisiblesPositionWhenVisionLost.containsKey(place))
                 lastVisiblesPositionWhenVisionLost.put(place, new ArrayList<>());
             lastVisiblesPositionWhenVisionLost.get(place).add(value);
-            
+
             for (BehavioursPossibleRequirement requirement : value.object().getBehavioursPossibleRequirementType()) {
-                creature.behaviourCondition.addBehavioursPossibleRequirement(requirement, value.object());
+                creature.behaviourCondition.addBehavioursPossibleIngredient(requirement, value.object());
             }
         } finally {
             mutexlastVisiblesPositionWhenVisionLost.unlock();
@@ -172,7 +172,7 @@ public class CreaturesMemory {
             mutexVisibleObjectSpotted.unlock();
         }
     }
-    
+
     public void addWeight(ObjectsMemoryCell<Integer> value) {
         mutexWeight.lock();
         try {

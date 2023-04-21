@@ -11,7 +11,8 @@ import com.belafon.Game.Creatures.Creature;
 import com.belafon.Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequirement;
 
 public class Item extends Visible {
-    public static final BehavioursPossibleRequirement REQUIREMENT = new BehavioursPossibleRequirement(){};
+    public static final BehavioursPossibleRequirement REQUIREMENT = new BehavioursPossibleRequirement() {
+    };
     public final int id;
     public final TypeItem type;
     public volatile Creature owner;
@@ -19,14 +20,13 @@ public class Item extends Visible {
     public UnboundedPlace location; // TODO change location, when is moving
     private int weight;
 
-    
     public Item(World game, TypeItem type, UnboundedPlace location) {
-        this.id = game.ItemId();
+        this.id = game.visibleIds.getItemId();
         this.type = type;
         this.weight = type.regularWeight;
         this.location = location;
     }
-    
+
     public int getWeight() {
         return weight;
     }
@@ -34,11 +34,11 @@ public class Item extends Visible {
     public void setWeight(int weight) {
         this.weight = weight;
     }
-    
+
     public synchronized int changeStats(Event event, World game) {
         return 0;
     }
-    
+
     @Override
     public UnboundedPlace getLocation() {
         return location;
@@ -46,7 +46,7 @@ public class Item extends Visible {
 
     @Override
     public BehavioursPossibleRequirement[] getBehavioursPossibleRequirementType() {
-        return new BehavioursPossibleRequirement[]{type, REQUIREMENT};
+        return new BehavioursPossibleRequirement[] { type, REQUIREMENT };
     }
 
 }

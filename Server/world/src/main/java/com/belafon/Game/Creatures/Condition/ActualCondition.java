@@ -10,8 +10,8 @@ public class ActualCondition{
 	private int hunger = 100;
 	private EventCreatureActualCondition eventHunger;
 	private static final int HUNGER_SPEED = 18; // 15 hours, 15 * 20 / 100
-	private int fatigueMax; // = barrier for rest, v��e zv��it fatigue nem��e, jedin� sp�nkem , about 
-	private EventCreatureActualCondition eventMaxFatigue; //private int energy; // - > d� se snadno na�erpat odpo�inkem, nap�. p�i boji  --- nen� t�eba
+    private int fatigueMax; // = barrier for rest, cannot increase fatigue beyond this limit, only through sleep, about 
+    private EventCreatureActualCondition eventMaxFatigue; //private int energy; // -> can be easily restored through rest, e.g. during combat  --- not necessary    
 	private static final int MAX_FATIGUE_SPEED = 45; // 3 days, 3 * 24 * 20 / 100 = 14.4
 	private int heat = 100;
 	private EventCreatureActualCondition eventHeat;
@@ -49,7 +49,7 @@ public class ActualCondition{
 	private void setEventHunger(Object object){
 		setHunger(getHunger() - 1);
 		World game = creature.game;
-		int duration = HUNGER_SPEED;
+        int duration = HUNGER_SPEED;
         if (creature.abilityCondition.getHealth() != 0) {
             eventHunger =  new EventCreatureActualCondition(game.time.getTime() + duration, game, this::setEventHunger);
             game.calendar.add(eventHunger);

@@ -3,6 +3,9 @@ package com.belafon.Game.Calendar.Events;
 import com.belafon.Game.World;
 import com.belafon.Game.Items.Item;
 
+/**
+ * 
+ */
 public class EventItemChange extends Event{
     private Item item;
     public EventItemChange(long date, World game, Item item) {

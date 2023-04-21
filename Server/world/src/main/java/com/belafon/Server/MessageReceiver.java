@@ -19,7 +19,7 @@ public class MessageReceiver implements Runnable{
     public MessageReceiver(Socket clientSocket, Server server, Client client) {
         this.client = client;
         this.clientSocket = clientSocket;
-        client.disconnected = false;
+        client.setInitDisconnectedState(false);
 
         // starts to receave the messages from the client
         new Thread(this).start();
@@ -28,6 +28,7 @@ public class MessageReceiver implements Runnable{
     
     @Override
     public void run() {
+        Thread.currentThread().setName(client.ipAddress + "");
         try (BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 Scanner scanner = new Scanner(in);) {
             while (clientSocket.isConnected()) {
@@ -39,7 +40,7 @@ public class MessageReceiver implements Runnable{
                     // if new line was not found, this listener will be canceled
                     if (client != null) {
                         ConsolePrint.error_small("Client has disconnected");
-                        client.disconnected = true;
+                        client.disconnect();
                         if (client.queueCondition == MatchMakingSystem.Condition.waitingInQueue)
                             client.getServer().matchMaking.removeClient(client); // remove from queue
                     }
@@ -58,49 +59,43 @@ public class MessageReceiver implements Runnable{
     
 	
 	public void decomposeTheString(String value, Socket clientSocket, Server server) {
-		String[] message = value.split(" ");
-		ConsolePrint.new_message(value, client);
-		switch(message[0]) {
-		case "game":
-		getGameMessage(message, clientSocket, server);
-		break;
-		case "server":
-		getServerMessage(message, clientSocket, server);
-		break;
-		}
-	}
+        String[] message = value.split(" ");
+        ConsolePrint.new_message(value, client);
+    
+        switch(message[0]) {
+            case "game" -> client.getServer().executor.execute(() -> {
+                getGameMessage(message, clientSocket, server);
+            });
+            case "server" -> getServerMessage(message, clientSocket, server);
+        }
+    }
 
-	private void getServerMessage(String[] message, Socket clientSocket, Server server) {
-		switch(message[1]) {
-			case "findTheMatch":
-			server.matchMaking.addClient(client);
-			break;
-			case "stopFindingTheMatch":
-			server.matchMaking.removeClient(client);
-			break;
-			case "name":
-			if(message.length > 2)
-			client.name = message[2];
-			break;
-			case "disconnect":
-			switch(client.queueCondition){
-				case playing:
-					client.disconnected = true;
-				break;
-				case waitingInQueue:
-					server.matchMaking.removeClient(client);
-				case idle:
-					server.allClients.remove(client.ipAddress);
-				try {
-					clientSocket.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				break;
-			}
-			break;
-		}
-	}
+    private void getServerMessage(String[] message, Socket clientSocket, Server server) {
+        switch(message[1]) {
+            case "findTheMatch" -> server.matchMaking.addClient(client);
+            case "stopFindingTheMatch" -> server.matchMaking.removeClient(client);
+            case "name" -> {
+                if(message.length > 2) {
+                    client.name = message[2];
+                }
+            }
+            case "disconnect" -> {
+                switch(client.queueCondition) {
+                    case playing -> client.disconnect();
+                    case waitingInQueue -> server.matchMaking.removeClient(client);
+                    case idle -> {
+                        server.allClients.remove(client.ipAddress);
+                        try {
+                            clientSocket.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 
 	private void getGameMessage(String[] message, Socket clientSocket, Server server) {
 		switch(message[1]) {

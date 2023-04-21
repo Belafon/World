@@ -1,5 +1,6 @@
 package com.belafon.Game.Maps.Resources;
 
+import com.belafon.Game.World;
 import com.belafon.Game.Creatures.Behaviour.Behaviours.BehavioursPossibleRequirement;
 import com.belafon.Game.Creatures.Behaviour.Behaviours.FindConcreteResource;
 import com.belafon.Game.Maps.Place.UnboundedPlace;
@@ -11,11 +12,10 @@ public class Resource extends Visible {
     private volatile int amount; // 100 -> 100% of durationOfFinding, 100 -> regular amount
     public final int id;
 
-    private static int nextId = 0;
-    public Resource(TypeOfResource typeOfResource, int amount) {
+    public Resource(TypeOfResource typeOfResource, int amount, World game) {
         this.type = typeOfResource;
         this.amount = amount;
-        this.id = nextId++;
+        this.id = game.visibleIds.getResourceId();
     }
 
     public int getConspicuousness() {

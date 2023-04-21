@@ -15,15 +15,20 @@ public class EventChangeWeather extends Event{
         this.printInLoop = printInLoop;
     }
 
-    private final boolean printInLoop; 
-
-    private volatile int threadCounter = 0;
+    private final boolean printInLoop;
+    
+    /**
+     * This method updates the weather and the clouds for a given Sky object.
+     * It then updates the creatures' surroundings with the new weather and cloud information.
+     * If the printInLoop parameter is set to true, it prints information about the weather 
+     * and clouds before and after the update.
+     */
     @Override
     public void action(World game) {
         new Thread(new Runnable(){
             @Override
             public void run() {
-                Thread.currentThread().setName("SetWeather " + threadCounter++);
+                Thread.currentThread().setName("SetWeather");
                 if(printInLoop){
                     ConsolePrint.gameInfo("before weather change:");
                     ConsolePrint.gameInfo(sky.printWeathers());    
@@ -33,7 +38,7 @@ public class EventChangeWeather extends Event{
                     ConsolePrint.gameInfo("after weather change:");
                     ConsolePrint.gameInfo(sky.printWeathers());
                 }
-                ConsolePrint.success("EventChangeWeather", "at map " + sky.map.id + " weather changed ");
+                //ConsolePrint.success("EventChangeWeather", "at map " + sky.map.id + " weather changed ");
                 for (Creature creature : game.creatures) {
                     if (creature.getLocation() instanceof Place place) {
                         Weather weather = place.map.sky.getWeather(place);
