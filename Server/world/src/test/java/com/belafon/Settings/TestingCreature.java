@@ -15,6 +15,6 @@ public class TestingCreature extends Creature {
 
     @Override
     protected void setInventory() {
-    }
+    } 
     
 }
