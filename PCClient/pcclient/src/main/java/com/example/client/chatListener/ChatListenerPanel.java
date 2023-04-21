@@ -24,11 +24,14 @@ public class ChatListenerPanel extends JPanel {
     }
 
     public synchronized void addMessage(String message) {
-        // Add the message to the list
         DefaultListModel<String> model = (DefaultListModel<String>) messageList.getModel();
+        
+        boolean isChatAtBottom = isScrollBarAtBottom();
+        
+        // Add the message to the list
         model.addElement(message);
-
-        if (isScrollBarAtBottom()) {
+        
+        if (isChatAtBottom) {
             // Scroll to the bottom of the list
             int lastIndex = model.getSize() - 1;
             if (lastIndex >= 0) {
