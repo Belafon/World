@@ -25,16 +25,12 @@
 var NAVTREE =
 [
   [ "World", "index.html", [
-    [ "Getting Started", "md__d___skola_mff_tools_du_generation_document__world__server__r_e_a_d_m_e.html", [
-      [ "Getting Started", "index.html#autotoc_md0", null ],
-      [ "Folder Structure", "index.html#autotoc_md1", null ],
-      [ "Dependency Management", "index.html#autotoc_md2", null ],
-      [ "Folder Structure", "md__d___skola_mff_tools_du_generation_document__world__server__r_e_a_d_m_e.html#autotoc_md4", null ],
-      [ "Dependency Management", "md__d___skola_mff_tools_du_generation_document__world__server__r_e_a_d_m_e.html#autotoc_md5", null ]
-    ] ],
-    [ "Todo List", "todo.html", null ],
     [ "Namespaces", "namespaces.html", [
-      [ "Namespace List", "namespaces.html", "namespaces_dup" ]
+      [ "Namespace List", "namespaces.html", null ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ]
+      ] ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
@@ -54,14 +50,12 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_a_list_8java.html",
-"class_game_1_1_calendar_1_1_events_1_1_event.html#a407032d72e1a1ef8a3b874f2e24fb036",
-"class_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#ae1ca6e3c77b680ab10694c4129714e5e",
-"class_game_1_1_items_1_1_type_item_1_1_clothes_type_item.html#a50ea00bd31bd3f39f6a6d48e998806a6",
-"class_game_1_1_maps_1_1_resources_1_1_resource.html#a80372cef658055b6f2d2c71ef952bc59",
-"class_server_1_1_get_message.html#a696a076efc9d342c2956a3e958724f35",
-"dir_7b66ceb39579b6d261d6f3955495cdc9.html",
-"todo.html"
+"_ability_condition_8java.html",
+"classcom_1_1belafon_1_1server_1_1match_making_systems_1_1_basic_match_making_system.html#a41d8dae948b9c8c8ea393f706f51946b",
+"classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_type_of_place.html#a014b786d634381a41d43ec1359de15e1",
+"classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1_creature.html#a1a65a168fafb9a8c5da17ec9148c53a9",
+"classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1races_1_1_animals_1_1_testing_messages.html",
+"enumcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1type_item_1_1_clothes_type_item_1_1parts__of__body.html#abdfd1605e395764586b4ba6820dea2d0"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

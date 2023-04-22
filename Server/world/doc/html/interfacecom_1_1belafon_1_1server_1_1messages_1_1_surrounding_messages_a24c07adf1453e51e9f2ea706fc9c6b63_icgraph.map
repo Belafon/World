@@ -1,0 +1,7 @@
+<map id="com.belafon.server.messages.SurroundingMessages.setClouds" name="com.belafon.server.messages.SurroundingMessages.setClouds">
+<area shape="rect" id="node1" title=" " alt="" coords="812,25,1025,65"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1calendar_1_1events_1_1_event_change_weather.html#afaeee7443562dec2c653630973643369" title=" " alt="" coords="5,29,229,69"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1calendar_1_1events_1_1_event_move_clouds.html#a46f0ccfe84af5d918726abb1ff3542cd" title=" " alt="" coords="540,25,764,65"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1maps_1_1weather_1_1_weather.html#a1255d450a2d695d0d2bda4e4aafbc9f5" title=" " alt="" coords="545,89,759,129"/>
+<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1world_1_1maps_1_1weather_1_1_sky.html#a88a8ac8f21496a4ca2bec781ebad0a8b" title=" " alt="" coords="277,57,492,97"/>
+</map>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['questitem_0',['QuestItem',['../class_game_1_1_items_1_1_types_1_1_quest_item.html#aa310f65299d2b2671e40fdb932388438',1,'Game::Items::Types::QuestItem']]],
-  ['questtypeitem_1',['QuestTypeItem',['../class_game_1_1_items_1_1_type_item_1_1_quest_type_item.html#ad16c97ab0799520088b92b96cbc1a5fb',1,'Game::Items::TypeItem::QuestTypeItem']]]
+  ['new_5fmessage_0',['new_message',['../classcom_1_1belafon_1_1console_1_1_console_print.html#adc820ec58d16c77996b83b6eac6fc04a',1,'com::belafon::console::ConsolePrint']]],
+  ['newfeasiblebehaviour_1',['newFeasibleBehaviour',['../interfacecom_1_1belafon_1_1server_1_1messages_1_1_behaviours_messages.html#a9efe67a2fa98c9a9f013837748968d2a',1,'com.belafon.server.messages.BehavioursMessages.newFeasibleBehaviour()'],['../classcom_1_1belafon_1_1server_1_1messages_1_1player_messages_1_1_behaviours_players_messages.html#af846bb79b5bea883f70d165287e69975',1,'com.belafon.server.messages.playerMessages.BehavioursPlayersMessages.newFeasibleBehaviour()']]]
 ];

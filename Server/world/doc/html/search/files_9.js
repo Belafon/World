@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['map_2ejava_0',['Map.java',['../_map_8java.html',1,'']]],
-  ['mapgenerator_2ejava_1',['MapGenerator.java',['../_map_generator_8java.html',1,'']]],
-  ['maps_2ejava_2',['Maps.java',['../_maps_8java.html',1,'']]],
-  ['matchmakingsystem_2ejava_3',['MatchMakingSystem.java',['../_match_making_system_8java.html',1,'']]],
-  ['move_2ejava_4',['Move.java',['../_move_8java.html',1,'']]]
+  ['listofallitemtypes_2ejava_0',['ListOfAllItemTypes.java',['../_list_of_all_item_types_8java.html',1,'']]],
+  ['listofalltypesofplaces_2ejava_1',['ListOfAllTypesOfPlaces.java',['../_list_of_all_types_of_places_8java.html',1,'']]],
+  ['listofalltypesofresources_2ejava_2',['ListOfAllTypesOfResources.java',['../_list_of_all_types_of_resources_8java.html',1,'']]]
 ];

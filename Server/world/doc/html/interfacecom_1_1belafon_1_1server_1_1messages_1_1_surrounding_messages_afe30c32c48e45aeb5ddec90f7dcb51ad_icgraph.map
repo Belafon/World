@@ -1,0 +1,5 @@
+<map id="com.belafon.server.messages.SurroundingMessages.removeVisibleFromSight" name="com.belafon.server.messages.SurroundingMessages.removeVisibleFromSight">
+<area shape="rect" id="node1" title=" " alt="" coords="531,5,765,60"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1_creature.html#a1afcf454d447e8baa8bdc336a612c77b" title=" " alt="" coords="248,13,483,53"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_vision_memory_test.html#a907ec07f20daf4ee0c5d2945d4580560" title=" " alt="" coords="5,13,200,53"/>
+</map>

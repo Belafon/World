@@ -1,0 +1,5 @@
+<map id="com.belafon.server.messages.InventoryMessages.setAddItem" name="com.belafon.server.messages.InventoryMessages.setAddItem">
+<area shape="rect" id="node1" title=" " alt="" coords="625,5,828,45"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1inventory_1_1_inventory.html#a49fa0461d88d8a3b66cc1bda273bc2c2" title=" " alt="" coords="288,5,577,45"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1_player.html#ae6fd4aa783a6afadbcb07e1bc0f8b5a5" title=" " alt="" coords="5,5,240,45"/>
+</map>
