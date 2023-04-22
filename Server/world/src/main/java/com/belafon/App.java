@@ -1,9 +1,9 @@
 package com.belafon;
 
 import com.belafon.server.Server;
-import com.belafon.world.items.ListOfAllItemTypes;
 import com.belafon.world.maps.place.ListOfAllTypesOfPlaces;
-import com.belafon.world.maps.resources.ListOfAllTypesOfResources;
+import com.belafon.world.visibles.items.ListOfAllItemTypes;
+import com.belafon.world.visibles.resources.ListOfAllTypesOfResources;
 
 public class App {
 	public static void main(String[] args) {
@@ -12,7 +12,7 @@ public class App {
         ListOfAllItemTypes.setUpItems();
 
         
-        new Thread(new Runnable(){
+/*         new Thread(new Runnable(){
 
 			@Override
 			public void run() {
@@ -27,7 +27,7 @@ public class App {
                 }
 			}
 			
-		}).start();
+		}).start(); */
         new Server();
 	}
 }

@@ -5,12 +5,12 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
-import com.belafon.world.creatures.Creature;
-import com.belafon.world.creatures.behaviour.behaviours.BehavioursPossibleRequirement;
 import com.belafon.world.maps.place.Place;
 import com.belafon.world.maps.place.UnboundedPlace;
 import com.belafon.world.objectsMemory.ObjectsMemoryCell;
 import com.belafon.world.objectsMemory.Visible;
+import com.belafon.world.visibles.creatures.Creature;
+import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleRequirement;
 
 public class CreaturesMemory {
     private final List<ObjectsMemoryCell<String>> name = new ArrayList<>();
@@ -20,6 +20,10 @@ public class CreaturesMemory {
     private final List<ObjectsMemoryCell<String>> appearance = new ArrayList<>();
     public final ReentrantLock mutexAppearance = new ReentrantLock();
 
+    /**
+     * It comes handy, when creature returns to known place.
+     * It does not need to find knowen visibles again.
+     */
     private final Hashtable<UnboundedPlace, List<ObjectsMemoryCell<Visible>>> lastVisiblesPositionWhenVisionLost = new Hashtable<>();
     private final ReentrantLock mutexlastVisiblesPositionWhenVisionLost = new ReentrantLock();
 

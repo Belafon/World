@@ -4,9 +4,9 @@ import org.junit.Test;
 
 import com.belafon.settings.TestingCreature;
 import com.belafon.world.World;
-import com.belafon.world.items.ListOfAllItemTypes;
 import com.belafon.world.maps.place.ListOfAllTypesOfPlaces;
-import com.belafon.world.maps.resources.ListOfAllTypesOfResources;
+import com.belafon.world.visibles.items.ListOfAllItemTypes;
+import com.belafon.world.visibles.resources.ListOfAllTypesOfResources;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

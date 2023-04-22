@@ -2,17 +2,17 @@ package com.belafon.server.messages.playerMessages;
 
 import com.belafon.server.messages.SurroundingMessages;
 import com.belafon.server.sendMessage.PlayersMessageSender;
-import com.belafon.world.creatures.Creature;
-import com.belafon.world.creatures.behaviour.PlayersLookAround;
-import com.belafon.world.items.Item;
 import com.belafon.world.maps.Map;
 import com.belafon.world.maps.place.ItemPlace;
 import com.belafon.world.maps.place.Place;
 import com.belafon.world.maps.place.UnboundedPlace;
-import com.belafon.world.maps.resources.Resource;
 import com.belafon.world.maps.weather.Weather;
 import com.belafon.world.objectsMemory.Visible;
 import com.belafon.world.time.DailyLoop.NamePartOfDay;
+import com.belafon.world.visibles.creatures.Creature;
+import com.belafon.world.visibles.creatures.behaviour.PlayersLookAround;
+import com.belafon.world.visibles.items.Item;
+import com.belafon.world.visibles.resources.Resource;
 
 public class SurroundingPlayerMessages implements SurroundingMessages {
     public final PlayersMessageSender sendMessage;

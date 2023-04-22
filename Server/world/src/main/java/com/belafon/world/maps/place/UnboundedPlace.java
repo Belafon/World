@@ -9,12 +9,12 @@ import java.util.List;
 
 import com.belafon.console.ConsolePrint;
 import com.belafon.world.World;
-import com.belafon.world.creatures.Creature;
-import com.belafon.world.items.Item;
 import com.belafon.world.maps.placeEffects.PlaceEffect;
-import com.belafon.world.maps.resources.Resource;
-import com.belafon.world.maps.resources.TypeOfResource;
-import com.belafon.world.maps.resources.TypeOfResourceOfTypeOfPlace;
+import com.belafon.world.visibles.creatures.Creature;
+import com.belafon.world.visibles.items.Item;
+import com.belafon.world.visibles.resources.Resource;
+import com.belafon.world.visibles.resources.TypeOfResource;
+import com.belafon.world.visibles.resources.TypeOfResourceOfTypeOfPlace;
 
 public abstract class UnboundedPlace {
     public final List<Creature> creatures = Collections.synchronizedList(new ArrayList<>());

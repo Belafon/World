@@ -3,10 +3,10 @@ package com.belafon.server.messages;
 import com.belafon.world.maps.Map;
 import com.belafon.world.maps.place.Place;
 import com.belafon.world.maps.place.UnboundedPlace;
-import com.belafon.world.maps.resources.Resource;
 import com.belafon.world.maps.weather.Weather;
 import com.belafon.world.objectsMemory.Visible;
 import com.belafon.world.time.DailyLoop.NamePartOfDay;
+import com.belafon.world.visibles.resources.Resource;
 
 public interface SurroundingMessages {
     public default void setPartOfDay(NamePartOfDay partOfDay) {

@@ -6,7 +6,7 @@ import java.net.Socket;
 import com.belafon.server.matchMakingSystems.MatchMakingSystem;
 import com.belafon.server.sendMessage.PlayersMessageSender;
 import com.belafon.world.World;
-import com.belafon.world.creatures.Player;
+import com.belafon.world.visibles.creatures.Player;
 
 public class Client {
 	// object which is used to send new messages to the client

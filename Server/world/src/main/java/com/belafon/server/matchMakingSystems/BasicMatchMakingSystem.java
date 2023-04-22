@@ -3,7 +3,7 @@ package com.belafon.server.matchMakingSystems;
 import com.belafon.server.Client;
 import com.belafon.server.Server;
 import com.belafon.world.World;
-import com.belafon.world.creatures.Player;
+import com.belafon.world.visibles.creatures.Player;
 
 /**
  * This dumb matchmaking system just waits until there is at least 

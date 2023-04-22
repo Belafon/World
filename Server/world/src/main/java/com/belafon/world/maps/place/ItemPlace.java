@@ -1,7 +1,7 @@
 package com.belafon.world.maps.place;
 
 import com.belafon.world.World;
-import com.belafon.world.items.Item;
+import com.belafon.world.visibles.items.Item;
 
 /**
  * It is unbounded place, which is referenced with some item,

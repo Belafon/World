@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 import com.belafon.likeliness.Dice;
-import com.belafon.world.maps.resources.ListOfAllTypesOfResources;
-import com.belafon.world.maps.resources.TypeOfResourceOfTypeOfPlace;
-import com.belafon.world.maps.resources.ListOfAllTypesOfResources.NamesOfTypesOfResources;
+import com.belafon.world.visibles.resources.ListOfAllTypesOfResources;
+import com.belafon.world.visibles.resources.TypeOfResourceOfTypeOfPlace;
+import com.belafon.world.visibles.resources.ListOfAllTypesOfResources.NamesOfTypesOfResources;
 
 /* Include all TypeOfPlaces */
 public class ListOfAllTypesOfPlaces {

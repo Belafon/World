@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 import com.belafon.server.Server;
 import com.belafon.world.World;
-import com.belafon.world.creatures.Player;
-import com.belafon.world.creatures.behaviour.behaviours.Move;
 import com.belafon.world.maps.Map;
-import com.belafon.world.maps.resources.ListOfAllTypesOfResources;
-import com.belafon.world.maps.resources.ListOfAllTypesOfResources.NamesOfTypesOfResources;
+import com.belafon.world.visibles.creatures.Player;
+import com.belafon.world.visibles.creatures.behaviour.behaviours.Move;
+import com.belafon.world.visibles.resources.ListOfAllTypesOfResources;
+import com.belafon.world.visibles.resources.ListOfAllTypesOfResources.NamesOfTypesOfResources;
 
 /**
  * Handles console inputs from server provider.

@@ -2,8 +2,8 @@ package com.belafon.world.maps.place;
 
 import com.belafon.console.ConsolePrint;
 import com.belafon.world.maps.Map;
-import com.belafon.world.maps.resources.Resource;
 import com.belafon.world.maps.weather.Weather;
+import com.belafon.world.visibles.resources.Resource;
 
 public class Place extends UnboundedPlace {
     public final Map map;

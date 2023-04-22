@@ -1,15 +1,15 @@
 package com.belafon.world.maps;
 
 import com.belafon.world.World;
-import com.belafon.world.creatures.Player;
-import com.belafon.world.creatures.races.Animals.Animal;
-import com.belafon.world.creatures.races.Animals.animalRaces.AnimalRace;
-import com.belafon.world.items.ListOfAllItemTypes;
-import com.belafon.world.items.itemsSpecialStats.SpecialFoodsProperties;
-import com.belafon.world.items.types.Food;
 import com.belafon.world.maps.place.UnboundedPlace;
-import com.belafon.world.maps.resources.ListOfAllTypesOfResources;
-import com.belafon.world.maps.resources.Resource;
+import com.belafon.world.visibles.creatures.Player;
+import com.belafon.world.visibles.creatures.races.Animals.Animal;
+import com.belafon.world.visibles.creatures.races.Animals.animalRaces.AnimalRace;
+import com.belafon.world.visibles.items.ListOfAllItemTypes;
+import com.belafon.world.visibles.items.itemsSpecialStats.SpecialFoodsProperties;
+import com.belafon.world.visibles.items.types.Food;
+import com.belafon.world.visibles.resources.ListOfAllTypesOfResources;
+import com.belafon.world.visibles.resources.Resource;
 
 public class GenerateVisibles {
 

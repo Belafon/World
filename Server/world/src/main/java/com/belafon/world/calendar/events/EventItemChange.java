@@ -1,10 +1,10 @@
 package com.belafon.world.calendar.events;
 
 import com.belafon.world.World;
-import com.belafon.world.items.Item;
+import com.belafon.world.visibles.items.Item;
 
 /**
- * 
+ * Handles every type of Items change. It could be for example Foods decay process.
  */
 public class EventItemChange extends Event{
     private Item item;

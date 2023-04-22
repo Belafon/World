@@ -2,10 +2,10 @@ package com.belafon.world.calendar.events;
 
 import com.belafon.console.ConsolePrint;
 import com.belafon.world.World;
-import com.belafon.world.creatures.Creature;
 import com.belafon.world.maps.place.Place;
 import com.belafon.world.maps.weather.Sky;
 import com.belafon.world.maps.weather.Weather;
+import com.belafon.world.visibles.creatures.Creature;
 
 public class EventChangeWeather extends Event{
     private Sky sky;

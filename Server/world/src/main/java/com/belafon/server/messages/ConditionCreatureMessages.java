@@ -1,6 +1,6 @@
 package com.belafon.server.messages;
 
-import com.belafon.world.creatures.condition.knowledge.Knowledge;
+import com.belafon.world.visibles.creatures.condition.knowledge.Knowledge;
 
 public interface ConditionCreatureMessages {
     public default void setHealth(int health) {

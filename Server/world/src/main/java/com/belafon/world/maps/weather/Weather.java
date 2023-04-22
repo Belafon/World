@@ -1,7 +1,7 @@
 package com.belafon.world.maps.weather;
 
-import com.belafon.world.creatures.Creature;
 import com.belafon.world.maps.place.Place;
+import com.belafon.world.visibles.creatures.Creature;
 
 public class Weather {
     public enum TypeWeather {

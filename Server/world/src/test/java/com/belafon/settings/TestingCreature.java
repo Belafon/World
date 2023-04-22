@@ -1,8 +1,8 @@
 package com.belafon.settings;
 
 import com.belafon.world.World;
-import com.belafon.world.creatures.Creature;
 import com.belafon.world.maps.place.Place;
+import com.belafon.world.visibles.creatures.Creature;
 
 public class TestingCreature extends Creature {
 

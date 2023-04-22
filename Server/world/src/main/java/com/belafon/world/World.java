@@ -7,14 +7,15 @@ import java.util.List;
 import com.belafon.console.ConsolePrint;
 import com.belafon.server.Server;
 import com.belafon.world.calendar.Calendar;
-import com.belafon.world.creatures.Creature;
-import com.belafon.world.creatures.Player;
 import com.belafon.world.maps.GenerateVisibles;
 import com.belafon.world.maps.Maps;
 import com.belafon.world.maps.place.Place;
 import com.belafon.world.time.CalendaryLoop;
 import com.belafon.world.time.DailyLoop;
 import com.belafon.world.time.Time;
+import com.belafon.world.visibles.VisibleIDs;
+import com.belafon.world.visibles.creatures.Creature;
+import com.belafon.world.visibles.creatures.Player;
 
 public class World implements Runnable {
     public volatile boolean isRunning = false;

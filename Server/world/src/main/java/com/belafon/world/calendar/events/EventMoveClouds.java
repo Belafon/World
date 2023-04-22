@@ -2,9 +2,9 @@ package com.belafon.world.calendar.events;
 
 import com.belafon.console.ConsolePrint;
 import com.belafon.world.World;
-import com.belafon.world.creatures.Creature;
 import com.belafon.world.maps.Map;
 import com.belafon.world.maps.place.Place;
+import com.belafon.world.visibles.creatures.Creature;
 
 public class EventMoveClouds extends Event{
     private final Map map;

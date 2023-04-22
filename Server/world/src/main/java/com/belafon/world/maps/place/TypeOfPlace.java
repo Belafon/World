@@ -2,7 +2,7 @@ package com.belafon.world.maps.place;
 
 import com.belafon.likeliness.Dice;
 import com.belafon.world.maps.place.ListOfAllTypesOfPlaces.NamesOfTypesOfPlaces;
-import com.belafon.world.maps.resources.TypeOfResourceOfTypeOfPlace;
+import com.belafon.world.visibles.resources.TypeOfResourceOfTypeOfPlace;
 
 public class TypeOfPlace {
     public final NamesOfTypesOfPlaces name;

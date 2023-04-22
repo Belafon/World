@@ -1,7 +1,7 @@
 package com.belafon.world.calendar.events;
 
 import com.belafon.world.World;
-import com.belafon.world.creatures.behaviour.Behaviour;
+import com.belafon.world.visibles.creatures.behaviour.Behaviour;
 
 public class EventBehaviour extends Event{
     private final Behaviour behaviour;

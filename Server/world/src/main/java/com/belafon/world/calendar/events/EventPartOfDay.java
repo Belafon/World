@@ -2,9 +2,9 @@ package com.belafon.world.calendar.events;
 
 import com.belafon.console.ConsolePrint;
 import com.belafon.world.World;
-import com.belafon.world.creatures.Creature;
 import com.belafon.world.time.DailyLoop.NamePartOfDay;
 import com.belafon.world.time.DailyLoop.PartOfDay;
+import com.belafon.world.visibles.creatures.Creature;
 
 public class EventPartOfDay extends Event {
     private PartOfDay partOfDay;

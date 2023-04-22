@@ -4,9 +4,9 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.belafon.world.creatures.Creature;
-import com.belafon.world.creatures.behaviour.behaviours.BehavioursPossibleIngredients;
 import com.belafon.world.maps.place.UnboundedPlace;
+import com.belafon.world.visibles.creatures.Creature;
+import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleIngredients;
 
 public abstract class Visible implements BehavioursPossibleIngredients{
     public abstract UnboundedPlace getLocation();

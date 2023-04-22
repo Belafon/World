@@ -2,7 +2,7 @@ package com.belafon.server.messages.playerMessages;
 
 import com.belafon.server.messages.BehavioursMessages;
 import com.belafon.server.sendMessage.PlayersMessageSender;
-import com.belafon.world.creatures.behaviour.BehaviourType;
+import com.belafon.world.visibles.creatures.behaviour.BehaviourType;
 
 public class BehavioursPlayersMessages implements BehavioursMessages{
     public final PlayersMessageSender sendMessage;
