@@ -1,12 +1,13 @@
 package com.belafon.world.maps.place;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Hashtable;
+import java.util.List;
 
 import com.belafon.console.ConsolePrint;
-import com.belafon.dataStructures.SynchronizedArrayList;
-import com.belafon.dataStructures.SynchronizedArrayList.GetListsItemsAction;
 import com.belafon.world.World;
 import com.belafon.world.creatures.Creature;
 import com.belafon.world.items.Item;
@@ -16,10 +17,10 @@ import com.belafon.world.maps.resources.TypeOfResource;
 import com.belafon.world.maps.resources.TypeOfResourceOfTypeOfPlace;
 
 public abstract class UnboundedPlace {
-    private final SynchronizedArrayList<Creature> creatures = new SynchronizedArrayList<>();
-    private final SynchronizedArrayList<Item> items = new SynchronizedArrayList<>();
+    public final List<Creature> creatures = Collections.synchronizedList(new ArrayList<>());
+    public final List<Item> items = Collections.synchronizedList(new ArrayList<>());
     public Hashtable<TypeOfResource, Resource> resources = new Hashtable<>();
-    public final SynchronizedArrayList<PlaceEffect> effects = new SynchronizedArrayList<>();
+    public final List<PlaceEffect> effects = Collections.synchronizedList(new ArrayList<>());
     public TypeOfPlace typeOfPlace;
     public volatile Resource[] resourcesSorted;
     public World game;
@@ -124,18 +125,6 @@ public abstract class UnboundedPlace {
         else if (array[average].getConspicuousness() < resource.getConspicuousness())
             return binarySearchRecursion(array, resource, i, average - 1, average);
         return average;
-    }
-
-    public <E> E getItems(GetListsItemsAction<Item, E> action) {
-        return items.getItems(action);
-    }
-
-    public <E> E getCreatures(GetListsItemsAction<Creature, E> action) {
-        return creatures.getItems(action);
-    }
-
-    public <E> E getEffects(GetListsItemsAction<PlaceEffect, E> action) {
-        return effects.getItems(action);
     }
 
     public abstract int getTemperature();

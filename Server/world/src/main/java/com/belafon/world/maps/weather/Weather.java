@@ -25,11 +25,10 @@ public class Weather {
 
     public void setWeather(int weather, Place place) {
         this.weather = weather;
-        place.getCreatures((creatures) -> {
-            for (Creature creature : creatures)
+        synchronized (place.creatures) {
+            for (Creature creature : place.creatures)
                 creature.writer.surrounding.setWeather(this);
-            return null;
-        });
+        }
     }
 
     public int getClouds() {
@@ -38,13 +37,10 @@ public class Weather {
 
     public void setClouds(int clouds, Place place) {
         this.clouds = clouds;
-        place.getCreatures((creatures) -> {
-            for (Creature creature : creatures)
+        synchronized(place.creatures){
+            for (Creature creature : place.creatures)
                 creature.writer.surrounding.setClouds(place);
-            return null;
-        });
-        
-
+        }
     }
 
     public int getVisibility() {

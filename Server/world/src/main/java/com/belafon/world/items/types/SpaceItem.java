@@ -27,13 +27,14 @@ public class SpaceItem extends Item {
 
     @Override
     public int getWeight() {
-        Integer sumOfItemsWeight = space.getItems((items) -> {
-            return items.stream().mapToInt((x) -> x.getWeight()).sum();
-        });
-
-        Integer sumOfCreaturesWeight = space.getCreatures((creatures) -> {
-            return creatures.stream().mapToInt((x) -> x.getWeight()).sum();
-        });
+        Integer sumOfItemsWeight = null;
+        synchronized (space.items) {
+            sumOfItemsWeight = space.items.stream().mapToInt((x) -> x.getWeight()).sum();
+        }
+        Integer sumOfCreaturesWeight = null;
+        synchronized (space.creatures) {
+            sumOfCreaturesWeight = space.creatures.stream().mapToInt((x) -> x.getWeight()).sum();
+        }
 
         return super.getWeight() + sumOfItemsWeight + sumOfCreaturesWeight;
     }
