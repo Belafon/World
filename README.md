@@ -5,6 +5,19 @@ Discrete simulation of the World
 
 Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
 
+Cílem mého programu je vytvořit herní svět. Vytvořit prostor tvořený mapou, která se
+skládá z jednotlivých políček. Každé políčko má pak své vlastnosti (nadmořská výška, pří-
+rodní bohatství, počasí...).
+Na této mapě se pak pohybují stvoření, které mohou provádět nějaké činnosti. Dále se na
+mapě vyskytují předměty, se kterými mohou stvoření interagovat.
+
+Další důležitou částí světa je pak čas, se kterým se pojí denní cyklus, změna všech statistik
+postav, předmětů, činností...
+
+Celý projekt je rozdělen na Server a Klienta, přičemž server je jeden konkrétní program,
+zatímco klient může být jakýkoli program posílající zprávy serveru odpovídající jeho proto-
+kolu, přičemž klient vždy pouze ovládá nějaké jedno stvoření ve světě.
+
 
 ## Zápočtový program 
 
