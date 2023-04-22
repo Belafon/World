@@ -17,7 +17,7 @@ Server se při spuštění pokusí vytvořit.
 Zároveň spuštění více klientů způsobí přidání jako několik různých klientů i přes to
 že mají stejnou ip addressu (pro snazší debugování).
 
-Dokumentace byla vygenerována pomoci doxygenu. 
+Dokumentaci lze vygenerovat pomoci příkazu `doxygen` ve složce doc pro daný projekt. 
 
 ### Server changes
 - date changed from int to long
