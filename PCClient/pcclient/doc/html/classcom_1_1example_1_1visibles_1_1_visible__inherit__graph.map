@@ -1,7 +1,0 @@
-<map id="com.example.visibles.Visible" name="com.example.visibles.Visible">
-<area shape="rect" id="node1" title=" " alt="" coords="5,63,195,88"/>
-<area shape="rect" id="node2" href="$classcom_1_1example_1_1visibles_1_1_resource.html" title=" " alt="" coords="245,5,451,31"/>
-<area shape="rect" id="node3" href="$classcom_1_1example_1_1visibles_1_1creatures_1_1_creature.html" title=" " alt="" coords="244,55,452,95"/>
-<area shape="rect" id="node4" href="$classcom_1_1example_1_1visibles_1_1items_1_1_item.html" title=" " alt="" coords="243,120,453,145"/>
-<area shape="rect" id="node5" href="$classcom_1_1example_1_1visibles_1_1items_1_1_item_1_1_food.html" title=" " alt="" coords="501,113,688,153"/>
-</map>

@@ -1,4 +1,0 @@
-var enumcom_1_1example_1_1maps_1_1players_place_panels_1_1_players_place_effect_1_1_place_effect_name =
-[
-    [ "fire", "enumcom_1_1example_1_1maps_1_1players_place_panels_1_1_players_place_effect_1_1_place_effect_name.html#ad9015037b2530818d0a79a04e73997a0", null ]
-];

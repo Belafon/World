@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['unknown_0',['unknown',['../enumcom_1_1example_1_1maps_1_1weather_1_1_weather_1_1_name_part_of_day.html#a2aef03309dcb449e0c33cb7a152f22f8',1,'com::example::maps::weather::Weather::NamePartOfDay']]],
-  ['update_1',['update',['../classcom_1_1example_1_1maps_1_1players_place_panels_1_1_place_panel.html#a37f54cdaeb3c3a5ba74c23feb6408840',1,'com.example.maps.playersPlacePanels.PlacePanel.update()'],['../classcom_1_1example_1_1visibles_1_1creatures_1_1_creatures_panel_1_1_creature_info_panel.html#a107d998703379c1e38baaa0af8430743',1,'com.example.visibles.creatures.CreaturesPanel.CreatureInfoPanel.update()'],['../classcom_1_1example_1_1visibles_1_1items_1_1_items_panel_1_1_item_info_panel.html#a664b1a972bfea991ccb3bc2350ef398b',1,'com.example.visibles.items.ItemsPanel.ItemInfoPanel.update()'],['../classcom_1_1example_1_1visibles_1_1resources_1_1_resources_panel_1_1_resource_info_panel.html#a9787221a008977d37292436bc689e26f',1,'com.example.visibles.resources.ResourcesPanel.ResourceInfoPanel.update()']]],
-  ['updateplace_2',['updatePlace',['../classcom_1_1example_1_1maps_1_1_surrounding_map.html#a363b6dc0b13cc1f5b40512eeb4301248',1,'com::example::maps::SurroundingMap']]]
-];
