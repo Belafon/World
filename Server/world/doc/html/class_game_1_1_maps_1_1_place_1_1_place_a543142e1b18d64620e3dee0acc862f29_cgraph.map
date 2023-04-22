@@ -1,8 +1,0 @@
-<map id="Game.Maps.Place.Place.addResource" name="Game.Maps.Place.Place.addResource">
-<area shape="rect" id="node1" title=" " alt="" coords="5,93,197,133"/>
-<area shape="rect" id="node2" href="$class_game_1_1_maps_1_1_place_1_1_place.html#a2dd7c40528bb5ab9c4ad06ee9a54427c" title=" " alt="" coords="245,29,452,69"/>
-<area shape="rect" id="node5" href="$class_console_1_1_console_print.html#ac5714189f1864390c2d5c94ebde68900" title=" " alt="" coords="260,93,437,133"/>
-<area shape="rect" id="node6" href="$class_game_1_1_maps_1_1_place_1_1_place.html#af75352afad350afca2c5c0b331ea5654" title=" " alt="" coords="500,147,715,187"/>
-<area shape="rect" id="node3" href="$class_game_1_1_maps_1_1_place_1_1_place.html#a185b42d57b64e0f1915ab94bd2c2b37b" title=" " alt="" coords="504,29,711,69"/>
-<area shape="rect" id="node4" href="$class_game_1_1_maps_1_1_resources_1_1_resource.html#aaad166c2a20cea089b1b2b7f7ec56ea0" title=" " alt="" coords="763,87,1003,127"/>
-</map>

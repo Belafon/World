@@ -1,7 +1,0 @@
-<map id="Game.Maps.Place.Place.setStartResources" name="Game.Maps.Place.Place.setStartResources">
-<area shape="rect" id="node1" title=" " alt="" coords="5,33,195,73"/>
-<area shape="rect" id="node2" href="$class_game_1_1_maps_1_1_resources_1_1_resource.html#aaad166c2a20cea089b1b2b7f7ec56ea0" title=" " alt="" coords="509,5,749,45"/>
-<area shape="rect" id="node3" href="$class_game_1_1_maps_1_1_resources_1_1_type_of_resource_of_type_of_place.html#ac8953eeb1eb05f7efbd659a195b9feb2" title=" " alt="" coords="243,98,461,153"/>
-<area shape="rect" id="node5" href="$class_game_1_1_maps_1_1_place_1_1_place.html#af75352afad350afca2c5c0b331ea5654" title=" " alt="" coords="245,33,459,73"/>
-<area shape="rect" id="node4" href="$classlikeliness_1_1_dice.html#ad43a710e994946579f4312733caf3040" title=" " alt="" coords="562,113,697,138"/>
-</map>

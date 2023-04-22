@@ -1,6 +1,0 @@
-var classcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_list_of_all_types_of_resources =
-[
-    [ "NamesOfTypesOfResources", "enumcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_list_of_all_types_of_resources_1_1_names_of_types_of_resources.html", "enumcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_list_of_all_types_of_resources_1_1_names_of_types_of_resources" ],
-    [ "setUpAllResources", "classcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_list_of_all_types_of_resources.html#a83ba726ce969e0842dab15d33bf25904", null ],
-    [ "typesOfResources", "classcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_list_of_all_types_of_resources.html#a05acaa17aeacd4b1484724640889fb8b", null ]
-];

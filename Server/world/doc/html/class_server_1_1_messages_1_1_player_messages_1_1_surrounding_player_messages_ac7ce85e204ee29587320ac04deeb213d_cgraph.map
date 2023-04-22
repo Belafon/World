@@ -1,7 +1,0 @@
-<map id="Server.Messages.PlayerMessages.SurroundingPlayerMessages.setClouds" name="Server.Messages.PlayerMessages.SurroundingPlayerMessages.setClouds">
-<area shape="rect" id="node1" title=" " alt="" coords="5,69,256,109"/>
-<area shape="rect" id="node2" href="$class_game_1_1_maps_1_1_weather_1_1_weather.html#ae1e5da4e4e86da468f6a8d799d7c9c5d" title=" " alt="" coords="309,5,531,45"/>
-<area shape="rect" id="node3" href="$class_game_1_1_maps_1_1_weather_1_1_sky.html#a4ba9b78166542ac54d899875907cbd68" title=" " alt="" coords="323,69,517,109"/>
-<area shape="rect" id="node4" href="$class_server_1_1_send_message_1_1_send_message_player.html#a95a440bd6619a12bcfc671d81809ac15" title=" " alt="" coords="304,133,536,173"/>
-<area shape="rect" id="node5" href="$class_console_1_1_console_print.html#ab11dda42e5369950983803ebd836b858" title=" " alt="" coords="584,133,788,173"/>
-</map>

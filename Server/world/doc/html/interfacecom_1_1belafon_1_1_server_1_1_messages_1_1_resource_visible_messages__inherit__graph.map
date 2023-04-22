@@ -1,6 +1,0 @@
-<map id="com.belafon.Server.Messages.ResourceVisibleMessages" name="com.belafon.Server.Messages.ResourceVisibleMessages">
-<area shape="rect" id="node1" title=" " alt="" coords="5,77,205,117"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_races_1_1_animals_1_1_testing_messages.html" title=" " alt="" coords="273,5,489,45"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_server_1_1_messages_1_1_player_messages_1_1_resource_visible_player_messages.html" title=" " alt="" coords="253,70,508,125"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_settings_1_1_testing_messages.html" title=" " alt="" coords="285,149,476,189"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="Server.SendMessage.SendMessage" name="Server.SendMessage.SendMessage">
-<area shape="rect" id="node1" title=" " alt="" coords="348,95,580,120"/>
-<area shape="rect" id="node2" href="$class_server_1_1_messages_1_1_server_messages.html" title=" " alt="" coords="5,5,228,31"/>
-<area shape="rect" id="node3" href="$class_server_1_1_messages_1_1_surrounding_messages.html" title=" " alt="" coords="19,55,214,95"/>
-<area shape="rect" id="node4" href="$class_server_1_1_messages_1_1_condition_creature_messages.html" title=" " alt="" coords="27,119,207,159"/>
-<area shape="rect" id="node5" href="$class_server_1_1_messages_1_1_inventory_messages.html" title=" " alt="" coords="28,183,205,223"/>
-</map>

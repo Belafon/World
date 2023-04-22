@@ -1,7 +1,0 @@
-<map id="com.belafon.world.visibles.resources.Resource.setAmount" name="com.belafon.world.visibles.resources.Resource.setAmount">
-<area shape="rect" id="node1" title=" " alt="" coords="5,59,243,99"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1behaviours_1_1_find_concrete_resource.html#a10383bf341ef37356face28920dde24d" title=" " alt="" coords="291,59,648,99"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_unbounded_place.html#ae0f6fac5f488b55d39e5e369f82959b1" title=" " alt="" coords="696,59,995,99"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_unbounded_place.html#af174b96a6ce9e9feb8b215713b89371e" title=" " alt="" coords="1043,29,1301,69"/>
-<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_resource.html#ada47bdeec54af767a1801d0d3c45ab59" title=" " alt="" coords="1349,59,1587,99"/>
-</map>

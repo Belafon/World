@@ -1,5 +1,0 @@
-var _list_of_all_types_of_resources_8java =
-[
-    [ "com.belafon.world.visibles.resources.ListOfAllTypesOfResources", "classcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_list_of_all_types_of_resources.html", "classcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_list_of_all_types_of_resources" ],
-    [ "com.belafon.world.visibles.resources.ListOfAllTypesOfResources.NamesOfTypesOfResources", "enumcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_list_of_all_types_of_resources_1_1_names_of_types_of_resources.html", "enumcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_list_of_all_types_of_resources_1_1_names_of_types_of_resources" ]
-];

@@ -1,6 +1,0 @@
-<map id="com.belafon.Game.Maps.Weather.Sky.moveClouds" name="com.belafon.Game.Maps.Weather.Sky.moveClouds">
-<area shape="rect" id="node1" title=" " alt="" coords="5,55,229,95"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_time_1_1_time.html#a671bc0b40ca519bfbbddcc0f48424460" title=" " alt="" coords="277,5,523,31"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_maps_1_1_weather_1_1_sky.html#a946ad236567ea426b458c8d4be541b2f" title=" " alt="" coords="288,55,512,95"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_maps_1_1_weather_1_1_sky.html#a7e37e5da1c55c7c11747e4c0770a6bda" title=" " alt="" coords="288,119,512,159"/>
-</map>

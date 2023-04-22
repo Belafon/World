@@ -1,8 +1,0 @@
-<map id="com.belafon.Game.Creatures.Condition.AbilityCondition.setSpeedOfWalk" name="com.belafon.Game.Creatures.Condition.AbilityCondition.setSpeedOfWalk">
-<area shape="rect" id="node1" title=" " alt="" coords="5,99,235,153"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_creatures_memory_1_1_ability_condition_memory.html#a12440dbf19b833c0032bdebc1b3530d6" title=" " alt="" coords="291,5,519,60"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_time_1_1_time.html#a671bc0b40ca519bfbbddcc0f48424460" title=" " alt="" coords="283,84,528,109"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_visible.html#a0740e12c3644f8af35988ecccc86ffa8" title=" " alt="" coords="310,134,501,174"/>
-<area shape="rect" id="node6" href="$interfacecom_1_1belafon_1_1_server_1_1_messages_1_1_condition_creature_messages.html#a69adee2fd362611ef70d4eab0219e001" title=" " alt="" coords="283,199,527,253"/>
-<area shape="rect" id="node5" href="$interfacecom_1_1belafon_1_1_game_1_1_objects_memory_1_1_visible_1_1_action_watcher.html#a63c00bf92cda31960ccd80c438708c14" title=" " alt="" coords="576,134,816,174"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="Game.Maps.Resources.Resource.setAmount" name="Game.Maps.Resources.Resource.setAmount">
-<area shape="rect" id="node1" title=" " alt="" coords="5,59,245,99"/>
-<area shape="rect" id="node2" href="$class_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_find_concrete_resource.html#acd795b2109d9787fd3d5f57f24b50b82" title=" " alt="" coords="293,51,536,106"/>
-<area shape="rect" id="node3" href="$class_game_1_1_maps_1_1_place_1_1_place.html#a2dd7c40528bb5ab9c4ad06ee9a54427c" title=" " alt="" coords="584,59,791,99"/>
-<area shape="rect" id="node4" href="$class_game_1_1_maps_1_1_place_1_1_place.html#a185b42d57b64e0f1915ab94bd2c2b37b" title=" " alt="" coords="839,29,1045,69"/>
-<area shape="rect" id="node5" href="$class_game_1_1_maps_1_1_resources_1_1_resource.html#aaad166c2a20cea089b1b2b7f7ec56ea0" title=" " alt="" coords="1093,59,1333,99"/>
-</map>

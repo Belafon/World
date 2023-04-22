@@ -1,7 +1,0 @@
-<map id="com.belafon.Game.Creatures.Behaviour.BehaviourCondition.addBehavioursPossibleIngredient" name="com.belafon.Game.Creatures.Behaviour.BehaviourCondition.addBehavioursPossibleIngredient">
-<area shape="rect" id="node1" title=" " alt="" coords="5,45,223,100"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviour_condition.html#abe4dbf8d97845dae3c4a1c9743becd38" title=" " alt="" coords="271,38,571,107"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviour_condition.html#a97141d862abc1702c56a0541e08ad061" title=" " alt="" coords="619,5,836,60"/>
-<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviour_condition.html#ada965232c46a8a1b847891d8baaeb799" title=" " alt="" coords="619,84,836,139"/>
-<area shape="rect" id="node4" href="$interfacecom_1_1belafon_1_1_server_1_1_messages_1_1_behaviours_messages.html#ab16bdaa8c399be5e223c00c616ed8ebe" title=" " alt="" coords="884,13,1161,53"/>
-</map>

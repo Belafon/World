@@ -1,6 +1,0 @@
-<map id="Game.Creatures.Behaviour.Behaviours.FindConcreteResource.setResourcesDurationOfFinding" name="Game.Creatures.Behaviour.Behaviours.FindConcreteResource.setResourcesDurationOfFinding">
-<area shape="rect" id="node1" title=" " alt="" coords="5,51,248,106"/>
-<area shape="rect" id="node2" href="$class_game_1_1_maps_1_1_place_1_1_place.html#a2dd7c40528bb5ab9c4ad06ee9a54427c" title=" " alt="" coords="296,59,503,99"/>
-<area shape="rect" id="node3" href="$class_game_1_1_maps_1_1_place_1_1_place.html#a185b42d57b64e0f1915ab94bd2c2b37b" title=" " alt="" coords="551,29,757,69"/>
-<area shape="rect" id="node4" href="$class_game_1_1_maps_1_1_resources_1_1_resource.html#aaad166c2a20cea089b1b2b7f7ec56ea0" title=" " alt="" coords="805,59,1045,99"/>
-</map>

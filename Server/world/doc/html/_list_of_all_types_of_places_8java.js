@@ -1,6 +1,0 @@
-var _list_of_all_types_of_places_8java =
-[
-    [ "com.belafon.world.maps.place.ListOfAllTypesOfPlaces", "classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_list_of_all_types_of_places.html", "classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_list_of_all_types_of_places" ],
-    [ "com.belafon.world.maps.place.ListOfAllTypesOfPlaces.NamesOfTypesOfPlacesList", "classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_list_of_all_types_of_places_1_1_names_of_types_of_places_list.html", "classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_list_of_all_types_of_places_1_1_names_of_types_of_places_list" ],
-    [ "com.belafon.world.maps.place.ListOfAllTypesOfPlaces.NamesOfTypesOfPlaces", "enumcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_list_of_all_types_of_places_1_1_names_of_types_of_places.html", "enumcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_list_of_all_types_of_places_1_1_names_of_types_of_places" ]
-];

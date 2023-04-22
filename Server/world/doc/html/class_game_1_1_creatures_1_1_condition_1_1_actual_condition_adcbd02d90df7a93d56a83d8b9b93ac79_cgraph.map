@@ -1,7 +1,0 @@
-<map id="Game.Creatures.Condition.ActualCondition.setHunger" name="Game.Creatures.Condition.ActualCondition.setHunger">
-<area shape="rect" id="node1" title=" " alt="" coords="5,69,184,109"/>
-<area shape="rect" id="node2" href="$class_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#afd9e2e45ea4f0e4eacf8babc4484a2d8" title=" " alt="" coords="240,5,419,45"/>
-<area shape="rect" id="node3" href="$class_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#ac9454beb096780acfefcc0b4b2e07e31" title=" " alt="" coords="240,69,419,109"/>
-<area shape="rect" id="node5" href="$class_server_1_1_messages_1_1_condition_creature_messages.html#a58d5f20d23df6176f9a8ec95422ec23c" title=" " alt="" coords="232,133,427,173"/>
-<area shape="rect" id="node4" href="$class_server_1_1_messages_1_1_condition_creature_messages.html#ad9a8e6d661fcd9dffa1b6a3cd2de998b" title=" " alt="" coords="475,69,665,109"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="Server.Messages.PlayerMessages.ConditionPlayerMessages.setBleeding" name="Server.Messages.PlayerMessages.ConditionPlayerMessages.setBleeding">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,251,45"/>
-<area shape="rect" id="node2" href="$class_server_1_1_send_message_1_1_send_message_player.html#a95a440bd6619a12bcfc671d81809ac15" title=" " alt="" coords="299,5,531,45"/>
-<area shape="rect" id="node3" href="$class_console_1_1_console_print.html#ab11dda42e5369950983803ebd836b858" title=" " alt="" coords="579,5,783,45"/>
-</map>

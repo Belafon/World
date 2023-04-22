@@ -1,6 +1,0 @@
-<map id="com.belafon.world.visibles.creatures.Creature.setBehaviour" name="com.belafon.world.visibles.creatures.Creature.setBehaviour">
-<area shape="rect" id="node1" title=" " alt="" coords="5,37,240,77"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1_behaviour.html#a65b3c265f558e9bf0b03e40c1df4d0bf" title=" " alt="" coords="288,5,580,45"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1objects_memory_1_1_visible.html#af0b8e203d372ad38a9a9c55e70ce2a98" title=" " alt="" coords="339,69,529,109"/>
-<area shape="rect" id="node4" href="$interfacecom_1_1belafon_1_1world_1_1objects_memory_1_1_visible_1_1_action_watcher.html#a116bb582b8f495b2bbf3bdc0a2baebd8" title=" " alt="" coords="628,69,868,109"/>
-</map>

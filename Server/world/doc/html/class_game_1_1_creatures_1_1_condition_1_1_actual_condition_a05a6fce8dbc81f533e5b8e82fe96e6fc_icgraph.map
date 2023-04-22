@@ -1,6 +1,0 @@
-<map id="Game.Creatures.Condition.ActualCondition.getFatigueMax" name="Game.Creatures.Condition.ActualCondition.getFatigueMax">
-<area shape="rect" id="node1" title=" " alt="" coords="515,27,717,67"/>
-<area shape="rect" id="node2" href="$class_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#aeba05963db9427054106b6e1e1bdce3e" title=" " alt="" coords="5,31,184,71"/>
-<area shape="rect" id="node3" href="$class_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#a3af22e1ca9e7db6801a5b4feb54a2b9f" title=" " alt="" coords="232,27,467,67"/>
-<area shape="rect" id="node4" href="$class_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#acff85a44cd2b5e32c15e76e64f2ba469" title=" " alt="" coords="260,91,439,131"/>
-</map>

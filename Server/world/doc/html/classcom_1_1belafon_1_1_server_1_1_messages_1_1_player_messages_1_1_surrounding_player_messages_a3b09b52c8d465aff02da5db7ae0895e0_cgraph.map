@@ -1,5 +1,0 @@
-<map id="com.belafon.Server.Messages.PlayerMessages.SurroundingPlayerMessages.getVisibleCreaturePropertiesMessage" name="com.belafon.Server.Messages.PlayerMessages.SurroundingPlayerMessages.getVisibleCreaturePropertiesMessage">
-<area shape="rect" id="node1" title=" " alt="" coords="5,34,309,89"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_creature.html#a076566b2a1d935a490b7d447ceb4c777" title=" " alt="" coords="375,5,569,45"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_server_1_1_messages_1_1_player_messages_1_1_surrounding_player_messages.html#a36fc81e5026c636698609bf75ab64033" title=" " alt="" coords="357,70,587,125"/>
-</map>

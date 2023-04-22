@@ -1,8 +1,0 @@
-<map id="com.belafon.Game.Maps.Place.UnboundedPlace.getCreatures" name="com.belafon.Game.Maps.Place.UnboundedPlace.getCreatures">
-<area shape="rect" id="node1" title=" " alt="" coords="827,69,1035,109"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_items_1_1_types_1_1_space_item.html#a447d73ad4bedd676b45e0c218aa80efb" title=" " alt="" coords="561,5,772,45"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_maps_1_1_weather_1_1_weather.html#a994227a269ef81530c3d60ab933af615" title=" " alt="" coords="555,69,779,109"/>
-<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1_game_1_1_maps_1_1_weather_1_1_weather.html#a3fc954975b4906d956a6a785ccf0d427" title=" " alt="" coords="555,133,779,173"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_maps_1_1_weather_1_1_sky.html#a651a8fce9b06092857f5e7f136463b64" title=" " alt="" coords="283,101,507,141"/>
-<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1_game_1_1_calendar_1_1_events_1_1_event_change_weather.html#aa5eab814bd6745608110d01b04d3cf78" title=" " alt="" coords="5,101,235,141"/>
-</map>

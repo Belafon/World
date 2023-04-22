@@ -1,6 +1,0 @@
-<map id="com.belafon.world.visibles.creatures.behaviour.Behaviour" name="com.belafon.world.visibles.creatures.behaviour.Behaviour">
-<area shape="rect" id="node1" title=" " alt="" coords="5,55,297,95"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1behaviours_1_1_eat.html" title=" " alt="" coords="350,5,727,31"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1behaviours_1_1_find_concrete_resource.html" title=" " alt="" coords="360,55,717,95"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1behaviours_1_1_move.html" title=" " alt="" coords="345,120,732,145"/>
-</map>

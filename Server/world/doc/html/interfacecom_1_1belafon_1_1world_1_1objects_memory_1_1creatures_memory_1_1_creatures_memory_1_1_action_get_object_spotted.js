@@ -1,4 +1,0 @@
-var interfacecom_1_1belafon_1_1world_1_1objects_memory_1_1creatures_memory_1_1_creatures_memory_1_1_action_get_object_spotted =
-[
-    [ "doJob", "interfacecom_1_1belafon_1_1world_1_1objects_memory_1_1creatures_memory_1_1_creatures_memory_1_1_action_get_object_spotted.html#a78660ee61b4351ff541626def2eff9f5", null ]
-];

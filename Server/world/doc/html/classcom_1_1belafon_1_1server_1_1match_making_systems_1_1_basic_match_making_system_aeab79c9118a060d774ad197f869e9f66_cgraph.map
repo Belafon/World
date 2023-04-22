@@ -1,6 +1,0 @@
-<map id="com.belafon.server.matchMakingSystems.BasicMatchMakingSystem.setNumberOfPlayers" name="com.belafon.server.matchMakingSystems.BasicMatchMakingSystem.setNumberOfPlayers">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,236,60"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1server_1_1messages_1_1player_messages_1_1_server_player_messages.html#a511d2090c03738a70a1276fe3624c3d1" title=" " alt="" coords="284,5,571,60"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1server_1_1send_message_1_1_players_message_sender.html#acab6ad159ebf03b3e417f5426b94e341" title=" " alt="" coords="619,13,844,53"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1console_1_1_console_print.html#af1765ca4188aee613e269348aa9773bb" title=" " alt="" coords="892,13,1084,53"/>
-</map>

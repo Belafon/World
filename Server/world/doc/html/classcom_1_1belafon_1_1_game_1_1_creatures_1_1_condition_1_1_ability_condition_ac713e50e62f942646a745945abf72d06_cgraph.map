@@ -1,8 +1,0 @@
-<map id="com.belafon.Game.Creatures.Condition.AbilityCondition.setLoudness" name="com.belafon.Game.Creatures.Condition.AbilityCondition.setLoudness">
-<area shape="rect" id="node1" title=" " alt="" coords="5,106,253,146"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_creatures_memory_1_1_ability_condition_memory.html#a4056afc022094370cc6ade59bfbb0ccf" title=" " alt="" coords="325,5,541,60"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_time_1_1_time.html#a671bc0b40ca519bfbbddcc0f48424460" title=" " alt="" coords="310,84,555,109"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_visible.html#a0740e12c3644f8af35988ecccc86ffa8" title=" " alt="" coords="337,134,528,174"/>
-<area shape="rect" id="node6" href="$interfacecom_1_1belafon_1_1_server_1_1_messages_1_1_condition_creature_messages.html#adb28facedc8b1cdb4821e1ca806f7618" title=" " alt="" coords="301,198,564,238"/>
-<area shape="rect" id="node5" href="$interfacecom_1_1belafon_1_1_game_1_1_objects_memory_1_1_visible_1_1_action_watcher.html#a63c00bf92cda31960ccd80c438708c14" title=" " alt="" coords="612,134,852,174"/>
-</map>

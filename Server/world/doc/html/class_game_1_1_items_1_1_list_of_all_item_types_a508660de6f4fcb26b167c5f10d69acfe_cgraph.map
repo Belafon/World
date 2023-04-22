@@ -1,8 +1,0 @@
-<map id="Game.Items.ListOfAllItemTypes.setUpItems" name="Game.Items.ListOfAllItemTypes.setUpItems">
-<area shape="rect" id="node1" title=" " alt="" coords="5,101,176,141"/>
-<area shape="rect" id="node2" href="$class_game_1_1_items_1_1_list_of_all_item_types.html#a1e25f0df8233cf75fcf467477a5ca792" title=" " alt="" coords="224,5,395,45"/>
-<area shape="rect" id="node3" href="$class_game_1_1_items_1_1_list_of_all_item_types.html#a66655a1ba1a3802e14fcadc4775fbc16" title=" " alt="" coords="224,69,395,109"/>
-<area shape="rect" id="node5" href="$class_game_1_1_items_1_1_list_of_all_item_types.html#aefe85585e6dbac5b294e49d79ad0b3c0" title=" " alt="" coords="224,133,395,173"/>
-<area shape="rect" id="node6" href="$class_game_1_1_items_1_1_list_of_all_item_types.html#ab3aa6d87736b9d4b824bd59b552656e2" title=" " alt="" coords="224,197,395,237"/>
-<area shape="rect" id="node4" href="$class_game_1_1_time_1_1_time.html#ae28ad36817fb952f6d49ca82908b82e9" title=" " alt="" coords="443,77,656,102"/>
-</map>

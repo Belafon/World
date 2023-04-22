@@ -1,4 +1,0 @@
-var interfacecom_1_1belafon_1_1data_structures_1_1_synchronized_array_list_1_1_get_lists_items_action =
-[
-    [ "doWork", "interfacecom_1_1belafon_1_1data_structures_1_1_synchronized_array_list_1_1_get_lists_items_action.html#a989eca25d8459517bf2f664a5b3fa233", null ]
-];

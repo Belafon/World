@@ -1,8 +1,0 @@
-<map id="com.belafon.Game.Creatures.Behaviour.PlayersLookAround.look" name="com.belafon.Game.Creatures.Behaviour.PlayersLookAround.look">
-<area shape="rect" id="node1" title=" " alt="" coords="875,13,1097,53"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_players_look_around.html#a8ccc44e3612d3c40eb145f9eb80b97cb" title=" " alt="" coords="578,5,809,60"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_server_1_1_messages_1_1_player_messages_1_1_surrounding_player_messages.html#a812208fec5ee4fc47f67e2feab108a31" title=" " alt="" coords="560,85,827,154"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_server_1_1_messages_1_1_player_messages_1_1_surrounding_player_messages.html#a6a2fb1032a0799407ee9bc2f3efd7e53" title=" " alt="" coords="283,92,512,147"/>
-<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_player.html#aad799b7050c47c1cc3e0a18b50d1e3ae" title=" " alt="" coords="23,63,217,103"/>
-<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1_server_1_1_messages_1_1_player_messages_1_1_surrounding_player_messages.html#aeb83aade993c3316f37f326ae52893ff" title=" " alt="" coords="5,128,235,183"/>
-</map>

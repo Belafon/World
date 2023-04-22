@@ -1,8 +1,0 @@
-<map id="com.belafon.Game.Creatures.Condition.AbilityCondition.setHearing" name="com.belafon.Game.Creatures.Condition.AbilityCondition.setHearing">
-<area shape="rect" id="node1" title=" " alt="" coords="5,106,241,146"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_creatures_memory_1_1_ability_condition_memory.html#a0e113d76c8f9d9936951e74515302563" title=" " alt="" coords="307,5,523,60"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_time_1_1_time.html#a671bc0b40ca519bfbbddcc0f48424460" title=" " alt="" coords="292,84,537,109"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_visible.html#a0740e12c3644f8af35988ecccc86ffa8" title=" " alt="" coords="319,134,510,174"/>
-<area shape="rect" id="node6" href="$interfacecom_1_1belafon_1_1_server_1_1_messages_1_1_condition_creature_messages.html#a184549729032c33b6345ae5dd2740bc1" title=" " alt="" coords="289,198,540,238"/>
-<area shape="rect" id="node5" href="$interfacecom_1_1belafon_1_1_game_1_1_objects_memory_1_1_visible_1_1_action_watcher.html#a63c00bf92cda31960ccd80c438708c14" title=" " alt="" coords="588,134,828,174"/>
-</map>

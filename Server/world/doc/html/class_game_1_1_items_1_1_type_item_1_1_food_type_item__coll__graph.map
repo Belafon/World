@@ -1,6 +1,0 @@
-<map id="Game.Items.TypeItem.FoodTypeItem" name="Game.Items.TypeItem.FoodTypeItem">
-<area shape="rect" id="node1" title=" " alt="" coords="393,55,576,95"/>
-<area shape="rect" id="node2" href="$class_game_1_1_items_1_1_type_item_1_1_type_item.html" title=" " alt="" coords="5,5,212,31"/>
-<area shape="rect" id="node3" href="$class_game_1_1_items_1_1_items_special_stats_1_1_special_foods_properties.html" title=" " alt="" coords="5,55,212,95"/>
-<area shape="rect" id="node4" href="$enum_game_1_1_items_1_1_list_of_all_item_types_1_1_names_of_food_item_types.html" title=" " alt="" coords="7,119,211,159"/>
-</map>

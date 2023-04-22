@@ -1,6 +1,0 @@
-<map id="com.belafon.world.visibles.creatures.behaviour.PlayersLookAround.look" name="com.belafon.world.visibles.creatures.behaviour.PlayersLookAround.look">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,297,45"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1_players_look_around.html#a5084517cc3782e4135b7db0f9e31d2f4" title=" " alt="" coords="345,5,637,45"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1_players_look_around.html#a6efecdc03a785e832d3e5ec86f28994e" title=" " alt="" coords="345,69,637,109"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1_players_look_around.html#a2ddae4d8aa5473d18ed6dfd2da8b47dc" title=" " alt="" coords="685,5,977,45"/>
-</map>

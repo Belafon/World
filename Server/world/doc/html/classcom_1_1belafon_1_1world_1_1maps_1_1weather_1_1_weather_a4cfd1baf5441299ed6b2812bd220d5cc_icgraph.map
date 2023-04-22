@@ -1,5 +1,0 @@
-<map id="com.belafon.world.maps.weather.Weather.setWeather" name="com.belafon.world.maps.weather.Weather.setWeather">
-<area shape="rect" id="node1" title=" " alt="" coords="540,5,755,45"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1maps_1_1weather_1_1_sky.html#a88a8ac8f21496a4ca2bec781ebad0a8b" title=" " alt="" coords="277,5,492,45"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1calendar_1_1events_1_1_event_change_weather.html#afaeee7443562dec2c653630973643369" title=" " alt="" coords="5,5,229,45"/>
-</map>

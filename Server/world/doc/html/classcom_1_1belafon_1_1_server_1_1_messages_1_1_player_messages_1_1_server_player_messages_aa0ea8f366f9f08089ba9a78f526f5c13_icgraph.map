@@ -1,6 +1,0 @@
-<map id="com.belafon.Server.Messages.PlayerMessages.ServerPlayerMessages.setNumberOfPlayersInQueue" name="com.belafon.Server.Messages.PlayerMessages.ServerPlayerMessages.setNumberOfPlayersInQueue">
-<area shape="rect" id="node1" title=" " alt="" coords="563,45,841,100"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_server_1_1_match_making_systems_1_1_basic_match_making_system.html#a2ce424143654d3529cab4222717b1e53" title=" " alt="" coords="284,45,515,100"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_server_1_1_match_making_systems_1_1_basic_match_making_system.html#a9f3df5ef766be87adcab65b50d4b5bc6" title=" " alt="" coords="5,5,236,60"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_server_1_1_match_making_systems_1_1_basic_match_making_system.html#aac73c0d3e990c3071f3d040212b0c774" title=" " alt="" coords="5,84,236,139"/>
-</map>

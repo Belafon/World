@@ -1,4 +1,0 @@
-var interfacecom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_behaviours_possible_ingredients =
-[
-    [ "getBehavioursPossibleRequirementType", "interfacecom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_behaviours_possible_ingredients.html#a42dc1238d64f779590e45f94d6576b63", null ]
-];

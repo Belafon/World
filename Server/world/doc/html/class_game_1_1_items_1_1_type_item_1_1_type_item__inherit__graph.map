@@ -1,7 +1,0 @@
-<map id="Game.Items.TypeItem.TypeItem" name="Game.Items.TypeItem.TypeItem">
-<area shape="rect" id="node1" title=" " alt="" coords="5,109,212,134"/>
-<area shape="rect" id="node2" href="$class_game_1_1_items_1_1_type_item_1_1_clothes_type_item.html" title=" " alt="" coords="260,5,459,45"/>
-<area shape="rect" id="node3" href="$class_game_1_1_items_1_1_type_item_1_1_food_type_item.html" title=" " alt="" coords="268,69,451,109"/>
-<area shape="rect" id="node4" href="$class_game_1_1_items_1_1_type_item_1_1_quest_type_item.html" title=" " alt="" coords="265,133,454,173"/>
-<area shape="rect" id="node5" href="$class_game_1_1_items_1_1_type_item_1_1_tool_type_item.html" title=" " alt="" coords="270,197,449,237"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="Game.Items.TypeItem.ClothesTypeItem" name="Game.Items.TypeItem.ClothesTypeItem">
-<area shape="rect" id="node1" title=" " alt="" coords="359,55,557,95"/>
-<area shape="rect" id="node2" href="$class_game_1_1_items_1_1_type_item_1_1_type_item.html" title=" " alt="" coords="11,5,218,31"/>
-<area shape="rect" id="node3" href="$enum_game_1_1_items_1_1_type_item_1_1_clothes_type_item_1_1parts__of__body.html" title=" " alt="" coords="15,55,214,95"/>
-<area shape="rect" id="node4" href="$enum_game_1_1_items_1_1_list_of_all_item_types_1_1_names_of_clothes_item_types.html" title=" " alt="" coords="5,119,224,159"/>
-</map>

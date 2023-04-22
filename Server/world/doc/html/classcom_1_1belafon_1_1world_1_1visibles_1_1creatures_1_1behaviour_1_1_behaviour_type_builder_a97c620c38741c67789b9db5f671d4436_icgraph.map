@@ -1,6 +1,0 @@
-<map id="com.belafon.world.visibles.creatures.behaviour.BehaviourTypeBuilder.build" name="com.belafon.world.visibles.creatures.behaviour.BehaviourTypeBuilder.build">
-<area shape="rect" id="node1" title=" " alt="" coords="411,69,703,109"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1behaviours_1_1_eat.html#a2de7adf4db5bcc3c5bd4208ce7ec503b" title=" " alt="" coords="5,5,363,45"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1behaviours_1_1_find_concrete_resource.html#a8532bda795901124248d261cda9a74a3" title=" " alt="" coords="5,69,363,109"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1behaviours_1_1_move.html#a161d3b04d8a853d7688cb78b6ca34c28" title=" " alt="" coords="5,133,363,173"/>
-</map>

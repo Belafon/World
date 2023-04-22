@@ -1,6 +1,0 @@
-<map id="Server.Messages.PlayerMessages.SurroundingPlayerMessages.setWeather" name="Server.Messages.PlayerMessages.SurroundingPlayerMessages.setWeather">
-<area shape="rect" id="node1" title=" " alt="" coords="5,37,264,77"/>
-<area shape="rect" id="node2" href="$class_game_1_1_maps_1_1_weather_1_1_weather.html#a50fa1a3f346c40decf15c516d13df523" title=" " alt="" coords="317,5,539,45"/>
-<area shape="rect" id="node3" href="$class_server_1_1_send_message_1_1_send_message_player.html#a95a440bd6619a12bcfc671d81809ac15" title=" " alt="" coords="312,69,544,109"/>
-<area shape="rect" id="node4" href="$class_console_1_1_console_print.html#ab11dda42e5369950983803ebd836b858" title=" " alt="" coords="592,69,796,109"/>
-</map>

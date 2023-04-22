@@ -1,5 +1,0 @@
-<map id="com.belafon.server.messages.InventoryMessages.setRemoveItem" name="com.belafon.server.messages.InventoryMessages.setRemoveItem">
-<area shape="rect" id="node1" title=" " alt="" coords="748,5,975,45"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1inventory_1_1_inventory.html#a806d0d300ff28d10e47fefe73c7eda87" title=" " alt="" coords="411,5,700,45"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1behaviours_1_1_eat.html#a98eb8ee5331096473c94ad97a2f47b7a" title=" " alt="" coords="5,5,363,45"/>
-</map>

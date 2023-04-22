@@ -1,6 +1,0 @@
-<map id="com.belafon.world.visibles.creatures.behaviour.behaviours.FindConcreteResource.setResourcesDurationOfFinding" name="com.belafon.world.visibles.creatures.behaviour.behaviours.FindConcreteResource.setResourcesDurationOfFinding">
-<area shape="rect" id="node1" title=" " alt="" coords="5,59,363,99"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_unbounded_place.html#ae0f6fac5f488b55d39e5e369f82959b1" title=" " alt="" coords="411,59,709,99"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_unbounded_place.html#af174b96a6ce9e9feb8b215713b89371e" title=" " alt="" coords="757,29,1016,69"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_resource.html#ada47bdeec54af767a1801d0d3c45ab59" title=" " alt="" coords="1064,59,1301,99"/>
-</map>

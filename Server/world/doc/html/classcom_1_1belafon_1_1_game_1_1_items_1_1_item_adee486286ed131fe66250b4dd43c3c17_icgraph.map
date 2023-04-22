@@ -1,8 +1,0 @@
-<map id="com.belafon.Game.Items.Item.getLocation" name="com.belafon.Game.Items.Item.getLocation">
-<area shape="rect" id="node1" title=" " alt="" coords="523,69,741,109"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_inventory_1_1_inventory.html#ac75a79e3c25c2aa62bcc426b21ccda09" title=" " alt="" coords="272,5,467,45"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_maps_1_1_place_1_1_item_place.html#a69a0b285d8b1d6afedd6d40cb2778552" title=" " alt="" coords="265,69,473,109"/>
-<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1_game_1_1_items_1_1_types_1_1_food.html#aa227982623e188d112f5171c0afd85a3" title=" " alt="" coords="264,133,475,173"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_player.html#aad799b7050c47c1cc3e0a18b50d1e3ae" title=" " alt="" coords="13,5,208,45"/>
-<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1_game_1_1_items_1_1_types_1_1_food.html#a417204ee3ff3fc825ac29371d72605aa" title=" " alt="" coords="5,133,216,173"/>
-</map>

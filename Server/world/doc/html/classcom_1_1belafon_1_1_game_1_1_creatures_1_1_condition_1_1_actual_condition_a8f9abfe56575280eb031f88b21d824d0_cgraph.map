@@ -1,9 +1,0 @@
-<map id="com.belafon.Game.Creatures.Condition.ActualCondition.setEventMaxFatigue" name="com.belafon.Game.Creatures.Condition.ActualCondition.setEventMaxFatigue">
-<area shape="rect" id="node1" title=" " alt="" coords="5,91,231,146"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_calendar_1_1_calendar.html#a3b749776b1b53a7e5a7324b1e03a14c8" title=" " alt="" coords="314,5,505,45"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#a211e98e8be02e4eb0689e05c00a536e2" title=" " alt="" coords="279,69,540,109"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_time_1_1_time.html#a671bc0b40ca519bfbbddcc0f48424460" title=" " alt="" coords="603,131,848,157"/>
-<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#a355a46ec5ad193a5cdfc0a13316ce1cd" title=" " alt="" coords="279,185,540,225"/>
-<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_creatures_memory_1_1_actual_condition_memory.html#a6e8d9b3c0f7158794e2edafb4020bb37" title=" " alt="" coords="617,181,834,235"/>
-<area shape="rect" id="node7" href="$interfacecom_1_1belafon_1_1_server_1_1_messages_1_1_condition_creature_messages.html#ad351c5225b01ab413059fed3cac29e57" title=" " alt="" coords="588,260,863,300"/>
-</map>

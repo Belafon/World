@@ -1,6 +1,0 @@
-<map id="com.belafon.Game.Creatures.Behaviour.Behaviours.Move.getDurationOfTravel" name="com.belafon.Game.Creatures.Behaviour.Behaviours.Move.getDurationOfTravel">
-<area shape="rect" id="node1" title=" " alt="" coords="5,30,255,85"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_move.html#a238171fbd0c7a95523ca6d4c98520eec" title=" " alt="" coords="303,5,583,45"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#a702c8bee73dd7f07410631363f6edf36" title=" " alt="" coords="328,69,557,109"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_creature.html#a076566b2a1d935a490b7d447ceb4c777" title=" " alt="" coords="631,5,825,45"/>
-</map>

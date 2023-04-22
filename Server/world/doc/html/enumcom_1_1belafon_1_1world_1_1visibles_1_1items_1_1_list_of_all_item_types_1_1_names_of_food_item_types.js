@@ -1,4 +1,0 @@
-var enumcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1_list_of_all_item_types_1_1_names_of_food_item_types =
-[
-    [ "apple", "enumcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1_list_of_all_item_types_1_1_names_of_food_item_types.html#a4269cf5f7ff2e1e9be5268735198b2dd", null ]
-];

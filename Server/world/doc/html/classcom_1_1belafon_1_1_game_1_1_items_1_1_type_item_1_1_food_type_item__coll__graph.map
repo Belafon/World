@@ -1,9 +1,0 @@
-<map id="com.belafon.Game.Items.TypeItem.FoodTypeItem" name="com.belafon.Game.Items.TypeItem.FoodTypeItem">
-<area shape="rect" id="node1" title=" " alt="" coords="1316,77,1515,117"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_items_1_1_type_item_1_1_type_item.html" title=" " alt="" coords="907,13,1105,53"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_consumable_behaviours_possible_requirement.html" title=" " alt="" coords="607,5,828,60"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_behaviours_possible_requirement.html" title=" " alt="" coords="345,5,557,60"/>
-<area shape="rect" id="node5" title=" " alt="" coords="5,13,232,53"/>
-<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1_game_1_1_items_1_1_items_special_stats_1_1_special_foods_properties.html" title=" " alt="" coords="887,77,1125,117"/>
-<area shape="rect" id="node7" href="$enumcom_1_1belafon_1_1_game_1_1_items_1_1_list_of_all_item_types_1_1_names_of_food_item_types.html" title=" " alt="" coords="877,141,1135,181"/>
-</map>

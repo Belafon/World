@@ -1,5 +1,0 @@
-<map id="com.belafon.Server.Messages.PlayerMessages.InventoryPlayerMessages.getItemPropertiesMessage" name="com.belafon.Server.Messages.PlayerMessages.InventoryPlayerMessages.getItemPropertiesMessage">
-<area shape="rect" id="node1" title=" " alt="" coords="347,45,640,100"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_server_1_1_messages_1_1_player_messages_1_1_surrounding_player_messages.html#ade93dfbb52e7a55a35e442088fc393dd" title=" " alt="" coords="37,5,267,60"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_server_1_1_messages_1_1_player_messages_1_1_inventory_player_messages.html#a0c1efc5f55b729d480615e43bd46aa15" title=" " alt="" coords="5,84,299,139"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="Server.Messages.PlayerMessages.SurroundingPlayerMessages.setInfoAboutSurroundingLookAround" name="Server.Messages.PlayerMessages.SurroundingPlayerMessages.setInfoAboutSurroundingLookAround">
-<area shape="rect" id="node1" title=" " alt="" coords="5,30,269,85"/>
-<area shape="rect" id="node2" href="$class_game_1_1_creatures_1_1_behaviour_1_1_players_look_around.html#a2f8cc109da0b52bf343d90e176e2047a" title=" " alt="" coords="343,5,524,45"/>
-<area shape="rect" id="node5" href="$class_server_1_1_send_message_1_1_send_message_player.html#a95a440bd6619a12bcfc671d81809ac15" title=" " alt="" coords="317,69,549,109"/>
-<area shape="rect" id="node3" href="$class_game_1_1_creatures_1_1_behaviour_1_1_players_look_around.html#ae651de12ad505a926a01a76426f8e0fc" title=" " alt="" coords="597,5,821,45"/>
-<area shape="rect" id="node4" href="$class_game_1_1_creatures_1_1_behaviour_1_1_players_look_around.html#af7b114984adaaffbe7b9369ba760c586" title=" " alt="" coords="869,5,1055,45"/>
-<area shape="rect" id="node6" href="$class_console_1_1_console_print.html#ab11dda42e5369950983803ebd836b858" title=" " alt="" coords="607,69,811,109"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="com.belafon.Game.Creatures.Condition.AbilityCondition.setObservation" name="com.belafon.Game.Creatures.Condition.AbilityCondition.setObservation">
-<area shape="rect" id="node1" title=" " alt="" coords="5,106,265,146"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_creatures_memory_1_1_ability_condition_memory.html#aaad7060d40afc1949611b5dd65b4f9f2" title=" " alt="" coords="343,5,559,60"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_time_1_1_time.html#a671bc0b40ca519bfbbddcc0f48424460" title=" " alt="" coords="328,84,573,109"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_visible.html#a0740e12c3644f8af35988ecccc86ffa8" title=" " alt="" coords="355,134,546,174"/>
-<area shape="rect" id="node6" href="$interfacecom_1_1belafon_1_1_server_1_1_messages_1_1_condition_creature_messages.html#a3fcce95c6f29c3e503e9e4c5dc11f7bb" title=" " alt="" coords="313,198,588,238"/>
-<area shape="rect" id="node5" href="$interfacecom_1_1belafon_1_1_game_1_1_objects_memory_1_1_visible_1_1_action_watcher.html#a63c00bf92cda31960ccd80c438708c14" title=" " alt="" coords="636,134,876,174"/>
-</map>

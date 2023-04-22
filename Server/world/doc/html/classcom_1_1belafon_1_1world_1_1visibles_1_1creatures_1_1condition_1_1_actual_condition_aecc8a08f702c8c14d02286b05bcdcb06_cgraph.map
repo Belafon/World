@@ -1,6 +1,0 @@
-<map id="com.belafon.world.visibles.creatures.condition.ActualCondition.setFatigueMax" name="com.belafon.world.visibles.creatures.condition.ActualCondition.setFatigueMax">
-<area shape="rect" id="node1" title=" " alt="" coords="5,77,296,117"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1objects_memory_1_1creatures_memory_1_1_actual_condition_memory.html#a38398b82160358e0166e12cca0f56cba" title=" " alt="" coords="347,5,616,60"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1time_1_1_time.html#a66e9dc1830709be4b45e2f20a46d411f" title=" " alt="" coords="363,84,600,109"/>
-<area shape="rect" id="node4" href="$interfacecom_1_1belafon_1_1server_1_1messages_1_1_condition_creature_messages.html#aa7f3855d401b8928a688958b0b07f4df" title=" " alt="" coords="344,134,619,174"/>
-</map>

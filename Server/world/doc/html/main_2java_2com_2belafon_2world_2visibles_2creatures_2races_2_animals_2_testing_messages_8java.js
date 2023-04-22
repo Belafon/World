@@ -1,4 +1,0 @@
-var main_2java_2com_2belafon_2world_2visibles_2creatures_2races_2_animals_2_testing_messages_8java =
-[
-    [ "com.belafon.world.visibles.creatures.races.Animals.TestingMessages", "classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1races_1_1_animals_1_1_testing_messages.html", "classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1races_1_1_animals_1_1_testing_messages" ]
-];

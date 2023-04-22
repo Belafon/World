@@ -1,8 +1,0 @@
-<map id="com.belafon.world.visibles.creatures.condition.AbilityCondition.setCurrentEnergyOutput" name="com.belafon.world.visibles.creatures.condition.AbilityCondition.setCurrentEnergyOutput">
-<area shape="rect" id="node1" title=" " alt="" coords="5,106,296,146"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1objects_memory_1_1creatures_memory_1_1_ability_condition_memory.html#aec413723de41a351c0cc0be3d30a9039" title=" " alt="" coords="344,5,615,60"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1time_1_1_time.html#a66e9dc1830709be4b45e2f20a46d411f" title=" " alt="" coords="361,84,598,109"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1objects_memory_1_1_visible.html#af0b8e203d372ad38a9a9c55e70ce2a98" title=" " alt="" coords="384,134,575,174"/>
-<area shape="rect" id="node6" href="$interfacecom_1_1belafon_1_1server_1_1messages_1_1_condition_creature_messages.html#ac3cfacf8a8aa05c79e3920e38030cde7" title=" " alt="" coords="355,199,604,253"/>
-<area shape="rect" id="node5" href="$interfacecom_1_1belafon_1_1world_1_1objects_memory_1_1_visible_1_1_action_watcher.html#a116bb582b8f495b2bbf3bdc0a2baebd8" title=" " alt="" coords="663,134,903,174"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="com.belafon.Game.Creatures.Condition.AbilityCondition.setCurrentSpeed" name="com.belafon.Game.Creatures.Condition.AbilityCondition.setCurrentSpeed">
-<area shape="rect" id="node1" title=" " alt="" coords="5,106,276,146"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_creatures_memory_1_1_ability_condition_memory.html#a57cce954702f9e75c8f3605560d314b3" title=" " alt="" coords="354,5,581,60"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_time_1_1_time.html#a671bc0b40ca519bfbbddcc0f48424460" title=" " alt="" coords="345,84,590,109"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_visible.html#a0740e12c3644f8af35988ecccc86ffa8" title=" " alt="" coords="372,134,563,174"/>
-<area shape="rect" id="node6" href="$interfacecom_1_1belafon_1_1_server_1_1_messages_1_1_condition_creature_messages.html#a9f96e2c8c1876a4c6d33d3ae673d210d" title=" " alt="" coords="324,198,611,238"/>
-<area shape="rect" id="node5" href="$interfacecom_1_1belafon_1_1_game_1_1_objects_memory_1_1_visible_1_1_action_watcher.html#a63c00bf92cda31960ccd80c438708c14" title=" " alt="" coords="659,134,899,174"/>
-</map>

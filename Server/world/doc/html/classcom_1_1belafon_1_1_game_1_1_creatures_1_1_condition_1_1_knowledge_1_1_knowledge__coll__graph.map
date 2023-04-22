@@ -1,7 +1,0 @@
-<map id="com.belafon.Game.Creatures.Condition.Knowledge.Knowledge" name="com.belafon.Game.Creatures.Condition.Knowledge.Knowledge">
-<area shape="rect" id="node1" title=" " alt="" coords="923,49,1133,89"/>
-<area shape="rect" id="node2" href="$interfacecom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_behaviours_possible_ingredients.html" title=" " alt="" coords="620,5,832,60"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_condition_1_1_knowledge_1_1_type_knowledge.html" title=" " alt="" coords="607,85,845,125"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_behaviours_possible_requirement.html" title=" " alt="" coords="345,77,557,132"/>
-<area shape="rect" id="node5" title=" " alt="" coords="5,85,232,125"/>
-</map>

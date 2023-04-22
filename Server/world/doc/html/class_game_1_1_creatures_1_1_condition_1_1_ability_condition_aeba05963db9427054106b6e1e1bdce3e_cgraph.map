@@ -1,5 +1,0 @@
-<map id="Game.Creatures.Condition.AbilityCondition.getFatigue" name="Game.Creatures.Condition.AbilityCondition.getFatigue">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,184,45"/>
-<area shape="rect" id="node2" href="$class_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#a05a6fce8dbc81f533e5b8e82fe96e6fc" title=" " alt="" coords="459,5,661,45"/>
-<area shape="rect" id="node3" href="$class_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#acff85a44cd2b5e32c15e76e64f2ba469" title=" " alt="" coords="232,33,411,73"/>
-</map>

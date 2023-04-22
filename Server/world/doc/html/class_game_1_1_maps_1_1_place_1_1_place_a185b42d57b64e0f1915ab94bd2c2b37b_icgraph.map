@@ -1,7 +1,0 @@
-<map id="Game.Maps.Place.Place.binarySearchRecursion" name="Game.Maps.Place.Place.binarySearchRecursion">
-<area shape="rect" id="node1" title=" " alt="" coords="839,41,1045,81"/>
-<area shape="rect" id="node2" href="$class_game_1_1_maps_1_1_place_1_1_place.html#a2dd7c40528bb5ab9c4ad06ee9a54427c" title=" " alt="" coords="584,41,791,81"/>
-<area shape="rect" id="node3" href="$class_game_1_1_maps_1_1_place_1_1_place.html#a543142e1b18d64620e3dee0acc862f29" title=" " alt="" coords="319,5,511,45"/>
-<area shape="rect" id="node4" href="$class_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_find_concrete_resource.html#acd795b2109d9787fd3d5f57f24b50b82" title=" " alt="" coords="293,70,536,125"/>
-<area shape="rect" id="node5" href="$class_game_1_1_maps_1_1_resources_1_1_resource.html#ab46c16bc629dda0183fdc76dd16ce6de" title=" " alt="" coords="5,77,245,117"/>
-</map>

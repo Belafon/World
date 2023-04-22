@@ -1,5 +1,0 @@
-<map id="Game.Maps.Weather.Sky.setOriginX" name="Game.Maps.Weather.Sky.setOriginX">
-<area shape="rect" id="node1" title=" " alt="" coords="499,5,693,45"/>
-<area shape="rect" id="node2" href="$class_game_1_1_maps_1_1_weather_1_1_sky.html#aaf69773d4d9cecf9ea869a03e5e95c24" title=" " alt="" coords="244,5,451,45"/>
-<area shape="rect" id="node3" href="$class_game_1_1_calendar_1_1_events_1_1_event_move_clouds.html#a8536b454e519fb07c6e5c238c0642e3d" title=" " alt="" coords="5,5,196,45"/>
-</map>

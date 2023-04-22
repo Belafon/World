@@ -1,9 +1,0 @@
-<map id="com.belafon.world.visibles.items.types.Food.Food" name="com.belafon.world.visibles.items.types.Food.Food">
-<area shape="rect" id="node1" title=" " alt="" coords="5,99,253,139"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1types_1_1_food.html#aeded6812d7312968e600d81cd3d3ac20" title=" " alt="" coords="301,131,549,171"/>
-<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1types_1_1_food.html#ae608f3ef25a8b409cfa1c9c15712542b" title=" " alt="" coords="301,67,549,107"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1calendar_1_1_calendar.html#a11a6ea45b70d1454ab1824dbe658ea15" title=" " alt="" coords="630,69,813,109"/>
-<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1time_1_1_time.html#a66e9dc1830709be4b45e2f20a46d411f" title=" " alt="" coords="603,134,840,159"/>
-<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1types_1_1_food.html#a01b7deb80efaa603a4e64a58d3ff6dab" title=" " alt="" coords="597,184,845,224"/>
-<area shape="rect" id="node7" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1_item.html#aa1a391a21f5ddec5e50a552b7bf19caf" title=" " alt="" coords="615,5,827,45"/>
-</map>

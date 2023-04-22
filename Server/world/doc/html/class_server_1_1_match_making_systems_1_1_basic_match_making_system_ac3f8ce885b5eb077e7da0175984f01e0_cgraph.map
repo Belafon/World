@@ -1,9 +1,0 @@
-<map id="Server.MatchMakingSystems.BasicMatchMakingSystem.addClient" name="Server.MatchMakingSystems.BasicMatchMakingSystem.addClient">
-<area shape="rect" id="node1" title=" " alt="" coords="5,62,241,102"/>
-<area shape="rect" id="node2" href="$class_game_1_1_world.html#a37950391cd11b50110b3d88af80d210a" title=" " alt="" coords="324,5,500,31"/>
-<area shape="rect" id="node3" href="$class_server_1_1_match_making_systems_1_1_basic_match_making_system.html#ae45e2dcdd43fb7002ebd42b67cbc9250" title=" " alt="" coords="289,55,535,109"/>
-<area shape="rect" id="node7" href="$class_game_1_1_world.html#ab2efb12a9a87df45d67f7ac3fe3f2f95" title=" " alt="" coords="349,133,475,159"/>
-<area shape="rect" id="node4" href="$class_server_1_1_messages_1_1_player_messages_1_1_server_player_messages.html#a81e33d779d420bf3649e2b383e3fdc63" title=" " alt="" coords="583,55,861,109"/>
-<area shape="rect" id="node5" href="$class_server_1_1_send_message_1_1_send_message_player.html#a95a440bd6619a12bcfc671d81809ac15" title=" " alt="" coords="909,62,1141,102"/>
-<area shape="rect" id="node6" href="$class_console_1_1_console_print.html#ab11dda42e5369950983803ebd836b858" title=" " alt="" coords="1189,62,1393,102"/>
-</map>

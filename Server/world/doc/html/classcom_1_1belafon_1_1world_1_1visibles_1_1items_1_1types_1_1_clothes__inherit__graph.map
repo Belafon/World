@@ -1,6 +1,0 @@
-<map id="com.belafon.world.visibles.items.types.Clothes" name="com.belafon.world.visibles.items.types.Clothes">
-<area shape="rect" id="node1" title=" " alt="" coords="916,5,1164,45"/>
-<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1_item.html" title=" " alt="" coords="631,13,868,38"/>
-<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1objects_memory_1_1_visible.html" title=" " alt="" coords="411,5,583,45"/>
-<area shape="rect" id="node4" href="$interfacecom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1behaviours_1_1_behaviours_possible_ingredients.html" title=" " alt="" coords="5,5,363,45"/>
-</map>

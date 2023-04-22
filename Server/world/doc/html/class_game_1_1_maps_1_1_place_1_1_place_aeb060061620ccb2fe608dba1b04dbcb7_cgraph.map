@@ -1,6 +1,0 @@
-<map id="Game.Maps.Place.Place.getTemperature" name="Game.Maps.Place.Place.getTemperature">
-<area shape="rect" id="node1" title=" " alt="" coords="5,69,195,109"/>
-<area shape="rect" id="node2" href="$class_game_1_1_maps_1_1_weather_1_1_weather.html#ae1e5da4e4e86da468f6a8d799d7c9c5d" title=" " alt="" coords="243,5,464,45"/>
-<area shape="rect" id="node3" href="$class_game_1_1_maps_1_1_weather_1_1_weather.html#a50fa1a3f346c40decf15c516d13df523" title=" " alt="" coords="243,69,464,109"/>
-<area shape="rect" id="node4" href="$class_game_1_1_maps_1_1_weather_1_1_sky.html#a4ba9b78166542ac54d899875907cbd68" title=" " alt="" coords="256,133,451,173"/>
-</map>
