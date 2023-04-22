@@ -1,0 +1,10 @@
+<map id="com.belafon.world.visibles.creatures.behaviour.behaviours.ConsumableBehavioursPossibleRequirement" name="com.belafon.world.visibles.creatures.behaviour.behaviours.ConsumableBehavioursPossibleRequirement">
+<area shape="rect" id="node1" title=" " alt="" coords="411,133,768,173"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1type_item_1_1_type_item.html" title=" " alt="" coords="816,133,1053,173"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1behaviours_1_1_behaviours_possible_requirement.html" title=" " alt="" coords="5,133,363,173"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1type_item_1_1_clothes_type_item.html" title=" " alt="" coords="1101,5,1339,45"/>
+<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1type_item_1_1_food_type_item.html" title=" " alt="" coords="1101,69,1339,109"/>
+<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1type_item_1_1_quest_type_item.html" title=" " alt="" coords="1101,133,1339,173"/>
+<area shape="rect" id="node7" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1type_item_1_1_space_type_item.html" title=" " alt="" coords="1101,197,1339,237"/>
+<area shape="rect" id="node8" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1type_item_1_1_tool_type_item.html" title=" " alt="" coords="1101,261,1339,301"/>
+</map>

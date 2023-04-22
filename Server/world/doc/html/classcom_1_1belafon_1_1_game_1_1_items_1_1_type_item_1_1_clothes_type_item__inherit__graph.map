@@ -1,0 +1,6 @@
+<map id="com.belafon.Game.Items.TypeItem.ClothesTypeItem" name="com.belafon.Game.Items.TypeItem.ClothesTypeItem">
+<area shape="rect" id="node1" title=" " alt="" coords="781,13,980,53"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_items_1_1_type_item_1_1_type_item.html" title=" " alt="" coords="535,13,733,53"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_consumable_behaviours_possible_requirement.html" title=" " alt="" coords="265,5,487,60"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_behaviours_possible_requirement.html" title=" " alt="" coords="5,5,217,60"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="com.belafon.Server.Messages.PlayerMessages.SurroundingPlayerMessages.setClouds" name="com.belafon.Server.Messages.PlayerMessages.SurroundingPlayerMessages.setClouds">
+<area shape="rect" id="node1" title=" " alt="" coords="5,62,235,117"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_maps_1_1_weather_1_1_weather.html#a817d0f2638a54c6e4443ccb06c708bea" title=" " alt="" coords="283,5,507,45"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_maps_1_1_weather_1_1_sky.html#a952235a58c30aa196a676ab570e28bf9" title=" " alt="" coords="283,69,507,109"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_server_1_1_send_message_1_1_players_message_sender.html#aa99bcae9c2a10f460653233af2d6cf04" title=" " alt="" coords="283,133,508,173"/>
+<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1_console_1_1_console_print.html#a1b73c4f347a0d554b066105709510d7b" title=" " alt="" coords="556,133,751,173"/>
+</map>

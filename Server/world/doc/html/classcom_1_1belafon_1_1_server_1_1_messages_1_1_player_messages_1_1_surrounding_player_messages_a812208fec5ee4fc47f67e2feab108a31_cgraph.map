@@ -1,0 +1,9 @@
+<map id="com.belafon.Server.Messages.PlayerMessages.SurroundingPlayerMessages.setInfoAboutSurroundingPlacesLookAround" name="com.belafon.Server.Messages.PlayerMessages.SurroundingPlayerMessages.setInfoAboutSurroundingPlacesLookAround">
+<area shape="rect" id="node1" title=" " alt="" coords="5,74,272,143"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_players_look_around.html#ae4eeccec50aba41566b1e31263c77740" title=" " alt="" coords="321,53,544,93"/>
+<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1_server_1_1_send_message_1_1_players_message_sender.html#aa99bcae9c2a10f460653233af2d6cf04" title=" " alt="" coords="320,121,545,161"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_players_look_around.html#a8ccc44e3612d3c40eb145f9eb80b97cb" title=" " alt="" coords="599,5,830,60"/>
+<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_players_look_around.html#ac5a6515589220410dbf776af44207d19" title=" " alt="" coords="593,84,836,139"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_players_look_around.html#a0c9c0b1824587197c7ed8b95f2483329" title=" " alt="" coords="884,13,1129,53"/>
+<area shape="rect" id="node7" href="$classcom_1_1belafon_1_1_console_1_1_console_print.html#a1b73c4f347a0d554b066105709510d7b" title=" " alt="" coords="617,163,812,203"/>
+</map>

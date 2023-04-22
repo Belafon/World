@@ -1,4 +1,4 @@
 var _move_8java =
 [
-    [ "Game.Creatures.Behaviour.Behaviours.Move", "class_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_move.html", "class_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_move" ]
+    [ "com.belafon.world.visibles.creatures.behaviour.behaviours.Move", "classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1behaviours_1_1_move.html", "classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1behaviours_1_1_move" ]
 ];

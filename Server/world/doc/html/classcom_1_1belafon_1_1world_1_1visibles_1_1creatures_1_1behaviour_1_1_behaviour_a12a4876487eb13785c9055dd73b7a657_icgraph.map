@@ -1,0 +1,6 @@
+<map id="com.belafon.world.visibles.creatures.behaviour.Behaviour.getType" name="com.belafon.world.visibles.creatures.behaviour.Behaviour.getType">
+<area shape="rect" id="node1" title=" " alt="" coords="708,53,1000,93"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1server_1_1messages_1_1player_messages_1_1_creature_visible_player_messages.html#a67dc3dac22d31b1836a36a9bbaeecdff" title=" " alt="" coords="331,5,660,60"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1server_1_1messages_1_1player_messages_1_1_surrounding_player_messages.html#a78d99984f931d3e95c57cce1225c9d43" title=" " alt="" coords="358,84,633,139"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1server_1_1messages_1_1player_messages_1_1_surrounding_player_messages.html#aa4296dea85d4bd6af0632134e87678a5" title=" " alt="" coords="5,84,283,139"/>
+</map>

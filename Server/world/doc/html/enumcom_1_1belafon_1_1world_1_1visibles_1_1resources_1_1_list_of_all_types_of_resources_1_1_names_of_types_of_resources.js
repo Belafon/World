@@ -1,0 +1,8 @@
+var enumcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_list_of_all_types_of_resources_1_1_names_of_types_of_resources =
+[
+    [ "blueberry", "enumcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_list_of_all_types_of_resources_1_1_names_of_types_of_resources.html#a8b4dc839bbd3111b44bbb19ae99d4060", null ],
+    [ "mushrooms", "enumcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_list_of_all_types_of_resources_1_1_names_of_types_of_resources.html#a538785ff73eada88614e0c2a6646efeb", null ],
+    [ "treeOak", "enumcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_list_of_all_types_of_resources_1_1_names_of_types_of_resources.html#a1ae092e583591b403c3a845536dca2b8", null ],
+    [ "treePine", "enumcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_list_of_all_types_of_resources_1_1_names_of_types_of_resources.html#a08b32553f667c886e7ebbbd96bc0ff6a", null ],
+    [ "treeSpruce", "enumcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_list_of_all_types_of_resources_1_1_names_of_types_of_resources.html#afc510c37b3012cb9b0c8c11250b5819c", null ]
+];

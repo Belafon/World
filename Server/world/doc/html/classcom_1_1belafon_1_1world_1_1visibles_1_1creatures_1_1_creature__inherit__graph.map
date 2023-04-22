@@ -1,0 +1,8 @@
+<map id="com.belafon.world.visibles.creatures.Creature" name="com.belafon.world.visibles.creatures.Creature">
+<area shape="rect" id="node1" title=" " alt="" coords="631,69,865,109"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1settings_1_1_testing_creature.html" title=" " alt="" coords="955,5,1143,45"/>
+<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1_player.html" title=" " alt="" coords="931,69,1166,109"/>
+<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1races_1_1_animals_1_1_animal.html" title=" " alt="" coords="913,133,1184,173"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1objects_memory_1_1_visible.html" title=" " alt="" coords="411,69,583,109"/>
+<area shape="rect" id="node3" href="$interfacecom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1behaviours_1_1_behaviours_possible_ingredients.html" title=" " alt="" coords="5,69,363,109"/>
+</map>

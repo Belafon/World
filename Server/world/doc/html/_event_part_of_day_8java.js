@@ -1,4 +1,4 @@
 var _event_part_of_day_8java =
 [
-    [ "Game.Calendar.Events.EventPartOfDay", "class_game_1_1_calendar_1_1_events_1_1_event_part_of_day.html", "class_game_1_1_calendar_1_1_events_1_1_event_part_of_day" ]
+    [ "com.belafon.world.calendar.events.EventPartOfDay", "classcom_1_1belafon_1_1world_1_1calendar_1_1events_1_1_event_part_of_day.html", "classcom_1_1belafon_1_1world_1_1calendar_1_1events_1_1_event_part_of_day" ]
 ];

@@ -1,4 +1,4 @@
 var _map_8java =
 [
-    [ "Game.Maps.Map", "class_game_1_1_maps_1_1_map.html", "class_game_1_1_maps_1_1_map" ]
+    [ "com.belafon.world.maps.Map", "classcom_1_1belafon_1_1world_1_1maps_1_1_map.html", "classcom_1_1belafon_1_1world_1_1maps_1_1_map" ]
 ];

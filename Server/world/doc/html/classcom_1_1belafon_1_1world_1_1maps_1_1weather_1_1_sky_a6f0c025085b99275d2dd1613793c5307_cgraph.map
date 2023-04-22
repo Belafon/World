@@ -1,0 +1,6 @@
+<map id="com.belafon.world.maps.weather.Sky.moveClouds" name="com.belafon.world.maps.weather.Sky.moveClouds">
+<area shape="rect" id="node1" title=" " alt="" coords="5,55,220,95"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1time_1_1_time.html#a66e9dc1830709be4b45e2f20a46d411f" title=" " alt="" coords="268,5,505,31"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1maps_1_1weather_1_1_sky.html#a7c62a323ed2fda3e3bf1cbd13d4639f5" title=" " alt="" coords="279,55,494,95"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1maps_1_1weather_1_1_sky.html#a02a553dce4eb882b5f82cc677e165481" title=" " alt="" coords="279,119,494,159"/>
+</map>

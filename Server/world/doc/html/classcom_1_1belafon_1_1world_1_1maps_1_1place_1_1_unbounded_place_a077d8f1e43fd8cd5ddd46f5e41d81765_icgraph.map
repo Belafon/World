@@ -1,0 +1,7 @@
+<map id="com.belafon.world.maps.place.UnboundedPlace.addItem" name="com.belafon.world.maps.place.UnboundedPlace.addItem">
+<area shape="rect" id="node1" title=" " alt="" coords="625,41,827,81"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1inventory_1_1_inventory.html#a49fa0461d88d8a3b66cc1bda273bc2c2" title=" " alt="" coords="288,5,577,45"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1maps_1_1_generate_visibles.html#a4f7f9f8c7e0016b17d4e75d8316fbfc8" title=" " alt="" coords="315,70,551,125"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1_player.html#ae6fd4aa783a6afadbcb07e1bc0f8b5a5" title=" " alt="" coords="5,5,240,45"/>
+<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1world_1_1_world.html#a75fbf9f6c91c4cf2cb24fd2c1e19858a" title=" " alt="" coords="29,85,216,110"/>
+</map>

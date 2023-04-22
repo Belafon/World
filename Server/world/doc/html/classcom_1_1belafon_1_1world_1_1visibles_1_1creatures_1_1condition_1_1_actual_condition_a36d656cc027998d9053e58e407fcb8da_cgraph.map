@@ -1,0 +1,6 @@
+<map id="com.belafon.world.visibles.creatures.condition.ActualCondition.setBleeding" name="com.belafon.world.visibles.creatures.condition.ActualCondition.setBleeding">
+<area shape="rect" id="node1" title=" " alt="" coords="5,77,296,117"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1objects_memory_1_1creatures_memory_1_1_actual_condition_memory.html#a5242e31f7508df016daae8a48dada0a6" title=" " alt="" coords="344,5,613,60"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1time_1_1_time.html#a66e9dc1830709be4b45e2f20a46d411f" title=" " alt="" coords="360,84,597,109"/>
+<area shape="rect" id="node4" href="$interfacecom_1_1belafon_1_1server_1_1messages_1_1_condition_creature_messages.html#aaa36b8a049360395159c7f884e71a6f3" title=" " alt="" coords="350,134,607,174"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="com.belafon.server.messages.playerMessages.SurroundingPlayerMessages.addVisibleInSight" name="com.belafon.server.messages.playerMessages.SurroundingPlayerMessages.addVisibleInSight">
+<area shape="rect" id="node1" title=" " alt="" coords="5,250,283,305"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1server_1_1messages_1_1player_messages_1_1_surrounding_player_messages.html#a78d99984f931d3e95c57cce1225c9d43" title=" " alt="" coords="331,102,605,157"/>
+<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1server_1_1messages_1_1player_messages_1_1_surrounding_player_messages.html#a78e155eadb41a32d22b01647006302ef" title=" " alt="" coords="331,210,605,265"/>
+<area shape="rect" id="node8" href="$classcom_1_1belafon_1_1server_1_1messages_1_1player_messages_1_1_surrounding_player_messages.html#ad32df27c10aaff7b7817d27b6562e2d4" title=" " alt="" coords="331,289,605,343"/>
+<area shape="rect" id="node10" href="$classcom_1_1belafon_1_1server_1_1send_message_1_1_players_message_sender.html#acab6ad159ebf03b3e417f5426b94e341" title=" " alt="" coords="355,368,581,408"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1_creature.html#a965b2c852a58539891e65710d9f48d3a" title=" " alt="" coords="682,5,917,45"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1server_1_1messages_1_1player_messages_1_1_surrounding_player_messages.html#a24002f0634ee829c4e1684ef97678aed" title=" " alt="" coords="662,70,937,125"/>
+<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1_behaviour.html#a12a4876487eb13785c9055dd73b7a657" title=" " alt="" coords="653,149,945,189"/>
+<area shape="rect" id="node7" href="$classcom_1_1belafon_1_1server_1_1messages_1_1player_messages_1_1_inventory_player_messages.html#aeb64d474000e0dee218ceda75b58ab4f" title=" " alt="" coords="671,214,927,269"/>
+<area shape="rect" id="node9" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_resource.html#a4464af83cf327e43b8a7d5eef3b4f114" title=" " alt="" coords="681,296,918,336"/>
+<area shape="rect" id="node11" href="$classcom_1_1belafon_1_1console_1_1_console_print.html#af1765ca4188aee613e269348aa9773bb" title=" " alt="" coords="703,368,895,408"/>
+</map>

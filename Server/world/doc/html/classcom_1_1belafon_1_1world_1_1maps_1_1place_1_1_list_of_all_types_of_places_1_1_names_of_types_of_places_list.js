@@ -1,0 +1,4 @@
+var classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_list_of_all_types_of_places_1_1_names_of_types_of_places_list =
+[
+    [ "list", "classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_list_of_all_types_of_places_1_1_names_of_types_of_places_list.html#a347c0bcf2eacef678d4df3ac0a27241f", null ]
+];

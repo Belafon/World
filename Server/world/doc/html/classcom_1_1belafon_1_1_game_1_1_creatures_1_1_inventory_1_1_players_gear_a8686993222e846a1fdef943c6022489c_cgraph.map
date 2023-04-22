@@ -1,0 +1,4 @@
+<map id="com.belafon.Game.Creatures.Inventory.PlayersGear.putOff" name="com.belafon.Game.Creatures.Inventory.PlayersGear.putOff">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,200,45"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_items_1_1_types_1_1_clothes.html#af0ecaa7e5ca20eb29a42141c5c3c7147" title=" " alt="" coords="248,5,459,45"/>
+</map>

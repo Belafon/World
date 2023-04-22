@@ -1,0 +1,12 @@
+<map id="com.belafon.Game.Creatures.Behaviour.Behaviours.Move.cease" name="com.belafon.Game.Creatures.Behaviour.Behaviours.Move.cease">
+<area shape="rect" id="node1" title=" " alt="" coords="5,111,224,151"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_calendar_1_1_calendar.html#a3b749776b1b53a7e5a7324b1e03a14c8" title=" " alt="" coords="301,5,492,45"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_move.html#a3d2c9b6e899db58f50048710a771d2a1" title=" " alt="" coords="272,70,521,125"/>
+<area shape="rect" id="node7" href="$classcom_1_1belafon_1_1_game_1_1_time_1_1_time.html#a671bc0b40ca519bfbbddcc0f48424460" title=" " alt="" coords="587,147,832,173"/>
+<area shape="rect" id="node8" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_creature.html#ae80a398a9b069d77db9504f61d93c43f" title=" " alt="" coords="299,201,494,241"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_move.html#a238171fbd0c7a95523ca6d4c98520eec" title=" " alt="" coords="569,16,849,56"/>
+<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#a702c8bee73dd7f07410631363f6edf36" title=" " alt="" coords="595,80,824,120"/>
+<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_creature.html#a076566b2a1d935a490b7d447ceb4c777" title=" " alt="" coords="897,16,1092,56"/>
+<area shape="rect" id="node9" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_creatures_memory_1_1_creatures_memory.html#a50d8f3696e0817de6668c49b1106cbf8" title=" " alt="" coords="591,197,827,251"/>
+<area shape="rect" id="node10" href="$interfacecom_1_1belafon_1_1_server_1_1_messages_1_1_surrounding_messages.html#ae1738e7d4da8e619365ab058d0626b07" title=" " alt="" coords="599,276,819,316"/>
+</map>

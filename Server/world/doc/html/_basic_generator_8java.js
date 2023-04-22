@@ -1,4 +1,4 @@
 var _basic_generator_8java =
 [
-    [ "Game.Maps.MapGenerators.BasicGenerator", "class_game_1_1_maps_1_1_map_generators_1_1_basic_generator.html", "class_game_1_1_maps_1_1_map_generators_1_1_basic_generator" ]
+    [ "com.belafon.world.maps.mapGenerators.BasicGenerator", "classcom_1_1belafon_1_1world_1_1maps_1_1map_generators_1_1_basic_generator.html", "classcom_1_1belafon_1_1world_1_1maps_1_1map_generators_1_1_basic_generator" ]
 ];

@@ -1,4 +1,4 @@
 var _console_listener_8java =
 [
-    [ "Console.ConsoleListener", "class_console_1_1_console_listener.html", "class_console_1_1_console_listener" ]
+    [ "com.belafon.console.ConsoleListener", "classcom_1_1belafon_1_1console_1_1_console_listener.html", "classcom_1_1belafon_1_1console_1_1_console_listener" ]
 ];

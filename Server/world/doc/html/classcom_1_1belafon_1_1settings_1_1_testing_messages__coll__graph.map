@@ -1,0 +1,11 @@
+<map id="com.belafon.settings.TestingMessages" name="com.belafon.settings.TestingMessages">
+<area shape="rect" id="node1" title=" " alt="" coords="252,229,440,269"/>
+<area shape="rect" id="node2" href="$interfacecom_1_1belafon_1_1server_1_1messages_1_1_behaviours_messages.html" title=" " alt="" coords="5,5,204,45"/>
+<area shape="rect" id="node3" href="$interfacecom_1_1belafon_1_1server_1_1messages_1_1_condition_creature_messages.html" title=" " alt="" coords="5,69,204,109"/>
+<area shape="rect" id="node4" href="$interfacecom_1_1belafon_1_1server_1_1messages_1_1_inventory_messages.html" title=" " alt="" coords="5,133,204,173"/>
+<area shape="rect" id="node5" href="$interfacecom_1_1belafon_1_1server_1_1messages_1_1_item_visible_messages.html" title=" " alt="" coords="5,197,204,237"/>
+<area shape="rect" id="node6" href="$interfacecom_1_1belafon_1_1server_1_1messages_1_1_resource_visible_messages.html" title=" " alt="" coords="5,261,204,301"/>
+<area shape="rect" id="node7" href="$interfacecom_1_1belafon_1_1server_1_1messages_1_1_surrounding_messages.html" title=" " alt="" coords="5,325,204,365"/>
+<area shape="rect" id="node8" href="$interfacecom_1_1belafon_1_1server_1_1messages_1_1_server_messages.html" title=" " alt="" coords="5,389,204,429"/>
+<area shape="rect" id="node9" href="$interfacecom_1_1belafon_1_1server_1_1messages_1_1_creature_visible_messages.html" title=" " alt="" coords="5,453,204,493"/>
+</map>

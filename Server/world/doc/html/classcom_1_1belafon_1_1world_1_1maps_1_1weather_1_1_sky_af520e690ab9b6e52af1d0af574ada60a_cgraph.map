@@ -1,0 +1,5 @@
+<map id="com.belafon.world.maps.weather.Sky.printWeathers" name="com.belafon.world.maps.weather.Sky.printWeathers">
+<area shape="rect" id="node1" title=" " alt="" coords="5,37,220,77"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1maps_1_1weather_1_1_weather.html#aa3d7665fa54168a01b97ec20ec0c97b8" title=" " alt="" coords="268,5,483,45"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1maps_1_1weather_1_1_sky.html#a48d8c11dc4eaccdd8998884a0f759e3e" title=" " alt="" coords="268,69,483,109"/>
+</map>

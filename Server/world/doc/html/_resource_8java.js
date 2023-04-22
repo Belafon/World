@@ -1,4 +1,4 @@
 var _resource_8java =
 [
-    [ "Game.Maps.Resources.Resource", "class_game_1_1_maps_1_1_resources_1_1_resource.html", "class_game_1_1_maps_1_1_resources_1_1_resource" ]
+    [ "com.belafon.world.visibles.resources.Resource", "classcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_resource.html", "classcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_resource" ]
 ];

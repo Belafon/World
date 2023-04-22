@@ -1,0 +1,5 @@
+<map id="com.belafon.Game.Creatures.Inventory.Inventory.Inventory" name="com.belafon.Game.Creatures.Inventory.Inventory.Inventory">
+<area shape="rect" id="node1" title=" " alt="" coords="5,37,200,77"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_items_1_1_types_1_1_space_item_1_1_builder_space_item.html#afb09ded8c40c2c0952b35433326fe718" title=" " alt="" coords="248,5,469,45"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_creature.html#a076566b2a1d935a490b7d447ceb4c777" title=" " alt="" coords="261,69,456,109"/>
+</map>

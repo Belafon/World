@@ -1,0 +1,12 @@
+<map id="com.belafon.world.maps.weather.Weather.getClouds" name="com.belafon.world.maps.weather.Weather.getClouds">
+<area shape="rect" id="node1" title=" " alt="" coords="1013,102,1228,142"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1calendar_1_1events_1_1_event_change_weather.html#afaeee7443562dec2c653630973643369" title=" " alt="" coords="353,41,577,81"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_place.html#aea2761794d6836837e38d395d3b0b9ff" title=" " alt="" coords="707,38,909,78"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1maps_1_1weather_1_1_sky.html#a3b7a5a655847fc8150229f802a11357e" title=" " alt="" coords="701,166,915,206"/>
+<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1server_1_1messages_1_1player_messages_1_1_surrounding_player_messages.html#ac7c21a42ad9805a1b2015616fd9fbbb1" title=" " alt="" coords="651,231,965,271"/>
+<area shape="rect" id="node10" href="$classcom_1_1belafon_1_1world_1_1maps_1_1weather_1_1_sky.html#a88a8ac8f21496a4ca2bec781ebad0a8b" title=" " alt="" coords="701,102,915,142"/>
+<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1world_1_1calendar_1_1events_1_1_event_move_clouds.html#a46f0ccfe84af5d918726abb1ff3542cd" title=" " alt="" coords="353,163,577,203"/>
+<area shape="rect" id="node7" href="$classcom_1_1belafon_1_1server_1_1messages_1_1player_messages_1_1_surrounding_player_messages.html#a298cbb46d71ae9594c726c81d8a35782" title=" " alt="" coords="328,228,603,283"/>
+<area shape="rect" id="node8" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1_player.html#ae6fd4aa783a6afadbcb07e1bc0f8b5a5" title=" " alt="" coords="25,199,260,239"/>
+<area shape="rect" id="node9" href="$classcom_1_1belafon_1_1server_1_1messages_1_1player_messages_1_1_surrounding_player_messages.html#aa3099aa03f3db0eec750f86859bb9e87" title=" " alt="" coords="5,264,280,319"/>
+</map>

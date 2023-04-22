@@ -1,4 +1,4 @@
 var _special_foods_properties_8java =
 [
-    [ "Game.Items.ItemsSpecialStats.SpecialFoodsProperties", "class_game_1_1_items_1_1_items_special_stats_1_1_special_foods_properties.html", "class_game_1_1_items_1_1_items_special_stats_1_1_special_foods_properties" ]
+    [ "com.belafon.world.visibles.items.itemsSpecialStats.SpecialFoodsProperties", "classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1items_special_stats_1_1_special_foods_properties.html", "classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1items_special_stats_1_1_special_foods_properties" ]
 ];

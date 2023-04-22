@@ -1,4 +1,4 @@
 var _special_tools_properties_8java =
 [
-    [ "Game.Items.ItemsSpecialStats.SpecialToolsProperties", "class_game_1_1_items_1_1_items_special_stats_1_1_special_tools_properties.html", "class_game_1_1_items_1_1_items_special_stats_1_1_special_tools_properties" ]
+    [ "com.belafon.world.visibles.items.itemsSpecialStats.SpecialToolsProperties", "classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1items_special_stats_1_1_special_tools_properties.html", "classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1items_special_stats_1_1_special_tools_properties" ]
 ];

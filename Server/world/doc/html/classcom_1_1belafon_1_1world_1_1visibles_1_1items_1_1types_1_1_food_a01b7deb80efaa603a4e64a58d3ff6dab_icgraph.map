@@ -1,0 +1,6 @@
+<map id="com.belafon.world.visibles.items.types.Food.getType" name="com.belafon.world.visibles.items.types.Food.getType">
+<area shape="rect" id="node1" title=" " alt="" coords="707,37,955,77"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1behaviour_1_1behaviours_1_1_eat.html#a98eb8ee5331096473c94ad97a2f47b7a" title=" " alt="" coords="301,5,659,45"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1types_1_1_food.html#aeded6812d7312968e600d81cd3d3ac20" title=" " alt="" coords="356,69,604,109"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1types_1_1_food.html#ae6c4f992d73cb2c08c1c84c02b0c7753" title=" " alt="" coords="5,69,253,109"/>
+</map>

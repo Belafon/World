@@ -1,4 +1,4 @@
 var _inventory_8java =
 [
-    [ "Game.Creatures.Inventory.Inventory", "class_game_1_1_creatures_1_1_inventory_1_1_inventory.html", "class_game_1_1_creatures_1_1_inventory_1_1_inventory" ]
+    [ "com.belafon.world.visibles.creatures.inventory.Inventory", "classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1inventory_1_1_inventory.html", "classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1inventory_1_1_inventory" ]
 ];

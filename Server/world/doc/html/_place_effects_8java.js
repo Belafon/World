@@ -1,5 +1,5 @@
 var _place_effects_8java =
 [
-    [ "Game.Maps.PlaceEffects.PlaceEffects", "class_game_1_1_maps_1_1_place_effects_1_1_place_effects.html", "class_game_1_1_maps_1_1_place_effects_1_1_place_effects" ],
-    [ "Game.Maps.PlaceEffects.PlaceEffects.PlaceEffectName", "enum_game_1_1_maps_1_1_place_effects_1_1_place_effects_1_1_place_effect_name.html", "enum_game_1_1_maps_1_1_place_effects_1_1_place_effects_1_1_place_effect_name" ]
+    [ "com.belafon.world.maps.placeEffects.PlaceEffects", "classcom_1_1belafon_1_1world_1_1maps_1_1place_effects_1_1_place_effects.html", "classcom_1_1belafon_1_1world_1_1maps_1_1place_effects_1_1_place_effects" ],
+    [ "com.belafon.world.maps.placeEffects.PlaceEffects.PlaceEffectName", "enumcom_1_1belafon_1_1world_1_1maps_1_1place_effects_1_1_place_effects_1_1_place_effect_name.html", "enumcom_1_1belafon_1_1world_1_1maps_1_1place_effects_1_1_place_effects_1_1_place_effect_name" ]
 ];

@@ -1,4 +1,4 @@
 var _food_8java =
 [
-    [ "Game.Items.Types.Food", "class_game_1_1_items_1_1_types_1_1_food.html", "class_game_1_1_items_1_1_types_1_1_food" ]
+    [ "com.belafon.world.visibles.items.types.Food", "classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1types_1_1_food.html", "classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1types_1_1_food" ]
 ];

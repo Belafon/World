@@ -1,4 +1,4 @@
 var _event_item_change_8java =
 [
-    [ "Game.Calendar.Events.EventItemChange", "class_game_1_1_calendar_1_1_events_1_1_event_item_change.html", "class_game_1_1_calendar_1_1_events_1_1_event_item_change" ]
+    [ "com.belafon.world.calendar.events.EventItemChange", "classcom_1_1belafon_1_1world_1_1calendar_1_1events_1_1_event_item_change.html", "classcom_1_1belafon_1_1world_1_1calendar_1_1events_1_1_event_item_change" ]
 ];

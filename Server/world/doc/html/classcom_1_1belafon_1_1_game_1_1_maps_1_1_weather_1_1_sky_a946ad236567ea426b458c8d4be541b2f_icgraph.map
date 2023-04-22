@@ -1,0 +1,5 @@
+<map id="com.belafon.Game.Maps.Weather.Sky.setOriginX" name="com.belafon.Game.Maps.Weather.Sky.setOriginX">
+<area shape="rect" id="node1" title=" " alt="" coords="532,5,756,45"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_maps_1_1_weather_1_1_sky.html#a15f4f7cf1cbedf51cd080ab1755409f2" title=" " alt="" coords="260,5,484,45"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_calendar_1_1_events_1_1_event_move_clouds.html#af45d9341765a3397baa5e66fbca0eec8" title=" " alt="" coords="5,5,212,45"/>
+</map>

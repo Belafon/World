@@ -1,0 +1,5 @@
+var _creatures_memory_8java =
+[
+    [ "com.belafon.world.objectsMemory.creaturesMemory.CreaturesMemory", "classcom_1_1belafon_1_1world_1_1objects_memory_1_1creatures_memory_1_1_creatures_memory.html", "classcom_1_1belafon_1_1world_1_1objects_memory_1_1creatures_memory_1_1_creatures_memory" ],
+    [ "com.belafon.world.objectsMemory.creaturesMemory.CreaturesMemory.ActionGetObjectSpotted", "interfacecom_1_1belafon_1_1world_1_1objects_memory_1_1creatures_memory_1_1_creatures_memory_1_1_action_get_object_spotted.html", "interfacecom_1_1belafon_1_1world_1_1objects_memory_1_1creatures_memory_1_1_creatures_memory_1_1_action_get_object_spotted" ]
+];

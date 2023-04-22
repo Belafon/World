@@ -1,5 +1,5 @@
 var _weather_8java =
 [
-    [ "Game.Maps.Weather.Weather", "class_game_1_1_maps_1_1_weather_1_1_weather.html", "class_game_1_1_maps_1_1_weather_1_1_weather" ],
-    [ "Game.Maps.Weather.Weather.TypeWeather", "enum_game_1_1_maps_1_1_weather_1_1_weather_1_1_type_weather.html", "enum_game_1_1_maps_1_1_weather_1_1_weather_1_1_type_weather" ]
+    [ "com.belafon.world.maps.weather.Weather", "classcom_1_1belafon_1_1world_1_1maps_1_1weather_1_1_weather.html", "classcom_1_1belafon_1_1world_1_1maps_1_1weather_1_1_weather" ],
+    [ "com.belafon.world.maps.weather.Weather.TypeWeather", "enumcom_1_1belafon_1_1world_1_1maps_1_1weather_1_1_weather_1_1_type_weather.html", "enumcom_1_1belafon_1_1world_1_1maps_1_1weather_1_1_weather_1_1_type_weather" ]
 ];

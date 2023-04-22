@@ -1,4 +1,4 @@
 var _condition_creature_messages_8java =
 [
-    [ "Server.Messages.ConditionCreatureMessages", "class_server_1_1_messages_1_1_condition_creature_messages.html", "class_server_1_1_messages_1_1_condition_creature_messages" ]
+    [ "com.belafon.server.messages.ConditionCreatureMessages", "interfacecom_1_1belafon_1_1server_1_1messages_1_1_condition_creature_messages.html", "interfacecom_1_1belafon_1_1server_1_1messages_1_1_condition_creature_messages" ]
 ];

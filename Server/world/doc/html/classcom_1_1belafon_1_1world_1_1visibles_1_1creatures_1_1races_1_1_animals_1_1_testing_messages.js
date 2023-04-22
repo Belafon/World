@@ -1,0 +1,4 @@
+var classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1races_1_1_animals_1_1_testing_messages =
+[
+    [ "createMessageSender", "classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1races_1_1_animals_1_1_testing_messages.html#ab3a7a5980b44c96e33429fdb7a0454df", null ]
+];

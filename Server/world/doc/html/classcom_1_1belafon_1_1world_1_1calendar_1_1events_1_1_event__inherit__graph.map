@@ -1,0 +1,10 @@
+<map id="com.belafon.world.calendar.events.Event" name="com.belafon.world.calendar.events.Event">
+<area shape="rect" id="node1" title=" " alt="" coords="200,165,424,205"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1calendar_1_1events_1_1_event_behaviour.html" title=" " alt="" coords="472,5,696,45"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1calendar_1_1events_1_1_event_change_weather.html" title=" " alt="" coords="472,69,696,109"/>
+<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1world_1_1calendar_1_1events_1_1_event_creature_actual_condition.html" title=" " alt="" coords="472,133,696,173"/>
+<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1world_1_1calendar_1_1events_1_1_event_item_change.html" title=" " alt="" coords="472,197,696,237"/>
+<area shape="rect" id="node7" href="$classcom_1_1belafon_1_1world_1_1calendar_1_1events_1_1_event_move_clouds.html" title=" " alt="" coords="472,261,696,301"/>
+<area shape="rect" id="node8" href="$classcom_1_1belafon_1_1world_1_1calendar_1_1events_1_1_event_part_of_day.html" title=" " alt="" coords="472,325,696,365"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,173,152,198"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="com.belafon.Game.ObjectsMemory.CreaturesMemory.AbilityConditionMemory.addSpeedOfWalk" name="com.belafon.Game.ObjectsMemory.CreaturesMemory.AbilityConditionMemory.addSpeedOfWalk">
+<area shape="rect" id="node1" title=" " alt="" coords="768,5,996,60"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#af27ad2b5f933ae43bcb914d493119258" title=" " alt="" coords="491,5,720,60"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_creature.html#a7a793569f116eb4ffffe16073cb179c2" title=" " alt="" coords="248,13,443,53"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_player.html#a9532e74f6ff88f363f36a6c05743fab3" title=" " alt="" coords="5,13,200,53"/>
+</map>

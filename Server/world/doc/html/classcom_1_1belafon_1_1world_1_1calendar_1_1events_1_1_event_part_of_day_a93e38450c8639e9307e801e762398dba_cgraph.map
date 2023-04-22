@@ -1,0 +1,12 @@
+<map id="com.belafon.world.calendar.events.EventPartOfDay.action" name="com.belafon.world.calendar.events.EventPartOfDay.action">
+<area shape="rect" id="node1" title=" " alt="" coords="5,195,229,235"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1time_1_1_daily_loop.html#a6710dd5ecc593f349993031c912e8591" title=" " alt="" coords="300,131,488,171"/>
+<area shape="rect" id="node9" href="$interfacecom_1_1belafon_1_1server_1_1messages_1_1_surrounding_messages.html#aab03e9506799eeff4b865ac901c88e95" title=" " alt="" coords="277,195,511,235"/>
+<area shape="rect" id="node10" href="$classcom_1_1belafon_1_1console_1_1_console_print.html#ad5a9ba51e002e03ea230eddda8a22c70" title=" " alt="" coords="298,259,490,299"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1time_1_1_daily_loop.html#a878a0723a58676f7921cf3e42d086905" title=" " alt="" coords="583,37,771,77"/>
+<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1world_1_1time_1_1_time.html#a5d53ecaab53c97c1b542615248446101" title=" " alt="" coords="568,101,787,141"/>
+<area shape="rect" id="node7" href="$classcom_1_1belafon_1_1world_1_1time_1_1_time.html#a76c8ab2f78688d82c3c08c6703170992" title=" " alt="" coords="561,166,793,191"/>
+<area shape="rect" id="node8" href="$classcom_1_1belafon_1_1world_1_1time_1_1_time.html#a66e9dc1830709be4b45e2f20a46d411f" title=" " alt="" coords="559,215,796,241"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1calendar_1_1_calendar.html#a11a6ea45b70d1454ab1824dbe658ea15" title=" " alt="" coords="847,5,1029,45"/>
+<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1world_1_1time_1_1_daily_loop.html#aac2269b2918e80014dc26449c1ce7b33" title=" " alt="" coords="844,69,1032,109"/>
+</map>

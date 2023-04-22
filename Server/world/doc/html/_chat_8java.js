@@ -1,4 +1,4 @@
 var _chat_8java =
 [
-    [ "Server.Chat", "class_server_1_1_chat.html", null ]
+    [ "com.belafon.server.Chat", "classcom_1_1belafon_1_1server_1_1_chat.html", null ]
 ];

@@ -1,4 +1,4 @@
 var _ability_condition_8java =
 [
-    [ "Game.Creatures.Condition.AbilityCondition", "class_game_1_1_creatures_1_1_condition_1_1_ability_condition.html", "class_game_1_1_creatures_1_1_condition_1_1_ability_condition" ]
+    [ "com.belafon.world.visibles.creatures.condition.AbilityCondition", "classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1condition_1_1_ability_condition.html", "classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1condition_1_1_ability_condition" ]
 ];

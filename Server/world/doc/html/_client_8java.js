@@ -1,4 +1,4 @@
 var _client_8java =
 [
-    [ "Client", "class_client.html", "class_client" ]
+    [ "com.belafon.Client", "classcom_1_1belafon_1_1_client.html", "classcom_1_1belafon_1_1_client" ]
 ];

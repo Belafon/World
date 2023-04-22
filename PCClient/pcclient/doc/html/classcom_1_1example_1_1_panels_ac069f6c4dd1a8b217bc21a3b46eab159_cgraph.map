@@ -1,0 +1,7 @@
+<map id="com.example.Panels.Panels" name="com.example.Panels.Panels">
+<area shape="rect" id="node1" title=" " alt="" coords="5,45,193,70"/>
+<area shape="rect" id="node2" href="$classcom_1_1example_1_1maps_1_1weather_1_1_weather.html#a83c7a2e005b1d4f30a849a789de7cf31" title=" " alt="" coords="256,5,445,45"/>
+<area shape="rect" id="node4" href="$classcom_1_1example_1_1maps_1_1_players_maps.html#ab2d9b5a1c1fc11b44df8cd1b06634d8a" title=" " alt="" coords="241,69,460,109"/>
+<area shape="rect" id="node3" href="$classcom_1_1example_1_1maps_1_1weather_1_1_weather_panel.html#ae2c31b406bab89833fce3276e89047ec" title=" " alt="" coords="518,5,707,45"/>
+<area shape="rect" id="node5" href="$classcom_1_1example_1_1maps_1_1_surrounding_map.html#ab830cdf3cf14b441f268a1e0a119c6a0" title=" " alt="" coords="508,69,717,109"/>
+</map>

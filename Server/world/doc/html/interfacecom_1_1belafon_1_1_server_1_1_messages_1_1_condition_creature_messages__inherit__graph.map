@@ -1,0 +1,6 @@
+<map id="com.belafon.Server.Messages.ConditionCreatureMessages" name="com.belafon.Server.Messages.ConditionCreatureMessages">
+<area shape="rect" id="node1" title=" " alt="" coords="5,69,205,109"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_races_1_1_animals_1_1_testing_messages.html" title=" " alt="" coords="283,5,499,45"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_server_1_1_messages_1_1_player_messages_1_1_condition_player_messages.html" title=" " alt="" coords="253,69,528,109"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_settings_1_1_testing_messages.html" title=" " alt="" coords="295,133,486,173"/>
+</map>

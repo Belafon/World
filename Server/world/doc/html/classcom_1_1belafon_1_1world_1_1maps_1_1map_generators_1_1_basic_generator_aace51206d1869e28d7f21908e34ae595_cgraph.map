@@ -1,0 +1,6 @@
+<map id="com.belafon.world.maps.mapGenerators.BasicGenerator.generateMap" name="com.belafon.world.maps.mapGenerators.BasicGenerator.generateMap">
+<area shape="rect" id="node1" title=" " alt="" coords="5,63,264,103"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1maps_1_1map_generators_1_1_basic_generator.html#a683f461c2ed513f23e37a22da896bbee" title=" " alt="" coords="312,5,559,45"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1likeliness_1_1_dice.html#a3f52349b3738b3059064c1c12dab64e5" title=" " alt="" coords="607,70,816,95"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_list_of_all_types_of_places.html#a7dba1388e6707fd11085b52779f8df60" title=" " alt="" coords="321,121,550,175"/>
+</map>

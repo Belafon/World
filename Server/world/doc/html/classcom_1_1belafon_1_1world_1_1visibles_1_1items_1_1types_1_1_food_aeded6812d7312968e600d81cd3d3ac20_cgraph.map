@@ -1,0 +1,6 @@
+<map id="com.belafon.world.visibles.items.types.Food.setFreshness" name="com.belafon.world.visibles.items.types.Food.setFreshness">
+<area shape="rect" id="node1" title=" " alt="" coords="5,63,253,103"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1calendar_1_1_calendar.html#a11a6ea45b70d1454ab1824dbe658ea15" title=" " alt="" coords="334,5,517,45"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1time_1_1_time.html#a66e9dc1830709be4b45e2f20a46d411f" title=" " alt="" coords="307,70,544,95"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1types_1_1_food.html#a01b7deb80efaa603a4e64a58d3ff6dab" title=" " alt="" coords="301,120,549,160"/>
+</map>

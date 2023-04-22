@@ -1,0 +1,27 @@
+<map id="com.belafon.Game.Creatures.Creature.setAbilityCondition" name="com.belafon.Game.Creatures.Creature.setAbilityCondition">
+<area shape="rect" id="node1" title=" " alt="" coords="5,567,200,607"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#a4cdae4a3ac11fa39bb935cea6dbdfece" title=" " alt="" coords="267,375,495,415"/>
+<area shape="rect" id="node8" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#a3a6786a7c0c36a58cd5489fb5738de73" title=" " alt="" coords="263,567,499,607"/>
+<area shape="rect" id="node11" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#ad4ec9d63490ae9e31ea19b05894c4d06" title=" " alt="" coords="251,439,511,479"/>
+<area shape="rect" id="node14" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#a6f369d5f203ea34e57cb0648fd62240e" title=" " alt="" coords="248,503,513,543"/>
+<area shape="rect" id="node17" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#af27ad2b5f933ae43bcb914d493119258" title=" " alt="" coords="266,632,495,687"/>
+<area shape="rect" id="node20" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#aab78e013e22c7e8da2226f41262081d9" title=" " alt="" coords="260,711,501,751"/>
+<area shape="rect" id="node23" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_condition_1_1_ability_condition.html#a6f8dbec3dd994ea528f0445cba85bdfe" title=" " alt="" coords="267,775,495,815"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_creatures_memory_1_1_ability_condition_memory.html#a28bd13f64d102f5c67b5786093f69760" title=" " alt="" coords="593,5,809,60"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_time_1_1_time.html#a671bc0b40ca519bfbbddcc0f48424460" title=" " alt="" coords="579,581,824,607"/>
+<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_visible.html#a0740e12c3644f8af35988ecccc86ffa8" title=" " alt="" coords="606,631,797,671"/>
+<area shape="rect" id="node7" href="$interfacecom_1_1belafon_1_1_server_1_1_messages_1_1_condition_creature_messages.html#ae596ee79c0812427414f695ffeaa0d0a" title=" " alt="" coords="580,85,823,125"/>
+<area shape="rect" id="node6" href="$interfacecom_1_1belafon_1_1_game_1_1_objects_memory_1_1_visible_1_1_action_watcher.html#a63c00bf92cda31960ccd80c438708c14" title=" " alt="" coords="889,631,1129,671"/>
+<area shape="rect" id="node9" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_creatures_memory_1_1_ability_condition_memory.html#a0e113d76c8f9d9936951e74515302563" title=" " alt="" coords="593,437,809,492"/>
+<area shape="rect" id="node10" href="$interfacecom_1_1belafon_1_1_server_1_1_messages_1_1_condition_creature_messages.html#a184549729032c33b6345ae5dd2740bc1" title=" " alt="" coords="576,517,827,557"/>
+<area shape="rect" id="node12" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_creatures_memory_1_1_ability_condition_memory.html#aaad7060d40afc1949611b5dd65b4f9f2" title=" " alt="" coords="593,149,809,204"/>
+<area shape="rect" id="node13" href="$interfacecom_1_1belafon_1_1_server_1_1_messages_1_1_condition_creature_messages.html#a3fcce95c6f29c3e503e9e4c5dc11f7bb" title=" " alt="" coords="564,229,839,269"/>
+<area shape="rect" id="node15" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_creatures_memory_1_1_ability_condition_memory.html#a04dab04f450d2a6e7d52259ee7008d1a" title=" " alt="" coords="591,293,812,348"/>
+<area shape="rect" id="node16" href="$interfacecom_1_1belafon_1_1_server_1_1_messages_1_1_condition_creature_messages.html#ad9deb2168ea2bc66b71e94c431ca20db" title=" " alt="" coords="561,373,841,413"/>
+<area shape="rect" id="node18" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_creatures_memory_1_1_ability_condition_memory.html#a12440dbf19b833c0032bdebc1b3530d6" title=" " alt="" coords="587,696,815,751"/>
+<area shape="rect" id="node19" href="$interfacecom_1_1belafon_1_1_server_1_1_messages_1_1_condition_creature_messages.html#a69adee2fd362611ef70d4eab0219e001" title=" " alt="" coords="579,775,823,829"/>
+<area shape="rect" id="node21" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_creatures_memory_1_1_ability_condition_memory.html#a398fdd0b8e7e5ea0de1e0b61e09f11de" title=" " alt="" coords="593,853,809,908"/>
+<area shape="rect" id="node22" href="$interfacecom_1_1belafon_1_1_server_1_1_messages_1_1_condition_creature_messages.html#a53a553d139267f31cbd56795d49340ec" title=" " alt="" coords="573,933,829,973"/>
+<area shape="rect" id="node24" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_creatures_memory_1_1_ability_condition_memory.html#ab87af0cb80f2cc7bd0e1175c70fde9dc" title=" " alt="" coords="593,997,809,1052"/>
+<area shape="rect" id="node25" href="$interfacecom_1_1belafon_1_1_server_1_1_messages_1_1_condition_creature_messages.html#a169c1b5e83d1c52aaacfb636dbc9b941" title=" " alt="" coords="580,1077,823,1117"/>
+</map>

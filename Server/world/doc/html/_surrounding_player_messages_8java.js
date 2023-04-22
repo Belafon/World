@@ -1,4 +1,4 @@
 var _surrounding_player_messages_8java =
 [
-    [ "Server.Messages.PlayerMessages.SurroundingPlayerMessages", "class_server_1_1_messages_1_1_player_messages_1_1_surrounding_player_messages.html", "class_server_1_1_messages_1_1_player_messages_1_1_surrounding_player_messages" ]
+    [ "com.belafon.server.messages.playerMessages.SurroundingPlayerMessages", "classcom_1_1belafon_1_1server_1_1messages_1_1player_messages_1_1_surrounding_player_messages.html", "classcom_1_1belafon_1_1server_1_1messages_1_1player_messages_1_1_surrounding_player_messages" ]
 ];

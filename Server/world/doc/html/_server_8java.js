@@ -1,4 +1,4 @@
 var _server_8java =
 [
-    [ "Server.Server", "class_server_1_1_server.html", "class_server_1_1_server" ]
+    [ "com.belafon.server.Server", "classcom_1_1belafon_1_1server_1_1_server.html", "classcom_1_1belafon_1_1server_1_1_server" ]
 ];

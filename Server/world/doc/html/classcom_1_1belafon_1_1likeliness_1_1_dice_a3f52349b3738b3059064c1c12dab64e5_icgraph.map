@@ -1,0 +1,14 @@
+<map id="com.belafon.likeliness.Dice.toss" name="com.belafon.likeliness.Dice.toss">
+<area shape="rect" id="node1" title=" " alt="" coords="932,248,1141,273"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1maps_1_1map_generators_1_1_basic_generator.html#a39cc4d235dd93263ed8eb010a931ef54" title=" " alt="" coords="616,5,851,60"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1maps_1_1map_generators_1_1_basic_generator.html#aace51206d1869e28d7f21908e34ae595" title=" " alt="" coords="276,135,535,175"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1maps_1_1map_generators_1_1_basic_generator.html#a683f461c2ed513f23e37a22da896bbee" title=" " alt="" coords="610,135,857,175"/>
+<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_type_of_place.html#a3eff5c62d1e580b50ca1795754198fff" title=" " alt="" coords="305,261,506,301"/>
+<area shape="rect" id="node7" href="$classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_type_of_place.html#ac6a896e3a81468a368eac835f1a1cb06" title=" " alt="" coords="305,325,506,365"/>
+<area shape="rect" id="node8" href="$classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_list_of_all_types_of_places.html#a7dba1388e6707fd11085b52779f8df60" title=" " alt="" coords="619,200,848,255"/>
+<area shape="rect" id="node9" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1resources_1_1_type_of_resource_of_type_of_place.html#af7204d7710ba75e85493adf022ac1aa3" title=" " alt="" coords="583,381,884,436"/>
+<area shape="rect" id="node11" href="$classcom_1_1belafon_1_1world_1_1maps_1_1weather_1_1_sky.html#a88a8ac8f21496a4ca2bec781ebad0a8b" title=" " alt="" coords="626,461,841,501"/>
+<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_unbounded_place.html#a06bf5f452a02681ac413e751dddb4a63" title=" " alt="" coords="5,325,228,365"/>
+<area shape="rect" id="node10" href="$classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_unbounded_place.html#ae01df0b25acf21836f7c2ba41cd0f03a" title=" " alt="" coords="289,389,521,429"/>
+<area shape="rect" id="node12" href="$classcom_1_1belafon_1_1world_1_1calendar_1_1events_1_1_event_change_weather.html#afaeee7443562dec2c653630973643369" title=" " alt="" coords="293,461,517,501"/>
+</map>

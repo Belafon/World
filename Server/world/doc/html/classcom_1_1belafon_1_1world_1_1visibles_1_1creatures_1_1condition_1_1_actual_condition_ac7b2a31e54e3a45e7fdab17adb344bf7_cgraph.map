@@ -1,0 +1,9 @@
+<map id="com.belafon.world.visibles.creatures.condition.ActualCondition.setEventMaxFatigue" name="com.belafon.world.visibles.creatures.condition.ActualCondition.setEventMaxFatigue">
+<area shape="rect" id="node1" title=" " alt="" coords="5,99,296,139"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1calendar_1_1_calendar.html#a11a6ea45b70d1454ab1824dbe658ea15" title=" " alt="" coords="398,5,581,45"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1condition_1_1_actual_condition.html#aabc3e028d88439d242f331fe17df28b3" title=" " alt="" coords="344,69,635,109"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1world_1_1time_1_1_time.html#a66e9dc1830709be4b45e2f20a46d411f" title=" " alt="" coords="701,131,939,157"/>
+<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1creatures_1_1condition_1_1_actual_condition.html#aecc8a08f702c8c14d02286b05bcdcb06" title=" " alt="" coords="344,185,635,225"/>
+<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1world_1_1objects_memory_1_1creatures_memory_1_1_actual_condition_memory.html#a38398b82160358e0166e12cca0f56cba" title=" " alt="" coords="685,181,955,235"/>
+<area shape="rect" id="node7" href="$interfacecom_1_1belafon_1_1server_1_1messages_1_1_condition_creature_messages.html#aa7f3855d401b8928a688958b0b07f4df" title=" " alt="" coords="683,260,957,300"/>
+</map>

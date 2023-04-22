@@ -1,0 +1,13 @@
+<map id="com.belafon.Game.Maps.Resources.Resource" name="com.belafon.Game.Maps.Resources.Resource">
+<area shape="rect" id="node1" title=" " alt="" coords="1184,130,1421,170"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_objects_memory_1_1_visible.html" title=" " alt="" coords="898,85,1078,125"/>
+<area shape="rect" id="node3" href="$interfacecom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_behaviours_possible_ingredients.html" title=" " alt="" coords="527,5,739,60"/>
+<area shape="rect" id="node4" title=" " alt="" coords="520,85,747,125"/>
+<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1_game_1_1_maps_1_1_resources_1_1_type_of_resource.html" title=" " alt="" coords="869,183,1107,223"/>
+<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_behaviours_possible_requirement.html" title=" " alt="" coords="527,149,739,204"/>
+<area shape="rect" id="node7" title=" " alt="" coords="67,153,293,193"/>
+<area shape="rect" id="node8" href="$classcom_1_1belafon_1_1_game_1_1_maps_1_1_resources_1_1_list_of_all_types_of_resources.html" title=" " alt="" coords="515,229,752,269"/>
+<area shape="rect" id="node9" title=" " alt="" coords="5,217,355,286"/>
+<area shape="rect" id="node10" href="$classcom_1_1belafon_1_1_game_1_1_maps_1_1_place_effects_1_1_place_effect.html" title=" " alt="" coords="531,293,735,333"/>
+<area shape="rect" id="node11" href="$classcom_1_1belafon_1_1_game_1_1_maps_1_1_place_effects_1_1_place_effects.html" title=" " alt="" coords="886,314,1090,354"/>
+</map>

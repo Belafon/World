@@ -1,0 +1,12 @@
+<map id="com.belafon.Game.Creatures.Condition.AbilityCondition.getHealth" name="com.belafon.Game.Creatures.Condition.AbilityCondition.getHealth">
+<area shape="rect" id="node1" title=" " alt="" coords="880,186,1109,226"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_move.html#a3d2c9b6e899db58f50048710a771d2a1" title=" " alt="" coords="583,5,832,60"/>
+<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#ad574f1bb75b08ce0648c0a0c2a6d4276" title=" " alt="" coords="595,84,820,139"/>
+<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#a31c058214bc16bf524f1cc1d5a9c214c" title=" " alt="" coords="283,178,535,218"/>
+<area shape="rect" id="node7" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#a6063bee2d86fee934eb96c5b824da844" title=" " alt="" coords="296,323,521,377"/>
+<area shape="rect" id="node8" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#a7a531cad9563e27772e044ecf9548028" title=" " alt="" coords="597,214,817,254"/>
+<area shape="rect" id="node10" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_condition_1_1_actual_condition.html#a3bc6cfbee57404fcecc543779e60ab5b" title=" " alt="" coords="590,278,825,318"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_move.html#ac77ff1c9520fcecec0ff4ee9d716f56e" title=" " alt="" coords="299,13,518,53"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_move.html#a430aaeb02a9628bcd4688eb4f8a87c98" title=" " alt="" coords="5,13,235,53"/>
+<area shape="rect" id="node9" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_behaviour_1_1_behaviours_1_1_eat.html#a153642968c7226365ae6da126dd2f9e5" title=" " alt="" coords="299,247,518,287"/>
+</map>

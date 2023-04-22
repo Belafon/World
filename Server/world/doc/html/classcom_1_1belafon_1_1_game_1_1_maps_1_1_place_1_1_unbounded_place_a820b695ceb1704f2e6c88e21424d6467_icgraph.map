@@ -1,0 +1,7 @@
+<map id="com.belafon.Game.Maps.Place.UnboundedPlace.addItem" name="com.belafon.Game.Maps.Place.UnboundedPlace.addItem">
+<area shape="rect" id="node1" title=" " alt="" coords="507,37,715,77"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_inventory_1_1_inventory.html#ac75a79e3c25c2aa62bcc426b21ccda09" title=" " alt="" coords="256,5,451,45"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_world.html#a5c897d5ad54afdd57f6a5cf2261deedf" title=" " alt="" coords="248,69,459,109"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_creatures_1_1_player.html#aad799b7050c47c1cc3e0a18b50d1e3ae" title=" " alt="" coords="5,5,200,45"/>
+<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1_game_1_1_world.html#a972ba0a5ce9b5cc8e097beea684b5289" title=" " alt="" coords="7,77,198,102"/>
+</map>

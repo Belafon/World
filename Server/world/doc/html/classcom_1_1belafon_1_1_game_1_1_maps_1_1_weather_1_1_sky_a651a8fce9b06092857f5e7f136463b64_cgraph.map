@@ -1,0 +1,11 @@
+<map id="com.belafon.Game.Maps.Weather.Sky.updateWeather" name="com.belafon.Game.Maps.Weather.Sky.updateWeather">
+<area shape="rect" id="node1" title=" " alt="" coords="5,184,229,224"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1_game_1_1_calendar_1_1_calendar.html#a3b749776b1b53a7e5a7324b1e03a14c8" title=" " alt="" coords="305,5,495,45"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1_game_1_1_maps_1_1_weather_1_1_weather.html#a817d0f2638a54c6e4443ccb06c708bea" title=" " alt="" coords="288,69,512,109"/>
+<area shape="rect" id="node4" href="$classcom_1_1belafon_1_1_game_1_1_time_1_1_time.html#a671bc0b40ca519bfbbddcc0f48424460" title=" " alt="" coords="277,134,523,159"/>
+<area shape="rect" id="node5" href="$classcom_1_1belafon_1_1_game_1_1_maps_1_1_weather_1_1_weather.html#a02ce30d68bc307cf3b715dba9be7d437" title=" " alt="" coords="288,184,512,224"/>
+<area shape="rect" id="node6" href="$classcom_1_1belafon_1_1_game_1_1_maps_1_1_weather_1_1_weather.html#a994227a269ef81530c3d60ab933af615" title=" " alt="" coords="288,248,512,288"/>
+<area shape="rect" id="node8" href="$classcom_1_1belafon_1_1_game_1_1_maps_1_1_weather_1_1_weather.html#a3fc954975b4906d956a6a785ccf0d427" title=" " alt="" coords="288,312,512,352"/>
+<area shape="rect" id="node9" href="$classcom_1_1belafon_1_1likeliness_1_1_dice.html#a3f52349b3738b3059064c1c12dab64e5" title=" " alt="" coords="295,377,505,402"/>
+<area shape="rect" id="node7" href="$classcom_1_1belafon_1_1_game_1_1_maps_1_1_place_1_1_unbounded_place.html#a396ca19dd4d06bfa57f2a82c9e47a982" title=" " alt="" coords="571,280,779,320"/>
+</map>

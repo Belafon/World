@@ -1,0 +1,5 @@
+<map id="com.belafon.world.maps.place.ItemPlace.getTemperature" name="com.belafon.world.maps.place.ItemPlace.getTemperature">
+<area shape="rect" id="node1" title=" " alt="" coords="5,37,207,77"/>
+<area shape="rect" id="node2" href="$classcom_1_1belafon_1_1world_1_1visibles_1_1items_1_1_item.html#aa1a391a21f5ddec5e50a552b7bf19caf" title=" " alt="" coords="256,5,468,45"/>
+<area shape="rect" id="node3" href="$classcom_1_1belafon_1_1world_1_1maps_1_1place_1_1_unbounded_place.html#ae07f9a34f5e03023ac680261973ffbf9" title=" " alt="" coords="255,69,469,109"/>
+</map>
