@@ -3,8 +3,6 @@ Discrete simulation of the World
 
 ## Getting Started
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
 Cílem mého programu je vytvořit herní svět. Vytvořit prostor tvořený mapou, která se
 skládá z jednotlivých políček. Každé políčko má pak své vlastnosti (nadmořská výška, pří-
 rodní bohatství, počasí...).
