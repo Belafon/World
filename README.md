@@ -59,12 +59,10 @@ Jedná se o BehavioursPossibleRequirement pro nějaký nástroj.
 
 - memory of visible items split into currentlyVisibleObjects, lastVisiblesPositionWhenVisionLost and visibleObjectSpotted.
 
-
-- comments added
-
-
 Každá creatura má nyní seznam aktuálně viděných visibles. Zároveň si ukládá kdy byl naposledy spatřen nějaký visible na konkrétním místě. To je vhodné pro to, když se creature navrátí na místo, kde dříve už někdy byl a něco viděl. Tak aby nemusel hledat dané věci, které se nezměnily znovu.
 Dále si pamatuje seznam kdy spatřil danou visible. To může mít celou řadu využití.
+
+- comments added
 
 - new feasible behaviours added 
 
