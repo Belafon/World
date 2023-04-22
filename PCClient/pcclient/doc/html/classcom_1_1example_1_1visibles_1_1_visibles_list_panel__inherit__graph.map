@@ -1,0 +1,6 @@
+<map id="com.example.visibles.VisiblesListPanel" name="com.example.visibles.VisiblesListPanel">
+<area shape="rect" id="node1" title=" " alt="" coords="5,69,201,109"/>
+<area shape="rect" id="node2" href="$classcom_1_1example_1_1visibles_1_1creatures_1_1_creatures_panel.html" title=" " alt="" coords="251,5,459,45"/>
+<area shape="rect" id="node3" href="$classcom_1_1example_1_1visibles_1_1items_1_1_items_panel.html" title=" " alt="" coords="261,69,448,109"/>
+<area shape="rect" id="node4" href="$classcom_1_1example_1_1visibles_1_1resources_1_1_resources_panel.html" title=" " alt="" coords="249,133,460,173"/>
+</map>

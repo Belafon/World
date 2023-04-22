@@ -1,0 +1,8 @@
+<map id="com.example.maps.SurroundingMap.setPlaceUnknown" name="com.example.maps.SurroundingMap.setPlaceUnknown">
+<area shape="rect" id="node1" title=" " alt="" coords="5,45,215,85"/>
+<area shape="rect" id="node2" href="$classcom_1_1example_1_1maps_1_1players_place_panels_1_1_place_panel.html#a5c922ef1d6a8d873ee7517ae2ef466cf" title=" " alt="" coords="263,45,503,85"/>
+<area shape="rect" id="node3" href="$classcom_1_1example_1_1maps_1_1_surrounding_map.html#abb7eb7bcdbe81f791c6648c7dd594554" title=" " alt="" coords="551,13,760,53"/>
+<area shape="rect" id="node6" href="$classcom_1_1example_1_1maps_1_1players_place_panels_1_1_place_panel.html#a37f54cdaeb3c3a5ba74c23feb6408840" title=" " alt="" coords="551,77,759,117"/>
+<area shape="rect" id="node4" href="$classcom_1_1example_1_1maps_1_1players_place_panels_1_1_players_place_info_panel.html#a3ba34f49cd910a4dbba842dbcde376e8" title=" " alt="" coords="808,5,1004,60"/>
+<area shape="rect" id="node5" href="$classcom_1_1example_1_1maps_1_1players_place_panels_1_1_players_place_info_panel.html#aba72acfb50a63c695a2056e9d477b53b" title=" " alt="" coords="1052,5,1260,60"/>
+</map>

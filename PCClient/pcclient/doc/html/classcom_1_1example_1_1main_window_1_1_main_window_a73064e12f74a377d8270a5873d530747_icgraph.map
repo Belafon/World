@@ -1,0 +1,7 @@
+<map id="com.example.mainWindow.MainWindow.setTitleBorder" name="com.example.mainWindow.MainWindow.setTitleBorder">
+<area shape="rect" id="node1" title=" " alt="" coords="304,101,515,141"/>
+<area shape="rect" id="node2" href="$classcom_1_1example_1_1body_stats_1_1_creature_statistics_panel.html#a56275db022b099f5084981040ebecb28" title=" " alt="" coords="5,5,256,45"/>
+<area shape="rect" id="node3" href="$classcom_1_1example_1_1maps_1_1_surrounding_places_panel.html#a62a1e2666b811d0ae7070651202912e2" title=" " alt="" coords="10,69,251,109"/>
+<area shape="rect" id="node4" href="$classcom_1_1example_1_1visibles_1_1_visibles_list_panel.html#a24623b318e687a93954492f26f123889" title=" " alt="" coords="33,133,229,173"/>
+<area shape="rect" id="node5" href="$classcom_1_1example_1_1maps_1_1weather_1_1_weather_panel.html#a2bb4c3dc372699e7b6eb9b8ac19bc7ae" title=" " alt="" coords="35,197,226,237"/>
+</map>
