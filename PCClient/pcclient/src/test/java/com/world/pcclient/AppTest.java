@@ -1,4 +1,4 @@
-package com.example;
+package com.world.pcclient;
 
 import static org.junit.Assert.assertTrue;
 
