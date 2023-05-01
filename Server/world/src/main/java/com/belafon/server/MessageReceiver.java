@@ -58,7 +58,7 @@ public class MessageReceiver implements Runnable{
     }
     
 	
-	public void decomposeTheString(String value, Socket clientSocket, Server server) {
+	private void decomposeTheString(String value, Socket clientSocket, Server server) {
         String[] message = value.split(" ");
         ConsolePrint.new_message(value, client);
     

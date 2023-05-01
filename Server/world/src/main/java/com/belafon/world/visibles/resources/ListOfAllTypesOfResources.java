@@ -5,7 +5,11 @@ import java.util.Hashtable;
 import com.belafon.world.maps.placeEffects.PlaceEffect;
 
 public class ListOfAllTypesOfResources {
-    public static Hashtable<NamesOfTypesOfResources, TypeOfResource> typesOfResources = new Hashtable<NamesOfTypesOfResources, TypeOfResource>(); 
+    public static Hashtable<NamesOfTypesOfResources, TypeOfResource> typesOfResources = new Hashtable<NamesOfTypesOfResources, TypeOfResource>();
+    
+    /**
+     * There are defined all types of resources in the game.
+     */
     public static void setUpAllResources(){
         typesOfResources.put(NamesOfTypesOfResources.blueberry, new TypeOfResource(NamesOfTypesOfResources.blueberry, new PlaceEffect[0], 1000));
         typesOfResources.put(NamesOfTypesOfResources.mushrooms, new TypeOfResource(NamesOfTypesOfResources.mushrooms, new PlaceEffect[0], 996));

@@ -25,7 +25,7 @@ public class ConsoleListener implements Runnable {
 
     public ConsoleListener(Server server) {
         this.server = server;
-        new Thread(this).start(); 
+        new Thread(this).start();
     }
 
     @Override
@@ -67,7 +67,7 @@ public class ConsoleListener implements Runnable {
         if (server.games.size() != 0)
             switch (message[1]) {
                 case "date":
-                    log += server.games.get(0).time.getDate();
+                    log += server.games.get(0).time.logDate();
                     break;
                 case "clouds":
                     if (message.length >= 3 && message[2].equals("loop"))

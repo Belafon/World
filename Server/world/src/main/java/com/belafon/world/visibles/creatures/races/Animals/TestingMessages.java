@@ -10,6 +10,9 @@ import com.belafon.server.messages.ServerMessages;
 import com.belafon.server.messages.SurroundingMessages;
 import com.belafon.server.sendMessage.MessageSender;
 
+/**
+ * Temporary class, indicates unimpplemented Reciver messages
+ */
 public class TestingMessages
     implements BehavioursMessages, ConditionCreatureMessages,
         InventoryMessages, ItemVisibleMessages,

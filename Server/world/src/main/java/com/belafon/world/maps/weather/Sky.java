@@ -6,6 +6,14 @@ import com.belafon.world.calendar.events.EventMoveClouds;
 import com.belafon.world.maps.Map;
 import com.belafon.world.maps.place.Place;
 
+/**
+ * Represents a simulation of a sky above 
+ * some concrete map.
+ * 
+ * It also hold info about the weather 
+ * in all places of the map.
+ * 
+ */
 public class Sky {
     public final Weather[][] weather;
     public volatile int directionOfWind = 0;
@@ -19,6 +27,14 @@ public class Sky {
     public volatile boolean printCloudsInLoop = false;
     public volatile boolean printWeatherInLoop = false;
 
+    /**
+     * Represents a simulation of a sky above 
+     * some concrete map.
+     * @param weather
+     * @param directionOfWind
+     * @param strengthOfWind
+     * @param map
+     */
     public Sky(Weather[][] weather, int directionOfWind, int strengthOfWind, Map map) {
         this.weather = weather;
         this.directionOfWind = directionOfWind;
@@ -31,10 +47,21 @@ public class Sky {
 
     }
 
+    /**
+     * Returns a weather in concrete place.
+     * @param positionX
+     * @param positionY
+     * @return
+     */
     public Weather getWeather(int positionX, int positionY) {
         return weather[(originX + positionX) % map.sizeX][(originY + positionY) % map.sizeY];
     }
 
+    /**
+     * Makes an update of clouds.
+     * All clouds are moved according the strength of the wind.
+     * New EventMoveClouds is planed according the size of wind.
+     */
     public void moveClouds() {
         switch (directionOfWind) {
             case 0:
@@ -110,6 +137,12 @@ public class Sky {
         originY = origin;
     }
 
+    /**
+     * Updates weather in each place,
+     * also updates the size of clouds.
+     * 
+     * It also plan next event, the duration to new update is regular. 
+     */
     public void updateWeather() {
         for (int i = 0; i < weather.length; i++) {
             for (int j = 0; j < weather.length; j++) {
@@ -166,6 +199,9 @@ public class Sky {
         return draw;
     }
 
+    /** 
+     * returns weatheer in concrete place.
+     */
     public Weather getWeather(Place place) {
         return getWeather(place.positionX, place.positionY);
     }

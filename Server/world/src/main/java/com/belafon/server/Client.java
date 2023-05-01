@@ -29,22 +29,34 @@ public class Client {
     /** this will try to reconnect the player to 
      * his last state.
      */
-	public void reconnect() {
-		if(actualGame == null) { // if the game has ended, there is no reason to continue
-			// TODO Lets get result of the game
-			return;
-		}
-		// TODO Lets connect player to the game
-	}
+    public void reconnect() {
+        if (actualGame == null) { // if the game has ended, there is no reason to continue
+            // TODO Lets get result of the game
+            return;
+        }
+        // TODO Lets connect player to the game
+    }
 
+    /**
+     * Binds new send message object with the client. 
+     * New messages will be sent to the client thorugh this object.
+     * @param clientSocket
+     */
     public void bindNewSendMessage(Socket clientSocket) {
         writer = new PlayersMessageSender(clientSocket, this);
     }
     
+    /**
+     * Returns the server the client is currently playing in.
+     */
     public Server getServer() {
         return server;
     }
 
+    /**
+     * Changes actually playing server.
+     * @param server
+     */
     public void setServer(Server server) {
         this.server = server;
     }

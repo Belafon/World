@@ -44,4 +44,7 @@ public interface CreatureVisibleMessages{
 
     public default void behaviourChanged(Creature creature) {
     }
+
+    public default void positionChanged(Creature creature) {
+    }
 }

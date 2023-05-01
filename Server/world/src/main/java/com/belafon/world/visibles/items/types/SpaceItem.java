@@ -25,6 +25,12 @@ public class SpaceItem extends Item {
         return space;
     }
 
+    /**
+     * It has to count the sum of 
+     * weights of all items in it.
+     * 
+     * // TODO // BUG Avoid recursion.
+     */
     @Override
     public int getWeight() {
         Integer sumOfItemsWeight = null;

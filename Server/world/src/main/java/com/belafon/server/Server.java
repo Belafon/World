@@ -106,8 +106,8 @@ public class Server {
 		}
 	}
 
-	private String getExternalIp() throws Exception {
-		URL whatismyip = new URL("http://checkip.amazonaws.com");
+    private String getExternalIp() throws Exception {
+        URL whatismyip = new URL("http://checkip.amazonaws.com");
         BufferedReader in = null;
         try {
             in = new BufferedReader(new InputStreamReader(
@@ -123,8 +123,12 @@ public class Server {
                 }
             }
         }
-	}
+    }
 
+    /**
+     * Removes world object from list of worlds.
+     * @param world
+     */
     public void endTheWorld(World world) {
         games.remove(world);
     }

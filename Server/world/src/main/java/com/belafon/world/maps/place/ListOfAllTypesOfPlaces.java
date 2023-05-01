@@ -8,13 +8,20 @@ import com.belafon.world.visibles.resources.ListOfAllTypesOfResources;
 import com.belafon.world.visibles.resources.TypeOfResourceOfTypeOfPlace;
 import com.belafon.world.visibles.resources.ListOfAllTypesOfResources.NamesOfTypesOfResources;
 
-/* Include all TypeOfPlaces */
+/**
+ * Setup all types of places
+*/
 public class ListOfAllTypesOfPlaces {
     public static Hashtable<NamesOfTypesOfPlaces, TypeOfPlace> typeOfPlaces = new Hashtable<NamesOfTypesOfPlaces, TypeOfPlace>(); 
     public static NamesOfTypesOfPlacesList[] typeOfPlacesInTheSpecificAltitude = new NamesOfTypesOfPlacesList[5];
-    public static class NamesOfTypesOfPlacesList{
+
+    public static class NamesOfTypesOfPlacesList {
         public final ArrayList<NamesOfTypesOfPlaces> list = new ArrayList<NamesOfTypesOfPlaces>();
     }
+    
+    /**
+     * Setup all types of places
+    */
     public static void setUpAllTypesOfPlaces(){
         typeOfPlaces.put( NamesOfTypesOfPlaces.forest_leafy,  new TypeOfPlace(NamesOfTypesOfPlaces.forest_leafy, 
             new String[]{"forest_leafy_1", "forest_leafy_2", "forest_leafy_3"}, 
@@ -80,12 +87,19 @@ public class ListOfAllTypesOfPlaces {
         cliff,
         rock_land,
         plateau_of_bushes,
-        
+
         // names of types of space items
         back_space,
         leather_bag
     }
     
+    /**
+     * Returns random altitude of type of place.
+     * Each type of place has its own range of altitudes, 
+     * where it could be located.
+     * @param altitude
+     * @return
+     */
     public static TypeOfPlace getRandomTypeOfPlaceAtAltitude(int altitude){
         Dice dice = new Dice(typeOfPlacesInTheSpecificAltitude[altitude].list.size());
         NamesOfTypesOfPlaces name = typeOfPlacesInTheSpecificAltitude[altitude].list.get(dice.toss() - 1);

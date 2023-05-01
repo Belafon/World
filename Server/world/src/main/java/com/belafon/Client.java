@@ -17,30 +17,33 @@ public class Client {
     private static int clientIDCounter = 0;
     public final int ID = clientIDCounter++;
 	
-	public Client() { // It will automatically bind connection with server on localhost and on port which was written to console
+    public Client() { // It will automatically bind connection with server on localhost and on port which was written to console
         int port = 25555;
-		while(true) {
-			try {
-				//port = Integer.parseInt(sc.nextLine().toString());
-				port = 25555;
-				break;
-			} catch(Exception e) {
-				System.out.println("Wrong input!");
-			}
-		}
+        while (true) {
+            try {
+                //port = Integer.parseInt(sc.nextLine().toString());
+                port = 25555;
+                break;
+            } catch (Exception e) {
+                System.out.println("Wrong input!");
+            }
+        }
 
-        
         try {
             this.clientSocket = new Socket(String.valueOf(InetAddress.getLocalHost().getHostAddress()), port);
             this.in = new Scanner(clientSocket.getInputStream());
-        }catch (UnknownHostException e){
-            e.printStackTrace();	
-        }catch (IOException e) {
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
         startListener(in);
     }
-	
+    
+    /**
+     * This starts listen to server messages
+     * @param in
+     */
 	private void startListener(final Scanner in) {
 		Thread thread = new Thread(new Runnable() {
 			@Override
@@ -67,7 +70,7 @@ public class Client {
 		thread.start();
 		
 		
-		
+		// lets send initialization info to server 
 		new Thread(new Runnable() {
 			
 			@Override

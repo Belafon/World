@@ -14,7 +14,9 @@ public class PlayersLookAround {
     }
 
     /**
-     * 
+     * This function returns string for message for a player.
+     * This message contains info about surrounding around concrete place
+     * (viewers position).
      * @param game
      * @param player
      * @param viewersPosition

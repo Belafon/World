@@ -4,6 +4,9 @@ import com.belafon.world.objectsMemory.ObjectsMemoryCell;
 import com.belafon.world.objectsMemory.creaturesMemory.AbilityConditionMemory;
 import com.belafon.world.visibles.creatures.Creature;
 
+/**
+ * creatures stats
+ */
 public class AbilityCondition {
     private int health = 100;
     private int strength;

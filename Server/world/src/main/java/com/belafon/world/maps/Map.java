@@ -4,6 +4,7 @@ import com.belafon.world.World;
 import com.belafon.world.maps.mapGenerators.MapGenerator;
 import com.belafon.world.maps.place.Place;
 import com.belafon.world.maps.weather.Sky;
+
 public class Map {
     public final int id;
     private static int nextId = 0;
@@ -11,9 +12,10 @@ public class Map {
     public final int sizeY;
     public final Place[][] places;
     public final Sky sky;
-    /*public Map(String pathToFile){
 
+    /*public Map(String pathToFile){
     }*/
+    
     public World game;
 
     public Map(int sizeX, int sizeY, MapGenerator mapGenerator, int directionOfWind, int strengthOfWind, World game) {

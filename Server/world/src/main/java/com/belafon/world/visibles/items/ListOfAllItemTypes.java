@@ -10,7 +10,14 @@ import com.belafon.world.visibles.items.typeItem.QuestTypeItem;
 import com.belafon.world.visibles.items.typeItem.SpaceTypeItem;
 import com.belafon.world.visibles.items.typeItem.ToolTypeItem;
 
+/**
+ * Setup all types of items in the world
+ */
 public class ListOfAllItemTypes{
+    
+    /**
+     * Setup all types of items in the world
+     */
     public static void setUpItems(){
         setUpTool();
         setUpFood();

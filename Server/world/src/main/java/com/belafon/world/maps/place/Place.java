@@ -5,6 +5,9 @@ import com.belafon.world.maps.Map;
 import com.belafon.world.maps.weather.Weather;
 import com.belafon.world.visibles.resources.Resource;
 
+/**
+ * this is an UnboundedPlace in concrete map.
+ */
 public class Place extends UnboundedPlace {
     public final Map map;
     public final int positionX;
@@ -23,6 +26,10 @@ public class Place extends UnboundedPlace {
         this.altitude = altitude;
     }
 
+    /**
+     * returns probable temerature of the place. 
+     * There is no random.
+     */
     public int getTemperature() {
         int temperature = 30 - (altitude / 80) + map.game.time.partOfDay.temperatureChange(); // altitude = 1000, -> 30
                                                                                               // - (1000 / 80) = 30 - 12

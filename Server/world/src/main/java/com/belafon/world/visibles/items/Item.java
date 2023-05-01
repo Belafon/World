@@ -34,6 +34,9 @@ public class Item extends Visible {
         this.weight = weight;
     }
 
+    /**
+     * Counts duration to next event, when stats should be updated 
+     */
     public synchronized int changeStats(Event event, World game) {
         return 0;
     }

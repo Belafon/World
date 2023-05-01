@@ -25,13 +25,13 @@ public class EventChangeWeather extends Event{
      */
     @Override
     public void action(World game) {
-        new Thread(new Runnable(){
+        new Thread(new Runnable() {
             @Override
             public void run() {
                 Thread.currentThread().setName("SetWeather");
-                if(printInLoop){
+                if (printInLoop) {
                     ConsolePrint.gameInfo("before weather change:");
-                    ConsolePrint.gameInfo(sky.printWeathers());    
+                    ConsolePrint.gameInfo(sky.printWeathers());
                 }
                 sky.updateWeather();
                 if (printInLoop) {
@@ -47,8 +47,8 @@ public class EventChangeWeather extends Event{
                                 creature.writer.surrounding.setWeather(weather);
                                 creature.memory.setLastWeather(weather.getWeather());
                             }
-                            
-                            if(creature.memory.getLastSizeOfClouds() != weather.getClouds()){
+
+                            if (creature.memory.getLastSizeOfClouds() != weather.getClouds()) {
                                 creature.writer.surrounding.setClouds(place);
                                 creature.memory.setLastSizeOfClouds(weather.getClouds());
                             }
@@ -59,6 +59,9 @@ public class EventChangeWeather extends Event{
         }).start();
     }
 
+    /**
+     * this event should not been interupted.
+     */
     @Override
     public void interrupt(World game) {
         

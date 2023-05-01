@@ -30,6 +30,10 @@ public abstract class Event implements Comparable<Event>{
         return date;
     }
     
+    /**
+     * sets the time of the exectution
+     * @param dateOfAction
+     */
 	public synchronized void setDate(long dateOfAction) {
 		this.date = dateOfAction;
 	}

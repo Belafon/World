@@ -9,6 +9,9 @@ import com.belafon.server.messages.ResourceVisibleMessages;
 import com.belafon.server.messages.ServerMessages;
 import com.belafon.server.messages.SurroundingMessages;
 
+/**
+ * Handles sending messages from server to a concrete creature.
+ */
 public final class MessageSender {
     private MessageSender(){}
     public ServerMessages server;
@@ -20,6 +23,10 @@ public final class MessageSender {
     public ResourceVisibleMessages resourceVisible;
     public CreatureVisibleMessages creatureVisible;
 
+    /**
+     * Handles sending messages from server to a concrete creature.
+     * @return
+     */
     public static MessageSenderBuilder getBuilder() {
         MessageSender sender = new MessageSender();
         return sender.new MessageSenderBuilder();

@@ -11,23 +11,27 @@ public class App {
 		ListOfAllTypesOfPlaces.setUpAllTypesOfPlaces();
         ListOfAllItemTypes.setUpItems();
 
-        
-/*         new Thread(new Runnable(){
+        //createLocalClient();
 
-			@Override
-			public void run() {
-				Thread.currentThread().setName("ClientStart");
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+        new Server();
+	}
+
+    private static void createLocalClient() {
+        new Thread(new Runnable(){
+
+            @Override
+            public void run() {
+                Thread.currentThread().setName("ClientStart");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 for (int i = 0; i < 1; i++) {
                     new Client();                    
                 }
-			}
-			
-		}).start(); */
-        new Server();
-	}
+            }
+            
+        }).start();
+    }
 }

@@ -37,32 +37,43 @@ public class BasicMatchMakingSystem extends MatchMakingSystem {
      */
     @Override
     public synchronized void addClient(Client client) {
-        if(client.queueCondition != Condition.idle) return; 
+        if (client.queueCondition != Condition.idle)
+            return;
         client.player = new Player(client, game, "name", game.maps.maps[0].places[0][0], "");
         game.players.add(client.player);
         game.creatures.add(client.player);
         client.actualGame = game;
-        if(numberOfPlayersToStart > numberOfPlayers + 1) setNumberOfPlayers(numberOfPlayers + 1);
-		else { // lets start the game...
+        if (numberOfPlayersToStart > numberOfPlayers + 1)
+            setNumberOfPlayers(numberOfPlayers + 1);
+        else { // lets start the game...
             setNumberOfPlayers(numberOfPlayersToStart);
             new Thread(game).start();
             game = new World(client.getServer());
             setNumberOfPlayers(0);
-		}
+        }
     }
 
+    /**
+     * Returns concrete client from the queue. 
+     * Info is sent to the clients. 
+     */
     @Override
     public synchronized void removeClient(Client client) {
-        if(client.queueCondition != Condition.waitingInQueue) return; 
-        if(game.players.remove(client.player)) {
-			client.player = null;
-			client.actualGame = null;
-			setNumberOfPlayers(numberOfPlayers - 1);
-		}
+        if (client.queueCondition != Condition.waitingInQueue)
+            return;
+        if (game.players.remove(client.player)) {
+            client.player = null;
+            client.actualGame = null;
+            setNumberOfPlayers(numberOfPlayers - 1);
+        }
     }
     
+    /**
+     * Updates actual number in queue.
+     * The info is sent to the clients.
+     */
     @Override
-    public synchronized void setNumberOfPlayers(int numberOfPalyers){
+    protected synchronized void setNumberOfPlayers(int numberOfPalyers){
         this.numberOfPlayers = numberOfPalyers;
         synchronized(game.players){
             for(Player player : game.players)

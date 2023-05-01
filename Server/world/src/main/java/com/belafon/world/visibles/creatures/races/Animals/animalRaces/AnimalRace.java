@@ -16,5 +16,5 @@ public class AnimalRace {
 
     public static final AnimalRace deer = new AnimalRace(
         "Deer", "Deers description", 
-        TestingMessages.createMessageSender());
+        TestingMessages.createMessageSender()); // TODO
 }

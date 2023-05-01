@@ -13,6 +13,13 @@ public class Weather {
     private int weather = 0;
     public volatile int visibility = 0; // can be changed by fog for example
 
+    /**
+     * Represents weather in concrete position.
+     * this object is moving with the wind in the sky.
+     * @param durationOfRain
+     * @param clouds
+     * @param weather
+     */
     public Weather(int durationOfRain, int clouds, int weather) {
         this.durationOfRain = durationOfRain;
         this.clouds = clouds;

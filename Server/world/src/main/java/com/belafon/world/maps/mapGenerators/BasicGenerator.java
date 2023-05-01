@@ -6,8 +6,13 @@ import com.belafon.world.maps.place.ListOfAllTypesOfPlaces;
 import com.belafon.world.maps.place.Place;
 import com.belafon.world.maps.weather.Weather;
 
-public class BasicGenerator implements MapGenerator{
+public class BasicGenerator implements MapGenerator {
 
+    /**
+     * FIrstly generates small altitude map, 
+     * then according these altitudes all Places are 
+     * generated.
+     */
     @Override
     public Place[][] generateMap(int sizeX, int sizeY, Map map) {
         int primitivMap[][] = new int[sizeX / 2][sizeY / 2];

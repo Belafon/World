@@ -21,6 +21,7 @@ import com.belafon.world.visibles.creatures.condition.knowledge.Knowledge;
 import com.belafon.world.visibles.creatures.inventory.Inventory;
 
 public abstract class Creature extends Visible {
+    // this is requirement that says any creature is required for some behaviour exection
     public static final BehavioursPossibleRequirement REQUIREMENT = new BehavioursPossibleRequirement() {
     };
     public volatile String name;
@@ -32,8 +33,8 @@ public abstract class Creature extends Visible {
     public final InfluencingActivities influencingActivities;
 
     /**
-     * null means idle, each creature can do just one behaviour, 
-     * which duration is not 0, in time. 
+     * null means idle, each creature can do just one behaviour,
+     * which duration is not 0, in time.
      */
     public Behaviour currentBehaviour = null; // idle
     public Inventory inventory;
@@ -77,8 +78,17 @@ public abstract class Creature extends Visible {
         abilityCondition.setVision(vision);
     }
 
+    /**
+     * Initializes invertory of some creature.
+     */
     protected abstract void setInventory();
 
+    /**
+     * executes creatures behaviour
+     * // TODO check behaviours possible requirements and ingredients
+     * 
+     * @param behaviour
+     */
     public void setBehaviour(Behaviour behaviour) {
         currentBehaviour = behaviour;
         behaviour.execute();
@@ -88,12 +98,22 @@ public abstract class Creature extends Visible {
         });
     }
 
+    /**
+     * Changed creatures position.
+     * 
+     * @param position
+     */
     public void setLocation(Place position) {
         memory.addPosition(new ObjectsMemoryCell<Place>(game.time.getTime(), position));
         this.position = position;
         writer.surrounding.setPosition(position);
 
         // all players watching that have to get notice that
+        // TODO chack if the watcher can still see the creature
+        getWatchers((watchers) -> {
+            for (Creature creature : watchers)
+                creature.influencingActivities.otherCreaturesPositionChanged(creature);
+        });
     }
 
     public int getWeight() {
@@ -163,6 +183,10 @@ public abstract class Creature extends Visible {
         void doJob(Set<Visible> visibleObjectSpotted);
     }
 
+    /**
+     * This function is for manipulating with visibles list.
+     * This aim to require stay safe even with concurent approach.
+     */
     public void getCurrentlyVisibleObjectSpotted(ActionGetCurremtlyObjectSpotted visibles) {
         mutexCurrentlyVisibleObjects.lock();
         try {
@@ -172,7 +196,11 @@ public abstract class Creature extends Visible {
         }
     }
 
-    public void removeVisibleObjects(Visible value) {
+    /**
+     * This method removes some visible from creatures sight.
+     * The creature cannot see the visible anymore.
+     */
+    public void removeVisibleObject(Visible value) {
         mutexCurrentlyVisibleObjects.lock();
         try {
             currentlyVisibleObjects.remove(value);

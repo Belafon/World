@@ -15,23 +15,34 @@ import com.belafon.world.visibles.items.types.Food;
 public class Player extends Creature {
     public final Client client;
     public volatile boolean isReady = false; 
-    public Player(Client client, World game, String name, Place position, String appearence){
+
+    public Player(Client client, World game, String name, Place position, String appearence) {
         super(game, name, position, appearence, client.writer.sender, 100); // TODO weight
         this.client = client;
         //super(position, client.name, game, id);
-    	setAbilityCondition(0, 0, 300, 600, 100, 0, 100);
+        setAbilityCondition(0, 0, 300, 600, 100, 0, 100);
         sendInfoAboutMaps();
     }
 
+    /**
+     * Sends info about all maps in the game to the client.
+     * It sends ids and sizes only.
+     */
     private void sendInfoAboutMaps() {
         for (Map map : game.maps.maps) {
             writer.surrounding.setNewMap(map, map.sizeX, map.sizeY);
         }
     }
+
+
     @Override
-	protected void setInventory() {
-		inventory = new Inventory(new PlayersGear(), this);
-	}
+    protected void setInventory() {
+        inventory = new Inventory(new PlayersGear(), this);
+    }
+
+    /**
+     * This is called when new game is starting.
+     */
     public void gameStart() {
         inventory.addItem(new Food(game, 5, 100, new SpecialFoodsProperties[] {},
                 ListOfAllItemTypes.foodTypes.get(NamesOfFoodItemTypes.apple), position));

@@ -50,6 +50,10 @@ public abstract class UnboundedPlace {
     }
 
     // TODO can not be called, when amount of some resource is changed
+    /** Adds new resource to the place.
+     * The list of resources has to be resorted according resources 
+     * conspicuousness and amount.
+     */
     public Resource addResource(TypeOfResource typeOfResource, int amount) {
         Resource resource = new Resource(typeOfResource, amount, game);
 
@@ -74,13 +78,23 @@ public abstract class UnboundedPlace {
         recountResourcesDurationOfFinding();
         return resource;
     }
-
+    /**
+     * Adds an item into the list of the place.
+     * @param item
+     */
     public void addItem(Item item) {
         items.add(item);
     }
 
+    /**
+     * Adds a place effect into list of place effects.
+     * Finds all creatures watching this place and sends info to them
+     * about the new place effect.
+     * @param effect
+     */
     public void addEffect(PlaceEffect effect) {
         effects.add(effect);
+        // TODO find surrounding creatures and send info
     }
 
     /*
@@ -105,6 +119,12 @@ public abstract class UnboundedPlace {
         recountResourcesDurationOfFinding();
     }
 
+    /**
+     * Finds the closest lower resource by its conspicuousness.
+     * @param array
+     * @param resource
+     * @return
+     */
     public static int binarySearchTheClosestLower(Resource[] array, Resource resource) {
         if (array.length == 0)
             return 0;
@@ -127,12 +147,27 @@ public abstract class UnboundedPlace {
         return average;
     }
 
+    
+    /**
+     * returns how easy is to watch through the space of the place.
+     */
     public abstract int getTemperature();
 
+
+    /** 
+     * Adds a creature to the creatres list.
+     * Also sneds info about the creature, if
+     * the craeture has been spoted be another.
+     */
     public void addCreature(Creature creature) {
         creatures.add(creature);
+        // TODO send info about the creature to other creatures, if it is visible to them
     }
 
+    /**
+     * Says the rate of visibility through the space of the place.
+     * @return
+     */
     public int getVisibility() {
         return visibility;
     }

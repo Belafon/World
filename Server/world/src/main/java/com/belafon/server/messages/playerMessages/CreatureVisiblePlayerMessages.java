@@ -81,6 +81,11 @@ public class CreatureVisiblePlayerMessages implements CreatureVisibleMessages {
         if (creature.currentBehaviour == null)
             sendMessage.sendLetter("creatureVisible currentBehaviour " + creature.id + " behaviour idle");
         else
-            sendMessage.sendLetter("creatureVisible currentBehaviour " + creature.id + " behaviour " + creature.currentBehaviour.getType().behaviourClass.getSimpleName());
+            sendMessage.sendLetter("creatureVisible currentBehaviour " + creature.id + " behaviour "
+                    + creature.currentBehaviour.getType().behaviourClass.getSimpleName());
+    }
+    
+    public void positionChanged(Creature creature) {
+        sendMessage.sendLetter("creatureVisible currentPosition " + creature.id + " " + creature.getLocation().id);
     }
 }

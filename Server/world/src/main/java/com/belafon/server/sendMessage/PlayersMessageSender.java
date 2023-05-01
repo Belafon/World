@@ -57,7 +57,7 @@ public class PlayersMessageSender {
     }
 	
     /**
-     * Sends message to the client.
+     * Sends message to the client through the server.
      */
 	public synchronized void sendLetter(String string) {
 		ConsolePrint.message_to_player(string, client.name);

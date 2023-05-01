@@ -6,12 +6,16 @@ import com.belafon.world.objectsMemory.ObjectsMemoryCell;
 import com.belafon.world.objectsMemory.creaturesMemory.ActualConditionMemory;
 import com.belafon.world.visibles.creatures.Creature;
 
+/**
+ * creatures stats, that are implicitly changeing during the time
+ */
 public class ActualCondition{
 	private int hunger = 100;
 	private EventCreatureActualCondition eventHunger;
 	private static final int HUNGER_SPEED = 18; // 15 hours, 15 * 20 / 100
     private int fatigueMax; // = barrier for rest, cannot increase fatigue beyond this limit, only through sleep, about 
-    private EventCreatureActualCondition eventMaxFatigue; //private int energy; // -> can be easily restored through rest, e.g. during combat  --- not necessary    
+    private EventCreatureActualCondition eventMaxFatigue;
+    //private int energy; // -> can be easily restored through rest, e.g. during combat  --- not necessary    
 	private static final int MAX_FATIGUE_SPEED = 45; // 3 days, 3 * 24 * 20 / 100 = 14.4
 	private int heat = 100;
 	private EventCreatureActualCondition eventHeat;
@@ -45,7 +49,6 @@ public class ActualCondition{
 		game.calendar.add(eventMaxFatigue);
 	}
 
-	// methods called by Event
 	private void setEventHunger(Object object){
 		setHunger(getHunger() - 1);
 		World game = creature.game;
@@ -55,16 +58,18 @@ public class ActualCondition{
             game.calendar.add(eventHunger);
         }
 	}
-	public void setEventMaxFatigue(Object object){
-		setFatigueMax(getFatigueMax() - 1);
-		World game = creature.game;
-		int duration = MAX_FATIGUE_SPEED;
+
+    public void setEventMaxFatigue(Object object) {
+        setFatigueMax(getFatigueMax() - 1);
+        World game = creature.game;
+        int duration = MAX_FATIGUE_SPEED;
         if (fatigueMax != 0) {
             eventMaxFatigue = new EventCreatureActualCondition(game.time.getTime() + duration, game,
                     this::setEventMaxFatigue);
             game.calendar.add(eventMaxFatigue);
         }
-	}
+    }
+    
 	public void setEventHeat(Object object){
 		World game = creature.game;
         int temperatureDifference = BODY_BORDER_HEAT_IN_CELSIUS + creature.abilityCondition.getCurrentEnergyOutput()
@@ -106,9 +111,10 @@ public class ActualCondition{
         memory.addHunger(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), hunger));
 		this.hunger = hunger;
 	}
-	public synchronized int getBleeding() {
-		return bleeding;
-	}
+
+    public synchronized int getBleeding() {
+        return bleeding;
+    }
 
     public synchronized void setBleeding(int bleeding) {
         
@@ -119,9 +125,16 @@ public class ActualCondition{
         memory.addBleeding(new ObjectsMemoryCell<Integer>(creature.game.time.getTime(), bleeding));
 		this.bleeding = bleeding;
 	}
-	public synchronized int getHeat() {
-		return heat;
-	}
+
+    public synchronized int getHeat() {
+        return heat;
+    }
+    
+    /**
+     * When hunger is 0,
+     * health is decreasing
+     * @param object
+     */
 	public synchronized void setHeat(int heat) {
 		if(heat > 100)heat = 100;
 		else if(this.heat == 0 && heat < 0){

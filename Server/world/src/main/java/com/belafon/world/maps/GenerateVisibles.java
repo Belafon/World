@@ -11,8 +11,14 @@ import com.belafon.world.visibles.items.types.Food;
 import com.belafon.world.visibles.resources.ListOfAllTypesOfResources;
 import com.belafon.world.visibles.resources.Resource;
 
+/**
+ * Debuging methods.
+ */
 public class GenerateVisibles {
 
+    /**
+     * Debuging method.
+     */
     public static void spawnDeerAndAllCreaturesNotices(UnboundedPlace place, World game) {
         Animal deer = new Animal(game, "deer1", place,
                 "Nice brown wealthy deer", 5, AnimalRace.deer);
@@ -24,7 +30,9 @@ public class GenerateVisibles {
             }
         }
     }
-
+    /**
+     * Debuging method.
+     */
     public static void spawnMashroomsAndAllCreaturesNotices(UnboundedPlace place, World game) {
         Resource mushrooms = place.addResource(
                 ListOfAllTypesOfResources.typesOfResources
@@ -38,6 +46,9 @@ public class GenerateVisibles {
         }
     }
 
+    /**
+     * Debuging method.
+     */
     public static void spawnAppleAndAllCreaturesNotices(UnboundedPlace place, World game) {
         Food apple = new Food(game, 0, 0,
                 new SpecialFoodsProperties[0],
