@@ -27,7 +27,7 @@ public class Place extends UnboundedPlace {
     }
 
     /**
-     * returns probable temerature of the place. 
+     * returns probable temerature of the place.
      * There is no random.
      */
     public int getTemperature() {
@@ -48,12 +48,14 @@ public class Place extends UnboundedPlace {
     }
 
     public String log() {
-        String log = "Resources = [ ";
+        String log = "\n";
+        if (map == printNewPlaceOnlyOfOneMap)
+            log += "Place: " + " in position = [" + positionX + ";" + positionY + "]  with altitude = "
+                    + altitude + "  " + typeOfPlace.name + "]";
+        log += "\t\tResources = [ ";
         for (Resource resource : resources.values())
             log += resource.type.name + " ";
-        if (map == printNewPlaceOnlyOfOneMap)
-            ConsolePrint.gameInfo("Place: " + " in position = [" + positionX + ";" + positionY + "]  with altitude = "
-                    + altitude + "  " + typeOfPlace.name + "  " + log + "]");
+        log += " ]";
         return log;
     }
 

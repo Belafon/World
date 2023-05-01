@@ -4,6 +4,7 @@ import com.belafon.server.Client;
 import com.belafon.world.World;
 import com.belafon.world.maps.Map;
 import com.belafon.world.maps.place.Place;
+import com.belafon.world.visibles.creatures.behaviour.behaviours.Move;
 import com.belafon.world.visibles.creatures.inventory.Inventory;
 import com.belafon.world.visibles.creatures.inventory.PlayersGear;
 import com.belafon.world.visibles.items.ListOfAllItemTypes;
@@ -48,7 +49,7 @@ public class Player extends Creature {
                 ListOfAllItemTypes.foodTypes.get(NamesOfFoodItemTypes.apple), position));
         
         client.writer.surrounding.setInfoAboutSurrounding(position);
-        //setBehaviour(new Move(game, this, game.maps.maps[0].places[1][1]));
+        setBehaviour(new Move(game, this, game.maps.maps[0].places[4][4]));
     }
 
     public boolean isDisconnected() {

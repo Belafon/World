@@ -137,16 +137,6 @@ public class ConsoleListener implements Runnable {
                         server.games.get(0).maps.maps[0].places[Integer.parseInt(message[2])][Integer
                                 .parseInt(message[3])].log();
                     break;
-                case "b":
-                    Map map = server.games.get(0).maps.maps[0];
-                    World game = server.games.get(0);
-                    Player player = null;
-                    if (game.players.size() > 0)
-                        player = game.players.get(0);
-                    player.getClass();
-                    map.getClass();
-                    System.out.print("");
-                    break;
                 default:
                     return;
             }

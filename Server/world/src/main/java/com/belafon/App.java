@@ -6,18 +6,18 @@ import com.belafon.world.visibles.items.ListOfAllItemTypes;
 import com.belafon.world.visibles.resources.ListOfAllTypesOfResources;
 
 public class App {
-	public static void main(String[] args) {
-		ListOfAllTypesOfResources.setUpAllResources();
-		ListOfAllTypesOfPlaces.setUpAllTypesOfPlaces();
+    public static void main(String[] args) {
+        ListOfAllTypesOfResources.setUpAllResources();
+        ListOfAllTypesOfPlaces.setUpAllTypesOfPlaces();
         ListOfAllItemTypes.setUpItems();
 
-        //createLocalClient();
+        createLocalClient();
 
         new Server();
-	}
+    }
 
     private static void createLocalClient() {
-        new Thread(new Runnable(){
+        new Thread(new Runnable() {
 
             @Override
             public void run() {
@@ -28,10 +28,10 @@ public class App {
                     e.printStackTrace();
                 }
                 for (int i = 0; i < 1; i++) {
-                    new Client();                    
+                    new Client();
                 }
             }
-            
+
         }).start();
     }
 }
