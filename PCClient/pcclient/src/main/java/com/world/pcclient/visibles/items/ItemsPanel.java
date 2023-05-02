@@ -3,6 +3,8 @@ package com.world.pcclient.visibles.items;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 
@@ -20,7 +22,9 @@ public class ItemsPanel extends VisiblesListPanel{
     }
     
     public void addVisibleTitlePanel(VisiblePanel visiblePanel) {
-        addVisibleTitlePanel(visiblePanel, () -> this.selectVisiblePanel(visiblePanel));
+        SwingUtilities.invokeLater(() -> {
+            addVisibleTitlePanel(visiblePanel, () -> this.selectVisiblePanel(visiblePanel));
+        });
     }
 
     public void selectVisiblePanel(VisiblePanel visiblePanel) {

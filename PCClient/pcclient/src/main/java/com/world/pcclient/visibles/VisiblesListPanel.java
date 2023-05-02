@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingUtilities;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -12,12 +13,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.util.Hashtable;
 
 import com.world.pcclient.mainWindow.MainWindow;
 
 public abstract class VisiblesListPanel {
     protected JPanel panel;
     protected JPanel visiblesList;
+    protected Hashtable<Visible, VisiblePanel> visiblePanels = new Hashtable<>();
     protected VisiblePanel selectedVisiblePanel;
 
     public VisiblesListPanel(String title) {
@@ -54,9 +57,21 @@ public abstract class VisiblesListPanel {
             public void mouseClicked(MouseEvent e) {
                 selectVisiblePanel.run();
             }
+
         });
         visiblesList.add(visiblePanel.getTitlePanel());
+        visiblePanels.put(visiblePanel.getVisible(), visiblePanel);
         visiblesList.revalidate();
         visiblesList.repaint();
     }
+
+    protected void removeVisibleTitlePanel(Visible visible) {
+        SwingUtilities.invokeLater(() -> {
+            visiblesList.remove(visiblePanels.get(visible).getTitlePanel());
+            visiblePanels.remove(visible);
+            visiblesList.revalidate();
+            visiblesList.repaint();
+        });
+    }
 }
+

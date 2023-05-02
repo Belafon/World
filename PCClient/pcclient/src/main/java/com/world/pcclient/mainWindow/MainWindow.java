@@ -42,7 +42,7 @@ public class MainWindow extends JFrame {
         setWindowSize();
 
         setTitleCondition(new StringBuilder("trying to connect"));
-        
+
         setVisible(true);
     }
 
@@ -64,12 +64,11 @@ public class MainWindow extends JFrame {
         setBounds(x, y, width, height);
     }
 
-
-
     public void displayPanels(Panels panels) {
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
 
-        // add the bodyStatistics, weatherPanel, and surroundingPlaces panels to the top row
+        // add the bodyStatistics, weatherPanel, and surroundingPlaces panels to the top
+        // row
         JSplitPane topRow = new JSplitPane(JSplitPane.VERTICAL_SPLIT, panels.bodyStatistics, panels.weatherPanel);
         topRow.setDividerSize(4);
 
@@ -80,10 +79,13 @@ public class MainWindow extends JFrame {
         JSplitPane leftSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, topRightRow, panels.visibleItems.getPanel());
         leftSplit.setDividerSize(4);
 
-        // add the visibleResources panel and visibleCreatures panel to the right of visibleItems panel
-        JSplitPane rightSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftSplit, panels.visibleResources.getPanel());
+        // add the visibleResources panel and visibleCreatures panel to the right of
+        // visibleItems panel
+        JSplitPane rightSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftSplit,
+                panels.visibleResources.getPanel());
         rightSplit.setDividerSize(4);
-        JSplitPane mainSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, rightSplit, panels.visibleCreatures.getPanel());
+        JSplitPane mainSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, rightSplit,
+                panels.visibleCreatures.getPanel());
         mainSplit.setDividerSize(4);
 
         // add the listenerPanel to the bottom row
@@ -99,11 +101,8 @@ public class MainWindow extends JFrame {
 
         setWindowSize();
         setVisible(true);
-    
-        
+
     }
-
-
 
     public void setTitleCondition(StringBuilder titleCondition) {
         setTitle(titleName + " ~ " + titleCondition);
@@ -111,9 +110,9 @@ public class MainWindow extends JFrame {
         repaint();
     }
 
-    public static void setTitleBorder(String title, JComponent component){
+    public static void setTitleBorder(String title, JComponent component) {
         Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
-        TitledBorder titledBorder = BorderFactory.createTitledBorder(border, title );
+        TitledBorder titledBorder = BorderFactory.createTitledBorder(border, title);
         titledBorder.setTitleFont(new Font("Arial", Font.BOLD, 16));
         component.setBorder(titledBorder);
     }

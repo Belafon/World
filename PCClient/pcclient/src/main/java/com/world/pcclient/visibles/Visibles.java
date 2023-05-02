@@ -13,18 +13,6 @@ public class Visibles {
     private final Hashtable<Integer, Creature> creatures = new Hashtable<>();
     private final Hashtable<Integer, Resource> resources = new Hashtable<>();
 
-    public void addItem(Item item) {
-        items.put(item.getId(), item);
-    }
-
-    public void addCreature(Creature creature) {
-        creatures.put(creature.getId(), creature);
-    }
-
-    public void addResource(Resource resource) {
-        resources.put(resource.getId(), resource);
-    }
-
     public void addItem(String[] args, Panels panels) {
         int id = Integer.parseInt(args[2]);
         String className = args[3];
@@ -63,6 +51,7 @@ public class Visibles {
         }
         Creature creature = new Creature(name, id, appearance);
         panels.visibleCreatures.addVisibleTitlePanel(new VisiblePanel(creature));
+        creatures.put(id, creature);
 
     }
 
@@ -73,37 +62,29 @@ public class Visibles {
         int mass = Integer.parseInt(args[4]);
         Resource resource = new Resource(id, type, mass);
         panels.visibleResources.addVisibleTitlePanel(new VisiblePanel(resource));
-    }
-
-    public void removeItem(Item item) {
-        items.remove(item);
-    }
-
-    public void removeCreature(Creature creature) {
-        creatures.remove(creature);
-    }
-
-    public void removeResource(Resource resource) {
-        resources.remove(resource);
+        resources.put(id, resource);
     }
 
     public void removeItem(String[] args, Panels panels) {
         int id = Integer.parseInt(args[2]);
-        items.remove(id);
-        // TODO: Remove the item with the given ID from the client's view
+        if (items.containsKey(id)) {
+            panels.visibleItems.removeVisibleTitlePanel(items.get(id));
+        } 
     }
 
     public void removeCreature(String[] args, Panels panels) {
         int id = Integer.parseInt(args[2]);
+        if (creatures.containsKey(id)) {
+            panels.visibleCreatures.removeVisibleTitlePanel(creatures.get(id));
+        }
         creatures.remove(id);
-
-        // TODO: Remove the creature with the given ID from the client's view
     }
 
     public void removeResource(String[] args, Panels panels) {
         int id = Integer.parseInt(args[2]);
+        if (resources.containsKey(id)) {
+            panels.visibleResources.removeVisibleTitlePanel(resources.get(id));
+        }
         resources.remove(id);
-
-        // TODO: Remove the resource with the given name from the client's view
     }
 }
