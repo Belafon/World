@@ -13,12 +13,12 @@ public class BehavioursPlayersMessages implements BehavioursMessages{
 
     @Override
     public void newFeasibleBehaviour(BehaviourType behaviourType) {
-		sendMessage.sendLetter("player feasibleCondition add " + behaviourType.behaviourClass.getSimpleName());
+		sendMessage.sendLetter("player feasibleCondition add " + behaviourType.behaviourClass.getSimpleName(), PlayersMessageSender.TypeMessage.other);
     }
 
     @Override
     public void removeFeasibleBehaviour(BehaviourType behaviourType) {
-        sendMessage.sendLetter("player feasibleCondition remove " + behaviourType.behaviourClass.getSimpleName());
+        sendMessage.sendLetter("player feasibleCondition remove " + behaviourType.behaviourClass.getSimpleName(), PlayersMessageSender.TypeMessage.other);
     }
     
 }

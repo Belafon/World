@@ -38,8 +38,10 @@ public class World implements Runnable {
     @Override
     public void run() {
         ConsolePrint.gameInfo("World: new world starts...");
-        for (Player player : players)
-            player.client.writer.server.startGame();
+        synchronized(players){
+            for (Player player : players)
+                player.client.writer.server.startGame();
+        }
 
         try {
             Thread.sleep(500);
@@ -51,9 +53,10 @@ public class World implements Runnable {
 
         new Thread(calendarsLoop).start();
 
-        for (Player player : players)
-            player.gameStart();
-
+        synchronized (players) {
+            for (Player player : players)
+                player.gameStart();
+        }
         Place cornerPlace = maps.maps[0].places[0][0];
         GenerateVisibles.spawnMashroomsAndAllCreaturesNotices(cornerPlace, this);
         GenerateVisibles.spawnDeerAndAllCreaturesNotices(cornerPlace, this);

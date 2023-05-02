@@ -1,7 +1,7 @@
 package com.belafon.world.visibles.creatures;
 
-import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -14,6 +14,7 @@ import com.belafon.world.objectsMemory.Visible;
 import com.belafon.world.objectsMemory.creaturesMemory.CreaturesMemory;
 import com.belafon.world.visibles.creatures.behaviour.Behaviour;
 import com.belafon.world.visibles.creatures.behaviour.BehaviourCondition;
+import com.belafon.world.visibles.creatures.behaviour.PlayersLookAround;
 import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleRequirement;
 import com.belafon.world.visibles.creatures.condition.AbilityCondition;
 import com.belafon.world.visibles.creatures.condition.ActualCondition;
@@ -21,7 +22,8 @@ import com.belafon.world.visibles.creatures.condition.knowledge.Knowledge;
 import com.belafon.world.visibles.creatures.inventory.Inventory;
 
 public abstract class Creature extends Visible {
-    // this is requirement that says any creature is required for some behaviour exection
+    // this is requirement that says any creature is required for some behaviour
+    // exection
     public static final BehavioursPossibleRequirement REQUIREMENT = new BehavioursPossibleRequirement() {
     };
     public volatile String name;
@@ -44,10 +46,12 @@ public abstract class Creature extends Visible {
     private volatile int weight;
     private final Set<Knowledge> knowledge = new ConcurrentSkipListSet<>();
 
-    private final Set<Visible> currentlyVisibleObjects = new HashSet<>();
+    private final Set<Visible> currentlyVisibleObjects = ConcurrentHashMap.newKeySet();
     private final ReentrantLock mutexCurrentlyVisibleObjects = new ReentrantLock();
 
     public final CreaturesMemory memory = new CreaturesMemory();
+
+    public PlayersLookAround surroundingPlaces;
 
     public Creature(World game, String name, UnboundedPlace position,
             String appearence, MessageSender sendMessage,
@@ -55,13 +59,14 @@ public abstract class Creature extends Visible {
         this.id = game.visibleIds.getCreatureId();
         this.game = game;
         this.writer = sendMessage;
+        this.position = position;
         influencingActivities = new InfluencingActivities(writer);
-        setInventory();
+        setInventory(position);
         this.appearence = appearence;
         abilityCondition = new AbilityCondition(this, 100, 100, 100, 100, 100, 100, 100);
         behaviourCondition = new BehaviourCondition(this);
         actualCondition = new ActualCondition(this);
-        this.position = position;
+        surroundingPlaces = PlayersLookAround.look(position);
         this.name = name;
         this.weight = weight;
     }
@@ -69,8 +74,8 @@ public abstract class Creature extends Visible {
     public void setAbilityCondition(int strength, int agility, int speed_of_walk, int speed_of_run, int hearing,
             int observation, int vision) {
         // strength, agility, speed_of_walk, speed_of_run, hearing, observation, vision
-        this.abilityCondition.setStrength(strength);
-        this.abilityCondition.setAgility(agility);
+        abilityCondition.setStrength(strength);
+        abilityCondition.setAgility(agility);
         abilityCondition.setSpeedOfWalk(speed_of_walk);
         abilityCondition.setSpeedOfRun(speed_of_run);
         abilityCondition.setObservation(observation);
@@ -80,8 +85,10 @@ public abstract class Creature extends Visible {
 
     /**
      * Initializes invertory of some creature.
+     * 
+     * @param position
      */
-    protected abstract void setInventory();
+    protected abstract void setInventory(UnboundedPlace position);
 
     /**
      * executes creatures behaviour
@@ -104,9 +111,29 @@ public abstract class Creature extends Visible {
      * @param position
      */
     public void setLocation(Place position) {
+        PlayersLookAround lastLook = this.surroundingPlaces;
         memory.addPosition(new ObjectsMemoryCell<Place>(game.time.getTime(), position));
         this.position = position;
-        writer.surrounding.setPosition(position);
+        this.surroundingPlaces = PlayersLookAround.look(position);
+
+        for (int row = 0; row < lastLook.visiblePlaces.length; row++) {
+            for (int col = 0; col < lastLook.visiblePlaces[row].length; col++) {
+                if (lastLook.visiblePlaces[row][col] == null)
+                    continue;
+
+    //            if (!surroundingPlaces.isPlaceVisible(lastLook.visiblePlaces[row][col])) {
+                    // remove all visibles from the place
+                    for (Visible visible : currentlyVisibleObjects)
+                        removeVisibleObject(visible);
+    /*             } else {
+                    // find all visible items that are not visible anymore and remove them
+                    for (Visible visible : currentlyVisibleObjects)
+                        if (!shouldBeVisibleStillVisible(visible))
+                            removeVisibleObject(visible);
+                } */
+            }
+        }
+        writer.surrounding.setPosition(surroundingPlaces);
 
         // all players watching that have to get notice that
         // TODO chack if the watcher can still see the creature
@@ -114,6 +141,23 @@ public abstract class Creature extends Visible {
             for (Creature creature : watchers)
                 creature.influencingActivities.otherCreaturesPositionChanged(creature);
         });
+        memory.getVisibleObjectLostFromSight((lostVisibles) -> {
+            if (lostVisibles.containsKey(position)) {
+                for (ObjectsMemoryCell<Visible> lostVisible : lostVisibles.get(position)) {
+                    if (lostVisible.object().getLocation() == position)
+                        addVisibleObject(lostVisible.object());
+                }
+                lostVisibles.get(position).clear();
+            }
+        });
+    }
+
+    private boolean shouldBeVisibleStillVisible(Visible visible) {
+        UnboundedPlace position = visible.getLocation();
+        // TODO update, use created sorted list of visibles in concrete unboundedPlace
+        if (visible.getVisibility() < 50)
+            return true;
+        return false;
     }
 
     public int getWeight() {
@@ -200,26 +244,32 @@ public abstract class Creature extends Visible {
      * This method removes some visible from creatures sight.
      * The creature cannot see the visible anymore.
      */
-    public void removeVisibleObject(Visible value) {
+    public void removeVisibleObject(Visible visible) {
         mutexCurrentlyVisibleObjects.lock();
         try {
-            currentlyVisibleObjects.remove(value);
+            currentlyVisibleObjects.remove(visible);
         } finally {
             mutexCurrentlyVisibleObjects.unlock();
         }
 
-        memory.addVisibleObjectLostFromSight(new ObjectsMemoryCell<Visible>(game.time.getTime(), value),
-                value.getLocation(), this);
+        memory.addVisibleObjectLostFromSight(new ObjectsMemoryCell<Visible>(game.time.getTime(), visible),
+                visible.getLocation(), this);
 
-        value.removeWatcher(this);
+        visible.removeWatcher(this);
 
-        this.writer.surrounding.removeVisibleFromSight(value);
+        this.writer.surrounding.removeVisibleFromSight(visible);
 
-        for (BehavioursPossibleRequirement requirement : value.getBehavioursPossibleRequirementType()) {
-            behaviourCondition.addBehavioursPossibleIngredient(requirement, value);
+        for (BehavioursPossibleRequirement requirement : visible.getBehavioursPossibleRequirementType()) {
+            behaviourCondition.addBehavioursPossibleIngredient(requirement, visible);
         }
     }
 
+    /**
+     * Checks if the creature sees the given visible
+     * 
+     * @param value
+     * @return
+     */
     public boolean containsVisibleObject(Visible value) {
         mutexCurrentlyVisibleObjects.lock();
         try {
@@ -232,5 +282,11 @@ public abstract class Creature extends Visible {
     @Override
     public BehavioursPossibleRequirement[] getBehavioursPossibleRequirementType() {
         return new BehavioursPossibleRequirement[] { REQUIREMENT };
+    }
+
+    @Override
+    public int getVisibility() {
+        // TODO needs update
+        return abilityCondition.getLoudness();
     }
 }

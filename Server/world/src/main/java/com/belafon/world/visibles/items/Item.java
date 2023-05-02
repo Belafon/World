@@ -50,5 +50,9 @@ public class Item extends Visible {
     public BehavioursPossibleRequirement[] getBehavioursPossibleRequirementType() {
         return new BehavioursPossibleRequirement[] { type, REQUIREMENT };
     }
-
+    
+    @Override
+    public int getVisibility(){
+        return type.visibility;
+    }
 }

@@ -75,10 +75,16 @@ public class CreaturesMemory {
         }
     }
 
-    public List<ObjectsMemoryCell<Visible>> getVisibleObjectLostFromSight(Place place) {
+    @FunctionalInterface
+    public interface ActionGetLostVisibleObject {
+        void doJob(Hashtable<UnboundedPlace, List<ObjectsMemoryCell<Visible>>> visibleObjectSpotted);
+    }
+
+
+    public void getVisibleObjectLostFromSight(ActionGetLostVisibleObject lostVisibleObject) {
         mutexlastVisiblesPositionWhenVisionLost.lock();
         try {
-            return lastVisiblesPositionWhenVisionLost.get(place);
+            lostVisibleObject.doJob(lastVisiblesPositionWhenVisionLost);
         } finally {
             mutexlastVisiblesPositionWhenVisionLost.unlock();
         }

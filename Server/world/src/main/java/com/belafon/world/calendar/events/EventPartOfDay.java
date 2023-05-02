@@ -1,6 +1,5 @@
 package com.belafon.world.calendar.events;
 
-import com.belafon.console.ConsolePrint;
 import com.belafon.world.World;
 import com.belafon.world.time.DailyLoop.NamePartOfDay;
 import com.belafon.world.time.DailyLoop.PartOfDay;
@@ -26,7 +25,7 @@ public class EventPartOfDay extends Event {
      */
     @Override
     public void action(World game) {
-        ConsolePrint.success("EventPartOfDay", "part of day changed " + partOfDay.name());
+        //ConsolePrint.success("EventPartOfDay", "part of day changed " + partOfDay.name());
         game.time.partOfDay = partOfDay;
         synchronized(game.creatures){
             for (Creature creature : game.creatures)

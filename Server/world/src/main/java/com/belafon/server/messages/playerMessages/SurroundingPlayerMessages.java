@@ -23,47 +23,41 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
 
     @Override
     public void setPartOfDay(NamePartOfDay partOfDay) {
-        sendMessage.sendLetter("map partOfDay " + partOfDay.name());
+        sendMessage.sendLetter("map partOfDay " + partOfDay.name(), PlayersMessageSender.TypeMessage.dailyLoop);
     }
 
     @Override
     public void setWeather(Weather weather) {
-        sendMessage.sendLetter("map weather " + weather.getWeather());
+        sendMessage.sendLetter("map weather " + weather.getWeather(), PlayersMessageSender.TypeMessage.dailyLoop);
     }
 
     @Override
     public void setClouds(Place place) {
-        sendMessage.sendLetter("map clouds " + place.map.sky.getWeather(place).getClouds());
+        sendMessage.sendLetter("map clouds " + place.map.sky.getWeather(place).getClouds(), PlayersMessageSender.TypeMessage.dailyLoop);
     }
 
     @Override
-    public void setInfoAboutSurroundingPlacesLookAround(Place position) {
-        String look = PlayersLookAround.look(sendMessage.client.actualGame, sendMessage.client.player, position);
-        String message = "map look_arround " + look;
-        sendMessage.client.writer.sendLetter(message);
+    public void setInfoAboutSurrounding(PlayersLookAround surrounding) {
+        String message = "map look_arround " + surrounding.makeMessage();
+        sendMessage.client.writer.sendLetter(message, PlayersMessageSender.TypeMessage.other);
     }
 
     @Override
-    public void setPosition(Place position) {
-        setInfoAboutPlace(position);
-        setInfoAboutSurrounding(position);
+    public void setPosition(PlayersLookAround surrounding) {
+        setInfoAboutPlace(surrounding.getViewersPosition());
+        setInfoAboutSurrounding(surrounding);
     }
 
     @Override
-    public void setInfoAboutPlace(Place place) {
+    public void setInfoAboutPlace(UnboundedPlace uplace) {
         // setInfoAboutPlace needs to be filled
-    }
-
-    @Override
-    public void setInfoAboutSurrounding(UnboundedPlace position) {
-        setTypeOfPlaceInfoDrawableSound(position);
-        if (position instanceof Place place) {
+        setTypeOfPlaceInfoDrawableSound(uplace);
+        setResources(uplace); // items which u can find
+        setItems(uplace);
+        if (uplace instanceof Place place) {
             setWeather(place.map.sky.getWeather(place.positionX, place.positionY));
             setClouds(place);
-            setInfoAboutSurroundingPlacesLookAround(place);
         }
-        setResources(position); // items which u can find
-        setItems(position);
     }
 
     @Override
@@ -74,17 +68,17 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
                 message.append(" " + resource.type.name);
             else
                 break;
-        sendMessage.client.writer.sendLetter(message.toString());
+        sendMessage.client.writer.sendLetter(message.toString(), PlayersMessageSender.TypeMessage.other);
     }
 
     @Override
     public void setResource(Resource resource) {
-        sendMessage.client.writer.sendLetter("surrounding resource " + resource.type.name);
+        sendMessage.client.writer.sendLetter("surrounding resource " + resource.id + " " + resource.type.name, PlayersMessageSender.TypeMessage.other);
     }
 
     @Override
     public void setResourceNotFound(Resource resource) {
-        sendMessage.client.writer.sendLetter("surrounding resourceNotFound " + resource.type.name);
+        sendMessage.client.writer.sendLetter("surrounding resourceNotFound " + resource.type.name, PlayersMessageSender.TypeMessage.other);
     }
 
     @Override
@@ -94,12 +88,12 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
 
     @Override
     public void setTypeOfPlaceInfoDrawableSound(UnboundedPlace position) {
-        sendMessage.sendLetter("soundDrawable " + position.music + " " + position.picture);
+        sendMessage.sendLetter("soundDrawable " + position.music + " " + position.picture, PlayersMessageSender.TypeMessage.other);
     }
 
     @Override
     public void setNewMap(Map map, int sizeX, int sizeY) {
-        sendMessage.sendLetter("map new_map " + map.id + " " + sizeX + " " + sizeY);
+        sendMessage.sendLetter("map new_map " + map.id + " " + sizeX + " " + sizeY, PlayersMessageSender.TypeMessage.other);
     }
 
     @Override
@@ -117,8 +111,8 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
             message.append(" add_resource_in_sight "
                     + getVisibleResourcePropertiesMessage(resource));
         }
-        
-        sendMessage.client.writer.sendLetter(message.toString());
+
+        sendMessage.client.writer.sendLetter(message.toString(), PlayersMessageSender.TypeMessage.other);
     }
 
     private StringBuilder getVisibleItemPropertiesMessage(Item item) {
@@ -156,7 +150,6 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
 
     @Override
     public void removeVisibleFromSight(Visible value) {
-        sendMessage.sendLetter("surrounding");
         StringBuilder message = new StringBuilder("surrounding");
         if (value instanceof Item item) {
             message.append(" remove_item_in_sight "
@@ -167,8 +160,8 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
 
         } else if (value instanceof Resource resource) {
             message.append(" remove_resource_in_sight "
-                    + resource.type.name);
+                    + resource.id);
         }
-        sendMessage.client.writer.sendLetter(message.toString());
+        sendMessage.client.writer.sendLetter(message.toString(), PlayersMessageSender.TypeMessage.other);
     }
 }

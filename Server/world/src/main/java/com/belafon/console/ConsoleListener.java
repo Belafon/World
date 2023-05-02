@@ -2,9 +2,11 @@ package com.belafon.console;
 
 import java.util.Scanner;
 
+import com.belafon.server.MessageReceiver;
 import com.belafon.server.Server;
-import com.belafon.world.World;
-import com.belafon.world.maps.Map;
+import com.belafon.server.sendMessage.MessageSender;
+import com.belafon.server.sendMessage.PlayersMessageSender;
+import com.belafon.world.time.Clocks;
 import com.belafon.world.visibles.creatures.Player;
 import com.belafon.world.visibles.creatures.behaviour.behaviours.Move;
 import com.belafon.world.visibles.resources.ListOfAllTypesOfResources;
@@ -47,7 +49,7 @@ public class ConsoleListener implements Runnable {
                             }
                         } else {
                             for (Player player : server.games.get(0).players)
-                                player.client.writer.sendLetter(message);
+                                player.client.writer.sendLetter(message, PlayersMessageSender.TypeMessage.other);
                         }
                 }
                 Thread.sleep(500);
@@ -66,6 +68,26 @@ public class ConsoleListener implements Runnable {
         String log = "LOG --> " + message[1] + " --> ";
         if (server.games.size() != 0)
             switch (message[1]) {
+                case "day":
+                    switch (message[2]) {
+                        case "stop":
+                            PlayersMessageSender.setPrintCyclesStatsToConsole(false);
+                            break;
+                            case "loop":
+                            PlayersMessageSender.setPrintCyclesStatsToConsole(true);
+                            break;
+                    }
+                    break;
+                case "creaturesStats":
+                    switch (message[2]) {
+                        case "stop":
+                            PlayersMessageSender.setPrintCreatureStatsToConsole(false);
+                            break;
+                            case "loop":
+                            PlayersMessageSender.setPrintCreatureStatsToConsole(true);
+                            break;
+                    }
+                    break;
                 case "date":
                     log += server.games.get(0).time.logDate();
                     break;

@@ -1,10 +1,14 @@
 package com.belafon.server.sendMessage;
 
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Properties;
 
 import com.belafon.console.ConsolePrint;
 import com.belafon.server.Client;
@@ -18,20 +22,20 @@ import com.belafon.server.messages.playerMessages.ServerPlayerMessages;
 import com.belafon.server.messages.playerMessages.SurroundingPlayerMessages;
 
 /**
- * Devides messages from server to concrete client 
+ * Devides messages from server to concrete client
  * to meaningful groups.
  */
 public class PlayersMessageSender {
     public PrintWriter output;
-	public final Client client;
-	public volatile Socket clientSocket;
-	public final ServerPlayerMessages server = new ServerPlayerMessages(this);
+    public final Client client;
+    public volatile Socket clientSocket;
+    public final ServerPlayerMessages server = new ServerPlayerMessages(this);
     public final SurroundingPlayerMessages surrounding = new SurroundingPlayerMessages(this);
     public final CreatureVisiblePlayerMessages creatureVisibles = new CreatureVisiblePlayerMessages(this);
     public final ItemVisiblePlayerMessages itemVisibles = new ItemVisiblePlayerMessages(this);
     public final ResourceVisiblePlayerMessages resoruceVisibles = new ResourceVisiblePlayerMessages(this);
-	public final ConditionPlayerMessages condition = new ConditionPlayerMessages(this);
-	public final InventoryPlayerMessages inventory = new InventoryPlayerMessages(this);
+    public final ConditionPlayerMessages condition = new ConditionPlayerMessages(this);
+    public final InventoryPlayerMessages inventory = new InventoryPlayerMessages(this);
     public final BehavioursPlayersMessages behaviour = new BehavioursPlayersMessages(this);
     public final MessageSender sender;
 
@@ -42,7 +46,7 @@ public class PlayersMessageSender {
                 .setCondition(condition)
                 .setInventory(inventory)
                 .setSurrounding(surrounding)
-                .setItemVIsible(itemVisibles)
+                .setItemVisible(itemVisibles)
                 .setCreatureVisible(creatureVisibles)
                 .setResourceVisible(resoruceVisibles)
                 .build();
@@ -55,13 +59,72 @@ public class PlayersMessageSender {
             e.printStackTrace();
         }
     }
-	
+
     /**
      * Sends message to the client through the server.
      */
-	public synchronized void sendLetter(String string) {
-		ConsolePrint.message_to_player(string, client.name);
-		output.println(string); // blank line between headers and content, very important !
-		output.flush(); // flush character output stream buffer
-	}
+    public synchronized void sendLetter(String string, TypeMessage type) {
+        if (printCyclesStatsToConsole || type != TypeMessage.dailyLoop)
+            if (printCreatureStatsToConsole || type != TypeMessage.actualStats)
+                ConsolePrint.message_to_player(string, client.name);
+        output.println(string); // blank line between headers and content, very important !
+        output.flush(); // flush character output stream buffer
+    }
+
+    public enum TypeMessage {
+        other,
+        dailyLoop,
+        actualStats
+    }
+
+    private static boolean printCyclesStatsToConsole = true;
+    private static boolean printCreatureStatsToConsole = true;
+    private static final String FILENAME = "config.properties";
+
+    public synchronized static boolean isPrintCyclesStatsToConsole() {
+        return printCyclesStatsToConsole;
+    }
+
+    public synchronized static void setPrintCyclesStatsToConsole(boolean printCyclesStatsToConsole) {
+        PlayersMessageSender.printCyclesStatsToConsole = printCyclesStatsToConsole;
+        saveConfig();
+    }
+
+    public synchronized static void setPrintCreatureStatsToConsole(boolean printCreatureStats) {
+        PlayersMessageSender.printCreatureStatsToConsole = printCreatureStats;
+        saveConfig();
+    }
+
+    static {
+        try {
+            loadConfig();
+        } catch (IOException e) {
+            // file doesn't exist, use default values
+        }
+    }
+
+    private static void loadConfig() throws IOException {
+        File file = new File(FILENAME);
+        if (!file.exists()) {
+            return;
+        }
+        try (FileInputStream input = new FileInputStream(file)) {
+            Properties props = new Properties();
+            props.load(input);
+            printCyclesStatsToConsole = Boolean.parseBoolean(props.getProperty("printCyclesStatsToConsole"));
+            printCreatureStatsToConsole = Boolean.parseBoolean(props.getProperty("printCreatureStatsToConsole"));
+        }
+    }
+
+    private static void saveConfig() {
+        try (FileOutputStream output = new FileOutputStream(FILENAME)) {
+            Properties props = new Properties();
+            props.setProperty("printCyclesStatsToConsole", Boolean.toString(printCyclesStatsToConsole));
+            props.setProperty("printCreatureStatsToConsole", Boolean.toString(printCreatureStatsToConsole));
+            props.store(output, "Game configuration");
+        } catch (IOException e) {
+            // failed to save config
+            e.printStackTrace();
+        }
+    }
 }

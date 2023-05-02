@@ -56,7 +56,8 @@ public class Move extends Behaviour {
 
     @Override
     public void cease() {
-        if(currentPositionOfTravel > 0) creature.setLocation(jurney.get(currentPositionOfTravel - 1));
+        if (currentPositionOfTravel > 0)
+            creature.setLocation(jurney.get(currentPositionOfTravel - 1));
         if(currentPositionOfTravel < jurney.size()){
             duration = getDurationOfTravel(creature);
             event = new EventBehaviour(game.time.getTime() + duration, game, this);

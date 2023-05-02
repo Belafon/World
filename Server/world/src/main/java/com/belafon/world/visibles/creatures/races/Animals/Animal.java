@@ -18,7 +18,7 @@ public class Animal extends Creature {
     }
 
     @Override
-    protected void setInventory() {
+    protected void setInventory(UnboundedPlace position) {
         inventory = new Inventory(new Gear() {
 
             @Override
@@ -32,6 +32,6 @@ public class Animal extends Creature {
                 // TODO Auto-generated method stub
                 throw new UnsupportedOperationException("Unimplemented method 'putOff'");
             }
-        }, this);
+        }, this, position);
     }
 }

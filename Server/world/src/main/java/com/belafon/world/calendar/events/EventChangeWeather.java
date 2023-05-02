@@ -39,18 +39,20 @@ public class EventChangeWeather extends Event{
                     ConsolePrint.gameInfo(sky.printWeathers());
                 }
                 //ConsolePrint.success("EventChangeWeather", "at map " + sky.map.id + " weather changed ");
-                for (Creature creature : game.creatures) {
-                    if (creature.getLocation() instanceof Place place) {
-                        Weather weather = place.map.sky.getWeather(place);
-                        if (place.map == sky.map) {
-                            if (creature.memory.getLastWeather() != weather.getWeather()) {
-                                creature.writer.surrounding.setWeather(weather);
-                                creature.memory.setLastWeather(weather.getWeather());
-                            }
-
-                            if (creature.memory.getLastSizeOfClouds() != weather.getClouds()) {
-                                creature.writer.surrounding.setClouds(place);
-                                creature.memory.setLastSizeOfClouds(weather.getClouds());
+                synchronized (game.creatures) {
+                    for (Creature creature : game.creatures) {
+                        if (creature.getLocation() instanceof Place place) {
+                            Weather weather = place.map.sky.getWeather(place);
+                            if (place.map == sky.map) {
+                                if (creature.memory.getLastWeather() != weather.getWeather()) {
+                                    creature.writer.surrounding.setWeather(weather);
+                                    creature.memory.setLastWeather(weather.getWeather());
+                                }
+    
+                                if (creature.memory.getLastSizeOfClouds() != weather.getClouds()) {
+                                    creature.writer.surrounding.setClouds(place);
+                                    creature.memory.setLastSizeOfClouds(weather.getClouds());
+                                }
                             }
                         }
                     }

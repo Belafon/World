@@ -14,7 +14,7 @@ import com.belafon.server.sendMessage.MessageSender;
  * Temporary class, indicates unimpplemented Reciver messages
  */
 public class TestingMessages
-    implements BehavioursMessages, ConditionCreatureMessages,
+        implements BehavioursMessages, ConditionCreatureMessages,
         InventoryMessages, ItemVisibleMessages,
         ResourceVisibleMessages, SurroundingMessages,
         ServerMessages, CreatureVisibleMessages {
@@ -22,15 +22,15 @@ public class TestingMessages
         final TestingMessages messages = new TestingMessages();
 
         MessageSender sender = MessageSender.getBuilder()
-            .setBehavioursMessages(messages)
-            .setCondition(messages)
-            .setCreatureVisible(messages)
-            .setItemVIsible(messages)
-            .setResourceVisible(messages)
-            .setServer(messages)
-            .setSurrounding(messages)
-            .setInventory(messages)
-            .build();
-        return sender; 
+                .setBehavioursMessages(messages)
+                .setCondition(messages)
+                .setCreatureVisible(messages)
+                .setItemVisible(messages)
+                .setResourceVisible(messages)
+                .setServer(messages)
+                .setSurrounding(messages)
+                .setInventory(messages)
+                .build();
+        return sender;
     }
 }

@@ -1,6 +1,7 @@
 package com.belafon.world.visibles.creatures.inventory;
 
 import com.belafon.console.ConsolePrint;
+import com.belafon.world.maps.place.UnboundedPlace;
 import com.belafon.world.visibles.creatures.Creature;
 import com.belafon.world.visibles.items.Item;
 import com.belafon.world.visibles.items.ListOfAllItemTypes;
@@ -18,12 +19,12 @@ public class Inventory {
     public final Gear gear;
     public final Creature creature;
 
-    public Inventory(Gear gear, Creature creature) {
+    public Inventory(Gear gear, Creature creature, UnboundedPlace position) {
         this.gear = gear;
         this.creature = creature;
         backSpace = new BuilderSpaceItem(creature.game,
                 ListOfAllItemTypes.spaceItems.get(ListOfAllItemTypes.NamesOfSpaceItemTypes.back_space),
-                creature.getLocation())
+                position)
                 .build(creature.game);
     }
 

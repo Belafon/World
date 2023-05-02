@@ -23,7 +23,9 @@ public class GenerateVisibles {
         Animal deer = new Animal(game, "deer1", place,
                 "Nice brown wealthy deer", 5, AnimalRace.deer);
         place.addCreature(deer);
-        game.creatures.add(deer);
+        synchronized (game.creatures) {
+            game.creatures.add(deer);
+        }
         synchronized (game.players) {
             for (Player player : game.players) {
                 player.addVisibleObject(deer);
@@ -53,7 +55,7 @@ public class GenerateVisibles {
         Food apple = new Food(game, 0, 0,
                 new SpecialFoodsProperties[0],
                 ListOfAllItemTypes.foodTypes.get(ListOfAllItemTypes.NamesOfFoodItemTypes.apple),
-                null);
+                place);
 
         place.addItem(apple);
 

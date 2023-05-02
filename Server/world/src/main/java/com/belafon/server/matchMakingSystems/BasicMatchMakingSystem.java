@@ -40,8 +40,12 @@ public class BasicMatchMakingSystem extends MatchMakingSystem {
         if (client.queueCondition != Condition.idle)
             return;
         client.player = new Player(client, game, "name", game.maps.maps[0].places[0][0], "");
-        game.players.add(client.player);
-        game.creatures.add(client.player);
+        synchronized(game.players){
+            game.players.add(client.player);
+        }
+        synchronized(game.creatures){
+            game.creatures.add(client.player);
+        }
         client.actualGame = game;
         if (numberOfPlayersToStart > numberOfPlayers + 1)
             setNumberOfPlayers(numberOfPlayers + 1);
@@ -61,10 +65,16 @@ public class BasicMatchMakingSystem extends MatchMakingSystem {
     public synchronized void removeClient(Client client) {
         if (client.queueCondition != Condition.waitingInQueue)
             return;
-        if (game.players.remove(client.player)) {
-            client.player = null;
-            client.actualGame = null;
-            setNumberOfPlayers(numberOfPlayers - 1);
+        
+        synchronized(game.players){
+            if (game.players.remove(client.player)) {
+                client.player = null;
+                client.actualGame = null;
+                setNumberOfPlayers(numberOfPlayers - 1);
+            }
+        }
+        synchronized(game.creatures){
+            game.creatures.remove(client.player);
         }
     }
     

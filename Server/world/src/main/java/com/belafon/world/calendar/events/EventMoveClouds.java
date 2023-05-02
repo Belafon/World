@@ -36,14 +36,16 @@ public class EventMoveClouds extends Event{
         
         map.sky.moveClouds();
         
-        // update creatures' memory of cloud size
-        for (Creature creature : game.creatures) {
-            if (creature.getLocation() instanceof Place place) {
-                int lastCloud = place.map.sky.getWeather(place).getClouds();
-                if(place.map == this.map
-                        && creature.memory.getLastSizeOfClouds() != lastCloud){
-                    creature.writer.surrounding.setClouds(place);
-                    creature.memory.setLastSizeOfClouds(lastCloud);
+        synchronized (game.creatures) {
+            // update creatures' memory of cloud size
+            for (Creature creature : game.creatures) {
+                if (creature.getLocation() instanceof Place place) {
+                    int lastCloud = place.map.sky.getWeather(place).getClouds();
+                    if(place.map == this.map
+                            && creature.memory.getLastSizeOfClouds() != lastCloud){
+                        creature.writer.surrounding.setClouds(place);
+                        creature.memory.setLastSizeOfClouds(lastCloud);
+                    }
                 }
             }
         }

@@ -11,10 +11,10 @@ public class ServerPlayerMessages implements ServerMessages{
   }
   @Override
   public void setNumberOfPlayersInQueue(int number) {
-		sendMessage.sendLetter("server number_of_players_to_wait " + number);
+		sendMessage.sendLetter("server number_of_players_to_wait " + number, PlayersMessageSender.TypeMessage.other);
 	}
   @Override
   public void startGame() {
-		sendMessage.sendLetter("server startGame");
+		sendMessage.sendLetter("server startGame", PlayersMessageSender.TypeMessage.other);
   }
 }

@@ -18,11 +18,13 @@ public class Resource extends Visible {
     public final TypeOfResource type;
     private volatile int amount; // 100 -> 100% of durationOfFinding, 100 -> regular amount
     public final int id;
+    private UnboundedPlace position;
 
-    public Resource(TypeOfResource typeOfResource, int amount, World game) {
+    public Resource(TypeOfResource typeOfResource, int amount, World game, UnboundedPlace position) {
         this.type = typeOfResource;
         this.amount = amount;
         this.id = game.visibleIds.getResourceId();
+        this.position = position;
     }
 
     public int getConspicuousness() {
@@ -40,7 +42,7 @@ public class Resource extends Visible {
 
     @Override
     public UnboundedPlace getLocation() {
-        return null;
+        return position;
     }
 
     @Override
@@ -52,4 +54,8 @@ public class Resource extends Visible {
         return amount;
     }
 
+    @Override
+    public int getVisibility(){
+        return getConspicuousness();
+    }
 }

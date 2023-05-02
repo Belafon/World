@@ -49,4 +49,10 @@ public abstract class Visible implements BehavioursPossibleIngredients{
             watchers.remove(creature);
         }
     }
+
+    /**
+     * @return Returns a rate of visibility.
+     * How much is it visible in compare to other visibles.
+     */
+    public abstract int getVisibility();
 }

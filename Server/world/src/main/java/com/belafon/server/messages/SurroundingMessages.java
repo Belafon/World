@@ -6,6 +6,7 @@ import com.belafon.world.maps.place.UnboundedPlace;
 import com.belafon.world.maps.weather.Weather;
 import com.belafon.world.objectsMemory.Visible;
 import com.belafon.world.time.DailyLoop.NamePartOfDay;
+import com.belafon.world.visibles.creatures.behaviour.PlayersLookAround;
 import com.belafon.world.visibles.resources.Resource;
 
 public interface SurroundingMessages {
@@ -18,13 +19,13 @@ public interface SurroundingMessages {
     public default void setClouds(Place place) {
     }
 
-    public default void setPosition(Place position) {
+    public default void setPosition(PlayersLookAround position) {
     }
 
-    public default void setInfoAboutPlace(Place place) {
+    public default void setInfoAboutPlace(UnboundedPlace place) {
     }
 
-    public default void setInfoAboutSurrounding(UnboundedPlace position) {
+    public default void setInfoAboutSurrounding(PlayersLookAround surrounding) {
     }
 
     public default void setResources(UnboundedPlace position) {
@@ -37,9 +38,6 @@ public interface SurroundingMessages {
     }
 
     public default void setItems(UnboundedPlace position) {
-    }
-
-    public default void setInfoAboutSurroundingPlacesLookAround(Place position) {
     }
 
     public default void setTypeOfPlaceInfoDrawableSound(UnboundedPlace position) {

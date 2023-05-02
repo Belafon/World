@@ -55,7 +55,7 @@ public abstract class UnboundedPlace {
      * conspicuousness and amount.
      */
     public Resource addResource(TypeOfResource typeOfResource, int amount) {
-        Resource resource = new Resource(typeOfResource, amount, game);
+        Resource resource = new Resource(typeOfResource, amount, game, this);
 
         // we have to chack if there is resource with that typeOfResource
         if (resources.containsKey(typeOfResource)) {
@@ -105,7 +105,7 @@ public abstract class UnboundedPlace {
         for (TypeOfResourceOfTypeOfPlace typeOfResource : typeOfPlace.typeOfResources) // TODO needs debug
             if (typeOfResource.isHereResourceGenerate())
                 resources.put(typeOfResource.typeOfResource,
-                        new Resource(typeOfResource.typeOfResource, typeOfResource.startAmount, game));
+                        new Resource(typeOfResource.typeOfResource, typeOfResource.startAmount, game, this));
         resourcesSorted = resources.values().toArray(new Resource[resources.values().size()]);
 
         if (resourcesSorted.length < 1)

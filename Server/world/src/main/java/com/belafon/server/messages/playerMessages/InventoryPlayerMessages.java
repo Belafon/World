@@ -15,17 +15,17 @@ public class InventoryPlayerMessages implements InventoryMessages{
 
 	@Override
     public void ClothesPutOn(Clothes clothes) {
-		sendMessage.sendLetter("item " + clothes.getClass().getSimpleName() + " putOn " + clothes.id);
+		sendMessage.sendLetter("item " + clothes.getClass().getSimpleName() + " putOn " + clothes.id, PlayersMessageSender.TypeMessage.other);
 	}
 	@Override
     public void ClothesPutOff(Clothes clothes) {
-		sendMessage.sendLetter("item " + clothes.getClass().getSimpleName() + " putOff " + clothes.id);
+		sendMessage.sendLetter("item " + clothes.getClass().getSimpleName() + " putOff " + clothes.id, PlayersMessageSender.TypeMessage.other);
     }
 	@Override
     public void setAddItem(Item item) {
         sendMessage.sendLetter("item addItem " + item.id + " " + item.type.getClass().getSimpleName() + " "
                 + item.type.name + " " + item.type.regularWeight + " "
-                + item.type.visibility + " " + item.type.toss + " " + getItemPropertiesMessage(item));
+                + item.type.visibility + " " + item.type.toss + " " + getItemPropertiesMessage(item), PlayersMessageSender.TypeMessage.other);
     }
 
     public static StringBuilder getItemPropertiesMessage(Item item) {
@@ -44,6 +44,6 @@ public class InventoryPlayerMessages implements InventoryMessages{
     }
 	@Override
 	public void setRemoveItem(Item item) {
-		sendMessage.sendLetter("item removeItem " + item.id + " " + item.type.name);
+		sendMessage.sendLetter("item removeItem " + item.id + " " + item.type.name, PlayersMessageSender.TypeMessage.other);
     }
 }
