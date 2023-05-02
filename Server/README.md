@@ -7,6 +7,13 @@ And then run it with `mvn exec:java`.
 
 #### log messages
 You can write log messages by pasting these commands into console:
+- log day loop
+  - writes messages to players with info about weather and day time changes. 
+- log day stop
+  - stops the printing, oposite to the item above.
+- log creaturesStats loop
+  - writes messages to player with info about his actual stats changes. 
+- log creaturesStats stop
 - log date
 - log clouds
 - log clouds loop
@@ -17,10 +24,12 @@ You can write log messages by pasting these commands into console:
 - log wind
 - log windDirection
 - log health
-- log move x y
-    - moves with creature 0
-- log calendar
+- **log move x y**
+    - moves with creature 0, the map is implicitly of size of 10x10 places
+    - When more distanced place is selected, the creature will find a way and will go the jurney.
 - log calendar loop
+    - prints info about data structure calendar, where all next events are saved.
+    - prints the next event.
 - log calendar stop
 - log map
 - log map map_id

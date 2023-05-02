@@ -2,6 +2,7 @@ package com.belafon.settings;
 
 import com.belafon.world.World;
 import com.belafon.world.maps.place.Place;
+import com.belafon.world.maps.place.UnboundedPlace;
 import com.belafon.world.visibles.creatures.Creature;
 
 public class TestingCreature extends Creature {
@@ -14,7 +15,7 @@ public class TestingCreature extends Creature {
     }
 
     @Override
-    protected void setInventory() {
+    protected void setInventory(UnboundedPlace unboundedPlace) {
     } 
     
 }
