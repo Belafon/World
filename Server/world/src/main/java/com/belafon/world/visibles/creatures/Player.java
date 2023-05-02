@@ -5,7 +5,6 @@ import com.belafon.world.World;
 import com.belafon.world.maps.Map;
 import com.belafon.world.maps.place.Place;
 import com.belafon.world.maps.place.UnboundedPlace;
-import com.belafon.world.visibles.creatures.behaviour.behaviours.Move;
 import com.belafon.world.visibles.creatures.inventory.Inventory;
 import com.belafon.world.visibles.creatures.inventory.PlayersGear;
 import com.belafon.world.visibles.items.ListOfAllItemTypes;

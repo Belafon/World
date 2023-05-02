@@ -2,11 +2,8 @@ package com.belafon.console;
 
 import java.util.Scanner;
 
-import com.belafon.server.MessageReceiver;
 import com.belafon.server.Server;
-import com.belafon.server.sendMessage.MessageSender;
 import com.belafon.server.sendMessage.PlayersMessageSender;
-import com.belafon.world.time.Clocks;
 import com.belafon.world.visibles.creatures.Player;
 import com.belafon.world.visibles.creatures.behaviour.behaviours.Move;
 import com.belafon.world.visibles.resources.ListOfAllTypesOfResources;
