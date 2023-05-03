@@ -77,8 +77,8 @@ public class PlayersMessageSender {
         actualStats
     }
 
-    private static boolean printCyclesStatsToConsole = true;
-    private static boolean printCreatureStatsToConsole = true;
+    private static boolean printCyclesStatsToConsole = false;
+    private static boolean printCreatureStatsToConsole = false;
     private static final String FILENAME = "config.properties";
 
     public synchronized static boolean isPrintCyclesStatsToConsole() {
