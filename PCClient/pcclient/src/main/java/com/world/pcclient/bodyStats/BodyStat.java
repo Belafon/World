@@ -19,6 +19,11 @@ public class BodyStat {
         return name;
     }
 
+    /**
+     * Sets the value of the stat and prepagates the change into the panel.
+     * @param value
+     * @throws NumberFormatException
+     */
     public void setValue(String value) throws NumberFormatException {
         this.value = Integer.parseInt(value);
         try {

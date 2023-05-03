@@ -8,6 +8,18 @@ import com.world.pcclient.visibles.items.Item.Food;
 
 public class Inventory {
     public Map<Integer, Item> items = new Hashtable<>();
+
+    // TODO add method for adding item, that is already known
+    /**
+     * Adds an item to the players inventory. 
+     * @param id
+     * @param type
+     * @param name
+     * @param weight
+     * @param visiblity
+     * @param toss
+     * @param args
+     */
     public void addItem(int id, String type,
             String name, int weight, int visiblity,
             int toss, String[] args) {

@@ -41,22 +41,44 @@ public class Weather {
         "storm"
     };
 
+    /**
+     * This changes current clouds in the current 
+     * context.
+     * @param args is the message from the server.
+     */
     public void setClouds(String[] args) {
         clouds = Integer.parseInt(args[2]);
         String cloudsTextDescription = cloudsNames[clouds];
         panel.setClouds(cloudsTextDescription);
     }
+    
+    /**
+     * This changes weather in the current context.
+     * All panels are updated according the new 
+     * weather type.
+     * @param args is the message from the server.
+     */
     public void setWeather(String[] args) {
         weather = Integer.parseInt(args[2]);
         String weatherTextDescription = weatherNames[weather];
         panel.setWeather(weatherTextDescription);
     }
 
+    /**
+     * This changes weather in the current context.
+     * All panels are updated according the new 
+     * weather type.
+     * @param args is the message from the server.
+     */
     public void setPartOfDay(String[] args) {
         partOfDay = NamePartOfDay.valueOf(args[2]);
         panel.setPartOfDay(partOfDay.name());
     }
     
+    /**
+     * @return a panel, which lists all the information
+     * about current weather in the current context.
+     */
     public JPanel getPanel() {
         return panel.getPanel();
     }

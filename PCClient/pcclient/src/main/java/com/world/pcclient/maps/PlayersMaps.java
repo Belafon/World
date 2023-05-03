@@ -19,9 +19,17 @@ public class PlayersMaps {
     private PlacePanel selectedPlacePanel = null;
     private PlayersPlaceInfoPanel infoPlacePanel = new PlayersPlaceInfoPanel("", "", new ArrayList<>()); 
     public final Weather weather = new Weather();
+
     public PlayersMaps() {
         surroundingMap = new SurroundingMap(infoPlacePanel);
     }
+
+    /**
+     * It points that there exists a map in the
+     * world with these sizes and with concrete id.
+     * @param key
+     * @param map
+     */
     public void addMap(int key, PlayersMap map) {
         maps.put(key, map);
         for (int x = 0; x < map.sizeX; x++) {
@@ -31,6 +39,13 @@ public class PlayersMaps {
         }
     }
 
+    /**
+     * It points that there exists a map in the
+     * world with these sizes and with concrete id.
+     * @param args
+     * @throws NumberFormatException
+     * @throws IndexOutOfBoundsException
+     */
     public void addMap(String[] args) throws NumberFormatException, IndexOutOfBoundsException {
         int id = Integer.parseInt(args[2]);
         int sizeX = Integer.parseInt(args[3]);
@@ -47,6 +62,12 @@ public class PlayersMaps {
         return maps.get(key);
     }
 
+    /**
+     * This method updates arround places 
+     * with the message from the server. 
+     * It updates all the places.
+     * @param args
+     */
     public synchronized void lookAroundSurroundingPlaces(String[] args) {
         int currentPlace = 0;
         for (int currentArg = 2; currentArg < args.length; currentArg++) {
@@ -102,6 +123,14 @@ public class PlayersMaps {
         return currentPlace;
     }
 
+    /**
+     * @return panel that shows all surrounding 
+     * places around the creature in the radius
+     * of 3 places.
+     * The places, that are not visible for the 
+     * player are displayed with grey color and
+     * with name as umknown place.
+     */
     public SurroundingPlacesPanel getSurroundingPlacesPanel() {
         return new SurroundingPlacesPanel(surroundingMap.getComponent(), infoPlacePanel);
     }

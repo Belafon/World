@@ -21,12 +21,21 @@ public class ItemsPanel extends VisiblesListPanel{
         panel.add(concreteInfoPanel, BorderLayout.SOUTH);
     }
     
+    /**
+     * adds a title panel into the list, 
+     * the item is also displayed.
+     * @param visiblePanel
+     */
     public void addVisibleTitlePanel(VisiblePanel visiblePanel) {
         SwingUtilities.invokeLater(() -> {
             addVisibleTitlePanel(visiblePanel, () -> this.selectVisiblePanel(visiblePanel));
         });
     }
 
+    /**
+     * Show detailed info about the item
+     * @param visiblePanel
+     */
     public void selectVisiblePanel(VisiblePanel visiblePanel) {
         if (selectedVisiblePanel != null) {
             selectedVisiblePanel.getTitlePanel().setBackground(null); // reset background color of previously selected

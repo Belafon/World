@@ -64,6 +64,11 @@ public class MainWindow extends JFrame {
         setBounds(x, y, width, height);
     }
 
+    /**
+     * This mthod compose all maib panels together.
+     * It uses the JSplitPane to make them separate.
+     * @param panels
+     */
     public void displayPanels(Panels panels) {
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
 
@@ -104,12 +109,23 @@ public class MainWindow extends JFrame {
 
     }
 
+    /**
+     * Sets the text in the header of the window.
+     * It should say the current program condition.
+     * @param titleCondition
+     */
     public void setTitleCondition(StringBuilder titleCondition) {
         setTitle(titleName + " ~ " + titleCondition);
         revalidate();
         repaint();
     }
 
+    /**
+     * Method for setting a border with text to the panel.
+     * It is used to write a title to a main panel. 
+     * @param title
+     * @param component
+     */
     public static void setTitleBorder(String title, JComponent component) {
         Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
         TitledBorder titledBorder = BorderFactory.createTitledBorder(border, title);

@@ -27,6 +27,10 @@ public class PlayersPlaceEffect {
         fire
     }
 
+    /**
+     * Retunrs a panel with info about the PlaceEffect.
+     * @return
+     */
     public JComponent getInfoPanel() {
         return new PlaceEffectInfoPanel(name, look);
     }

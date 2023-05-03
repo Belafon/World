@@ -19,10 +19,10 @@ public class PlayersPlaceInfoPanel extends JPanel {
         super();
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-            
+
         nameLabel = new JLabel(name);
         descriptionLabel = new JLabel(description);
-        
+
         add(nameLabel);
         add(descriptionLabel);
 
@@ -31,6 +31,15 @@ public class PlayersPlaceInfoPanel extends JPanel {
         createPlaceEffectsPanels(placeEffects);
     }
 
+    /**
+     * Information of this panels are updated.
+     * Usually when the player selects another
+     * place.
+     * This panel displayes a detaild info about
+     * currently selected place then.
+     * @param typePlace
+     * @param placeEffects
+     */
     public void rewriteCurrentPlace(TypePlace typePlace, List<PlayersPlaceEffect> placeEffects) {
         SwingUtilities.invokeLater(() -> {
             nameLabel.setText(typePlace.name);

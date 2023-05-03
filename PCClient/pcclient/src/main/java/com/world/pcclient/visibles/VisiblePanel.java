@@ -32,11 +32,18 @@ public class VisiblePanel {
         });
 
     }
-
+    
+    /**
+     * @return the panel, that is in list of visibles.
+     * It usually holds a name of the visible, or id.
+     */
     public JPanel getTitlePanel() {
         return titlePanel;
     }
 
+    /**
+     * @return a detailed info about concrete visible.
+     */
     public Visible getVisible() {
         return visible;
     }

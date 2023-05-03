@@ -20,10 +20,20 @@ public class CreaturesPanel extends VisiblesListPanel{
         panel.add(concreteInfoPanel, BorderLayout.SOUTH);
     }
     
+    /**
+     * Adds title panel into the list,
+     * The item is also displayed in the list.
+     * @param visiblePanel
+     */
     public void addVisibleTitlePanel(VisiblePanel visiblePanel) {
         addVisibleTitlePanel(visiblePanel, () -> this.selectVisiblePanel(visiblePanel));
     }
 
+    /**
+     * Changes the concrete panel with detailed info about 
+     * one creature,
+     * @param visiblePanel
+     */
     public void selectVisiblePanel(VisiblePanel visiblePanel) {
         if (selectedVisiblePanel != null) {
             selectedVisiblePanel.getTitlePanel().setBackground(null);

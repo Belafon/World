@@ -22,6 +22,11 @@ public class ChatListenerPanel extends JPanel {
         setPreferredSize(new Dimension(400, 75));
     }
 
+    /**
+     * Adds new message reveved from the server into the 
+     * list of all messages and displays it.
+     * @param message
+     */
     public synchronized void addMessage(String message) {
         DefaultListModel<String> model = (DefaultListModel<String>) messageList.getModel();
         

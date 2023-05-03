@@ -20,6 +20,12 @@ public class Client {
     public final int ID = clientIDCounter++;
     public final ChatListener listener;
     
+    /**
+     * Try to bind new connection with the server.
+     * It also sends initialization messages to the server,
+     * @param panels
+     * @param stats
+     */
     public Client(Panels panels, Stats stats) {
         int port = 25555;
 

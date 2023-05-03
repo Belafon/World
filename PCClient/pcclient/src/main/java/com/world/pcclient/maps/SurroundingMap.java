@@ -55,6 +55,11 @@ public class SurroundingMap {
         return panel;
     }
 
+    /**
+     * @param infoPlacePanel
+     * @return a mouse adapter, that changes detailed info about a place 
+     * to the info about given place.
+     */
     public static MouseAdapter getOnPlaceSelected(PlayersPlaceInfoPanel infoPlacePanel) {
         return new MouseAdapter() {
             @Override

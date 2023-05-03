@@ -13,6 +13,13 @@ public class Visibles {
     private final Hashtable<Integer, Creature> creatures = new Hashtable<>();
     private final Hashtable<Integer, Resource> resources = new Hashtable<>();
 
+    /**
+     * It resolves the message from server 
+     * and tryes to add item into the items list.
+     * It means that the player now know about this item.
+     * @param args
+     * @param panels
+     */
     public void addItem(String[] args, Panels panels) {
         int id = Integer.parseInt(args[2]);
         String className = args[3];
@@ -36,7 +43,14 @@ public class Visibles {
 
         items.put(id, item);
     }
-
+    /**
+     * 
+     * It resolves the message from server 
+     * and tryes to add creature into the creature list.
+     * It means that the player now know about this creature.
+     * @param args
+     * @param panels
+      */
     public void addCreature(String[] args, Panels panels) {
         int id = Integer.parseInt(args[2]);
         String name = args[3];
@@ -47,7 +61,8 @@ public class Visibles {
                 int positionX = Integer.parseInt(args[7]);
                 int positionY = Integer.parseInt(args[8]);
             }
-            case "itemPlace" -> {}
+            case "itemPlace" -> {
+            }
         }
         Creature creature = new Creature(name, id, appearance);
         panels.visibleCreatures.addVisibleTitlePanel(new VisiblePanel(creature));
@@ -55,6 +70,14 @@ public class Visibles {
 
     }
 
+    /**
+     * 
+     * It resolves the message from server 
+     * and tryes to add resource into the resource list.
+     * It means that the player now know about this resource.
+     * @param args
+     * @param panels
+      */
     public void addResource(String[] args, Panels panels) {
         int id = Integer.parseInt(args[2]);
         String name = args[3];
@@ -65,13 +88,25 @@ public class Visibles {
         resources.put(id, resource);
     }
 
+    /**
+     * Tryes to remove an item, so the player
+     * should not know about the item anymore.
+     * @param args
+     * @param panels
+     */
     public void removeItem(String[] args, Panels panels) {
         int id = Integer.parseInt(args[2]);
         if (items.containsKey(id)) {
             panels.visibleItems.removeVisibleTitlePanel(items.get(id));
-        } 
+        }
     }
-
+    
+    /**
+     * Tryes to remove a creature, so the player
+     * should not know about the creature anymore.
+     * @param args
+     * @param panels
+     */
     public void removeCreature(String[] args, Panels panels) {
         int id = Integer.parseInt(args[2]);
         if (creatures.containsKey(id)) {
@@ -79,7 +114,13 @@ public class Visibles {
         }
         creatures.remove(id);
     }
-
+    
+    /**
+     * Tryes to remove an resource, so the player
+     * should not know about the resource anymore.
+     * @param args
+     * @param panels
+     */
     public void removeResource(String[] args, Panels panels) {
         int id = Integer.parseInt(args[2]);
         if (resources.containsKey(id)) {

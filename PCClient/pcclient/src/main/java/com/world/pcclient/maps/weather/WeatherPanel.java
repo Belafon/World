@@ -33,12 +33,20 @@ public class WeatherPanel {
         panel.add(partOfDay);
     }
 
+    /**
+     * Updates the text describing clouds
+     * @param clouds
+     */
     public void setClouds(String clouds) {
         SwingUtilities.invokeLater(() -> {
             this.clouds.setText(clouds);
         });
     }
 
+    /**
+     * Updates the text describing weather
+     * @param weather
+     */
     public void setWeather(String weather) {
         SwingUtilities.invokeLater(() -> {
             this.weather.setText(weather);
@@ -46,6 +54,10 @@ public class WeatherPanel {
 
     }
 
+    /**
+     * Updates the text describing part of day
+     * @param partOfDay
+     */
     public void setPartOfDay(String partOfDay) {
         SwingUtilities.invokeLater(() -> {
             this.partOfDay.setText(partOfDay);
@@ -53,6 +65,10 @@ public class WeatherPanel {
 
     }
 
+    /**
+     * @return the panel, which lists all informations 
+     * about current weather. 
+     */
     public JPanel getPanel() {
         return panel;
     }

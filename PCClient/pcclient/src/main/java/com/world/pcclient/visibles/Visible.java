@@ -7,5 +7,10 @@ public abstract class Visible {
         this.name = name;
     }
 
+    /**
+     * @return method that should be called 
+     * when a title panel in list of visibles
+     * is clicked.
+     */
     public abstract Runnable getOnTitleClick();
 }

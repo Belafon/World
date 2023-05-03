@@ -20,10 +20,20 @@ public class ResourcesPanel extends VisiblesListPanel {
         panel.add(concreteInfoPanel, BorderLayout.SOUTH);
     }
     
+    /**
+     * Adds a title panel about a resource into
+     * the list.
+     * The item is also displayed;
+     * @param visiblePanel 
+     * */
     public void addVisibleTitlePanel(VisiblePanel visiblePanel) {
         addVisibleTitlePanel(visiblePanel, () -> this.selectVisiblePanel(visiblePanel));
     }
 
+    /**
+     * Show detailed info about the item
+     * @param visiblePanel
+     */
     public void selectVisiblePanel(VisiblePanel visiblePanel) {
         if (selectedVisiblePanel != null) {
             // reset background color of previously selected visiblePanel
@@ -35,7 +45,7 @@ public class ResourcesPanel extends VisiblesListPanel {
         // update item info panel with selected item
         concreteInfoPanel.update((Resource) selectedVisiblePanel.getVisible()); 
     }
-
+    
     private static final class ResourceInfoPanel extends JPanel {
         private JLabel name = new JLabel();
         private JLabel description = new JLabel();

@@ -48,6 +48,11 @@ public abstract class VisiblesListPanel {
         panel.add(scrollPane, BorderLayout.NORTH);
     }
 
+    /**
+     * @return a panel that shows a list of visibles 
+     * and under this list shows detailed info about
+     * currently selected visible.
+     */
     public JPanel getPanel() {
         return panel;
     }

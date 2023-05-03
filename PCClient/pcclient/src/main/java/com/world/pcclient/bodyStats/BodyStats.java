@@ -26,6 +26,9 @@ public class BodyStats {
     BodyStat heat;
     BodyStat bleeding;
 
+    /**
+     * initializes all stats and sets uninitialized values to 0
+     */
     public BodyStats() {
         this.healthAbility = new BodyStat("Helath", 0);
         this.strengthAbility = new BodyStat("Strength", 0);

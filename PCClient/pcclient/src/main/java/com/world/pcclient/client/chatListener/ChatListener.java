@@ -12,6 +12,10 @@ public class ChatListener {
         this.panels = panels;
     }
 
+    /**
+     * Decompose the string message from the server.
+     * @param message is get from the server.
+     */
     public void listen(String message) {
         String[] args = message.split(" ");
         panels.listenerPanel.addMessage(message);
