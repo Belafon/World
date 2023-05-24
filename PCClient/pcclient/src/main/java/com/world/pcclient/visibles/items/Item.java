@@ -1,5 +1,9 @@
 package com.world.pcclient.visibles.items;
 
+import java.util.Set;
+
+import com.world.pcclient.behaviours.Behaviour;
+import com.world.pcclient.behaviours.BehavioursRequirement;
 import com.world.pcclient.visibles.Visible;
 
 public class Item extends Visible {
@@ -8,10 +12,9 @@ public class Item extends Visible {
     private int visiblity;
     private int toss;
     private String description;
-
     public Item(int id, String name, String description,
-            int weight, int visiblity, int toss) {
-        super(name);
+            int weight, int visiblity, int toss, Set<Behaviour> behaviours) {
+        super(behaviours, name);
         this.id = id;
         this.weight = weight;
         this.visiblity = visiblity;
@@ -64,8 +67,9 @@ public class Item extends Visible {
         private int warm;
 
         public Food(int id, String name, int weight,
-                int visiblity, int toss, int freshness, int filling, int warm) {
-            super(id, name, getDescription(name), weight, visiblity, toss);
+                int visiblity, int toss, int freshness, int filling, int warm,
+                Set<Behaviour> behaviours) {
+            super(id, name, getDescription(name), weight, visiblity, toss, behaviours);
             this.freshness = freshness;
             this.filling = filling;
             this.warm = warm;

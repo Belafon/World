@@ -14,6 +14,7 @@ public class ChatListener {
 
     /**
      * Decompose the string message from the server.
+     * 
      * @param message is get from the server.
      */
     public void listen(String message) {
@@ -42,9 +43,9 @@ public class ChatListener {
 
     private void listenSurrounding(String[] args) {
         switch (args[1]) {
-            case "add_item_in_sight" -> stats.visibles.addItem(args, panels);
-            case "add_creature_in_sight" -> stats.visibles.addCreature(args, panels);
-            case "add_resource_in_sight" -> stats.visibles.addResource(args, panels);
+            case "add_item_in_sight" -> stats.visibles.addItem(args, panels, stats.behaviours);
+            case "add_creature_in_sight" -> stats.visibles.addCreature(args, panels, stats.behaviours);
+            case "add_resource_in_sight" -> stats.visibles.addResource(args, panels, stats.behaviours);
             case "remove_item_in_sight" -> stats.visibles.removeItem(args, panels);
             case "remove_creature_in_sight" -> stats.visibles.removeCreature(args, panels);
             case "remove_resource_in_sight" -> stats.visibles.removeResource(args, panels);
@@ -69,6 +70,14 @@ public class ChatListener {
             case "actualCondition" -> listenActualCondition(args);
             case "abilityCondition" -> listenabilityCondition(args);
             case "knowledge" -> listenKnowledge(args);
+            case "feasibleBehaviour" -> feasibleBehaviourUpdate(args);
+        }
+    }
+
+    private void feasibleBehaviourUpdate(String[] args) {
+        switch (args[2]) {
+            case "add" -> stats.behaviours.addNewFeasibleBehaviour(args[3]);
+            case "remove" -> stats.behaviours.removeFeasibleBehaviour(args[3]);
         }
     }
 
@@ -101,10 +110,11 @@ public class ChatListener {
     }
 
     private void listenItem(String[] args) {
-        switch(args[1]){
+        switch (args[1]) {
             case "addItem" -> stats.inventory.addItem(
-                Integer.parseInt(args[2]), args[3], args[4], Integer.parseInt(args[5]),
-                Integer.parseInt(args[6]), Integer.parseInt(args[7]), args);
+                    Integer.parseInt(args[2]), args[3], args[4], Integer.parseInt(args[5]),
+                    Integer.parseInt(args[6]), Integer.parseInt(args[7]),
+                    args, stats.behaviours);
             case "removeItem" -> stats.inventory.removeItem(Integer.parseInt(args[2]));
         }
     }

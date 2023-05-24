@@ -1,14 +1,20 @@
 package com.world.pcclient;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.swing.SwingUtilities;
 
 import com.world.pcclient.client.Client;
+import com.world.pcclient.visibles.creatures.PlayableCreature;
 
 public class App {
+    private static PlayableCreature currenCreature = null;
+    private static Set<PlayableCreature> playableCreatures = new HashSet<>();
+    private static Stats stats;
     public static void main(String[] args) {
-        Stats stats = new Stats();
+        stats = new Stats();
         Panels panels = new Panels(stats);
         try {
             SwingUtilities.invokeAndWait(() -> {
@@ -19,5 +25,20 @@ public class App {
             e.printStackTrace();
         }
         new Client(panels, stats);
+    }
+    
+    public static void addNewPlayableCreature(PlayableCreature creature){
+        playableCreatures.add(creature);
+        if(currenCreature == null)
+            setCurrentPlayableCreature(creature);
+    }
+
+    public static void setCurrentPlayableCreature(PlayableCreature creature) {
+        currenCreature = creature;
+        //stats = creature.stats;
+    }
+
+    public static PlayableCreature getCurrentPlayableCreature() {
+        return currenCreature;
     }
 }

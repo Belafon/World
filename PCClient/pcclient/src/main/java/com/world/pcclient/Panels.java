@@ -2,6 +2,7 @@ package com.world.pcclient;
 
 import javax.swing.JPanel;
 
+import com.world.pcclient.behaviours.BehavioursPanel;
 import com.world.pcclient.bodyStats.CreatureStatisticsPanel;
 import com.world.pcclient.client.chatListener.ChatListenerPanel;
 import com.world.pcclient.mainWindow.MainWindow;
@@ -22,6 +23,7 @@ public class Panels {
     public final ItemsPanel visibleItems;
     public final CreaturesPanel visibleCreatures;
     public final ResourcesPanel visibleResources;
+    public final BehavioursPanel behaviours;
     public final JPanel weatherPanel;
 
     public Panels(Stats stats) {
@@ -32,5 +34,6 @@ public class Panels {
         this.visibleCreatures = new CreaturesPanel();
         this.visibleResources = new ResourcesPanel();
         this.weatherPanel = stats.maps.weather.getPanel();
+        this.behaviours = stats.behaviours.getPanel();
     }
 }
