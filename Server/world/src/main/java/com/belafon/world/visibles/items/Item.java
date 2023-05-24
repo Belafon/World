@@ -1,5 +1,8 @@
 package com.belafon.world.visibles.items;
 
+import java.util.Arrays;
+import java.util.List;
+
 import com.belafon.world.World;
 import com.belafon.world.calendar.events.Event;
 import com.belafon.world.calendar.events.EventItemChange;
@@ -10,8 +13,13 @@ import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossi
 import com.belafon.world.visibles.items.typeItem.TypeItem;
 
 public class Item extends Visible {
-    public static final BehavioursPossibleRequirement REQUIREMENT = new BehavioursPossibleRequirement() {
+    public static final BehavioursPossibleRequirement REQUIREMENT_IS_VISIBLE = new BehavioursPossibleRequirement("An item is visible") {
     };
+    public static final BehavioursPossibleRequirement REQUIREMENT_IS_IN_INVENTORY = new BehavioursPossibleRequirement("An item is in inventory") {
+    };
+    public final BehavioursPossibleRequirement requirementIsVisible;
+    public final BehavioursPossibleRequirement requirementIsInInventory;
+
     public final int id;
     public final TypeItem type;
     public volatile Creature owner;
@@ -24,6 +32,11 @@ public class Item extends Visible {
         this.type = type;
         this.weight = type.regularWeight;
         this.location = location;
+        requirementIsVisible = new BehavioursPossibleRequirement("item " + id + " is visible") {
+        };
+        requirementIsInInventory = new BehavioursPossibleRequirement("item " + id + " is in inventory") {
+        };
+
     }
 
     public int getWeight() {
@@ -35,7 +48,7 @@ public class Item extends Visible {
     }
 
     /**
-     * Counts duration to next event, when stats should be updated 
+     * Counts duration to next event, when stats should be updated
      */
     public synchronized int changeStats(Event event, World game) {
         return 0;
@@ -47,12 +60,16 @@ public class Item extends Visible {
     }
 
     @Override
-    public BehavioursPossibleRequirement[] getBehavioursPossibleRequirementType() {
-        return new BehavioursPossibleRequirement[] { type, REQUIREMENT };
+    public List<BehavioursPossibleRequirement> getBehavioursPossibleRequirementType(Creature creature) {
+        if (creature.inventory.ownsItem(this)) {
+            return Arrays.asList(type.requirementIsInInventory, requirementIsInInventory, REQUIREMENT_IS_IN_INVENTORY);
+        } else {
+            return Arrays.asList(type.requirementIsVisible, requirementIsVisible, REQUIREMENT_IS_VISIBLE);
+        }
     }
-    
+
     @Override
-    public int getVisibility(){
+    public int getVisibility() {
         return type.visibility;
     }
 }

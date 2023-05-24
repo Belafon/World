@@ -60,4 +60,12 @@ public class Inventory {
         // lets send info about it
         creature.writer.inventory.setRemoveItem(item);
     }
+
+    public boolean ownsItem(Item item) {
+        synchronized(backSpace.getSpace().items){
+            if (backSpace.getSpace().items.contains(item)) 
+                return true;
+        }
+        return false;
+    }
 }

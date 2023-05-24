@@ -1,10 +1,10 @@
 package com.belafon.world.visibles.creatures.behaviour;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentSkipListSet;
 
 import com.belafon.console.ConsolePrint;
 import com.belafon.world.visibles.creatures.Creature;
@@ -14,10 +14,13 @@ import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossi
 public class BehaviourCondition {
     private Creature creature;
     private final Map<BehavioursPossibleRequirement, ArrayList<BehavioursPossibleIngredients>> behavioursIngredients = new ConcurrentHashMap<>();
-    private final Set<BehaviourType> feasibleBehaviours = new ConcurrentSkipListSet<>();
+    private final Set<BehaviourType> feasibleBehaviours = new HashSet<>();
 
     public BehaviourCondition(Creature creature) {
         this.creature = creature;
+        feasibleBehaviours.addAll(BehaviourType.ALL_BEHAVIOUR_TYPES_WITHOUT_REQUIREMENT);
+        for (BehaviourType behaviourType : feasibleBehaviours)
+            creature.writer.behavioursMessages.newFeasibleBehaviour(behaviourType);
     }
 
     /**
@@ -39,24 +42,24 @@ public class BehaviourCondition {
         checkPossibleBehavioursAfterNewBehavioursPossibleRequirementAdded(behavioursPossibleRequirement);
     }
 
-    public void removeBehavioursPossibleRequirement(BehavioursPossibleRequirement behavioursPossibleRequirement,
-            BehavioursPossibleIngredients behavioursPossibleIngredients) {
+    public void removeBehavioursPossibleRequirement(BehavioursPossibleRequirement requirement,
+            BehavioursPossibleIngredients ingredient) {
 
-        if (!behavioursIngredients.containsKey(behavioursPossibleRequirement)) {
+        if (!behavioursIngredients.containsKey(requirement)) {
             ConsolePrint.error(
                     "Creature.removeBehavioursPossibleRequirement: behavioursPossibleRequirement is not a key in behavioursProperties");
             return;
         }
 
-        if (!behavioursIngredients.get(behavioursPossibleRequirement).contains(behavioursPossibleIngredients)) {
+        if (!behavioursIngredients.get(requirement).contains(ingredient)) {
             ConsolePrint.error(
                     "Creature.removeBehavioursPossibleRequirement: behavioursProperties.get(behavioursPossibleRequirement) does not contain behavioursPossibleIngredients");
             return;
         }
 
         // success
-        behavioursIngredients.get(behavioursPossibleRequirement).remove(behavioursPossibleIngredients);
-        checkPossibleBehavioursAfterBehavioursPossibleRequirementRemoved(behavioursPossibleRequirement);
+        behavioursIngredients.get(requirement).remove(ingredient);
+        checkPossibleBehavioursAfterBehavioursPossibleRequirementRemoved(requirement);
     }
 
     private void checkPossibleBehavioursAfterBehavioursPossibleRequirementRemoved(
@@ -77,8 +80,13 @@ public class BehaviourCondition {
             BehavioursPossibleRequirement newRequirement) {
 
         for (final BehaviourType behaviourType : newRequirement.behaviours) {
-            if (canCreatureDoTheBehaviour(behaviourType))
+            if (canCreatureDoTheBehaviour(behaviourType)) {
+                synchronized (feasibleBehaviours) {
+                    if (feasibleBehaviours.contains(behaviourType))
+                        continue;
+                }
                 addNewFeasibleBehaviour(behaviourType);
+            }
         }
 
     }
@@ -94,12 +102,16 @@ public class BehaviourCondition {
     }
 
     private void addNewFeasibleBehaviour(BehaviourType behaviourType) {
-        feasibleBehaviours.add(behaviourType);
+        synchronized (feasibleBehaviours) {
+            feasibleBehaviours.add(behaviourType);
+        }
         creature.writer.behavioursMessages.newFeasibleBehaviour(behaviourType);
     }
 
     private void removeUnfeasibleBehaviour(BehaviourType behaviourType) {
-        feasibleBehaviours.remove(behaviourType);
+        synchronized (feasibleBehaviours) {
+            feasibleBehaviours.remove(behaviourType);
+        }
         creature.writer.behavioursMessages.removeFeasibleBehaviour(behaviourType);
     }
 }

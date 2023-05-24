@@ -5,5 +5,9 @@ package com.belafon.world.visibles.creatures.behaviour.behaviours;
  * the ingredient is consumed.
  */
 public class ConsumableBehavioursPossibleRequirement extends BehavioursPossibleRequirement {
+
+    public ConsumableBehavioursPossibleRequirement(String name) {
+        super(name);
+    }
     
 }

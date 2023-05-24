@@ -44,14 +44,15 @@ public abstract class UnboundedPlace {
         for (int i = 1; i < resourcesSorted.length; i++) {
 
             // sum of differences of consp.
-            resourcesSorted[i].durationOfFinding = sum - resourcesSorted[i].getConspicuousness() * i; 
+            resourcesSorted[i].durationOfFinding = sum - resourcesSorted[i].getConspicuousness() * i;
             sum += resourcesSorted[i].getConspicuousness();
         }
     }
 
     // TODO can not be called, when amount of some resource is changed
-    /** Adds new resource to the place.
-     * The list of resources has to be resorted according resources 
+    /**
+     * Adds new resource to the place.
+     * The list of resources has to be resorted according resources
      * conspicuousness and amount.
      */
     public Resource addResource(TypeOfResource typeOfResource, int amount) {
@@ -78,18 +79,23 @@ public abstract class UnboundedPlace {
         recountResourcesDurationOfFinding();
         return resource;
     }
+
     /**
      * Adds an item into the list of the place.
+     * 
      * @param item
      */
     public void addItem(Item item) {
-        items.add(item);
+        synchronized (items) {
+            items.add(item);
+        }
     }
 
     /**
      * Adds a place effect into list of place effects.
      * Finds all creatures watching this place and sends info to them
      * about the new place effect.
+     * 
      * @param effect
      */
     public void addEffect(PlaceEffect effect) {
@@ -121,6 +127,7 @@ public abstract class UnboundedPlace {
 
     /**
      * Finds the closest lower resource by its conspicuousness.
+     * 
      * @param array
      * @param resource
      * @return
@@ -147,25 +154,25 @@ public abstract class UnboundedPlace {
         return average;
     }
 
-    
     /**
      * returns how easy is to watch through the space of the place.
      */
     public abstract int getTemperature();
 
-
-    /** 
+    /**
      * Adds a creature to the creatres list.
      * Also sneds info about the creature, if
      * the craeture has been spoted be another.
      */
     public void addCreature(Creature creature) {
         creatures.add(creature);
-        // TODO send info about the creature to other creatures, if it is visible to them
+        // TODO send info about the creature to other creatures, if it is visible to
+        // them
     }
 
     /**
      * Says the rate of visibility through the space of the place.
+     * 
      * @return
      */
     public int getVisibility() {

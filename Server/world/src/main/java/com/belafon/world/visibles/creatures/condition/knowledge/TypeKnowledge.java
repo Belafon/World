@@ -6,6 +6,7 @@ public class TypeKnowledge extends BehavioursPossibleRequirement {
     public final String name;
 
     public TypeKnowledge(String name) {
+        super("Type of knowledge is known.");
         this.name = name;
     }
 }

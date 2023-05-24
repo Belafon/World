@@ -8,28 +8,32 @@ import com.belafon.world.visibles.creatures.behaviour.Behaviour;
 import com.belafon.world.visibles.creatures.behaviour.BehaviourType;
 import com.belafon.world.visibles.creatures.behaviour.BehaviourTypeBuilder;
 import com.belafon.world.visibles.creatures.behaviour.BehaviourType.IngredientsCounts;
-import com.belafon.world.visibles.items.types.Food;
+import com.belafon.world.visibles.items.Item;
 
-public class Eat extends Behaviour {
-    private final Food food;
-
-    public static final BehaviourType type;
+public class PickUpItem extends Behaviour {
+    public static final BehaviourType type; 
     static {
-        type = new BehaviourTypeBuilder(Eat.class)
-                .addRequirement(Food.REQUIREMENT, new IngredientsCounts(1, 0))
+        type = new BehaviourTypeBuilder(PickUpItem.class)
+                .addRequirement(Item.REQUIREMENT_IS_VISIBLE, new IngredientsCounts(0, 1))
                 .build();
     }
-
-    public Eat(World game, Creature creature, Food food) {
-        super(game, 0, 0, creature);
-        this.food = food;
+    private Item item;
+    public PickUpItem(World game, int duration, int bodyStrain, Creature creature, Item item) {
+        super(game, duration, bodyStrain, creature);
+        this.item = item;
+        //TODO Auto-generated constructor stub
     }
 
     @Override
     public void execute() {
-        creature.actualCondition.setHunger(creature.actualCondition.getHunger() - food.getType().getFilling());
-        creature.actualCondition.setHeat(creature.actualCondition.getHeat() + food.getWarm());
-        creature.inventory.removeItem(food);
+        creature.inventory.addItem(item);
+    }
+
+    @Override
+    public String canCreatureDoThis() {
+        if (!creature.seesVisibleObject(creature))
+            return "do_not_have_required_item";
+        return null; 
     }
 
     @Override
@@ -41,5 +45,5 @@ public class Eat extends Behaviour {
     public BehaviourType getType() {
         return type;
     }
-
+    
 }

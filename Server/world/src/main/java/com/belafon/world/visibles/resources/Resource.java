@@ -1,17 +1,21 @@
 package com.belafon.world.visibles.resources;
 
+import java.util.Arrays;
+import java.util.List;
+
 import com.belafon.world.World;
 import com.belafon.world.maps.place.UnboundedPlace;
 import com.belafon.world.objectsMemory.Visible;
+import com.belafon.world.visibles.creatures.Creature;
 import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleRequirement;
 import com.belafon.world.visibles.creatures.behaviour.behaviours.FindConcreteResource;
 
 /**
- * Represents something, creature can interact with. 
- * Usually represents group of sometihing that is 
+ * Represents something, creature can interact with.
+ * Usually represents group of sometihing that is
  * in concrete place and it describes the place.
  * 
- * It could be trees, mushrooms, berries, flowers... 
+ * It could be trees, mushrooms, berries, flowers...
  */
 public class Resource extends Visible {
     public volatile int durationOfFinding;
@@ -46,16 +50,17 @@ public class Resource extends Visible {
     }
 
     @Override
-    public BehavioursPossibleRequirement[] getBehavioursPossibleRequirementType() {
-        return new BehavioursPossibleRequirement[] { type };
+    public List<BehavioursPossibleRequirement> getBehavioursPossibleRequirementType(Creature creature) {
+        return Arrays.asList(type);
     }
+    
 
     public int getAmount() {
         return amount;
     }
 
     @Override
-    public int getVisibility(){
+    public int getVisibility() {
         return getConspicuousness();
     }
 }

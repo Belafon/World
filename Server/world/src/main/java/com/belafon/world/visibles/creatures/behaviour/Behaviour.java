@@ -27,11 +27,23 @@ public abstract class Behaviour {
 
     public abstract void execute();
 
-    public abstract void interrupt();
+    public void interrupt(){
+    }
 
-    public abstract void cease();
+    public void cease() {
+    }
 
-    public abstract String canCreatureDoThis();
+    /**
+     * It is used to check if creature can still execute the behavior.
+     * It is veifies the message from clent, if it is not trying to do 
+     * someting illegal.
+     * @return Returns null, if the creature cannot execute the.
+     * Ohterwise it returns message that says what is wrong,
+     * why the creature cannot execute this behaviour.
+     */
+    public String canCreatureDoThis() {
+        return null;
+    }
 
     public abstract Map<BehavioursPossibleRequirement, IngredientsCounts> getRequirements();
 

@@ -157,7 +157,7 @@ public class CreaturesMemory {
                 lastVisiblesPositionWhenVisionLost.put(place, new ArrayList<>());
             lastVisiblesPositionWhenVisionLost.get(place).add(value);
 
-            for (BehavioursPossibleRequirement requirement : value.object().getBehavioursPossibleRequirementType()) {
+            for (BehavioursPossibleRequirement requirement : value.object().getBehavioursPossibleRequirementType(creature)) {
                 creature.behaviourCondition.addBehavioursPossibleIngredient(requirement, value.object());
             }
         } finally {

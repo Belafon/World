@@ -1,5 +1,7 @@
 package com.belafon.world.visibles.creatures;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
@@ -24,7 +26,7 @@ import com.belafon.world.visibles.creatures.inventory.Inventory;
 public abstract class Creature extends Visible {
     // this is requirement that says any creature is required for some behaviour
     // exection
-    public static final BehavioursPossibleRequirement REQUIREMENT = new BehavioursPossibleRequirement() {
+    public static final BehavioursPossibleRequirement REQUIREMENT = new BehavioursPossibleRequirement("Creature is visible.") {
     };
     public volatile String name;
     protected volatile UnboundedPlace position;
@@ -60,15 +62,15 @@ public abstract class Creature extends Visible {
         this.game = game;
         this.writer = sendMessage;
         this.position = position;
+        this.appearence = appearence;
+        this.name = name;
+        this.weight = weight;
         influencingActivities = new InfluencingActivities(writer);
         setInventory(position);
-        this.appearence = appearence;
         abilityCondition = new AbilityCondition(this, 100, 100, 100, 100, 100, 100, 100);
         behaviourCondition = new BehaviourCondition(this);
         actualCondition = new ActualCondition(this);
         surroundingPlaces = PlayersLookAround.look(position);
-        this.name = name;
-        this.weight = weight;
     }
 
     public void setAbilityCondition(int strength, int agility, int speed_of_walk, int speed_of_run, int hearing,
@@ -217,7 +219,7 @@ public abstract class Creature extends Visible {
 
         this.writer.surrounding.addVisibleInSight(visible);
 
-        for (BehavioursPossibleRequirement requirement : visible.getBehavioursPossibleRequirementType()) {
+        for (BehavioursPossibleRequirement requirement : visible.getBehavioursPossibleRequirementType(this)) {
             behaviourCondition.addBehavioursPossibleIngredient(requirement, visible);
         }
     }
@@ -259,7 +261,7 @@ public abstract class Creature extends Visible {
 
         this.writer.surrounding.removeVisibleFromSight(visible);
 
-        for (BehavioursPossibleRequirement requirement : visible.getBehavioursPossibleRequirementType()) {
+        for (BehavioursPossibleRequirement requirement : visible.getBehavioursPossibleRequirementType(this)) {
             behaviourCondition.addBehavioursPossibleIngredient(requirement, visible);
         }
     }
@@ -270,7 +272,7 @@ public abstract class Creature extends Visible {
      * @param value
      * @return
      */
-    public boolean containsVisibleObject(Visible value) {
+    public boolean seesVisibleObject(Visible value) {
         mutexCurrentlyVisibleObjects.lock();
         try {
             return currentlyVisibleObjects.contains(value);
@@ -280,8 +282,8 @@ public abstract class Creature extends Visible {
     }
 
     @Override
-    public BehavioursPossibleRequirement[] getBehavioursPossibleRequirementType() {
-        return new BehavioursPossibleRequirement[] { REQUIREMENT };
+    public List<BehavioursPossibleRequirement> getBehavioursPossibleRequirementType(Creature creature) {
+        return Arrays.asList(REQUIREMENT);
     }
 
     @Override

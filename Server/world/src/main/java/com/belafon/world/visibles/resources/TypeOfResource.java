@@ -12,7 +12,9 @@ public class TypeOfResource extends BehavioursPossibleRequirement {
     // differece of conspiciousness = nuber of ticks to wait to find it
     public final int conspicuousness;
     
-    public TypeOfResource(ListOfAllTypesOfResources.NamesOfTypesOfResources name, PlaceEffect[] effects, int conspicuousness) {
+    public TypeOfResource(ListOfAllTypesOfResources.NamesOfTypesOfResources name, PlaceEffect[] effects,
+            int conspicuousness) {
+        super("type of resource is visible");
         this.name = name;
         this.effects = effects;
         this.conspicuousness = conspicuousness;

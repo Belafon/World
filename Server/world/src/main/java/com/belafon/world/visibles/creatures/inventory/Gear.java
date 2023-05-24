@@ -7,4 +7,5 @@ public abstract class Gear {
     public abstract boolean putOn(Clothes clothes);
     public abstract boolean putOff(Clothes clothes);
     public volatile int warm = 0;
+
 }

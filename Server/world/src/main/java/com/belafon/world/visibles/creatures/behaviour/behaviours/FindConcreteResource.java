@@ -79,11 +79,6 @@ public class FindConcreteResource extends Behaviour {
         }
     }
 
-    @Override
-    public String canCreatureDoThis() {
-        return null;
-    }
-
     // TODO can not be called when addResource() is called
     public static int getDurationOfFindingOfResourceWhichIsNotHere(UnboundedPlace place,
             TypeOfResource typeOfResource) {

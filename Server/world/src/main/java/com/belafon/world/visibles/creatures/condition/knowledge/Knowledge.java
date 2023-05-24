@@ -1,5 +1,9 @@
 package com.belafon.world.visibles.creatures.condition.knowledge;
 
+import java.util.Arrays;
+import java.util.List;
+
+import com.belafon.world.visibles.creatures.Creature;
 import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleIngredients;
 import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleRequirement;
 
@@ -11,7 +15,7 @@ public class Knowledge implements BehavioursPossibleIngredients {
         this.degree = degree;
     }
     @Override
-    public BehavioursPossibleRequirement[] getBehavioursPossibleRequirementType() {
-        return new BehavioursPossibleRequirement[]{type};
+    public List<BehavioursPossibleRequirement> getBehavioursPossibleRequirementType(Creature creature) {
+        return Arrays.asList(type);
     }
 }

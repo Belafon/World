@@ -5,7 +5,7 @@ import com.belafon.world.visibles.items.Item;
 import com.belafon.world.visibles.items.typeItem.ClothesTypeItem;
 import com.belafon.world.visibles.items.types.Clothes;
 
-public class PlayersGear extends Gear{
+public class PlayersGear extends Gear {
     public volatile Clothes head;
 	public volatile Clothes shoulders;
 	public volatile Clothes arms;
@@ -82,4 +82,5 @@ public class PlayersGear extends Gear{
 		((Player)clothes.owner).client.writer.inventory.ClothesPutOff(clothes);
         return false;
     }
+
 }

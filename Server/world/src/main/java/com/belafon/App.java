@@ -2,6 +2,7 @@ package com.belafon;
 
 import com.belafon.server.Server;
 import com.belafon.world.maps.place.ListOfAllTypesOfPlaces;
+import com.belafon.world.visibles.creatures.behaviour.BehaviourType;
 import com.belafon.world.visibles.items.ListOfAllItemTypes;
 import com.belafon.world.visibles.resources.ListOfAllTypesOfResources;
 
@@ -10,8 +11,8 @@ public class App {
         ListOfAllTypesOfResources.setUpAllResources();
         ListOfAllTypesOfPlaces.setUpAllTypesOfPlaces();
         ListOfAllItemTypes.setUpItems();
-
-        createLocalClient();
+        BehaviourType.setUpAllBehavioursPossibleRequirements();
+        // createLocalClient();
 
         new Server();
     }

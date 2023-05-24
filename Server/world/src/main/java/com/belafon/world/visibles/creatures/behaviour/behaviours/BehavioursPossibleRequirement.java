@@ -6,23 +6,29 @@ import java.util.Set;
 
 import com.belafon.world.visibles.creatures.behaviour.BehaviourType;
 
-/** 
- * The child could be required for some behaviour execution. 
-*/
+/**
+ * The child could be required for some behaviour execution.
+ */
 public abstract class BehavioursPossibleRequirement {
     /**
-     * Each BehaviourPossibleRequirement holds the set of 
-     * behaviours, that are dependent on that. The reason is 
+     * Each BehaviourPossibleRequirement holds the set of
+     * behaviours, that are dependent on that. The reason is
      * better performance when creature counts possible
      * behaviours that can be done, when some BehaviourPossibleIngredient
      * changes.
      */
     public Set<BehaviourType> behaviours = new HashSet<>();
 
+    public final String name;
+    
+    public BehavioursPossibleRequirement(String name) {
+        this.name = name;
+    }
+
     /**
-     *  should be called after all BehaviourTypes are created
+     * should be called after all BehaviourTypes are created
      */
-    public void makeUnmodifiable(){
+    public void makeUnmodifiable() {
         behaviours = Collections.unmodifiableSet(behaviours);
     }
 
