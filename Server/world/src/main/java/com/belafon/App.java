@@ -7,14 +7,16 @@ import com.belafon.world.visibles.items.ListOfAllItemTypes;
 import com.belafon.world.visibles.resources.ListOfAllTypesOfResources;
 
 public class App {
+    public static Server server;
     public static void main(String[] args) {
         ListOfAllTypesOfResources.setUpAllResources();
         ListOfAllTypesOfPlaces.setUpAllTypesOfPlaces();
         ListOfAllItemTypes.setUpItems();
+        
         BehaviourType.setUpAllBehavioursPossibleRequirements();
-        // createLocalClient();
+        //createLocalClient();
 
-        new Server();
+        server = new Server();
     }
 
     private static void createLocalClient() {

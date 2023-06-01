@@ -15,8 +15,8 @@ public class Eat extends Behaviour {
 
     public static final BehaviourType type;
     static {
-        type = new BehaviourTypeBuilder(Eat.class)
-                .addRequirement(Food.REQUIREMENT, new IngredientsCounts(1, 0))
+        type = new BehaviourTypeBuilder("Eat", "Lets eat a food to stop hunger.",Eat.class)
+                .addRequirement(Food.REQUIREMENT, new IngredientsCounts(null, 1, 0))
                 .build();
     }
 

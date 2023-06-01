@@ -217,7 +217,7 @@ public abstract class Creature extends Visible {
 
         visible.addWatcher(this);
 
-        this.writer.surrounding.addVisibleInSight(visible);
+        this.writer.surrounding.addVisibleInSight(visible, this);
 
         for (BehavioursPossibleRequirement requirement : visible.getBehavioursPossibleRequirementType(this)) {
             behaviourCondition.addBehavioursPossibleIngredient(requirement, visible);

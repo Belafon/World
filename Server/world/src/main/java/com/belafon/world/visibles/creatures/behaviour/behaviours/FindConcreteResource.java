@@ -26,7 +26,8 @@ public class FindConcreteResource extends Behaviour {
 
     public static final BehaviourType type;
     static {
-        type = new BehaviourTypeBuilder(FindConcreteResource.class)
+        type = new BehaviourTypeBuilder("Find some nature resource", "Lets pick an item up into the inventory...",
+                FindConcreteResource.class)
                 .build();
     }
 
@@ -42,7 +43,7 @@ public class FindConcreteResource extends Behaviour {
         // 0 -> finds instantly p=1, -1 -> cant find, p=100/(x+100) p=0.5 -> x=100
         // getVisibility -> for example fog ;
         durationOfFinding = -creature.abilityCondition.getVision() + creature.getLocation().getVisibility();
-        
+
         if (resource != null && resource.durationOfFinding != -1) {
             found = true;
 
@@ -99,8 +100,8 @@ public class FindConcreteResource extends Behaviour {
      * @param place
      * @param resource
      * @throws Exception
-     * this method sets duration of finding concrete resource in
-     * concrete place
+     *                   this method sets duration of finding concrete resource in
+     *                   concrete place
      */
     public static synchronized void setResourcesDurationOfFinding(UnboundedPlace place, Resource resource)
             throws Exception {

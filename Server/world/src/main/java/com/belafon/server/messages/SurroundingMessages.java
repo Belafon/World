@@ -6,6 +6,7 @@ import com.belafon.world.maps.place.UnboundedPlace;
 import com.belafon.world.maps.weather.Weather;
 import com.belafon.world.objectsMemory.Visible;
 import com.belafon.world.time.DailyLoop.NamePartOfDay;
+import com.belafon.world.visibles.creatures.Creature;
 import com.belafon.world.visibles.creatures.behaviour.PlayersLookAround;
 import com.belafon.world.visibles.resources.Resource;
 
@@ -46,7 +47,7 @@ public interface SurroundingMessages {
     public default void setNewMap(Map map, int sizeX, int sizeY) {
     }
 
-    public default void addVisibleInSight(Visible value) {
+    public default void addVisibleInSight(Visible value, Creature watcher) {
     }
 
     public default void removeVisibleFromSight(Visible value) {

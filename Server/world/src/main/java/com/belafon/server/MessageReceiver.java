@@ -1,6 +1,5 @@
 package com.belafon.server;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,10 +10,10 @@ import java.util.Scanner;
 import com.belafon.console.ConsolePrint;
 import com.belafon.server.matchMakingSystems.MatchMakingSystem;
 
-public class MessageReceiver implements Runnable{
+public class MessageReceiver implements Runnable {
     public Client client;
     private Socket clientSocket;
-	boolean isInterupted = false;
+    boolean isInterupted = false;
 
     public MessageReceiver(Socket clientSocket, Server server, Client client) {
         this.client = client;
@@ -24,8 +23,7 @@ public class MessageReceiver implements Runnable{
         // starts to receave the messages from the client
         new Thread(this).start();
     }
-    
-    
+
     @Override
     public void run() {
         Thread.currentThread().setName(client.ipAddress + "");
@@ -56,13 +54,12 @@ public class MessageReceiver implements Runnable{
         }
 
     }
-    
-	
-	private void decomposeTheString(String value, Socket clientSocket, Server server) {
+
+    private void decomposeTheString(String value, Socket clientSocket, Server server) {
         String[] message = value.split(" ");
         ConsolePrint.new_message(value, client);
-    
-        switch(message[0]) {
+
+        switch (message[0]) {
             case "game" -> client.getServer().executor.execute(() -> {
                 getGameMessage(message, clientSocket, server);
             });
@@ -71,16 +68,16 @@ public class MessageReceiver implements Runnable{
     }
 
     private void getServerMessage(String[] message, Socket clientSocket, Server server) {
-        switch(message[1]) {
+        switch (message[1]) {
             case "findTheMatch" -> server.matchMaking.addClient(client);
             case "stopFindingTheMatch" -> server.matchMaking.removeClient(client);
             case "name" -> {
-                if(message.length > 2) {
+                if (message.length > 2) {
                     client.name = message[2];
                 }
             }
             case "disconnect" -> {
-                switch(client.queueCondition) {
+                switch (client.queueCondition) {
                     case playing -> client.disconnect();
                     case waitingInQueue -> server.matchMaking.removeClient(client);
                     case idle -> {
@@ -96,11 +93,15 @@ public class MessageReceiver implements Runnable{
         }
     }
 
-
-	private void getGameMessage(String[] message, Socket clientSocket, Server server) {
-		switch(message[1]) {
-
-		}
-	}
+    private void getGameMessage(String[] message, Socket clientSocket, Server server) {
+        switch (message[1]) {
+            // behaviour executeBehaviour PickUpItem Item|8,Item|6,Item|10,
+            case "behaviour" -> {
+                String behaviourName = message[2];
+                String[] ingredients = message[3].split(",");
+                server.game.catchBehaviour(behaviourName, ingredients, client);
+            }
+        }
+    }
 
 }

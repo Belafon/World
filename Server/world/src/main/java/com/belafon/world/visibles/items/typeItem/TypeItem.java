@@ -12,7 +12,6 @@ public abstract class TypeItem {
     public final ConsumableBehavioursPossibleRequirement requirementIsInInventory;
 
     public TypeItem(String name, int regularWeight, int toss, int visibility, String look) {
-        super();
         requirementIsVisible = new ConsumableBehavioursPossibleRequirement("Item type " + name + " is visilbe.");
         requirementIsInInventory = new ConsumableBehavioursPossibleRequirement(
                 "Item type " + name + " is in inventory.");

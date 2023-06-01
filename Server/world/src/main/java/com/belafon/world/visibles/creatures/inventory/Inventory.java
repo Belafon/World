@@ -52,7 +52,7 @@ public class Inventory {
             }
         }
         // lets send info about it
-        creature.writer.inventory.setAddItem(item);
+        creature.writer.inventory.setAddItem(item, creature);
     }
 
     public synchronized void removeItem(Item item) {

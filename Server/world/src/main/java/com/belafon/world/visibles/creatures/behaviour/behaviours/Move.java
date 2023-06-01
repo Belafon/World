@@ -20,8 +20,9 @@ public class Move extends Behaviour {
 
     public static final BehaviourType type;
     static {
-        type = new BehaviourTypeBuilder(Move.class)
-                .build();
+        type = new BehaviourTypeBuilder("Move to other place", "Lets go somewhere...", Move.class)
+        .addRequirement(Place.REQUIREMENT_IS_REACHABLE, new IngredientsCounts(null, 1, 0))        
+        .build();
     }
 
     public Move(World game, Creature creature, Place destination) {

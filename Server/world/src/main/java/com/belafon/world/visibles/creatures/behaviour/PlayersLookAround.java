@@ -18,6 +18,20 @@ public class PlayersLookAround {
      * This message contains info about surrounding around concrete place
      * (viewers position).
      * 
+     * 1. In the first step, we look around the viewer’s position by a radius of 3.
+     * This means that we are looking at a ring of places around the viewer’s
+     * position, whose radius is 3. The viewer is always in the middle of the map.
+     * The radius of the viewer’s view is always 3. This means that the player sees
+     * the places that are in the circle with the radius of 3. The radius of the
+     * view is the radius of the circle that is created by the viewer and the places
+     * that he can see. The radius of the view is used to calculate the altitude of
+     * the places that the player can’t see. The player can see places that are in
+     * the view radius and that are higher than the altitude of the places that are
+     * between the player and the place. The altitude is calculated by the altitude
+     * of the place and the altitude of the place that is between the player and the
+     * place. The altitude of the place that is between the player and the place is
+     * calculated by the altitude of the place and the distance from the player.
+     * 
      * @param game
      * @param player
      * @param viewersPosition

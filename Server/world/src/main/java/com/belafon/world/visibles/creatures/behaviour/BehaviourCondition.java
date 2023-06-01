@@ -18,6 +18,9 @@ public class BehaviourCondition {
 
     public BehaviourCondition(Creature creature) {
         this.creature = creature;
+    }
+
+    public void sendInfoAboutAllBehavioursWithNoRequirements(){
         feasibleBehaviours.addAll(BehaviourType.ALL_BEHAVIOUR_TYPES_WITHOUT_REQUIREMENT);
         for (BehaviourType behaviourType : feasibleBehaviours)
             creature.writer.behavioursMessages.newFeasibleBehaviour(behaviourType);
@@ -94,8 +97,8 @@ public class BehaviourCondition {
     public boolean canCreatureDoTheBehaviour(BehaviourType behaviourType) {
         return behaviourType.requirements.entrySet().stream().filter((x) -> {
             if (behavioursIngredients.containsKey(x.getKey())
-                    && behavioursIngredients.get(x.getKey()).size() >= x.getValue().consumable()
-                            + x.getValue().unconsumable())
+                    && behavioursIngredients.get(x.getKey()).size() >= x.getValue().numOfSpecificIngredients()
+                            + x.getValue().numOfGeneralIngredients())
                 return false;
             return true;
         }).count() > 0 ? false : true;

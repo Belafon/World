@@ -1,8 +1,8 @@
 package com.belafon.world.maps.place;
 
-import com.belafon.console.ConsolePrint;
 import com.belafon.world.maps.Map;
 import com.belafon.world.maps.weather.Weather;
+import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleRequirement;
 import com.belafon.world.visibles.resources.Resource;
 
 /**
@@ -13,6 +13,9 @@ public class Place extends UnboundedPlace {
     public final int positionX;
     public final int positionY;
     public int altitude;
+
+    public static final BehavioursPossibleRequirement REQUIREMENT_IS_REACHABLE = new BehavioursPossibleRequirement("An item is visible") {
+    };
 
     private static Map printNewPlaceOnlyOfOneMap;
 

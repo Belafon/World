@@ -20,9 +20,15 @@ public abstract class BehavioursPossibleRequirement {
     public Set<BehaviourType> behaviours = new HashSet<>();
 
     public final String name;
-    
+    public final String idName;
+
     public BehavioursPossibleRequirement(String name) {
         this.name = name;
+        this.idName = name
+                .replaceAll(" ", "_")
+                .replaceAll("[.]", "")
+                .toLowerCase();
+        BehaviourType.setupNewRequirement(this);
     }
 
     /**
@@ -31,5 +37,4 @@ public abstract class BehavioursPossibleRequirement {
     public void makeUnmodifiable() {
         behaviours = Collections.unmodifiableSet(behaviours);
     }
-
 }

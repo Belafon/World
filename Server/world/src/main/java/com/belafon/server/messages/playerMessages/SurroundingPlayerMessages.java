@@ -33,7 +33,8 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
 
     @Override
     public void setClouds(Place place) {
-        sendMessage.sendLetter("map clouds " + place.map.sky.getWeather(place).getClouds(), PlayersMessageSender.TypeMessage.dailyLoop);
+        sendMessage.sendLetter("map clouds " + place.map.sky.getWeather(place).getClouds(),
+                PlayersMessageSender.TypeMessage.dailyLoop);
     }
 
     @Override
@@ -73,12 +74,14 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
 
     @Override
     public void setResource(Resource resource) {
-        sendMessage.client.writer.sendLetter("surrounding resource " + resource.id + " " + resource.type.name, PlayersMessageSender.TypeMessage.other);
+        sendMessage.client.writer.sendLetter("surrounding resource " + resource.id + " " + resource.type.name,
+                PlayersMessageSender.TypeMessage.other);
     }
 
     @Override
     public void setResourceNotFound(Resource resource) {
-        sendMessage.client.writer.sendLetter("surrounding resourceNotFound " + resource.type.name, PlayersMessageSender.TypeMessage.other);
+        sendMessage.client.writer.sendLetter("surrounding resourceNotFound " + resource.type.name,
+                PlayersMessageSender.TypeMessage.other);
     }
 
     @Override
@@ -88,34 +91,55 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
 
     @Override
     public void setTypeOfPlaceInfoDrawableSound(UnboundedPlace position) {
-        sendMessage.sendLetter("soundDrawable " + position.music + " " + position.picture, PlayersMessageSender.TypeMessage.other);
+        sendMessage.sendLetter("soundDrawable " + position.music + " " + position.picture,
+                PlayersMessageSender.TypeMessage.other);
     }
 
     @Override
     public void setNewMap(Map map, int sizeX, int sizeY) {
-        sendMessage.sendLetter("map new_map " + map.id + " " + sizeX + " " + sizeY, PlayersMessageSender.TypeMessage.other);
+        sendMessage.sendLetter("map new_map " + map.id + " " + sizeX + " " + sizeY,
+                PlayersMessageSender.TypeMessage.other);
     }
 
     @Override
-    public void addVisibleInSight(Visible visible) {
+    public void addVisibleInSight(Visible visible, Creature watcher) {
+        StringBuilder behaviours = getAllPossibleBehavioursReqruiementsAsMessage(visible, watcher);
         StringBuilder message = new StringBuilder("surrounding");
         if (visible instanceof Item item) {
             message.append(" add_item_in_sight "
-                    + getVisibleItemPropertiesMessage(item));
+                    + getVisibleItemPropertiesMessage(item, watcher))
+                    .append(" " + behaviours);
 
         } else if (visible instanceof Creature creature) {
             message.append(" add_creature_in_sight "
-                    + getVisibleCreaturePropertiesMessage(creature));
+                    + getVisibleCreaturePropertiesMessage(creature))
+                    .append(" " + behaviours);
 
         } else if (visible instanceof Resource resource) {
             message.append(" add_resource_in_sight "
-                    + getVisibleResourcePropertiesMessage(resource));
+                    + getVisibleResourcePropertiesMessage(resource))
+                    .append(" " + behaviours);
         }
 
         sendMessage.client.writer.sendLetter(message.toString(), PlayersMessageSender.TypeMessage.other);
     }
 
-    private StringBuilder getVisibleItemPropertiesMessage(Item item) {
+    public static StringBuilder getAllPossibleBehavioursReqruiementsAsMessage(Visible visible, Creature creature) {
+        StringBuilder message = new StringBuilder("");
+        boolean firstItem = true;
+        for (var requirement : visible.getBehavioursPossibleRequirementType(creature)) {
+            if (firstItem) {
+                
+                message.append(requirement.idName);
+                firstItem = false;
+            } else {
+                message.append("," + requirement.idName);
+            }
+        }
+        return message;
+    }
+
+    private StringBuilder getVisibleItemPropertiesMessage(Item item, Creature creature) {
         return new StringBuilder(item.id + " " + item.type.getClass().getSimpleName() + " "
                 + item.type.name + " " + item.type.regularWeight + " "
                 + item.type.visibility + " " + item.type.toss + " "

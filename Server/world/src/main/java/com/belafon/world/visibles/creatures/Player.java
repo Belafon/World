@@ -5,6 +5,7 @@ import com.belafon.world.World;
 import com.belafon.world.maps.Map;
 import com.belafon.world.maps.place.Place;
 import com.belafon.world.maps.place.UnboundedPlace;
+import com.belafon.world.visibles.creatures.behaviour.BehaviourType;
 import com.belafon.world.visibles.creatures.inventory.Inventory;
 import com.belafon.world.visibles.creatures.inventory.PlayersGear;
 import com.belafon.world.visibles.items.ListOfAllItemTypes;
@@ -43,6 +44,17 @@ public class Player extends Creature {
      * This is called when new game is starting.
      */
     public void gameStart() {
+        var requirements = BehaviourType.getAllRequirmentes();
+        synchronized(requirements){
+            for (var requirement : requirements) {
+                client.writer.behaviour.setupPossibleReqirement(requirement); 
+            }
+        }
+
+        for (var behaviourType : BehaviourType.ALL_BEHAVIOUR_TYPES) {
+            client.writer.behaviour.setupBehaviour(behaviourType);
+        }
+
         inventory.addItem(new Food(game, 5, 100, new SpecialFoodsProperties[] {},
                 ListOfAllItemTypes.foodTypes.get(NamesOfFoodItemTypes.apple), position));
 

@@ -1,6 +1,6 @@
 package com.belafon.world.visibles.items;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.belafon.world.World;
@@ -17,8 +17,8 @@ public class Item extends Visible {
     };
     public static final BehavioursPossibleRequirement REQUIREMENT_IS_IN_INVENTORY = new BehavioursPossibleRequirement("An item is in inventory") {
     };
-    public final BehavioursPossibleRequirement requirementIsVisible;
-    public final BehavioursPossibleRequirement requirementIsInInventory;
+/*     public final BehavioursPossibleRequirement requirementIsVisible;
+    public final BehavioursPossibleRequirement requirementIsInInventory; */
 
     public final int id;
     public final TypeItem type;
@@ -32,11 +32,10 @@ public class Item extends Visible {
         this.type = type;
         this.weight = type.regularWeight;
         this.location = location;
-        requirementIsVisible = new BehavioursPossibleRequirement("item " + id + " is visible") {
+/*         requirementIsVisible = new BehavioursPossibleRequirement("item " + id + " is visible") {
         };
         requirementIsInInventory = new BehavioursPossibleRequirement("item " + id + " is in inventory") {
-        };
-
+        }; */
     }
 
     public int getWeight() {
@@ -61,11 +60,17 @@ public class Item extends Visible {
 
     @Override
     public List<BehavioursPossibleRequirement> getBehavioursPossibleRequirementType(Creature creature) {
+        List<BehavioursPossibleRequirement> result = new ArrayList<>();
         if (creature.inventory.ownsItem(this)) {
-            return Arrays.asList(type.requirementIsInInventory, requirementIsInInventory, REQUIREMENT_IS_IN_INVENTORY);
+            result.add(type.requirementIsInInventory);
+            //result.add(requirementIsInInventory);
+            result.add(REQUIREMENT_IS_IN_INVENTORY);
         } else {
-            return Arrays.asList(type.requirementIsVisible, requirementIsVisible, REQUIREMENT_IS_VISIBLE);
+            result.add(type.requirementIsVisible);
+            //result.add(requirementIsVisible);
+            result.add(REQUIREMENT_IS_VISIBLE);
         }
+        return result;
     }
 
     @Override
