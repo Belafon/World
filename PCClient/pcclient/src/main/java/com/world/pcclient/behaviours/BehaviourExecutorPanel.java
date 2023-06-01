@@ -4,6 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -11,7 +15,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.swing.DefaultListModel;
+import javax.swing.BoxLayout;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -19,7 +24,6 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import com.world.pcclient.App;
 import com.world.pcclient.behaviours.Behaviour.BehavioursRequirementDetail;
 import com.world.pcclient.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 import com.world.pcclient.visibles.creatures.PlayableCreature;
@@ -27,6 +31,7 @@ import com.world.pcclient.visibles.creatures.PlayableCreature;
 public class BehaviourExecutorPanel {
     private Behaviour behaviour;
     private final JPanel panel = new JPanel();
+    private final JPanel contentPanel = new JPanel();
     private final JLabel name;
     private final JLabel description;
     private final JButton execute;
@@ -34,36 +39,42 @@ public class BehaviourExecutorPanel {
     private JList<JComboBox<BehavioursPossibleIngredient>> comboBoxList = new JList<>();
 
     public BehaviourExecutorPanel() {
-        panel.setLayout(new BorderLayout());
-
-        JPanel topPanel = new JPanel();
-        topPanel.setLayout(new BorderLayout());
+        contentPanel.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.weightx = 1.0;
+        constraints.weighty = 0.0;
 
         name = new JLabel();
         Font boldFont = name.getFont().deriveFont(Font.BOLD);
         name.setFont(boldFont);
+        contentPanel.add(name, constraints);
+
+        constraints.gridy++;
         description = new JLabel();
         description.setMaximumSize(new Dimension(Integer.MAX_VALUE, description.getPreferredSize().height));
+        contentPanel.add(description, constraints);
+
+        constraints.gridy++;
         execute = new JButton("Execute");
-        execute.setPreferredSize(new Dimension(execute.getPreferredSize().width, 30));
-        execute.setVisible(false); // Initially hide the button
+        execute.setPreferredSize(new Dimension(execute.getPreferredSize().width, 20));
+        execute.setVisible(false);
+        contentPanel.add(execute, constraints);
 
-        topPanel.add(name, BorderLayout.NORTH);
-        topPanel.add(description, BorderLayout.CENTER);
+        constraints.gridy++;
+        constraints.weighty = 1.0;
+        requirementsPanel = new JPanel(new BorderLayout());
+        requirementsPanel.setPreferredSize(new Dimension(execute.getPreferredSize().width, 110));
 
-        requirementsPanel = new JPanel();
-        requirementsPanel.setLayout(new BorderLayout());
+        contentPanel.add(requirementsPanel, constraints);
 
-        JPanel spacerPanel = new JPanel(); // Spacer panel to control the maximum height
-        spacerPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 10));
+        JScrollPane scrollPane = new JScrollPane(contentPanel);
+        scrollPane.setPreferredSize(new Dimension(execute.getPreferredSize().width, 150));
 
-        requirementsPanel.add(spacerPanel, BorderLayout.NORTH);
-        requirementsPanel.add(execute, BorderLayout.CENTER);
-
-        JScrollPane scrollPane = new JScrollPane(topPanel);
-
+        panel.setLayout(new BorderLayout());
         panel.add(scrollPane, BorderLayout.CENTER);
-        panel.add(requirementsPanel, BorderLayout.SOUTH);
     }
 
     public void setBehaviour(Behaviour behaviour) {
@@ -71,14 +82,30 @@ public class BehaviourExecutorPanel {
 
         name.setText(behaviour.name);
         description.setText(behaviour.description);
-        
+
         execute.setVisible(true);
         execute.setToolTipText("Execute the behaviour.");
         execute.setEnabled(true);
+        execute.removeActionListener(
+            execute.getActionListeners().length == 0 ? null : execute.getActionListeners()[0]
+        );
+        execute.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // we have to get all selected ingredients
+                List<BehavioursPossibleIngredient> selectedIngredients = new ArrayList<>();
+                for (RequirementChooser chooser : requiremntsChoosers.values()) {
+                    for (JComboBox<BehavioursPossibleIngredient> comboBox : chooser.comboBoxes) {
+                        selectedIngredients.add((BehavioursPossibleIngredient) comboBox.getSelectedItem());
+                    }
+                }
 
+                behaviour.execute(selectedIngredients);
+            }
+        });
         setRequirementsPanel(behaviour);
 
-        panel.revalidate();
+        contentPanel.revalidate();
     }
 
     // set of all requiremnets of concrete behaviour, that is currently beeing
@@ -88,21 +115,37 @@ public class BehaviourExecutorPanel {
 
     private void setRequirementsPanel(Behaviour behaviour) {
         this.availableIngredients = PlayableCreature.allIngredients;
+        
+        // we have to remove all ingredients, that are already selected from different behaviour
+        for (RequirementChooser chooser : requiremntsChoosers.values()) {
+            for (JComboBox<BehavioursPossibleIngredient> comboBox : chooser.comboBoxes) {
+                availableIngredients.add((BehavioursPossibleIngredient) comboBox.getSelectedItem());
+            }
+        }
+
+        requiremntsChoosers = new HashMap<>();
+
         for (BehavioursRequirementDetail requirement : behaviour.requirements) {
-            if (requirement.withConcreteIngredient) {
+            if (requirement.numOfConcreteIngredient != 0) {
 
                 // we need to get a set of ingredients, that satisfies to this requirement
                 // we have to go through all ingredients and check if it satisfies to this
-                // requirement. if yes, we have to check if it is in the availableIngredients
+                // requirement. if yes, we have to check if it is in the
                 // set
                 Set<BehavioursPossibleIngredient> satisfableIngredients = new HashSet<>();
-                getSatisfableIngredients(behaviour, satisfableIngredients);
+                getSatisfableIngredients(requirement, satisfableIngredients);
 
                 var requirementChooser = new RequirementChooser(requirement);
                 requiremntsChoosers.put(requirement, requirementChooser);
 
-                for (int i = 0; i < requirement.amount; i++) {
+                for (int i = 0; i < requirement.numOfConcreteIngredient; i++) {
+                    if (!satisfableIngredients.iterator().hasNext())
+                        throw new Error("There is not enough satisfable ingredients for the behaviour. " +
+                                "Behaviour: " + behaviour.name + ", requirement: " + requirement.requirement.name
+                                + ".");
+
                     var item = satisfableIngredients.iterator().next();
+
                     if (item != null) {
                         satisfableIngredients.remove(item);
                         availableIngredients.remove(item);
@@ -119,45 +162,76 @@ public class BehaviourExecutorPanel {
             }
         }
 
-        
-        for (BehavioursRequirementDetail requirement : behaviour.requirements) {
-            if (requirement.withConcreteIngredient) {
-                Set<BehavioursPossibleIngredient> satisfableIngredients = new HashSet<>();
-                getSatisfableIngredients(behaviour, satisfableIngredients);
-            }
-            requiremntsChoosers.get(requirement).setAvailableIngredients(availableIngredients);
-        }
+        setAvailableIngredients(behaviour);
 
-        
         drawList();
+    }
+
+    private void setAvailableIngredients(Behaviour behaviour) {
+        for (BehavioursRequirementDetail requirement : behaviour.requirements) {
+            if (requirement.numOfConcreteIngredient != 0) {
+                Set<BehavioursPossibleIngredient> satisfableIngredients = new HashSet<>();
+                getSatisfableIngredients(requirement, satisfableIngredients);
+                requiremntsChoosers.get(requirement).setAvailableIngredients(satisfableIngredients);
+            }
+        }
+    }
+
+    private static class ComboBoxItemModel extends DefaultComboBoxModel<BehavioursPossibleIngredient> {
+        @Override
+        public void setSelectedItem(Object anObject) {
+            super.setSelectedItem(anObject);
+        }
     }
 
     private JPanel drawList() {
         JPanel panel = requirementsPanel;
         panel.removeAll();
 
-        comboBoxList = new JList<>();
-        DefaultListModel<JComboBox<BehavioursPossibleIngredient>> listModel = new DefaultListModel<>();
+        JPanel insidePanel = new JPanel(); // Create a panel to hold the JComboBox components
+        insidePanel.setLayout(new BoxLayout(insidePanel, BoxLayout.Y_AXIS)); // Use BoxLayout with vertical alignment
+
+        JScrollPane scrollPane = new JScrollPane(insidePanel);
 
         for (RequirementChooser chooser : requiremntsChoosers.values()) {
             for (JComboBox<BehavioursPossibleIngredient> comboBox : chooser.comboBoxes) {
-                listModel.addElement(comboBox);
+                comboBox.setPreferredSize(new Dimension(execute.getPreferredSize().width, 20));
+                comboBox.setMaximumSize(new Dimension(Integer.MAX_VALUE, comboBox.getPreferredSize().height));
+                comboBox.addActionListener(new ActionListener() {
+                    private BehavioursPossibleIngredient lastSelected = (BehavioursPossibleIngredient) comboBox
+                            .getSelectedItem();
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        var selectedIngredient = (BehavioursPossibleIngredient) comboBox.getSelectedItem();
+                        availableIngredients.remove(selectedIngredient);
+                        availableIngredients.add(lastSelected);
+                        lastSelected = selectedIngredient;
+
+                        
+                        chooser.selectIngredient(selectedIngredient, comboBox);
+                        
+                        setAvailableIngredients(behaviour);
+                        
+                        
+                        panel.revalidate();
+                        panel.repaint();
+                    }
+                });
+                
+                insidePanel.add(comboBox);
             }
         }
 
-        comboBoxList.setModel(listModel);
-        JScrollPane scrollPane = new JScrollPane(comboBoxList);
         panel.add(scrollPane, BorderLayout.CENTER);
-        panel.setPreferredSize(new Dimension(400, 300));
-
+        panel.setPreferredSize(new Dimension(execute.getPreferredSize().width, 90));
 
         return panel;
     }
 
-    private void getSatisfableIngredients(Behaviour behaviour,
+    private void getSatisfableIngredients(BehavioursRequirementDetail detailedRequirement,
             Set<BehavioursPossibleIngredient> satisfableIngredients) {
-        for (BehavioursPossibleIngredient ingredient : App.getCurrentPlayableCreature().allIngredients) {
-            if (ingredient.behaviours.contains(behaviour)
+        for (BehavioursPossibleIngredient ingredient : PlayableCreature.allIngredients) {
+            if (ingredient.requirements.contains(detailedRequirement.requirement)
                     && availableIngredients.contains(ingredient))
                 // the ingredient is satifable
                 satisfableIngredients.add(ingredient);
@@ -195,37 +269,32 @@ public class BehaviourExecutorPanel {
 
             int comboBoxIndex = 0;
             for (JComboBox<BehavioursPossibleIngredient> comboBox : comboBoxes) {
-                comboBox.removeAllItems();
+                ComboBoxItemModel comboBoxModel = new ComboBoxItemModel();
+                comboBox.setEditable(false);
 
                 for (BehavioursPossibleIngredient ingredient : availableIngredients) {
-                    comboBox.addItem(ingredient); 
+                    comboBoxModel.addElement(ingredient);
                 }
 
                 BehavioursPossibleIngredient selectedIngredient = selectedIngredients.get(comboBoxIndex);
-                comboBox.addItem(selectedIngredient);
-                comboBox.setSelectedItem(selectedIngredient);
+                comboBoxModel.addElement(selectedIngredient);
+                comboBoxModel.setSelectedItem(selectedIngredient);
+
+                comboBox.setModel(comboBoxModel);
 
                 comboBoxIndex++;
             }
         }
 
-        public void selectIngredient(BehavioursPossibleIngredient ingredient, int index) {
+        public void selectIngredient(BehavioursPossibleIngredient ingredient,
+                JComboBox<BehavioursPossibleIngredient> comboBox) {
+            int index = comboBoxes.indexOf(comboBox);
             selectedIngredients.set(index, ingredient);
-            JComboBox<BehavioursPossibleIngredient> comboBox = comboBoxes.get(index);
             comboBox.setSelectedItem(ingredient);
-        }
-
-        private JComboBox<BehavioursPossibleIngredient> createComboBox() {
-            JComboBox<BehavioursPossibleIngredient> comboBox = new JComboBox<>();
-            // Set the available ingredients as the items in the combo box
-            for (BehavioursPossibleIngredient ingredient : availableIngredients) {
-                comboBox.addItem(ingredient);
-            }
-            return comboBox;
         }
     }
 
-    public Component getPanel() {
+    public Component getContentPanel() {
         return panel;
     }
 }

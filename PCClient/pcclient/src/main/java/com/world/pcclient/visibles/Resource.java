@@ -2,15 +2,15 @@ package com.world.pcclient.visibles;
 
 import java.util.Set;
 
-import com.world.pcclient.behaviours.Behaviour;
+import com.world.pcclient.behaviours.BehavioursRequirement;
 import com.world.pcclient.visibles.resources.ResourceTypes.ResourceType;
 
 public class Resource extends Visible {
     private final int id;
     private final ResourceType type;
     private final int mass;
-    public Resource(int id, ResourceType type, int mass, Set<Behaviour> behaviours) {
-        super(behaviours, type.name());
+    public Resource(int id, ResourceType type, int mass, Set<BehavioursRequirement> requirements) {
+        super(requirements, type.name());
         this.type = type;
         this.id = id;
         this.mass = mass;
@@ -23,8 +23,8 @@ public class Resource extends Visible {
     public Runnable getOnTitleClick() {
         return () -> {};
     }
-
-	public Integer getId() {
+    @Override
+	public int getId() {
 		return id;
 	}
 
@@ -34,6 +34,11 @@ public class Resource extends Visible {
 
     public String getMass() {
         return type.masses()[mass];
+    }
+
+    @Override
+    public String getVisibleType() {
+        return "Resource";
     }
 
 }

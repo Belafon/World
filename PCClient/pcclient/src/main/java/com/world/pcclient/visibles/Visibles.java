@@ -5,13 +5,13 @@ import java.util.Hashtable;
 import java.util.Set;
 
 import com.world.pcclient.visibles.creatures.Creature;
+import com.world.pcclient.visibles.creatures.PlayableCreature;
 import com.world.pcclient.visibles.items.Item;
 import com.world.pcclient.visibles.items.Item.Food;
 import com.world.pcclient.visibles.resources.ResourceTypes;
 import com.world.pcclient.Panels;
-import com.world.pcclient.behaviours.Behaviour;
 import com.world.pcclient.behaviours.Behaviours;
-
+import com.world.pcclient.behaviours.BehavioursRequirement;
 
 public class Visibles {
     private final Hashtable<Integer, Item> items = new Hashtable<>();
@@ -41,11 +41,12 @@ public class Visibles {
                 int freshness = Integer.parseInt(args[8]);
                 int filling = Integer.parseInt(args[9]);
                 int warm = Integer.parseInt(args[10]);
-                Set<Behaviour> possibleBehaviours = extractPossibleBehavioursFromArgs(behaviours, args[11]);
+                Set<BehavioursRequirement> requirements = extractRequirementsFromArgs(behaviours, args[11]);
 
                 item = new Food(id, itemName, regularWeight, visibility, toss, freshness, filling, warm,
-                        possibleBehaviours);
+                        requirements);
                 panels.visibleItems.addVisibleTitlePanel(new VisiblePanel(item));
+                PlayableCreature.allIngredients.add(item);
             }
             default ->
                 throw new IllegalArgumentException("Invalid class name for item type: " + className);
@@ -76,25 +77,31 @@ public class Visibles {
             case "itemPlace" -> {
             }
         }
+        // TODO arg[9] ... current behaviour
+        Set<BehavioursRequirement> requirements = extractRequirementsFromArgs(behaviours, args[10]);
 
-        Set<Behaviour> possibleBehaviours = extractPossibleBehavioursFromArgs(behaviours, args[9]);
-
-        Creature creature = new Creature(name, id, appearance, possibleBehaviours); 
+        Creature creature = new Creature(name, id, appearance, requirements);
         panels.visibleCreatures.addVisibleTitlePanel(new VisiblePanel(creature));
         creatures.put(id, creature);
 
     }
 
-    public static Set<Behaviour> extractPossibleBehavioursFromArgs(Behaviours behaviours, String possibleRequirements) {
-        Set<Behaviour> possibleBehaviours = new HashSet<>();
-        for (String possibleBehavioursName : possibleRequirements.split(",")) {
-            var possibleBehaviour = behaviours.allBehaviors.get(possibleBehavioursName);
-            if (possibleBehaviour == null) {
-                throw new Error("Extracting possible behaviours from args and unrecognized behaviour found: " + possibleBehaviour);
+    public static Set<BehavioursRequirement> extractRequirementsFromArgs(Behaviours behaviours, String possibleRequirements) {
+        Set<BehavioursRequirement> requirements = new HashSet<>();
+        for (String possibleRequirementsName : possibleRequirements.split(",")) {
+            var possibleRequirement = behaviours.allRequirements.get(possibleRequirementsName);
+            if (possibleRequirement == null) {
+                // add new requirement into the list of all requirements
+                possibleRequirement = new BehavioursRequirement(possibleRequirementsName, possibleRequirementsName);
+                behaviours.allRequirements.put(possibleRequirementsName, possibleRequirement);
+                requirements.add(possibleRequirement);
+
+                throw new Error("Extracting requirements from args and unrecognized behaviour found: "
+                        + possibleRequirementsName);
             } else
-                possibleBehaviours.add(possibleBehaviour);
+                requirements.add(possibleRequirement);
         }
-        return possibleBehaviours;
+        return requirements;
     }
 
     /**
@@ -112,9 +119,9 @@ public class Visibles {
         String name = args[3];
         var type = ResourceTypes.resorceTypes.get(name);
         int mass = Integer.parseInt(args[4]);
-        Set<Behaviour> possibleBehaviours = extractPossibleBehavioursFromArgs(behaviours, args[5]);
+        Set<BehavioursRequirement> requirements = extractRequirementsFromArgs(behaviours, args[5]);
 
-        Resource resource = new Resource(id, type, mass, possibleBehaviours);
+        Resource resource = new Resource(id, type, mass, requirements);
         panels.visibleResources.addVisibleTitlePanel(new VisiblePanel(resource));
         resources.put(id, resource);
     }

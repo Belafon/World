@@ -29,7 +29,7 @@ public class BehavioursPanel {
         JScrollPane scrollPane = new JScrollPane(panelWithList);
 
         // Create a JSplitPane with the panel and executorPanel
-        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, scrollPane, executor.getPanel());
+        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, scrollPane, executor.getContentPanel());
         splitPane.setResizeWeight(0.5); // Set the initial resize weight for the split pane
 
         panel.add(splitPane, BorderLayout.CENTER); // Add the split pane to the center of the main panel

@@ -2,7 +2,12 @@ package com.world.pcclient.behaviours;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import com.world.pcclient.App;
+import com.world.pcclient.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.world.pcclient.visibles.creatures.PlayableCreature;
 
 public class Behaviour {
     public final String messagesName;
@@ -10,9 +15,9 @@ public class Behaviour {
 
     public Set<BehavioursRequirementDetail> requirements;
     public final String description;
-    
+
     private Behaviour(String messagesName, String name, String description,
-    Set<BehavioursRequirementDetail> requirements) {
+            Set<BehavioursRequirementDetail> requirements) {
         this.messagesName = messagesName;
         this.name = name;
         this.description = description;
@@ -47,9 +52,9 @@ public class Behaviour {
         }
 
         public Behaviour build() {
-        if (description == null)
+            if (description == null)
                 throw new Error("Some behaviour does not have description.");
-            
+
             if (name == null)
                 throw new Error("Some behaviour does not have a name.");
             return new Behaviour(messagesName, name, description, requirements);
@@ -58,25 +63,25 @@ public class Behaviour {
         public BehaviourBuilder addRequirement(
                 BehavioursRequirement behavioursRequirement,
                 String description,
-                boolean withConcreteIngredient,
-                int amount) {
+                int numOfConcreteIngredient,
+                int numOfGeneralIngredient) {
             requirements.add(new BehavioursRequirementDetail(
                     behavioursRequirement,
                     description,
-                    withConcreteIngredient,
-                    amount));
+                    numOfConcreteIngredient,
+                    numOfGeneralIngredient));
             return this;
         }
 
         public BehaviourBuilder addRequirement(
                 BehavioursRequirement behavioursRequirement,
-                boolean withConcreteIngredient,
-                int amount) {
+                int numOfConcreteIngredient,
+                int numOfGeneralIngredient) {
             requirements.add(new BehavioursRequirementDetail(
                     behavioursRequirement,
                     null,
-                    withConcreteIngredient,
-                    amount));
+                    numOfConcreteIngredient,
+                    numOfGeneralIngredient));
             return this;
         }
     }
@@ -84,23 +89,21 @@ public class Behaviour {
     public static class BehavioursRequirementDetail {
         public BehavioursRequirement requirement;
         public final String description;
-        public final boolean withConcreteIngredient;
-        public final int amount;
-
+        public final int numOfConcreteIngredient;
+        public final int numOfGeneralIngredient;
+        
         public BehavioursRequirementDetail(BehavioursRequirement requirement, String description,
-                boolean withConcreteIngredient,
-                int amount) {
-            this.description = description;
+                int numOfConcreteIngredient, int numOfGeneralIngredient) {
             this.requirement = requirement;
-            this.withConcreteIngredient = withConcreteIngredient;
-            this.amount = amount;
+            this.description = description;
+            this.numOfConcreteIngredient = numOfConcreteIngredient;
+            this.numOfGeneralIngredient = numOfGeneralIngredient;
         }
 
-        public BehavioursRequirementDetail(BehavioursRequirement requirement, String description, int amount) {
-            this.description = description;
-            this.requirement = requirement;
-            this.withConcreteIngredient = false;
-            this.amount = amount;
-        }
+    }
+
+    public void execute(List<BehavioursPossibleIngredient> selectedIngredients) {
+        // we have to send the message to the server
+        App.client.sender.behaviours.executeBehaviour(selectedIngredients, this);
     }
 }

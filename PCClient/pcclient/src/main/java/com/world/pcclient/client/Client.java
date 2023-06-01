@@ -14,19 +14,23 @@ import com.world.pcclient.Stats;
 
 public class Client {
     public Socket clientSocket;
-	private BufferedWriter out;
+    private BufferedWriter out;
     private Scanner in;
     private static int clientIDCounter = 0;
     public final int ID = clientIDCounter++;
     public final ChatListener listener;
-    
+    public MessageSender sender = new MessageSender(this);
+    private Panels panels;
+
     /**
      * Try to bind new connection with the server.
      * It also sends initialization messages to the server,
+     * 
      * @param panels
      * @param stats
      */
     public Client(Panels panels, Stats stats) {
+        this.panels = panels;
         int port = 25555;
 
         listener = new ChatListener(stats, panels);
@@ -50,56 +54,55 @@ public class Client {
         startListener(in, panels);
         sendIntroductionInfo();
     }
-    
-    private void startListener(final Scanner in, final Panels panels) {
-		Thread thread = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				Thread.currentThread().setName("Client");
-				while(true) {
-					String s = "";
-					try {
-						s = in.nextLine();
-					} catch(Exception e) {
-						System.out.println("Connection interupted " + e);
-						System.exit(0);
-						break;
-					}
 
-					if(s != null) {
+    private void startListener(final Scanner in, final Panels panels) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Thread.currentThread().setName("Client");
+                while (true) {
+                    String s = "";
+                    try {
+                        s = in.nextLine();
+                    } catch (Exception e) {
+                        System.out.println("Connection interupted " + e);
+                        System.exit(0);
+                        break;
+                    }
+
+                    if (s != null) {
                         listener.listen(s);
-					}
-				}
-			}
-		});
-		thread.start();			
-	}
+                    }
+                }
+            }
+        });
+        thread.start();
+    }
 
     private void sendIntroductionInfo() {
+        sendMessage("server name clientName_" + ID);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        sendMessage("server findTheMatch");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        sendMessage("ready");
+    }
+
+    public void sendMessage(String message) {
+        panels.listenerPanel.addOutcomingMessage(message);
         try {
             out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
-            out.write("server name clientName_"  + ID + "\r\n");
+            out.write(message + "\r\n");
             out.flush();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-
-                e.printStackTrace();
-            }
-            out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
-            out.write("server findTheMatch" + "\r\n");
-            out.flush();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-
-                e.printStackTrace();
-            }
-            out.write("ready" + "\r\n");
-            out.flush();
-            
-        } catch (IOException e1) {
-            e1.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

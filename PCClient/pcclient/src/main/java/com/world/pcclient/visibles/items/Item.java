@@ -2,7 +2,6 @@ package com.world.pcclient.visibles.items;
 
 import java.util.Set;
 
-import com.world.pcclient.behaviours.Behaviour;
 import com.world.pcclient.behaviours.BehavioursRequirement;
 import com.world.pcclient.visibles.Visible;
 
@@ -13,8 +12,8 @@ public class Item extends Visible {
     private int toss;
     private String description;
     public Item(int id, String name, String description,
-            int weight, int visiblity, int toss, Set<Behaviour> behaviours) {
-        super(behaviours, name);
+            int weight, int visiblity, int toss, Set<BehavioursRequirement> requirements) {
+        super(requirements, name);
         this.id = id;
         this.weight = weight;
         this.visiblity = visiblity;
@@ -37,6 +36,7 @@ public class Item extends Visible {
         this.toss = toss;
     }
 
+    @Override
     public int getId() {
         return id;
     }
@@ -68,8 +68,8 @@ public class Item extends Visible {
 
         public Food(int id, String name, int weight,
                 int visiblity, int toss, int freshness, int filling, int warm,
-                Set<Behaviour> behaviours) {
-            super(id, name, getDescription(name), weight, visiblity, toss, behaviours);
+                Set<BehavioursRequirement> requirements) {
+            super(id, name, getDescription(name), weight, visiblity, toss, requirements);
             this.freshness = freshness;
             this.filling = filling;
             this.warm = warm;
@@ -109,5 +109,10 @@ public class Item extends Visible {
         // TODO Auto-generated method stub
         //throw new UnsupportedOperationException("Unimplemented method 'getOnTitleClick'");
         return () -> {};
+    }
+
+    @Override
+    public String getVisibleType() {
+        return "Item";
     }
 }

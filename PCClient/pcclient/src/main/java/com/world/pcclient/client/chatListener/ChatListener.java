@@ -10,6 +10,7 @@ public class ChatListener {
     public ChatListener(Stats stats, Panels panels) {
         this.stats = stats;
         this.panels = panels;
+
     }
 
     /**
@@ -19,7 +20,7 @@ public class ChatListener {
      */
     public void listen(String message) {
         String[] args = message.split(" ");
-        panels.listenerPanel.addMessage(message);
+        panels.listenerPanel.addIncomingMessage(message);
 
         try {
             listenBase(args);
@@ -53,6 +54,10 @@ public class ChatListener {
     }
 
     private void listenBehaviour(String[] args) {
+        switch (args[1]) {
+            case "setupBehaviour" -> stats.behaviours.setupNewBehaviour(args);
+            case "setupRequirement" -> stats.behaviours.setNewupRequirement(args);
+        }
     }
 
     private void listenMap(String[] args) {
@@ -68,7 +73,7 @@ public class ChatListener {
     private void listenPlayer(String[] args) {
         switch (args[1]) {
             case "actualCondition" -> listenActualCondition(args);
-            case "abilityCondition" -> listenabilityCondition(args);
+            case "abilityCondition" -> listenAbilityCondition(args);
             case "knowledge" -> listenKnowledge(args);
             case "feasibleBehaviour" -> feasibleBehaviourUpdate(args);
         }
@@ -81,7 +86,7 @@ public class ChatListener {
         }
     }
 
-    private void listenabilityCondition(String[] args) {
+    private void listenAbilityCondition(String[] args) {
         switch (args[2]) {
             case "strength" -> stats.body.setStrengthAbility(args[3]);
             case "agility" -> stats.body.setAgilityAbility(args[3]);

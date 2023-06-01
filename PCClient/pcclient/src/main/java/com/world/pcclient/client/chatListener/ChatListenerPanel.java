@@ -23,18 +23,23 @@ public class ChatListenerPanel extends JPanel {
     }
 
     /**
-     * Adds new message reveved from the server into the 
+     * Adds new message reveved from the server into the
      * list of all messages and displays it.
+     * 
      * @param message
      */
-    public synchronized void addMessage(String message) {
+    public synchronized void addIncomingMessage(String message) {
+        addMessage(message);
+    }
+
+    private void addMessage(String message) {
         DefaultListModel<String> model = (DefaultListModel<String>) messageList.getModel();
-        
+
         boolean isChatAtBottom = isScrollBarAtBottom();
-        
+
         // Add the message to the list
         model.addElement(message);
-        
+
         if (isChatAtBottom) {
             // Scroll to the bottom of the list
             int lastIndex = model.getSize() - 1;
@@ -43,19 +48,32 @@ public class ChatListenerPanel extends JPanel {
             }
         }
 
-        try {
-            SwingUtilities.invokeAndWait(() -> {
-                repaint();
-            });
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (SwingUtilities.isEventDispatchThread()) {
+            repaint();
+        } else {
+            try {
+                SwingUtilities.invokeAndWait(() -> {
+                    repaint();
+                });
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     public boolean isScrollBarAtBottom() {
         JScrollBar scrollbar = scrollPane.getVerticalScrollBar();
         return scrollbar.getValue() >= scrollbar.getMaximum() - scrollbar.getVisibleAmount() - 30;
+    }
+
+    public void addOutcomingMessage(String message) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                addMessage("<html><body style='background-color: yellow;'>" + message + "</body></html>");
+            }
+        }).start();
     }
 }

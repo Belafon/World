@@ -2,16 +2,18 @@ package com.world.pcclient.visibles.creatures;
 
 import java.util.Set;
 
-import com.world.pcclient.behaviours.Behaviour;
+import com.world.pcclient.behaviours.BehavioursRequirement;
 import com.world.pcclient.visibles.Visible;
 
 public class Creature extends Visible {
 
     private String look;
-    private int id;
+    private final int id;
 
-    public Creature(String name, int id, String look, Set<Behaviour> behaviours) {
-        super(behaviours, name);
+    public Creature(String name, int id, String look,
+            Set<BehavioursRequirement> requirements) {
+        super(requirements, name);
+
         this.id = id;
         this.look = look;
     }
@@ -19,15 +21,22 @@ public class Creature extends Visible {
     // TODO not implemented yet
     @Override
     public Runnable getOnTitleClick() {
-        return () -> {};
+        return () -> {
+        };
     }
 
+    @Override
     public int getId() {
         return id;
     }
 
     public String getLook() {
         return look;
+    }
+
+    @Override
+    public String getVisibleType() {
+        return "Creature";
     }
 
 }

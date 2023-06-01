@@ -13,6 +13,7 @@ public class App {
     private static PlayableCreature currenCreature = null;
     private static Set<PlayableCreature> playableCreatures = new HashSet<>();
     private static Stats stats;
+    public static Client client;
     public static void main(String[] args) {
         stats = new Stats();
         Panels panels = new Panels(stats);
@@ -24,7 +25,7 @@ public class App {
         } catch (InvocationTargetException | InterruptedException e) {
             e.printStackTrace();
         }
-        new Client(panels, stats);
+        client = new Client(panels, stats);
     }
     
     public static void addNewPlayableCreature(PlayableCreature creature){
