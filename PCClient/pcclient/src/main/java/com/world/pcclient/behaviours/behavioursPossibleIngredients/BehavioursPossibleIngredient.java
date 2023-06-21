@@ -17,6 +17,10 @@ public abstract class BehavioursPossibleIngredient {
     }
 
     protected abstract String getName();
-    public abstract int getId();
+    public abstract String getId();
+
+    public String getMessageId(){
+        return "" + getId();
+    }
     public abstract String getVisibleType();
 }

@@ -7,7 +7,6 @@ import java.util.Set;
 
 import com.world.pcclient.App;
 import com.world.pcclient.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
-import com.world.pcclient.visibles.creatures.PlayableCreature;
 
 public class Behaviour {
     public final String messagesName;
@@ -15,6 +14,7 @@ public class Behaviour {
 
     public Set<BehavioursRequirementDetail> requirements;
     public final String description;
+    private int duration = -1;
 
     private Behaviour(String messagesName, String name, String description,
             Set<BehavioursRequirementDetail> requirements) {
@@ -45,12 +45,12 @@ public class Behaviour {
             return this;
         }
 
-        public BehaviourBuilder addRequirement(
+/*         public BehaviourBuilder addRequirement(
                 BehavioursRequirementDetail requirement) {
             requirements.add(requirement);
             return this;
         }
-
+ */
         public Behaviour build() {
             if (description == null)
                 throw new Error("Some behaviour does not have description.");
@@ -73,7 +73,7 @@ public class Behaviour {
             return this;
         }
 
-        public BehaviourBuilder addRequirement(
+/*         public BehaviourBuilder addRequirement(
                 BehavioursRequirement behavioursRequirement,
                 int numOfConcreteIngredient,
                 int numOfGeneralIngredient) {
@@ -83,7 +83,7 @@ public class Behaviour {
                     numOfConcreteIngredient,
                     numOfGeneralIngredient));
             return this;
-        }
+        } */
     }
 
     public static class BehavioursRequirementDetail {
@@ -105,5 +105,13 @@ public class Behaviour {
     public void execute(List<BehavioursPossibleIngredient> selectedIngredients) {
         // we have to send the message to the server
         App.client.sender.behaviours.executeBehaviour(selectedIngredients, this);
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public float getDuration() {
+        return duration;
     }
 }

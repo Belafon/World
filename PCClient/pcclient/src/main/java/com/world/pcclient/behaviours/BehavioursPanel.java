@@ -12,9 +12,9 @@ import com.world.pcclient.mainWindow.MainWindow;
 
 public class BehavioursPanel {
     public JPanel panel;
-    private JPanel panelWithList;
-    private Map<Behaviour, JLabel> itemLabels;
-    private BehaviourExecutorPanel executor = new BehaviourExecutorPanel();
+    public final JPanel panelWithList;
+    public Map<Behaviour, JLabel> itemLabels;
+    private BehaviourExecutorPanel executor = new BehaviourExecutorPanel(this);
 
     public BehavioursPanel() {
         panel = new JPanel();
@@ -33,6 +33,7 @@ public class BehavioursPanel {
         splitPane.setResizeWeight(0.5); // Set the initial resize weight for the split pane
 
         panel.add(splitPane, BorderLayout.CENTER); // Add the split pane to the center of the main panel
+
     }
 
     private Behaviour selectedItem;
@@ -52,9 +53,11 @@ public class BehavioursPanel {
 
         itemLabels.put(item, label);
         panelWithList.add(label);
-        panelWithList.revalidate();
 
         updateLabelWidths();
+        
+        panel.revalidate();
+        panel.repaint();
     }
 
     private void updateLabelWidths() {
@@ -79,11 +82,23 @@ public class BehavioursPanel {
         if (label != null) {
             panelWithList.remove(label);
             panelWithList.revalidate();
+            panel.repaint();
         }
     }
 
     public Component getPanel() {
         return panel;
+    }
+
+    public void update(Behaviours behaviours) {
+        executor.update(behaviours);
+        for (JLabel label : itemLabels.values()) {
+            label.setEnabled(true);
+        }
+    }
+
+    public void reupdateBehaviour() {
+        executor.setBehaviour(executor.getCurrentlySelectedBehaviour());        
     }
 
 }

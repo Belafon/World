@@ -36,9 +36,10 @@ public class BehaviourExecutorPanel {
     private final JLabel description;
     private final JButton execute;
     private JPanel requirementsPanel;
-    private JList<JComboBox<BehavioursPossibleIngredient>> comboBoxList = new JList<>();
+    private BehavioursPanel behavioursPanel;
 
-    public BehaviourExecutorPanel() {
+    public BehaviourExecutorPanel(BehavioursPanel behavioursPanel) {
+        this.behavioursPanel = behavioursPanel;
         contentPanel.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -87,25 +88,32 @@ public class BehaviourExecutorPanel {
         execute.setToolTipText("Execute the behaviour.");
         execute.setEnabled(true);
         execute.removeActionListener(
-            execute.getActionListeners().length == 0 ? null : execute.getActionListeners()[0]
-        );
+                execute.getActionListeners().length == 0 ? null : execute.getActionListeners()[0]);
         execute.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // we have to get all selected ingredients
-                List<BehavioursPossibleIngredient> selectedIngredients = new ArrayList<>();
-                for (RequirementChooser chooser : requiremntsChoosers.values()) {
-                    for (JComboBox<BehavioursPossibleIngredient> comboBox : chooser.comboBoxes) {
-                        selectedIngredients.add((BehavioursPossibleIngredient) comboBox.getSelectedItem());
-                    }
-                }
-
-                behaviour.execute(selectedIngredients);
+                execute.setEnabled(false);
+                executeBehaviour(behaviour);
             }
+
         });
         setRequirementsPanel(behaviour);
 
         contentPanel.revalidate();
+    }
+
+    private void executeBehaviour(Behaviour behaviour) {
+        // we have to get all selected ingredients
+        List<BehavioursPossibleIngredient> selectedIngredients = new ArrayList<>();
+        for (RequirementChooser chooser : requiremntsChoosers.values()) {
+            for (JComboBox<BehavioursPossibleIngredient> comboBox : chooser.comboBoxes) {
+                selectedIngredients.add((BehavioursPossibleIngredient) comboBox.getSelectedItem());
+            }
+        }
+        for (JLabel label : behavioursPanel.itemLabels.values()) {
+            label.setEnabled(true);
+        }
+        behaviour.execute(selectedIngredients);
     }
 
     // set of all requiremnets of concrete behaviour, that is currently beeing
@@ -114,9 +122,10 @@ public class BehaviourExecutorPanel {
     private Set<BehavioursPossibleIngredient> availableIngredients = new HashSet<>();
 
     private void setRequirementsPanel(Behaviour behaviour) {
-        this.availableIngredients = PlayableCreature.allIngredients;
-        
-        // we have to remove all ingredients, that are already selected from different behaviour
+        this.availableIngredients = new HashSet<>(PlayableCreature.allIngredients);
+
+        // we have to remove all ingredients, that are already selected from different
+        // behaviour
         for (RequirementChooser chooser : requiremntsChoosers.values()) {
             for (JComboBox<BehavioursPossibleIngredient> comboBox : chooser.comboBoxes) {
                 availableIngredients.add((BehavioursPossibleIngredient) comboBox.getSelectedItem());
@@ -200,6 +209,7 @@ public class BehaviourExecutorPanel {
                 comboBox.addActionListener(new ActionListener() {
                     private BehavioursPossibleIngredient lastSelected = (BehavioursPossibleIngredient) comboBox
                             .getSelectedItem();
+
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         var selectedIngredient = (BehavioursPossibleIngredient) comboBox.getSelectedItem();
@@ -207,17 +217,15 @@ public class BehaviourExecutorPanel {
                         availableIngredients.add(lastSelected);
                         lastSelected = selectedIngredient;
 
-                        
                         chooser.selectIngredient(selectedIngredient, comboBox);
-                        
+
                         setAvailableIngredients(behaviour);
-                        
-                        
+
                         panel.revalidate();
                         panel.repaint();
                     }
                 });
-                
+
                 insidePanel.add(comboBox);
             }
         }
@@ -296,5 +304,32 @@ public class BehaviourExecutorPanel {
 
     public Component getContentPanel() {
         return panel;
+    }
+
+    public void update(Behaviours behaviours) {
+        if (behavioursPanel.itemLabels.isEmpty()) {
+            clearPanel();
+        } else {
+            if (behaviours.feasibles.contains(behaviour))
+                setBehaviour(behaviour);
+            else {
+                clearPanel();
+            }
+
+            execute.setEnabled(true);
+        }
+    }
+
+    private void clearPanel() {
+        name.setText("");
+        description.setText("");
+        requirementsPanel.removeAll();
+        execute.setEnabled(false);
+        contentPanel.revalidate();
+        contentPanel.repaint();
+    }
+
+    public Behaviour getCurrentlySelectedBehaviour() {
+        return behaviour;
     }
 }
