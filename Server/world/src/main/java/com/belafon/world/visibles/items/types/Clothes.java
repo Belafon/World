@@ -7,7 +7,7 @@ import com.belafon.world.objectsMemory.itemsMemory.ClothesItemMemory;
 import com.belafon.world.visibles.items.Item;
 import com.belafon.world.visibles.items.typeItem.ClothesTypeItem;
 
-public class Clothes extends Item{
+public class Clothes extends Item {
     private int dirty;
     public final ClothesItemMemory memory = new ClothesItemMemory();
 

@@ -1,11 +1,14 @@
 package com.belafon.world.visibles.creatures;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
-import java.util.concurrent.locks.ReentrantLock;
 
 import com.belafon.server.sendMessage.MessageSender;
 import com.belafon.world.World;
@@ -17,6 +20,8 @@ import com.belafon.world.objectsMemory.creaturesMemory.CreaturesMemory;
 import com.belafon.world.visibles.creatures.behaviour.Behaviour;
 import com.belafon.world.visibles.creatures.behaviour.BehaviourCondition;
 import com.belafon.world.visibles.creatures.behaviour.PlayersLookAround;
+import com.belafon.world.visibles.creatures.behaviour.VisiblesID;
+import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleIngredient;
 import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleRequirement;
 import com.belafon.world.visibles.creatures.condition.AbilityCondition;
 import com.belafon.world.visibles.creatures.condition.ActualCondition;
@@ -26,15 +31,43 @@ import com.belafon.world.visibles.creatures.inventory.Inventory;
 public abstract class Creature extends Visible {
     // this is requirement that says any creature is required for some behaviour
     // exection
-    public static final BehavioursPossibleRequirement REQUIREMENT = new BehavioursPossibleRequirement("Creature is visible.") {
+    public static final BehavioursPossibleRequirement REQUIREMENT = new BehavioursPossibleRequirement(
+            "Creature is visible.") {
     };
     public volatile String name;
-    protected volatile UnboundedPlace position;
+    protected volatile UnboundedPlace location;
     public final String appearence;
     public final AbilityCondition abilityCondition;
     public final ActualCondition actualCondition;
     public final BehaviourCondition behaviourCondition;
     public final InfluencingActivities influencingActivities;
+    public final HashMap<VisiblesID, BehavioursPossibleIngredient> visibles = new HashMap<>();
+
+    @FunctionalInterface
+    public static interface ActionChangeIngredient {
+        void doJob(BehavioursPossibleIngredient ingredient);
+    }
+
+    public final void getAllNotVisibleIngredients(ActionChangeIngredient action) {
+        // work with all visibles
+        synchronized (currentlyVisibleObjects) {
+            for (Visible visible : currentlyVisibleObjects.values()) {
+                action.doJob(visible);
+            }
+        }
+
+        // work with all knowledge
+        synchronized (knowledge) {
+            for (Knowledge knowledge : knowledge) {
+                action.doJob(knowledge);
+            }
+        }
+
+        // work with all items in inventory
+        inventory.getAllItems((item) -> {
+            action.doJob(item);
+        });
+    }
 
     /**
      * null means idle, each creature can do just one behaviour,
@@ -48,29 +81,34 @@ public abstract class Creature extends Visible {
     private volatile int weight;
     private final Set<Knowledge> knowledge = new ConcurrentSkipListSet<>();
 
-    private final Set<Visible> currentlyVisibleObjects = ConcurrentHashMap.newKeySet();
-    private final ReentrantLock mutexCurrentlyVisibleObjects = new ReentrantLock();
+    protected final Map<VisiblesID, Visible> currentlyVisibleObjects = new HashMap<>();
 
     public final CreaturesMemory memory = new CreaturesMemory();
 
     public PlayersLookAround surroundingPlaces;
 
-    public Creature(World game, String name, UnboundedPlace position,
+    public Creature(World game, String name, UnboundedPlace location,
             String appearence, MessageSender sendMessage,
             int weight) {
         this.id = game.visibleIds.getCreatureId();
         this.game = game;
         this.writer = sendMessage;
-        this.position = position;
+        this.location = location;
         this.appearence = appearence;
         this.name = name;
         this.weight = weight;
         influencingActivities = new InfluencingActivities(writer);
-        setInventory(position);
+        setInventory(location);
         abilityCondition = new AbilityCondition(this, 100, 100, 100, 100, 100, 100, 100);
         behaviourCondition = new BehaviourCondition(this);
         actualCondition = new ActualCondition(this);
-        surroundingPlaces = PlayersLookAround.look(position);
+
+    }
+
+    public void setupSurroundingVisiblePlacesWhenGameStarts() {
+        var newLook = PlayersLookAround.look(location);
+        updateSurroundingVisiblePlaces(newLook, surroundingPlaces);
+        surroundingPlaces = newLook;
     }
 
     public void setAbilityCondition(int strength, int agility, int speed_of_walk, int speed_of_run, int hearing,
@@ -99,8 +137,14 @@ public abstract class Creature extends Visible {
      * @param behaviour
      */
     public void setBehaviour(Behaviour behaviour) {
-        currentBehaviour = behaviour;
-        behaviour.execute();
+        writer.condition.setBehaviour(behaviour, behaviour == null ? 0 : behaviour.getDuration());
+        
+        if(behaviour == null || behaviour.getDuration() != 0)
+            currentBehaviour = behaviour;
+
+        if (behaviour != null)
+            behaviour.execute();
+
         getWatchers((watchers) -> {
             for (Creature creature : watchers)
                 creature.influencingActivities.otherCreaturesBehaviourChanged(creature);
@@ -112,29 +156,33 @@ public abstract class Creature extends Visible {
      * 
      * @param position
      */
-    public void setLocation(Place position) {
+    public void setLocationInMap(Place position) {
         PlayersLookAround lastLook = this.surroundingPlaces;
         memory.addPosition(new ObjectsMemoryCell<Place>(game.time.getTime(), position));
-        this.position = position;
+        this.location = position;
         this.surroundingPlaces = PlayersLookAround.look(position);
 
+        // remove all visibles
         for (int row = 0; row < lastLook.visiblePlaces.length; row++) {
             for (int col = 0; col < lastLook.visiblePlaces[row].length; col++) {
                 if (lastLook.visiblePlaces[row][col] == null)
                     continue;
 
-    //            if (!surroundingPlaces.isPlaceVisible(lastLook.visiblePlaces[row][col])) {
-                    // remove all visibles from the place
-                    for (Visible visible : currentlyVisibleObjects)
-                        removeVisibleObject(visible);
-    /*             } else {
-                    // find all visible items that are not visible anymore and remove them
-                    for (Visible visible : currentlyVisibleObjects)
-                        if (!shouldBeVisibleStillVisible(visible))
-                            removeVisibleObject(visible);
-                } */
+                // if (!surroundingPlaces.isPlaceVisible(lastLook.visiblePlaces[row][col])) {
+                // remove all visibles from the place
+                removeAllVisibles();
+                /*
+                 * } else {
+                 * // find all visible items that are not visible anymore and remove them
+                 * for (Visible visible : currentlyVisibleObjects)
+                 * if (!shouldBeVisibleStillVisible(visible))
+                 * removeVisibleObject(visible);
+                 * }
+                 */
             }
         }
+
+        updateSurroundingVisiblePlaces(surroundingPlaces, lastLook);
         writer.surrounding.setPosition(surroundingPlaces);
 
         // all players watching that have to get notice that
@@ -147,11 +195,85 @@ public abstract class Creature extends Visible {
             if (lostVisibles.containsKey(position)) {
                 for (ObjectsMemoryCell<Visible> lostVisible : lostVisibles.get(position)) {
                     if (lostVisible.object().getLocation() == position)
-                        addVisibleObject(lostVisible.object());
+                        addVisible(lostVisible.object());
                 }
                 lostVisibles.get(position).clear();
             }
         });
+    }
+
+    private void updateSurroundingVisiblePlaces(PlayersLookAround newLook, PlayersLookAround lastLook) {
+        // lets remove all places in surrounding map from sight
+        if (lastLook != null)
+            for (int i = 0; i < newLook.visiblePlaces.length; i++) {
+                for (int j = 0; j < newLook.visiblePlaces[i].length; j++) {
+                    var lastPlace = lastLook.visiblePlaces[i][j];
+                    if (lastPlace != null) {
+                        synchronized (behaviourCondition.allIngredients) {
+                            behaviourCondition.allIngredients.remove(lastPlace.getBehavioursPossibleIngredientID());
+                        }
+                        removeBehavioursPossibleIngredientAndCheckFeasibleBehaviours(lastPlace);
+                        writer.surrounding.removePlaceFromSight(lastPlace, i, j);
+                    }
+
+                }
+            }
+
+        Set<Place> lastPlacesThatAreStillInSight = new HashSet<>(); // TODO remove
+        for (int i = 0; i < newLook.visiblePlaces.length; i++) {
+            for (int j = 0; j < newLook.visiblePlaces[i].length; j++) {
+                updatePlace(newLook.visiblePlaces[i][j], lastPlacesThatAreStillInSight, newLook);
+            }
+        }
+
+        // lets remove places that are not in sight anymore
+        /*
+         * if (lastLook != null)
+         * for (int i = 0; i < newLook.visiblePlaces.length; i++) {
+         * for (int j = 0; j < newLook.visiblePlaces[i].length; j++) {
+         * var lastPlace = lastLook.visiblePlaces[i][j];
+         * if (!lastPlacesThatAreStillInSight.contains(lastPlace)
+         * && lastPlace != null) {
+         * synchronized (behaviourCondition.allIngredients) {
+         * behaviourCondition.allIngredients.remove(lastPlace.
+         * getBehavioursPossibleIngredientID());
+         * }
+         * removeBehavioursPossibleIngredientAndCheckFeasibleBehaviours(lastPlace);
+         * writer.surrounding.removePlaceFromSight(lastPlace, i, j);
+         * }
+         * 
+         * }
+         * }
+         */
+    }
+
+    private void updatePlace(Place newPlace, Set<Place> lastPlacesThatAreStillInSight, PlayersLookAround newLook) {
+        if (newPlace == null)
+            return;
+
+        synchronized (behaviourCondition.allIngredients) {
+            /*
+             * if (!behaviourCondition.allIngredients
+             * .containsKey(newPlace.getBehavioursPossibleIngredientID())) {
+             */
+            // add to ingredietns
+            behaviourCondition.allIngredients.put(newPlace.getBehavioursPossibleIngredientID(), newPlace);
+            addBehavioursPossibleIngredientAndCheckFeasibleBehaviours(newPlace);
+            /*
+             * } else {
+             * // dont add the place again but save the last place,
+             * // so that will not be removed
+             * lastPlacesThatAreStillInSight.add(newLook.visiblePlaces[newPlace.positionX][
+             * newPlace.positionY]);
+             * }
+             */
+        }
+    }
+
+    @Override
+    protected void setLocation(UnboundedPlace place) {
+        // setLocation(place); // BUG recursion
+        place.addCreature(this);
     }
 
     private boolean shouldBeVisibleStillVisible(Visible visible) {
@@ -173,22 +295,27 @@ public abstract class Creature extends Visible {
 
     @Override
     public UnboundedPlace getLocation() {
-        return position;
+        return location;
     }
 
     public Set<Knowledge> getKnowledge() {
-        return knowledge;
+        synchronized (knowledge) {
+            return knowledge;
+        }
     }
 
     public void addKnowledge(Knowledge knowledge) {
         this.knowledge.add(knowledge);
-        behaviourCondition.addBehavioursPossibleIngredient(knowledge.type, knowledge);
+        synchronized (behaviourCondition.allIngredients) {
+            behaviourCondition.allIngredients.put(knowledge.getBehavioursPossibleIngredientID(), knowledge);
+        }
+        behaviourCondition.addBehavioursPossibleIngredientAndCheckFeasibleBehaviours(knowledge.type, knowledge);
         writer.condition.addKnowledge(knowledge);
     }
 
     public void removeKnowledge(Knowledge knowledge) {
         this.knowledge.remove(knowledge);
-        behaviourCondition.removeBehavioursPossibleRequirement(knowledge.type, knowledge);
+        behaviourCondition.removeBehavioursPossibleIngredientAndCheckFeasibleBehaviours(knowledge.type, knowledge);
         writer.condition.addKnowledge(knowledge);
     }
 
@@ -205,12 +332,13 @@ public abstract class Creature extends Visible {
      * 
      * @param visible
      */
-    public void addVisibleObject(Visible visible) {
-        mutexCurrentlyVisibleObjects.lock();
-        try {
-            currentlyVisibleObjects.add(visible);
-        } finally {
-            mutexCurrentlyVisibleObjects.unlock();
+    public void addVisible(Visible visible) {
+        synchronized (behaviourCondition.allIngredients) {
+            behaviourCondition.allIngredients.put(visible.getBehavioursPossibleIngredientID(), visible);
+        }
+
+        synchronized (currentlyVisibleObjects) {
+            currentlyVisibleObjects.put(visible.getId(), visible);
         }
 
         memory.addVisibleObjectSpotted(new ObjectsMemoryCell<Visible>(game.time.getTime(), visible));
@@ -219,14 +347,24 @@ public abstract class Creature extends Visible {
 
         this.writer.surrounding.addVisibleInSight(visible, this);
 
-        for (BehavioursPossibleRequirement requirement : visible.getBehavioursPossibleRequirementType(this)) {
-            behaviourCondition.addBehavioursPossibleIngredient(requirement, visible);
+        addBehavioursPossibleIngredientAndCheckFeasibleBehaviours(visible);
+    }
+
+    private void addBehavioursPossibleIngredientAndCheckFeasibleBehaviours(BehavioursPossibleIngredient ingredient) {
+        for (BehavioursPossibleRequirement requirement : ingredient.getBehavioursPossibleRequirementType(this)) {
+            behaviourCondition.addBehavioursPossibleIngredientAndCheckFeasibleBehaviours(requirement, ingredient);
+        }
+    }
+
+    private void removeBehavioursPossibleIngredientAndCheckFeasibleBehaviours(BehavioursPossibleIngredient ingredient) {
+        for (BehavioursPossibleRequirement requirement : ingredient.getBehavioursPossibleRequirementType(this)) {
+            behaviourCondition.removeBehavioursPossibleIngredientAndCheckFeasibleBehaviours(requirement, ingredient);
         }
     }
 
     @FunctionalInterface
     public interface ActionGetCurremtlyObjectSpotted {
-        void doJob(Set<Visible> visibleObjectSpotted);
+        void doJob(Collection<Visible> visibleObjectSpotted);
     }
 
     /**
@@ -234,11 +372,8 @@ public abstract class Creature extends Visible {
      * This aim to require stay safe even with concurent approach.
      */
     public void getCurrentlyVisibleObjectSpotted(ActionGetCurremtlyObjectSpotted visibles) {
-        mutexCurrentlyVisibleObjects.lock();
-        try {
-            visibles.doJob(currentlyVisibleObjects);
-        } finally {
-            mutexCurrentlyVisibleObjects.unlock();
+        synchronized (currentlyVisibleObjects) {
+            visibles.doJob(currentlyVisibleObjects.values());
         }
     }
 
@@ -246,23 +381,36 @@ public abstract class Creature extends Visible {
      * This method removes some visible from creatures sight.
      * The creature cannot see the visible anymore.
      */
-    public void removeVisibleObject(Visible visible) {
-        mutexCurrentlyVisibleObjects.lock();
-        try {
-            currentlyVisibleObjects.remove(visible);
-        } finally {
-            mutexCurrentlyVisibleObjects.unlock();
+    public void removeVisible(Visible visible) {
+        synchronized (behaviourCondition.allIngredients) {
+            behaviourCondition.allIngredients.remove(visible.getBehavioursPossibleIngredientID());
         }
+        removeVisibleObjectWithoutRemovingFromWatchers_BeforeLocationOfTheVisibleChanges(visible);
+        visible.removeWatcher(this);
+    }
 
-        memory.addVisibleObjectLostFromSight(new ObjectsMemoryCell<Visible>(game.time.getTime(), visible),
-                visible.getLocation(), this);
+    public void removeVisible(Iterator<Visible> iterator) {
+        if (!iterator.hasNext())
+            return;
+
+        var visible = iterator.next();
+        synchronized (behaviourCondition.allIngredients) {
+            behaviourCondition.allIngredients.remove(visible.getBehavioursPossibleIngredientID());
+        }
+        removeVisibleObjectWithoutRemovingFromWatchers_BeforeLocationOfTheVisibleChanges(iterator, visible);
 
         visible.removeWatcher(this);
+    }
 
-        this.writer.surrounding.removeVisibleFromSight(visible);
-
-        for (BehavioursPossibleRequirement requirement : visible.getBehavioursPossibleRequirementType(this)) {
-            behaviourCondition.addBehavioursPossibleIngredient(requirement, visible);
+    public void removeAllVisibles() {
+        synchronized (currentlyVisibleObjects) {
+            var iterator = currentlyVisibleObjects.values().iterator();
+            while (iterator.hasNext()) {
+                var visible = iterator.next();
+                iterator.remove();
+                removeVisibleObjectWithoutRemovingFromWatchers_BeforeLocationOfTheVisibleChanges(visible);
+                visible.removeWatcher(this);
+            }
         }
     }
 
@@ -273,11 +421,8 @@ public abstract class Creature extends Visible {
      * @return
      */
     public boolean seesVisibleObject(Visible value) {
-        mutexCurrentlyVisibleObjects.lock();
-        try {
-            return currentlyVisibleObjects.contains(value);
-        } finally {
-            mutexCurrentlyVisibleObjects.unlock();
+        synchronized (currentlyVisibleObjects) {
+            return currentlyVisibleObjects.values().contains(value);
         }
     }
 
@@ -291,4 +436,67 @@ public abstract class Creature extends Visible {
         // TODO needs update
         return abilityCondition.getLoudness();
     }
+
+    @Override
+    public Class<? extends Visible> getClassType() {
+        return Creature.class;
+    }
+
+    @Override
+    protected int getIdNumber() {
+        return id;
+    }
+
+    /**
+     * Removes visible from creatures sight.
+     * It does not remove the visible from watchers.
+     * 
+     * It is important to call this method before changing
+     * the location of the visible!!!
+     * 
+     * It is because of the getBehavioursPossibleRequirementType
+     * called on the visible. If the posisition of the visible
+     * is changed, the method will return different value.
+     * 
+     * @param visible
+     */
+    public void removeVisibleObjectWithoutRemovingFromWatchers_BeforeLocationOfTheVisibleChanges(Visible visible) {
+        synchronized (currentlyVisibleObjects) {
+            currentlyVisibleObjects.remove(visible.getId());
+        }
+
+        memory.addVisibleObjectLostFromSight(new ObjectsMemoryCell<Visible>(game.time.getTime(), visible),
+                visible.getLocation(), this);
+
+        for (BehavioursPossibleRequirement requirement : visible.getBehavioursPossibleRequirementType(this)) {
+            behaviourCondition.removeBehavioursPossibleIngredientAndCheckFeasibleBehaviours(requirement, visible);
+        }
+
+        this.writer.surrounding.removeVisibleFromSight(visible);
+    }
+
+    /**
+     * Same as the method above, but it is used when
+     * the iterator is used.
+     * 
+     * @param iterator
+     * @param visible
+     */
+    public void removeVisibleObjectWithoutRemovingFromWatchers_BeforeLocationOfTheVisibleChanges(
+            Iterator<Visible> iterator, Visible visible) {
+
+        synchronized (currentlyVisibleObjects) {
+            iterator.remove();
+        }
+
+        memory.addVisibleObjectLostFromSight(new ObjectsMemoryCell<Visible>(game.time.getTime(), visible),
+                visible.getLocation(), this);
+
+        for (BehavioursPossibleRequirement requirement : visible.getBehavioursPossibleRequirementType(this)) {
+            behaviourCondition.removeBehavioursPossibleIngredientAndCheckFeasibleBehaviours(requirement, visible);
+        }
+
+        this.writer.surrounding.removeVisibleFromSight(visible);
+    }
+
 }

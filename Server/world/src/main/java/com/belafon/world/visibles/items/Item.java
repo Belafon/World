@@ -13,18 +13,22 @@ import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossi
 import com.belafon.world.visibles.items.typeItem.TypeItem;
 
 public class Item extends Visible {
-    public static final BehavioursPossibleRequirement REQUIREMENT_IS_VISIBLE = new BehavioursPossibleRequirement("An item is visible") {
+    public static final BehavioursPossibleRequirement REQUIREMENT_IS_VISIBLE = new BehavioursPossibleRequirement(
+            "An item is visible") {
     };
-    public static final BehavioursPossibleRequirement REQUIREMENT_IS_IN_INVENTORY = new BehavioursPossibleRequirement("An item is in inventory") {
+    public static final BehavioursPossibleRequirement REQUIREMENT_IS_IN_INVENTORY = new BehavioursPossibleRequirement(
+            "An item is in inventory") {
     };
-/*     public final BehavioursPossibleRequirement requirementIsVisible;
-    public final BehavioursPossibleRequirement requirementIsInInventory; */
+    /*
+     * public final BehavioursPossibleRequirement requirementIsVisible;
+     * public final BehavioursPossibleRequirement requirementIsInInventory;
+     */
 
     public final int id;
     public final TypeItem type;
     public volatile Creature owner;
     public volatile EventItemChange eventItemChange;
-    public UnboundedPlace location; // TODO change location, when is moving
+    protected UnboundedPlace location; // TODO change location, when is moving
     private int weight;
 
     public Item(World game, TypeItem type, UnboundedPlace location) {
@@ -32,10 +36,14 @@ public class Item extends Visible {
         this.type = type;
         this.weight = type.regularWeight;
         this.location = location;
-/*         requirementIsVisible = new BehavioursPossibleRequirement("item " + id + " is visible") {
-        };
-        requirementIsInInventory = new BehavioursPossibleRequirement("item " + id + " is in inventory") {
-        }; */
+        /*
+         * requirementIsVisible = new BehavioursPossibleRequirement("item " + id +
+         * " is visible") {
+         * };
+         * requirementIsInInventory = new BehavioursPossibleRequirement("item " + id +
+         * " is in inventory") {
+         * };
+         */
     }
 
     public int getWeight() {
@@ -63,11 +71,11 @@ public class Item extends Visible {
         List<BehavioursPossibleRequirement> result = new ArrayList<>();
         if (creature.inventory.ownsItem(this)) {
             result.add(type.requirementIsInInventory);
-            //result.add(requirementIsInInventory);
+            // result.add(requirementIsInInventory);
             result.add(REQUIREMENT_IS_IN_INVENTORY);
         } else {
             result.add(type.requirementIsVisible);
-            //result.add(requirementIsVisible);
+            // result.add(requirementIsVisible);
             result.add(REQUIREMENT_IS_VISIBLE);
         }
         return result;
@@ -76,5 +84,21 @@ public class Item extends Visible {
     @Override
     public int getVisibility() {
         return type.visibility;
+    }
+
+    @Override
+    public Class<? extends Visible> getClassType() {
+        return Item.class;
+    }
+
+    @Override
+    protected int getIdNumber() {
+        return id;
+    }
+
+    @Override
+    public void setLocation(UnboundedPlace place) {
+        this.location = place;
+        place.addItem(this);
     }
 }

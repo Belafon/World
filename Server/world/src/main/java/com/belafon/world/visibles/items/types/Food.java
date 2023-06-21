@@ -22,7 +22,8 @@ public class Food extends Item {
     EventItemChange changeFreshness;
     EventItemChange changeWarm;
     public final FoodItemsMemory memory = new FoodItemsMemory();
-    public static final BehavioursPossibleRequirement REQUIREMENT = new BehavioursPossibleRequirement("A Food is in inventory.") {
+    public static final BehavioursPossibleRequirement REQUIREMENT = new BehavioursPossibleRequirement(
+            "A Food is in inventory.") {
     };
 
     public Food(World game, int warm, int freshness, SpecialFoodsProperties[] specialProperties,
@@ -89,7 +90,7 @@ public class Food extends Item {
     @Override
     public List<BehavioursPossibleRequirement> getBehavioursPossibleRequirementType(Creature creature) {
         var itemsRequirements = super.getBehavioursPossibleRequirementType(creature);
-    
+
         if (creature.inventory.ownsItem(this)) {
             itemsRequirements.add(REQUIREMENT);
         }

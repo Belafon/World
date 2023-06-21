@@ -20,10 +20,6 @@ public class SpaceItem extends Item {
     public void setSpace(UnboundedPlace space) {
         this.space = space;
     }
-    
-    public UnboundedPlace getSpacePlace() {
-        return space;
-    }
 
     /**
      * It has to count the sum of 
