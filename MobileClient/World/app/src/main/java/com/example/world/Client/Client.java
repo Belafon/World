@@ -48,34 +48,30 @@ public class Client {
     // This method sets the connection to server
     public static void connect() {
         Log.d(TAG, "run: CREATE CLIENT --- LETS CONNECT");
-        boolean flow2 = true; // to gets info about flow
+        boolean flow = true; // to gets info about flow
         try {
             try{
                 clientSocket = new Socket(ip, port);
             }catch (UnknownHostException e){
-                flow2 = false;
+                flow = false;
             } catch (IOException i) {
-                MainActivity.actualActivity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Screen.info("Network exception...", 0);
-                    }
-                });
-                flow2 = false;
+                MainActivity.actualActivity.runOnUiThread(
+                        () -> Screen.info("Network exception...", 0));
+                flow = false;
             }
-            if(clientSocket == null) flow2 = false;
+            if(clientSocket == null) flow = false;
 
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             startListener(in);
         } catch (IOException e) {
-            flow2 = false;
+            flow = false;
         } catch (Exception e){
-            flow2 = false;
+            flow = false;
         }
-        flow = flow2;
+        Client.flow = flow;
         sendMessage = new SendMessage();
 
-        if(flow2){
+        if(flow){
             clientsData.saveDataInteager(AbstractActivity.actualActivity, port, "port");
             clientsData.saveDataString(AbstractActivity.actualActivity, ip, "serverIp");
 
@@ -100,12 +96,7 @@ public class Client {
     public static void connectToLastIp() {
         ip = Client.clientsData.LoadDataString(AbstractActivity.actualActivity, "serverIp");
         port = Client.clientsData.LoadDataInteager(AbstractActivity.actualActivity, "port");
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                connect();
-            }
-        }).start();
+        new Thread(() -> connect()).start();
     }
 
     // sets listener of messages from server
@@ -156,6 +147,7 @@ public class Client {
 
     //private static Timer timer;
     public synchronized static void decomposeTheString(String value) {
+        Log.d(TAG, "decomposeTheString: TRY HELLO WORLD");
     /*    // TODO Auto-generated method stub
         final String[] message = value.split(" ");
         String typeAction;

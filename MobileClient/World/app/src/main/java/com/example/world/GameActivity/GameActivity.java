@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 
-import com.example.world.GameActivity.SetActivity;
 import com.example.world.R;
 
 public class GameActivity extends AppCompatActivity {
@@ -26,7 +25,7 @@ public class GameActivity extends AppCompatActivity {
         openWeitingScreenFragment();
     }
     public void openWeitingScreenFragment(){
-        WeitingScreenFragment fragment = new WeitingScreenFragment();
+        WaitingScreenFragment fragment = new WaitingScreenFragment();
 
         openFragment(fragment);
     }
