@@ -52,4 +52,7 @@ public interface SurroundingMessages {
 
     public default void removeVisibleFromSight(Visible value) {
     }
+
+    public default void removePlaceFromSight(Place lastPlace, int xInRelativeMap, int yInRelativeMap) {
+    }
 }

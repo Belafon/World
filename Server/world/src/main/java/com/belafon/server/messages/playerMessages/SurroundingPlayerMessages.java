@@ -11,8 +11,10 @@ import com.belafon.world.objectsMemory.Visible;
 import com.belafon.world.time.DailyLoop.NamePartOfDay;
 import com.belafon.world.visibles.creatures.Creature;
 import com.belafon.world.visibles.creatures.behaviour.PlayersLookAround;
+import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleIngredient;
 import com.belafon.world.visibles.items.Item;
 import com.belafon.world.visibles.resources.Resource;
+import com.belafon.world.visibles.resources.TypeOfResource;
 
 public class SurroundingPlayerMessages implements SurroundingMessages {
     public final PlayersMessageSender sendMessage;
@@ -39,7 +41,7 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
 
     @Override
     public void setInfoAboutSurrounding(PlayersLookAround surrounding) {
-        String message = "map look_arround " + surrounding.makeMessage();
+        String message = "map look_arround " + surrounding.makeMessage(sendMessage.client.player);
         sendMessage.client.writer.sendLetter(message, PlayersMessageSender.TypeMessage.other);
     }
 
@@ -124,12 +126,13 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
         sendMessage.client.writer.sendLetter(message.toString(), PlayersMessageSender.TypeMessage.other);
     }
 
-    public static StringBuilder getAllPossibleBehavioursReqruiementsAsMessage(Visible visible, Creature creature) {
+    public static StringBuilder getAllPossibleBehavioursReqruiementsAsMessage(BehavioursPossibleIngredient ingredient,
+            Creature creature) {
         StringBuilder message = new StringBuilder("");
         boolean firstItem = true;
-        for (var requirement : visible.getBehavioursPossibleRequirementType(creature)) {
+        for (var requirement : ingredient.getBehavioursPossibleRequirementType(creature)) {
             if (firstItem) {
-                
+
                 message.append(requirement.idName);
                 firstItem = false;
             } else {
@@ -187,5 +190,20 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
                     + resource.id);
         }
         sendMessage.client.writer.sendLetter(message.toString(), PlayersMessageSender.TypeMessage.other);
+    }
+
+    public void setNewResourceType(TypeOfResource resorceType, Creature creature) {
+        // converts resorceType.name this example treeOak to tree_oak
+        String name = resorceType.name.name().replaceAll("([A-Z])", "_$1").toLowerCase();
+        StringBuilder requirements = getAllPossibleBehavioursReqruiementsAsMessage(resorceType, creature);
+        sendMessage.sendLetter("surrounding new_resource_type " + resorceType.name + " " + name + " " + requirements,
+                PlayersMessageSender.TypeMessage.other);
+    }
+
+    @Override
+    public void removePlaceFromSight(Place lastPlace, int xInRelativeMap, int yInRelativeMap) {
+        sendMessage.sendLetter("map remove_place_in_sight " + lastPlace.getId() + " "
+                + xInRelativeMap + " " + yInRelativeMap,
+                PlayersMessageSender.TypeMessage.other);
     }
 }
