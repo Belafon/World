@@ -16,7 +16,7 @@ import com.example.world.AbstractActivity;
 import com.example.world.R;
 import com.example.world.Screen;
 
-public class WeitingScreenFragment extends Fragment {
+public class WaitingScreenFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
