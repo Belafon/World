@@ -1,7 +1,10 @@
 package com.belafon.world.maps.place;
 
+import java.util.List;
+
 import com.belafon.world.maps.Map;
 import com.belafon.world.maps.weather.Weather;
+import com.belafon.world.visibles.creatures.Creature;
 import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleRequirement;
 import com.belafon.world.visibles.resources.Resource;
 
@@ -14,7 +17,8 @@ public class Place extends UnboundedPlace {
     public final int positionY;
     public int altitude;
 
-    public static final BehavioursPossibleRequirement REQUIREMENT_IS_REACHABLE = new BehavioursPossibleRequirement("An item is visible") {
+    public static final BehavioursPossibleRequirement REQUIREMENT_IS_REACHABLE = new BehavioursPossibleRequirement(
+            "A place is reachable.") {
     };
 
     private static Map printNewPlaceOnlyOfOneMap;
@@ -34,9 +38,9 @@ public class Place extends UnboundedPlace {
      * There is no random.
      */
     public int getTemperature() {
-        int temperature = 30 - (altitude / 80) + map.game.time.partOfDay.temperatureChange(); // altitude = 1000, -> 30
-                                                                                              // - (1000 / 80) = 30 - 12
-                                                                                              // = 8 degrees celsius
+        // altitude = 1000, -> 30 - (1000 / 80) = 30 - 12
+        // = 8 degrees celsius
+        int temperature = 30 - (altitude / 80) + map.game.time.partOfDay.temperatureChange();
         if (map.sky != null) {
             Weather weather = map.sky.getWeather(this);
             temperature -= weather.getClouds();
@@ -62,4 +66,24 @@ public class Place extends UnboundedPlace {
         return log;
     }
 
+    @Override
+    public List<BehavioursPossibleRequirement> getBehavioursPossibleRequirementType(Creature creature) {
+        var list = super.getBehavioursPossibleRequirementType(creature);
+        if (this != creature.getLocation())
+            if (creature.surroundingPlaces == null)
+                list.add(REQUIREMENT_IS_REACHABLE);
+            else if (creature.surroundingPlaces.isPlaceVisible(this))
+                list.add(REQUIREMENT_IS_REACHABLE);
+        return list;
+    }
+
+    @Override
+    public String getId() {
+        return map.id + "$" + id;
+    }
+
+    @Override
+    public BehavioursPossibleIngredientID getBehavioursPossibleIngredientID() {
+        return new BehavioursPossibleIngredientID(UnboundedPlace.class, getId());
+    }
 }

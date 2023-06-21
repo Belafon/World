@@ -11,12 +11,18 @@ import com.belafon.console.ConsolePrint;
 import com.belafon.world.World;
 import com.belafon.world.maps.placeEffects.PlaceEffect;
 import com.belafon.world.visibles.creatures.Creature;
+import com.belafon.world.visibles.creatures.behaviour.BehavioursPossibleIngredientID;
+import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleIngredient;
+import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleRequirement;
 import com.belafon.world.visibles.items.Item;
 import com.belafon.world.visibles.resources.Resource;
 import com.belafon.world.visibles.resources.TypeOfResource;
 import com.belafon.world.visibles.resources.TypeOfResourceOfTypeOfPlace;
 
-public abstract class UnboundedPlace {
+public abstract class UnboundedPlace implements BehavioursPossibleIngredient {
+    public static final BehavioursPossibleRequirement REQUIREMENT_IS_VISIBLE = new BehavioursPossibleRequirement(
+            "A place is visible") {
+    };
     public final List<Creature> creatures = Collections.synchronizedList(new ArrayList<>());
     public final List<Item> items = Collections.synchronizedList(new ArrayList<>());
     public Hashtable<TypeOfResource, Resource> resources = new Hashtable<>();
@@ -35,7 +41,10 @@ public abstract class UnboundedPlace {
         setStartResources(typeOfPlace);
         music = typeOfPlace.getMusic();
         picture = typeOfPlace.getPicture();
-        id = game.visibleIds.getPlaceId();
+        if (game != null)
+            id = game.visibleIds.getPlaceId();
+        else
+            id = Integer.MIN_VALUE;
     }
 
     public void recountResourcesDurationOfFinding() {
@@ -178,4 +187,24 @@ public abstract class UnboundedPlace {
     public int getVisibility() {
         return visibility;
     }
+
+    @Override
+    public List<BehavioursPossibleRequirement> getBehavioursPossibleRequirementType(Creature creature) {
+        List<BehavioursPossibleRequirement> list = new ArrayList<>();
+        if (creature.surroundingPlaces == null)
+            list.add(REQUIREMENT_IS_VISIBLE);
+        else if (creature.surroundingPlaces.isPlaceVisible(this))
+            list.add(REQUIREMENT_IS_VISIBLE);
+        return list;
+    }
+
+    @Override
+    public BehavioursPossibleIngredientID getBehavioursPossibleIngredientID() {
+        return new BehavioursPossibleIngredientID(UnboundedPlace.class, getId());
+    }
+
+    public String getId() {
+        return "UnboundedPlace$" + id;
+    }
+
 }

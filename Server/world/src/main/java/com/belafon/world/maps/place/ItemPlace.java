@@ -6,7 +6,7 @@ import com.belafon.world.visibles.items.Item;
 /**
  * It is unbounded place, which is referenced with some item,
  * usually with Item of SpaceTypeItem type.
- * It can be used for representing a place like the inside 
+ * It can be used for representing a place like the inside
  * of bag, or space of wardrowbe, or back of creature.
  */
 public class ItemPlace extends UnboundedPlace {
@@ -24,6 +24,11 @@ public class ItemPlace extends UnboundedPlace {
     @Override
     public int getTemperature() {
         return item.getLocation().getTemperature();
+    }
+
+    @Override
+    public BehavioursPossibleIngredientID getBehavioursPossibleIngredientID() {
+        return super.getBehavioursPossibleIngredientID();
     }
 
 }
