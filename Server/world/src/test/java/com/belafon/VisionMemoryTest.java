@@ -27,8 +27,8 @@ public class VisionMemoryTest {
         world.creatures.add(creature_1);
         world.creatures.add(creature_2);
 
-        creature_1.addVisibleObject(creature_2);
-        creature_1.addVisibleObject(creature_2);
+        creature_1.addVisible(creature_2);
+        creature_1.addVisible(creature_2);
 
         creature_1.getCurrentlyVisibleObjectSpotted(
                 (visibles) -> assertTrue(visibles.contains(creature_2)));
@@ -42,7 +42,7 @@ public class VisionMemoryTest {
                             visibles.stream().anyMatch(memoryCell -> memoryCell.object() == creature_2));
                 });
 
-        creature_1.removeVisibleObject(creature_2);
+        creature_1.removeVisible(creature_2);
 
         creature_1.getCurrentlyVisibleObjectSpotted(
                 (visibles) -> assertFalse(visibles.contains(creature_2)));
