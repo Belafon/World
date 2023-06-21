@@ -1,8 +1,10 @@
 package com.belafon.world.objectsMemory.creaturesMemory;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
 
 import com.belafon.world.maps.place.Place;
@@ -11,6 +13,7 @@ import com.belafon.world.objectsMemory.ObjectsMemoryCell;
 import com.belafon.world.objectsMemory.Visible;
 import com.belafon.world.visibles.creatures.Creature;
 import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleRequirement;
+import com.belafon.world.visibles.resources.TypeOfResource;
 
 public class CreaturesMemory {
     private final List<ObjectsMemoryCell<String>> name = new ArrayList<>();
@@ -35,6 +38,7 @@ public class CreaturesMemory {
 
     private volatile int lastSizeOfClouds = 0;
     private volatile int lastWeather = 0;
+    public final Set<TypeOfResource> typeResources = new HashSet<>();
 
     public ObjectsMemoryCell<String> getName(int i) {
         mutexName.lock();
@@ -79,7 +83,6 @@ public class CreaturesMemory {
     public interface ActionGetLostVisibleObject {
         void doJob(Hashtable<UnboundedPlace, List<ObjectsMemoryCell<Visible>>> visibleObjectSpotted);
     }
-
 
     public void getVisibleObjectLostFromSight(ActionGetLostVisibleObject lostVisibleObject) {
         mutexlastVisiblesPositionWhenVisionLost.lock();
@@ -157,9 +160,6 @@ public class CreaturesMemory {
                 lastVisiblesPositionWhenVisionLost.put(place, new ArrayList<>());
             lastVisiblesPositionWhenVisionLost.get(place).add(value);
 
-            for (BehavioursPossibleRequirement requirement : value.object().getBehavioursPossibleRequirementType(creature)) {
-                creature.behaviourCondition.addBehavioursPossibleIngredient(requirement, value.object());
-            }
         } finally {
             mutexlastVisiblesPositionWhenVisionLost.unlock();
         }
