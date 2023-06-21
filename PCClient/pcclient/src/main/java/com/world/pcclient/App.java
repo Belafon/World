@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.swing.SwingUtilities;
 
 import com.world.pcclient.client.Client;
+import com.world.pcclient.mainWindow.MainWindow;
 import com.world.pcclient.visibles.creatures.PlayableCreature;
 
 public class App {
@@ -19,6 +20,7 @@ public class App {
         Panels panels = new Panels(stats);
         try {
             SwingUtilities.invokeAndWait(() -> {
+                panels.mainWindow = new MainWindow(Panels.PREFERED_SCREEN);
                 panels.mainWindow.displayPanels(panels);
                 stats.body.setStatsLists();
             });

@@ -14,9 +14,9 @@ import com.world.pcclient.visibles.resources.ResourcesPanel;
 public class Panels {
     private static final int MAIN_SCREEN = 0;
     // private static final int SECONDARY_SCREEN = 2;
-    private static final int PREFERED_SCREEN = MAIN_SCREEN;
+    public static final int PREFERED_SCREEN = MAIN_SCREEN;
 
-    public final MainWindow mainWindow = new MainWindow(PREFERED_SCREEN);
+    public MainWindow mainWindow;
     public final CreatureStatisticsPanel bodyStatistics;
     public final ChatListenerPanel listenerPanel;
     public final SurroundingPlacesPanel surroundingPlaces;
@@ -25,8 +25,10 @@ public class Panels {
     public final ResourcesPanel visibleResources;
     public final BehavioursPanel behaviours;
     public final JPanel weatherPanel;
+    public final Stats stats;
 
     public Panels(Stats stats) {
+        this.stats = stats;
         this.bodyStatistics = new CreatureStatisticsPanel(stats.body);
         this.listenerPanel = new ChatListenerPanel();
         this.surroundingPlaces = stats.maps.getSurroundingPlacesPanel();

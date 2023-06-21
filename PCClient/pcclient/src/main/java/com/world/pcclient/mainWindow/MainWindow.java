@@ -5,6 +5,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
+import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
 import com.world.pcclient.Panels;
@@ -26,6 +27,11 @@ public class MainWindow extends JFrame {
     private final StringBuilder titleName = new StringBuilder("Client");
 
     public MainWindow(int screenIndex) {
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -64,97 +70,54 @@ public class MainWindow extends JFrame {
         setBounds(x, y, width, height);
     }
 
-    /**
-     * This mthod compose all maib panels together.
-     * It uses the JSplitPane to make them separate.
-     * @param panels
-     */
-/*     public void displayPanels(Panels panels) {
-getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
 
-// add the bodyStatistics, weatherPanel, and surroundingPlaces panels to the top
-// row
-JSplitPane topRow = new JSplitPane(JSplitPane.VERTICAL_SPLIT, panels.bodyStatistics, panels.weatherPanel);
-topRow.setDividerSize(4);
+    public void displayPanels(Panels panels) {
+        getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
 
-JSplitPane topRightRow = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, topRow, panels.surroundingPlaces);
-topRightRow.setDividerSize(4);
+        // add the bodyStatistics, weatherPanel, and surroundingPlaces panels to the top
+        // row
+        JSplitPane topRow = new JSplitPane(JSplitPane.VERTICAL_SPLIT, panels.bodyStatistics, panels.weatherPanel);
+        topRow.setDividerSize(4);
 
-// add the visibleItems panel to the top row next to the weatherPanel
-JSplitPane leftSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, topRightRow, panels.visibleItems.getPanel());
-leftSplit.setDividerSize(4);
+        JSplitPane topRightRow = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, topRow, panels.surroundingPlaces);
+        topRightRow.setDividerSize(4);
 
-// add the visibleResources panel and visibleCreatures panel to the right of
-// visibleItems panel
-JSplitPane rightSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftSplit,
-        panels.visibleResources.getPanel());
-rightSplit.setDividerSize(4);
-JSplitPane mainSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, rightSplit,
-        panels.visibleCreatures.getPanel());
-mainSplit.setDividerSize(4);
+        // add the visibleItems panel to the top row next to the weatherPanel
+        JSplitPane leftSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, topRightRow, panels.visibleItems.getPanel());
+        leftSplit.setDividerSize(4);
 
-// add the listenerPanel to the bottom row
-JSplitPane bottomRow = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, panels.listenerPanel, null);
-bottomRow.setDividerSize(0); // set the divider size to 0
+        // add the visibleResources panel, visibleCreatures panel, and panels.behaviours
+        // panel
+        // to the right of visibleItems panel
+        JSplitPane rightSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftSplit,
+                panels.visibleResources.getPanel());
+        rightSplit.setDividerSize(4);
+        JSplitPane mainSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, rightSplit,
+                panels.visibleCreatures.getPanel());
+        mainSplit.setDividerSize(4);
+        JSplitPane finalSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, mainSplit,
+                panels.behaviours.getPanel());
+        finalSplit.setDividerSize(4);
 
-// add the leftSplit and bottomRow panels to the mainSplit panel
-JSplitPane outerSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT, mainSplit, bottomRow);
-outerSplit.setDividerSize(4);
+        // add the listenerPanel to the bottom row
+        JSplitPane bottomRow = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, panels.listenerPanel, null);
+        bottomRow.setDividerSize(0);
 
-getContentPane().add(outerSplit);
-pack();
+        // add the finalSplit and bottomRow panels to the outerSplit panel
+        JSplitPane outerSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT, finalSplit, bottomRow);
+        outerSplit.setDividerSize(4);
 
-setWindowSize();
-setVisible(true);
+        getContentPane().add(outerSplit);
+        pack();
 
-} */
-    
-public void displayPanels(Panels panels) {
-    getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
-
-    // add the bodyStatistics, weatherPanel, and surroundingPlaces panels to the top row
-    JSplitPane topRow = new JSplitPane(JSplitPane.VERTICAL_SPLIT, panels.bodyStatistics, panels.weatherPanel);
-    topRow.setDividerSize(4);
-
-    JSplitPane topRightRow = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, topRow, panels.surroundingPlaces);
-    topRightRow.setDividerSize(4);
-
-    // add the visibleItems panel to the top row next to the weatherPanel
-    JSplitPane leftSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, topRightRow, panels.visibleItems.getPanel());
-    leftSplit.setDividerSize(4);
-
-    // add the visibleResources panel, visibleCreatures panel, and panels.behaviours panel
-    // to the right of visibleItems panel
-    JSplitPane rightSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftSplit,
-            panels.visibleResources.getPanel());
-    rightSplit.setDividerSize(4);
-    JSplitPane mainSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, rightSplit,
-            panels.visibleCreatures.getPanel());
-    mainSplit.setDividerSize(4);
-    JSplitPane finalSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, mainSplit,
-            panels.behaviours.getPanel());
-    finalSplit.setDividerSize(4);
-
-    // add the listenerPanel to the bottom row
-    JSplitPane bottomRow = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, panels.listenerPanel, null);
-    bottomRow.setDividerSize(0);
-
-    // add the finalSplit and bottomRow panels to the outerSplit panel
-    JSplitPane outerSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT, finalSplit, bottomRow);
-    outerSplit.setDividerSize(4);
-
-    getContentPane().add(outerSplit);
-    pack();
-
-    setWindowSize();
-    setVisible(true);
-}
-
-
+        setWindowSize();
+        setVisible(true);
+    }
 
     /**
      * Sets the text in the header of the window.
      * It should say the current program condition.
+     * 
      * @param titleCondition
      */
     public void setTitleCondition(StringBuilder titleCondition) {
@@ -165,7 +128,8 @@ public void displayPanels(Panels panels) {
 
     /**
      * Method for setting a border with text to the panel.
-     * It is used to write a title to a main panel. 
+     * It is used to write a title to a main panel.
+     * 
      * @param title
      * @param component
      */
