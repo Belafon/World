@@ -4,11 +4,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+
 import com.belafon.console.ConsolePrint;
 import com.belafon.server.matchMakingSystems.MatchMakingSystem;
+import com.belafon.world.visibles.creatures.behaviour.BehaviourType;
+import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleIngredient;
 
 public class MessageReceiver implements Runnable {
     public Client client;
@@ -59,11 +63,19 @@ public class MessageReceiver implements Runnable {
         String[] message = value.split(" ");
         ConsolePrint.new_message(value, client);
 
-        switch (message[0]) {
-            case "game" -> client.getServer().executor.execute(() -> {
-                getGameMessage(message, clientSocket, server);
-            });
-            case "server" -> getServerMessage(message, clientSocket, server);
+        try {
+            switch (message[0]) {
+                case "game" -> client.getServer().executor.execute(() -> {
+                    if (client.player == null)
+                        throw new IllegalArgumentException("Client has no player!");
+                    getGameMessage(message, clientSocket, server);
+                });
+                case "server" -> getServerMessage(message, clientSocket, server);
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
         }
     }
 
@@ -97,9 +109,28 @@ public class MessageReceiver implements Runnable {
         switch (message[1]) {
             // behaviour executeBehaviour PickUpItem Item|8,Item|6,Item|10,
             case "behaviour" -> {
-                String behaviourName = message[2];
-                String[] ingredients = message[3].split(",");
-                server.game.catchBehaviour(behaviourName, ingredients, client);
+                getBehaviourMessage(message);
+
+            }
+        }
+    }
+
+    private void getBehaviourMessage(String[] message) {
+        switch (message[2]) {
+            case "executeBehaviour" -> {
+                String behaviourName = message[3];
+                BehaviourType behaviourType = BehaviourType.getBehaviourType(behaviourName);
+                String[] ingredientsIds = message[4].split(",");
+                List<BehavioursPossibleIngredient> ingredients = client.player.getIngredients(behaviourType,
+                        ingredientsIds);
+
+                // try to execute the behaviour
+                if (client.player == null)
+                    throw new IllegalArgumentException("Client has no player!");
+
+                behaviourType.executeBehaviour(client.player, ingredients);
+
+                // client.player.executeBehaviour(behaviourName, ingredients);
             }
         }
     }
