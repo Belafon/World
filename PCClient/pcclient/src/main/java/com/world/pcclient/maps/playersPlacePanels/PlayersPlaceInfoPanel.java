@@ -10,6 +10,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+/**
+ * This panel displays a detailed information about
+ * a place, that is currently selected by the player.
+ */
 public class PlayersPlaceInfoPanel extends JPanel {
     private JLabel nameLabel;
     private JLabel descriptionLabel;

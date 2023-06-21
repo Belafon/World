@@ -3,16 +3,13 @@ package com.world.pcclient.maps;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.List;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import com.world.pcclient.maps.playersPlacePanels.PlacePanel;
-import com.world.pcclient.maps.playersPlacePanels.PlayersPlaceEffect;
 import com.world.pcclient.maps.playersPlacePanels.PlayersPlaceInfoPanel;
-import com.world.pcclient.maps.playersPlacePanels.TypePlace;
 
 public class SurroundingMap {
     public static final int NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS = 7;
@@ -42,9 +39,9 @@ public class SurroundingMap {
         return places[x][y];
     }
 
-    public void updatePlace(TypePlace type, int x, int y, List<PlayersPlaceEffect> effects,
-            MouseAdapter mouseAdapter) {
-        places[x][y].update(x, y, type, effects, mouseAdapter);
+    public void updatePlace(int x, int y, Place place) {
+        place.setPanel(places[x][y]);
+        places[x][y].update(place, getOnPlaceSelected(places[x][y].getInfoPanel()));
     }
 
     public void setPlaceUnknown(int x, int y, PlayersPlaceInfoPanel infoPanel) {
@@ -64,8 +61,8 @@ public class SurroundingMap {
         return new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (e.getSource() instanceof PlacePanel panel) {
-                    infoPlacePanel.rewriteCurrentPlace(panel.typePlace, panel.placeEffects);
+                if (e.getSource() instanceof PlacePanel placePanel) {
+                    infoPlacePanel.rewriteCurrentPlace(placePanel.getPlace().typePlace, placePanel.getPlace().placeEffects);
                 } else throw new UnsupportedOperationException("Try to select Place in Surrounding map, but the clicked object was not PlacePanel.");
             }
         };

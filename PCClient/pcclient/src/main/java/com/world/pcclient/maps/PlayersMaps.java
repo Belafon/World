@@ -1,9 +1,13 @@
 package com.world.pcclient.maps;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Set;
 
+import com.world.pcclient.Stats;
+import com.world.pcclient.behaviours.BehavioursRequirement;
 import com.world.pcclient.maps.playersPlacePanels.PlacePanel;
 import com.world.pcclient.maps.playersPlacePanels.PlayersPlaceEffect;
 import com.world.pcclient.maps.playersPlacePanels.PlayersPlaceInfoPanel;
@@ -17,7 +21,7 @@ public class PlayersMaps {
     // private PlacePanel currentPosition;
 
     private PlacePanel selectedPlacePanel = null;
-    private PlayersPlaceInfoPanel infoPlacePanel = new PlayersPlaceInfoPanel("", "", new ArrayList<>()); 
+    private PlayersPlaceInfoPanel infoPlacePanel = new PlayersPlaceInfoPanel("", "", new ArrayList<>());
     public final Weather weather = new Weather();
 
     public PlayersMaps() {
@@ -27,6 +31,7 @@ public class PlayersMaps {
     /**
      * It points that there exists a map in the
      * world with these sizes and with concrete id.
+     * 
      * @param key
      * @param map
      */
@@ -42,6 +47,7 @@ public class PlayersMaps {
     /**
      * It points that there exists a map in the
      * world with these sizes and with concrete id.
+     * 
      * @param args
      * @throws NumberFormatException
      * @throws IndexOutOfBoundsException
@@ -63,12 +69,14 @@ public class PlayersMaps {
     }
 
     /**
-     * This method updates arround places 
-     * with the message from the server. 
+     * This method updates arround places
+     * with the message from the server.
      * It updates all the places.
+     * 
      * @param args
+     * @param stats
      */
-    public synchronized void lookAroundSurroundingPlaces(String[] args) {
+    public synchronized void lookAroundSurroundingPlaces(String[] args, Stats stats) {
         int currentPlace = 0;
         for (int currentArg = 2; currentArg < args.length; currentArg++) {
             switch (args[currentArg]) {
@@ -76,15 +84,35 @@ public class PlayersMaps {
                     currentPlace = setSurroundingAtIdsNull(currentPlace, args[++currentArg]);
                     currentArg++;
                 }
-                default -> currentArg = setSurroundingAtId(currentPlace++, currentArg, args);
+                default -> currentArg = setSurroundingAtId(currentPlace++, currentArg, args, stats);
             }
             ;
         }
-
     }
 
-    private int setSurroundingAtId(int currentPlace, int currentArg, String[] args) {
-        String typePlacesName = args[currentArg];
+    private int setSurroundingAtId(int currentPlace, int currentArg, String[] args, Stats stats) {
+        String[] typePlacesInfo = args[currentArg++].split("\\+");
+
+        String typePlacesName = typePlacesInfo[0];
+        String id = typePlacesInfo[1];
+
+
+        // lets handle requirements 
+        String requirementsMessage = null;
+        if (typePlacesInfo.length > 2)
+            requirementsMessage = typePlacesInfo[2];
+
+        Set<BehavioursRequirement> requirements = null;
+        if (requirementsMessage != null)
+            requirements = getRequirementsFromMessage(requirementsMessage, stats);
+        else
+            requirements = new HashSet<>();
+
+
+        // lets handle effects
+        String effectsMessage = null;
+        if (typePlacesInfo.length > 3)
+            effectsMessage = typePlacesInfo[3];
 
         if (!TypePlace.allTypes.containsKey(typePlacesName))
             throw new IllegalArgumentException("unsupported type place name");
@@ -92,22 +120,36 @@ public class PlayersMaps {
         int xInSurrounding = currentPlace / SurroundingMap.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS;
         int yInSurrounding = currentPlace % SurroundingMap.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS;
 
-        var effects = getPlaceEffects(++currentArg, args, surroundingMap.getPlacePanel(xInSurrounding, yInSurrounding));
+        List<PlayersPlaceEffect> effects = null;
+        if (effectsMessage != null)
+            effects = getPlaceEffectsFromMessage(effectsMessage,
+                    surroundingMap.getPlacePanel(xInSurrounding, yInSurrounding));
+        else
+            effects = new ArrayList<>();
 
-        surroundingMap.updatePlace(TypePlace.allTypes.get(typePlacesName),
-                xInSurrounding, yInSurrounding, effects, SurroundingMap.getOnPlaceSelected(infoPlacePanel));
+
+        // lets update the panel that shows the place in the surrounding
+        Place place = new Place(id, TypePlace.allTypes.get(typePlacesName), requirements, effects);
+        surroundingMap.updatePlace(xInSurrounding, yInSurrounding, place);
+
+        // lets add the place into ingredients
+        stats.visibles.addNewPlace(place);
+
         return currentArg;
     }
 
-    private List<PlayersPlaceEffect> getPlaceEffects(int currentArg, String[] args, PlacePanel place) {
+    private Set<BehavioursRequirement> getRequirementsFromMessage(String requirementsMessage, Stats stats) {
+        Set<BehavioursRequirement> requirements = new HashSet<>();
+        for (String requirement : requirementsMessage.split("\\,")) {
+            requirements.add(stats.behaviours.allRequirements.get(requirement));
+        }
+        return requirements;
+    }
+
+    private List<PlayersPlaceEffect> getPlaceEffectsFromMessage(String effectsMessage, PlacePanel place) {
         List<PlayersPlaceEffect> effects = new ArrayList<>();
-        for (int i = currentArg; i < args.length; i++) {
-            if (args[i].equals(";"))
-                break;
-            var effect = PlayersPlaceEffect.allPlaceEffects.get(args[i]);
-            if (effect == null)
-                throw new IllegalArgumentException("Unknown PlaceEffect name \'" + args[i] + "\'");
-            effects.add(effect);
+        for (String effect : effectsMessage.split("\\,")) {
+            effects.add(PlayersPlaceEffect.allPlaceEffects.get(effect));
         }
         return effects;
     }
@@ -124,15 +166,25 @@ public class PlayersMaps {
     }
 
     /**
-     * @return panel that shows all surrounding 
-     * places around the creature in the radius
-     * of 3 places.
-     * The places, that are not visible for the 
-     * player are displayed with grey color and
-     * with name as umknown place.
+     * @return panel that shows all surrounding
+     *         places around the creature in the radius
+     *         of 3 places.
+     *         The places, that are not visible for the
+     *         player are displayed with grey color and
+     *         with name as umknown place.
      */
     public SurroundingPlacesPanel getSurroundingPlacesPanel() {
         return new SurroundingPlacesPanel(surroundingMap.getComponent(), infoPlacePanel);
+    }
+
+    public void removePlaceInSight(String[] args, Stats stats) {
+        String id = args[2];
+        int x = Integer.parseInt(args[3]);
+        int y = Integer.parseInt(args[4]);
+        Place place = surroundingMap.getPlacePanel(x, y).getPlace();
+
+        stats.visibles.removePlace(place);
+        surroundingMap.setPlaceUnknown(x, y, infoPlacePanel);
     }
 
     /*

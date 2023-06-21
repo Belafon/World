@@ -40,6 +40,8 @@ public class WeatherPanel {
     public void setClouds(String clouds) {
         SwingUtilities.invokeLater(() -> {
             this.clouds.setText(clouds);
+            panel.revalidate();
+            panel.repaint();
         });
     }
 
@@ -50,6 +52,8 @@ public class WeatherPanel {
     public void setWeather(String weather) {
         SwingUtilities.invokeLater(() -> {
             this.weather.setText(weather);
+            panel.revalidate();
+            panel.repaint();
         });
 
     }
@@ -61,6 +65,8 @@ public class WeatherPanel {
     public void setPartOfDay(String partOfDay) {
         SwingUtilities.invokeLater(() -> {
             this.partOfDay.setText(partOfDay);
+            panel.revalidate();
+            panel.repaint();
         });
 
     }
