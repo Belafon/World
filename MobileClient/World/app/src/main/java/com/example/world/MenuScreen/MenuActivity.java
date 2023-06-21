@@ -1,23 +1,14 @@
 package com.example.world.MenuScreen;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.world.AbstractActivity;
 import com.example.world.Client.AllMessages;
 import com.example.world.Client.Client;
-import com.example.world.Client.SendMessage;
-import com.example.world.GameActivity.WeitingScreenFragment;
+import com.example.world.GameActivity.WaitingScreenFragment;
 import com.example.world.MenuScreen.WelcomingFragments.WelcomingActivity;
 import com.example.world.R;
 import com.example.world.Screen;
@@ -54,35 +45,57 @@ public class MenuActivity extends AbstractActivity {
     // called, when the connect button is clicked, this will try to connect to server
     // with ip set in EditText with id edit_ip
     public void connect(View view) {
-        String ip = ((EditText)findViewById(R.id.edit_ip)).getText().toString();
-        if(ip.length() < 11 || ip.length() > 14){
-            Screen.info("Too short ip", 0);
+        if (!getIpAddress())
             return;
+
+        if(!getPortNumber())
+            return;
+
+        new Thread(() -> Client.connect())
+                .start();
+    }
+
+    private boolean getIpAddress() {
+        String ip = ((EditText)findViewById(R.id.edit_ip)).getText().toString();
+        if (!isValidIpAddress(ip)) {
+            Screen.info("Too short ip.", 0);
+            return false;
         }
         Client.ip = ip;
+        return true;
+    }
 
+    private boolean getPortNumber() {
         int port = 0;
         try{
-            if(((EditText)findViewById(R.id.port)).getText().toString().length() > 0)
-                port = Integer.parseInt(((EditText)findViewById(R.id.port)).getText().toString());
-            else Screen.info("Port can not be negative number", 0);
+            String portString = ((EditText)findViewById(R.id.port)).getText().toString();
+            port = Integer.parseInt(portString);
+            if(port <= 1024) {
+                Screen.info("Port must be bigger than 1024.", 0);
+                return false;
+            }
         }catch (Exception e){
-            Screen.info("Wrong port number", 0);
+            Screen.info("Wrong port number format.", 0);
+            return false;
         }
         Client.port = port;
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Client.connect();
-            }
-        }).start();
+        return true;
+    }
+
+    private boolean isValidIpAddress(String ip) {
+        String pattern = "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+                "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+                "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+                "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
+
+        return ip.matches(pattern);
     }
 
     // FRAGMENT MENU ----------------------------------------------------------
 
     public void NewGame(View view){
         AllMessages.findMatch();
-        openFragment(new WeitingScreenFragment(), R.id.menu_fragment);
+        openFragment(new WaitingScreenFragment(), R.id.menu_fragment);
 
     }
     public void Character(View view){
