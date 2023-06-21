@@ -28,10 +28,11 @@ public class GenerateVisibles {
         }
         synchronized (game.players) {
             for (Player player : game.players) {
-                player.addVisibleObject(deer);
+                player.addVisible(deer);
             }
         }
     }
+
     /**
      * Debuging method.
      */
@@ -43,7 +44,7 @@ public class GenerateVisibles {
 
         synchronized (game.players) {
             for (Player player : game.players) {
-                player.addVisibleObject(mushrooms);
+                player.addVisible(mushrooms);
             }
         }
     }
@@ -61,7 +62,7 @@ public class GenerateVisibles {
 
         synchronized (game.players) {
             for (Player player : game.players) {
-                player.addVisibleObject(apple);
+                player.addVisible(apple);
             }
         }
     }
