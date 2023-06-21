@@ -17,9 +17,11 @@ public class Map {
     }*/
     
     public World game;
+    private final float distanceBetweenPlaces;
 
-    public Map(int sizeX, int sizeY, MapGenerator mapGenerator, int directionOfWind, int strengthOfWind, World game) {
+    public Map(int sizeX, int sizeY, MapGenerator mapGenerator, int directionOfWind, int strengthOfWind, float distanceBetweenPlaces,World game) {
         this.id = nextId++;
+        this.distanceBetweenPlaces = distanceBetweenPlaces;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.game = game;
@@ -27,8 +29,9 @@ public class Map {
         sky = new Sky(mapGenerator.generateClouds(sizeX, sizeY), directionOfWind, strengthOfWind, this);
     }
 
-    public Map(int sizeX, int sizeY, MapGenerator mapGenerator) {
+    public Map(int sizeX, int sizeY, MapGenerator mapGenerator, float distanceBetweenPlaces) {
         this.id = nextId++;
+        this.distanceBetweenPlaces = distanceBetweenPlaces;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         places = mapGenerator.generateMap(sizeX, sizeY, this);
@@ -46,7 +49,7 @@ public class Map {
         return log;
     }
 
-    public String logTemperature(){
+    public String logTemperature() {
         String log = "";
         for (int i = 0; i < sizeX; i++) {
             for (int j = 0; j < sizeY; j++)
@@ -54,5 +57,9 @@ public class Map {
             log += "\n";
         }
         return log;
+    }
+    
+    public float getDistanceBetweenPlaces(){
+        return distanceBetweenPlaces;
     }
 }
