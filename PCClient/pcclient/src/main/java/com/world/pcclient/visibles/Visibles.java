@@ -12,11 +12,14 @@ import com.world.pcclient.visibles.resources.ResourceTypes;
 import com.world.pcclient.Panels;
 import com.world.pcclient.behaviours.Behaviours;
 import com.world.pcclient.behaviours.BehavioursRequirement;
+import com.world.pcclient.maps.Place;
 
 public class Visibles {
     private final Hashtable<Integer, Item> items = new Hashtable<>();
     private final Hashtable<Integer, Creature> creatures = new Hashtable<>();
     private final Hashtable<Integer, Resource> resources = new Hashtable<>();
+    private final Hashtable<String, TypeOfResource> typesOfresources = new Hashtable<>();
+    private final Set<Place> places = new HashSet<>();
 
     /**
      * It resolves the message from server
@@ -51,8 +54,9 @@ public class Visibles {
             default ->
                 throw new IllegalArgumentException("Invalid class name for item type: " + className);
         }
-
-        items.put(id, item);
+        synchronized (items) {
+            items.put(id, item);
+        }
     }
 
     /**
@@ -82,11 +86,19 @@ public class Visibles {
 
         Creature creature = new Creature(name, id, appearance, requirements);
         panels.visibleCreatures.addVisibleTitlePanel(new VisiblePanel(creature));
-        creatures.put(id, creature);
+        synchronized (creatures) {
+            creatures.put(id, creature);
+        }
+
+        
+        synchronized (PlayableCreature.allIngredients) {
+            PlayableCreature.allIngredients.add(creature);
+        }
 
     }
 
-    public static Set<BehavioursRequirement> extractRequirementsFromArgs(Behaviours behaviours, String possibleRequirements) {
+    public static Set<BehavioursRequirement> extractRequirementsFromArgs(Behaviours behaviours,
+            String possibleRequirements) {
         Set<BehavioursRequirement> requirements = new HashSet<>();
         for (String possibleRequirementsName : possibleRequirements.split(",")) {
             var possibleRequirement = behaviours.allRequirements.get(possibleRequirementsName);
@@ -123,7 +135,13 @@ public class Visibles {
 
         Resource resource = new Resource(id, type, mass, requirements);
         panels.visibleResources.addVisibleTitlePanel(new VisiblePanel(resource));
-        resources.put(id, resource);
+        synchronized (resources) {
+            resources.put(id, resource);
+        }
+
+        synchronized (PlayableCreature.allIngredients) {
+            PlayableCreature.allIngredients.add(resource);
+        }
     }
 
     /**
@@ -136,7 +154,12 @@ public class Visibles {
     public void removeItem(String[] args, Panels panels) {
         int id = Integer.parseInt(args[2]);
         if (items.containsKey(id)) {
-            panels.visibleItems.removeVisibleTitlePanel(items.get(id));
+            var item = items.get(id);
+            panels.visibleItems.removeVisibleTitlePanel(item);
+            
+            PlayableCreature.allIngredients.remove(item);
+            
+            panels.behaviours.update(panels.stats.behaviours);
         }
     }
 
@@ -167,6 +190,39 @@ public class Visibles {
         if (resources.containsKey(id)) {
             panels.visibleResources.removeVisibleTitlePanel(resources.get(id));
         }
-        resources.remove(id);
+        synchronized (resources) {
+            resources.remove(id);
+        }
+    }
+
+    public void addNewResourceType(String[] args, Behaviours behaviours) {
+        String idName = args[2];
+        String name = args[3];
+        String requirementsMessage = args[4];
+        Set<BehavioursRequirement> requirements = extractRequirementsFromArgs(behaviours, requirementsMessage);
+        synchronized (typesOfresources) {
+            typesOfresources.put(idName, new TypeOfResource(name, idName, requirements));
+        }
+
+        synchronized (PlayableCreature.allIngredients) {
+            PlayableCreature.allIngredients.add(typesOfresources.get(idName));
+        }
+    }
+
+    public void addNewPlace(Place place) {
+        synchronized (PlayableCreature.allIngredients) {
+            PlayableCreature.allIngredients.add(place);
+        }
+
+        synchronized (places) {
+            places.add(place);
+        }
+    }
+
+    public void removePlace(Place place) {
+        synchronized (places) {
+            places.remove(place);
+        }
+        PlayableCreature.allIngredients.remove(place);
     }
 }

@@ -26,8 +26,8 @@ public class Creature extends Visible {
     }
 
     @Override
-    public int getId() {
-        return id;
+    public String getId() {
+        return "" + id;
     }
 
     public String getLook() {

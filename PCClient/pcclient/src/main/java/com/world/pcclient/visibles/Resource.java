@@ -24,8 +24,8 @@ public class Resource extends Visible {
         return () -> {};
     }
     @Override
-	public int getId() {
-		return id;
+	public String getId() {
+		return "" + id;
 	}
 
     public String getDescription() {

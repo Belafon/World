@@ -14,7 +14,7 @@ public abstract class Visible extends BehavioursPossibleIngredient {
     }
 
     /**
-     * @return method that should be called 
+     * @return method that should be called
      * when a title panel in list of visibles
      * is clicked.
      */
