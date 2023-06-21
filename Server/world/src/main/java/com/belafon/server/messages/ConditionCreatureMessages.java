@@ -1,5 +1,6 @@
 package com.belafon.server.messages;
 
+import com.belafon.world.visibles.creatures.behaviour.Behaviour;
 import com.belafon.world.visibles.creatures.condition.knowledge.Knowledge;
 
 public interface ConditionCreatureMessages {
@@ -55,6 +56,9 @@ public interface ConditionCreatureMessages {
     }
 
     public default void setSpeedOfRun(int speedOfRun) {
+    }
+
+    public default void setBehaviour(Behaviour behaviour, int duration) {
     }
 
 }

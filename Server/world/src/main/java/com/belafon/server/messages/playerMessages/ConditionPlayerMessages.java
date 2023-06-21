@@ -2,6 +2,7 @@ package com.belafon.server.messages.playerMessages;
 
 import com.belafon.server.messages.ConditionCreatureMessages;
 import com.belafon.server.sendMessage.PlayersMessageSender;
+import com.belafon.world.visibles.creatures.behaviour.Behaviour;
 import com.belafon.world.visibles.creatures.condition.knowledge.Knowledge;
 
 public class ConditionPlayerMessages implements ConditionCreatureMessages {
@@ -98,6 +99,17 @@ public class ConditionPlayerMessages implements ConditionCreatureMessages {
 
     @Override
     public void setSpeedOfRun(int speedOfRun) {
-        sendMessage.sendLetter("player abilityCondition speedOfRun " + speedOfRun, PlayersMessageSender.TypeMessage.actualStats);
+        sendMessage.sendLetter("player abilityCondition speedOfRun " + speedOfRun,
+                PlayersMessageSender.TypeMessage.actualStats);
     }
+    
+    
+    @Override
+    public void setBehaviour(Behaviour behaviour, int duration) {
+        if(behaviour == null)
+            sendMessage.sendLetter("behaviour doBehaviour null", PlayersMessageSender.TypeMessage.other);
+        else
+            sendMessage.sendLetter("behaviour doBehaviour " + behaviour.getType().idName + " " + duration, PlayersMessageSender.TypeMessage.other);
+    }
+
 }
