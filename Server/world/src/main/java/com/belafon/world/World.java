@@ -16,6 +16,10 @@ import com.belafon.world.time.Time;
 import com.belafon.world.visibles.VisibleIDs;
 import com.belafon.world.visibles.creatures.Creature;
 import com.belafon.world.visibles.creatures.Player;
+import com.belafon.world.visibles.items.ListOfAllItemTypes;
+import com.belafon.world.visibles.items.ListOfAllItemTypes.NamesOfFoodItemTypes;
+import com.belafon.world.visibles.items.itemsSpecialStats.SpecialFoodsProperties;
+import com.belafon.world.visibles.items.types.Food;
 
 public class World implements Runnable {
     public volatile boolean isRunning = false;
@@ -55,11 +59,27 @@ public class World implements Runnable {
 
         synchronized (players) {
             for (Player player : players)
+                player.setupAllRequirementsAndPossibleBehaviours();
+        }
+
+        // lets set up surrounding visible places for all creatures
+        // so the surrounding places will be visible
+        for (var creature : creatures) {
+            creature.setupSurroundingVisiblePlacesWhenGameStarts();
+        }
+
+        synchronized (players) {
+            for (Player player : players)
                 player.gameStart();
         }
 
         for (var creature : creatures) {
             creature.behaviourCondition.sendInfoAboutAllBehavioursWithNoRequirements();
+        }
+
+        for (var creature : creatures) {
+            creature.inventory.addItem(new Food(this, 5, 100, new SpecialFoodsProperties[] {},
+                    ListOfAllItemTypes.foodTypes.get(NamesOfFoodItemTypes.apple), creature.getLocation()));
         }
 
         Place cornerPlace = maps.maps[0].places[0][0];
