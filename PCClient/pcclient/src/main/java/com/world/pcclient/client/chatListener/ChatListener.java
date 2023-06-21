@@ -50,19 +50,23 @@ public class ChatListener {
             case "remove_item_in_sight" -> stats.visibles.removeItem(args, panels);
             case "remove_creature_in_sight" -> stats.visibles.removeCreature(args, panels);
             case "remove_resource_in_sight" -> stats.visibles.removeResource(args, panels);
+            case "new_resource_type" -> stats.visibles.addNewResourceType(args, stats.behaviours);
         }
+
     }
 
     private void listenBehaviour(String[] args) {
         switch (args[1]) {
             case "setupBehaviour" -> stats.behaviours.setupNewBehaviour(args);
-            case "setupRequirement" -> stats.behaviours.setNewupRequirement(args);
+            case "setupRequirement" -> stats.behaviours.setUpNewRequirement(args);
+            case "doBehaviour" -> stats.behaviours.doBehaviour(args, stats, panels);
         }
     }
 
     private void listenMap(String[] args) {
         switch (args[1]) {
-            case "look_arround" -> stats.maps.lookAroundSurroundingPlaces(args);
+            case "look_arround" -> stats.maps.lookAroundSurroundingPlaces(args, stats);
+            case "remove_place_in_sight" -> stats.maps.removePlaceInSight(args, stats);
             case "new_map" -> stats.maps.addMap(args);
             case "weather" -> stats.maps.weather.setWeather(args);
             case "clouds" -> stats.maps.weather.setClouds(args);
@@ -120,7 +124,7 @@ public class ChatListener {
                     Integer.parseInt(args[2]), args[3], args[4], Integer.parseInt(args[5]),
                     Integer.parseInt(args[6]), Integer.parseInt(args[7]),
                     args, stats.behaviours);
-            case "removeItem" -> stats.inventory.removeItem(Integer.parseInt(args[2]));
+            case "removeItem" -> stats.inventory.removeItem(panels, Integer.parseInt(args[2]));
         }
     }
 
