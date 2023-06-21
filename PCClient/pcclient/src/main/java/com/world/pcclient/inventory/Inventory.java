@@ -4,9 +4,11 @@ import java.util.Hashtable;
 import java.util.Map;
 import java.util.Set;
 
+import com.world.pcclient.Panels;
 import com.world.pcclient.behaviours.Behaviours;
 import com.world.pcclient.behaviours.BehavioursRequirement;
 import com.world.pcclient.visibles.Visibles;
+import com.world.pcclient.visibles.creatures.PlayableCreature;
 import com.world.pcclient.visibles.items.Item;
 import com.world.pcclient.visibles.items.Item.Food;
 
@@ -37,10 +39,13 @@ public class Inventory {
             default -> throw new IllegalArgumentException("Unexpected value: " + type);
         };
         items.put(id, item);
+        PlayableCreature.allIngredients.add(item);
     }
-
-    public void removeItem(int id) {
+    
+    public void removeItem(Panels panels, int id) {
+        PlayableCreature.allIngredients.remove(items.get(id));
         items.remove(id);
+        panels.behaviours.update(panels.stats.behaviours);
     }
 
 }
