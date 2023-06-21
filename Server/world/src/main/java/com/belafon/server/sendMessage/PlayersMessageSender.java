@@ -66,6 +66,7 @@ public class PlayersMessageSender {
     public synchronized void sendLetter(String string, TypeMessage type) {
         if (printCyclesStatsToConsole || type != TypeMessage.dailyLoop)
             if (printCreatureStatsToConsole || type != TypeMessage.actualStats)
+                if(printCreatureAbilityStatsToConsole || type != TypeMessage.abilityStats)
                 ConsolePrint.message_to_player(string, client.name);
         output.println(string); // blank line between headers and content, very important !
         output.flush(); // flush character output stream buffer
@@ -74,11 +75,13 @@ public class PlayersMessageSender {
     public enum TypeMessage {
         other,
         dailyLoop,
-        actualStats
+        actualStats, abilityStats
     }
 
     private static boolean printCyclesStatsToConsole = false;
     private static boolean printCreatureStatsToConsole = false;
+    private static boolean printCreatureAbilityStatsToConsole = false;
+
     private static final String FILENAME = "config.properties";
 
     public synchronized static boolean isPrintCyclesStatsToConsole() {
@@ -92,6 +95,11 @@ public class PlayersMessageSender {
 
     public synchronized static void setPrintCreatureStatsToConsole(boolean printCreatureStats) {
         PlayersMessageSender.printCreatureStatsToConsole = printCreatureStats;
+        saveConfig();
+    }
+    
+    public synchronized static void setPrintCreaturesAbuilityStatsToConsole(boolean printCreatureStats) {
+        PlayersMessageSender.printCreatureAbilityStatsToConsole = printCreatureStats;
         saveConfig();
     }
 
@@ -113,6 +121,7 @@ public class PlayersMessageSender {
             props.load(input);
             printCyclesStatsToConsole = Boolean.parseBoolean(props.getProperty("printCyclesStatsToConsole"));
             printCreatureStatsToConsole = Boolean.parseBoolean(props.getProperty("printCreatureStatsToConsole"));
+            printCreatureStatsToConsole = Boolean.parseBoolean(props.getProperty("printCreatureAbilityStatsToConsole"));
         }
     }
 
@@ -121,6 +130,7 @@ public class PlayersMessageSender {
             Properties props = new Properties();
             props.setProperty("printCyclesStatsToConsole", Boolean.toString(printCyclesStatsToConsole));
             props.setProperty("printCreatureStatsToConsole", Boolean.toString(printCreatureStatsToConsole));
+            props.setProperty("printCreatureAbilityStatsToConsole", Boolean.toString(printCreatureAbilityStatsToConsole));
             props.store(output, "Game configuration");
         } catch (IOException e) {
             // failed to save config

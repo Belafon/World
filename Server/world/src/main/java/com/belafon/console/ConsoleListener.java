@@ -5,7 +5,6 @@ import java.util.Scanner;
 import com.belafon.server.Server;
 import com.belafon.server.sendMessage.PlayersMessageSender;
 import com.belafon.world.visibles.creatures.Player;
-import com.belafon.world.visibles.creatures.behaviour.behaviours.Move;
 import com.belafon.world.visibles.resources.ListOfAllTypesOfResources;
 import com.belafon.world.visibles.resources.ListOfAllTypesOfResources.NamesOfTypesOfResources;
 
@@ -118,15 +117,21 @@ public class ConsoleListener implements Runnable {
                         log += server.games.get(0).maps.maps[0].sky.directionOfWind;
                     break;
                 case "health":
-                    log += server.games.get(0).players.get(0).abilityCondition.getHealth();
+                        log += server.games.get(0).players.get(0).abilityCondition.getHealth();
                     break;
-                case "move":
-                    if (message.length == 4) {
+                case "abilityStats":
+                    if(message.length > 2 && message[2].equals("loop"))
+                        PlayersMessageSender.setPrintCreaturesAbuilityStatsToConsole(true);
+                    else if(message.length > 2 && message[2].equals("stop"))
+                        PlayersMessageSender.setPrintCreaturesAbuilityStatsToConsole(false);
+                    break;
+                case "move": // TODO
+                    /* if (message.length == 4) {
                         server.games.get(0).players.get(0)
                                 .setBehaviour(new Move(server.games.get(0), server.games.get(0).players.get(0),
                                         server.games.get(0).maps.maps[0].places[Integer.parseInt(message[2])][Integer
                                                 .parseInt(message[3])]));
-                    }
+                    } */
                     break;
                 case "calendar":
                     if (message.length >= 3 && message[2].equals("loop"))

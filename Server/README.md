@@ -38,3 +38,5 @@ You can write log messages by pasting these commands into console:
     - means temperature in the map 0
 - log addResource x y name amount
 - log addResource 1 1 mushrooms 10
+- log abilityStats loop
+- log abilityStats stop
