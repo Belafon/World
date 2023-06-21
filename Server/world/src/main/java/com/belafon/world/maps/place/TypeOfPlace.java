@@ -5,6 +5,8 @@ import com.belafon.world.maps.place.ListOfAllTypesOfPlaces.NamesOfTypesOfPlaces;
 import com.belafon.world.visibles.resources.TypeOfResourceOfTypeOfPlace;
 
 public class TypeOfPlace {
+    public static final TypeOfPlace EMPTY = new TypeOfPlace(NamesOfTypesOfPlaces.EMPTY, new String[] {}, new String[] {},
+            new int[] {}, new TypeOfResourceOfTypeOfPlace[] {}, 0, 0, "");
     public final NamesOfTypesOfPlaces name;
     private final String[] pictures;
     private final String[] music;

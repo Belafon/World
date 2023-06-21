@@ -90,7 +90,8 @@ public class ListOfAllTypesOfPlaces {
 
         // names of types of space items
         back_space,
-        leather_bag
+        leather_bag,
+        EMPTY
     }
     
     /**
