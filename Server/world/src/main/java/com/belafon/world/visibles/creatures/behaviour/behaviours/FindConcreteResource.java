@@ -1,10 +1,10 @@
 package com.belafon.world.visibles.creatures.behaviour.behaviours;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import com.belafon.console.ConsolePrint;
-import com.belafon.world.World;
 import com.belafon.world.calendar.events.EventBehaviour;
 import com.belafon.world.maps.place.Place;
 import com.belafon.world.maps.place.UnboundedPlace;
@@ -12,6 +12,7 @@ import com.belafon.world.objectsMemory.ObjectsMemoryCell;
 import com.belafon.world.objectsMemory.Visible;
 import com.belafon.world.visibles.creatures.Creature;
 import com.belafon.world.visibles.creatures.behaviour.Behaviour;
+import com.belafon.world.visibles.creatures.behaviour.BehaviourBuilder;
 import com.belafon.world.visibles.creatures.behaviour.BehaviourType;
 import com.belafon.world.visibles.creatures.behaviour.BehaviourTypeBuilder;
 import com.belafon.world.visibles.creatures.behaviour.BehaviourType.IngredientsCounts;
@@ -24,16 +25,27 @@ public class FindConcreteResource extends Behaviour {
     private boolean found = false;
     private int durationOfFinding; // -1 will not be found
 
+    public static final BehaviourBuilder builder = (Creature creature,
+            List<BehavioursPossibleIngredient> ingredients) -> {
+        if (ingredients.size() != 1)
+            throw new IllegalArgumentException("FindConcreteResource needs 1 ingredient.");
+        return new FindConcreteResource(20, creature.abilityCondition.getObservation(), creature,
+                (TypeOfResource) ingredients.get(0));
+    };
+
     public static final BehaviourType type;
     static {
-        type = new BehaviourTypeBuilder("Find some nature resource", "Lets pick an item up into the inventory...",
-                FindConcreteResource.class)
+        type = new BehaviourTypeBuilder("Find some nature resource", "Lets find some resource...")
+                .setBehaviourBuilder(builder)
+                .setBehaviourClass(FindConcreteResource.class)
+                .addRequirement(Place.REQUIREMENT_IS_REACHABLE, new IngredientsCounts(null, 1, 0))
+                .addRequirement(TypeOfResource.REQUIREMENT_RESOURCE_IS_KNOWN, new IngredientsCounts(null, 1, 0))
                 .build();
     }
 
-    public FindConcreteResource(World game, int duration, int bodyStrain, Creature creature,
+    public FindConcreteResource(int duration, int bodyStrain, Creature creature,
             TypeOfResource typeResource) {
-        super(game, duration, bodyStrain, creature);
+        super(creature.game, duration, bodyStrain, creature);
         this.typeOfResource = typeResource;
         resource = creature.getLocation().resources.get(typeResource);
     }

@@ -1,10 +1,11 @@
 package com.belafon.world.visibles.creatures.behaviour.behaviours;
 
+import java.util.List;
 import java.util.Map;
 
-import com.belafon.world.World;
 import com.belafon.world.visibles.creatures.Creature;
 import com.belafon.world.visibles.creatures.behaviour.Behaviour;
+import com.belafon.world.visibles.creatures.behaviour.BehaviourBuilder;
 import com.belafon.world.visibles.creatures.behaviour.BehaviourType;
 import com.belafon.world.visibles.creatures.behaviour.BehaviourTypeBuilder;
 import com.belafon.world.visibles.creatures.behaviour.BehaviourType.IngredientsCounts;
@@ -13,15 +14,30 @@ import com.belafon.world.visibles.items.types.Food;
 public class Eat extends Behaviour {
     private final Food food;
 
+    public static boolean checkIngredients(List<BehavioursPossibleIngredient> ingredients) {
+        if (ingredients.size() != 1)
+            throw new IllegalArgumentException("Eat behaviour can have only one ingredient.");
+        if (!(ingredients.get(0) instanceof Food))
+            throw new IllegalArgumentException("Eat behaviour can have only food as ingredient.");
+        return true;
+    }
     public static final BehaviourType type;
+    public static final BehaviourBuilder builder = (Creature creature,
+            List<BehavioursPossibleIngredient> ingredients) -> {
+        checkIngredients(ingredients);
+        return new Eat(creature, (Food) ingredients.get(0));
+    };
+
     static {
-        type = new BehaviourTypeBuilder("Eat", "Lets eat a food to stop hunger.",Eat.class)
+        type = new BehaviourTypeBuilder("Eat", "Lets eat a food to stop hunger.")
+                .setBehaviourBuilder(builder)
+                .setBehaviourClass(Eat.class)
                 .addRequirement(Food.REQUIREMENT, new IngredientsCounts(null, 1, 0))
                 .build();
     }
 
-    public Eat(World game, Creature creature, Food food) {
-        super(game, 0, 0, creature);
+    public Eat(Creature creature, Food food) {
+        super(creature.game, 0, 0, creature);
         this.food = food;
     }
 

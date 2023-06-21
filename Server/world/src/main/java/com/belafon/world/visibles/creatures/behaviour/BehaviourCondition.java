@@ -1,52 +1,61 @@
 package com.belafon.world.visibles.creatures.behaviour;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.belafon.console.ConsolePrint;
+import com.belafon.world.objectsMemory.Visible;
 import com.belafon.world.visibles.creatures.Creature;
-import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleIngredients;
+import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleIngredient;
 import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleRequirement;
 
 public class BehaviourCondition {
     private Creature creature;
-    private final Map<BehavioursPossibleRequirement, ArrayList<BehavioursPossibleIngredients>> behavioursIngredients = new ConcurrentHashMap<>();
+    private final Map<BehavioursPossibleRequirement, ArrayList<BehavioursPossibleIngredient>> behavioursIngredients = new ConcurrentHashMap<>();
     private final Set<BehaviourType> feasibleBehaviours = new HashSet<>();
+    /**
+     * new ingredient is added:
+     * 1. when new visible is spotted
+     * 2. when new knowledge is gained
+     * 3. when new item is picked up
+     */
+    public final Map<BehavioursPossibleIngredientID, BehavioursPossibleIngredient> allIngredients = new HashMap<>();
 
     public BehaviourCondition(Creature creature) {
         this.creature = creature;
     }
 
-    public void sendInfoAboutAllBehavioursWithNoRequirements(){
-        feasibleBehaviours.addAll(BehaviourType.ALL_BEHAVIOUR_TYPES_WITHOUT_REQUIREMENT);
-        for (BehaviourType behaviourType : feasibleBehaviours)
+    public void sendInfoAboutAllBehavioursWithNoRequirements() {
+        for (BehaviourType behaviourType : BehaviourType.ALL_BEHAVIOUR_TYPES_WITHOUT_REQUIREMENT)
             creature.writer.behavioursMessages.newFeasibleBehaviour(behaviourType);
     }
 
     /**
-     * checks wether the creature can do some other behaviour.
+     * checks wether the creature can do some other behaviour 
+     * and add the behaviours possible ingredient.
      * 
      * This is called when behavioursProperties keys updated,
      * or when new Visible spotted, or lost from sight
      */
-    public void addBehavioursPossibleIngredient(BehavioursPossibleRequirement behavioursPossibleRequirement,
-            BehavioursPossibleIngredients behavioursPossibleIngredients) {
+    public void addBehavioursPossibleIngredientAndCheckFeasibleBehaviours(BehavioursPossibleRequirement requirement,
+            BehavioursPossibleIngredient ingredient) {
 
-        if (behavioursIngredients.containsKey(behavioursPossibleRequirement)) {
-            behavioursIngredients.get(behavioursPossibleRequirement).add(behavioursPossibleIngredients);
+        if (behavioursIngredients.containsKey(requirement)) {
+            behavioursIngredients.get(requirement).add(ingredient);
         } else {
-            ArrayList<BehavioursPossibleIngredients> list = new ArrayList<>();
-            list.add(behavioursPossibleIngredients);
-            behavioursIngredients.put(behavioursPossibleRequirement, list);
+            ArrayList<BehavioursPossibleIngredient> list = new ArrayList<>();
+            list.add(ingredient);
+            behavioursIngredients.put(requirement, list);
         }
-        checkPossibleBehavioursAfterNewBehavioursPossibleRequirementAdded(behavioursPossibleRequirement);
+        updateFeasibleBehaviours(requirement);
     }
 
-    public void removeBehavioursPossibleRequirement(BehavioursPossibleRequirement requirement,
-            BehavioursPossibleIngredients ingredient) {
+    public void removeBehavioursPossibleIngredientAndCheckFeasibleBehaviours(BehavioursPossibleRequirement requirement,
+            BehavioursPossibleIngredient ingredient) {
 
         if (!behavioursIngredients.containsKey(requirement)) {
             ConsolePrint.error(
@@ -60,7 +69,6 @@ public class BehaviourCondition {
             return;
         }
 
-        // success
         behavioursIngredients.get(requirement).remove(ingredient);
         checkPossibleBehavioursAfterBehavioursPossibleRequirementRemoved(requirement);
     }
@@ -79,17 +87,21 @@ public class BehaviourCondition {
      * 
      * @param newRequirement
      */
-    private void checkPossibleBehavioursAfterNewBehavioursPossibleRequirementAdded(
+    private void updateFeasibleBehaviours(
             BehavioursPossibleRequirement newRequirement) {
 
         for (final BehaviourType behaviourType : newRequirement.behaviours) {
             if (canCreatureDoTheBehaviour(behaviourType)) {
                 synchronized (feasibleBehaviours) {
-                    if (feasibleBehaviours.contains(behaviourType))
-                        continue;
+                    if (!feasibleBehaviours.contains(behaviourType))
+                        addNewFeasibleBehaviour(behaviourType);
                 }
-                addNewFeasibleBehaviour(behaviourType);
-            }
+            } /*
+               * else {
+               * if (feasibleBehaviours.contains(behaviourType))
+               * removeUnfeasibleBehaviour(behaviourType);
+               * }
+               */
         }
 
     }
@@ -116,5 +128,11 @@ public class BehaviourCondition {
             feasibleBehaviours.remove(behaviourType);
         }
         creature.writer.behavioursMessages.removeFeasibleBehaviour(behaviourType);
+    }
+
+    public void updateFeasibleBehaviours(Visible visible) {
+        visible.getBehavioursPossibleRequirementType(creature).forEach((requirement) -> {
+            addBehavioursPossibleIngredientAndCheckFeasibleBehaviours(requirement, visible);
+        });
     }
 }

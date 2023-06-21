@@ -1,8 +1,10 @@
 package com.belafon.world.visibles.creatures.behaviour;
 
 import com.belafon.likeliness.Dice;
+import com.belafon.server.messages.playerMessages.SurroundingPlayerMessages;
 import com.belafon.world.maps.place.Place;
 import com.belafon.world.maps.place.UnboundedPlace;
+import com.belafon.world.visibles.creatures.Creature;
 
 public class PlayersLookAround {
     public static final int radiusOfView = 3;
@@ -133,7 +135,7 @@ public class PlayersLookAround {
      * @return Returns info message about surrounding places.
      *         It is used for sending info to player
      */
-    public String makeMessage() {
+    public String makeMessage(Creature creature) {
         StringBuilder look = new StringBuilder("");
         int numberOfNullInRow = 0;
         for (int i = 0; i < 7; i++) {
@@ -143,7 +145,7 @@ public class PlayersLookAround {
                         look.append("x " + numberOfNullInRow + " ; ");
                         numberOfNullInRow = 0;
                     }
-                    look.append(getView(visiblePlaces[i][j]));
+                    look.append(getView(visiblePlaces[i][j], creature));
                 } else {
                     numberOfNullInRow++;
                 }
@@ -155,12 +157,14 @@ public class PlayersLookAround {
     }
 
     // info about distant place
-    private StringBuilder getView(Place place) {
+    private StringBuilder getView(Place place, Creature creature) {
         StringBuilder message = new StringBuilder(place.typeOfPlace.name.name());
+        message.append("+" + place.getBehavioursPossibleIngredientID());
+        message.append("+" + SurroundingPlayerMessages.getAllPossibleBehavioursReqruiementsAsMessage(place, creature));
         for (int i = 0; i < place.effects.size(); i++) {
             int visibility = place.effects.get(i).visibility;
             if (visibility <= 200 && new Dice(visibility).toss() > 20)
-                message.append(" " + place.effects.get(i).name);
+                message.append("+" + place.effects.get(i).name);
         }
         message.append(" ; ");
         return message;

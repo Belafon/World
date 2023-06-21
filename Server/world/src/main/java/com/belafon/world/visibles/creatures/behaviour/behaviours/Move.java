@@ -1,14 +1,15 @@
 package com.belafon.world.visibles.creatures.behaviour.behaviours;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
-import com.belafon.world.World;
 import com.belafon.world.calendar.events.EventBehaviour;
 import com.belafon.world.maps.place.Place;
 import com.belafon.world.maps.place.UnboundedPlace;
 import com.belafon.world.visibles.creatures.Creature;
 import com.belafon.world.visibles.creatures.behaviour.Behaviour;
+import com.belafon.world.visibles.creatures.behaviour.BehaviourBuilder;
 import com.belafon.world.visibles.creatures.behaviour.BehaviourType;
 import com.belafon.world.visibles.creatures.behaviour.BehaviourTypeBuilder;
 import com.belafon.world.visibles.creatures.behaviour.BehaviourType.IngredientsCounts;
@@ -19,14 +20,31 @@ public class Move extends Behaviour {
     private int currentPositionOfTravel = 0;
 
     public static final BehaviourType type;
-    static {
-        type = new BehaviourTypeBuilder("Move to other place", "Lets go somewhere...", Move.class)
-        .addRequirement(Place.REQUIREMENT_IS_REACHABLE, new IngredientsCounts(null, 1, 0))        
-        .build();
+
+    public static boolean checkIngredients(List<BehavioursPossibleIngredient> ingredients) {
+        if (ingredients.size() != 1)
+            throw new IllegalArgumentException("Move behaviour can have only one ingredient.");
+        if (!(ingredients.get(0) instanceof UnboundedPlace))
+            throw new IllegalArgumentException("Move behaviour can have only food as ingredient.");
+        return true;
     }
 
-    public Move(World game, Creature creature, Place destination) {
-        super(game, 0, 0, creature);
+    public static final BehaviourBuilder builder = (Creature creature,
+            List<BehavioursPossibleIngredient> ingredients) -> {
+        checkIngredients(ingredients);
+        return new Move(creature, (Place) ingredients.get(0));
+    };
+
+    static {
+        type = new BehaviourTypeBuilder("Move to other place", "Lets go somewhere...")
+                .setBehaviourBuilder(builder)
+                .setBehaviourClass(Move.class)
+                .addRequirement(Place.REQUIREMENT_IS_REACHABLE, new IngredientsCounts(null, 1, 0))
+                .build();
+    }
+
+    public Move(Creature creature, Place destination) {
+        super(creature.game, 0, 0, creature);
         this.destination = destination;
         UnboundedPlace unboundedPlace = creature.getLocation();
         if (unboundedPlace instanceof Place place) {
@@ -44,6 +62,7 @@ public class Move extends Behaviour {
                 place = destination.map.places[x][y];
                 jurney.add(place);
             }
+            duration = getDurationOfTravel(creature, destination.map.getDistanceBetweenPlaces());
         } else {
             // TODO
         }
@@ -57,15 +76,19 @@ public class Move extends Behaviour {
 
     @Override
     public void interrupt() {
-
+        super.interrupt();
     }
 
     @Override
     public void cease() {
         if (currentPositionOfTravel > 0)
-            creature.setLocation(jurney.get(currentPositionOfTravel - 1));
+            creature.setLocationInMap(jurney.get(currentPositionOfTravel - 1));
+
+        if (currentPositionOfTravel == jurney.size())
+            super.cease();
+
         if (currentPositionOfTravel < jurney.size()) {
-            duration = getDurationOfTravel(creature);
+            duration = getDurationOfTravel(creature, destination.map.getDistanceBetweenPlaces());
             event = new EventBehaviour(game.time.getTime() + duration, game, this);
             creature.game.calendar.add(event);
             currentPositionOfTravel++;
@@ -81,12 +104,12 @@ public class Move extends Behaviour {
         return null; // TODO
     }
 
-    public int getDurationOfTravel(Creature creature) {
+    public int getDurationOfTravel(Creature creature, float distance) {
         float speed = getCurrentSpeed(creature);
 
         // distance / speed = time (+ hours have to be transfered to minutes)
         // 20 jednotek = 1 hodina -> 1/3 jednotky za minutu
-        float durationOfTravel = 1000f / speed;
+        float durationOfTravel = distance / speed;
 
         // influence by health of player
         durationOfTravel += 150f - (2.1f * (float) creature.abilityCondition.getHealth()) + (0.006f
