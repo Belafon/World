@@ -72,6 +72,6 @@ public class Screen {
 
     // Write info message Toast
     public static synchronized void info(String message, int duration){
-        Toast.makeText(AbstractActivity.actualActivity,message, duration).show();
+        Toast.makeText(AbstractActivity.getActualActivity(), message, duration).show();
     }
 }

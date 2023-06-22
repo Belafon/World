@@ -1,4 +1,4 @@
-package com.example.world.Client;
+package com.example.world.client;
 
 import android.util.Log;
 import android.widget.Toast;
@@ -27,11 +27,8 @@ public class SendMessage {
             @Override
             public void run() {
                 try {
-                    Log.d(TAG, "run: lets write");
                     out.write(message + "\r\n");
-                    Log.d(TAG, "run: lets flush");
                     out.flush();
-                    Log.d(TAG, "run: everything is alsom!!!!!!!");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }catch(Exception e){

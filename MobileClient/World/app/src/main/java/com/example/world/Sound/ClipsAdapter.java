@@ -1,4 +1,4 @@
-package com.example.world.Sound;
+package com.example.world.sound;
 
 import android.content.Context;
 import android.media.MediaPlayer;

@@ -12,11 +12,11 @@ import android.view.View;
 
 public class AbstractActivity extends AppCompatActivity {
     private static final String TAG = "AbstractActivity";
-    public static volatile Activity actualActivity = null;
+    private static Activity actualActivity = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MainActivity.actualActivity = this;
+        setActualActivity(this);
         Screen.hideBars(this);
     }
 
@@ -37,6 +37,18 @@ public class AbstractActivity extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                             | View.SYSTEM_UI_FLAG_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
+    }
+
+    public static Activity getActualActivity() {
+        synchronized (AbstractActivity.actualActivity) {
+            return AbstractActivity.actualActivity;
+        }
+    }
+
+    public static void setActualActivity(Activity actualActivity) {
+        synchronized (AbstractActivity.actualActivity) {
+            AbstractActivity.actualActivity = actualActivity;
         }
     }
 }

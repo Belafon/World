@@ -1,4 +1,4 @@
-package com.example.world.DataSafe;
+package com.example.world.dataSafe;
 
 import android.content.Context;
 import android.content.SharedPreferences;

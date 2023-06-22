@@ -4,10 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.swing.SwingUtilities;
-
-import com.example.world.Client.Client;
-import com.example.world.GameActivity.GameActivity;
+import com.example.world.client.Client;
+import com.example.world.gameActivity.GameActivity;
 import com.example.world.game.mainWindow.MainWindow;
 import com.example.world.game.Panels;
 import com.example.world.game.visibles.creatures.PlayableCreature;
@@ -28,7 +26,7 @@ public class Game {
         panels = new Panels(stats);
 
         this.client.setStats(stats);
-        this.client.setPanels(panels);
+        this.client.setFragments(panels);
     }
 
     public void addNewPlayableCreature(PlayableCreature creature) {

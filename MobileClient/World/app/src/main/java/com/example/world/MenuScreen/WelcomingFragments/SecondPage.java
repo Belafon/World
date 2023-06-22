@@ -1,4 +1,5 @@
-package com.example.world.MenuScreen.WelcomingFragments;
+package com.example.world.menuScreen.welcomingFragments;
+
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -2,18 +2,14 @@ package com.example.world.game.client;
 
 import java.util.List;
 
+import com.example.world.client.Client;
 import com.example.world.game.behaviours.Behaviour;
 import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 
 public class BehavioursMessage {
-    private Client client;
-
-    public BehavioursMessage(Client client) {
-        this.client = client;
-    }
 
     public void executeBehaviour(List<BehavioursPossibleIngredient> selectedIngredients, Behaviour behaviour) {
-        client.sendMessage("game behaviour executeBehaviour " + behaviour.messagesName + " " + writeIngredients(selectedIngredients));
+        Client.sendMessage("game behaviour executeBehaviour " + behaviour.messagesName + " " + writeIngredients(selectedIngredients));
     }
 
     private StringBuffer writeIngredients(List<BehavioursPossibleIngredient> selectedIngredients) {

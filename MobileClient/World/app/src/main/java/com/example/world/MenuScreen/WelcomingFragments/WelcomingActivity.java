@@ -1,4 +1,4 @@
-package com.example.world.MenuScreen.WelcomingFragments;
+package com.example.world.menuScreen.welcomingFragments;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -13,9 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.world.AbstractActivity;
-import com.example.world.Client.Client;
+import com.example.world.client.Client;
 import com.example.world.MainActivity;
-import com.example.world.MenuScreen.MenuActivity;
+import com.example.world.menuScreen.MenuActivity;
 import com.example.world.R;
 import com.example.world.Screen;
 

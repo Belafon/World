@@ -1,12 +1,15 @@
-package com.example.world.Client;
+package com.example.world.client;
 
 import android.util.Log;
 
 import com.example.world.AbstractActivity;
-import com.example.world.DataSafe.DataLibrary;
+import com.example.world.dataSafe.DataLibrary;
 import com.example.world.MainActivity;
-import com.example.world.MenuScreen.MenuActivity;
+import com.example.world.game.client.MessageSender;
+import com.example.world.menuScreen.MenuActivity;
 import com.example.world.Screen;
+import com.example.world.game.Panels;
+import com.example.world.game.Stats;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,35 +19,43 @@ import java.net.UnknownHostException;
 
 public class Client {
     private static final String TAG = "Client";
-    public static volatile Socket clientSocket;
-    public static final String ip = "192.168.0.106";
+    
+    public static Socket clientSocket;
+    public static String ip = "192.168.0.106";
     public static volatile int port = 25555;
     public static volatile boolean flow = false; // controls the network connection
+
     public static String name = "";
-    public static final DataLibrary clientsData = new DataLibrary("clientsData");
     public static volatile boolean disconnected = true;
+    
+    public static final DataLibrary clientsData = new DataLibrary("clientsData");
     public static volatile int condition; // 0 -> connected, 1 -> reconnected, 2 -> first start
     public static final int idle = 10;
     public static final int playing = 11;
     public static final int first_start = 12;
     public static volatile int actualGameId = -1;
-    public static volatile Stats stats;
-    public static volatile Fragments fragments;
+    
+    public static Stats stats;
+    public static Panels fragments;
 
-    public Client(){
-        condition = clientsData.LoadDataInteager(AbstractActivity.actualActivity, "clientsCondition");
-        name = clientsData.LoadDataString(MainActivity.actualActivity, "clientsName");
-        if(condition < 10)condition = first_start;
-        if(condition == playing) actualGameId = clientsData.LoadDataInteager(AbstractActivity.actualActivity, "gameId");
+    public static final MessageSender messageSender = new MessageSender();
+
+    public Client() {
+        condition = clientsData.LoadDataInteager(AbstractActivity.getActualActivity(), "clientsCondition");
+        name = clientsData.LoadDataString(MainActivity.getActualActivity(), "clientsName");
+        if (condition < 10)
+            condition = first_start;
+        if (condition == playing)
+            actualGameId = clientsData.LoadDataInteager(AbstractActivity.getActualActivity(), "gameId");
     }
 
     public static void setName(String text) {
-        if(!name.equals(text)){
+        if (!name.equals(text)) {
             name = text;
-            clientsData.saveDataString(MainActivity.actualActivity, name, "clientsName");
-            clientsData.saveDataInteager(MainActivity.actualActivity, idle, "clientsCondition");
+            clientsData.saveDataString(MainActivity.getActualActivity(), name, "clientsName");
+            clientsData.saveDataInteager(MainActivity.getActualActivity(), idle, "clientsCondition");
         }
-        write("name " + name);
+        sendMessage("name " + name);
     }
 
     // This method sets the connection to server
@@ -52,42 +63,40 @@ public class Client {
         Log.d(TAG, "run: CREATE CLIENT --- LETS CONNECT");
         boolean flow = true; // to gets info about flow
         try {
-            try{
+            try {
                 clientSocket = new Socket(ip, port);
-            }catch (UnknownHostException e){
+            } catch (UnknownHostException e) {
                 flow = false;
             } catch (IOException i) {
-                MainActivity.actualActivity.runOnUiThread(
+                MainActivity.getActualActivity().runOnUiThread(
                         () -> Screen.info("Network exception...", 0));
                 flow = false;
             }
-            if(clientSocket == null) flow = false;
+            if (clientSocket == null)
+                flow = false;
 
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             startListener(in);
         } catch (IOException e) {
             flow = false;
-        } catch (Exception e){
+        } catch (Exception e) {
             flow = false;
         }
+
         Client.flow = flow;
-        sendMessage = new SendMessage();
 
-        if(flow){
-            clientsData.saveDataInteager(AbstractActivity.actualActivity, port, "port");
-            clientsData.saveDataString(AbstractActivity.actualActivity, ip, "serverIp");
+        if (flow) {
+            sendMessage = new SendMessage();
 
-            if(AbstractActivity.actualActivity instanceof MenuActivity)
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        AbstractActivity.actualActivity.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                ((MenuActivity)AbstractActivity.actualActivity).showMenuFragment();
-                            }
-                        });
-                    }
+            clientsData.saveDataInteager(AbstractActivity.getActualActivity(), port, "port");
+            clientsData.saveDataString(AbstractActivity.getActualActivity(), ip, "serverIp");
+            disconnected = false;
+
+            if (AbstractActivity.getActualActivity() instanceof MenuActivity)
+                new Thread(() -> {
+                    AbstractActivity.getActualActivity().runOnUiThread(() ->
+                            ((MenuActivity) AbstractActivity.getActualActivity()).showMenuFragment()
+                    );
                 }).start();
         }
     }
@@ -96,8 +105,8 @@ public class Client {
     // this method is called when connect to last ip button is clicked
     // it will try to connect to server with last ip
     public static void connectToLastIp() {
-        ip = Client.clientsData.LoadDataString(AbstractActivity.actualActivity, "serverIp");
-        port = Client.clientsData.LoadDataInteager(AbstractActivity.actualActivity, "port");
+        ip = Client.clientsData.LoadDataString(AbstractActivity.getActualActivity(), "serverIp");
+        port = Client.clientsData.LoadDataInteager(AbstractActivity.getActualActivity(), "port");
         new Thread(() -> connect()).start();
     }
 
@@ -108,21 +117,22 @@ public class Client {
             @Override
             public void run() {
                 // TODO Auto-generated method stub
-                while(true) {
+                while (true) {
                     String string = null;
                     try {
                         string = in.readLine();
                     } catch (IOException e) {
                         e.printStackTrace();
-                    } catch (Exception e){
+                    } catch (Exception e) {
                         Log.d(TAG, "run: error " + e);
                         return;
                     }
-                    if(string != null) {
+                    if (string != null) {
                         makeThreadWorker(string);
                     }
                 }
             }
+
             private void makeThreadWorker(final String string) {
                 new Thread(new Runnable() {
                     @Override
@@ -136,20 +146,19 @@ public class Client {
         thread.start();
     }
 
-    public static SendMessage sendMessage;
-    public static void write(String message){
-        try{
+    private static SendMessage sendMessage;
+    public static void sendMessage(String message) {
+        try {
             sendMessage.write(message);
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.d(TAG, "write: ERROR " + e);
             return;
         }
         Log.d(TAG, "write: text was written  ->  " + message);
     }
 
-    //private static Timer timer;
+    // private static Timer timer;
     public synchronized static void decomposeTheString(String value) {
-        Log.d(TAG, "decomposeTheString: TRY HELLO WORLD");
 
     }
 
@@ -157,7 +166,7 @@ public class Client {
         this.stats = stats;
     }
 
-    public void setFragments(Fragments fragment) {
+    public void setFragments(Panels fragment) {
         this.fragments = fragments;
     }
 }

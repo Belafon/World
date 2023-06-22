@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.world.DataSafe.DataLibrary;
-import com.example.world.MenuScreen.MenuActivity;
-import com.example.world.MenuScreen.WelcomingFragments.WelcomingActivity;
+import com.example.world.dataSafe.DataLibrary;
+import com.example.world.menuScreen.MenuActivity;
+import com.example.world.menuScreen.WelcomingFragments.WelcomingActivity;
 
 public class MainActivity extends AbstractActivity {
     private static final String TAG = "MainActivity";

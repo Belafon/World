@@ -4,21 +4,25 @@ import com.example.world.game.Panels;
 import com.example.world.game.Stats;
 
 public class ChatListener {
+    private static final String TAG = "ChatListener";
     private Stats stats;
     private Panels panels;
 
     public ChatListener(Stats stats, Panels panels) {
         this.stats = stats;
         this.panels = panels;
-
     }
 
+    public synchronized void setStatsAndPanels(Stats stats, Panels panels) {
+        this.stats = stats;
+        this.panels = panels;
+    }
     /**
      * Decompose the string message from the server.
      * 
      * @param message is get from the server.
      */
-    public void listen(String message) {
+    public synchronized void listen(String message) {
         String[] args = message.split(" ");
         panels.listenerPanel.addIncomingMessage(message);
 
@@ -32,6 +36,11 @@ public class ChatListener {
     }
 
     private void listenBase(String[] args) {
+        if (!arg[0].equals("server") && panels == null) {
+            Log.d(TAG, "listenBase: fragments and stats are not set while game message received");
+            return;
+        }
+
         switch (args[0]) {
             case "server" -> listenServer(args);
             case "item" -> listenItem(args);
@@ -112,7 +121,7 @@ public class ChatListener {
             case "fatigue_max" -> stats.body.setFatigueMax(args[3]);
             case "current_energy_output" -> stats.body.setCurrentEnergyOutput(args[3]);
         }
-        ;
+        
     }
 
     private void listenKnowledge(String[] args) {
@@ -129,5 +138,14 @@ public class ChatListener {
     }
 
     private void listenServer(String[] args) {
+        /*
+            catch these:
+            "server number_of_players_to_wait " + number, PlayersMessageSender.TypeMessage.other
+            "server startGame", PlayersMessageSender.TypeMessage.other
+         */
+        switch (args[1]) {
+            case "number_of_players_to_wait" -> stats.players.setNumberOfPlayersToWait(Integer.parseInt(args[2]));
+            case "startGame" -> stats.players.startGame();
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.world.MenuScreen;
+package com.example.world.menuScreen;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,13 +6,14 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.world.AbstractActivity;
-import com.example.world.Client.AllMessages;
-import com.example.world.Client.Client;
-import com.example.world.GameActivity.WaitingScreenFragment;
-import com.example.world.MenuScreen.WelcomingFragments.WelcomingActivity;
+import com.example.world.MenuScreen.ConnectToServerFragment;
+import com.example.world.MenuScreen.MenuFragment;
+import com.example.world.client.Client;
+import com.example.world.gameActivity.WaitingScreenFragment;
+import com.example.world.menuScreen.welcomingFragments.WelcomingActivity;
 import com.example.world.R;
 import com.example.world.Screen;
-import com.example.world.Sound.Pool;
+import com.example.world.sound.Pool;
 
 public class MenuActivity extends AbstractActivity {
     private static final String TAG = "MenuActivity";
@@ -26,10 +27,11 @@ public class MenuActivity extends AbstractActivity {
         showConnectToServerFragment();
     }
 
-    public void startTutorial(View view){
-        tutorial();
+    public void startTutorial(View view) {
+        startTutorial();
     }
-    private void tutorial() {
+    
+    private void startTutorial() {
         Intent menuIntent = new Intent(MenuActivity.this , WelcomingActivity.class);
         startActivity(menuIntent);
         finish();
@@ -94,9 +96,8 @@ public class MenuActivity extends AbstractActivity {
     // FRAGMENT MENU ----------------------------------------------------------
 
     public void NewGame(View view){
-        AllMessages.findMatch();
+        Client.messageSender.serverMessages.findMatch();
         openFragment(new WaitingScreenFragment(), R.id.menu_fragment);
-
     }
     public void Character(View view){
         float volume = 1;
