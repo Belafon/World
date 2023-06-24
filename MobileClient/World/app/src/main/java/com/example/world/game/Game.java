@@ -16,17 +16,15 @@ public class Game {
     public final Stats stats;
     public final Panels panels;
     public final GameActivity gameActivity;
-    public final Client client;
 
-    public Game(GameActivity gameActivity, Client client) {
+    public Game(GameActivity gameActivity) {
         this.gameActivity = gameActivity;
-        this.client = client;
     
         stats = new Stats();
-        panels = new Panels(stats);
+        panels = new Panels(stats, gameActivity);
 
-        this.client.setStats(stats);
-        this.client.setFragments(panels);
+        Client.setStats(stats);
+        Client.setFragments(panels);
     }
 
     public void addNewPlayableCreature(PlayableCreature creature) {

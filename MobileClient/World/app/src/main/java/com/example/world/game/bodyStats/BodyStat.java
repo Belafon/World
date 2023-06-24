@@ -1,14 +1,11 @@
 package com.example.world.game.bodyStats;
 
-import java.lang.reflect.InvocationTargetException;
-
-import javax.swing.JList;
-import javax.swing.SwingUtilities;
+import android.widget.ArrayAdapter;
 
 public class BodyStat {
     private final String name;
     private int value;
-    private JList<BodyStat> list;
+    private ArrayAdapter<BodyStat> listAdapter;
 
     public BodyStat(String name, int value) {
         this.name = name;
@@ -19,21 +16,10 @@ public class BodyStat {
         return name;
     }
 
-    /**
-     * Sets the value of the stat and prepagates the change into the panel.
-     * @param value
-     * @throws NumberFormatException
-     */
     public void setValue(String value) throws NumberFormatException {
         this.value = Integer.parseInt(value);
-        try {
-            SwingUtilities.invokeAndWait(new Runnable() {
-                public void run() {       
-                    list.updateUI();
-                }
-            });
-        } catch (InvocationTargetException | InterruptedException e) {
-            e.printStackTrace();
+        if (listAdapter != null) {
+            listAdapter.notifyDataSetChanged();
         }
     }
 
@@ -41,7 +27,12 @@ public class BodyStat {
         return value;
     }
 
-    public void setList(JList<BodyStat> list) {
-        this.list = list;
+    public void setListAdapter(ArrayAdapter<BodyStat> listAdapter) {
+        this.listAdapter = listAdapter;
+    }
+
+    @Override
+    public String toString() {
+        return name + ": " + value;
     }
 }

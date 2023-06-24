@@ -1,4 +1,4 @@
-package com.example.world.MenuScreen;
+package com.example.world.menuScreen;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

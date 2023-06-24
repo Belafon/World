@@ -77,7 +77,7 @@ public class WelcomingActivity extends AbstractActivity {
             return;
         }
         Client.setName(name);
-        MainActivity.startData.saveDataBoolean(AbstractActivity.actualActivity, false, "isFirstStart");
+        MainActivity.startData.saveDataBoolean(AbstractActivity.getActualActivity(), false, "isFirstStart");
         Intent menuIntent = new Intent(WelcomingActivity.this , MenuActivity.class);
         startActivity(menuIntent);
         finish();

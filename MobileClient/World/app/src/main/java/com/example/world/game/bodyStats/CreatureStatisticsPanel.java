@@ -1,74 +1,55 @@
 package com.example.world.game.bodyStats;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.ListSelectionModel;
-import javax.swing.SwingConstants;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
-import com.example.world.game.mainWindow.MainWindow;
+import com.example.world.R;
 
-public class CreatureStatisticsPanel extends JPanel {
-
-    private JLabel actualHeadingLabel;
-    private JLabel abilityHeadingLabel;
-
+public class CreatureStatisticsPanel extends Fragment {
     public CreatureStatisticsPanel(BodyStats stats) {
-        // Set the layout to GridBagLayout
-        setLayout(new GridBagLayout());
+        this.stats = stats;
+    }
+    private BodyStats stats;
+    private ListView actualList;
+    private ListView abilityList;
 
-        // Create a titled border for the panel
-        MainWindow.setTitleBorder("Body stats", this);
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_creature_statistics_panel, container, false);
 
-        // Set up the GridBagConstraints object
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.weightx = 1.0;
-        gbc.gridx = 0;
-        gbc.gridy = 0;
+        // Find the actual and ability list views in the layout
+        actualList = view.findViewById(R.id.actual_list);
+        abilityList = view.findViewById(R.id.ability_list);
 
-        // Create the actual heading label
-        actualHeadingLabel = new JLabel("Actual condition", SwingConstants.CENTER);
-        actualHeadingLabel.setFont(new Font("Arial", Font.BOLD, 14));
-        add(actualHeadingLabel, gbc);
+        // Set up the adapter for actual list
+        BodyStat[] actualStats = { stats.hunger, stats.fatigueMax, stats.heat, stats.bleeding };
+        ArrayAdapter<BodyStat> actualAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1,
+                actualStats);
+        actualList.setAdapter(actualAdapter);
+        actualList.setBackgroundColor(Color.rgb(255, 255, 200));
 
-        // Increment the y position in the GridBagConstraints object
-        gbc.gridy++;
+        // Set up the adapter for ability list
+        BodyStat[] abilityStats = {
+                stats.healthAbility, stats.strengthAbility, stats.agilityAbility, stats.speedOfWalkAbility,
+                stats.speedOfRunAbility, stats.currentSpeedAbility, stats.hearingAbility, stats.observationAbility,
+                stats.visionAbility, stats.loudnessAbility, stats.attentionAbility, stats.energyOutputAbility
+        };
+        ArrayAdapter<BodyStat> abilityAdapter = new ArrayAdapter<>(requireContext(),
+                android.R.layout.simple_list_item_1, abilityStats);
+        abilityList.setAdapter(abilityAdapter);
+        abilityList.setBackgroundColor(Color.rgb(200, 255, 255));
 
-        stats.actualList = new JList<>(new BodyStat[] { stats.hunger, stats.fatigueMax, stats.heat, stats.bleeding });
-        stats.actualList.setCellRenderer(new BodyStatListCellRenderer());
-        stats.actualList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        stats.actualList.setBackground(new Color(255, 255, 200));
-        stats.actualList.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        add(stats.actualList, gbc);
-
-        // Increment the y position in the GridBagConstraints object
-        gbc.gridy++;
-
-        // Create the ability heading label
-        abilityHeadingLabel = new JLabel("Ability condition", SwingConstants.CENTER);
-        abilityHeadingLabel.setFont(new Font("Arial", Font.BOLD, 14));
-        add(abilityHeadingLabel, gbc);
-
-        // Increment the y position in the GridBagConstraints object
-        gbc.gridy++;
-
-        stats.abilityList = new JList<>(new BodyStat[] {
-            stats.healthAbility, stats.strengthAbility, stats.agilityAbility, stats.speedOfWalkAbility,
-            stats.speedOfRunAbility, stats.currentSpeedAbility, stats.hearingAbility, stats.observationAbility,
-            stats.visionAbility, stats.loudnessAbility, stats.attentionAbility, stats.energyOutputAbility
-        });
-        
-        stats.abilityList.setCellRenderer(new BodyStatListCellRenderer());
-        stats.abilityList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        stats.abilityList.setBackground(new Color(200, 255, 255));
-        stats.abilityList.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        add(stats.abilityList, gbc);
+        return view;
     }
 }

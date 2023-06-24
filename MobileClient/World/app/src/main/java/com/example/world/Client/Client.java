@@ -6,6 +6,7 @@ import com.example.world.AbstractActivity;
 import com.example.world.dataSafe.DataLibrary;
 import com.example.world.MainActivity;
 import com.example.world.game.client.MessageSender;
+import com.example.world.game.client.chatListener.ChatListener;
 import com.example.world.menuScreen.MenuActivity;
 import com.example.world.Screen;
 import com.example.world.game.Panels;
@@ -19,7 +20,7 @@ import java.net.UnknownHostException;
 
 public class Client {
     private static final String TAG = "Client";
-    
+
     public static Socket clientSocket;
     public static String ip = "192.168.0.106";
     public static volatile int port = 25555;
@@ -27,18 +28,19 @@ public class Client {
 
     public static String name = "";
     public static volatile boolean disconnected = true;
-    
+
     public static final DataLibrary clientsData = new DataLibrary("clientsData");
     public static volatile int condition; // 0 -> connected, 1 -> reconnected, 2 -> first start
     public static final int idle = 10;
     public static final int playing = 11;
     public static final int first_start = 12;
     public static volatile int actualGameId = -1;
-    
+
     public static Stats stats;
     public static Panels fragments;
 
-    public static final MessageSender messageSender = new MessageSender();
+    public static final MessageSender sender = new MessageSender();
+    public static final ChatListener chatListener = new ChatListener();
 
     public Client() {
         condition = clientsData.LoadDataInteager(AbstractActivity.getActualActivity(), "clientsCondition");
@@ -94,9 +96,8 @@ public class Client {
 
             if (AbstractActivity.getActualActivity() instanceof MenuActivity)
                 new Thread(() -> {
-                    AbstractActivity.getActualActivity().runOnUiThread(() ->
-                            ((MenuActivity) AbstractActivity.getActualActivity()).showMenuFragment()
-                    );
+                    AbstractActivity.getActualActivity().runOnUiThread(
+                            () -> ((MenuActivity) AbstractActivity.getActualActivity()).showMenuFragment());
                 }).start();
         }
     }
@@ -112,21 +113,17 @@ public class Client {
 
     // sets listener of messages from server
     private static void startListener(final BufferedReader in) {
-        // TODO Auto-generated method stub
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                // TODO Auto-generated method stub
                 while (true) {
                     String string = null;
                     try {
                         string = in.readLine();
                     } catch (IOException e) {
                         e.printStackTrace();
-                    } catch (Exception e) {
-                        Log.d(TAG, "run: error " + e);
-                        return;
                     }
+
                     if (string != null) {
                         makeThreadWorker(string);
                     }
@@ -134,12 +131,9 @@ public class Client {
             }
 
             private void makeThreadWorker(final String string) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Log.d(TAG, "run: NEW MESSAGE : ------->   " + string);
-                        decomposeTheString(string);
-                    }
+                new Thread(() -> {
+                    Log.d(TAG, "run: NEW MESSAGE : ------->   " + string);
+                    decomposeTheString(string);
                 }).start();
             }
         });
@@ -147,6 +141,7 @@ public class Client {
     }
 
     private static SendMessage sendMessage;
+
     public static void sendMessage(String message) {
         try {
             sendMessage.write(message);
@@ -159,14 +154,14 @@ public class Client {
 
     // private static Timer timer;
     public synchronized static void decomposeTheString(String value) {
-
+        chatListener.listen(value);
     }
 
-    public void setStats(Stats stats) {
-        this.stats = stats;
+    public static void setStats(Stats newStats) {
+        stats = newStats;
     }
 
-    public void setFragments(Panels fragment) {
-        this.fragments = fragments;
+    public static void setFragments(Panels newFragments) {
+        fragments = newFragments;
     }
 }

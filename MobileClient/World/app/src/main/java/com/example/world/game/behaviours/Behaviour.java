@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.example.world.game.App;
+import com.example.world.client.Client;
 import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 
 public class Behaviour {
@@ -104,7 +104,7 @@ public class Behaviour {
 
     public void execute(List<BehavioursPossibleIngredient> selectedIngredients) {
         // we have to send the message to the server
-        App.client.sender.behaviours.executeBehaviour(selectedIngredients, this);
+        Client.sender.behaviours.executeBehaviour(selectedIngredients, this);
     }
 
     public void setDuration(int duration) {

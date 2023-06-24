@@ -3,26 +3,68 @@ package com.example.world.gameActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.world.AbstractActivity;
 import com.example.world.R;
+import com.example.world.game.Game;
 
 public class GameActivity extends AbstractActivity {
-    public LinearLayout navigation;
-    public Fragment fragment;
     public LinearLayout notifications;
+    public ImageView backgroundImage;
+    public View colorFilter;
+    public Game game;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // lets prepare stats and fragments
+        this.game = new Game(this);
+
         setContentView(R.layout.activity_game);
-        navigation = (LinearLayout) findViewById(R.id.navigation);
-        fragment = (Fragment) getSupportFragmentManager().findFragmentById(R.id.game_fragment);
+
         notifications = (LinearLayout) findViewById(R.id.notifications);
+        backgroundImage = (ImageView) findViewById(R.id.background_image);
+        colorFilter = findViewById(R.id.color_filter);
+
         SetActivity.setGameActivity(this);
-        openWaitingScreenFragment();
+
+        new Thread(() -> {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            runOnUiThread(() -> {
+                openFragment(game.panels.mainMenuFragment);
+            });
+        }).start();
     }
-    public void openWaitingScreenFragment(){
-        openFragment(new WaitingScreenFragment(), R.id.menu_fragment);
+
+    public void openFragment(Fragment fragment) {
+        openFragment(fragment, R.id.game_fragment);
     }
+
+    public Fragment getGameFragment() {
+        return getSupportFragmentManager().findFragmentById(R.id.game_fragment);
+    }
+
+    public Fragment getSideMenuFragment() {
+        return getSupportFragmentManager().findFragmentById(R.id.game_main_bar_navigation);
+    }
+    /**
+     * Sets the color filter of the game.
+     * 
+     * @param a 0-255
+     * @param r 0-255
+     * @param g
+     * @param b
+     */
+    public void setFilterColor(int a, int r, int g, int b) {
+        colorFilter.setBackgroundColor(android.graphics.Color.argb(a, r, g, b));
+    }
+
 }

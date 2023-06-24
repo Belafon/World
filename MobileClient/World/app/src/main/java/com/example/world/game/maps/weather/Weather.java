@@ -1,7 +1,5 @@
 package com.example.world.game.maps.weather;
 
-import javax.swing.JPanel;
-
 public class Weather {
     private int clouds = 0;
     private int weather = 0;
@@ -73,13 +71,5 @@ public class Weather {
     public void setPartOfDay(String[] args) {
         partOfDay = NamePartOfDay.valueOf(args[2]);
         panel.setPartOfDay(partOfDay.name());
-    }
-    
-    /**
-     * @return a panel, which lists all the information
-     * about current weather in the current context.
-     */
-    public JPanel getPanel() {
-        return panel.getPanel();
     }
 }

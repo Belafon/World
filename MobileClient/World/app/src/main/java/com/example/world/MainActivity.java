@@ -6,7 +6,7 @@ import android.os.Handler;
 
 import com.example.world.dataSafe.DataLibrary;
 import com.example.world.menuScreen.MenuActivity;
-import com.example.world.menuScreen.WelcomingFragments.WelcomingActivity;
+import com.example.world.menuScreen.welcomingFragments.WelcomingActivity;
 
 public class MainActivity extends AbstractActivity {
     private static final String TAG = "MainActivity";

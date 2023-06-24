@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.world.AbstractActivity;
 import com.example.world.MenuScreen.ConnectToServerFragment;
-import com.example.world.MenuScreen.MenuFragment;
 import com.example.world.client.Client;
+import com.example.world.gameActivity.GameActivity;
 import com.example.world.gameActivity.WaitingScreenFragment;
 import com.example.world.menuScreen.welcomingFragments.WelcomingActivity;
 import com.example.world.R;
@@ -30,27 +32,29 @@ public class MenuActivity extends AbstractActivity {
     public void startTutorial(View view) {
         startTutorial();
     }
-    
+
     private void startTutorial() {
-        Intent menuIntent = new Intent(MenuActivity.this , WelcomingActivity.class);
+        Intent menuIntent = new Intent(MenuActivity.this, WelcomingActivity.class);
         startActivity(menuIntent);
         finish();
     }
 
-    public void showConnectToServerFragment(){
+    public void showConnectToServerFragment() {
         openFragment(new ConnectToServerFragment(), R.id.menu_fragment);
     }
-    public void showMenuFragment(){
+
+    public void showMenuFragment() {
         openFragment(new MenuFragment(), R.id.menu_fragment);
     }
 
-    // called, when the connect button is clicked, this will try to connect to server
+    // called, when the connect button is clicked, this will try to connect to
+    // server
     // with ip set in EditText with id edit_ip
     public void connect(View view) {
         if (!getIpAddress())
             return;
 
-        if(!getPortNumber())
+        if (!getPortNumber())
             return;
 
         new Thread(() -> Client.connect())
@@ -58,7 +62,7 @@ public class MenuActivity extends AbstractActivity {
     }
 
     private boolean getIpAddress() {
-        String ip = ((EditText)findViewById(R.id.edit_ip)).getText().toString();
+        String ip = ((EditText) findViewById(R.id.edit_ip)).getText().toString();
         if (!isValidIpAddress(ip)) {
             Screen.info("Too short ip.", 0);
             return false;
@@ -69,14 +73,14 @@ public class MenuActivity extends AbstractActivity {
 
     private boolean getPortNumber() {
         int port = 0;
-        try{
-            String portString = ((EditText)findViewById(R.id.port)).getText().toString();
+        try {
+            String portString = ((EditText) findViewById(R.id.port)).getText().toString();
             port = Integer.parseInt(portString);
-            if(port <= 1024) {
+            if (port <= 1024) {
                 Screen.info("Port must be bigger than 1024.", 0);
                 return false;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             Screen.info("Wrong port number format.", 0);
             return false;
         }
@@ -95,24 +99,39 @@ public class MenuActivity extends AbstractActivity {
 
     // FRAGMENT MENU ----------------------------------------------------------
 
-    public void NewGame(View view){
+    public void NewGame(View view) {
         Client.messageSender.serverMessages.findMatch();
         openFragment(new WaitingScreenFragment(), R.id.menu_fragment);
     }
-    public void Character(View view){
+
+    public void Character(View view) {
         float volume = 1;
         Pool.playMenuSound(1, volume);
     }
-    public void Stats(View view){
+
+    public void Stats(View view) {
         float volume = 1;
         Pool.playMenuSound(2, volume);
     }
-    public void StartSettings(View view){
+
+    public void StartSettings(View view) {
         float volume = 1;
         Pool.playMenuSound(3, volume);
     }
-    public void About(View view){
+
+    public void About(View view) {
         float volume = 1;
         Pool.playMenuSound(4, volume);
+    }
+
+    public void startGame() {
+        // lets create game activity
+        Intent menuIntent = new Intent(MenuActivity.this, GameActivity.class);
+        startActivity(menuIntent);
+        finish();
+    }
+
+    public Fragment getMenuFragment() {
+        return getSupportFragmentManager().findFragmentById(R.id.menu_fragment);
     }
 }

@@ -1,17 +1,16 @@
 package com.example.world.game.client.chatListener;
 
+import android.util.Log;
+
+import com.example.world.client.Client;
 import com.example.world.game.Panels;
 import com.example.world.game.Stats;
+import com.example.world.gameActivity.WaitingScreenFragment;
 
 public class ChatListener {
     private static final String TAG = "ChatListener";
     private Stats stats;
     private Panels panels;
-
-    public ChatListener(Stats stats, Panels panels) {
-        this.stats = stats;
-        this.panels = panels;
-    }
 
     public synchronized void setStatsAndPanels(Stats stats, Panels panels) {
         this.stats = stats;
@@ -24,7 +23,7 @@ public class ChatListener {
      */
     public synchronized void listen(String message) {
         String[] args = message.split(" ");
-        panels.listenerPanel.addIncomingMessage(message);
+        //panels.listenerPanel.addIncomingMessage(message);
 
         try {
             listenBase(args);
@@ -36,7 +35,7 @@ public class ChatListener {
     }
 
     private void listenBase(String[] args) {
-        if (!arg[0].equals("server") && panels == null) {
+        if (!args[0].equals("server") && Client.disconnected) {
             Log.d(TAG, "listenBase: fragments and stats are not set while game message received");
             return;
         }
@@ -138,14 +137,9 @@ public class ChatListener {
     }
 
     private void listenServer(String[] args) {
-        /*
-            catch these:
-            "server number_of_players_to_wait " + number, PlayersMessageSender.TypeMessage.other
-            "server startGame", PlayersMessageSender.TypeMessage.other
-         */
         switch (args[1]) {
-            case "number_of_players_to_wait" -> stats.players.setNumberOfPlayersToWait(Integer.parseInt(args[2]));
-            case "startGame" -> stats.players.startGame();
+            case "number_of_players_to_wait" -> WaitingScreenFragment.setNumberOfPlayersToWait(Integer.parseInt(args[2]));
+            case "startGame" -> WaitingScreenFragment.startGame();
         }
     }
 }
