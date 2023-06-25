@@ -1,5 +1,7 @@
 package com.example.world.game.maps;
 
+import androidx.fragment.app.Fragment;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -10,7 +12,6 @@ import com.example.world.game.Stats;
 import com.example.world.game.behaviours.BehavioursRequirement;
 import com.example.world.game.maps.playersPlacePanels.PlacePanel;
 import com.example.world.game.maps.playersPlacePanels.PlayersPlaceEffect;
-import com.example.world.game.maps.playersPlacePanels.PlayersPlaceInfoPanel;
 import com.example.world.game.maps.playersPlacePanels.TypePlace;
 import com.example.world.game.maps.weather.Weather;
 
@@ -20,12 +21,10 @@ public class PlayersMaps {
     // private PlayersMap currentMap;
     // private PlacePanel currentPosition;
 
-    private PlacePanel selectedPlacePanel = null;
-    private PlayersPlaceInfoPanel infoPlacePanel = new PlayersPlaceInfoPanel("", "", new ArrayList<>());
     public final Weather weather = new Weather();
 
     public PlayersMaps() {
-        surroundingMap = new SurroundingMap(infoPlacePanel);
+        surroundingMap = new SurroundingMap();
     }
 
     /**
@@ -39,7 +38,7 @@ public class PlayersMaps {
         maps.put(key, map);
         for (int x = 0; x < map.sizeX; x++) {
             for (int y = 0; y < map.sizeX; y++) {
-                map.places[x][y] = new PlacePanel(x, y, infoPlacePanel);
+                map.places[x][y] = PlacePanel.getUnknownPlace(x, y);
             }
         }
     }
@@ -69,7 +68,7 @@ public class PlayersMaps {
     }
 
     /**
-     * This method updates arround places
+     * This method updates surrounding places
      * with the message from the server.
      * It updates all the places.
      * 
@@ -129,7 +128,7 @@ public class PlayersMaps {
 
 
         // lets update the panel that shows the place in the surrounding
-        Place place = new Place(id, TypePlace.allTypes.get(typePlacesName), requirements, effects);
+        PlacePanel place = new PlacePanel(id, TypePlace.allTypes.get(typePlacesName), requirements, effects, xInSurrounding, yInSurrounding);
         surroundingMap.updatePlace(xInSurrounding, yInSurrounding, place);
 
         // lets add the place into ingredients
@@ -159,7 +158,7 @@ public class PlayersMaps {
         for (int i = 0; i < numberOfStackedNullPlaces; i++) {
             int xInSurrounding = currentPlace / SurroundingMap.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS;
             int yInSurrounding = currentPlace % SurroundingMap.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS;
-            surroundingMap.setPlaceUnknown(xInSurrounding, yInSurrounding, infoPlacePanel);
+            surroundingMap.setPlaceUnknown(xInSurrounding, yInSurrounding);
             currentPlace++;
         }
         return currentPlace;
@@ -173,18 +172,17 @@ public class PlayersMaps {
      *         player are displayed with grey color and
      *         with name as umknown place.
      */
-    public SurroundingPlacesPanel getSurroundingPlacesPanel() {
-        return new SurroundingPlacesPanel(surroundingMap.getComponent(), infoPlacePanel);
+    public SurroundingPlacesFragment getSurroundingPlacesPanel(Fragment lastFragment, int fragmentContainerId) {
+        return new SurroundingPlacesFragment(surroundingMap, fragmentContainerId, lastFragment);
     }
 
     public void removePlaceInSight(String[] args, Stats stats) {
         String id = args[2];
         int x = Integer.parseInt(args[3]);
         int y = Integer.parseInt(args[4]);
-        Place place = surroundingMap.getPlacePanel(x, y).getPlace();
-
+        Place place = surroundingMap.getPlacePanel(x, y);
         stats.visibles.removePlace(place);
-        surroundingMap.setPlaceUnknown(x, y, infoPlacePanel);
+        surroundingMap.setPlaceUnknown(x, y);
     }
 
     /*

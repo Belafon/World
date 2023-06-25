@@ -1,15 +1,15 @@
 package com.example.world.game.maps.playersPlacePanels;
 
+import androidx.fragment.app.Fragment;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.JComponent;
-
-/** 
+/**
  * All possible place effects and their informations are held here 
  */
 public class PlayersPlaceEffect {
-    public final static Map<String, PlayersPlaceEffect> allPlaceEffects;
+    public final static Map<PlaceEffectName, PlayersPlaceEffect> allPlaceEffects;
     public final PlaceEffectName name;
 
     public PlayersPlaceEffect(PlaceEffectName name, String look) {
@@ -20,7 +20,7 @@ public class PlayersPlaceEffect {
     public final String look;
     static {
         allPlaceEffects = new HashMap<>();
-        allPlaceEffects.put("fire", new PlayersPlaceEffect(PlaceEffectName.fire, "Fire with huge smoke"));
+        allPlaceEffects.put(PlaceEffectName.fire, new PlayersPlaceEffect(PlaceEffectName.fire, "Fire with huge smoke"));
     }
 
     public static enum PlaceEffectName {
@@ -28,10 +28,10 @@ public class PlayersPlaceEffect {
     }
 
     /**
-     * Retunrs a panel with info about the PlaceEffect.
+     * Retunrs a fragment with info about the PlaceEffect.
      * @return
      */
-    public JComponent getInfoPanel() {
-        return new PlaceEffectInfoPanel(name, look);
+    public Fragment getInfoFragment(Fragment lastFragment, int container) {
+        return new PlaceEffectInfoFragment(lastFragment, container, name, look);
     }
 }
