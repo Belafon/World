@@ -2,20 +2,20 @@ package com.example.world.game;
 
 import com.example.world.game.behaviours.BehavioursPanel;
 import com.example.world.game.bodyStats.CreatureStatisticsPanel;
-import com.example.world.game.maps.SurroundingPlacesPanel;
-import com.example.world.game.visibles.creatures.CreaturesPanel;
-import com.example.world.game.visibles.items.ItemsPanel;
-import com.example.world.game.visibles.resources.ResourcesPanel;
+import com.example.world.game.maps.SurroundingPlacesFragment;
+import com.example.world.game.visibles.creatures.CreaturesFragment;
+import com.example.world.game.visibles.items.ItemFragment;
+import com.example.world.game.visibles.resources.ResourcesFragment;
 import com.example.world.gameActivity.GameActivity;
 import com.example.world.gameActivity.MainMenuFragment;
 import com.example.world.gameActivity.ViewFragment;
 
 public class Panels {
     public final CreatureStatisticsPanel bodyStatistics;
-    public final SurroundingPlacesPanel surroundingPlaces;
-    public final ItemsPanel visibleItems;
-    public final CreaturesPanel visibleCreatures;
-    public final ResourcesPanel visibleResources;
+    public final SurroundingPlacesFragment surroundingPlaces;
+    public final ItemFragment visibleItems;
+    public final CreaturesFragment visibleCreatures;
+    public final ResourcesFragment visibleResources;
     public final BehavioursPanel behaviours;
     // public final JPanel weatherPanel; TODO implement changing of foreground view color
     public final MainMenuFragment mainMenuFragment;
@@ -27,10 +27,10 @@ public class Panels {
         this.stats = stats;
         this.gameActivity = gameActivity;
         this.bodyStatistics = new CreatureStatisticsPanel(stats.body);
-        this.surroundingPlaces = stats.maps.getSurroundingPlacesPanel();
-        this.visibleItems = new ItemsPanel();
-        this.visibleCreatures = new CreaturesPanel();
-        this.visibleResources = new ResourcesPanel();
+        this.surroundingPlaces = stats.maps.getSurroundingPlacesPanel(null, gameActivity.getGameFragmentContainerID());
+        this.visibleItems = new ItemFragment(gameActivity.getGameFragmentContainerID());
+        this.visibleCreatures = new CreaturesFragment(gameActivity.getGameFragmentContainerID());
+        this.visibleResources = new ResourcesFragment(gameActivity.getGameFragmentContainerID());
         this.view = new ViewFragment();
         //this.weatherPanel = stats.maps.weather.getPanel();
         this.behaviours = stats.behaviours.getPanel();

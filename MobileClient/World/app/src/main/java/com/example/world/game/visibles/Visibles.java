@@ -8,6 +8,7 @@ import com.example.world.game.visibles.creatures.Creature;
 import com.example.world.game.visibles.creatures.PlayableCreature;
 import com.example.world.game.visibles.items.Item;
 import com.example.world.game.visibles.items.Item.Food;
+import com.example.world.game.visibles.items.ItemInfoFragment;
 import com.example.world.game.visibles.resources.ResourceTypes;
 import com.example.world.game.Panels;
 import com.example.world.game.behaviours.Behaviours;
@@ -48,7 +49,7 @@ public class Visibles {
 
                 item = new Food(id, itemName, regularWeight, visibility, toss, freshness, filling, warm,
                         requirements);
-                panels.visibleItems.addVisibleTitlePanel(new VisiblePanel(item));
+                panels.visibleItems.addVisiblesTitle(item);
                 PlayableCreature.allIngredients.add(item);
             }
             default ->
@@ -85,7 +86,7 @@ public class Visibles {
         Set<BehavioursRequirement> requirements = extractRequirementsFromArgs(behaviours, args[10]);
 
         Creature creature = new Creature(name, id, appearance, requirements);
-        panels.visibleCreatures.addVisibleTitlePanel(new VisiblePanel(creature));
+        panels.visibleCreatures.addVisiblesTitle(creature);
         synchronized (creatures) {
             creatures.put(id, creature);
         }
@@ -134,7 +135,7 @@ public class Visibles {
         Set<BehavioursRequirement> requirements = extractRequirementsFromArgs(behaviours, args[5]);
 
         Resource resource = new Resource(id, type, mass, requirements);
-        panels.visibleResources.addVisibleTitlePanel(new VisiblePanel(resource));
+        panels.visibleResources.addVisiblesTitle(resource);
         synchronized (resources) {
             resources.put(id, resource);
         }
@@ -155,7 +156,7 @@ public class Visibles {
         int id = Integer.parseInt(args[2]);
         if (items.containsKey(id)) {
             var item = items.get(id);
-            panels.visibleItems.removeVisibleTitlePanel(item);
+            panels.visibleItems.removeVisiblesTitle(item);
             
             PlayableCreature.allIngredients.remove(item);
             
@@ -173,7 +174,7 @@ public class Visibles {
     public void removeCreature(String[] args, Panels panels) {
         int id = Integer.parseInt(args[2]);
         if (creatures.containsKey(id)) {
-            panels.visibleCreatures.removeVisibleTitlePanel(creatures.get(id));
+            panels.visibleCreatures.removeVisiblesTitle(creatures.get(id));
         }
         creatures.remove(id);
     }
@@ -188,7 +189,7 @@ public class Visibles {
     public void removeResource(String[] args, Panels panels) {
         int id = Integer.parseInt(args[2]);
         if (resources.containsKey(id)) {
-            panels.visibleResources.removeVisibleTitlePanel(resources.get(id));
+            panels.visibleResources.removeVisiblesTitle(resources.get(id));
         }
         synchronized (resources) {
             resources.remove(id);

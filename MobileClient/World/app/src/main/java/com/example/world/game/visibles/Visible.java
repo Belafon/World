@@ -21,7 +21,7 @@ public abstract class Visible extends BehavioursPossibleIngredient {
     public abstract Runnable getOnTitleClick();
 
     @Override 
-    protected String getName() {
+    public String getName() {
         return name;
     }
 }

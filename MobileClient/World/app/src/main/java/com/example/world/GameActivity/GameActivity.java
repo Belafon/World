@@ -21,7 +21,13 @@ public class GameActivity extends AbstractActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // lets prepare stats and fragments
+
+        // display side bar navigation menu fragment
+        openFragment(new MainMenuFragment(this), R.id.game_main_bar_navigation);
+
+
+
+        // lets prepare stats and other fragments
         this.game = new Game(this);
 
         setContentView(R.layout.activity_game);
@@ -67,4 +73,7 @@ public class GameActivity extends AbstractActivity {
         colorFilter.setBackgroundColor(android.graphics.Color.argb(a, r, g, b));
     }
 
+    public int getGameFragmentContainerID() {
+        return R.id.game_fragment;
+    }
 }

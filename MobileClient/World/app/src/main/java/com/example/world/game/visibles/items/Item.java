@@ -53,7 +53,7 @@ public class Item extends Visible {
         this.weight = weight;
     }
 
-    public int getVisiblity() {
+    public int getVisibility() {
         return visiblity;
     }
 
