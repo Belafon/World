@@ -77,7 +77,7 @@ public class BehavioursPanel {
         }
     }
 
-    public void removeItem(Object item) {
+    public void removeItem(Behaviour item) {
         JLabel label = itemLabels.remove(item);
         if (label != null) {
             panelWithList.remove(label);

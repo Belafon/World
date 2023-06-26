@@ -126,11 +126,26 @@ public class BehaviourExecutorPanel {
 
         // we have to remove all ingredients, that are already selected from different
         // behaviour
-        for (RequirementChooser chooser : requiremntsChoosers.values()) {
-            for (JComboBox<BehavioursPossibleIngredient> comboBox : chooser.comboBoxes) {
-                availableIngredients.add((BehavioursPossibleIngredient) comboBox.getSelectedItem());
+// Remove ingredients already selected by other behaviours
+for (RequirementChooser chooser : requiremntsChoosers.values()) {
+    for (AutoCompleteTextView autoCompleteTextView : chooser.autoCompleteTextViews) {
+        String selectedIngredientText = autoCompleteTextView.getText().toString();
+
+        // Find the corresponding BehavioursPossibleIngredient object
+        BehavioursPossibleIngredient selectedIngredient = null;
+        for (BehavioursPossibleIngredient ingredient : availableIngredients) {
+            if (ingredient.toString().equals(selectedIngredientText)) {
+                selectedIngredient = ingredient;
+                break;
             }
         }
+
+        if (selectedIngredient != null) {
+            availableIngredients.remove(selectedIngredient);
+        }
+    }
+}
+
 
         requiremntsChoosers = new HashMap<>();
 
@@ -246,61 +261,6 @@ public class BehaviourExecutorPanel {
         }
     }
 
-    private static class RequirementChooser {
-        public BehavioursRequirementDetail requirement;
-        private List<BehavioursPossibleIngredient> selectedIngredients = new ArrayList<>();
-        private Set<BehavioursPossibleIngredient> availableIngredients;
-        List<JComboBox<BehavioursPossibleIngredient>> comboBoxes = new ArrayList<>();
-
-        public RequirementChooser(BehavioursRequirementDetail requirement) {
-            this.requirement = requirement;
-        }
-
-        public void setAvailableIngredients(Set<BehavioursPossibleIngredient> availableIngredients) {
-            this.availableIngredients = availableIngredients;
-            fillComboBoxes();
-        }
-
-        /**
-         * Creates new combo box and safe default selected item
-         * 
-         * @param ingredient
-         */
-        public void addNewIngredient(BehavioursPossibleIngredient ingredient) {
-            selectedIngredients.add(ingredient);
-            comboBoxes.add(new JComboBox<>());
-        }
-
-        private void fillComboBoxes() {
-            if (availableIngredients == null)
-                throw new Error("setAvailableIngredients is null!");
-
-            int comboBoxIndex = 0;
-            for (JComboBox<BehavioursPossibleIngredient> comboBox : comboBoxes) {
-                ComboBoxItemModel comboBoxModel = new ComboBoxItemModel();
-                comboBox.setEditable(false);
-
-                for (BehavioursPossibleIngredient ingredient : availableIngredients) {
-                    comboBoxModel.addElement(ingredient);
-                }
-
-                BehavioursPossibleIngredient selectedIngredient = selectedIngredients.get(comboBoxIndex);
-                comboBoxModel.addElement(selectedIngredient);
-                comboBoxModel.setSelectedItem(selectedIngredient);
-
-                comboBox.setModel(comboBoxModel);
-
-                comboBoxIndex++;
-            }
-        }
-
-        public void selectIngredient(BehavioursPossibleIngredient ingredient,
-                JComboBox<BehavioursPossibleIngredient> comboBox) {
-            int index = comboBoxes.indexOf(comboBox);
-            selectedIngredients.set(index, ingredient);
-            comboBox.setSelectedItem(ingredient);
-        }
-    }
 
     public Component getContentPanel() {
         return panel;
@@ -333,3 +293,4 @@ public class BehaviourExecutorPanel {
         return behaviour;
     }
 }
+

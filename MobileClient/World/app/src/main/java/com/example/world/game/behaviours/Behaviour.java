@@ -72,18 +72,6 @@ public class Behaviour {
                     numOfGeneralIngredient));
             return this;
         }
-
-/*         public BehaviourBuilder addRequirement(
-                BehavioursRequirement behavioursRequirement,
-                int numOfConcreteIngredient,
-                int numOfGeneralIngredient) {
-            requirements.add(new BehavioursRequirementDetail(
-                    behavioursRequirement,
-                    null,
-                    numOfConcreteIngredient,
-                    numOfGeneralIngredient));
-            return this;
-        } */
     }
 
     public static class BehavioursRequirementDetail {
