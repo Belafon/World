@@ -13,10 +13,14 @@ public class Behaviours {
     public final Map<String, Behaviour> allBehaviors = new Hashtable<>();
     public final Map<String, BehavioursRequirement> allRequirements = new Hashtable<>();
     public final Set<Behaviour> feasibles = new HashSet<>();
-    public final BehavioursPanel listPanel = new BehavioursPanel();
+    public BehavioursFragment listPanel;
     private Behaviour currentBehaviour = null;
 
-    public BehavioursPanel getPanel() {
+    public void setBehavioursFragment(int fragmentContainerId) {
+        listPanel = new BehavioursFragment(fragmentContainerId);
+    }
+
+    public BehavioursFragment getPanel() {
         return listPanel;
     }
 

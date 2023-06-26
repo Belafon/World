@@ -15,6 +15,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.world.R;
 import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
@@ -28,25 +30,28 @@ import java.util.Set;
 
 public class BehavioursExecutorFragment extends Fragment {
     private int fragmentContainerId;
-    private Fragment lastFragment;
+    private Fragment previousFragment;
     private Behaviour behaviour;
 
     public BehavioursExecutorFragment(int fragmentContainerId, Fragment lastFragment, Behaviour behaviour) {
         this.fragmentContainerId = fragmentContainerId;
-        this.lastFragment = lastFragment;
+        this.previousFragment = lastFragment;
         this.behaviour = behaviour;
     }
 
     private LinearLayout requirementsList;
+    private TextView name;
+    private TextView description;
+    private Button execute;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_behaviours_executor, container, false);
 
-        TextView name = rootView.findViewById(R.id.behaviour_name);
-        TextView description = rootView.findViewById(R.id.behaviour_description);
-        Button execute = rootView.findViewById(R.id.execute_button);
+        name = rootView.findViewById(R.id.behaviour_name);
+        description = rootView.findViewById(R.id.behaviour_description);
+        execute = rootView.findViewById(R.id.execute_button);
         requirementsList = rootView.findViewById(R.id.requirements_list);
 
         Button backButton = rootView.findViewById(R.id.backButton);
@@ -74,6 +79,25 @@ public class BehavioursExecutorFragment extends Fragment {
         setRequirementsPanel(behaviour);
 
         return rootView;
+    }
+
+    public void setBehaviour(Behaviour behaviour) {
+        this.behaviour = behaviour;
+
+        name.setText(behaviour.name);
+        description.setText(behaviour.description);
+
+        execute.setVisibility(View.VISIBLE);
+        execute.setEnabled(true);
+        execute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                execute.setEnabled(false);
+                executeBehaviour(behaviour);
+            }
+        });
+
+        setRequirementsPanel(behaviour);
     }
 
     private void executeBehaviour(Behaviour behaviour) {
@@ -235,8 +259,24 @@ public class BehavioursExecutorFragment extends Fragment {
         return panel;
     }
 
+    private void goBack() {
+        BehavioursFragment.EXECUTORS.remove(this);
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(fragmentContainerId, previousFragment);
+        fragmentTransaction.commit();
+    }
+
+    public void update(Behaviours behaviours) {
+        if (behaviours.feasibles.contains(behaviour))
+            setBehaviour(behaviour);
+        else {
+            goBack();
+        }
+        execute.setEnabled(true);
+    }
+
     public Behaviour getCurrentlySelectedBehaviour() {
         return behaviour;
     }
-
 }

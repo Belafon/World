@@ -17,9 +17,12 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.world.R;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class BehavioursFragment extends Fragment {
+    public static final Set<BehavioursExecutorFragment> EXECUTORS = new HashSet<>();
     private LinearLayout behavioursList;
     private Map<Behaviour, View> itemLabels = new HashMap<>();
 
@@ -63,7 +66,9 @@ public class BehavioursFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Create an instance of BehavioursExecutorFragment
-                BehavioursExecutorFragment executorFragment = new BehavioursExecutorFragment(fragmentContainerId, thisFragment, item);
+                BehavioursExecutorFragment executorFragment = new BehavioursExecutorFragment(fragmentContainerId,
+                        thisFragment, item);
+                EXECUTORS.add(executorFragment);
 
                 // Replace the existing fragment in the fragment container
                 FragmentManager fragmentManager = getParentFragmentManager();
@@ -75,5 +80,20 @@ public class BehavioursFragment extends Fragment {
         });
 
         return itemLabel;
+    }
+
+    public void reupdateBehaviour() {
+        for (BehavioursExecutorFragment executor : EXECUTORS) {
+            executor.setBehaviour(executor.getCurrentlySelectedBehaviour());
+        }
+    }
+
+    public void update(Behaviours behaviours) {
+        for (BehavioursExecutorFragment executor : EXECUTORS) {
+            executor.update(behaviours);
+            for (View label : itemLabels.values()) {
+                label.setEnabled(true);
+            }
+        }
     }
 }
