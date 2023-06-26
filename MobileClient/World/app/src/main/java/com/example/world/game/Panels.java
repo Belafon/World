@@ -1,6 +1,6 @@
 package com.example.world.game;
 
-import com.example.world.game.behaviours.BehavioursPanel;
+import com.example.world.game.behaviours.BehavioursFragment;
 import com.example.world.game.bodyStats.CreatureStatisticsPanel;
 import com.example.world.game.maps.SurroundingPlacesFragment;
 import com.example.world.game.visibles.creatures.CreaturesFragment;
@@ -16,14 +16,17 @@ public class Panels {
     public final ItemFragment visibleItems;
     public final CreaturesFragment visibleCreatures;
     public final ResourcesFragment visibleResources;
-    public final BehavioursPanel behaviours;
-    // public final JPanel weatherPanel; TODO implement changing of foreground view color
+    public final BehavioursFragment behaviours;
+    // public final JPanel weatherPanel; TODO implement changing of foreground view
+    // color
     public final MainMenuFragment mainMenuFragment;
     public final ViewFragment view;
     public final Stats stats;
     GameActivity gameActivity;
 
     public Panels(Stats stats, GameActivity gameActivity) {
+        stats.behaviours.setBehavioursFragment(gameActivity.getGameFragmentContainerID());
+        
         this.stats = stats;
         this.gameActivity = gameActivity;
         this.bodyStatistics = new CreatureStatisticsPanel(stats.body);
@@ -32,7 +35,7 @@ public class Panels {
         this.visibleCreatures = new CreaturesFragment(gameActivity.getGameFragmentContainerID());
         this.visibleResources = new ResourcesFragment(gameActivity.getGameFragmentContainerID());
         this.view = new ViewFragment();
-        //this.weatherPanel = stats.maps.weather.getPanel();
+        // this.weatherPanel = stats.maps.weather.getPanel();
         this.behaviours = stats.behaviours.getPanel();
         this.mainMenuFragment = new MainMenuFragment(gameActivity);
     }
