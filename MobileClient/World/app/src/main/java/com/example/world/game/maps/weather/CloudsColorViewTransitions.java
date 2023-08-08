@@ -52,12 +52,13 @@ public class CloudsColorViewTransitions {
 
     private void runNewLightning() {
         Thread lightningThread = new Thread(() -> {
-            Dice dice = new Dice(3);
-            int toss = dice.toss();
+            Dice dice3 = new Dice(3);
+            Dice dice6 = new Dice(6);
+            int toss = dice3.toss();
             ColorViewTransition transition = switch (toss){
-                case 1 -> new CloudsColorViewTransition(new Color(0, 0, 100, -220), 1, 8);
-                case 2 -> new CloudsColorViewTransition(new Color(0, 0, 50, -235), 1, 5);
-                case 3 -> new CloudsColorViewTransition(new Color(0, 0, 40, -240), 1, 3);
+                case 1 -> new CloudsColorViewTransition(new Color(300, 300, 400, -80), 1, 2 + dice6.toss());
+                case 2 -> new CloudsColorViewTransition(new Color(200, 200, 300, -100), 1, 2 + dice6.toss());
+                case 3 -> new CloudsColorViewTransition(new Color(100, 100, 200, -120), 1, 2 + dice6.toss());
                 default -> null;
             };
             synchronized (colorViewTransitions){

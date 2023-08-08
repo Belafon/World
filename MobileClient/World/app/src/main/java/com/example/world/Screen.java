@@ -61,7 +61,7 @@ public class Screen {
             decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
             {
                 @Override
-                public void onSystemUiVisibilityChange(int visibility)
+                public void onSystemUiVisibilityChange(int visibility) // TODO
                 {
                     if((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) decorView.setSystemUiVisibility(flags);
                 }

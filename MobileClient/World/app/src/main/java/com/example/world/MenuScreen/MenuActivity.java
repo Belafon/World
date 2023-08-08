@@ -27,6 +27,7 @@ public class MenuActivity extends AbstractActivity {
         Client client = new Client();
         Client.connectToLastIp();
         showConnectToServerFragment();
+        newGame(); // TODO: remove this line
     }
 
     public void startTutorial(View view) {
@@ -104,6 +105,10 @@ public class MenuActivity extends AbstractActivity {
     // FRAGMENT MENU ----------------------------------------------------------
 
     public void NewGame(View view) {
+        newGame();
+    }
+
+    private void newGame() {
         Client.sender.serverMessages.findMatch();
         openFragment(new WaitingScreenFragment(), R.id.menu_fragment);
     }

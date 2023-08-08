@@ -46,6 +46,7 @@ public class WeatherPanel implements Runnable {
      */
     public void setClouds(String clouds) {
 
+        weatherTransitions.setClouds();
     }
 
     /**

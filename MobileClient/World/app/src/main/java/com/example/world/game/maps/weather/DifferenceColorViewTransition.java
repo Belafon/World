@@ -17,7 +17,7 @@ public class DifferenceColorViewTransition extends ColorViewTransition {
     private int currentIndexCounter = 0;
 
     // when this drops to 0, the transition is done
-    public int currentIdleCount = 0; 
+    public int currentIdleCount = 0;
 
     // it says how much the color should change in total by this transition
     public final Color colorDifference;
@@ -38,7 +38,7 @@ public class DifferenceColorViewTransition extends ColorViewTransition {
                 colorDifference.a);
 
         this.durationOfTransition = durationOfTransition;
-        this.currentIdleCount = durationOfTransition;
+        this.currentIdleCount = durationOfTransition + 1;
 
         this.updateFrekvency = 0;
         this.currentIndexCounter = 0;
