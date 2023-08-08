@@ -6,7 +6,8 @@ import android.util.Log;
 import android.view.View;
 import com.example.world.game.maps.weather.ColorViewTransition.Color;
 import com.example.world.logs.Logs;
-
+import java.util.ArrayList;
+import com.example.world.game.maps.weather.Cloud;
 
 public class Weather {
     private static final String TAG = "Weather";
@@ -45,6 +46,18 @@ public class Weather {
         }
     };
 
+    public final Cloud[] cloudTypes = new Cloud[]{
+        new Cloud(new Color(0, 0, 0, 0), 0, 0, 0, false, "clear sky"),
+        new Cloud(new Color(255, 255, 255, 30), 60, 40, 80, true, "clear sky with few small clouds"),
+        new Cloud(new Color(255, 255, 255, 50), 40, 40, 120, true, "sky with small clouds"),
+        new Cloud(new Color(255, 255, 255, 70), 40, 40, 120, true, "slightly translucent"),
+
+        new Cloud(new Color(255, 255, 255, 100), 40, 20, 1000, true, "partly cloudy"),
+        new Cloud(new Color(300, 255, 255, 120), 0, 20, 1000, true, "cloudy"),
+        new Cloud(new Color(320, 255, 255, 140), 0, 20, 1000, true, "very cloudy"),
+        new Cloud(new Color(355, 355, 355, 160), 0, 20, 1000, true, "dark cloudy")
+
+    }; 
     
 
     private String[] cloudsNames = new String[]{
@@ -67,7 +80,7 @@ public class Weather {
     };
 
     public enum WeatherType{
-        idle(new Color(0, 0, 0, 0), 0),
+        idle(new Color(255, 255, 255, 0), 0),
         rain(new Color(-90, -90, -70, 110), 0),
         heavy_rain(new Color(-90, -90, -70, 130), 0),
         storm(new Color(-110, -110, -100, 150), 60),

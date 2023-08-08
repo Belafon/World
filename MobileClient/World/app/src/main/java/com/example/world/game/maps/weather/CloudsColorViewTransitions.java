@@ -113,15 +113,16 @@ public class CloudsColorViewTransitions {
         return false;
     }
 
-    public synchronized void setClouds(Color finalColor, int frequencyOfClouds, int durationCloudTransition, int durationOfCloud, boolean isCloudy){
-        this.isCloudy = isCloudy;
+    public synchronized void setClouds(Cloud cloud) {
+        this.isCloudy = cloud.isCloudy;
         waitUntilCloudOrLightningEnds();
-        this.finalCloudsColor = finalColor;
+        this.finalCloudsColor = cloud.finalColor;
         this.frequencyOfIdleLightnings = 0;
-        this.frequencyOfIdleClouds = frequencyOfClouds;
-        this.durationCloudTransition = durationCloudTransition;
-        this.durationOfCloud = durationOfCloud;
+        this.frequencyOfIdleClouds = cloud.frequencyOfIdleClouds;
+        this.durationCloudTransition = cloud.durationCloudTransition;
+        this.durationOfCloud = cloud.durationOfCloud;
     }
+    
 
     private void waitUntilCloudOrLightningEnds() {
         if(currentWorkThread != null){
