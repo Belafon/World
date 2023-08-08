@@ -1,16 +1,14 @@
 package com.example.world.game.behaviours;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +23,7 @@ import com.example.world.game.visibles.creatures.PlayableCreature;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -81,7 +80,12 @@ public class BehavioursExecutorFragment extends Fragment {
         return rootView;
     }
 
-    public void setBehaviour(Behaviour behaviour) {
+    public void setBehaviour(Behaviour behaviour, Behaviours behaviours) {
+        if(!behaviours.feasibles.contains(behaviour)){
+            goBack();
+            return;
+        }
+
         this.behaviour = behaviour;
 
         name.setText(behaviour.name);
@@ -101,8 +105,18 @@ public class BehavioursExecutorFragment extends Fragment {
     }
 
     private void executeBehaviour(Behaviour behaviour) {
-        // Execute the behaviour
+        // Get all selected ingredients
+        List<BehavioursPossibleIngredient> selectedIngredients = new ArrayList<>();
+        for (RequirementChooser chooser : requiremntsChoosers.values()) {
+            for (Spinner spinner : chooser.spinners) {
+                selectedIngredients.add((BehavioursPossibleIngredient) spinner.getSelectedItem());
+            }
+        }
+
+        // Execute the behaviour with the selected ingredients
+        behaviour.execute(selectedIngredients);
     }
+
 
     // set of all requiremnets of concrete behaviour, that is currently beeing
     // displayed
@@ -110,14 +124,16 @@ public class BehavioursExecutorFragment extends Fragment {
     private Set<BehavioursPossibleIngredient> availableIngredients = new HashSet<>();
 
     private void setRequirementsPanel(Behaviour behaviour) {
-        Set<BehavioursPossibleIngredient> availableIngredients = new HashSet<>(PlayableCreature.allIngredients);
+        Set<BehavioursPossibleIngredient> availableIngredients;
+        synchronized (PlayableCreature.allIngredients){
+            availableIngredients = new HashSet<>(PlayableCreature.allIngredients);
+        }
 
-        // we have to remove all ingredients, that are already selected from different
-        // behaviour
+        // we have to remove all ingredients, that are already selected from different behaviour
         for (RequirementChooser chooser : requiremntsChoosers.values()) {
-            for (AutoCompleteTextView autoCompleteTextView : chooser.autoCompleteTextViews) { // BUG // BUG // BUG try
-                                                                                              // if this works fine
-                String selectedIngredientText = autoCompleteTextView.getText().toString();
+            for (Spinner spinner : chooser.spinners) {
+                // BUG // BUG try if this works fine
+                String selectedIngredientText = spinner.getSelectedItem().toString();
 
                 // Find the corresponding BehavioursPossibleIngredient object
                 BehavioursPossibleIngredient selectedIngredient = null;
@@ -134,13 +150,14 @@ public class BehavioursExecutorFragment extends Fragment {
             }
         }
 
+
         requiremntsChoosers = new HashMap<>();
 
         for (Behaviour.BehavioursRequirementDetail requirement : behaviour.requirements) {
             if (requirement.numOfConcreteIngredient != 0) {
                 // Get the set of satisfiable ingredients for the requirement
                 Set<BehavioursPossibleIngredient> satisfiableIngredients = new HashSet<>();
-                getSatisfiableIngredients(requirement, satisfiableIngredients);
+                getSatisfiableIngredients(requirement, satisfiableIngredients, availableIngredients);
 
                 RequirementChooser requirementChooser = new RequirementChooser(requirement);
                 requiremntsChoosers.put(requirement, requirementChooser);
@@ -155,35 +172,38 @@ public class BehavioursExecutorFragment extends Fragment {
                     BehavioursPossibleIngredient item = satisfiableIngredients.iterator().next();
                     satisfiableIngredients.remove(item);
                     availableIngredients.remove(item);
-                    requirementChooser.addNewIngredient(item);
+                    requirementChooser.addNewIngredient(item, getContext());
                 }
             }
         }
 
         for (RequirementChooser chooser : requiremntsChoosers.values()) {
-            for (AutoCompleteTextView autoCompleteTextView : chooser.autoCompleteTextViews) {
-                autoCompleteTextView.setAdapter(new ArrayAdapter<>(requireContext(),
-                        android.R.layout.simple_dropdown_item_1line, new ArrayList<>(availableIngredients)));
+            for (Spinner spinner : chooser.spinners) {
+                ArrayAdapter<BehavioursPossibleIngredient> adapter = new ArrayAdapter<>(requireContext(),
+                        android.R.layout.simple_spinner_item, new ArrayList<>(availableIngredients));
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner.setAdapter(adapter);
             }
         }
 
-        setAvailableIngredients(behaviour);
+        setAvailableIngredients(behaviour, availableIngredients);
 
         drawList();
     }
 
-    private void setAvailableIngredients(Behaviour behaviour) {
+    private void setAvailableIngredients(Behaviour behaviour, Set<BehavioursPossibleIngredient> availableIngredients) {
+        this.availableIngredients = availableIngredients;
         for (Behaviour.BehavioursRequirementDetail requirement : behaviour.requirements) {
             if (requirement.numOfConcreteIngredient != 0) {
                 Set<BehavioursPossibleIngredient> satisfableIngredients = new HashSet<>();
-                getSatisfiableIngredients(requirement, satisfableIngredients);
-                requiremntsChoosers.get(requirement).setAvailableIngredients(satisfableIngredients);
+                getSatisfiableIngredients(requirement, satisfableIngredients, this.availableIngredients);
+                requiremntsChoosers.get(requirement).setAvailableIngredients(satisfableIngredients, this.getContext());
             }
         }
     }
 
     private void getSatisfiableIngredients(Behaviour.BehavioursRequirementDetail detailedRequirement,
-            Set<BehavioursPossibleIngredient> satisfableIngredients) {
+                                           Set<BehavioursPossibleIngredient> satisfableIngredients, Set<BehavioursPossibleIngredient> availableIngredients) {
         for (BehavioursPossibleIngredient ingredient : PlayableCreature.allIngredients) {
             if (ingredient.requirements.contains(detailedRequirement.requirement)
                     && availableIngredients.contains(ingredient))
@@ -196,64 +216,56 @@ public class BehavioursExecutorFragment extends Fragment {
         LinearLayout panel = requirementsList;
         panel.removeAllViews();
 
-        LinearLayout insidePanel = new LinearLayout(requireContext()); // Create a LinearLayout to hold the
-                                                                       // AutoCompleteTextView components
-        insidePanel.setOrientation(LinearLayout.VERTICAL); // Set orientation to vertical
-
-        ScrollView scrollView = new ScrollView(requireContext());
-        scrollView.addView(insidePanel);
-
         for (RequirementChooser chooser : requiremntsChoosers.values()) {
-            for (AutoCompleteTextView autoCompleteTextView : chooser.autoCompleteTextViews) {
-                autoCompleteTextView.setLayoutParams(new LinearLayout.LayoutParams(
+            for (Spinner spinner : chooser.spinners) {
+                spinner.setBackground(getResources().getDrawable(R.color.black, null));
+                spinner.setLayoutParams(new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
+                        100));
 
-                autoCompleteTextView.addTextChangedListener(new TextWatcher() {
-                    private BehavioursPossibleIngredient lastSelected = (BehavioursPossibleIngredient) autoCompleteTextView
-                            .getTag();
-
+                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    private BehavioursPossibleIngredient lastSelected = (BehavioursPossibleIngredient) spinner.getSelectedItem();
+                    private boolean isUserCall = true;
                     @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    }
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                       // spinner.setOnItemSelectedListener(null);
 
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    }
+                        BehavioursPossibleIngredient selectedIngredient = (BehavioursPossibleIngredient) parent.getItemAtPosition(position);
 
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        String selectedIngredientText = s.toString();
-
-                        // Find the corresponding BehavioursPossibleIngredient object
-                        BehavioursPossibleIngredient selectedIngredient = null;
-                        for (BehavioursPossibleIngredient ingredient : availableIngredients) {
-                            if (ingredient.toString().equals(selectedIngredientText)) {
-                                selectedIngredient = ingredient;
-                                break;
-                            }
+                        if(selectedIngredient == lastSelected
+                                || !isUserCall){
+                            isUserCall = true;
+                            return;
                         }
+
+                        isUserCall = false;
+
 
                         if (selectedIngredient != null) {
                             availableIngredients.remove(selectedIngredient);
                             availableIngredients.add(lastSelected);
                             lastSelected = selectedIngredient;
 
-                            chooser.selectIngredient(selectedIngredient, autoCompleteTextView);
+                            chooser.selectIngredient(selectedIngredient, spinner);
 
-                            setAvailableIngredients(behaviour);
+                            setAvailableIngredients(behaviour, availableIngredients);
 
                             panel.requestLayout();
                             panel.invalidate();
                         }
+
+                     //   spinner.setOnItemSelectedListener(this);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
                     }
                 });
 
-                insidePanel.addView(autoCompleteTextView);
+                panel.addView(spinner);
             }
         }
 
-        panel.addView(scrollView);
         panel.setMinimumHeight(90);
 
         return panel;
@@ -268,11 +280,7 @@ public class BehavioursExecutorFragment extends Fragment {
     }
 
     public void update(Behaviours behaviours) {
-        if (behaviours.feasibles.contains(behaviour))
-            setBehaviour(behaviour);
-        else {
-            goBack();
-        }
+        setBehaviour(behaviour, behaviours);
         execute.setEnabled(true);
     }
 

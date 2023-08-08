@@ -6,6 +6,7 @@ import java.util.Set;
 
 import com.example.world.game.Panels;
 import com.example.world.game.behaviours.Behaviours;
+import com.example.world.game.behaviours.BehavioursFragment;
 import com.example.world.game.behaviours.BehavioursRequirement;
 import com.example.world.game.visibles.Visibles;
 import com.example.world.game.visibles.creatures.PlayableCreature;
@@ -45,7 +46,7 @@ public class Inventory {
     public void removeItem(Panels panels, int id) {
         PlayableCreature.allIngredients.remove(items.get(id));
         items.remove(id);
-        panels.behaviours.update(panels.stats.behaviours);
+        BehavioursFragment.update(panels.stats.behaviours);
     }
 
 }

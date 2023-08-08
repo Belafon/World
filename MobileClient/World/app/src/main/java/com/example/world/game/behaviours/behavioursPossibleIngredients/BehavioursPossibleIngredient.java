@@ -5,7 +5,7 @@ import java.util.Set;
 
 import com.example.world.game.behaviours.BehavioursRequirement;
 
-public abstract class BehavioursPossibleIngredient {
+public abstract class BehavioursPossibleIngredient implements Comparable<BehavioursPossibleIngredient>{
     public final Set<BehavioursRequirement> requirements;
 
     public BehavioursPossibleIngredient(Set<BehavioursRequirement> requirements) {

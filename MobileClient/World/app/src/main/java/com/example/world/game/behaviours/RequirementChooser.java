@@ -1,11 +1,13 @@
 package com.example.world.game.behaviours;
 
+import android.content.Context;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
+import android.widget.Spinner;
 
 import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -13,49 +15,60 @@ public class RequirementChooser {
     public Behaviour.BehavioursRequirementDetail requirement;
     private List<BehavioursPossibleIngredient> selectedIngredients = new ArrayList<>();
     private Set<BehavioursPossibleIngredient> availableIngredients;
-    List<AutoCompleteTextView> autoCompleteTextViews = new ArrayList<>();
+    List<Spinner> spinners = new ArrayList<>();
 
     public RequirementChooser(Behaviour.BehavioursRequirementDetail requirement) {
         this.requirement = requirement;
     }
 
-    public void setAvailableIngredients(Set<BehavioursPossibleIngredient> availableIngredients) {
+    public void setAvailableIngredients(Set<BehavioursPossibleIngredient> availableIngredients, Context context) {
         this.availableIngredients = availableIngredients;
-        fillAutoCompleteTextViews();
+        fillSpinners(context);
     }
 
     /**
-     * Creates a new AutoCompleteTextView and saves the default selected item.
+     * Creates a new Spinner and saves the default selected item.
      *
      * @param ingredient The selected ingredient.
+     * @param context
      */
-    public void addNewIngredient(BehavioursPossibleIngredient ingredient) {
+    public void addNewIngredient(BehavioursPossibleIngredient ingredient, Context context) {
         selectedIngredients.add(ingredient);
-        autoCompleteTextViews.add(new AutoCompleteTextView(null));
+        Spinner spinner = new Spinner(context);
+        spinners.add(spinner);
     }
 
-    private void fillAutoCompleteTextViews() {
+    private void fillSpinners(Context context) {
         if (availableIngredients == null)
             throw new Error("setAvailableIngredients is null!");
 
-        int autoCompleteTextViewIndex = 0;
-        for (AutoCompleteTextView autoCompleteTextView : autoCompleteTextViews) {
-            List<BehavioursPossibleIngredient> ingredientsList = new ArrayList<>(availableIngredients);
-            ArrayAdapter<BehavioursPossibleIngredient> adapter = new ArrayAdapter<>(null,
-                    android.R.layout.simple_dropdown_item_1line, ingredientsList);
-            autoCompleteTextView.setAdapter(adapter);
+        int spinnerIndex = 0;
+        for (Spinner spinner : spinners) {
+            List<BehavioursPossibleIngredient> ingredientsList = new ArrayList<>();
 
-            BehavioursPossibleIngredient selectedIngredient = selectedIngredients.get(autoCompleteTextViewIndex);
-            autoCompleteTextView.setText(selectedIngredient + "", false);
+            BehavioursPossibleIngredient selectedIngredient = selectedIngredients.get(spinnerIndex);
+            ingredientsList.add(selectedIngredient);
 
-            autoCompleteTextViewIndex++;
+            List<BehavioursPossibleIngredient> availableIngredientsList = new ArrayList<>(availableIngredients);
+            Collections.sort(availableIngredientsList);
+            ingredientsList.addAll(availableIngredientsList);
+
+            ArrayAdapter<BehavioursPossibleIngredient> adapter = new ArrayAdapter<>(context,
+                    android.R.layout.simple_spinner_item, ingredientsList);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+            spinner.setAdapter(adapter);
+            spinner.setSelection(0);
+
+            spinnerIndex++;
         }
     }
 
-    public void selectIngredient(BehavioursPossibleIngredient ingredient,
-                                 AutoCompleteTextView autoCompleteTextView) {
-        int index = autoCompleteTextViews.indexOf(autoCompleteTextView);
+    /**
+     * Selects the ingredient without updating the spinner.
+     * */
+    public void selectIngredient(BehavioursPossibleIngredient ingredient, Spinner spinner) {
+        int index = spinners.indexOf(spinner);
         selectedIngredients.set(index, ingredient);
-        autoCompleteTextView.setText(ingredient + "", false);
     }
 }

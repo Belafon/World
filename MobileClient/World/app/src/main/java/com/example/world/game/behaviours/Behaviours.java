@@ -16,11 +16,8 @@ public class Behaviours {
     public BehavioursFragment listPanel;
     private Behaviour currentBehaviour = null;
 
-    public void setBehavioursFragment(int fragmentContainerId) {
-        listPanel = new BehavioursFragment(fragmentContainerId);
-    }
-
-    public BehavioursFragment getPanel() {
+    public BehavioursFragment getNewBehaviourListFragment(int fragmentContainerId) {
+        listPanel = new BehavioursFragment(fragmentContainerId, feasibles);
         return listPanel;
     }
 
@@ -30,7 +27,8 @@ public class Behaviours {
             throw new IllegalArgumentException(
                     "Behaviours: addNewFeasibleBehaviour: behaviour name is unknown: " + behavioursName);
         feasibles.add(behav);
-        listPanel.addItem(behav);
+        if(listPanel != null)
+            listPanel.addItem(behav);
     }
 
     public void removeFeasibleBehaviour(String behavioursName) {
@@ -39,7 +37,9 @@ public class Behaviours {
             throw new IllegalArgumentException(
                     "Behaviours: removeFeasibleBehaviour: behaviour name is unknown: " + behavioursName);
         feasibles.remove(behav);
-        listPanel.removeItem(behav);
+
+        if(listPanel != null)
+            listPanel.removeItem(behav);
     }
 
     public void setupNewBehaviour(String[] args) {
@@ -80,7 +80,7 @@ public class Behaviours {
             currentBehaviour.setDuration(-1);
         if (args[2].equals("null")) {
             currentBehaviour = null;
-            panels.behaviours.reupdateBehaviour();
+            panels.behaviours.reupdateBehaviour(stats.behaviours);
             return;
         }
 
@@ -88,7 +88,7 @@ public class Behaviours {
         var duration = Integer.parseInt(args[3]);
 
         if (duration == 0)
-            panels.behaviours.reupdateBehaviour();
+            panels.behaviours.reupdateBehaviour(stats.behaviours);
 
 
         if (behaviour == null)
