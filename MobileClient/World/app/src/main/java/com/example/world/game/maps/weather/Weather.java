@@ -11,7 +11,7 @@ import com.example.world.game.maps.weather.Cloud;
 
 public class Weather {
     private static final String TAG = "Weather";
-    private int clouds = 0;
+    private int cloudsIndex = 0;
     private int weather = 0;
     private NamePartOfDay partOfDay = NamePartOfDay.unknown;
     private WeatherPanel panel;
@@ -100,10 +100,10 @@ public class Weather {
      * @param args is the message from the server.
      */
     public void setClouds(String[] args) {
-        clouds = Integer.parseInt(args[2]);
-        String cloudsTextDescription = cloudsNames[clouds];
+        cloudsIndex = Integer.parseInt(args[2]);
+        Cloud cloud = cloudTypes[cloudsIndex];
         if(panel != null)
-            panel.setClouds(cloudsTextDescription);
+            panel.setClouds(cloud);
     }
     
     /**

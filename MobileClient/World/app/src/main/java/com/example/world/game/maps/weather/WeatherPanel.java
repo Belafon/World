@@ -42,11 +42,10 @@ public class WeatherPanel implements Runnable {
     /**
      * Updates the text describing clouds
      * 
-     * @param clouds
+     * @param cloud
      */
-    public void setClouds(String clouds) {
-
-        weatherTransitions.setClouds();
+    public void setClouds(Cloud cloud) {
+        weatherTransitions.setClouds(cloud);
     }
 
     /**
