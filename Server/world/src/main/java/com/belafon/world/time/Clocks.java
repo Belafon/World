@@ -5,10 +5,11 @@ import com.belafon.console.ConsolePrint;
 /**
  * Records the time changes in the world.
  */
-public class Clocks extends Thread{
+public class Clocks extends Thread {
     public volatile long time = 0;
-    public final long delay = 33;
-    public volatile boolean isRunning = false; 
+    public final long delay = 66;// 33;
+    public volatile boolean isRunning = false;
+
     @Override
     public void run() {
         synchronized (this) {
@@ -32,12 +33,12 @@ public class Clocks extends Thread{
             time++;
         }
     }
-    
+
     /**
-     * Tick is special worlds unit. 
+     * Tick is special worlds unit.
      * It is the smallest time period between
-     * two worlds changes which are not executed 
-     * in the same time. That is because the 
+     * two worlds changes which are not executed
+     * in the same time. That is because the
      * servers calendar uses it.
      * 
      */

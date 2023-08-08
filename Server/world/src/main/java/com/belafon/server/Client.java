@@ -72,7 +72,8 @@ public class Client {
     public void disconnect() {
         if(!disconnected){
             disconnected = true;
-            actualGame.disconnectPlayer();
+            if(actualGame != null)
+                actualGame.disconnectPlayer();
         }
     }
 

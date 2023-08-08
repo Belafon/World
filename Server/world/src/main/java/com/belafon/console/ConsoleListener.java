@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.belafon.server.Server;
 import com.belafon.server.sendMessage.PlayersMessageSender;
+import com.belafon.world.maps.weather.Weather;
 import com.belafon.world.visibles.creatures.Player;
 import com.belafon.world.visibles.resources.ListOfAllTypesOfResources;
 import com.belafon.world.visibles.resources.ListOfAllTypesOfResources.NamesOfTypesOfResources;
@@ -100,6 +101,17 @@ public class ConsoleListener implements Runnable {
                         server.games.get(0).maps.maps[0].sky.printWeatherInLoop = true;
                     else if (message.length >= 3 && message[2].equals("stop"))
                         server.games.get(0).maps.maps[0].sky.printWeatherInLoop = false;
+                    else if (message[2].equals("idle")){
+                        server.games.get(0).players.get(0).writer.surrounding.setWeather(new Weather(0, 0, 0));
+                    } else if (message[2].equals("rain")){
+                        server.games.get(0).players.get(0).writer.surrounding.setWeather(new Weather(0, 0, 1));
+                    } else if (message[2].equals("heavy_rain")){
+                        server.games.get(0).players.get(0).writer.surrounding.setWeather(new Weather(0, 0, 2));
+                    } else if (message[2].equals("storm")) {
+                        server.games.get(0).players.get(0).writer.surrounding.setWeather(new Weather(0, 0, 3));
+                    } else if (message[2].equals("thunderstorm")) {
+                        server.games.get(0).players.get(0).writer.surrounding.setWeather(new Weather(0, 0, 4));
+                    }
                     else
                         log += server.games.get(0).maps.maps[0].sky.printWeathers();
                     break;

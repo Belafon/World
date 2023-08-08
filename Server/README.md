@@ -21,6 +21,13 @@ You can write log messages by pasting these commands into console:
 - log weather
 - log weather loop
 - log weather stop
+
+- log weather idle 
+- log weather rain
+- log weather heavy_rain
+- log weather storm
+- log weather thunderstorm
+
 - log wind
 - log windDirection
 - log health

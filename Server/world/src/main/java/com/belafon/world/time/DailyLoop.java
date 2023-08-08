@@ -62,7 +62,12 @@ public class DailyLoop {
     private void addToCalendar(long startOfnextDayInTicks) {
         for (PartOfDay partOfDay : partsOfDay)
             game.calendar.add(new EventPartOfDay(partOfDay.start + startOfnextDayInTicks, partOfDay, game));
-    }
+        //game.calendar.add(new EventPartOfDay(0, partsOfDay[0], game));
+        //game.calendar.add(new EventPartOfDay(800, partsOfDay[1], game));
+        //game.calendar.add(new EventPartOfDay(801, partsOfDay[2], game));
+        //game.calendar.add(new EventPartOfDay(802, partsOfDay[3], game));
+        //game.calendar.add(new EventPartOfDay(803, partsOfDay[4], game));
+}
 
     public record PartOfDay(int start, NamePartOfDay name, int temperatureChange) {
     }

@@ -1,6 +1,7 @@
 package com.belafon.world.maps.place;
 
 import com.belafon.world.World;
+import com.belafon.world.visibles.creatures.behaviour.BehavioursPossibleIngredientID;
 import com.belafon.world.visibles.items.Item;
 
 /**

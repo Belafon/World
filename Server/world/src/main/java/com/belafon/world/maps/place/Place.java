@@ -5,6 +5,7 @@ import java.util.List;
 import com.belafon.world.maps.Map;
 import com.belafon.world.maps.weather.Weather;
 import com.belafon.world.visibles.creatures.Creature;
+import com.belafon.world.visibles.creatures.behaviour.BehavioursPossibleIngredientID;
 import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleRequirement;
 import com.belafon.world.visibles.resources.Resource;
 
