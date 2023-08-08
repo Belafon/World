@@ -8,11 +8,11 @@ import java.util.Set;
 public class CloudsColorViewTransitions {
     private boolean isRaining = false;
     private boolean isCloudy = false;
-    private boolean doesSunGoThrough = false;
+    private boolean doesSunGoThrough = true;
     private int durationCloudTransition = 0;
     private int durationOfCloud = 0;
-    private Color finalCloudsColor;
-    private Color finalWeatherColor;
+    private Color finalCloudsColor = new Color(0, 0, 0, 0);
+    private Color finalWeatherColor = new Color(0, 0, 0, 0);
 
     private int frequencyOfIdleClouds = 0;
     private int frequencyOfIdleLightnings = 0;
@@ -187,7 +187,12 @@ public class CloudsColorViewTransitions {
         isRaining = true;
         waitUntilCloudOrLightningEnds();
         synchronized (colorViewTransitions){
-            colorViewTransitions.add(new DifferenceColorViewTransition(type.color, 10));
+            colorViewTransitions.add(new DifferenceColorViewTransition(
+                new Color(type.color.r - this.finalWeatherColor.r,
+                        type.color.g - this.finalWeatherColor.g,
+                        type.color.b - this.finalWeatherColor.b,
+                        type.color.a - this.finalWeatherColor.a), 
+                10));
         }
         this.frequencyOfIdleLightnings = type.frequencyOfLightnings;
         this.finalWeatherColor = type.color;
