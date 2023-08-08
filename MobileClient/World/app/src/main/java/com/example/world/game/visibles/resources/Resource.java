@@ -41,4 +41,8 @@ public class Resource extends Visible {
         return "Resource";
     }
 
+    public String getName() {
+        return type.name();
+    }
+
 }
