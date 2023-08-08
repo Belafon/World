@@ -10,7 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.world.R;
+import com.example.world.game.Stats;
+import com.example.world.game.visibles.Visibles;
 import com.example.world.game.visibles.VisiblesListFragment;
+import com.example.world.game.visibles.resources.Resource;
 import com.example.world.game.visibles.resources.ResourceInfoFragment;
 
 
@@ -18,13 +21,22 @@ import com.example.world.game.visibles.resources.ResourceInfoFragment;
  * list of visible creatures
  */
  public class CreaturesFragment extends VisiblesListFragment<CreaturesInfoFragment> {
-    public CreaturesFragment(int fragmentContainerId) {
-        super(fragmentContainerId);
+    public CreaturesFragment(int fragmentContainerId, Visibles visibles, Fragment returnFragment) {
+        super(fragmentContainerId, visibles, returnFragment);
+    }
+
+    @Override
+    protected void initialize(Visibles visibles) {
+        synchronized (visibles.creatures){
+            for (Creature creature : visibles.creatures.values()) {
+                addVisiblesTitle(creature);
+            }
+        }
     }
 
 
     public void addVisiblesTitle(Creature creature) {
-        CreaturesInfoFragment visiblesFragment = new CreaturesInfoFragment(this, fragmentContainerId, creature);
+        CreaturesInfoFragment visiblesFragment = new CreaturesInfoFragment(returnFragment, fragmentContainerId, creature);
         addVisiblesTitle(visiblesFragment, () -> this.selectVisible(visiblesFragment));
     }
 

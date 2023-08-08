@@ -20,7 +20,6 @@ public class CreaturesInfoFragment extends VisiblesInfoFragment<Creature> {
     private TextView descriptionTextView;
     private TextView idTextView;
 
-    private LinearLayout titleView = super.createTitleView();
 
     public CreaturesInfoFragment(Fragment previousFragment, int fragmentContainerId, Creature creature) {
         super(previousFragment, fragmentContainerId, creature);
@@ -58,8 +57,9 @@ public class CreaturesInfoFragment extends VisiblesInfoFragment<Creature> {
     }
 
 
+
     @Override
-    public View getTitleView() {
-        return titleView;
+    public String getTitleText() {
+        return getVisible().name + " " + getVisible().getId();
     }
 }

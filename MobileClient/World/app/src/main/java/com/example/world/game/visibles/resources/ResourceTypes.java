@@ -4,7 +4,28 @@ import java.util.Hashtable;
 import java.util.Map;
 
 public class ResourceTypes {
-    public static record ResourceType(String name, String description, String[] masses) {
+    public static class ResourceType {
+        private final String name;
+        private final String description;
+        private final String[] masses;
+
+        public ResourceType(String name, String description, String[] masses) {
+            this.name = name;
+            this.description = description;
+            this.masses = masses;
+        }
+
+        public String name() {
+            return name;
+        }
+
+        public String description() {
+            return description;
+        }
+
+        public String[] masses() {
+            return masses;
+        }
     }
 
     public static final Map<String, ResourceType> resorceTypes = new Hashtable<>();

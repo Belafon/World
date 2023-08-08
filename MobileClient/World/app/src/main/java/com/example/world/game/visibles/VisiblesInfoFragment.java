@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public abstract class VisiblesInfoFragment<T extends Visible> extends Fragment {
     private Fragment previousFragment;
@@ -28,19 +29,26 @@ public abstract class VisiblesInfoFragment<T extends Visible> extends Fragment {
         fragmentTransaction.commit();
     }
 
-    public abstract View getTitleView();
+    public abstract String getTitleText();
+
     public T getVisible() {
         return visible;
     }
 
-    protected LinearLayout createTitleView() {
-        LinearLayout titleView = new LinearLayout(getContext());
-        titleView.setOrientation(LinearLayout.VERTICAL);
-        titleView.setPadding(10, 10, 10, 10);
-        titleView.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        ));
+    /**
+     * Title view in the context of the VIsibleListFragment,
+     * this fragmnet is the only one.
+     * 
+     * This information is held just for removeing the title view
+     * from the list.
+     */
+    private TextView titleView;
+
+    public View getTitleView() {
         return titleView;
+    }
+
+    public void setTitleView(TextView titleView) {
+        this.titleView = titleView;
     }
 }

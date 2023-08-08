@@ -1,27 +1,31 @@
 package com.example.world.game.visibles.resources;
 
-import android.os.Bundle;
+import android.content.res.Resources;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.example.world.R;
-import com.example.world.game.visibles.Resource;
+import com.example.world.game.Stats;
+import com.example.world.game.visibles.Visibles;
 import com.example.world.game.visibles.VisiblesListFragment;
-import com.example.world.game.visibles.items.ItemInfoFragment;
+import com.example.world.game.visibles.items.Item;
 
 public class ResourcesFragment extends VisiblesListFragment<ResourceInfoFragment> {
-    public ResourcesFragment(int fragmentContainerId) {
-        super(fragmentContainerId);
+    public ResourcesFragment(int fragmentContainerId, Visibles visibles, Fragment returnFragment) {
+        super(fragmentContainerId, visibles, returnFragment);
+    }
+
+    @Override
+    protected void initialize(Visibles visibles) {
+        synchronized (visibles.resources){
+            for (Resource resource : visibles.resources.values()) {
+                addVisiblesTitle(resource);
+            }
+        }
     }
 
 
-    public void addVisiblesTitle(Resource resource) {
-        ResourceInfoFragment resourcesInfoFragment = new ResourceInfoFragment(this, fragmentContainerId, resource);
+    public void addVisiblesTitle(Resource resource) {        
+        ResourceInfoFragment resourcesInfoFragment = new ResourceInfoFragment(returnFragment, fragmentContainerId, resource);
         addVisiblesTitle(resourcesInfoFragment, () -> this.selectVisible(resourcesInfoFragment));
     }
 

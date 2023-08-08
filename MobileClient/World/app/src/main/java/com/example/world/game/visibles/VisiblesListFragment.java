@@ -13,8 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.example.world.R;
+import com.example.world.game.Stats;
 
 import java.util.Hashtable;
 
@@ -22,11 +24,14 @@ public abstract class VisiblesListFragment<T extends VisiblesInfoFragment> exten
     private LinearLayout visiblesList;
     private Hashtable<Visible, T> visibleFragments = new Hashtable<>();
     private T selectedVisibleFragment;
+    protected Fragment returnFragment;
 
     protected int fragmentContainerId;
-
-    public VisiblesListFragment(int fragmentContainerId) {
+    private final Visibles visibles;
+    public VisiblesListFragment(int fragmentContainerId, Visibles visibles, Fragment returnFragment) {
         this.fragmentContainerId = fragmentContainerId;
+        this.visibles = visibles;
+        this.returnFragment = returnFragment;
     }
 
     @Nullable
@@ -37,24 +42,34 @@ public abstract class VisiblesListFragment<T extends VisiblesInfoFragment> exten
 
         visiblesList = rootView.findViewById(R.id.visibles_list);
 
-        ScrollView scrollView = rootView.findViewById(R.id.scroll_view);
+        initialize(visibles);
+        rootView.findViewById(R.id.scroll_view);
 
         return rootView;
     }
+    protected abstract void initialize(Visibles visibles);
 
     protected void addVisiblesTitle(T visibleFragment, Runnable selectVisibleFragment) {
-        visibleFragment.getTitleView().setOnClickListener(new View.OnClickListener() {
+        if (!this.isAdded())
+            return;
+        
+        TextView title = createTitleView(visibleFragment.getTitleText());
+        visibleFragment.setTitleView(title);
+        title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectVisibleFragment.run();
             }
         });
 
-        visiblesList.addView(visibleFragment.getTitleView());
+        visiblesList.addView(title);
         visibleFragments.put(visibleFragment.getVisible(), visibleFragment);
     }
 
     protected void removeVisiblesTitle(Visible visible) {
+        if (!this.isAdded())
+            return;
+
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -70,5 +85,18 @@ public abstract class VisiblesListFragment<T extends VisiblesInfoFragment> exten
         fragmentTransaction.replace(fragmentContainerId, visibleInfoFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+
+    private TextView createTitleView(String title) {
+        TextView titleView = new TextView(getContext());
+        titleView.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        titleView.setText(title);
+        titleView.setTextSize(20);
+        titleView.setPadding(10, 10, 10, 10);
+
+        return titleView;
     }
 }

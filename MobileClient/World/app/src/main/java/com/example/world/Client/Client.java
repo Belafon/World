@@ -5,8 +5,10 @@ import android.util.Log;
 import com.example.world.AbstractActivity;
 import com.example.world.dataSafe.DataLibrary;
 import com.example.world.MainActivity;
+import com.example.world.game.Game;
 import com.example.world.game.client.MessageSender;
 import com.example.world.game.client.chatListener.ChatListener;
+import com.example.world.gameActivity.GameActivity;
 import com.example.world.menuScreen.MenuActivity;
 import com.example.world.Screen;
 import com.example.world.game.Panels;
@@ -36,7 +38,7 @@ public class Client {
     public static final int first_start = 12;
     public static volatile int actualGameId = -1;
 
-    public static Stats stats;
+    public static Stats stats = Game.stats;
     public static Panels fragments;
 
     public static final MessageSender sender = new MessageSender();
@@ -131,10 +133,10 @@ public class Client {
             }
 
             private void makeThreadWorker(final String string) {
-                new Thread(() -> {
-                    Log.d(TAG, "run: NEW MESSAGE : ------->   " + string);
+          //      new Thread(() -> {
+                    //Log.d(TAG, "run: NEW MESSAGE : ------->   " + string);
                     decomposeTheString(string);
-                }).start();
+      //          }).start();
             }
         });
         thread.start();
@@ -155,10 +157,6 @@ public class Client {
     // private static Timer timer;
     public synchronized static void decomposeTheString(String value) {
         chatListener.listen(value);
-    }
-
-    public static void setStats(Stats newStats) {
-        stats = newStats;
     }
 
     public static void setFragments(Panels newFragments) {

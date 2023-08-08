@@ -8,11 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.world.R;
-import com.example.world.game.visibles.Resource;
 import com.example.world.game.visibles.VisiblesInfoFragment;
 
 public class ResourceInfoFragment extends VisiblesInfoFragment<Resource> {
@@ -21,8 +19,6 @@ public class ResourceInfoFragment extends VisiblesInfoFragment<Resource> {
     private TextView descriptionTextView;
     private TextView idTextView;
     private TextView massTextView;
-
-    private LinearLayout titleView = super.createTitleView();
 
 
     public ResourceInfoFragment(Fragment previousFragment, int fragmentContainerId, Resource resource) {
@@ -64,7 +60,7 @@ public class ResourceInfoFragment extends VisiblesInfoFragment<Resource> {
 
 
     @Override
-    public View getTitleView() {
-        return titleView;
+    public String getTitleText() {
+        return getVisible().getName() + " " + getVisible().getId();
     }
 }

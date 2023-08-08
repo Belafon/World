@@ -1,5 +1,7 @@
 package com.example.world.game.visibles;
 
+import android.media.UnsupportedSchemeException;
+
 import java.util.Set;
 
 import com.example.world.game.behaviours.BehavioursRequirement;
@@ -35,4 +37,8 @@ public class TypeOfResource extends BehavioursPossibleIngredient {
         return id;
     }
 
+    @Override
+    public int compareTo(BehavioursPossibleIngredient behavioursPossibleIngredient) {
+        throw new UnsupportedOperationException();
+    }
 }

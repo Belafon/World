@@ -9,19 +9,31 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.world.R;
+import com.example.world.game.Stats;
+import com.example.world.game.visibles.Visibles;
 import com.example.world.game.visibles.VisiblesListFragment;
+import com.example.world.game.visibles.resources.Resource;
 
 /**
  * list of visible items
  */
 public class ItemFragment extends VisiblesListFragment<ItemInfoFragment> {
-    public ItemFragment(int fragmentContainerId) {
-        super(fragmentContainerId);
+    public ItemFragment(int fragmentContainerId, Visibles visibles, Fragment returnFragment) {
+        super(fragmentContainerId, visibles, returnFragment);
+    }
+
+    @Override
+    protected void initialize(Visibles visibles) {
+        synchronized (visibles.items){
+            for (Item item : visibles.items.values()) {
+                addVisiblesTitle(item);
+            }
+        }
     }
 
 
     public void addVisiblesTitle(Item item) {
-        ItemInfoFragment itemsInfoFragment = new ItemInfoFragment(this, fragmentContainerId, item);
+        ItemInfoFragment itemsInfoFragment = new ItemInfoFragment(returnFragment, fragmentContainerId, item);
         addVisiblesTitle(itemsInfoFragment, () -> this.selectVisible(itemsInfoFragment));
     }
 

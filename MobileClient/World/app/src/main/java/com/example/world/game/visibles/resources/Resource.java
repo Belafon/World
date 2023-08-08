@@ -1,8 +1,10 @@
-package com.example.world.game.visibles;
+package com.example.world.game.visibles.resources;
 
 import java.util.Set;
 
 import com.example.world.game.behaviours.BehavioursRequirement;
+import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.example.world.game.visibles.Visible;
 import com.example.world.game.visibles.resources.ResourceTypes.ResourceType;
 
 public class Resource extends Visible {
@@ -45,4 +47,8 @@ public class Resource extends Visible {
         return type.name();
     }
 
+    @Override
+    public int compareTo(BehavioursPossibleIngredient behavioursPossibleIngredient) {
+        return 0;
+    }
 }

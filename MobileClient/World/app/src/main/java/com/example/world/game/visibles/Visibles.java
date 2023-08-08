@@ -4,11 +4,12 @@ import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Set;
 
+import com.example.world.game.behaviours.BehavioursFragment;
 import com.example.world.game.visibles.creatures.Creature;
 import com.example.world.game.visibles.creatures.PlayableCreature;
 import com.example.world.game.visibles.items.Item;
 import com.example.world.game.visibles.items.Item.Food;
-import com.example.world.game.visibles.items.ItemInfoFragment;
+import com.example.world.game.visibles.resources.Resource;
 import com.example.world.game.visibles.resources.ResourceTypes;
 import com.example.world.game.Panels;
 import com.example.world.game.behaviours.Behaviours;
@@ -16,9 +17,9 @@ import com.example.world.game.behaviours.BehavioursRequirement;
 import com.example.world.game.maps.Place;
 
 public class Visibles {
-    private final Hashtable<Integer, Item> items = new Hashtable<>();
-    private final Hashtable<Integer, Creature> creatures = new Hashtable<>();
-    private final Hashtable<Integer, Resource> resources = new Hashtable<>();
+    public final Hashtable<Integer, Item> items = new Hashtable<>();
+    public final Hashtable<Integer, Creature> creatures = new Hashtable<>();
+    public final Hashtable<Integer, Resource> resources = new Hashtable<>();
     private final Hashtable<String, TypeOfResource> typesOfresources = new Hashtable<>();
     private final Set<Place> places = new HashSet<>();
 
@@ -49,7 +50,7 @@ public class Visibles {
 
                 item = new Food(id, itemName, regularWeight, visibility, toss, freshness, filling, warm,
                         requirements);
-                panels.visibleItems.addVisiblesTitle(item);
+                panels.visibles.items.addVisiblesTitle(item);
                 PlayableCreature.allIngredients.add(item);
             }
             default ->
@@ -86,7 +87,7 @@ public class Visibles {
         Set<BehavioursRequirement> requirements = extractRequirementsFromArgs(behaviours, args[10]);
 
         Creature creature = new Creature(name, id, appearance, requirements);
-        panels.visibleCreatures.addVisiblesTitle(creature);
+        panels.visibles.creatures.addVisiblesTitle(creature);
         synchronized (creatures) {
             creatures.put(id, creature);
         }
@@ -135,7 +136,7 @@ public class Visibles {
         Set<BehavioursRequirement> requirements = extractRequirementsFromArgs(behaviours, args[5]);
 
         Resource resource = new Resource(id, type, mass, requirements);
-        panels.visibleResources.addVisiblesTitle(resource);
+        panels.visibles.resources.addVisiblesTitle(resource);
         synchronized (resources) {
             resources.put(id, resource);
         }
@@ -156,11 +157,11 @@ public class Visibles {
         int id = Integer.parseInt(args[2]);
         if (items.containsKey(id)) {
             var item = items.get(id);
-            panels.visibleItems.removeVisiblesTitle(item);
+            panels.visibles.items.removeVisiblesTitle(item);
             
             PlayableCreature.allIngredients.remove(item);
-            
-            panels.behaviours.update(panels.stats.behaviours);
+
+            BehavioursFragment.update(panels.stats.behaviours);
         }
     }
 
@@ -174,7 +175,7 @@ public class Visibles {
     public void removeCreature(String[] args, Panels panels) {
         int id = Integer.parseInt(args[2]);
         if (creatures.containsKey(id)) {
-            panels.visibleCreatures.removeVisiblesTitle(creatures.get(id));
+            panels.visibles.creatures.removeVisiblesTitle(creatures.get(id));
         }
         creatures.remove(id);
     }
@@ -189,7 +190,7 @@ public class Visibles {
     public void removeResource(String[] args, Panels panels) {
         int id = Integer.parseInt(args[2]);
         if (resources.containsKey(id)) {
-            panels.visibleResources.removeVisiblesTitle(resources.get(id));
+            panels.visibles.resources.removeVisiblesTitle(resources.get(id));
         }
         synchronized (resources) {
             resources.remove(id);

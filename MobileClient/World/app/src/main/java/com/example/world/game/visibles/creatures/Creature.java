@@ -3,6 +3,7 @@ package com.example.world.game.visibles.creatures;
 import java.util.Set;
 
 import com.example.world.game.behaviours.BehavioursRequirement;
+import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 import com.example.world.game.visibles.Visible;
 
 public class Creature extends Visible {
@@ -39,4 +40,8 @@ public class Creature extends Visible {
         return "Creature";
     }
 
+    @Override
+    public int compareTo(BehavioursPossibleIngredient behavioursPossibleIngredient) {
+        return 0;
+    }
 }

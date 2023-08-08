@@ -24,9 +24,6 @@ public class ItemInfoFragment extends VisiblesInfoFragment<Item> {
     private TextView visibilityTextView;
     private TextView tossTextView;
 
-    private LinearLayout titleView = super.createTitleView();
-
-
     public ItemInfoFragment(Fragment previousFragment, int fragmentContainerId, Item item) {
         super(previousFragment, fragmentContainerId, item);
     }
@@ -70,9 +67,8 @@ public class ItemInfoFragment extends VisiblesInfoFragment<Item> {
         }
     }
 
-
     @Override
-    public View getTitleView() {
-        return titleView;
+    public String getTitleText() {
+        return getVisible().name + " " + getVisible().getId();
     }
 }
