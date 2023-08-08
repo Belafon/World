@@ -3,6 +3,7 @@ package com.belafon.console;
 import java.util.Scanner;
 
 import com.belafon.server.Server;
+import com.belafon.server.messages.playerMessages.ServerPlayerMessages;
 import com.belafon.server.sendMessage.PlayersMessageSender;
 import com.belafon.world.maps.place.Place;
 import com.belafon.world.maps.place.UnboundedPlace;
@@ -96,8 +97,9 @@ public class ConsoleListener implements Runnable {
                         server.games.get(0).maps.maps[0].sky.printCloudsInLoop = true;
                     else if (message.length >= 3 && message[2].equals("stop"))
                         server.games.get(0).maps.maps[0].sky.printCloudsInLoop = false;
-                    else if (Integer.parseInt(message[2]) >= 0 && Integer.parseInt(message[2]) <= 3){
-                        server.allClients.get(0).writer.sendLetter("map clouds " + Integer.parseInt(message[2]), PlayersMessageSender.TypeMessage.dailyLoop);
+                    else if (Integer.parseInt(message[2]) >= 0 && Integer.parseInt(message[2]) <= 8){
+                        ((ServerPlayerMessages) server.games.get(0).players.get(0).writer.server)
+                                .sendMessage.sendLetter("map clouds " + Integer.parseInt(message[2]), PlayersMessageSender.TypeMessage.dailyLoop);
                     } else
                         log += server.games.get(0).maps.maps[0].sky.printClouds();
                     break;
@@ -122,23 +124,23 @@ public class ConsoleListener implements Runnable {
                     break;
                 case "partDay":
                     if(message[2].equals("after_midnight")){
-                        server.allClients.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.after_midnight);
+                        server.games.get(0).players.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.after_midnight);
                     } else if(message[2].equals("sunrise1")){
-                        server.allClients.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.sunrise_1);
+                        server.games.get(0).players.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.sunrise_1);
                     } else if(message[2].equals("sunrise2")){
-                        server.allClients.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.sunrise_2);
+                        server.games.get(0).players.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.sunrise_2);
                     } else if(message[2].equals("morning")){
-                        server.allClients.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.morning);
+                        server.games.get(0).players.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.morning);
                     } else if(message[2].equals("afternoon")){
-                        server.allClients.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.afternoon);
+                        server.games.get(0).players.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.afternoon);
                     } else if(message[2].equals("sunset1")){
-                        server.allClients.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.sunset_1);
+                        server.games.get(0).players.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.sunset_1);
                     } else if(message[2].equals("sunset2")){
-                        server.allClients.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.sunset_2);
+                        server.games.get(0).players.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.sunset_2);
                     } else if(message[2].equals("night")){
-                        server.allClients.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.night);
+                        server.games.get(0).players.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.night);
                     } else if(Integer.parseInt(message[2]) < 8){
-                        server.allClients.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.values()[Integer.parseInt(message[2])]);
+                        server.games.get(0).players.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.values()[Integer.parseInt(message[2])]);
                     } 
                     break;
                 case "wind":
