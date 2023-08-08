@@ -7,8 +7,8 @@ import com.example.world.Screen;
 
 public class SetActivity {
     public static void setGameActivity(GameActivity gameActivity) {
-        int navWidth = Screen.screenWidth * 10 / 100;
-        int fragWidth = Screen.screenWidth * 70 / 100;
+        int navWidth = Screen.screenWidth * 7 / 100;
+        int fragWidth = Screen.screenWidth * 93 / 100;
         int notificWidth = Screen.screenWidth - navWidth - fragWidth;
         gameActivity.getSideMenuFragment().getView()
                 .setLayoutParams(new LinearLayout.LayoutParams(navWidth, ViewGroup.LayoutParams.MATCH_PARENT));
