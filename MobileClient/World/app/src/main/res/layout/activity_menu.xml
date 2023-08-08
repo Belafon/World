@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuScreen.MenuActivity">
+    tools:context=".menuScreen.MenuActivity">
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,5 +14,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/menu_fragment"
-        android:name="com.example.world.ForegroundColorFilterFragment"/>
+        android:name="com.example.world.menuScreen.EmptyFragment"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
