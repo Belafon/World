@@ -3,12 +3,12 @@ package com.example.world.menuScreen;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.world.AbstractActivity;
-import com.example.world.MenuScreen.ConnectToServerFragment;
 import com.example.world.client.Client;
 import com.example.world.gameActivity.GameActivity;
 import com.example.world.gameActivity.WaitingScreenFragment;
@@ -100,7 +100,7 @@ public class MenuActivity extends AbstractActivity {
     // FRAGMENT MENU ----------------------------------------------------------
 
     public void NewGame(View view) {
-        Client.messageSender.serverMessages.findMatch();
+        Client.sender.serverMessages.findMatch();
         openFragment(new WaitingScreenFragment(), R.id.menu_fragment);
     }
 
@@ -125,11 +125,24 @@ public class MenuActivity extends AbstractActivity {
     }
 
     public void startGame() {
-        // lets create game activity
+        // Create game activity intent
         Intent menuIntent = new Intent(MenuActivity.this, GameActivity.class);
-        startActivity(menuIntent);
-        finish();
+
+        // Wait for the activity to be created
+        ViewTreeObserver viewTreeObserver = getWindow().getDecorView().getViewTreeObserver();
+        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                // Remove the listener to avoid multiple calls
+                getWindow().getDecorView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                // Start the game activity
+                startActivity(menuIntent);
+                finish();
+            }
+        });
     }
+
 
     public Fragment getMenuFragment() {
         return getSupportFragmentManager().findFragmentById(R.id.menu_fragment);
