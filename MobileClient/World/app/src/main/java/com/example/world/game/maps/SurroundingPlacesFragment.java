@@ -15,8 +15,8 @@ import com.example.world.game.maps.playersPlacePanels.PlaceInfoFragment;
 import com.example.world.game.maps.playersPlacePanels.PlacePanel;
 
 public class SurroundingPlacesFragment extends Fragment {
-    private static final int SIZE_OF_GAP_IN_PIXELS = 5;
-    private static final int SIZE_OF_BUTTON_IN_PIXELS = 20;
+    private static final int SIZE_OF_GAP_IN_PIXELS = 15;
+    private static final int SIZE_OF_BUTTON_IN_PIXELS = 100;
 
     private SurroundingMap map;
     private int fragmentContainerId;
@@ -37,8 +37,13 @@ public class SurroundingPlacesFragment extends Fragment {
         for (int x = 0; x < map.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS; x++) {
             for (int y = 0; y < map.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS; y++) {
                 Button placeButton = new Button(getActivity());
-                placeButton.setWidth(SIZE_OF_BUTTON_IN_PIXELS);
-                placeButton.setHeight(SIZE_OF_BUTTON_IN_PIXELS);
+
+                GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams();
+                layoutParams.height = SIZE_OF_BUTTON_IN_PIXELS;
+                layoutParams.width = SIZE_OF_BUTTON_IN_PIXELS;
+                layoutParams.setMargins(SIZE_OF_GAP_IN_PIXELS, SIZE_OF_GAP_IN_PIXELS, 0, 0); // Set margins for the gap
+                placeButton.setLayoutParams(layoutParams);
+
                 if (map.getPlacePanel(x, y) == null) {
                     placeButton.setBackgroundColor(Place.UNKNOWN.typePlace.backgroundColor);
                     placeButton.setOnClickListener(new PlaceButtonClickListener(x, y, Place.UNKNOWN, this));

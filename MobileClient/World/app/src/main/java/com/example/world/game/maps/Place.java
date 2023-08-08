@@ -60,4 +60,9 @@ public class Place extends BehavioursPossibleIngredient {
         
         return new PlaceInfoFragment(lastFragment, fragmentContainerId, typePlace.name, typePlace.description, placeEffects);
     }
+
+    @Override
+    public int compareTo(BehavioursPossibleIngredient other) {
+        throw new UnsupportedOperationException();
+    }
 }
