@@ -47,15 +47,15 @@ public class Weather {
     };
 
     public final Cloud[] cloudTypes = new Cloud[]{
-        new Cloud(new Color(0, 0, 0, 0), 0, 0, 0, false, "clear sky"),
-        new Cloud(new Color(255, 255, 255, 30), 60, 40, 80, true, "clear sky with few small clouds"),
-        new Cloud(new Color(255, 255, 255, 50), 40, 40, 120, true, "sky with small clouds"),
-        new Cloud(new Color(255, 255, 255, 70), 40, 40, 120, true, "slightly translucent"),
+        new Cloud(new Color(0, 0, 0, 0), 0, 0, 0, false, true, "clear sky"),
+        new Cloud(new Color(255, 255, 255, 30), 60, 40, 80, true, true, "clear sky with few small clouds"),
+        new Cloud(new Color(255, 255, 255, 50), 40, 40, 120, true, true, "sky with small clouds"),
+        new Cloud(new Color(255, 255, 255, 70), 40, 40, 120, true, true, "slightly translucent"),
 
-        new Cloud(new Color(255, 255, 255, 100), 40, 20, 1000, true, "partly cloudy"),
-        new Cloud(new Color(300, 255, 255, 120), 0, 20, 1000, true, "cloudy"),
-        new Cloud(new Color(320, 255, 255, 140), 0, 20, 1000, true, "very cloudy"),
-        new Cloud(new Color(355, 355, 355, 160), 0, 20, 1000, true, "dark cloudy")
+        new Cloud(new Color(255, 255, 255, 100), 40, 20, 1000, true, true, "partly cloudy"),
+        new Cloud(new Color(300, 255, 255, 120), 0, 20, 1000, true, true,  "cloudy"),
+        new Cloud(new Color(320, 255, 255, 140), 0, 20, 1000, true, false, "very cloudy"),
+        new Cloud(new Color(355, 355, 355, 160), 0, 20, 1000, true, false, "dark cloudy")
 
     }; 
     

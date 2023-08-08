@@ -8,6 +8,7 @@ import java.util.Set;
 public class CloudsColorViewTransitions {
     private boolean isRaining = false;
     private boolean isCloudy = false;
+    private boolean doesSunGoThrough = false;
     private int durationCloudTransition = 0;
     private int durationOfCloud = 0;
     private Color finalCloudsColor;
@@ -38,15 +39,15 @@ public class CloudsColorViewTransitions {
 
     private synchronized boolean handleTransitions() {
         boolean isNewTransition = false;
-        if(isCloudy){
-            isNewTransition = decideIfStartNewChange(frequencyOfIdleClouds);
-            if(isNewTransition)
-                runNewCloud(finalCloudsColor, durationCloudTransition, durationOfCloud);
-        } else if(isRaining){
+        if(isRaining){
             isNewTransition = decideIfStartNewChange(frequencyOfIdleLightnings);
             if(isNewTransition)
                 runNewLightning();
-        }
+        } else if(isCloudy && doesSunGoThrough){
+            isNewTransition = decideIfStartNewChange(frequencyOfIdleClouds);
+            if(isNewTransition)
+                runNewCloud(finalCloudsColor, durationCloudTransition, durationOfCloud);
+        } 
         return isNewTransition;
     }
 
@@ -114,13 +115,48 @@ public class CloudsColorViewTransitions {
     }
 
     public synchronized void setClouds(Cloud cloud) {
+        Color lastFinalCloudsColor = this.finalCloudsColor;
+        boolean didSunGoThrough = this.doesSunGoThrough;
+        boolean wasCloudy = this.isCloudy;
+        int lastDurationCloudTransition = this.durationCloudTransition;
+
         this.isCloudy = cloud.isCloudy;
+        this.doesSunGoThrough = cloud.doesSunGoThrough;
         waitUntilCloudOrLightningEnds();
         this.finalCloudsColor = cloud.finalColor;
         this.frequencyOfIdleLightnings = 0;
         this.frequencyOfIdleClouds = cloud.frequencyOfIdleClouds;
         this.durationCloudTransition = cloud.durationCloudTransition;
         this.durationOfCloud = cloud.durationOfCloud;
+
+        if(!doesSunGoThrough){
+            if(lastFinalCloudsColor == null || didSunGoThrough){
+                synchronized (colorViewTransitions){
+                    colorViewTransitions.add(new DifferenceColorViewTransition(
+                        finalCloudsColor, durationCloudTransition));
+                }
+            } else {
+                synchronized (colorViewTransitions){
+                    colorViewTransitions.add(new DifferenceColorViewTransition(
+                        new Color(finalCloudsColor.r - lastFinalCloudsColor.r,
+                                finalCloudsColor.g - lastFinalCloudsColor.g,
+                                finalCloudsColor.b - lastFinalCloudsColor.b,
+                                finalCloudsColor.a - lastFinalCloudsColor.a), 
+                        durationCloudTransition));
+                }
+            }
+        } else if(wasCloudy && !didSunGoThrough) {
+            // return to 0 change
+            synchronized (colorViewTransitions){
+                colorViewTransitions.add(new DifferenceColorViewTransition(
+                        new Color(-lastFinalCloudsColor.r,
+                                -lastFinalCloudsColor.g,
+                                -lastFinalCloudsColor.b,
+                                -lastFinalCloudsColor.a), 
+                        lastDurationCloudTransition));
+            }
+        }
+    
     }
     
 
