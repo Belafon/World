@@ -34,7 +34,7 @@ public class DailyLoop {
             new PartOfDay(1200, NamePartOfDay.night, -4)
     };
 
-    public enum NamePartOfDay {
+    public static enum NamePartOfDay {
         after_midnight, // starts at 3.0 hours today -> 60 of ticks today
         sunrise_1, // 5.5 -> 110
         sunrise_2, // 6.25 -> 125
