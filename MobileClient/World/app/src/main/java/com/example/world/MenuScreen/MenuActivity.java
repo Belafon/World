@@ -89,14 +89,18 @@ public class MenuActivity extends AbstractActivity {
     }
 
     private boolean isValidIpAddress(String ip) {
-        String pattern = "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+        // Check for IPv4 format
+        String ipv4Pattern = "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
                 "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
                 "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
                 "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
-
-        return ip.matches(pattern);
+    
+        // Check for IPv6 format
+        String ipv6Pattern = "^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$";
+    
+        return ip.matches(ipv4Pattern) || ip.matches(ipv6Pattern);
     }
-
+    
     // FRAGMENT MENU ----------------------------------------------------------
 
     public void NewGame(View view) {

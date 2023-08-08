@@ -33,6 +33,7 @@ public class Client {
 
     public static final DataLibrary clientsData = new DataLibrary("clientsData");
     public static volatile int condition; // 0 -> connected, 1 -> reconnected, 2 -> first start
+    
     public static final int idle = 10;
     public static final int playing = 11;
     public static final int first_start = 12;
