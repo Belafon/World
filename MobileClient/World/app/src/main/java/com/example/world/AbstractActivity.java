@@ -41,14 +41,15 @@ public class AbstractActivity extends AppCompatActivity {
     }
 
     public static Activity getActualActivity() {
+        if(AbstractActivity.actualActivity == null)
+            return null;
+
         synchronized (AbstractActivity.actualActivity) {
             return AbstractActivity.actualActivity;
         }
     }
 
     public static void setActualActivity(Activity actualActivity) {
-        synchronized (AbstractActivity.actualActivity) {
-            AbstractActivity.actualActivity = actualActivity;
-        }
+        AbstractActivity.actualActivity = actualActivity;
     }
 }
