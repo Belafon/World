@@ -1,10 +1,13 @@
 package com.example.world.game.bodyStats;
 
+import android.app.Activity;
+import android.content.Context;
 import android.widget.ArrayAdapter;
 
 public class BodyStat {
     private final String name;
     private int value;
+    private CreatureStatisticsPanel context;
     private ArrayAdapter<BodyStat> listAdapter;
 
     public BodyStat(String name, int value) {
@@ -18,8 +21,14 @@ public class BodyStat {
 
     public void setValue(String value) throws NumberFormatException {
         this.value = Integer.parseInt(value);
-        if (listAdapter != null) {
-            listAdapter.notifyDataSetChanged();
+        synchronized (this) {
+            if (listAdapter != null) {
+                Activity activity =  context.getActivity();
+                if(activity != null){
+                    context.getActivity().runOnUiThread(
+                            () -> listAdapter.notifyDataSetChanged());
+                }
+            }
         }
     }
 
@@ -27,8 +36,11 @@ public class BodyStat {
         return value;
     }
 
-    public void setListAdapter(ArrayAdapter<BodyStat> listAdapter) {
-        this.listAdapter = listAdapter;
+    public void setListAdapter(ArrayAdapter<BodyStat> listAdapter, CreatureStatisticsPanel context) {
+        synchronized (this) {
+            this.listAdapter = listAdapter;
+            this.context = context;
+        }
     }
 
     @Override

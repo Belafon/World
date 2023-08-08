@@ -3,17 +3,17 @@ package com.example.world.game.client.chatListener;
 import android.util.Log;
 
 import com.example.world.client.Client;
+import com.example.world.game.Game;
 import com.example.world.game.Panels;
 import com.example.world.game.Stats;
 import com.example.world.gameActivity.WaitingScreenFragment;
 
 public class ChatListener {
     private static final String TAG = "ChatListener";
-    private Stats stats;
+    private Stats stats = Game.stats;
     private Panels panels;
 
-    public synchronized void setStatsAndPanels(Stats stats, Panels panels) {
-        this.stats = stats;
+    public void setFragments(Panels panels) {
         this.panels = panels;
     }
     /**
@@ -23,7 +23,6 @@ public class ChatListener {
      */
     public synchronized void listen(String message) {
         String[] args = message.split(" ");
-        //panels.listenerPanel.addIncomingMessage(message);
 
         try {
             listenBase(args);
@@ -100,25 +99,25 @@ public class ChatListener {
 
     private void listenAbilityCondition(String[] args) {
         switch (args[2]) {
-            case "strength" -> stats.body.setStrengthAbility(args[3]);
-            case "agility" -> stats.body.setAgilityAbility(args[3]);
-            case "speed_of_run" -> stats.body.setSpeedOfRunAbility(args[3]);
-            case "speed_of_walk" -> stats.body.setSpeedOfWalkAbility(args[3]);
-            case "hearing" -> stats.body.setHearingAbility(args[3]);
-            case "observation" -> stats.body.setObservationAbility(args[3]);
-            case "vision" -> stats.body.setVisionAbility(args[3]);
+            case "strength" -> stats.body.setStrengthAbility(args[3], panels);
+            case "agility" -> stats.body.setAgilityAbility(args[3], panels);
+            case "speed_of_run" -> stats.body.setSpeedOfRunAbility(args[3], panels);
+            case "speed_of_walk" -> stats.body.setSpeedOfWalkAbility(args[3], panels);
+            case "hearing" -> stats.body.setHearingAbility(args[3], panels);
+            case "observation" -> stats.body.setObservationAbility(args[3], panels);
+            case "vision" -> stats.body.setVisionAbility(args[3], panels);
         }
         ;
     }
 
     private void listenActualCondition(String[] args) {
         switch (args[2]) {
-            case "health" -> stats.body.setHealth(args[3]);
-            case "hunger" -> stats.body.setHunger(args[3]);
-            case "bleeding" -> stats.body.setBleeding(args[3]);
-            case "heat" -> stats.body.setHeat(args[3]);
-            case "fatigue_max" -> stats.body.setFatigueMax(args[3]);
-            case "current_energy_output" -> stats.body.setCurrentEnergyOutput(args[3]);
+            case "health" -> stats.body.setHealth(args[3], panels);
+            case "hunger" -> stats.body.setHunger(args[3], panels);
+            case "bleeding" -> stats.body.setBleeding(args[3], panels);
+            case "heat" -> stats.body.setHeat(args[3], panels);
+            case "fatigue_max" -> stats.body.setFatigueMax(args[3], panels);
+            case "current_energy_output" -> stats.body.setCurrentEnergyOutput(args[3], panels);
         }
         
     }
