@@ -24,17 +24,25 @@
         <fragment
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:id="@+id/game_main_bar_navigation" />
-        
+            android:id="@+id/game_main_bar_navigation"
+            android:name="com.example.world.menuScreen.EmptyFragment"/>
+
         <fragment
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:id="@+id/game_fragment"
-            android:name="com.example.world.gameActivity.WaitingScreenFragment" />
+            android:name="com.example.world.menuScreen.EmptyFragment" />
         <LinearLayout
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:id="@+id/notifications"
             android:orientation="vertical"/>
     </LinearLayout>
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/waiting_screen"
+        android:name="com.example.world.gameActivity.WaitingScreenForStartingGame" />
+
 </RelativeLayout>

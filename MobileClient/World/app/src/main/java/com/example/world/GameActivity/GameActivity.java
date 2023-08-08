@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import com.example.world.AbstractActivity;
 import com.example.world.R;
 import com.example.world.game.Game;
+import com.example.world.menuScreen.EmptyFragment;
 
 public class GameActivity extends AbstractActivity {
     public LinearLayout notifications;
@@ -21,11 +22,8 @@ public class GameActivity extends AbstractActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         // display side bar navigation menu fragment
         openFragment(new MainMenuFragment(this), R.id.game_main_bar_navigation);
-
-
 
         // lets prepare stats and other fragments
         this.game = new Game(this);
@@ -34,7 +32,12 @@ public class GameActivity extends AbstractActivity {
 
         notifications = (LinearLayout) findViewById(R.id.notifications);
         backgroundImage = (ImageView) findViewById(R.id.background_image);
+
         colorFilter = findViewById(R.id.color_filter);
+        Game.stats.maps.weather.setWeatherView(colorFilter);
+
+        View waitingScreen = findViewById(R.id.waiting_screen);
+
 
         SetActivity.setGameActivity(this);
 
@@ -45,7 +48,9 @@ public class GameActivity extends AbstractActivity {
                 e.printStackTrace();
             }
             runOnUiThread(() -> {
-                openFragment(game.panels.mainMenuFragment);
+                openFragment(game.panels.bodyStatistics);
+                waitingScreen.setVisibility(View.GONE);
+                openFragment(new EmptyFragment(), R.id.waiting_screen);
             });
         }).start();
     }
@@ -61,6 +66,7 @@ public class GameActivity extends AbstractActivity {
     public Fragment getSideMenuFragment() {
         return getSupportFragmentManager().findFragmentById(R.id.game_main_bar_navigation);
     }
+
     /**
      * Sets the color filter of the game.
      * 
