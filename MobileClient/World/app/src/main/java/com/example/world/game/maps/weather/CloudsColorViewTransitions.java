@@ -19,7 +19,9 @@ public class CloudsColorViewTransitions {
 
     private Thread currentWorkThread;
     private Set<ColorViewTransition> colorViewTransitions;
-    public CloudsColorViewTransitions(Set<ColorViewTransition> colorViewTransitions){
+    private final WeatherPanel.CurrentFilterColor currentFilterColor;
+    public CloudsColorViewTransitions(Set<ColorViewTransition> colorViewTransitions, WeatherPanel.CurrentFilterColor currentFilterColor){
+        this.currentFilterColor = currentFilterColor;
         this.colorViewTransitions = colorViewTransitions;
         new Thread(() -> {
             Thread.currentThread().setName("CloudsAndWeatherColorTransitions");
@@ -53,15 +55,18 @@ public class CloudsColorViewTransitions {
 
     private void runNewLightning() {
         Thread lightningThread = new Thread(() -> {
-            Dice dice3 = new Dice(3);
+            Dice dice4 = new Dice(4);
             Dice dice6 = new Dice(6);
-            int toss = dice3.toss();
+            int toss = dice4.toss();
+            Color filterColor = this.currentFilterColor.getColor();
             ColorViewTransition transition = switch (toss){
-                case 1 -> new CloudsColorViewTransition(new Color(300, 300, 400, -80), 1, 2 + dice6.toss());
-                case 2 -> new CloudsColorViewTransition(new Color(200, 200, 300, -100), 1, 2 + dice6.toss());
-                case 3 -> new CloudsColorViewTransition(new Color(100, 100, 200, -120), 1, 2 + dice6.toss());
+                case 1 -> new CloudsColorViewTransition(new Color(150 - filterColor.r, 150 - filterColor.g, 255 - filterColor.b, 80 - filterColor.a), 1, 2 + dice6.toss());
+                case 2 -> new CloudsColorViewTransition(new Color(150 - filterColor.r, 150 - filterColor.g, 255 - filterColor.b, 100 - filterColor.a), 1, 2 + dice6.toss());
+                case 3 -> new CloudsColorViewTransition(new Color(150 - filterColor.r, 150 - filterColor.g, 255 - filterColor.b, 120 - filterColor.a), 1, 2 + dice6.toss());
+                case 4 -> new CloudsColorViewTransition(new Color(150 - filterColor.r, 150 - filterColor.g, 255 - filterColor.b, 140 - filterColor.a), 1, 2 + dice6.toss());
                 default -> null;
             };
+
             synchronized (colorViewTransitions){
                 colorViewTransitions.add(transition);
             }

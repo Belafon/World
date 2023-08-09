@@ -8,12 +8,9 @@ import android.view.View;
 
 import com.example.world.logs.Logs;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -32,8 +29,11 @@ public class WeatherPanel implements Runnable {
     private final PartOfDayColorViewTransition partOfDayColorViewTransition = new PartOfDayColorViewTransition(
             new ColorViewTransition.Color(0, 0, 0,0));
 
-    private final CloudsColorViewTransitions weatherTransitions = new CloudsColorViewTransitions(colorViewTransitions);
+    public final CurrentFilterColor currentFilterColor = new CurrentFilterColor(this);
+
+    private final CloudsColorViewTransitions weatherTransitions;
     public WeatherPanel(View view) {
+         weatherTransitions = new CloudsColorViewTransitions(colorViewTransitions, this.currentFilterColor);
         this.view = view;
         this.colorViewTransitions.add(partOfDayColorViewTransition);
         new Thread(this).start();
@@ -116,7 +116,7 @@ public class WeatherPanel implements Runnable {
                     || lastColor.a != a))
                 executor.execute(() -> {
                     handler.post(() -> {
-                        view.setBackgroundColor(getColor());
+                        view.setBackgroundColor(getAndroidColor());
                     });
                 });
 
@@ -140,7 +140,7 @@ public class WeatherPanel implements Runnable {
         }
     }
 
-    private int getColor() {
+    private int getAndroidColor() {
         int a = checkColorBounderies(checkColor(this.a));
         int r = checkColorBounderies(checkColor(this.r));
         int g = checkColorBounderies(checkColor(this.g));
@@ -164,5 +164,19 @@ public class WeatherPanel implements Runnable {
             return 255;
         }
         return color;
+    }
+
+    public ColorViewTransition.Color getColor(){
+        return new ColorViewTransition.Color(r, g, b, a);
+    }
+
+    public static class CurrentFilterColor{
+        private final WeatherPanel panel;
+        public CurrentFilterColor(WeatherPanel panel){
+            this.panel = panel;
+        }
+        public ColorViewTransition.Color getColor(){
+            return panel.getColor();
+        }
     }
 }
