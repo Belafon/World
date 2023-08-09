@@ -18,6 +18,10 @@ You can write log messages by pasting these commands into console:
 - log clouds
 - log clouds loop
 - log clouds stop
+- log clouds 0
+- ...
+- log clouds 7
+  - zero represents no cloud on the sky, 7 represents dark cloudy sky.
 - log weather
 - log weather loop
 - log weather stop
@@ -27,6 +31,15 @@ You can write log messages by pasting these commands into console:
 - log weather heavy_rain
 - log weather storm
 - log weather thunderstorm
+
+- log partDay after_midnight
+- log partDay sunrise1
+- log partDay sunrise2
+- log partDay morning
+- log partDay afternoon
+- log partDay sunset1
+- log partDay sunset2
+- log partDay night
 
 - log wind
 - log windDirection
