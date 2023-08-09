@@ -13,13 +13,13 @@ public class Time {
     public volatile PartOfDay partOfDay;
 
     public Time(World game, Clocks clocks, DailyLoop dailyLoop) {
-        inception = clocks.time;
+        inception = clocks.getTime();
         this.clocks = clocks;
         partOfDay = dailyLoop.partsOfDay[0];
     }
 
     public long getTime() {
-        return clocks.time - inception;
+        return clocks.getTime() - inception;
     }
 
     /*

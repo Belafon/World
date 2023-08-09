@@ -17,7 +17,12 @@ public class DailyLoop {
      */
     public DailyLoop(World game) {
         this.game = game;
-        addToCalendar(0);
+    }
+
+    public void start() throws NullPointerException{ 
+        if(game.time == null)
+            throw new NullPointerException("game.time is null");
+                addToCalendar(game.time.getTime() - 180);
     }
 
     /**

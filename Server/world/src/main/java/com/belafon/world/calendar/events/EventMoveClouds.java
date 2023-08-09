@@ -34,7 +34,7 @@ public class EventMoveClouds extends Event {
      */
     @Override
     public void action(World game) {
-        /*if (printInLoop) {
+        if (printInLoop) {
             ConsolePrint.gameInfo("before CLOUD change:");
             ConsolePrint.gameInfo(map.sky.printClouds());
         }
@@ -59,7 +59,7 @@ public class EventMoveClouds extends Event {
         if (printInLoop) {
             ConsolePrint.gameInfo("after CLOUD change:");
             ConsolePrint.gameInfo(map.sky.printClouds());
-        }*/
+        }
     }
 
     @Override

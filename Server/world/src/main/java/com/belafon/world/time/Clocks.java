@@ -6,9 +6,13 @@ import com.belafon.console.ConsolePrint;
  * Records the time changes in the world.
  */
 public class Clocks extends Thread {
-    public volatile long time = 0;
-    public final long delay = 66;// 33;
+    private long time = 0;
+    public final long delay = 20;// 33;
     public volatile boolean isRunning = false;
+
+    public synchronized long getTime() {
+        return time;
+    }
 
     @Override
     public void run() {
@@ -30,7 +34,9 @@ public class Clocks extends Thread {
                     throw new Error(e);
                 }
             }
-            time++;
+            synchronized(this){
+                time++;
+            }
         }
     }
 
@@ -44,5 +50,9 @@ public class Clocks extends Thread {
      */
     public long ticksToMillis(long ticks) {
         return ticks * delay;
+    }
+
+    public long milisToTicks(long milis) {
+        return milis / delay;
     }
 }

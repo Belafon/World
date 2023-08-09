@@ -47,6 +47,11 @@ public class CloudsColorViewTransitions {
                 runNewLightning();
         } else if(isCloudy && doesSunGoThrough){
             isNewTransition = decideIfStartNewChange(frequencyOfIdleClouds);
+
+            int alpha = currentFilterColor.getColor().a;
+            if(alpha > 220)
+                isNewTransition = false;
+
             if(isNewTransition)
                 runNewCloud(finalCloudsColor, durationCloudTransition, durationOfCloud);
         } 
@@ -80,7 +85,14 @@ public class CloudsColorViewTransitions {
 
     private void runNewCloud(Color color, int durationOfTransition, int durationOfCloud){
         Thread cloudThread = new Thread(() -> {
-            ColorViewTransition transition = new CloudsColorViewTransition(color, durationOfTransition, durationOfCloud);
+            Color colorOut = color;
+            int alpha = currentFilterColor.getColor().a;
+            if(alpha + color.a > 220
+                    && alpha <= 200){
+                colorOut = new Color(color.r, color.g, color.b, 220 - currentFilterColor.getColor().a);
+            }
+
+            ColorViewTransition transition = new CloudsColorViewTransition(colorOut, durationOfTransition, durationOfCloud);
             synchronized (colorViewTransitions){
                 colorViewTransitions.add(transition);
             }
@@ -183,7 +195,7 @@ public class CloudsColorViewTransitions {
                         new Color(-finalWeatherColor.r,
                                 -finalWeatherColor.g,
                                 -finalWeatherColor.b,
-                                -finalWeatherColor.a), 10));
+                                -finalWeatherColor.a), 60));
             }
             this.finalWeatherColor = type.color;
             return;
@@ -197,7 +209,7 @@ public class CloudsColorViewTransitions {
                         type.color.g - this.finalWeatherColor.g,
                         type.color.b - this.finalWeatherColor.b,
                         type.color.a - this.finalWeatherColor.a), 
-                10));
+                60));
         }
         this.frequencyOfIdleLightnings = type.frequencyOfLightnings;
         this.finalWeatherColor = type.color;

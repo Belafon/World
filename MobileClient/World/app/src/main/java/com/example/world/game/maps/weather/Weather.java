@@ -34,29 +34,28 @@ public class Weather {
 
     private final HashMap<NamePartOfDay, PartOfDay> partsOfDay = new HashMap<>(){
         {
-            put(NamePartOfDay.unknown, new PartOfDay(NamePartOfDay.unknown, new Color(0, 0, 50, 120), 400)); // dark blue
-            put(NamePartOfDay.after_midnight, new PartOfDay(NamePartOfDay.after_midnight, new Color(0, 0, 30, 180), 400)); // dark blue
-            put(NamePartOfDay.sunrise_1, new PartOfDay(NamePartOfDay.sunrise_1, new Color(320, 10, 0, 50), 200));//173, 216, 30, 10), 50)); // light blue
-            put(NamePartOfDay.sunrise_2, new PartOfDay(NamePartOfDay.sunrise_2, new Color(80, 40, 60, 20), 100)); // pink
-            put(NamePartOfDay.morning, new PartOfDay(NamePartOfDay.morning, new Color(135, 206, 235, 5), 250)); // sky blue
-            put(NamePartOfDay.afternoon, new PartOfDay(NamePartOfDay.afternoon, new Color(255, 255, 255, 0), 340)); // white
-            put(NamePartOfDay.sunset_1, new PartOfDay(NamePartOfDay.sunset_1, new Color(320, 10, 0, 50), 200)); // sky blue
-            put(NamePartOfDay.sunset_2, new PartOfDay(NamePartOfDay.sunset_2, new Color(15, 5, 80, 150), 60)); // pink
-            put(NamePartOfDay.night, new PartOfDay(NamePartOfDay.night, new Color(0, 0, 10, 170), 400)); // light blue
+            put(NamePartOfDay.unknown, new PartOfDay(NamePartOfDay.unknown, new Color(0, 0, 50, 120), 400));
+            put(NamePartOfDay.after_midnight, new PartOfDay(NamePartOfDay.after_midnight, new Color(0, 0, 30, 180), 400));
+            put(NamePartOfDay.sunrise_1, new PartOfDay(NamePartOfDay.sunrise_1, new Color(320, 10, 0, 50), 200));
+            put(NamePartOfDay.sunrise_2, new PartOfDay(NamePartOfDay.sunrise_2, new Color(80, 40, 60, 20), 180));
+            put(NamePartOfDay.morning, new PartOfDay(NamePartOfDay.morning, new Color(255, 255, 0, 10), 250));
+            put(NamePartOfDay.afternoon, new PartOfDay(NamePartOfDay.afternoon, new Color(255, 200, 0, 10), 340));
+            put(NamePartOfDay.sunset_1, new PartOfDay(NamePartOfDay.sunset_1, new Color(320, 10, 0, 50), 200));
+            put(NamePartOfDay.sunset_2, new PartOfDay(NamePartOfDay.sunset_2, new Color(15, 5, 80, 150), 180));
+            put(NamePartOfDay.night, new PartOfDay(NamePartOfDay.night, new Color(0, 0, 10, 155), 400));
         }
     };
 
     public final Cloud[] cloudTypes = new Cloud[]{
         new Cloud(new Color(0, 0, 0, 0), 0, 0, 0, false, true, "clear sky"),
-        new Cloud(new Color(-255, -255, -255, 60), 380, 200, 100, true, true, "clear sky with few small clouds"),
-        new Cloud(new Color(-255, -255, -255, 80), 240, 160, 200, true, true, "sky with small clouds"),
-        new Cloud(new Color(-255, -255, -255, 80), 160, 160, 500, true, true, "slightly translucent"),
+        new Cloud(new Color(-255, -255, -255, 60), 380, 150, 30, true, true, "clear sky with few small clouds"),
+        new Cloud(new Color(-255, -255, -255, 80), 240, 140, 60, true, true, "sky with small clouds"),
+        new Cloud(new Color(-255, -255, -255, 80), 160, 140, 100, true, true, "slightly translucent"),
 
-        new Cloud(new Color(-255, -255, -255, 80), 120, 80, 800, true, true, "partly cloudy"),
-        new Cloud(new Color(-300, -255, -255, 90), 120, 80, 900, true, true,  "cloudy"),
-        new Cloud(new Color(-320, -255, -255, 90), 0, 80, 1000, true, false, "very cloudy"),
-        new Cloud(new Color(-355, -355, -355, 90), 0, 80, 1000, true, false, "dark cloudy")
-
+        new Cloud(new Color(-255, -255, -255, 80), 120, 100, 200, true, true, "partly cloudy"),
+        new Cloud(new Color(-300, -255, -255, 90), 120, 100, 200, true, true,  "cloudy"),
+        new Cloud(new Color(-320, -255, -255, 90), 0, 100, 1000, true, false, "very cloudy"),
+        new Cloud(new Color(-355, -355, -355, 90), 0, 100, 1000, true, false, "dark cloudy")
     }; 
     
 
@@ -81,10 +80,10 @@ public class Weather {
 
     public enum WeatherType{
         idle(new Color(0, 0, 0, 0), 0),
-        rain(new Color(-260, -150, -100, 110), 0),
-        heavy_rain(new Color(-300, -150, -100, 120), 0),
-        storm(new Color(-355, -200, -140, 120), 60),
-        thunderstorm(new Color(-355, -255, -200, 120), 30);
+        rain(new Color(-260, -260, -100, 110), 0),
+        heavy_rain(new Color(-300, -300, -200, 120), 0),
+        storm(new Color(-355, -355, -220, 120), 60),
+        thunderstorm(new Color(-355, -355, -200, 120), 30);
         public final Color color;
         public final int frequencyOfLightnings;
         WeatherType(Color color, int frequencyOfLightnings) {

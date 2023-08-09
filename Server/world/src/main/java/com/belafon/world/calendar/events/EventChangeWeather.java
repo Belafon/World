@@ -31,8 +31,7 @@ public class EventChangeWeather extends Event {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                return;
-                /*Thread.currentThread().setName("SetWeather");
+                Thread.currentThread().setName("SetWeather");
                 if (printInLoop) {
                     ConsolePrint.gameInfo("before weather change:");
                     ConsolePrint.gameInfo(sky.printWeathers());
@@ -61,8 +60,8 @@ public class EventChangeWeather extends Event {
                             }
                         }
                     }
-                }*/
-            }
+                }
+            } 
         }).start();
     }
 

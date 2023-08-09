@@ -9,7 +9,6 @@ public class Calendar {
     private World game;
 
     public Calendar(World game) {
-
         this.game = game;
     }
 

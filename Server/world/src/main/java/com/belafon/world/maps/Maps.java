@@ -24,7 +24,7 @@ public class Maps {
 
     public Maps(World game) {
         maps = new Map[] {
-                new Map(10, 10, new BasicGenerator(), 0, 36, 1000f, game)
+                new Map(10, 10, new BasicGenerator(), 0, 200, 1000f, game)
         };
     }
 }

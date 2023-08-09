@@ -17,7 +17,7 @@ import com.belafon.world.maps.place.Place;
 public class Sky {
     public final Weather[][] weather;
     public volatile int directionOfWind = 0;
-    public volatile int strengthOfWind = 1;
+    public volatile int strengthOfWind = 200;
     public volatile int originX = 0;
     public volatile int originY = 0;
     private final int SPEED_OF_WEATHER_CHANGE = 60;
@@ -40,8 +40,8 @@ public class Sky {
         this.directionOfWind = directionOfWind;
         this.strengthOfWind = strengthOfWind;
         this.map = map;
-        eventChangeWeather = new EventChangeWeather(SPEED_OF_WEATHER_CHANGE, map.game, this, printWeatherInLoop);
-        eventMoveClouds = new EventMoveClouds(strengthOfWind, map.game, map, printCloudsInLoop);
+        eventChangeWeather = new EventChangeWeather(SPEED_OF_WEATHER_CHANGE + 20, map.game, this, printWeatherInLoop);
+        eventMoveClouds = new EventMoveClouds(strengthOfWind + 20, map.game, map, printCloudsInLoop);
         map.game.calendar.add(eventChangeWeather);
         map.game.calendar.add(eventMoveClouds);
 
@@ -176,7 +176,7 @@ public class Sky {
                 }
             }
         }
-        map.game.calendar.add(new EventChangeWeather(map.game.time.getTime() + 20, map.game, this, printWeatherInLoop));
+        map.game.calendar.add(new EventChangeWeather(map.game.time.getTime() + SPEED_OF_WEATHER_CHANGE, map.game, this, printWeatherInLoop));
     }
 
     public synchronized String printClouds() {

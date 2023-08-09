@@ -30,15 +30,14 @@ public class EventPartOfDay extends Event {
     public void action(World game) {
         // ConsolePrint.success("EventPartOfDay", "part of day changed " +
         // partOfDay.name());
-        /*
-         * game.time.partOfDay = partOfDay;
-         * synchronized(game.creatures){
-         * for (Creature creature : game.creatures)
-         * creature.writer.surrounding.setPartOfDay(partOfDay.name());
-         * }
-         * if (partOfDay.name() == NamePartOfDay.night)
-         * game.dailyLoop.addPlanToNextDay();
-         */
+        
+        game.time.partOfDay = partOfDay;
+        synchronized(game.creatures){
+        for (Creature creature : game.creatures)
+            creature.writer.surrounding.setPartOfDay(partOfDay.name());
+        }
+        if (partOfDay.name() == NamePartOfDay.night)
+            game.dailyLoop.addPlanToNextDay();
     }
 
     @Override

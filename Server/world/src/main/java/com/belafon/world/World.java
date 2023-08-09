@@ -88,6 +88,8 @@ public class World implements Runnable {
         for (int i = 0; i < 10; i++) {
             GenerateVisibles.spawnAppleAndAllCreaturesNotices(cornerPlace, this);
         }
+
+        dailyLoop.start();
     }
 
     private World() {
