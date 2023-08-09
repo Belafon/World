@@ -1,17 +1,17 @@
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingLeft="40dp"
-        android:paddingRight="80dp">
+        android:paddingRight="40dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/actual_heading_label"
@@ -21,6 +21,7 @@
                 android:text="Actual condition"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:textColor="#FFFFFF" 
                 android:padding="5dp"/>
 
             <ListView
@@ -30,12 +31,14 @@
                 android:background="@android:color/transparent"
                 android:divider="@android:color/black"
                 android:dividerHeight="1dp"
-                android:padding="5dp" />
+                android:padding="5dp" 
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/ability_heading_label"
@@ -44,8 +47,9 @@
                 android:gravity="center"
                 android:text="Ability condition"
                 android:textSize="18sp"
-                android:padding="5dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:padding="5dp" />
 
             <ListView
                 android:id="@+id/ability_list"
@@ -54,9 +58,9 @@
                 android:background="@android:color/transparent"
                 android:divider="@android:color/black"
                 android:dividerHeight="1dp"
-                android:padding="5dp" />
+                android:padding="5dp" 
+                android:textColor="#FFFFFF" />
         </LinearLayout>
-
 
     </LinearLayout>
 </ScrollView>
