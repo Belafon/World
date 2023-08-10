@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.MarginLayoutParamsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -18,6 +19,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.world.R;
+import com.example.world.Screen;
 import com.example.world.game.Stats;
 
 import java.util.Hashtable;
@@ -58,11 +60,10 @@ public abstract class VisiblesListFragment<T extends VisiblesInfoFragment> exten
         TextView title = createTitleView(visibleFragment.getTitleText());
         title.setTextColor(Color.WHITE);
         title.setGravity(Gravity.CENTER);
-
-        // add margin top
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) title.getLayoutParams();
-        params.setMargins(0, 10, 0, 0);
-        title.setLayoutParams(params);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Screen.dpToPixels(35));
+        layoutParams.setMargins(0,5 , 0, 0);
+        title.setBackgroundResource(R.color.themeTransparent);
+        title.setLayoutParams(layoutParams);
 
         visibleFragment.setTitleView(title);
         title.setOnClickListener(new View.OnClickListener() {

@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import java.lang.reflect.Array;
 
 import com.example.world.R;
+import com.example.world.Screen;
 
 public class CreatureStatisticsPanel extends Fragment {
     public CreatureStatisticsPanel(BodyStats stats) {

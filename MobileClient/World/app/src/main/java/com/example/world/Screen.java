@@ -1,6 +1,7 @@
 package com.example.world;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 public class Screen {
     private static final String TAG = "Screen";
@@ -76,7 +78,7 @@ public class Screen {
     }
 
     public static int dpToPixels(float dpValue) {
-        float scale = getResources().getDisplayMetrics().density;
+        float scale = AbstractActivity.getActualActivity().getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
 }

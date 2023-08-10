@@ -1,7 +1,10 @@
 package com.example.world.game.behaviours;
 
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +13,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.world.R;
+import com.example.world.Screen;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -85,8 +90,10 @@ public class BehavioursFragment extends Fragment {
         itemLabel.setText(item.name);
         itemLabel.setTextSize(16);
         itemLabel.setTypeface(null, Typeface.BOLD);
-        itemLabel.setBackgroundResource(R.drawable.button);
-        itemLabel.setTextColor(getResources().getColor(R.color.white));
+        itemLabel.setBackgroundResource(R.drawable.button3);
+        itemLabel.setTextColor(Color.WHITE);
+        itemLabel.setGravity(Gravity.CENTER_VERTICAL);
+        itemLabel.setPadding(Screen.dpToPixels(10), 0, 0, 0);
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);

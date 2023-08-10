@@ -23,17 +23,16 @@
                 android:id="@+id/titleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
                 android:textStyle="bold"
                 android:padding="8dp"
                 android:textColor="@color/white"
-                android:gravity="center" />
+                android:gravity="center"
+                android:layout_gravity="center"/>
 
             <TextView
                 android:id="@+id/nameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
                 android:padding="8dp"
                 android:textColor="@color/white"
                 android:background="@drawable/button"
@@ -43,7 +42,6 @@
                 android:id="@+id/descriptionTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
                 android:padding="8dp"
                 android:textColor="@color/white"
                 android:background="@drawable/button"
@@ -53,7 +51,6 @@
                 android:id="@+id/idTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
                 android:padding="8dp"
                 android:textColor="@color/white"
                 android:background="@drawable/button"
@@ -63,7 +60,6 @@
                 android:id="@+id/weightTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
                 android:padding="8dp"
                 android:textColor="@color/white"
                 android:background="@drawable/button"
@@ -73,7 +69,6 @@
                 android:id="@+id/visibilityTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
                 android:padding="8dp"
                 android:textColor="@color/white"
                 android:background="@drawable/button"
@@ -83,7 +78,6 @@
                 android:id="@+id/tossTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
                 android:padding="8dp"
                 android:textColor="@color/white"
                 android:background="@drawable/button"
@@ -95,7 +89,8 @@
                 android:layout_height="wrap_content"
                 android:text="Go Back"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/themeColor" />
+                android:backgroundTint="@color/themeColor"
+                android:layout_gravity="center"/>
 
 
         </LinearLayout>

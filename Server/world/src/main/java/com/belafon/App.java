@@ -8,11 +8,12 @@ import com.belafon.world.visibles.resources.ListOfAllTypesOfResources;
 
 public class App {
     public static Server server;
+
     public static void main(String[] args) {
         ListOfAllTypesOfResources.setUpAllResources();
         ListOfAllTypesOfPlaces.setUpAllTypesOfPlaces();
         ListOfAllItemTypes.setUpItems();
-        
+
         BehaviourType.setUpAllBehavioursPossibleRequirements();
         //createLocalClient();
 
