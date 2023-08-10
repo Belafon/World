@@ -46,13 +46,13 @@ public class PlaceInfoFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        ConstraintLayout rootView = (ConstraintLayout) inflater.inflate(R.layout.fragment_place_effect_info, container, false);
+        ConstraintLayout rootView = (ConstraintLayout) inflater.inflate(R.layout.fragment_place_info, container, false);
 
         TextView nameLabel = rootView.findViewById(R.id.nameLabel);
         nameLabel.setText(name.toString());
         nameLabel.setTypeface(nameLabel.getTypeface(), Typeface.BOLD);
 
-        TextView lookLabel = rootView.findViewById(R.id.lookLabel);
+        TextView lookLabel = rootView.findViewById(R.id.descriptionLabel);
         lookLabel.setText(look);
 
         Button backButton = rootView.findViewById(R.id.backButton);
