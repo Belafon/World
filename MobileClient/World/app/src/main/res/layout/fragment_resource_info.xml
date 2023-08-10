@@ -21,7 +21,7 @@
 
             <TextView
                 android:id="@+id/nameTextView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button"
                 android:padding="8dp"
@@ -31,7 +31,7 @@
 
             <TextView
                 android:id="@+id/descriptionTextView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button"
                 android:padding="8dp"
@@ -40,7 +40,7 @@
 
             <TextView
                 android:id="@+id/idTextView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button"
                 android:padding="8dp"
@@ -49,7 +49,7 @@
 
             <TextView
                 android:id="@+id/massTextView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button"
                 android:padding="8dp"

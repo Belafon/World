@@ -58,6 +58,12 @@ public abstract class VisiblesListFragment<T extends VisiblesInfoFragment> exten
         TextView title = createTitleView(visibleFragment.getTitleText());
         title.setTextColor(Color.WHITE);
         title.setGravity(Gravity.CENTER);
+
+        // add margin top
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) title.getLayoutParams();
+        params.setMargins(0, 10, 0, 0);
+        title.setLayoutParams(params);
+
         visibleFragment.setTitleView(title);
         title.setOnClickListener(new View.OnClickListener() {
             @Override

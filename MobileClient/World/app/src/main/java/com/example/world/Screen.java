@@ -74,4 +74,9 @@ public class Screen {
     public static synchronized void info(String message, int duration){
         Toast.makeText(AbstractActivity.getActualActivity(), message, duration).show();
     }
+
+    public static int dpToPixels(float dpValue) {
+        float scale = getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
 }

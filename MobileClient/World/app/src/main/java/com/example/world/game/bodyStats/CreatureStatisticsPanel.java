@@ -44,7 +44,7 @@ public class CreatureStatisticsPanel extends Fragment {
         BodyStat[] actualStats = { stats.hunger, stats.fatigueMax, stats.heat, stats.bleeding };
         actualAdapter = new ArrayAdapter<>(requireContext(), R.layout.text_label,
                 actualStats);
-        actualList.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, actualStats.length * dpToPixels(ITEM_HEIGHT_IN_DP)));
+        actualList.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, actualStats.length * Screen.dpToPixels(ITEM_HEIGHT_IN_DP)));
         actualList.setAdapter(actualAdapter);
         //actualList.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button, null));
 
@@ -56,21 +56,16 @@ public class CreatureStatisticsPanel extends Fragment {
         };
         abilityAdapter = new ArrayAdapter<>(requireContext(),
                 R.layout.text_label, abilityStats);
-        abilityList.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, abilityStats.length * dpToPixels(ITEM_HEIGHT_IN_DP)));
+        abilityList.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, abilityStats.length * Screen.dpToPixels(ITEM_HEIGHT_IN_DP)));
 
         abilityList.setAdapter(abilityAdapter);
         //abilityList.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.button, null));
 
 
-        
         stats.setAdapters(this);
         return view;
     }
 
-    private int dpToPixels(float dpValue) {
-        float scale = getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
-    }
     public void abilityStatsUpdate() {
         abilityAdapter.notify();
     }

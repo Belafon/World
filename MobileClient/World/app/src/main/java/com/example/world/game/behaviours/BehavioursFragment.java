@@ -85,6 +85,8 @@ public class BehavioursFragment extends Fragment {
         itemLabel.setText(item.name);
         itemLabel.setTextSize(16);
         itemLabel.setTypeface(null, Typeface.BOLD);
+        itemLabel.setBackgroundResource(R.drawable.button);
+        itemLabel.setTextColor(getResources().getColor(R.color.white));
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
