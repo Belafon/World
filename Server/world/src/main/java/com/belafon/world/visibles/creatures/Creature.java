@@ -159,8 +159,11 @@ public abstract class Creature extends Visible {
     public void setLocationInMap(Place position) {
         PlayersLookAround lastLook = this.surroundingPlaces;
         memory.addPosition(new ObjectsMemoryCell<Place>(game.time.getTime(), position));
-        this.location = position;
         this.surroundingPlaces = PlayersLookAround.look(position);
+        
+        updateSurroundingVisiblePlaces(surroundingPlaces, lastLook);
+
+        this.location = position;
 
         // remove all visibles
         for (int row = 0; row < lastLook.visiblePlaces.length; row++) {
@@ -182,7 +185,6 @@ public abstract class Creature extends Visible {
             }
         }
 
-        updateSurroundingVisiblePlaces(surroundingPlaces, lastLook);
         writer.surrounding.setPosition(surroundingPlaces);
 
         // all players watching that have to get notice that

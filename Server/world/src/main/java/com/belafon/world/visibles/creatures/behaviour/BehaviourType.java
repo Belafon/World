@@ -70,7 +70,7 @@ public class BehaviourType {
 
     public record IngredientsCounts(String description, int numOfSpecificIngredients, int numOfGeneralIngredients) {
     }
-
+        
     public final Map<BehavioursPossibleRequirement, IngredientsCounts> requirements;
     public final Class<? extends Behaviour> behaviourClass;
     public final String idName;

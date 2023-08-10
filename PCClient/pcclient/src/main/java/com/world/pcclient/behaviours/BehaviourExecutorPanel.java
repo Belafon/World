@@ -148,10 +148,14 @@ public class BehaviourExecutorPanel {
                 requiremntsChoosers.put(requirement, requirementChooser);
 
                 for (int i = 0; i < requirement.numOfConcreteIngredient; i++) {
-                    if (!satisfableIngredients.iterator().hasNext())
-                        throw new Error("There is not enough satisfable ingredients for the behaviour. " +
+                    if (!satisfableIngredients.iterator().hasNext()){
+                        clearPanel();
+                        
+                        return;
+                        /* throw new Error("There is not enough satisfable ingredients for the behaviour. " +
                                 "Behaviour: " + behaviour.name + ", requirement: " + requirement.requirement.name
-                                + ".");
+                                + "."); */
+                    }
 
                     var item = satisfableIngredients.iterator().next();
 

@@ -70,11 +70,12 @@ public class Place extends UnboundedPlace {
     @Override
     public List<BehavioursPossibleRequirement> getBehavioursPossibleRequirementType(Creature creature) {
         var list = super.getBehavioursPossibleRequirementType(creature);
-        if (this != creature.getLocation())
+        if (this != creature.getLocation()){
             if (creature.surroundingPlaces == null)
                 list.add(REQUIREMENT_IS_REACHABLE);
             else if (creature.surroundingPlaces.isPlaceVisible(this))
                 list.add(REQUIREMENT_IS_REACHABLE);
+        }
         return list;
     }
 
