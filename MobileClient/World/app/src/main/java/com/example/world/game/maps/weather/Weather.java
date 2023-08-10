@@ -34,15 +34,15 @@ public class Weather {
 
     private final HashMap<NamePartOfDay, PartOfDay> partsOfDay = new HashMap<>(){
         {
-            put(NamePartOfDay.unknown, new PartOfDay(NamePartOfDay.unknown, new Color(0, 0, 50, 120), 400));
-            put(NamePartOfDay.after_midnight, new PartOfDay(NamePartOfDay.after_midnight, new Color(0, 0, 30, 180), 400));
-            put(NamePartOfDay.sunrise_1, new PartOfDay(NamePartOfDay.sunrise_1, new Color(320, 10, 0, 50), 200));
-            put(NamePartOfDay.sunrise_2, new PartOfDay(NamePartOfDay.sunrise_2, new Color(80, 40, 60, 20), 180));
-            put(NamePartOfDay.morning, new PartOfDay(NamePartOfDay.morning, new Color(255, 255, 0, 10), 250));
-            put(NamePartOfDay.afternoon, new PartOfDay(NamePartOfDay.afternoon, new Color(255, 200, 0, 10), 340));
-            put(NamePartOfDay.sunset_1, new PartOfDay(NamePartOfDay.sunset_1, new Color(320, 10, 0, 50), 200));
-            put(NamePartOfDay.sunset_2, new PartOfDay(NamePartOfDay.sunset_2, new Color(15, 5, 80, 150), 180));
-            put(NamePartOfDay.night, new PartOfDay(NamePartOfDay.night, new Color(0, 0, 10, 155), 400));
+            put(NamePartOfDay.unknown, new PartOfDay(NamePartOfDay.unknown, new Color(0, 0, 50, 120), 1200));
+            put(NamePartOfDay.after_midnight, new PartOfDay(NamePartOfDay.after_midnight, new Color(0, 0, 30, 180), 1200));
+            put(NamePartOfDay.sunrise_1, new PartOfDay(NamePartOfDay.sunrise_1, new Color(320, 10, 0, 50), 600));
+            put(NamePartOfDay.sunrise_2, new PartOfDay(NamePartOfDay.sunrise_2, new Color(80, 40, 60, 20), 540));
+            put(NamePartOfDay.morning, new PartOfDay(NamePartOfDay.morning, new Color(255, 255, 0, 10), 750));
+            put(NamePartOfDay.afternoon, new PartOfDay(NamePartOfDay.afternoon, new Color(255, 200, 0, 10), 1020));
+            put(NamePartOfDay.sunset_1, new PartOfDay(NamePartOfDay.sunset_1, new Color(320, 10, 0, 50), 600));
+            put(NamePartOfDay.sunset_2, new PartOfDay(NamePartOfDay.sunset_2, new Color(15, 5, 80, 150), 540));
+            put(NamePartOfDay.night, new PartOfDay(NamePartOfDay.night, new Color(0, 0, 10, 155), 1200));
         }
     };
 

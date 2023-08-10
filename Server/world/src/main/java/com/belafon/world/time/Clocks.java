@@ -7,7 +7,7 @@ import com.belafon.console.ConsolePrint;
  */
 public class Clocks extends Thread {
     private long time = 0;
-    public final long delay = 20;// 33;
+    public final long delay = 200;// 33;
     public volatile boolean isRunning = false;
 
     public synchronized long getTime() {
