@@ -6,7 +6,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingLeft="40dp"
-        android:paddingRight="40dp">
+        android:paddingRight="40dp"
+        android:paddingTop="10dp">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -22,17 +23,16 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF" 
-                android:padding="5dp"/>
+                android:padding="7dp"/>
 
             <ListView
                 android:id="@+id/actual_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:divider="@android:color/black"
                 android:dividerHeight="1dp"
-                android:padding="5dp" 
-                android:textColor="#FFFFFF" />
+                android:padding="5dp"  />
         </LinearLayout>
 
         <LinearLayout
@@ -49,17 +49,16 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
-                android:padding="5dp" />
+                android:padding="7dp" />
 
             <ListView
                 android:id="@+id/ability_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:divider="@android:color/black"
                 android:dividerHeight="1dp"
-                android:padding="5dp" 
-                android:textColor="#FFFFFF" />
+                android:padding="5dp" />
         </LinearLayout>
 
     </LinearLayout>

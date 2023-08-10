@@ -228,3 +228,18 @@ public class Visibles {
         PlayableCreature.allIngredients.remove(place);
     }
 }
+
+
+/*
+ TODO: FATAL EXCEPTION: Thread-5
+                                                                                                    Process: com.example.myapplication, PID: 20050
+                                                                                                    java.lang.NullPointerException: Attempt to read from field 'com.example.world.game.visibles.VisiblesFragment com.example.world.game.Panels.visibles' on a null object reference in method 'void com.example.world.game.visibles.Visibles.addResource(java.lang.String[], com.example.world.game.Panels, com.example.world.game.behaviours.Behaviours)'
+                                                                                                    	at com.example.world.game.visibles.Visibles.addResource(Visibles.java:139)
+                                                                                                    	at com.example.world.game.client.chatListener.ChatListener.listenSurrounding(ChatListener.java:56)
+                                                                                                    	at com.example.world.game.client.chatListener.ChatListener.listenBase(ChatListener.java:48)
+                                                                                                    	at com.example.world.game.client.chatListener.ChatListener.listen(ChatListener.java:28)
+                                                                                                    	at com.example.world.client.Client.decomposeTheString(Client.java:160)
+                                                                                                    	at com.example.world.client.Client$1.makeThreadWorker(Client.java:139)
+                                                                                                    	at com.example.world.client.Client$1.run(Client.java:1
+*/
+

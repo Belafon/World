@@ -1,5 +1,6 @@
 package com.example.world.game.visibles;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +56,8 @@ public abstract class VisiblesListFragment<T extends VisiblesInfoFragment> exten
             return;
         
         TextView title = createTitleView(visibleFragment.getTitleText());
+        title.setTextColor(Color.WHITE);
+        title.setGravity(Gravity.CENTER);
         visibleFragment.setTitleView(title);
         title.setOnClickListener(new View.OnClickListener() {
             @Override
