@@ -22,6 +22,8 @@ public class Panels {
     // color
     public final ViewFragment view;
     public final Stats stats;
+    public final InventoryFragment inventory;
+
     GameActivity gameActivity;
 
     public Panels(Stats stats, GameActivity gameActivity) {
@@ -36,5 +38,6 @@ public class Panels {
         this.view = new ViewFragment();
         // this.weatherPanel = stats.maps.weather.getPanel();
         this.behaviours = stats.behaviours.getNewBehaviourListFragment(gameActivity.getGameFragmentContainerID());
+        this.inventory = new InventoryFragment(stats.inventory, gameActivity.getGameFragmentContainerID());
     }
 }

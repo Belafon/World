@@ -43,11 +43,14 @@ public class Inventory {
         };
         items.put(id, item);
         PlayableCreature.allIngredients.add(item);
+        panels.inventory.addItemToInventory(item);
     }
     
     public void removeItem(Panels panels, int id) {
-        PlayableCreature.allIngredients.remove(items.get(id));
+        Item removeItem = items.get(id);
+        PlayableCreature.allIngredients.remove(removeItem());
         items.remove(id);
         BehavioursFragment.update(panels.stats.behaviours);
+        panels.inventory.removeItemFromInventory(removeItem());
     }
 }
