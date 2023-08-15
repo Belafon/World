@@ -45,12 +45,13 @@ public class Behaviour {
             return this;
         }
 
-/*         public BehaviourBuilder addRequirement(
-                BehavioursRequirementDetail requirement) {
-            requirements.add(requirement);
-            return this;
-        }
- */
+        /*
+         * public BehaviourBuilder addRequirement(
+         * BehavioursRequirementDetail requirement) {
+         * requirements.add(requirement);
+         * return this;
+         * }
+         */
         public Behaviour build() {
             if (description == null)
                 throw new Error("Some behaviour does not have description.");
@@ -79,7 +80,7 @@ public class Behaviour {
         public final String description;
         public final int numOfConcreteIngredient;
         public final int numOfGeneralIngredient;
-        
+
         public BehavioursRequirementDetail(BehavioursRequirement requirement, String description,
                 int numOfConcreteIngredient, int numOfGeneralIngredient) {
             this.requirement = requirement;
@@ -87,7 +88,13 @@ public class Behaviour {
             this.numOfConcreteIngredient = numOfConcreteIngredient;
             this.numOfGeneralIngredient = numOfGeneralIngredient;
         }
-
+        @Override
+        public boolean equals(Object obj) {
+            if (obj instanceof BehavioursRequirement other) {
+                return requirement.equals(other);
+            }
+            return false;
+        }
     }
 
     public void execute(List<BehavioursPossibleIngredient> selectedIngredients) {
@@ -101,5 +108,11 @@ public class Behaviour {
 
     public float getDuration() {
         return duration;
+    }
+
+    // write to string method
+    @Override
+    public String toString() {
+        return name;
     }
 }

@@ -42,6 +42,10 @@ public class Item extends Visible {
         return "" + id;
     }
 
+    public int getNumId(){
+        return id;
+    }
+
     public void setId(int id) {
         this.id = id;
     }

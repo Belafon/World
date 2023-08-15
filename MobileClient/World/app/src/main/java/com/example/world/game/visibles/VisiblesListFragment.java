@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.MarginLayoutParamsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -15,12 +14,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.world.R;
 import com.example.world.Screen;
-import com.example.world.game.Stats;
+import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 
 import java.util.Hashtable;
 
@@ -66,30 +64,25 @@ public abstract class VisiblesListFragment<T extends VisiblesInfoFragment> exten
         title.setLayoutParams(layoutParams);
 
         visibleFragment.setTitleView(title);
-        title.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectVisibleFragment.run();
-            }
-        });
+        title.setOnClickListener((View v) -> selectVisibleFragment.run());
 
         visiblesList.addView(title);
         visibleFragments.put(visibleFragment.getVisible(), visibleFragment);
     }
 
-    protected void removeVisiblesTitle(Visible visible) {
+    protected void removeVisible(Visible visible) {
         if (!this.isAdded())
             return;
 
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                visiblesList.removeView(visibleFragments.get(visible).getTitleView());
-                visibleFragments.remove(visible);
-            }
+        getActivity().runOnUiThread(() -> {
+            updateRemovedVisible(visibleFragments.get(visible), visible);
+
+            visiblesList.removeView(visibleFragments.get(visible).getTitleView());
+            visibleFragments.remove(visible);
         });
     }
 
+    protected abstract void updateRemovedVisible(T infoFragment, BehavioursPossibleIngredient ingredient);
     protected void showVisiblesInfoFragment(T visibleInfoFragment) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

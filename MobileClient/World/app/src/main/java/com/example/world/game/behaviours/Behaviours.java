@@ -75,7 +75,6 @@ public class Behaviours {
     }
 
     public void doBehaviour(String[] args, Stats stats, Panels panels) {
-        
         if (currentBehaviour != null)
             currentBehaviour.setDuration(-1);
         if (args[2].equals("null")) {

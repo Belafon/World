@@ -11,9 +11,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.world.R;
+import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.IPossibleBehavioursFragment;
+import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.ListOfBehavioursForSetOfIngredients;
 import com.example.world.game.visibles.VisiblesInfoFragment;
+import com.example.world.game.Game;
 
-public class ResourceInfoFragment extends VisiblesInfoFragment<Resource> {
+
+public class ResourceInfoFragment extends VisiblesInfoFragment<Resource> implements IPossibleBehavioursFragment {
 
     private TextView nameTextView;
     private TextView descriptionTextView;
@@ -25,6 +29,7 @@ public class ResourceInfoFragment extends VisiblesInfoFragment<Resource> {
         super(previousFragment, fragmentContainerId, resource);
     }
 
+    ListOfBehavioursForSetOfIngredients behavioursFragment;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,6 +47,7 @@ public class ResourceInfoFragment extends VisiblesInfoFragment<Resource> {
         descriptionTextView = rootView.findViewById(R.id.descriptionTextView);
         idTextView = rootView.findViewById(R.id.idTextView);
         massTextView = rootView.findViewById(R.id.massTextView);
+        behavioursFragment = setPossibleBehavioursFragment(R.id.behavioursFragmentContainer, visible);
 
         updateViews();
 
@@ -63,4 +69,9 @@ public class ResourceInfoFragment extends VisiblesInfoFragment<Resource> {
     public String getTitleText() {
         return getVisible().getName() + " " + getVisible().getId();
     }
+
+    public ListOfBehavioursForSetOfIngredients getBehavioursList() {
+        return behavioursFragment;
+    }
+
 }

@@ -1,5 +1,14 @@
 package com.example.world.game.maps;
 
+import android.graphics.BlendMode;
+import android.graphics.BlendModeColorFilter;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +17,10 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.world.AbstractActivity;
 import com.example.world.R;
 import com.example.world.game.maps.playersPlacePanels.PlaceInfoFragment;
 import com.example.world.game.maps.playersPlacePanels.PlacePanel;
@@ -21,6 +32,7 @@ public class SurroundingPlacesFragment extends Fragment {
     private SurroundingMap map;
     private int fragmentContainerId;
     private Fragment previousFragment;
+    public volatile boolean activeState = false;
 
     public SurroundingPlacesFragment(SurroundingMap map, int fragmentContainerId, Fragment previousFragment) {
         this.map = map;
@@ -28,15 +40,28 @@ public class SurroundingPlacesFragment extends Fragment {
         this.previousFragment = previousFragment;
     }
 
+    private LinearLayout rootView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        LinearLayout rootView = (LinearLayout) inflater.inflate(R.layout.fragment_surrounding_places, container, false);
+        this.rootView = (LinearLayout) inflater.inflate(R.layout.fragment_surrounding_places, container, false);
+        drawMap(rootView);
+        activeState = true;
+        return rootView;
+    }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        activeState = false;
+    }
+
+    private void drawMap(LinearLayout rootView) {
         GridLayout gridLayout = rootView.findViewById(R.id.gridLayout);
+        gridLayout.removeAllViews();
 
         for (int x = 0; x < map.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS; x++) {
             for (int y = 0; y < map.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS; y++) {
-                Button placeButton = new Button(getActivity());
+                Button placeButton = new Button(AbstractActivity.getActualActivity());
 
                 GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams();
                 layoutParams.height = SIZE_OF_BUTTON_IN_PIXELS;
@@ -44,19 +69,55 @@ public class SurroundingPlacesFragment extends Fragment {
                 layoutParams.setMargins(SIZE_OF_GAP_IN_PIXELS, SIZE_OF_GAP_IN_PIXELS, 0, 0); // Set margins for the gap
                 placeButton.setLayoutParams(layoutParams);
 
+                int color;
                 if (map.getPlacePanel(x, y) == null) {
-                    placeButton.setBackgroundColor(Place.UNKNOWN.typePlace.backgroundColor);
+                    color = Place.UNKNOWN.typePlace.backgroundColor;
+                    placeButton.setBackgroundColor(color);
                     placeButton.setOnClickListener(new PlaceButtonClickListener(x, y, Place.UNKNOWN, this));
                 } else {
-                    placeButton.setBackgroundColor(this.map.getPlacePanel(x, y).typePlace.backgroundColor);
+                    color = this.map.getPlacePanel(x, y).typePlace.backgroundColor;
+                    placeButton.setBackgroundColor(color);
                     placeButton.setOnClickListener(new PlaceButtonClickListener(x, y, map.getPlacePanel(x, y), this));
                 }
+
+                if(x == map.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS / 2
+                        && y == map.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS / 2)
+                    setPlaceButtonAsPlayersPosition(placeButton, color);
+
                 gridLayout.addView(placeButton);
             }
         }
-
-        return rootView;
     }
+
+    private void setPlaceButtonAsPlayersPosition(Button placeButton, int color) {
+        Drawable borderDrawable = AbstractActivity.getActualActivity().getDrawable(R.drawable.players_position_place_button);
+        placeButton.setBackground(borderDrawable);
+        placeButton.getBackground().setColorFilter(new BlendModeColorFilter(color, BlendMode.SRC_ATOP));
+    }
+
+    public void update() {
+            if(rootView != null){
+                drawMap(rootView);
+            }
+    }
+
+    public void updateRemovePlace(Place place) {
+        if(!activeState)
+            return;
+
+        AbstractActivity.getActualActivity().runOnUiThread(() -> {
+            if(!this.isAdded()){
+                getParentFragmentManager()
+                        .beginTransaction()
+                        .replace(fragmentContainerId, this)
+                        .addToBackStack(null)
+                        .commit();
+            }
+            update();
+        });
+
+    }
+
 
     private class PlaceButtonClickListener implements View.OnClickListener {
         private int x;

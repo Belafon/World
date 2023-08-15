@@ -12,9 +12,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.world.R;
+import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.IPossibleBehavioursFragment;
+import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.ListOfBehavioursForSetOfIngredients;
 import com.example.world.game.visibles.VisiblesInfoFragment;
 
-public class CreaturesInfoFragment extends VisiblesInfoFragment<Creature> {
+
+public class CreaturesInfoFragment extends VisiblesInfoFragment<Creature> implements IPossibleBehavioursFragment {
 
     private TextView nameTextView;
     private TextView descriptionTextView;
@@ -24,6 +28,7 @@ public class CreaturesInfoFragment extends VisiblesInfoFragment<Creature> {
     public CreaturesInfoFragment(Fragment previousFragment, int fragmentContainerId, Creature creature) {
         super(previousFragment, fragmentContainerId, creature);
     }
+    private ListOfBehavioursForSetOfIngredients behavioursFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,6 +38,7 @@ public class CreaturesInfoFragment extends VisiblesInfoFragment<Creature> {
         nameTextView = rootView.findViewById(R.id.nameTextView);
         descriptionTextView = rootView.findViewById(R.id.descriptionTextView);
         idTextView = rootView.findViewById(R.id.idTextView);
+        behavioursFragment = setPossibleBehavioursFragment(R.id.behavioursFragmentContainer, visible);
 
         Button backButton = rootView.findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -56,10 +62,12 @@ public class CreaturesInfoFragment extends VisiblesInfoFragment<Creature> {
         }
     }
 
-
-
     @Override
     public String getTitleText() {
         return getVisible().name + " " + getVisible().getId();
+    }
+
+    public ListOfBehavioursForSetOfIngredients getBehavioursList() {
+        return behavioursFragment;
     }
 }

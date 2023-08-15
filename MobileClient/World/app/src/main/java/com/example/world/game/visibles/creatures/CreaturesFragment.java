@@ -9,10 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.world.AbstractActivity;
 import com.example.world.R;
 import com.example.world.game.Stats;
+import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 import com.example.world.game.visibles.Visibles;
 import com.example.world.game.visibles.VisiblesListFragment;
+import com.example.world.game.visibles.items.ItemInfoFragment;
 import com.example.world.game.visibles.resources.Resource;
 import com.example.world.game.visibles.resources.ResourceInfoFragment;
 
@@ -34,10 +37,11 @@ import com.example.world.game.visibles.resources.ResourceInfoFragment;
         }
     }
 
-
     public void addVisiblesTitle(Creature creature) {
-        CreaturesInfoFragment visiblesFragment = new CreaturesInfoFragment(returnFragment, fragmentContainerId, creature);
-        addVisiblesTitle(visiblesFragment, () -> this.selectVisible(visiblesFragment));
+        AbstractActivity.getActualActivity().runOnUiThread(()-> {
+            CreaturesInfoFragment visiblesFragment = new CreaturesInfoFragment(returnFragment, fragmentContainerId, creature);
+            addVisiblesTitle(visiblesFragment, () -> this.selectVisible(visiblesFragment));
+        });
     }
 
     /**
@@ -50,4 +54,11 @@ import com.example.world.game.visibles.resources.ResourceInfoFragment;
         showVisiblesInfoFragment(visiblesFragment);
     }
 
+    @Override
+    protected void updateRemovedVisible(CreaturesInfoFragment infoFragment, BehavioursPossibleIngredient ingredient) {
+        if(infoFragment.getVisible().equals(ingredient))
+            infoFragment.goBack();
+
+        infoFragment.updateIngredientRemoved(ingredient, infoFragment.getBehavioursList());
+    }
 }

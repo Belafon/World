@@ -16,31 +16,38 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.world.R;
+import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.IPossibleBehavioursFragment;
+import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.ListOfBehavioursForSetOfIngredients;
 
-public class PlaceEffectInfoFragment extends Fragment {
+public class PlaceEffectInfoFragment extends Fragment implements IPossibleBehavioursFragment {
 
     private Fragment previousFragment;
     private int fragmentContainerId;
     private PlayersPlaceEffect.PlaceEffectName name;
     private String look;
+    private PlayersPlaceEffect effect;
 
     public PlaceEffectInfoFragment(
             Fragment previousFragment,
             int fragmentContainerId,
             PlayersPlaceEffect.PlaceEffectName name,
-            String look) {
+            String look,
+            PlayersPlaceEffect effect) {
 
         this.previousFragment = previousFragment;
         this.fragmentContainerId = fragmentContainerId;
         this.name = name;
         this.look = look;
+        this.effect = effect;
     }
 
+    private ListOfBehavioursForSetOfIngredients behavioursFragment;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
         LinearLayout rootView = (LinearLayout) inflater.inflate(R.layout.fragment_place_effect_info, container, false);
+        behavioursFragment = setPossibleBehavioursFragment(R.id.behavioursFragmentContainer, effect);
 
         TextView nameLabel = rootView.findViewById(R.id.nameLabel);
         nameLabel.setText(name.toString());
@@ -65,5 +72,9 @@ public class PlaceEffectInfoFragment extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(fragmentContainerId, previousFragment);
         fragmentTransaction.commit();
+    }
+
+    public ListOfBehavioursForSetOfIngredients getBehavioursList() {
+        return behavioursFragment;
     }
 }

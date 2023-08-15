@@ -56,9 +56,9 @@ public class Place extends BehavioursPossibleIngredient {
      */
     public PlaceInfoFragment getInfoFragment(Fragment lastFragment, int fragmentContainerId) {
         if(this instanceof PlacePanel panel)
-            return new PlaceInfoFragment(lastFragment, fragmentContainerId, typePlace.name, typePlace.description, placeEffects);
+            return new PlaceInfoFragment(lastFragment, fragmentContainerId, typePlace.name, typePlace.description, placeEffects, this);
         
-        return new PlaceInfoFragment(lastFragment, fragmentContainerId, typePlace.name, typePlace.description, placeEffects);
+        return new PlaceInfoFragment(lastFragment, fragmentContainerId, typePlace.name, typePlace.description, placeEffects, this);
     }
 
     @Override

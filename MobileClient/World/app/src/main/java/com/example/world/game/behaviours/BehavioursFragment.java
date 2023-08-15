@@ -129,7 +129,7 @@ public class BehavioursFragment extends Fragment {
         return itemLabel;
     }
 
-    public static void reupdateBehaviour(Behaviours behaviours) {
+    public synchronized static void reupdateBehaviour(Behaviours behaviours) {
         if(EXECUTORS.size() == 0)
             return;
 

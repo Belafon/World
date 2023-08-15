@@ -1,6 +1,9 @@
 package com.example.world.game.behaviours;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,35 +16,53 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.world.AbstractActivity;
 import com.example.world.R;
+import com.example.world.Screen;
 import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 import com.example.world.game.visibles.creatures.PlayableCreature;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class BehavioursExecutorFragment extends Fragment {
+    private static final int ITEM_BEHAVIOURS_PADDING_IN_PX = Screen.dpToPixels(8);
+
     private int fragmentContainerId;
     private Fragment previousFragment;
     private Behaviour behaviour;
-
-    public BehavioursExecutorFragment(int fragmentContainerId, Fragment lastFragment, Behaviour behaviour) {
+    private Set<BehavioursPossibleIngredient> selectedIngredients = new HashSet<>();
+    private List<BehavioursPossibleIngredient> preselectedIngredients = new ArrayList<>();
+    public BehavioursExecutorFragment(int fragmentContainerId,
+            Fragment lastFragment, Behaviour behaviour) {
         this.fragmentContainerId = fragmentContainerId;
         this.previousFragment = lastFragment;
         this.behaviour = behaviour;
+    }
+
+    public BehavioursExecutorFragment(int fragmentContainerId,
+            Fragment lastFragment, Behaviour behaviour, List<BehavioursPossibleIngredient> selectedIngredients) {
+        this.fragmentContainerId = fragmentContainerId;
+        this.previousFragment = lastFragment;
+        this.behaviour = behaviour;
+        //this.selectedIngredients.addAll(selectedIngredients);
+        this.preselectedIngredients = selectedIngredients;
     }
 
     private LinearLayout requirementsList;
     private TextView name;
     private TextView description;
     private Button execute;
+    private LinearLayout preSelectedIngredientsList;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -52,14 +73,11 @@ public class BehavioursExecutorFragment extends Fragment {
         description = rootView.findViewById(R.id.behaviour_description);
         execute = rootView.findViewById(R.id.execute_button);
         requirementsList = rootView.findViewById(R.id.requirements_list);
+        preSelectedIngredientsList = rootView.findViewById(R.id.preselected_ingredients_list);
+        setPreselectedIngredientsList();
 
         Button backButton = rootView.findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goBack();
-            }
-        });
+        backButton.setOnClickListener((View v) -> goBack());
 
         name.setText(behaviour.name);
         description.setText(behaviour.description);
@@ -67,17 +85,31 @@ public class BehavioursExecutorFragment extends Fragment {
         execute.setVisibility(View.VISIBLE);
         execute.setText("Execute");
         execute.setEnabled(true);
-        execute.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        execute.setOnClickListener((View v) -> {
                 execute.setEnabled(false);
                 executeBehaviour(behaviour);
-            }
         });
 
         setRequirementsPanel(behaviour);
 
         return rootView;
+    }
+
+    private void setPreselectedIngredientsList() {
+        if(selectedIngredients.isEmpty()){
+            preSelectedIngredientsList.setVisibility(View.GONE);
+            return;
+        }
+
+        for (BehavioursPossibleIngredient ingredient : preselectedIngredients) {
+            TextView ingredientView = new TextView(getContext());
+            ingredientView.setText(ingredient.toString());
+            ingredientView.setTextColor(Color.WHITE);
+            ingredientView.setGravity(Gravity.CENTER);
+            int px = ITEM_BEHAVIOURS_PADDING_IN_PX;
+            ingredientView.setPadding(px, px, px, px);
+            preSelectedIngredientsList.addView(ingredientView);
+        }
     }
 
     public void setBehaviour(Behaviour behaviour, Behaviours behaviours) {
@@ -118,7 +150,7 @@ public class BehavioursExecutorFragment extends Fragment {
     }
 
 
-    // set of all requiremnets of concrete behaviour, that is currently beeing
+    // set of all requirements of concrete behaviour, that is currently being
     // displayed
     public Map<Behaviour.BehavioursRequirementDetail, RequirementChooser> requiremntsChoosers = new HashMap<>();
     private Set<BehavioursPossibleIngredient> availableIngredients = new HashSet<>();
@@ -132,7 +164,6 @@ public class BehavioursExecutorFragment extends Fragment {
         // we have to remove all ingredients, that are already selected from different behaviour
         for (RequirementChooser chooser : requiremntsChoosers.values()) {
             for (Spinner spinner : chooser.spinners) {
-                // BUG // BUG try if this works fine
                 String selectedIngredientText = spinner.getSelectedItem().toString();
 
                 // Find the corresponding BehavioursPossibleIngredient object
@@ -163,10 +194,11 @@ public class BehavioursExecutorFragment extends Fragment {
                 requiremntsChoosers.put(requirement, requirementChooser);
 
                 for (int i = 0; i < requirement.numOfConcreteIngredient; i++) {
+                    // The behaviour is not feasible according clients data
                     if (satisfiableIngredients.isEmpty()) {
-                        throw new Error("There are not enough satisfiable ingredients for the behaviour. " +
-                                "Behaviour: " + behaviour.name + ", requirement: " + requirement.requirement.name
-                                + ".");
+                        if(this.isDetached())
+                            goBack();
+                        return;
                     }
 
                     BehavioursPossibleIngredient item = satisfiableIngredients.iterator().next();
@@ -204,11 +236,13 @@ public class BehavioursExecutorFragment extends Fragment {
 
     private void getSatisfiableIngredients(Behaviour.BehavioursRequirementDetail detailedRequirement,
                                            Set<BehavioursPossibleIngredient> satisfableIngredients, Set<BehavioursPossibleIngredient> availableIngredients) {
-        for (BehavioursPossibleIngredient ingredient : PlayableCreature.allIngredients) {
-            if (ingredient.requirements.contains(detailedRequirement.requirement)
-                    && availableIngredients.contains(ingredient))
-                // the ingredient is satifable
-                satisfableIngredients.add(ingredient);
+        synchronized (PlayableCreature.allIngredients){
+            for (BehavioursPossibleIngredient ingredient : PlayableCreature.allIngredients) {
+                if (ingredient.requirements.contains(detailedRequirement.requirement)
+                        && availableIngredients.contains(ingredient))
+                    // the ingredient is satifable
+                    satisfableIngredients.add(ingredient);
+            }
         }
     }
 
@@ -228,10 +262,9 @@ public class BehavioursExecutorFragment extends Fragment {
                     private boolean isUserCall = true;
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                       // spinner.setOnItemSelectedListener(null);
+                        ((TextView)view).setTextColor(Color.WHITE);
 
                         BehavioursPossibleIngredient selectedIngredient = (BehavioursPossibleIngredient) parent.getItemAtPosition(position);
-
                         if(selectedIngredient == lastSelected
                                 || !isUserCall){
                             isUserCall = true;
@@ -239,7 +272,6 @@ public class BehavioursExecutorFragment extends Fragment {
                         }
 
                         isUserCall = false;
-
 
                         if (selectedIngredient != null) {
                             availableIngredients.remove(selectedIngredient);
@@ -253,16 +285,24 @@ public class BehavioursExecutorFragment extends Fragment {
                             panel.requestLayout();
                             panel.invalidate();
                         }
-
-                     //   spinner.setOnItemSelectedListener(this);
                     }
-
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
                     }
                 });
 
+
                 panel.addView(spinner);
+
+                Iterator<BehavioursPossibleIngredient> preselectedIter = this.preselectedIngredients.iterator();
+                while(preselectedIter.hasNext()){
+                    BehavioursPossibleIngredient next = preselectedIter.next();
+                    if(chooser.getAvailableIngredients().contains(next)){
+                        chooser.selectIngredient(next, spinner);
+                        preselectedIter.remove();
+                        break;
+                    }
+                }
             }
         }
 
@@ -273,10 +313,12 @@ public class BehavioursExecutorFragment extends Fragment {
 
     private void goBack() {
         BehavioursFragment.EXECUTORS.remove(this);
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(fragmentContainerId, previousFragment);
-        fragmentTransaction.commit();
+
+        FragmentManager fragmentManager = ((FragmentActivity) AbstractActivity.getActualActivity()).getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(fragmentContainerId, previousFragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     public void update(Behaviours behaviours) {

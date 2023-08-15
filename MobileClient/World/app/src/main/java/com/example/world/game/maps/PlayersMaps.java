@@ -8,6 +8,8 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Set;
 
+import com.example.world.AbstractActivity;
+import com.example.world.game.Panels;
 import com.example.world.game.Stats;
 import com.example.world.game.behaviours.BehavioursRequirement;
 import com.example.world.game.maps.playersPlacePanels.PlacePanel;
@@ -75,7 +77,7 @@ public class PlayersMaps {
      * @param args
      * @param stats
      */
-    public synchronized void lookAroundSurroundingPlaces(String[] args, Stats stats) {
+    public synchronized void lookAroundSurroundingPlaces(String[] args, Stats stats, Panels panels) {
         int currentPlace = 0;
         for (int currentArg = 2; currentArg < args.length; currentArg++) {
             switch (args[currentArg]) {
@@ -85,8 +87,10 @@ public class PlayersMaps {
                 }
                 default -> currentArg = setSurroundingAtId(currentPlace++, currentArg, args, stats);
             }
-            ;
         }
+        AbstractActivity.getActualActivity().runOnUiThread(() -> {
+            panels.surroundingPlaces.update();
+        });
     }
 
     private int setSurroundingAtId(int currentPlace, int currentArg, String[] args, Stats stats) {
@@ -176,12 +180,12 @@ public class PlayersMaps {
         return new SurroundingPlacesFragment(surroundingMap, fragmentContainerId, lastFragment);
     }
 
-    public void removePlaceInSight(String[] args, Stats stats) {
+    public void removePlaceInSight(String[] args, Stats stats, Panels panels) {
         String id = args[2];
         int x = Integer.parseInt(args[3]);
         int y = Integer.parseInt(args[4]);
         Place place = surroundingMap.getPlacePanel(x, y);
-        stats.visibles.removePlace(place);
+        stats.visibles.removePlace(place, panels);
         surroundingMap.setPlaceUnknown(x, y);
     }
 

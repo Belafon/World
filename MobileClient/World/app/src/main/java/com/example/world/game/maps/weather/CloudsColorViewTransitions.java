@@ -195,7 +195,7 @@ public class CloudsColorViewTransitions {
                         new Color(-finalWeatherColor.r,
                                 -finalWeatherColor.g,
                                 -finalWeatherColor.b,
-                                -finalWeatherColor.a), 60));
+                                -finalWeatherColor.a), 180));
             }
             this.finalWeatherColor = type.color;
             return;
@@ -209,7 +209,7 @@ public class CloudsColorViewTransitions {
                         type.color.g - this.finalWeatherColor.g,
                         type.color.b - this.finalWeatherColor.b,
                         type.color.a - this.finalWeatherColor.a), 
-                60));
+                180));
         }
         this.frequencyOfIdleLightnings = type.frequencyOfLightnings;
         this.finalWeatherColor = type.color;

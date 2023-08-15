@@ -12,9 +12,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.world.R;
+import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.IPossibleBehavioursFragment;
+import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.ListOfBehavioursForSetOfIngredients;
 import com.example.world.game.visibles.VisiblesInfoFragment;
 
-public class ItemInfoFragment extends VisiblesInfoFragment<Item> {
+public class ItemInfoFragment extends VisiblesInfoFragment<Item> implements IPossibleBehavioursFragment {
 
     private TextView titleTextView;
     private TextView nameTextView;
@@ -27,6 +29,7 @@ public class ItemInfoFragment extends VisiblesInfoFragment<Item> {
     public ItemInfoFragment(Fragment previousFragment, int fragmentContainerId, Item item) {
         super(previousFragment, fragmentContainerId, item);
     }
+    private ListOfBehavioursForSetOfIngredients behavioursFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,12 +37,7 @@ public class ItemInfoFragment extends VisiblesInfoFragment<Item> {
         View rootView = inflater.inflate(R.layout.fragment_item_info, container, false);
 
         Button backButton = rootView.findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goBack();
-            }
-        });
+        backButton.setOnClickListener((View v) -> goBack());
 
         titleTextView = rootView.findViewById(R.id.titleTextView);
         nameTextView = rootView.findViewById(R.id.nameTextView);
@@ -48,6 +46,7 @@ public class ItemInfoFragment extends VisiblesInfoFragment<Item> {
         weightTextView = rootView.findViewById(R.id.weightTextView);
         visibilityTextView = rootView.findViewById(R.id.visibilityTextView);
         tossTextView = rootView.findViewById(R.id.tossTextView);
+        behavioursFragment = setPossibleBehavioursFragment(R.id.behavioursFragmentContainer, visible);
 
         updateViews();
 
@@ -70,5 +69,9 @@ public class ItemInfoFragment extends VisiblesInfoFragment<Item> {
     @Override
     public String getTitleText() {
         return getVisible().name + " " + getVisible().getId();
+    }
+
+    public ListOfBehavioursForSetOfIngredients getBehavioursList() {
+        return behavioursFragment;
     }
 }

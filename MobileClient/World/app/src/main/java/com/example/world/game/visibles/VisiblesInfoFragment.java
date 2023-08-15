@@ -8,10 +8,12 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+
 public abstract class VisiblesInfoFragment<T extends Visible> extends Fragment {
     private Fragment previousFragment;
     private int fragmentContainerId;
-    private T visible;
+    protected T visible;
 
     public VisiblesInfoFragment(
             Fragment previousFragment,
@@ -22,7 +24,7 @@ public abstract class VisiblesInfoFragment<T extends Visible> extends Fragment {
         this.fragmentContainerId = fragmentContainerId;
     }
 
-    protected void goBack() {
+    public void goBack() {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(fragmentContainerId, previousFragment);
@@ -51,4 +53,5 @@ public abstract class VisiblesInfoFragment<T extends Visible> extends Fragment {
     public void setTitleView(TextView titleView) {
         this.titleView = titleView;
     }
+
 }

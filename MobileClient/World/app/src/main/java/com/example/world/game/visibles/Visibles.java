@@ -157,8 +157,11 @@ public class Visibles {
         int id = Integer.parseInt(args[2]);
         if (items.containsKey(id)) {
             var item = items.get(id);
-            panels.visibles.items.removeVisiblesTitle(item);
-            
+
+            items.remove(item.getNumId());
+
+            panels.visibles.items.removeVisible(item);
+
             PlayableCreature.allIngredients.remove(item);
 
             BehavioursFragment.update(panels.stats.behaviours);
@@ -166,7 +169,7 @@ public class Visibles {
     }
 
     /**
-     * Tryes to remove a creature, so the player
+     * Tries to remove a creature, so the player
      * should not know about the creature anymore.
      * 
      * @param args
@@ -175,13 +178,15 @@ public class Visibles {
     public void removeCreature(String[] args, Panels panels) {
         int id = Integer.parseInt(args[2]);
         if (creatures.containsKey(id)) {
-            panels.visibles.creatures.removeVisiblesTitle(creatures.get(id));
+            panels.visibles.creatures.removeVisible(creatures.get(id));
         }
-        creatures.remove(id);
+        synchronized (creatures){
+            creatures.remove(id);
+        }
     }
 
     /**
-     * Tryes to remove an resource, so the player
+     * Tries to remove an resource, so the player
      * should not know about the resource anymore.
      * 
      * @param args
@@ -190,7 +195,7 @@ public class Visibles {
     public void removeResource(String[] args, Panels panels) {
         int id = Integer.parseInt(args[2]);
         if (resources.containsKey(id)) {
-            panels.visibles.resources.removeVisiblesTitle(resources.get(id));
+            panels.visibles.resources.removeVisible(resources.get(id));
         }
         synchronized (resources) {
             resources.remove(id);
@@ -221,10 +226,13 @@ public class Visibles {
         }
     }
 
-    public void removePlace(Place place) {
+    public void removePlace(Place place, Panels panels) {
         synchronized (places) {
             places.remove(place);
         }
+
+        panels.surroundingPlaces.updateRemovePlace(place);
+
         PlayableCreature.allIngredients.remove(place);
     }
 }

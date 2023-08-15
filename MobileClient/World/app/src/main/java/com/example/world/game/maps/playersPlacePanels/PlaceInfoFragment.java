@@ -18,35 +18,44 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.world.R;
+import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.IPossibleBehavioursFragment;
+import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.ListOfBehavioursForSetOfIngredients;
+import com.example.world.game.maps.Place;
+import com.example.world.game.maps.SurroundingPlacesFragment;
 
 import java.util.List;
 
-public class PlaceInfoFragment extends Fragment {
+public class PlaceInfoFragment extends Fragment implements IPossibleBehavioursFragment {
     private Fragment previousFragment;
     private int fragmentContainerId;
     private String name;
     private String look;
     private List<PlayersPlaceEffect> placeEffects;
-
+    private Place place;
     public PlaceInfoFragment(
             Fragment previousFragment,
             int fragmentContainerId,
             String name,
             String look,
-            List<PlayersPlaceEffect> placeEffects) {
+            List<PlayersPlaceEffect> placeEffects,
+            Place place) {
 
         this.previousFragment = previousFragment;
         this.fragmentContainerId = fragmentContainerId;
         this.name = name;
         this.look = look;
         this.placeEffects = placeEffects;
+        this.place = place;
     }
 
+    private ListOfBehavioursForSetOfIngredients behavioursFragment;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         ConstraintLayout rootView = (ConstraintLayout) inflater.inflate(R.layout.fragment_place_info, container, false);
+
+        behavioursFragment = setPossibleBehavioursFragment(R.id.behavioursFragmentContainer, place);
 
         TextView nameLabel = rootView.findViewById(R.id.nameLabel);
         nameLabel.setText(name.toString());
@@ -93,6 +102,26 @@ public class PlaceInfoFragment extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(fragmentContainerId, effect.getInfoFragment(this, fragmentContainerId));
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(previousFragment instanceof SurroundingPlacesFragment surroundingPlacesFragment){
+            surroundingPlacesFragment.activeState = false;
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(previousFragment instanceof SurroundingPlacesFragment surroundingPlacesFragment){
+            surroundingPlacesFragment.activeState = true;
+        }
+    }
+
+    public ListOfBehavioursForSetOfIngredients getBehavioursList() {
+        return behavioursFragment;
     }
 
 }
