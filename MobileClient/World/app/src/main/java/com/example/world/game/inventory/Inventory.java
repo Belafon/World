@@ -3,6 +3,7 @@ package com.example.world.game.inventory;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.Set;
+import java.util.HashSet;
 
 import com.example.world.game.Panels;
 import com.example.world.game.behaviours.Behaviours;
@@ -14,7 +15,8 @@ import com.example.world.game.visibles.items.Item;
 import com.example.world.game.visibles.items.Item.Food;
 
 public class Inventory {
-    public Map<Integer, Item> items = new Hashtable<>();
+    public final Map<Integer, Item> items = new Hashtable<>();
+    public final Set<Clothes> clothes = new HashSet<>();
 
     // TODO add method for adding item, that is already known
     /**
@@ -48,5 +50,4 @@ public class Inventory {
         items.remove(id);
         BehavioursFragment.update(panels.stats.behaviours);
     }
-
 }
