@@ -56,13 +56,17 @@ public class Inventory {
         if(item instanceof Clothes clothes)
             this.clothes.add(clothes);
 
-        PlayableCreature.allIngredients.add(item);
+        synchronized (PlayableCreature.allIngredients){
+            PlayableCreature.allIngredients.add(item);
+        }
         panels.inventory.addItemToInventory(item);
     }
     
     public void removeItem(Panels panels, int id) {
         Item removeItem = items.get(id);
-        PlayableCreature.allIngredients.remove(removeItem);
+        synchronized (PlayableCreature.allIngredients){
+            PlayableCreature.allIngredients.remove(removeItem);
+        }
         items.remove(id);
         if(removeItem instanceof Clothes clothes)
             this.clothes.remove(clothes);

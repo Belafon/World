@@ -312,7 +312,9 @@ public class BehavioursExecutorFragment extends Fragment {
     }
 
     private void goBack() {
-        BehavioursFragment.EXECUTORS.remove(this);
+        synchronized (BehavioursFragment.EXECUTORS){
+            BehavioursFragment.EXECUTORS.remove(this);
+        }
 
         FragmentManager fragmentManager = ((FragmentActivity) AbstractActivity.getActualActivity()).getSupportFragmentManager();
         fragmentManager.beginTransaction()

@@ -36,7 +36,8 @@ public class GameActivity extends AbstractActivity {
         colorFilter = findViewById(R.id.color_filter);
         Game.stats.maps.weather.setWeatherView(colorFilter);
 
-        View waitingScreen = findViewById(R.id.waiting_screen);
+        var waitingScreenView = findViewById(R.id.waiting_screen);
+        var waitingScreen = (WaitingScreenForStartingGame) getSupportFragmentManager().findFragmentById(R.id.waiting_screen);
 
 
         SetActivity.setGameActivity(this);
@@ -48,8 +49,10 @@ public class GameActivity extends AbstractActivity {
                 e.printStackTrace();
             }
             runOnUiThread(() -> {
+                waitingScreen.stopRotate = true;
+
                 openFragment(game.panels.bodyStatistics);
-                waitingScreen.setVisibility(View.GONE);
+                waitingScreenView.setVisibility(View.GONE);
                 openFragment(new EmptyFragment(), R.id.waiting_screen);
             });
         }).start();

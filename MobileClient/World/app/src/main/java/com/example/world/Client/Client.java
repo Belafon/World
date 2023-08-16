@@ -119,6 +119,7 @@ public class Client {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
+                Thread.currentThread().setName("ClientMessageListener");
                 while (true) {
                     String string = null;
                     try {

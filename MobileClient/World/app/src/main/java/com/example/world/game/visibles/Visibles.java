@@ -51,7 +51,9 @@ public class Visibles {
                 item = new Food(id, itemName, regularWeight, visibility, toss, freshness, filling, warm,
                         requirements);
                 panels.visibles.items.addVisiblesTitle(item);
-                PlayableCreature.allIngredients.add(item);
+                synchronized (PlayableCreature.allIngredients){
+                    PlayableCreature.allIngredients.add(item);
+                }
             }
             default ->
                 throw new IllegalArgumentException("Invalid class name for item type: " + className);
@@ -162,7 +164,9 @@ public class Visibles {
 
             panels.visibles.items.removeVisible(item);
 
-            PlayableCreature.allIngredients.remove(item);
+            synchronized (PlayableCreature.allIngredients){
+                PlayableCreature.allIngredients.remove(item);
+            }
 
             BehavioursFragment.update(panels.stats.behaviours);
         }
@@ -233,7 +237,9 @@ public class Visibles {
 
         panels.surroundingPlaces.updateRemovePlace(place);
 
-        PlayableCreature.allIngredients.remove(place);
+        synchronized (PlayableCreature.allIngredients){
+            PlayableCreature.allIngredients.remove(place);
+        }
     }
 }
 

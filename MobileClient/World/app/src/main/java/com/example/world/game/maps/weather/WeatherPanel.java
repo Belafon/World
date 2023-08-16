@@ -77,6 +77,7 @@ public class WeatherPanel implements Runnable {
     private ColorViewTransition.Color lastColor;
     @Override
     public void run() {
+        Thread.currentThread().setName("BackgroundColorFilter");
         while (true) {
             try {
                 Thread.sleep(25);

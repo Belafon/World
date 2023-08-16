@@ -36,6 +36,8 @@ public class WaitingScreenForStartingGame extends Fragment {
 
     private void rotateImage(ImageView imageView) {
         new Thread(() -> {
+            Thread.currentThread().setName("RotateImageAndWaitToStartTheGame");
+
             float angle = 0;
             while (!stopRotate) {
                 angle += 0.1f;

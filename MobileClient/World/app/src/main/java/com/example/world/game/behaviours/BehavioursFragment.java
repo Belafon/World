@@ -32,7 +32,8 @@ import java.util.Set;
  * the fragment should be displayed.
  */
 public class BehavioursFragment extends Fragment {
-    // currently displayed behaviours executors
+    // currently displayed behaviours executors,
+    // can be modified concurrently
     public static final Set<BehavioursExecutorFragment> EXECUTORS = new HashSet<>();
     private LinearLayout behavioursList;
     private final Map<Behaviour, View> itemLabels = new HashMap<>();
@@ -115,7 +116,10 @@ public class BehavioursFragment extends Fragment {
                 // Create an instance of BehavioursExecutorFragment
                 BehavioursExecutorFragment executorFragment = new BehavioursExecutorFragment(fragmentContainerId,
                         thisFragment, item);
-                EXECUTORS.add(executorFragment);
+
+                synchronized (EXECUTORS){
+                    EXECUTORS.add(executorFragment);
+                }
 
                 // Replace the existing fragment in the fragment container
                 FragmentManager fragmentManager = getParentFragmentManager();
@@ -130,14 +134,16 @@ public class BehavioursFragment extends Fragment {
     }
 
     public synchronized static void reupdateBehaviour(Behaviours behaviours) {
-        if(EXECUTORS.size() == 0)
-            return;
+        synchronized (EXECUTORS){
+            if(EXECUTORS.size() == 0)
+                return;
 
-        EXECUTORS.iterator().next().getActivity().runOnUiThread(() -> {
-            for (BehavioursExecutorFragment executor : EXECUTORS) {
-                executor.setBehaviour(executor.getCurrentlySelectedBehaviour(), behaviours);
-            }
-        });
+            EXECUTORS.iterator().next().getActivity().runOnUiThread(() -> {
+                for (BehavioursExecutorFragment executor : EXECUTORS) {
+                    executor.setBehaviour(executor.getCurrentlySelectedBehaviour(), behaviours);
+                }
+            });
+        }
     }
 
     /**
@@ -150,13 +156,15 @@ public class BehavioursFragment extends Fragment {
      * @param behaviours
      */    
     public static void update(Behaviours behaviours) {
-        if(EXECUTORS.size() == 0)
-            return;
+        synchronized(EXECUTORS){
+            if(EXECUTORS.size() == 0)
+                return;
 
-        EXECUTORS.iterator().next().getActivity().runOnUiThread(() -> {
-            for (BehavioursExecutorFragment executor : EXECUTORS) {
-                executor.update(behaviours);
-            }
-        });
+            EXECUTORS.iterator().next().getActivity().runOnUiThread(() -> {
+                for (BehavioursExecutorFragment executor : EXECUTORS) {
+                    executor.update(behaviours);
+                }
+            });
+        }
     }
 }

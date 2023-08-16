@@ -25,6 +25,12 @@ import com.example.world.R;
 import com.example.world.game.maps.playersPlacePanels.PlaceInfoFragment;
 import com.example.world.game.maps.playersPlacePanels.PlacePanel;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+
 public class SurroundingPlacesFragment extends Fragment {
     private static final int SIZE_OF_GAP_IN_PIXELS = 15;
     private static final int SIZE_OF_BUTTON_IN_PIXELS = 100;
@@ -59,9 +65,9 @@ public class SurroundingPlacesFragment extends Fragment {
         GridLayout gridLayout = rootView.findViewById(R.id.gridLayout);
         gridLayout.removeAllViews();
 
-        for (int x = 0; x < map.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS; x++) {
-            for (int y = 0; y < map.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS; y++) {
-                Button placeButton = new Button(AbstractActivity.getActualActivity());
+        for (int x = 0; x < SurroundingMap.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS; x++) {
+            for (int y = 0; y < SurroundingMap.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS; y++) {
+                Button placeButton = new Button(getContext());
 
                 GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams();
                 layoutParams.height = SIZE_OF_BUTTON_IN_PIXELS;
@@ -80,13 +86,15 @@ public class SurroundingPlacesFragment extends Fragment {
                     placeButton.setOnClickListener(new PlaceButtonClickListener(x, y, map.getPlacePanel(x, y), this));
                 }
 
-                if(x == map.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS / 2
-                        && y == map.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS / 2)
+                if(x == SurroundingMap.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS / 2
+                        && y == SurroundingMap.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS / 2)
                     setPlaceButtonAsPlayersPosition(placeButton, color);
 
                 gridLayout.addView(placeButton);
+
             }
         }
+
     }
 
     private void setPlaceButtonAsPlayersPosition(Button placeButton, int color) {

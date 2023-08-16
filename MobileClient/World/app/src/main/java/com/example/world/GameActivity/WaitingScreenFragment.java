@@ -19,6 +19,10 @@ import com.example.world.menuScreen.MenuActivity;
 public class WaitingScreenFragment extends Fragment {
     private static final String TAG = "WaitingScreenFragment";
 
+    public WaitingScreenFragment(){
+        stopRotate = false;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -30,10 +34,11 @@ public class WaitingScreenFragment extends Fragment {
         return root;
     }
 
-    public volatile boolean stopRotate = false;
+    public static volatile boolean stopRotate = false;
 
     private void rotateImage(ImageView imageView) {
         new Thread(() -> {
+            Thread.currentThread().setName("RotateImage");
             float angle = 0;
             while (!stopRotate) {
                 angle += 0.1f;
@@ -78,6 +83,7 @@ public class WaitingScreenFragment extends Fragment {
     }
 
     public static void startGame() {
+        stopRotate = true;
         MenuActivity menuActivity = getMenuActivity();
 
         if (menuActivity == null)

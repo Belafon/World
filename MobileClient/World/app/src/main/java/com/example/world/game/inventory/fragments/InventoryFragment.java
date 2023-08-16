@@ -75,7 +75,11 @@ public class InventoryFragment extends Fragment implements OnItemClickListener {
             ((ItemAdapter) recyclerView.getAdapter()).removeItem(item);
         }
 
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        var activity = getActivity();
+        if(activity == null)
+            return;
+
+        FragmentManager fragmentManager = activity.getSupportFragmentManager();
         Fragment fragment = fragmentManager.findFragmentById(fragmentContainer);
         if (fragment != null && fragment instanceof ItemInfoFragment itemInfoFragment) {
             itemInfoFragment.goBack();

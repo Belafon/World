@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import java.util.Map;
 import java.util.Set;
 
+import com.example.world.AbstractActivity;
 import com.example.world.game.Panels;
 import com.example.world.game.Stats;
 import com.example.world.game.behaviours.Behaviour.BehaviourBuilder;
@@ -28,7 +29,9 @@ public class Behaviours {
                     "Behaviours: addNewFeasibleBehaviour: behaviour name is unknown: " + behavioursName);
         feasibles.add(behav);
         if(listPanel != null)
-            listPanel.addItem(behav);
+            AbstractActivity.getActualActivity().runOnUiThread(() -> {
+                listPanel.addItem(behav);
+            });
     }
 
     public void removeFeasibleBehaviour(String behavioursName) {
@@ -39,7 +42,9 @@ public class Behaviours {
         feasibles.remove(behav);
 
         if(listPanel != null)
-            listPanel.removeItem(behav);
+            AbstractActivity.getActualActivity().runOnUiThread(() -> {
+                listPanel.removeItem(behav);
+            });
     }
 
     public void setupNewBehaviour(String[] args) {
@@ -79,16 +84,11 @@ public class Behaviours {
             currentBehaviour.setDuration(-1);
         if (args[2].equals("null")) {
             currentBehaviour = null;
-            panels.behaviours.reupdateBehaviour(stats.behaviours);
             return;
         }
 
         var behaviour = allBehaviors.get(args[2]);
         var duration = Integer.parseInt(args[3]);
-
-        if (duration == 0)
-            panels.behaviours.reupdateBehaviour(stats.behaviours);
-
 
         if (behaviour == null)
             throw new IllegalArgumentException("Behaviours: doBehaviour: behaviour name is unknown: " + args[3]);
