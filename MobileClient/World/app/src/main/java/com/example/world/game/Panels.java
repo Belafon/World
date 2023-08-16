@@ -2,6 +2,7 @@ package com.example.world.game;
 
 import com.example.world.game.behaviours.BehavioursFragment;
 import com.example.world.game.bodyStats.CreatureStatisticsPanel;
+import com.example.world.game.inventory.fragments.InventoryFragment;
 import com.example.world.game.maps.SurroundingPlacesFragment;
 import com.example.world.game.visibles.Visibles;
 import com.example.world.game.visibles.VisiblesFragment;
@@ -38,6 +39,6 @@ public class Panels {
         this.view = new ViewFragment();
         // this.weatherPanel = stats.maps.weather.getPanel();
         this.behaviours = stats.behaviours.getNewBehaviourListFragment(gameActivity.getGameFragmentContainerID());
-        this.inventory = new InventoryFragment(stats.inventory, gameActivity.getGameFragmentContainerID());
+        this.inventory = new InventoryFragment(stats.inventory, gameActivity.getGameFragmentContainerID(), this);
     }
 }

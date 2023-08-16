@@ -3,6 +3,9 @@ package com.example.world.game.inventory;
 import com.example.world.game.visibles.items.Item;
 import com.example.world.game.visibles.items.Clothes;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PlayersGear {
     private Map<String, ClothesablePartOfBody> partOfBodies = new HashMap<>();
 
@@ -19,19 +22,23 @@ public class PlayersGear {
     private volatile Item finger; // TODO
     private volatile Item neck;
 
-    @Override
     public boolean putOn(Clothes clothes) {
-        if(clothes.getPartOfBody().getClothes() != clothes)
-            clothes.getPartOfBody().putOn(clothes);
+        if(clothes.partOfBody.getClothes() != clothes){
+            clothes.partOfBody.setClothes(clothes);
+            return true;
+        }
+        return false;
     }
 
-    @Override
     public boolean putOff(Clothes clothes) {
-        if(clothes == clothes.getPartOfBody().getClothes())
-            clothes.getPartOfBody().putOff(null);
+        if(clothes == clothes.partOfBody.getClothes()){
+            clothes.partOfBody.setClothes(null);
+            return true;
+        }
+        return false;
     }
 
-    public getPartOfBodyByName(String name) {
+    public ClothesablePartOfBody getPartOfBodyByName(String name) {
         return partOfBodies.get(name);
     }
 

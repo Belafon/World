@@ -1,5 +1,7 @@
 package com.example.world.game.inventory;
 
+import com.example.world.game.visibles.items.Clothes;
+
 public class ClothesablePartOfBody {
     public final String name;
     private volatile Clothes clothes;

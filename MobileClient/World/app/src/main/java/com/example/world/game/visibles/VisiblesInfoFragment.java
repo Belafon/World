@@ -25,10 +25,12 @@ public abstract class VisiblesInfoFragment<T extends Visible> extends Fragment {
     }
 
     public void goBack() {
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(fragmentContainerId, previousFragment);
-        fragmentTransaction.commit();
+        if(isAdded()){
+            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(fragmentContainerId, previousFragment);
+            fragmentTransaction.commit();
+        }
     }
 
     public abstract String getTitleText();

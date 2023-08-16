@@ -28,10 +28,10 @@ public class MainMenuFragment extends Fragment {
         ImageButton visiblesButton = view.findViewById(R.id.visibles);
         visiblesButton.setOnClickListener(v -> onVisibles());
 
-        /*
-         * ImageButton inventoryButton = view.findViewById(R.id.inventory);
-         * inventoryButton.setOnClickListener(v -> onInventory());
-         */ 
+
+        ImageButton inventoryButton = view.findViewById(R.id.inventory);
+        inventoryButton.setOnClickListener(v -> onInventory());
+
         ImageButton behaviourButton = view.findViewById(R.id.behaviour);
         behaviourButton.setOnClickListener(v -> onBehaviour());
           
@@ -52,10 +52,10 @@ public class MainMenuFragment extends Fragment {
         gameActivity.openFragment(gameActivity.game.panels.bodyStatistics);
     }
 
-/*     public void onInventory() {
+    public void onInventory() {
         gameActivity.openFragment(gameActivity.game.panels.inventory);
     }
- */
+
     public void onBehaviour() {
         gameActivity.openFragment(gameActivity.game.panels.behaviours);
     }

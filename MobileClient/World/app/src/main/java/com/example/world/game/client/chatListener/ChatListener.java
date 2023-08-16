@@ -127,7 +127,7 @@ public class ChatListener {
 
     private void listenItem(String[] args) {
         switch (args[1]) {
-            case "addItem" -> stats.inventory.addItem(
+            case "addItem" -> stats.inventory.addItem(panels,
                     Integer.parseInt(args[2]), args[3], args[4], Integer.parseInt(args[5]),
                     Integer.parseInt(args[6]), Integer.parseInt(args[7]),
                     args, stats.behaviours);

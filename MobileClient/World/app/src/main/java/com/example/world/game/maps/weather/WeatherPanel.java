@@ -79,7 +79,7 @@ public class WeatherPanel implements Runnable {
     public void run() {
         while (true) {
             try {
-                Thread.sleep(20);
+                Thread.sleep(25);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -114,11 +114,10 @@ public class WeatherPanel implements Runnable {
                     || lastColor.g != g
                     || lastColor.b != b
                     || lastColor.a != a))
-                executor.execute(() -> {
-                    handler.post(() -> {
-                        view.setBackgroundColor(getAndroidColor());
-                    });
-                });
+                executor.execute(() ->
+                    handler.post(() ->
+                        view.setBackgroundColor(getAndroidColor()))
+                );
 
             lastColor = new ColorViewTransition.Color(r, g, b, a);
         }

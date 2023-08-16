@@ -1,15 +1,26 @@
 package com.example.world.game.inventory.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.world.AbstractActivity;
+import com.example.world.R;
+import com.example.world.game.Panels;
 import com.example.world.game.inventory.Inventory;
 import com.example.world.game.visibles.items.Item;
 import com.example.world.game.visibles.items.ItemInfoFragment;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -17,17 +28,21 @@ import java.util.List;
 
 
 
-public class InventoryFragment extends Fragment implements ItemAdapter.OnItemClickListener {
+public class InventoryFragment extends Fragment implements OnItemClickListener {
     public final int fragmentContainer;
     public final Inventory inventory;
-    public InventoryFragment(Inventory inventory, int fragmentContainer) {
+    private RecyclerView recyclerView;
+    private ItemAdapter adapter;
+    private Panels panels;
+    public InventoryFragment(Inventory inventory, int fragmentContainer, Panels panels) {
         this.inventory = inventory;
         this.fragmentContainer = fragmentContainer;
+        this.panels = panels;
     }
 
     @Override
     public void onItemClick(Item item) {
-        Fragment newFragment = new ItemInfoFragment(this. fragmentContainer, item);
+        Fragment newFragment = new ItemInfoFragment(this, fragmentContainer, item);
 
         requireActivity().getSupportFragmentManager().beginTransaction()
             .replace(fragmentContainer, newFragment)
@@ -41,30 +56,31 @@ public class InventoryFragment extends Fragment implements ItemAdapter.OnItemCli
 
         View rootView = inflater.inflate(R.layout.fragment_inventory, container, false);
 
-        RecyclerView recyclerView = rootView.findViewById(R.id.recyclerView);
+        recyclerView = rootView.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        ItemAdapter adapter = new ItemAdapter(inventory.items.values(), this);
+        adapter = new ItemAdapter(new ArrayList<>(inventory.items.values()), this);
         recyclerView.setAdapter(adapter);
 
         return rootView;
     }
 
     public void addItemToInventory(Item item) {
-        inventory.addItem(item.getId(), item.getType(), item.getName(), item.getWeight(),
-                item.getVisibility(), item.getToss(), item.getArgs(), item.getBehaviours());
-
-            if (recyclerView != null && recyclerView.getAdapter() != null) {
+        if (recyclerView != null && recyclerView.getAdapter() != null) {
             ((ItemAdapter) recyclerView.getAdapter()).addItem(item);
         }
     }
 
     public void removeItemFromInventory(Item item) {
-        inventory.removeItem(panels, item.getId());
-        
-        // Update the RecyclerView adapter
         if (recyclerView != null && recyclerView.getAdapter() != null) {
             ((ItemAdapter) recyclerView.getAdapter()).removeItem(item);
         }
+
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        Fragment fragment = fragmentManager.findFragmentById(fragmentContainer);
+        if (fragment != null && fragment instanceof ItemInfoFragment itemInfoFragment) {
+            itemInfoFragment.goBack();
+        }
+
     }
 
 
@@ -77,11 +93,6 @@ public class InventoryFragment extends Fragment implements ItemAdapter.OnItemCli
             this.itemList = itemList;
             this.itemClickListener = listener;
         }
-
-        public interface OnItemClickListener {
-            void onItemClick(Item item);
-        }
-
     
         @NonNull
         @Override
@@ -111,7 +122,9 @@ public class InventoryFragment extends Fragment implements ItemAdapter.OnItemCli
             }
                
             public void bind(Item item, OnItemClickListener listener) {
-                itemNameTextView.setText(item.getName());
+                itemNameTextView.setText(item.toString());
+                itemNameTextView.setTextColor(Color.WHITE);
+                itemNameTextView.setBackgroundResource(R.drawable.button2);
                 itemView.setOnClickListener(view -> {
                     if (listener != null) {
                         listener.onItemClick(item);
