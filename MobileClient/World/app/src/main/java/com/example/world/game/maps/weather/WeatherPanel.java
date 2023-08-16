@@ -1,18 +1,17 @@
 package com.example.world.game.maps.weather;
 
-import android.graphics.Color;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
-
 import com.example.world.logs.Logs;
-
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+
 
 public class WeatherPanel implements Runnable {
     private static final String TAG = "WeatherPanel";

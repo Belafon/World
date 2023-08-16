@@ -1,13 +1,6 @@
 package com.example.world.game.maps;
 
 import androidx.fragment.app.Fragment;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Set;
-
 import com.example.world.AbstractActivity;
 import com.example.world.game.Panels;
 import com.example.world.game.Stats;
@@ -16,6 +9,14 @@ import com.example.world.game.maps.playersPlacePanels.PlacePanel;
 import com.example.world.game.maps.playersPlacePanels.PlayersPlaceEffect;
 import com.example.world.game.maps.playersPlacePanels.TypePlace;
 import com.example.world.game.maps.weather.Weather;
+import com.example.world.gameActivity.GameActivity;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Set;
+
+
 
 public class PlayersMaps {
     private Hashtable<Integer, PlayersMap> maps = new Hashtable<>();
@@ -189,13 +190,24 @@ public class PlayersMaps {
         surroundingMap.setPlaceUnknown(x, y);
     }
 
-    /*
-     * private int getYInMap(int yInSurrounding) {
-     * return currentPosition.positionY - yInSurrounding - 3;
-     * }
-     * 
-     * private int getXInMap(int xInSurrounding) {
-     * return currentPosition.positionX - xInSurrounding - 3;
-     * }
-     */
+    private void setCurrentPositionInfo(String[] args, Stats stats, Panels panels) {
+        String id = args[2];
+        int temperature = Integer.parseInt(args[3]);
+        String name = args[4];
+        String typeOfPlaceName = args[5];
+        String picture = args[6];
+        String music = args[7];
+        boolean isMapPlace = !args[8].equals("null");
+        int mapId = -1;
+        if(isMapPlace)
+            mapId = Integer.parseInt(args[8]);
+
+        Place place = surroundingMap.getPlacePanel(SurroundingMap.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS / 2,
+                SurroundingMap.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS / 2);
+
+        if(AbstractActivity.getActualActivity() instanceof GameActivity gameActivity) {
+            gameActivity.setPlaceBackground(picture, music);
+        }
+    }
+
 }

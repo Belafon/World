@@ -55,4 +55,7 @@ public interface SurroundingMessages {
 
     public default void removePlaceFromSight(Place lastPlace, int xInRelativeMap, int yInRelativeMap) {
     }
+
+    public default void setCurrentPositionInfo(UnboundedPlace place) {
+    }
 }

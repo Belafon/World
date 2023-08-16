@@ -206,4 +206,16 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
                 + xInRelativeMap + " " + yInRelativeMap,
                 PlayersMessageSender.TypeMessage.other);
     }
+
+    @Override
+    public void setCurrentPositionInfo(UnboundedPlace place) {
+        sendMessage.sendLetter("player currentPositionInfo " + place.id + " " 
+                + place.getTemperature() + " " 
+                + place.typeOfPlace.name + " "  
+                + place.typeOfPlace.getPicture() + " " 
+                + place.typeOfPlace.getMusic()
+                + (place instanceof Place mapPlace 
+                    ? mapPlace.map.id : "null"), PlayersMessageSender.TypeMessage.other);
+
+    }
 }

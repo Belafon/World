@@ -2,6 +2,7 @@ package com.belafon.server.messages.playerMessages;
 
 import com.belafon.server.messages.CreatureVisibleMessages;
 import com.belafon.server.sendMessage.PlayersMessageSender;
+import com.belafon.world.maps.place.UnboundedPlace;
 import com.belafon.world.visibles.creatures.Creature;
 
 public class CreatureVisiblePlayerMessages implements CreatureVisibleMessages {
@@ -105,4 +106,5 @@ public class CreatureVisiblePlayerMessages implements CreatureVisibleMessages {
         sendMessage.sendLetter("creatureVisible currentPosition " + creature.id + " " + creature.getLocation().id,
                 PlayersMessageSender.TypeMessage.other);
     }
+
 }

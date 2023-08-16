@@ -1,5 +1,6 @@
 package com.belafon.server.messages;
 
+import com.belafon.world.maps.place.UnboundedPlace;
 import com.belafon.world.visibles.creatures.Creature;
 
 public interface CreatureVisibleMessages{
@@ -46,5 +47,8 @@ public interface CreatureVisibleMessages{
     }
 
     public default void positionChanged(Creature creature) {
+    }
+
+    public default void setCurrentPlaceInfo(UnboundedPlace place) {
     }
 }

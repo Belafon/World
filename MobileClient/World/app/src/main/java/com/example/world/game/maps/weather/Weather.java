@@ -139,4 +139,8 @@ public class Weather {
         if (panel != null)
             panel.setPartOfDay(partsOfDay.get(partOfDay));
     }
+
+    public WeatherPanel getPanel() {
+        return panel;
+    }
 }

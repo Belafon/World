@@ -16,11 +16,8 @@ import com.example.world.gameActivity.ViewFragment;
 public class Panels {
     public final CreatureStatisticsPanel bodyStatistics;
     public final SurroundingPlacesFragment surroundingPlaces;
-
     public final VisiblesFragment visibles;
     public final BehavioursFragment behaviours;
-    // public final JPanel weatherPanel; TODO implement changing of foreground view
-    // color
     public final ViewFragment view;
     public final Stats stats;
     public final InventoryFragment inventory;

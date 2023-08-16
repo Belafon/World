@@ -160,7 +160,9 @@ public abstract class Creature extends Visible {
         PlayersLookAround lastLook = this.surroundingPlaces;
         memory.addPosition(new ObjectsMemoryCell<Place>(game.time.getTime(), position));
         this.surroundingPlaces = PlayersLookAround.look(position);
-        
+
+        writer.surrounding.setCurrentPositionInfo(position);
+
         updateSurroundingVisiblePlaces(surroundingPlaces, lastLook);
 
         this.location = position;
@@ -500,5 +502,4 @@ public abstract class Creature extends Visible {
 
         this.writer.surrounding.removeVisibleFromSight(visible);
     }
-
 }

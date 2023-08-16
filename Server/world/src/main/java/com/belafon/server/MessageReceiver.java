@@ -72,10 +72,8 @@ public class MessageReceiver implements Runnable {
                 });
                 case "server" -> getServerMessage(message, clientSocket, server);
             }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+        } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException e) {
+            ConsolePrint.error_big("Recieved message is not correct! \n" + e.getMessage());
         }
     }
 

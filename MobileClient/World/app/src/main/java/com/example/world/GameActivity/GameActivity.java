@@ -1,16 +1,15 @@
 package com.example.world.gameActivity;
 
-import androidx.fragment.app.Fragment;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
+import androidx.fragment.app.Fragment;
 import com.example.world.AbstractActivity;
-import com.example.world.R;
 import com.example.world.game.Game;
 import com.example.world.menuScreen.EmptyFragment;
+
+
 
 public class GameActivity extends AbstractActivity {
     public LinearLayout notifications;
@@ -84,5 +83,10 @@ public class GameActivity extends AbstractActivity {
 
     public int getGameFragmentContainerID() {
         return R.id.game_fragment;
+    }
+
+    public void setPlaceBackground(String picture) {
+        int pictureId = getResources().getIdentifier(picture, "drawable", getPackageName());
+        backgroundImage.setImageResource(pictureId);
     }
 }
