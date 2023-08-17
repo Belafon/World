@@ -38,6 +38,9 @@ public class InventoryFragment extends Fragment implements OnItemClickListener {
         this.inventory = inventory;
         this.fragmentContainer = fragmentContainer;
         this.panels = panels;
+        for(Item item : inventory.items.values()){
+            addItemToInventory(item);
+        }
     }
 
     @Override

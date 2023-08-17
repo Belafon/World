@@ -9,6 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 
 import com.belafon.App;
+import com.belafon.console.ConsolePrint;
 import com.belafon.world.visibles.creatures.Creature;
 import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleIngredient;
 import com.belafon.world.visibles.creatures.behaviour.behaviours.BehavioursPossibleRequirement;
@@ -91,8 +92,12 @@ public class BehaviourType {
 
     public void executeBehaviour(Creature creature, List<BehavioursPossibleIngredient> ingredients) {
         try {
-            var behaviour = behaviourBuilder.build(creature, ingredients);
-            creature.setBehaviour(behaviour);
+            synchronized(creature){
+                if(creature.currentBehaviour == null){
+                    var behaviour = behaviourBuilder.build(creature, ingredients);
+                    creature.setBehaviour(behaviour);
+                } else ConsolePrint.error_small("Creature.executeBehaviour: There is a try to execute new behaviour even the creature has already one.");
+            }
         } catch (Exception e) {
             System.out.println(e);
             throw new IllegalArgumentException("Behaviour " + name + " can not be executed.");

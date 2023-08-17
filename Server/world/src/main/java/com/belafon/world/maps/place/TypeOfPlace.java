@@ -28,6 +28,11 @@ public class TypeOfPlace {
         this.evaporationRate = evaporationRate;
     }
 
+    /**
+     * returns one picture of the set, randomly.
+     * 
+     * @return
+     */
     public String getPicture() {
         if (pictures.length == 0)
             return "";
@@ -35,6 +40,11 @@ public class TypeOfPlace {
         return pictures[dice.toss() - 1];
     }
 
+    /**
+     * returns one sound of the set, randomly.
+     * 
+     * @return
+     */
     public String getMusic() {
         if (music.length == 0)
             return "";

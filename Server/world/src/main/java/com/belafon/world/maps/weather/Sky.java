@@ -17,7 +17,7 @@ import com.belafon.world.maps.place.Place;
 public class Sky {
     public final Weather[][] weather;
     public volatile int directionOfWind = 0;
-    public volatile int strengthOfWind = 200;
+    public volatile int strengthOfWind = 1000;
     public volatile int originX = 0;
     public volatile int originY = 0;
     private final int SPEED_OF_WEATHER_CHANGE = 60;
@@ -40,8 +40,8 @@ public class Sky {
         this.directionOfWind = directionOfWind;
         this.strengthOfWind = strengthOfWind;
         this.map = map;
-        eventChangeWeather = new EventChangeWeather(SPEED_OF_WEATHER_CHANGE + 20, map.game, this, printWeatherInLoop);
-        eventMoveClouds = new EventMoveClouds(strengthOfWind + 20, map.game, map, printCloudsInLoop);
+        eventChangeWeather = new EventChangeWeather(SPEED_OF_WEATHER_CHANGE + 500, map.game, this, printWeatherInLoop);
+        eventMoveClouds = new EventMoveClouds(strengthOfWind + 500, map.game, map, printCloudsInLoop);
         map.game.calendar.add(eventChangeWeather);
         map.game.calendar.add(eventMoveClouds);
 
@@ -151,16 +151,16 @@ public class Sky {
                     // three options, it will satrt rain, the cloud will grow, or nothing will
                     // happen
                     if (w.getClouds() > 1) {
-                        Dice dice6 = new Dice(6 + w.getClouds());
-                        int toss = dice6.toss() - 1;
-                        if (toss > 7)
+                        Dice dice10 = new Dice(10 + w.getClouds());
+                        int toss = dice10.toss() - 1;
+                        if (toss > 11)
                             w.setWeather(w.getClouds() - 1, map.places[i][j]); // starts raining
                     }
 
                     if (w.getClouds() < 7) {
-                        Dice dice9 = new Dice(12);
-                        if (dice9.toss() + map.places[i][j].typeOfPlace.evaporationRate > 11 && w.getClouds() != 5)
-                            w.setClouds(w.getClouds() + 1, map.places[i][j]);
+                        Dice dice20 = new Dice(20);
+                        if (dice20.toss() + map.places[i][j].typeOfPlace.evaporationRate > 19)
+                            w.setClouds(w.getClouds() + 1, map.places[i][j]); // cloud grows
                     }
                 } else {
                     // will stop rain, will rain harder or nothing will happen

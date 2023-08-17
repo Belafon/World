@@ -34,16 +34,16 @@ public class Weather {
 
     private final HashMap<NamePartOfDay, PartOfDay> partsOfDay = new HashMap<>() {
         {
-            put(NamePartOfDay.unknown, new PartOfDay(NamePartOfDay.unknown, new Color(0, 0, 50, 120), 2400));
+            put(NamePartOfDay.unknown, new PartOfDay(NamePartOfDay.unknown, new Color(0, 0, 50, 120), 4800));
             put(NamePartOfDay.after_midnight,
-                    new PartOfDay(NamePartOfDay.after_midnight, new Color(0, 0, 30, 180), 2400));
-            put(NamePartOfDay.sunrise_1, new PartOfDay(NamePartOfDay.sunrise_1, new Color(320, 10, 0, 50), 1200));
-            put(NamePartOfDay.sunrise_2, new PartOfDay(NamePartOfDay.sunrise_2, new Color(80, 40, 60, 20), 1080));
-            put(NamePartOfDay.morning, new PartOfDay(NamePartOfDay.morning, new Color(255, 255, 0, 10), 1500));
-            put(NamePartOfDay.afternoon, new PartOfDay(NamePartOfDay.afternoon, new Color(255, 200, 0, 10), 2040));
-            put(NamePartOfDay.sunset_1, new PartOfDay(NamePartOfDay.sunset_1, new Color(320, 10, 0, 50), 1200));
-            put(NamePartOfDay.sunset_2, new PartOfDay(NamePartOfDay.sunset_2, new Color(15, 5, 80, 150), 1080));
-            put(NamePartOfDay.night, new PartOfDay(NamePartOfDay.night, new Color(0, 0, 10, 155), 2400));
+                    new PartOfDay(NamePartOfDay.after_midnight, new Color(0, 0, 30, 180), 4800));
+            put(NamePartOfDay.sunrise_1, new PartOfDay(NamePartOfDay.sunrise_1, new Color(320, 10, 0, 40), 2400));
+            put(NamePartOfDay.sunrise_2, new PartOfDay(NamePartOfDay.sunrise_2, new Color(80, 40, 60, 20), 2160));
+            put(NamePartOfDay.morning, new PartOfDay(NamePartOfDay.morning, new Color(255, 255, 0, 10), 3000));
+            put(NamePartOfDay.afternoon, new PartOfDay(NamePartOfDay.afternoon, new Color(255, 200, 0, 10), 4080));
+            put(NamePartOfDay.sunset_1, new PartOfDay(NamePartOfDay.sunset_1, new Color(320, 10, 0, 40), 2400));
+            put(NamePartOfDay.sunset_2, new PartOfDay(NamePartOfDay.sunset_2, new Color(15, 5, 80, 150), 2160));
+            put(NamePartOfDay.night, new PartOfDay(NamePartOfDay.night, new Color(0, 0, 10, 155), 4800));
         }
     };
 
@@ -80,10 +80,10 @@ public class Weather {
 
     public enum WeatherType {
         idle(new Color(0, 0, 0, 0), 0),
-        rain(new Color(-1200, -1200, -100, 110), 0),
-        heavy_rain(new Color(-1200, -1200, -200, 120), 0),
+        rain(new Color(-1200, -1200, -1200, 110), 0),
+        heavy_rain(new Color(-1200, -1200, -1200, 120), 0),
         storm(new Color(-355, -1200, -1200, 120), 60),
-        thunderstorm(new Color(-1200, -1200, -200, 120), 30);
+        thunderstorm(new Color(-1200, -1200, -1200, 120), 30);
 
         public final Color color;
         public final int frequencyOfLightnings;

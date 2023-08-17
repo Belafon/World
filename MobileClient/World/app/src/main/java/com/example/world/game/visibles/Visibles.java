@@ -50,7 +50,10 @@ public class Visibles {
 
                 item = new Food(id, itemName, regularWeight, visibility, toss, freshness, filling, warm,
                         requirements);
-                panels.visibles.items.addVisiblesTitle(item);
+
+                if(panels.visibles.items != null)
+                    panels.visibles.items.addVisiblesTitle(item);
+
                 synchronized (PlayableCreature.allIngredients){
                     PlayableCreature.allIngredients.add(item);
                 }
@@ -89,7 +92,9 @@ public class Visibles {
         Set<BehavioursRequirement> requirements = extractRequirementsFromArgs(behaviours, args[10]);
 
         Creature creature = new Creature(name, id, appearance, requirements);
-        panels.visibles.creatures.addVisiblesTitle(creature);
+
+        if(panels.visibles.creatures != null)
+            panels.visibles.creatures.addVisiblesTitle(creature);
         synchronized (creatures) {
             creatures.put(id, creature);
         }
@@ -138,7 +143,10 @@ public class Visibles {
         Set<BehavioursRequirement> requirements = extractRequirementsFromArgs(behaviours, args[5]);
 
         Resource resource = new Resource(id, type, mass, requirements);
-        panels.visibles.resources.addVisiblesTitle(resource);
+
+        if(panels.visibles.resources != null)
+            panels.visibles.resources.addVisiblesTitle(resource);
+
         synchronized (resources) {
             resources.put(id, resource);
         }

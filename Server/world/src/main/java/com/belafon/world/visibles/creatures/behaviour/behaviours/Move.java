@@ -101,7 +101,7 @@ public class Move extends Behaviour {
             if (destination.map != place.map)
                 return "cant_find_the_way!_The_destination_is_not_in_this_map.";
         }
-        return null; // TODO
+        return null;
     }
 
     public int getDurationOfTravel(Creature creature, float distance) {
@@ -115,7 +115,8 @@ public class Move extends Behaviour {
         durationOfTravel += 150f - (2.1f * (float) creature.abilityCondition.getHealth()) + (0.006f
                 * ((float) creature.abilityCondition.getHealth() * (float) creature.abilityCondition.getHealth()));
 
-        return (int) durationOfTravel;
+        // TODO debug purposes the duration is divided by 10
+        return (int) durationOfTravel / 10; 
     }
 
     private float getCurrentSpeed(Creature creature) {
@@ -125,9 +126,10 @@ public class Move extends Behaviour {
             // influence by Object altitude;
             int differenceOfAltitudes = nextPlace.altitude - place.altitude;
             float averageRoadDegree = (float) Math.atan(((float) differenceOfAltitudes * 3f) / 1000f);
-            float averageSpeed = (float) (6 * Math.exp(-(3 / 2) * Math.abs(Math.tan(averageRoadDegree + (1 / 20))))); // Tobler's
-                                                                                                                      // hiking
-                                                                                                                      // function
+
+             // Tobler's hiking function
+            float averageSpeed = (float) (6 * Math.exp(-(3 / 2) * Math.abs(Math.tan(averageRoadDegree + (1 / 20)))));
+
             // averageSpeed *= (50/3); // translation killometers per hour to meters per
             // minutes
             // averageSpeed *= (3/5); // hiking through the nature out of the road (its more

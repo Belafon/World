@@ -15,6 +15,7 @@ import com.example.world.game.Stats;
 import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 import com.example.world.game.visibles.Visibles;
 import com.example.world.game.visibles.VisiblesListFragment;
+import com.example.world.game.visibles.items.Item;
 import com.example.world.game.visibles.items.ItemInfoFragment;
 import com.example.world.game.visibles.resources.Resource;
 import com.example.world.game.visibles.resources.ResourceInfoFragment;
@@ -26,6 +27,8 @@ import com.example.world.game.visibles.resources.ResourceInfoFragment;
  public class CreaturesFragment extends VisiblesListFragment<CreaturesInfoFragment> {
     public CreaturesFragment(int fragmentContainerId, Visibles visibles, Fragment returnFragment) {
         super(fragmentContainerId, visibles, returnFragment);
+        for(Creature creature : visibles.creatures.values())
+            addVisiblesTitle(creature);
     }
 
     @Override

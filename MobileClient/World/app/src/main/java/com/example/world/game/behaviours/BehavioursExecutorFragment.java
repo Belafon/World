@@ -63,7 +63,7 @@ public class BehavioursExecutorFragment extends Fragment {
     private TextView description;
     private Button execute;
     private LinearLayout preSelectedIngredientsList;
-
+    private Button backButton;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
@@ -76,7 +76,7 @@ public class BehavioursExecutorFragment extends Fragment {
         preSelectedIngredientsList = rootView.findViewById(R.id.preselected_ingredients_list);
         setPreselectedIngredientsList();
 
-        Button backButton = rootView.findViewById(R.id.backButton);
+        backButton = rootView.findViewById(R.id.backButton);
         backButton.setOnClickListener((View v) -> goBack());
 
         name.setText(behaviour.name);
@@ -85,10 +85,7 @@ public class BehavioursExecutorFragment extends Fragment {
         execute.setVisibility(View.VISIBLE);
         execute.setText("Execute");
         execute.setEnabled(true);
-        execute.setOnClickListener((View v) -> {
-                execute.setEnabled(false);
-                executeBehaviour(behaviour);
-        });
+        execute.setOnClickListener((View v) -> executeBehaviour(behaviour));
 
         setRequirementsPanel(behaviour);
 
@@ -125,18 +122,15 @@ public class BehavioursExecutorFragment extends Fragment {
 
         execute.setVisibility(View.VISIBLE);
         execute.setEnabled(true);
-        execute.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                execute.setEnabled(false);
-                executeBehaviour(behaviour);
-            }
-        });
+        execute.setOnClickListener((View view) -> executeBehaviour(behaviour));
 
         setRequirementsPanel(behaviour);
     }
 
     private void executeBehaviour(Behaviour behaviour) {
+        execute.setEnabled(false);
+        backButton.setEnabled(false); // TODO BUG when it is enabled
+
         // Get all selected ingredients
         List<BehavioursPossibleIngredient> selectedIngredients = new ArrayList<>();
         for (RequirementChooser chooser : requiremntsChoosers.values()) {

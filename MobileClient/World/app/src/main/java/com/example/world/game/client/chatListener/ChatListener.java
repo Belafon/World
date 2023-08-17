@@ -73,7 +73,6 @@ public class ChatListener {
     private void listenMap(String[] args) {
         switch (args[1]) {
             case "look_arround" -> stats.maps.lookAroundSurroundingPlaces(args, stats, panels);
-            case "currentPlaceInfo" -> stats.maps.setCurrentPositionInfo(args, stats, panels);
             case "remove_place_in_sight" -> stats.maps.removePlaceInSight(args, stats, panels);
             case "new_map" -> stats.maps.addMap(args);
             case "weather" -> stats.maps.weather.setWeather(args);
@@ -88,6 +87,7 @@ public class ChatListener {
             case "abilityCondition" -> listenAbilityCondition(args);
             case "knowledge" -> listenKnowledge(args);
             case "feasibleBehaviour" -> feasibleBehaviourUpdate(args);
+            case "currentPositionInfo" -> stats.maps.setCurrentPositionInfo(args, stats, panels);
         }
     }
 

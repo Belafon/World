@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import androidx.fragment.app.Fragment;
 import com.example.world.AbstractActivity;
+import com.example.world.R;
 import com.example.world.game.Game;
 import com.example.world.menuScreen.EmptyFragment;
 

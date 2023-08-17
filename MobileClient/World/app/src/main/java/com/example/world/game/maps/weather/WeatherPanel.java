@@ -1,5 +1,6 @@
 package com.example.world.game.maps.weather;
 
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;

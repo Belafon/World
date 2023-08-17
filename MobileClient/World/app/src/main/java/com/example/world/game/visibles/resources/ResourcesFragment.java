@@ -14,6 +14,8 @@ import com.example.world.game.visibles.items.Item;
 public class ResourcesFragment extends VisiblesListFragment<ResourceInfoFragment> {
     public ResourcesFragment(int fragmentContainerId, Visibles visibles, Fragment returnFragment) {
         super(fragmentContainerId, visibles, returnFragment);
+        for(Resource resource : visibles.resources.values())
+            addVisiblesTitle(resource);
     }
 
     @Override

@@ -24,7 +24,7 @@ public class ListOfAllTypesOfPlaces {
     */
     public static void setUpAllTypesOfPlaces(){
         typeOfPlaces.put( NamesOfTypesOfPlaces.forest_leafy,  new TypeOfPlace(NamesOfTypesOfPlaces.forest_leafy, 
-            new String[]{"forest_leafy_1", "forest_leafy_2", "forest_leafy_3"}, 
+            new String[]{"forest_leafy_1"}, 
             new String[]{"forest_leafy_1", "forest_leafy_2", "forest_leafy_3"}, new int[]{0, 1, 2, 3},
             new TypeOfResourceOfTypeOfPlace[]{ 
                 new TypeOfResourceOfTypeOfPlace(50, 1, ListOfAllTypesOfResources.typesOfResources.get(NamesOfTypesOfResources.blueberry)),
@@ -34,13 +34,13 @@ public class ListOfAllTypesOfPlaces {
             2, 0x6dff2e, "Fresh deciduous forest covered with fallen leaves and forest plants."));
 
         typeOfPlaces.put( NamesOfTypesOfPlaces.meadow,  new TypeOfPlace(NamesOfTypesOfPlaces.meadow, 
-            new String[]{"meadow_1", "meadow_2", "meadow_3"}, 
+            new String[]{"meadow_1", "meadow_2", "meadow_3", "meadow_4", "meadow_5"}, 
             new String[]{"meadow_1"}, new int[]{0, 1, 2},
             new TypeOfResourceOfTypeOfPlace[0], 
             3, 0xb8fc30, "Meadow abounding with tall grass and full of buzzing insects."));
 
         typeOfPlaces.put( NamesOfTypesOfPlaces.mountein_meadow,  new TypeOfPlace(NamesOfTypesOfPlaces.mountein_meadow, 
-            new String[]{"meadow_4", "meadow_5", "meadow_6"}, 
+            new String[]{"mountain_meadow_1", "mountain_meadow_2", "mountain_meadow_3", "mountain_meadow_4", "mountain_meadow_5", "mountain_meadow_6"}, 
             new String[]{"meadow_2"}, new int[]{3, 4},
             new TypeOfResourceOfTypeOfPlace[0], 
                 2, 0xc6f538, "Mountain slope overgrown with tall grass and mountain aromatic herbs."));

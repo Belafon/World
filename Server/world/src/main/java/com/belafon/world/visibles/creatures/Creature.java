@@ -109,6 +109,7 @@ public abstract class Creature extends Visible {
         var newLook = PlayersLookAround.look(location);
         updateSurroundingVisiblePlaces(newLook, surroundingPlaces);
         surroundingPlaces = newLook;
+        writer.surrounding.setCurrentPositionInfo(getLocation());
     }
 
     public void setAbilityCondition(int strength, int agility, int speed_of_walk, int speed_of_run, int hearing,

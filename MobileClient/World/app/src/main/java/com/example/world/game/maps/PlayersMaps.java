@@ -190,23 +190,24 @@ public class PlayersMaps {
         surroundingMap.setPlaceUnknown(x, y);
     }
 
-    private void setCurrentPositionInfo(String[] args, Stats stats, Panels panels) {
+    public void setCurrentPositionInfo(String[] args, Stats stats, Panels panels) {
         String id = args[2];
         int temperature = Integer.parseInt(args[3]);
-        String name = args[4];
-        String typeOfPlaceName = args[5];
-        String picture = args[6];
-        String music = args[7];
-        boolean isMapPlace = !args[8].equals("null");
+        String typeOfPlaceName = args[4];
+        String picture = args[5];
+        String music = args[6];
+        boolean isMapPlace = !args[7].equals("null");
         int mapId = -1;
         if(isMapPlace)
-            mapId = Integer.parseInt(args[8]);
+            mapId = Integer.parseInt(args[7]);
 
         Place place = surroundingMap.getPlacePanel(SurroundingMap.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS / 2,
                 SurroundingMap.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS / 2);
 
         if(AbstractActivity.getActualActivity() instanceof GameActivity gameActivity) {
-            gameActivity.setPlaceBackground(picture, music);
+            AbstractActivity.getActualActivity().runOnUiThread(() ->
+                    gameActivity.setPlaceBackground(picture)
+            );
         }
     }
 

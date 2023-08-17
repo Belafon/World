@@ -212,8 +212,8 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
         sendMessage.sendLetter("player currentPositionInfo " + place.id + " " 
                 + place.getTemperature() + " " 
                 + place.typeOfPlace.name + " "  
-                + place.typeOfPlace.getPicture() + " " 
-                + place.typeOfPlace.getMusic()
+                + place.picture + " " 
+                + place.music + " "
                 + (place instanceof Place mapPlace 
                     ? mapPlace.map.id : "null"), PlayersMessageSender.TypeMessage.other);
 

@@ -20,6 +20,8 @@ public class PlayersLookAround {
      * This message contains info about surrounding around concrete place
      * (viewers position).
      * 
+     * The principle of the algorithm:
+     * 
      * 1. In the first step, we look around the viewer’s position by a radius of 3.
      * This means that we are looking at a ring of places around the viewer’s
      * position, whose radius is 3. The viewer is always in the middle of the map.

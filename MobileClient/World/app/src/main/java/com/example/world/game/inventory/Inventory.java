@@ -59,7 +59,8 @@ public class Inventory {
         synchronized (PlayableCreature.allIngredients){
             PlayableCreature.allIngredients.add(item);
         }
-        panels.inventory.addItemToInventory(item);
+        if(panels != null)
+            panels.inventory.addItemToInventory(item);
     }
     
     public void removeItem(Panels panels, int id) {

@@ -22,12 +22,9 @@ public class Place extends UnboundedPlace {
             "A place is reachable.") {
     };
 
-    private static Map printNewPlaceOnlyOfOneMap;
-
     public Place(Map map, int positionX, int positionY, int altitude, TypeOfPlace typeOfPlace) {
         super(typeOfPlace, map.game);
-        if (printNewPlaceOnlyOfOneMap == null)
-            printNewPlaceOnlyOfOneMap = map;
+        
         this.map = map;
         this.positionX = positionX;
         this.positionY = positionY;
@@ -57,9 +54,8 @@ public class Place extends UnboundedPlace {
 
     public String log() {
         String log = "\n";
-        if (map == printNewPlaceOnlyOfOneMap)
-            log += "Place: " + " in position = [" + positionX + ";" + positionY + "]  with altitude = "
-                    + altitude + "  " + typeOfPlace.name + "]";
+        log += "Place: " + " in position = [" + positionX + ";" + positionY + "]  with altitude = "
+                + altitude + "  " + typeOfPlace.name + "]";
         log += "\t\tResources = [ ";
         for (Resource resource : resources.values())
             log += resource.type.name + " ";

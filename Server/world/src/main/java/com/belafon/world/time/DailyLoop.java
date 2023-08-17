@@ -22,7 +22,7 @@ public class DailyLoop {
     public void start() throws NullPointerException{ 
         if(game.time == null)
             throw new NullPointerException("game.time is null");
-                addToCalendar(game.time.getTime() - 180);
+        addToCalendar(game.time.getTime() - 180);
     }
 
     /**
