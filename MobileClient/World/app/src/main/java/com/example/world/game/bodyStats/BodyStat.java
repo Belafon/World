@@ -7,7 +7,7 @@ import android.widget.ArrayAdapter;
 public class BodyStat {
     private final String name;
     private int value;
-    private CreatureStatisticsPanel context;
+    private CreatureStatisticsFragment context;
     private ArrayAdapter<BodyStat> listAdapter;
 
     public BodyStat(String name, int value) {
@@ -36,7 +36,7 @@ public class BodyStat {
         return value;
     }
 
-    public void setListAdapter(ArrayAdapter<BodyStat> listAdapter, CreatureStatisticsPanel context) {
+    public void setListAdapter(ArrayAdapter<BodyStat> listAdapter, CreatureStatisticsFragment context) {
         synchronized (this) {
             this.listAdapter = listAdapter;
             this.context = context;

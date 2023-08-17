@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
 
-import com.example.world.game.Panels;
+import com.example.world.game.Fragments;
 import com.example.world.game.behaviours.Behaviours;
 import com.example.world.game.behaviours.BehavioursFragment;
 import com.example.world.game.behaviours.BehavioursRequirement;
@@ -32,7 +32,7 @@ public class Inventory {
      * @param toss
      * @param args
      */
-    public void addItem(Panels panels, int id, String type,
+    public void addItem(Fragments fragments, int id, String type,
             String name, int weight, int visiblity,
             int toss, String[] args, Behaviours behaviours) {
         Set<BehavioursRequirement> possibleBehaviours = Visibles.extractRequirementsFromArgs(behaviours, args[11]);
@@ -59,11 +59,11 @@ public class Inventory {
         synchronized (PlayableCreature.allIngredients){
             PlayableCreature.allIngredients.add(item);
         }
-        if(panels != null)
-            panels.inventory.addItemToInventory(item);
+        if(fragments != null)
+            fragments.inventory.addItemToInventory(item);
     }
     
-    public void removeItem(Panels panels, int id) {
+    public void removeItem(Fragments fragments, int id) {
         Item removeItem = items.get(id);
         synchronized (PlayableCreature.allIngredients){
             PlayableCreature.allIngredients.remove(removeItem);
@@ -72,7 +72,7 @@ public class Inventory {
         if(removeItem instanceof Clothes clothes)
             this.clothes.remove(clothes);
 
-        BehavioursFragment.update(panels.stats.behaviours);
-        panels.inventory.removeItemFromInventory(removeItem);
+        BehavioursFragment.update(fragments.stats.behaviours);
+        fragments.inventory.removeItemFromInventory(removeItem);
     }
 }

@@ -43,7 +43,7 @@ public class ItemFragment extends VisiblesListFragment<ItemInfoFragment> {
     }
 
     /**
-     * Changes the concrete panel with detailed info about one item.
+     * Changes the concrete fragment with detailed info about one item.
      *
      * @param itemsInfoFragment The ItemsInfoFragment to be selected.
      */

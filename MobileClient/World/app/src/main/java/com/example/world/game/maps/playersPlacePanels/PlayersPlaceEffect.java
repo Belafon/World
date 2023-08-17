@@ -1,15 +1,14 @@
-package com.example.world.game.maps.playersPlacePanels;
+package com.example.world.game.maps.playersPlaceFragments;
 
 import androidx.fragment.app.Fragment;
-
 import com.example.world.game.behaviours.BehavioursRequirement;
 import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
-import com.example.world.game.visibles.creatures.CreaturesInfoFragment;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
+
 
 /**
  * All possible place effects and their informations are held here 

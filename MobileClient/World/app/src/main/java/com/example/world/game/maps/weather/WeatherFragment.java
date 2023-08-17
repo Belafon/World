@@ -14,8 +14,8 @@ import java.util.concurrent.Executors;
 
 
 
-public class WeatherPanel implements Runnable {
-    private static final String TAG = "WeatherPanel";
+public class WeatherFragment implements Runnable {
+    private static final String TAG = "WeatherFragment";
     private final View view;
     private int r = 0; // 0 ... 255
     private int g = 0;
@@ -32,7 +32,7 @@ public class WeatherPanel implements Runnable {
     public final CurrentFilterColor currentFilterColor = new CurrentFilterColor(this);
 
     private final CloudsColorViewTransitions weatherTransitions;
-    public WeatherPanel(View view) {
+    public WeatherFragment(View view) {
          weatherTransitions = new CloudsColorViewTransitions(colorViewTransitions, this.currentFilterColor);
         this.view = view;
         this.colorViewTransitions.add(partOfDayColorViewTransition);
@@ -171,12 +171,12 @@ public class WeatherPanel implements Runnable {
     }
 
     public static class CurrentFilterColor{
-        private final WeatherPanel panel;
-        public CurrentFilterColor(WeatherPanel panel){
-            this.panel = panel;
+        private final WeatherFragment fragment;
+        public CurrentFilterColor(WeatherFragment fragment){
+            this.fragment = fragment;
         }
         public ColorViewTransition.Color getColor(){
-            return panel.getColor();
+            return fragment.getColor();
         }
     }
 }

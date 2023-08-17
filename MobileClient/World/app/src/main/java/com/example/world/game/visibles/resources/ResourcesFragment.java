@@ -35,7 +35,7 @@ public class ResourcesFragment extends VisiblesListFragment<ResourceInfoFragment
     }
 
     /**
-     * Changes the concrete panel with detailed info about one resource.
+     * Changes the concrete fragment with detailed info about one resource.
      *
      * @param resourcesInfoFragment The ResourcesInfoFragment to be selected.
      */

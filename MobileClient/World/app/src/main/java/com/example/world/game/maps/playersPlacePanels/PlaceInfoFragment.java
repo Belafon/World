@@ -1,4 +1,4 @@
-package com.example.world.game.maps.playersPlacePanels;
+package com.example.world.game.maps.playersPlaceFragments;
 
 import android.graphics.Typeface;
 import android.os.Bundle;

@@ -1,7 +1,7 @@
 package com.example.world.game.bodyStats;
 
 
-import com.example.world.game.Panels;
+import com.example.world.game.Fragments;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public class BodyStats {
     BodyStat heat;
     BodyStat bleeding;
     
-    public void setAdapters(CreatureStatisticsPanel statFrag) {
+    public void setAdapters(CreatureStatisticsFragment statFrag) {
         healthAbility.setListAdapter(statFrag.getAbilityAdapter(), statFrag);
         strengthAbility.setListAdapter(statFrag.getAbilityAdapter(), statFrag);
         agilityAbility.setListAdapter(statFrag.getAbilityAdapter(), statFrag);
@@ -101,76 +101,76 @@ public class BodyStats {
         actualList.add(bleeding);
     }
 
-    public void setHealth(String healthAbility, Panels panels) throws NumberFormatException {
+    public void setHealth(String healthAbility, Fragments fragments) throws NumberFormatException {
         this.healthAbility.setValue(healthAbility);
     }
 
-    public void setStrengthAbility(String strengthAbility, Panels panels) throws NumberFormatException {
+    public void setStrengthAbility(String strengthAbility, Fragments fragments) throws NumberFormatException {
         this.strengthAbility.setValue(strengthAbility);
     }
 
-    public void setAgilityAbility(String agilityAbility, Panels panels) throws NumberFormatException {
+    public void setAgilityAbility(String agilityAbility, Fragments fragments) throws NumberFormatException {
         this.agilityAbility.setValue(agilityAbility);
     }
 
-    public void setSpeedOfWalkAbility(String speedOfWalkAbility, Panels panels) throws NumberFormatException {
+    public void setSpeedOfWalkAbility(String speedOfWalkAbility, Fragments fragments) throws NumberFormatException {
         this.speedOfWalkAbility.setValue(speedOfWalkAbility);
     }
 
-    public void setSpeedOfRunAbility(String speedOfRunAbility, Panels panels) throws NumberFormatException {
+    public void setSpeedOfRunAbility(String speedOfRunAbility, Fragments fragments) throws NumberFormatException {
         this.speedOfRunAbility.setValue(speedOfRunAbility);
     }
 
-    public void setCurrentSpeedAbility(String currentSpeedAbility, Panels panels) throws NumberFormatException {
+    public void setCurrentSpeedAbility(String currentSpeedAbility, Fragments fragments) throws NumberFormatException {
         this.currentSpeedAbility.setValue(currentSpeedAbility);
     }
 
-    public void setHearingAbility(String hearingAbility, Panels panels) throws NumberFormatException {
+    public void setHearingAbility(String hearingAbility, Fragments fragments) throws NumberFormatException {
         this.hearingAbility.setValue(hearingAbility);
     }
 
-    public void setObservationAbility(String observationAbility, Panels panels) throws NumberFormatException {
+    public void setObservationAbility(String observationAbility, Fragments fragments) throws NumberFormatException {
         this.observationAbility.setValue(observationAbility);
     }
 
-    public void setVisionAbility(String visionAbility, Panels panels) throws NumberFormatException {
+    public void setVisionAbility(String visionAbility, Fragments fragments) throws NumberFormatException {
         this.visionAbility.setValue(visionAbility);
     }
 
-    public void setLoudnessAbility(String loudnessAbility, Panels panels) throws NumberFormatException {
+    public void setLoudnessAbility(String loudnessAbility, Fragments fragments) throws NumberFormatException {
         this.loudnessAbility.setValue(loudnessAbility);
 
     }
 
-    public void setAttentionAbility(String attentionAbility, Panels panels) throws NumberFormatException {
+    public void setAttentionAbility(String attentionAbility, Fragments fragments) throws NumberFormatException {
         this.attentionAbility.setValue(attentionAbility);
 
     }
 
-    public void setEnergyOutputAbility(String energyOutputAbility, Panels panels) throws NumberFormatException {
+    public void setEnergyOutputAbility(String energyOutputAbility, Fragments fragments) throws NumberFormatException {
         this.energyOutputAbility.setValue(energyOutputAbility);
 
     }
 
-    public void setHunger(String hungerAbility, Panels panels) throws NumberFormatException {
+    public void setHunger(String hungerAbility, Fragments fragments) throws NumberFormatException {
         this.hunger.setValue(hungerAbility);
     }
 
-    public void setBleeding(String bleedingAbility, Panels panels) throws NumberFormatException {
+    public void setBleeding(String bleedingAbility, Fragments fragments) throws NumberFormatException {
         this.bleeding.setValue(bleedingAbility);
 
     }
 
-    public void setHeat(String heatAbility, Panels panels) throws NumberFormatException {
+    public void setHeat(String heatAbility, Fragments fragments) throws NumberFormatException {
         this.heat.setValue(heatAbility);
     }
 
-    public void setFatigueMax(String fatigueMaxAbility, Panels panels) throws NumberFormatException {
+    public void setFatigueMax(String fatigueMaxAbility, Fragments fragments) throws NumberFormatException {
         this.fatigueMax.setValue(fatigueMaxAbility);
     }
 
 
-    public void setCurrentEnergyOutput(String currentEnergyOutputAbility, Panels panels) throws NumberFormatException {
+    public void setCurrentEnergyOutput(String currentEnergyOutputAbility, Fragments fragments) throws NumberFormatException {
         this.energyOutputAbility.setValue(currentEnergyOutputAbility);
     }
 }

@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.world.AbstractActivity;
 import com.example.world.R;
-import com.example.world.game.Panels;
+import com.example.world.game.Fragments;
 import com.example.world.game.inventory.Inventory;
 import com.example.world.game.visibles.items.Item;
 import com.example.world.game.visibles.items.ItemInfoFragment;
@@ -33,11 +33,11 @@ public class InventoryFragment extends Fragment implements OnItemClickListener {
     public final Inventory inventory;
     private RecyclerView recyclerView;
     private ItemAdapter adapter;
-    private Panels panels;
-    public InventoryFragment(Inventory inventory, int fragmentContainer, Panels panels) {
+    private Fragments fragments;
+    public InventoryFragment(Inventory inventory, int fragmentContainer, Fragments fragments) {
         this.inventory = inventory;
         this.fragmentContainer = fragmentContainer;
-        this.panels = panels;
+        this.fragments = fragments;
         for(Item item : inventory.items.values()){
             addItemToInventory(item);
         }

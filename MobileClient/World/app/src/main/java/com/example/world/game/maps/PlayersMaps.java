@@ -2,12 +2,11 @@ package com.example.world.game.maps;
 
 import androidx.fragment.app.Fragment;
 import com.example.world.AbstractActivity;
-import com.example.world.game.Panels;
+import com.example.world.game.Fragments;
 import com.example.world.game.Stats;
 import com.example.world.game.behaviours.BehavioursRequirement;
-import com.example.world.game.maps.playersPlacePanels.PlacePanel;
-import com.example.world.game.maps.playersPlacePanels.PlayersPlaceEffect;
-import com.example.world.game.maps.playersPlacePanels.TypePlace;
+import com.example.world.game.maps.playersPlaceFragments.PlaceFragment;
+import com.example.world.game.maps.playersPlaceFragments.PlayersPlaceEffect;
 import com.example.world.game.maps.weather.Weather;
 import com.example.world.gameActivity.GameActivity;
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ public class PlayersMaps {
     private Hashtable<Integer, PlayersMap> maps = new Hashtable<>();
     private SurroundingMap surroundingMap;
     // private PlayersMap currentMap;
-    // private PlacePanel currentPosition;
+    // private PlaceFragment currentPosition;
 
     public final Weather weather = new Weather();
 
@@ -41,7 +40,7 @@ public class PlayersMaps {
         maps.put(key, map);
         for (int x = 0; x < map.sizeX; x++) {
             for (int y = 0; y < map.sizeX; y++) {
-                map.places[x][y] = PlacePanel.getUnknownPlace(x, y);
+                map.places[x][y] = PlaceFragment.getUnknownPlace(x, y);
             }
         }
     }
@@ -78,7 +77,7 @@ public class PlayersMaps {
      * @param args
      * @param stats
      */
-    public synchronized void lookAroundSurroundingPlaces(String[] args, Stats stats, Panels panels) {
+    public synchronized void lookAroundSurroundingPlaces(String[] args, Stats stats, Fragments fragments) {
         int currentPlace = 0;
         for (int currentArg = 2; currentArg < args.length; currentArg++) {
             switch (args[currentArg]) {
@@ -90,7 +89,7 @@ public class PlayersMaps {
             }
         }
         AbstractActivity.getActualActivity().runOnUiThread(() -> {
-            panels.surroundingPlaces.update();
+            fragments.surroundingPlaces.update();
         });
     }
 
@@ -127,13 +126,13 @@ public class PlayersMaps {
         List<PlayersPlaceEffect> effects = null;
         if (effectsMessage != null)
             effects = getPlaceEffectsFromMessage(effectsMessage,
-                    surroundingMap.getPlacePanel(xInSurrounding, yInSurrounding));
+                    surroundingMap.getPlaceFragment(xInSurrounding, yInSurrounding));
         else
             effects = new ArrayList<>();
 
 
-        // lets update the panel that shows the place in the surrounding
-        PlacePanel place = new PlacePanel(id, TypePlace.allTypes.get(typePlacesName), requirements, effects, xInSurrounding, yInSurrounding);
+        // lets update the fragment that shows the place in the surrounding
+        PlaceFragment place = new PlaceFragment(id, TypePlace.allTypes.get(typePlacesName), requirements, effects, xInSurrounding, yInSurrounding);
         surroundingMap.updatePlace(xInSurrounding, yInSurrounding, place);
 
         // lets add the place into ingredients
@@ -150,7 +149,7 @@ public class PlayersMaps {
         return requirements;
     }
 
-    private List<PlayersPlaceEffect> getPlaceEffectsFromMessage(String effectsMessage, PlacePanel place) {
+    private List<PlayersPlaceEffect> getPlaceEffectsFromMessage(String effectsMessage, PlaceFragment place) {
         List<PlayersPlaceEffect> effects = new ArrayList<>();
         for (String effect : effectsMessage.split("\\,")) {
             effects.add(PlayersPlaceEffect.allPlaceEffects.get(effect));
@@ -170,27 +169,27 @@ public class PlayersMaps {
     }
 
     /**
-     * @return panel that shows all surrounding
+     * @return fragment that shows all surrounding
      *         places around the creature in the radius
      *         of 3 places.
      *         The places, that are not visible for the
      *         player are displayed with grey color and
      *         with name as umknown place.
      */
-    public SurroundingPlacesFragment getSurroundingPlacesPanel(Fragment lastFragment, int fragmentContainerId) {
+    public SurroundingPlacesFragment getSurroundingPlacesFragment(Fragment lastFragment, int fragmentContainerId) {
         return new SurroundingPlacesFragment(surroundingMap, fragmentContainerId, lastFragment);
     }
 
-    public void removePlaceInSight(String[] args, Stats stats, Panels panels) {
+    public void removePlaceInSight(String[] args, Stats stats, Fragments fragments) {
         String id = args[2];
         int x = Integer.parseInt(args[3]);
         int y = Integer.parseInt(args[4]);
-        Place place = surroundingMap.getPlacePanel(x, y);
-        stats.visibles.removePlace(place, panels);
+        Place place = surroundingMap.getPlaceFragment(x, y);
+        stats.visibles.removePlace(place, fragments);
         surroundingMap.setPlaceUnknown(x, y);
     }
 
-    public void setCurrentPositionInfo(String[] args, Stats stats, Panels panels) {
+    public void setCurrentPositionInfo(String[] args, Stats stats, Fragments fragments) {
         String id = args[2];
         int temperature = Integer.parseInt(args[3]);
         String typeOfPlaceName = args[4];
@@ -201,7 +200,7 @@ public class PlayersMaps {
         if(isMapPlace)
             mapId = Integer.parseInt(args[7]);
 
-        Place place = surroundingMap.getPlacePanel(SurroundingMap.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS / 2,
+        Place place = surroundingMap.getPlaceFragment(SurroundingMap.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS / 2,
                 SurroundingMap.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS / 2);
 
         if(AbstractActivity.getActualActivity() instanceof GameActivity gameActivity) {

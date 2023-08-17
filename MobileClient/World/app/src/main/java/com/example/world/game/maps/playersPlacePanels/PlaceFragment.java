@@ -1,4 +1,4 @@
-package com.example.world.game.maps.playersPlacePanels;
+package com.example.world.game.maps.playersPlaceFragments;
 
 import android.content.Context;
 import android.view.View;
@@ -14,24 +14,24 @@ import com.example.world.game.maps.SurroundingPlacesFragment;
 import java.util.List;
 import java.util.Set;
 
-public class PlacePanel extends Place {
+public class PlaceFragment extends Place {
     public final int positionX;
     public final int positionY;
 
-    public PlacePanel(String id, TypePlace typePlace, Set<BehavioursRequirement> requirements,
+    public PlaceFragment(String id, TypePlace typePlace, Set<BehavioursRequirement> requirements,
             List<PlayersPlaceEffect> placeEffects, int positionX, int positionY) {
         super(id, typePlace, requirements, placeEffects);
         this.positionX = positionX;
         this.positionY = positionY;
     }
 
-    public static PlacePanel getUnknownPlace(int x, int y) {
-        return new PlacePanel(UNKNOWN.getId(), UNKNOWN.typePlace, UNKNOWN.requirements, UNKNOWN.placeEffects, x, y);
+    public static PlaceFragment getUnknownPlace(int x, int y) {
+        return new PlaceFragment(UNKNOWN.getId(), UNKNOWN.typePlace, UNKNOWN.requirements, UNKNOWN.placeEffects, x, y);
     }
 
     @Override
     public int compareTo(BehavioursPossibleIngredient other) {
-        if(other instanceof PlacePanel otherPlace){
+        if(other instanceof PlaceFragment otherPlace){
             if(positionX == otherPlace.positionX
                     && positionY == otherPlace.positionY)
                 return 0;

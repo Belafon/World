@@ -51,7 +51,7 @@ public class GameActivity extends AbstractActivity {
             runOnUiThread(() -> {
                 waitingScreen.stopRotate = true;
 
-                openFragment(game.panels.bodyStatistics);
+                openFragment(game.fragments.bodyStatistics);
                 waitingScreenView.setVisibility(View.GONE);
                 openFragment(new EmptyFragment(), R.id.waiting_screen);
             });

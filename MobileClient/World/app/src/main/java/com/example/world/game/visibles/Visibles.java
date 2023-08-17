@@ -11,7 +11,7 @@ import com.example.world.game.visibles.items.Item;
 import com.example.world.game.visibles.items.Item.Food;
 import com.example.world.game.visibles.resources.Resource;
 import com.example.world.game.visibles.resources.ResourceTypes;
-import com.example.world.game.Panels;
+import com.example.world.game.Fragments;
 import com.example.world.game.behaviours.Behaviours;
 import com.example.world.game.behaviours.BehavioursRequirement;
 import com.example.world.game.maps.Place;
@@ -29,10 +29,10 @@ public class Visibles {
      * It means that the player now know about this item.
      * 
      * @param args
-     * @param panels
+     * @param fragments
      * @param behaviours
      */
-    public void addItem(String[] args, Panels panels, Behaviours behaviours) {
+    public void addItem(String[] args, Fragments fragments, Behaviours behaviours) {
         int id = Integer.parseInt(args[2]);
         String className = args[3];
         String itemName = args[4];
@@ -51,8 +51,8 @@ public class Visibles {
                 item = new Food(id, itemName, regularWeight, visibility, toss, freshness, filling, warm,
                         requirements);
 
-                if(panels.visibles.items != null)
-                    panels.visibles.items.addVisiblesTitle(item);
+                if(fragments.visibles.items != null)
+                    fragments.visibles.items.addVisiblesTitle(item);
 
                 synchronized (PlayableCreature.allIngredients){
                     PlayableCreature.allIngredients.add(item);
@@ -73,9 +73,9 @@ public class Visibles {
      * It means that the player now know about this creature.
      * 
      * @param args
-     * @param panels
+     * @param fragments
      */
-    public void addCreature(String[] args, Panels panels, Behaviours behaviours) {
+    public void addCreature(String[] args, Fragments fragments, Behaviours behaviours) {
         int id = Integer.parseInt(args[2]);
         String name = args[3];
         String appearance = args[4].replaceAll("_", " ");
@@ -93,8 +93,8 @@ public class Visibles {
 
         Creature creature = new Creature(name, id, appearance, requirements);
 
-        if(panels.visibles.creatures != null)
-            panels.visibles.creatures.addVisiblesTitle(creature);
+        if(fragments.visibles.creatures != null)
+            fragments.visibles.creatures.addVisiblesTitle(creature);
         synchronized (creatures) {
             creatures.put(id, creature);
         }
@@ -132,10 +132,10 @@ public class Visibles {
      * It means that the player now know about this resource.
      * 
      * @param args
-     * @param panels
+     * @param fragments
      * @param behaviours
      */
-    public void addResource(String[] args, Panels panels, Behaviours behaviours) {
+    public void addResource(String[] args, Fragments fragments, Behaviours behaviours) {
         int id = Integer.parseInt(args[2]);
         String name = args[3];
         var type = ResourceTypes.resorceTypes.get(name);
@@ -144,8 +144,8 @@ public class Visibles {
 
         Resource resource = new Resource(id, type, mass, requirements);
 
-        if(panels.visibles.resources != null)
-            panels.visibles.resources.addVisiblesTitle(resource);
+        if(fragments.visibles.resources != null)
+            fragments.visibles.resources.addVisiblesTitle(resource);
 
         synchronized (resources) {
             resources.put(id, resource);
@@ -161,22 +161,22 @@ public class Visibles {
      * should not know about the item anymore.
      * 
      * @param args
-     * @param panels
+     * @param fragments
      */
-    public void removeItem(String[] args, Panels panels) {
+    public void removeItem(String[] args, Fragments fragments) {
         int id = Integer.parseInt(args[2]);
         if (items.containsKey(id)) {
             var item = items.get(id);
 
             items.remove(item.getNumId());
 
-            panels.visibles.items.removeVisible(item);
+            fragments.visibles.items.removeVisible(item);
 
             synchronized (PlayableCreature.allIngredients){
                 PlayableCreature.allIngredients.remove(item);
             }
 
-            BehavioursFragment.update(panels.stats.behaviours);
+            BehavioursFragment.update(fragments.stats.behaviours);
         }
     }
 
@@ -185,12 +185,12 @@ public class Visibles {
      * should not know about the creature anymore.
      * 
      * @param args
-     * @param panels
+     * @param fragments
      */
-    public void removeCreature(String[] args, Panels panels) {
+    public void removeCreature(String[] args, Fragments fragments) {
         int id = Integer.parseInt(args[2]);
         if (creatures.containsKey(id)) {
-            panels.visibles.creatures.removeVisible(creatures.get(id));
+            fragments.visibles.creatures.removeVisible(creatures.get(id));
         }
         synchronized (creatures){
             creatures.remove(id);
@@ -202,12 +202,12 @@ public class Visibles {
      * should not know about the resource anymore.
      * 
      * @param args
-     * @param panels
+     * @param fragments
      */
-    public void removeResource(String[] args, Panels panels) {
+    public void removeResource(String[] args, Fragments fragments) {
         int id = Integer.parseInt(args[2]);
         if (resources.containsKey(id)) {
-            panels.visibles.resources.removeVisible(resources.get(id));
+            fragments.visibles.resources.removeVisible(resources.get(id));
         }
         synchronized (resources) {
             resources.remove(id);
@@ -238,12 +238,12 @@ public class Visibles {
         }
     }
 
-    public void removePlace(Place place, Panels panels) {
+    public void removePlace(Place place, Fragments fragments) {
         synchronized (places) {
             places.remove(place);
         }
 
-        panels.surroundingPlaces.updateRemovePlace(place);
+        fragments.surroundingPlaces.updateRemovePlace(place);
 
         synchronized (PlayableCreature.allIngredients){
             PlayableCreature.allIngredients.remove(place);
@@ -255,7 +255,7 @@ public class Visibles {
 /*
  TODO: FATAL EXCEPTION: Thread-5
                                                                                                     Process: com.example.myapplication, PID: 20050
-                                                                                                    java.lang.NullPointerException: Attempt to read from field 'com.example.world.game.visibles.VisiblesFragment com.example.world.game.Panels.visibles' on a null object reference in method 'void com.example.world.game.visibles.Visibles.addResource(java.lang.String[], com.example.world.game.Panels, com.example.world.game.behaviours.Behaviours)'
+                                                                                                    java.lang.NullPointerException: Attempt to read from field 'com.example.world.game.visibles.VisiblesFragment com.example.world.game.Fragments.visibles' on a null object reference in method 'void com.example.world.game.visibles.Visibles.addResource(java.lang.String[], com.example.world.game.Fragments, com.example.world.game.behaviours.Behaviours)'
                                                                                                     	at com.example.world.game.visibles.Visibles.addResource(Visibles.java:139)
                                                                                                     	at com.example.world.game.client.chatListener.ChatListener.listenSurrounding(ChatListener.java:56)
                                                                                                     	at com.example.world.game.client.chatListener.ChatListener.listenBase(ChatListener.java:48)

@@ -14,10 +14,10 @@ public class Weather {
     private int cloudsIndex = 0;
     private int weather = 0;
     private NamePartOfDay partOfDay = NamePartOfDay.unknown;
-    private WeatherPanel panel;
+    private WeatherFragment fragment;
 
     public void setWeatherView(View view) {
-        this.panel = new WeatherPanel(view);
+        this.fragment = new WeatherFragment(view);
     }
 
     public enum NamePartOfDay {
@@ -104,13 +104,13 @@ public class Weather {
     public void setClouds(String[] args) {
         cloudsIndex = Integer.parseInt(args[2]);
         Cloud cloud = cloudTypes[cloudsIndex];
-        if (panel != null)
-            panel.setClouds(cloud);
+        if (fragment != null)
+            fragment.setClouds(cloud);
     }
 
     /**
      * This changes weather in the current context.
-     * All panels are updated according the new
+     * All fragments are updated according the new
      * weather type.
      * 
      * @param args is the message from the server.
@@ -119,13 +119,13 @@ public class Weather {
         weather = Integer.parseInt(args[2]);
         String weatherTextDescription = weatherNames[weather];
         WeatherType type = WeatherType.values()[weather];
-        if (panel != null)
-            panel.setWeather(weatherTextDescription, type);
+        if (fragment != null)
+            fragment.setWeather(weatherTextDescription, type);
     }
 
     /**
      * This changes weather in the current context.
-     * All panels are updated according the new
+     * All fragments are updated according the new
      * weather type.
      * 
      * @param args is the message from the server.
@@ -136,11 +136,11 @@ public class Weather {
         if (Logs.WEATHER_FILTER)
             Log.d(TAG, "setPartOfDay: " + partOfDay.name());
 
-        if (panel != null)
-            panel.setPartOfDay(partsOfDay.get(partOfDay));
+        if (fragment != null)
+            fragment.setPartOfDay(partsOfDay.get(partOfDay));
     }
 
-    public WeatherPanel getPanel() {
-        return panel;
+    public WeatherFragment getFragment() {
+        return fragment;
     }
 }

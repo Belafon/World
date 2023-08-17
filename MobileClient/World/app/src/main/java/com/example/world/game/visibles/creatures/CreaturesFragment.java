@@ -48,7 +48,7 @@ import com.example.world.game.visibles.resources.ResourceInfoFragment;
     }
 
     /**
-     * Changes the concrete panel with detailed info about
+     * Changes the concrete fragment with detailed info about
      * one creature,
      * 
      * @param visiblesFragment

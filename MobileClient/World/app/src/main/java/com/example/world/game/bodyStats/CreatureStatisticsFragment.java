@@ -19,8 +19,8 @@ import java.lang.reflect.Array;
 import com.example.world.R;
 import com.example.world.Screen;
 
-public class CreatureStatisticsPanel extends Fragment {
-    public CreatureStatisticsPanel(BodyStats stats) {
+public class CreatureStatisticsFragment extends Fragment {
+    public CreatureStatisticsFragment(BodyStats stats) {
         this.stats = stats;
     }
 
@@ -35,7 +35,7 @@ public class CreatureStatisticsPanel extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_creature_statistics_panel, container, false);
+        View view = inflater.inflate(R.layout.fragment_creature_statistics_fragment, container, false);
 
         // Find the actual and ability list views in the layout
         actualList = view.findViewById(R.id.actual_list);

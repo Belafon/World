@@ -9,10 +9,10 @@ import java.util.Set;
 
 import com.example.world.game.behaviours.BehavioursRequirement;
 import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
-import com.example.world.game.maps.playersPlacePanels.PlaceInfoFragment;
-import com.example.world.game.maps.playersPlacePanels.PlacePanel;
-import com.example.world.game.maps.playersPlacePanels.PlayersPlaceEffect;
-import com.example.world.game.maps.playersPlacePanels.TypePlace;
+import com.example.world.game.maps.playersPlaceFragments.PlaceInfoFragment;
+import com.example.world.game.maps.playersPlaceFragments.PlaceFragment;
+import com.example.world.game.maps.playersPlaceFragments.PlayersPlaceEffect;
+import com.example.world.game.maps.playersPlaceFragments.TypePlace;
 
 public class Place extends BehavioursPossibleIngredient {
     public static final Place UNKNOWN = new Place("UnboundedPlace|unknown$" + Integer.MIN_VALUE,
@@ -36,8 +36,8 @@ public class Place extends BehavioursPossibleIngredient {
 
     @Override
     protected String getName() {
-        if (this instanceof PlacePanel panel)
-            return typePlace.name + " [" + panel.positionX + ";" + panel.positionY + "]";
+        if (this instanceof PlaceFragment fragment)
+            return typePlace.name + " [" + fragment.positionX + ";" + fragment.positionY + "]";
         return typePlace.name;
     }
 
@@ -55,7 +55,7 @@ public class Place extends BehavioursPossibleIngredient {
      * @return a fragment with all detailed informations about the place.
      */
     public PlaceInfoFragment getInfoFragment(Fragment lastFragment, int fragmentContainerId) {
-        if(this instanceof PlacePanel panel)
+        if(this instanceof PlaceFragment fragment)
             return new PlaceInfoFragment(lastFragment, fragmentContainerId, typePlace.name, typePlace.description, placeEffects, this);
         
         return new PlaceInfoFragment(lastFragment, fragmentContainerId, typePlace.name, typePlace.description, placeEffects, this);

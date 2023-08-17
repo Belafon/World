@@ -11,7 +11,7 @@ import com.example.world.game.client.chatListener.ChatListener;
 import com.example.world.gameActivity.GameActivity;
 import com.example.world.menuScreen.MenuActivity;
 import com.example.world.Screen;
-import com.example.world.game.Panels;
+import com.example.world.game.Fragments;
 import com.example.world.game.Stats;
 
 import java.io.BufferedReader;
@@ -40,7 +40,7 @@ public class Client {
     public static volatile int actualGameId = -1;
 
     public static Stats stats = Game.stats;
-    public static Panels fragments;
+    public static Fragments fragments;
 
     public static final MessageSender sender = new MessageSender();
     public static final ChatListener chatListener = new ChatListener();
@@ -161,7 +161,7 @@ public class Client {
         chatListener.listen(value);
     }
 
-    public static void setFragments(Panels newFragments) {
+    public static void setFragments(Fragments newFragments) {
         fragments = newFragments;
     }
 }

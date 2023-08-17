@@ -45,26 +45,26 @@ public class MainMenuFragment extends Fragment {
     }
 
     private void onVisibles() {
-        gameActivity.openFragment(gameActivity.game.panels.visibles);
+        gameActivity.openFragment(gameActivity.game.fragments.visibles);
     }
 
     public void onCharacter() {
-        gameActivity.openFragment(gameActivity.game.panels.bodyStatistics);
+        gameActivity.openFragment(gameActivity.game.fragments.bodyStatistics);
     }
 
     public void onInventory() {
-        gameActivity.openFragment(gameActivity.game.panels.inventory);
+        gameActivity.openFragment(gameActivity.game.fragments.inventory);
     }
 
     public void onBehaviour() {
-        gameActivity.openFragment(gameActivity.game.panels.behaviours);
+        gameActivity.openFragment(gameActivity.game.fragments.behaviours);
     }
 
     public void onMap() {
-        gameActivity.openFragment(gameActivity.game.panels.surroundingPlaces);
+        gameActivity.openFragment(gameActivity.game.fragments.surroundingPlaces);
     }
 
     public void onView() {
-        gameActivity.openFragment(gameActivity.game.panels.view);
+        gameActivity.openFragment(gameActivity.game.fragments.view);
     }
 }

@@ -15,7 +15,7 @@ public abstract class Visible extends BehavioursPossibleIngredient {
 
     /**
      * @return method that should be called
-     * when a title panel in list of visibles
+     * when a title fragment in list of visibles
      * is clicked.
      */
     public abstract Runnable getOnTitleClick();

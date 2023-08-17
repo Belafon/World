@@ -2,13 +2,7 @@ package com.example.world.game.maps;
 
 import android.graphics.BlendMode;
 import android.graphics.BlendModeColorFilter;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,20 +10,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
-
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-
 import com.example.world.AbstractActivity;
-import com.example.world.R;
-import com.example.world.game.maps.playersPlacePanels.PlaceInfoFragment;
-import com.example.world.game.maps.playersPlacePanels.PlacePanel;
+import com.example.world.game.maps.playersPlaceFragments.PlaceInfoFragment;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+
+
 
 public class SurroundingPlacesFragment extends Fragment {
     private static final int SIZE_OF_GAP_IN_PIXELS = 15;
@@ -76,14 +62,14 @@ public class SurroundingPlacesFragment extends Fragment {
                 placeButton.setLayoutParams(layoutParams);
 
                 int color;
-                if (map.getPlacePanel(x, y) == null) {
+                if (map.getPlaceFragment(x, y) == null) {
                     color = Place.UNKNOWN.typePlace.backgroundColor;
                     placeButton.setBackgroundColor(color);
                     placeButton.setOnClickListener(new PlaceButtonClickListener(x, y, Place.UNKNOWN, this));
                 } else {
-                    color = this.map.getPlacePanel(x, y).typePlace.backgroundColor;
+                    color = this.map.getPlaceFragment(x, y).typePlace.backgroundColor;
                     placeButton.setBackgroundColor(color);
-                    placeButton.setOnClickListener(new PlaceButtonClickListener(x, y, map.getPlacePanel(x, y), this));
+                    placeButton.setOnClickListener(new PlaceButtonClickListener(x, y, map.getPlaceFragment(x, y), this));
                 }
 
                 if(x == SurroundingMap.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS / 2

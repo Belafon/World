@@ -19,8 +19,8 @@ public class CloudsColorViewTransitions {
 
     private Thread currentWorkThread;
     private Set<ColorViewTransition> colorViewTransitions;
-    private final WeatherPanel.CurrentFilterColor currentFilterColor;
-    public CloudsColorViewTransitions(Set<ColorViewTransition> colorViewTransitions, WeatherPanel.CurrentFilterColor currentFilterColor){
+    private final WeatherFragment.CurrentFilterColor currentFilterColor;
+    public CloudsColorViewTransitions(Set<ColorViewTransition> colorViewTransitions, WeatherFragment.CurrentFilterColor currentFilterColor){
         this.currentFilterColor = currentFilterColor;
         this.colorViewTransitions = colorViewTransitions;
         new Thread(() -> {

@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.example.world.AbstractActivity;
-import com.example.world.game.Panels;
+import com.example.world.game.Fragments;
 import com.example.world.game.Stats;
 import com.example.world.game.behaviours.Behaviour.BehaviourBuilder;
 
@@ -14,12 +14,12 @@ public class Behaviours {
     public final Map<String, Behaviour> allBehaviors = new Hashtable<>();
     public final Map<String, BehavioursRequirement> allRequirements = new Hashtable<>();
     public final Set<Behaviour> feasibles = new HashSet<>();
-    public BehavioursFragment listPanel;
+    public BehavioursFragment listFragment;
     private Behaviour currentBehaviour = null;
 
     public BehavioursFragment getNewBehaviourListFragment(int fragmentContainerId) {
-        listPanel = new BehavioursFragment(fragmentContainerId, feasibles);
-        return listPanel;
+        listFragment = new BehavioursFragment(fragmentContainerId, feasibles);
+        return listFragment;
     }
 
     public void addNewFeasibleBehaviour(String behavioursName) {
@@ -28,9 +28,9 @@ public class Behaviours {
             throw new IllegalArgumentException(
                     "Behaviours: addNewFeasibleBehaviour: behaviour name is unknown: " + behavioursName);
         feasibles.add(behav);
-        if(listPanel != null)
+        if(listFragment != null)
             AbstractActivity.getActualActivity().runOnUiThread(() -> {
-                listPanel.addItem(behav);
+                listFragment.addItem(behav);
             });
     }
 
@@ -41,9 +41,9 @@ public class Behaviours {
                     "Behaviours: removeFeasibleBehaviour: behaviour name is unknown: " + behavioursName);
         feasibles.remove(behav);
 
-        if(listPanel != null)
+        if(listFragment != null)
             AbstractActivity.getActualActivity().runOnUiThread(() -> {
-                listPanel.removeItem(behav);
+                listFragment.removeItem(behav);
             });
     }
 
@@ -79,7 +79,7 @@ public class Behaviours {
         allRequirements.put(idName, new BehavioursRequirement(idName, name));
     }
 
-    public void doBehaviour(String[] args, Stats stats, Panels panels) {
+    public void doBehaviour(String[] args, Stats stats, Fragments fragments) {
         if (currentBehaviour != null)
             currentBehaviour.setDuration(-1);
         if (args[2].equals("null")) {

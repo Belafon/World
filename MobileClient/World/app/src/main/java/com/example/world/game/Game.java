@@ -1,25 +1,25 @@
 package com.example.world.game;
 
+import com.example.world.client.Client;
+import com.example.world.game.visibles.creatures.PlayableCreature;
+import com.example.world.gameActivity.GameActivity;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.example.world.client.Client;
-import com.example.world.gameActivity.GameActivity;
-import com.example.world.game.visibles.creatures.PlayableCreature;
 
 public class Game {
     private PlayableCreature currenCreature = null;
     private Set<PlayableCreature> playableCreatures = new HashSet<>();
     public static final Stats stats = new Stats();
-    public final Panels panels;
+    public final Fragments fragments;
     public final GameActivity gameActivity;
 
     public Game(GameActivity gameActivity) {
         this.gameActivity = gameActivity;
 
-        panels = new Panels(stats, gameActivity);
-        Client.setFragments(panels);
-        Client.chatListener.setFragments(panels);
+        fragments = new Fragments(stats, gameActivity);
+        Client.setFragments(fragments);
+        Client.chatListener.setFragments(fragments);
     }
 
     public void addNewPlayableCreature(PlayableCreature creature) {

@@ -87,7 +87,7 @@ public class BehavioursExecutorFragment extends Fragment {
         execute.setEnabled(true);
         execute.setOnClickListener((View v) -> executeBehaviour(behaviour));
 
-        setRequirementsPanel(behaviour);
+        setRequirementsFragment(behaviour);
 
         return rootView;
     }
@@ -124,7 +124,7 @@ public class BehavioursExecutorFragment extends Fragment {
         execute.setEnabled(true);
         execute.setOnClickListener((View view) -> executeBehaviour(behaviour));
 
-        setRequirementsPanel(behaviour);
+        setRequirementsFragment(behaviour);
     }
 
     private void executeBehaviour(Behaviour behaviour) {
@@ -149,7 +149,7 @@ public class BehavioursExecutorFragment extends Fragment {
     public Map<Behaviour.BehavioursRequirementDetail, RequirementChooser> requiremntsChoosers = new HashMap<>();
     private Set<BehavioursPossibleIngredient> availableIngredients = new HashSet<>();
 
-    private void setRequirementsPanel(Behaviour behaviour) {
+    private void setRequirementsFragment(Behaviour behaviour) {
         Set<BehavioursPossibleIngredient> availableIngredients;
         synchronized (PlayableCreature.allIngredients){
             availableIngredients = new HashSet<>(PlayableCreature.allIngredients);
