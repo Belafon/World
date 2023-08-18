@@ -1,12 +1,12 @@
-package com.example.world.game;
+package com.belafon.world.mobileClient.game;
 
-import com.example.world.game.behaviours.BehavioursFragment;
-import com.example.world.game.bodyStats.CreatureStatisticsFragment;
-import com.example.world.game.inventory.fragments.InventoryFragment;
-import com.example.world.game.maps.SurroundingPlacesFragment;
-import com.example.world.game.visibles.VisiblesFragment;
-import com.example.world.gameActivity.GameActivity;
-import com.example.world.gameActivity.ViewFragment;
+import com.belafon.world.mobileClient.game.behaviours.BehavioursFragment;
+import com.belafon.world.mobileClient.game.bodyStats.CreatureStatisticsFragment;
+import com.belafon.world.mobileClient.game.inventory.fragments.InventoryFragment;
+import com.belafon.world.mobileClient.game.maps.SurroundingPlacesFragment;
+import com.belafon.world.mobileClient.game.visibles.VisiblesFragment;
+import com.belafon.world.mobileClient.gameActivity.GameActivity;
+import com.belafon.world.mobileClient.gameActivity.ViewFragment;
 
 public class Fragments {
     public final CreatureStatisticsFragment bodyStatistics;

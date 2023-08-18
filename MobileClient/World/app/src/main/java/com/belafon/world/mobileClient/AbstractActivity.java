@@ -1,4 +1,4 @@
-package com.example.world;
+package com.belafon.world.mobileClient;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;

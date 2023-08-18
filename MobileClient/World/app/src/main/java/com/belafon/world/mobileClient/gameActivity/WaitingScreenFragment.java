@@ -1,4 +1,4 @@
-package com.example.world.gameActivity;
+package com.belafon.world.mobileClient.gameActivity;
 
 import android.graphics.Matrix;
 import android.os.Bundle;
@@ -12,9 +12,9 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.world.AbstractActivity;
-import com.example.world.R;
-import com.example.world.menuScreen.MenuActivity;
+import com.belafon.world.mobileClient.AbstractActivity;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.menuScreen.MenuActivity;
 
 public class WaitingScreenFragment extends Fragment {
     private static final String TAG = "WaitingScreenFragment";

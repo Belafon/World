@@ -1,4 +1,4 @@
-package com.example.world.game.behaviours;
+package com.belafon.world.mobileClient.game.behaviours;
 
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -18,8 +18,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.world.R;
-import com.example.world.Screen;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.Screen;
 
 import java.util.HashMap;
 import java.util.HashSet;

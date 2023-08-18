@@ -1,4 +1,4 @@
-package com.example.world.game.maps.playersPlaceFragments;
+package com.belafon.world.mobileClient.game.maps.playersPlaceFragments;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -17,11 +17,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.world.R;
-import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.IPossibleBehavioursFragment;
-import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.ListOfBehavioursForSetOfIngredients;
-import com.example.world.game.maps.Place;
-import com.example.world.game.maps.SurroundingPlacesFragment;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.game.behaviours.fragmentOfBehavioursListForAIngredient.IPossibleBehavioursFragment;
+import com.belafon.world.mobileClient.game.behaviours.fragmentOfBehavioursListForAIngredient.ListOfBehavioursForSetOfIngredients;
+import com.belafon.world.mobileClient.game.maps.Place;
+import com.belafon.world.mobileClient.game.maps.SurroundingPlacesFragment;
 
 import java.util.List;
 

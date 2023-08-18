@@ -1,8 +1,8 @@
-package com.example.world.game.maps.playersPlaceFragments;
+package com.belafon.world.mobileClient.game.maps.playersPlaceFragments;
 
-import com.example.world.game.behaviours.BehavioursRequirement;
-import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
-import com.example.world.game.maps.Place;
+import com.belafon.world.mobileClient.game.behaviours.BehavioursRequirement;
+import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.belafon.world.mobileClient.game.maps.Place;
 
 import java.util.List;
 import java.util.Set;

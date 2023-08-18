@@ -1,4 +1,4 @@
-package com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient;
+package com.belafon.world.mobileClient.game.behaviours.fragmentOfBehavioursListForAIngredient;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,12 +9,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.world.R;
-import com.example.world.game.Game;
-import com.example.world.game.behaviours.Behaviour;
-import com.example.world.game.behaviours.Behaviours;
-import com.example.world.game.behaviours.BehavioursRequirement;
-import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.game.Game;
+import com.belafon.world.mobileClient.game.behaviours.Behaviour;
+import com.belafon.world.mobileClient.game.behaviours.Behaviours;
+import com.belafon.world.mobileClient.game.behaviours.BehavioursRequirement;
+import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 
 import java.util.ArrayList;
 import java.util.Collections;

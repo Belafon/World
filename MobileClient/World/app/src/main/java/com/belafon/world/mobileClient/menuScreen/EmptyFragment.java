@@ -1,4 +1,4 @@
-package com.example.world.menuScreen;
+package com.belafon.world.mobileClient.menuScreen;
 
 import android.os.Bundle;
 
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.world.R;
+import com.belafon.world.mobileClient.R;
 
 public class EmptyFragment extends Fragment {
     public EmptyFragment() {

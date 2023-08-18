@@ -1,11 +1,11 @@
-package com.example.world.game.visibles;
+package com.belafon.world.mobileClient.game.visibles;
 
 import android.media.UnsupportedSchemeException;
 
 import java.util.Set;
 
-import com.example.world.game.behaviours.BehavioursRequirement;
-import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.belafon.world.mobileClient.game.behaviours.BehavioursRequirement;
+import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 
 public class TypeOfResource extends BehavioursPossibleIngredient {
     public final String name;

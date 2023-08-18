@@ -1,4 +1,4 @@
-package com.example.world.game.visibles.resources;
+package com.belafon.world.mobileClient.game.visibles.resources;
 
 import java.util.Hashtable;
 import java.util.Map;

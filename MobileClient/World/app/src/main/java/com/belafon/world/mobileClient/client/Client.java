@@ -1,18 +1,18 @@
-package com.example.world.client;
+package com.belafon.world.mobileClient.client;
 
 import android.util.Log;
 
-import com.example.world.AbstractActivity;
-import com.example.world.dataSafe.DataLibrary;
-import com.example.world.MainActivity;
-import com.example.world.game.Game;
-import com.example.world.game.client.MessageSender;
-import com.example.world.game.client.chatListener.ChatListener;
-import com.example.world.gameActivity.GameActivity;
-import com.example.world.menuScreen.MenuActivity;
-import com.example.world.Screen;
-import com.example.world.game.Fragments;
-import com.example.world.game.Stats;
+import com.belafon.world.mobileClient.AbstractActivity;
+import com.belafon.world.mobileClient.dataSafe.DataLibrary;
+import com.belafon.world.mobileClient.MainActivity;
+import com.belafon.world.mobileClient.game.Game;
+import com.belafon.world.mobileClient.game.client.MessageSender;
+import com.belafon.world.mobileClient.game.client.chatListener.ChatListener;
+import com.belafon.world.mobileClient.gameActivity.GameActivity;
+import com.belafon.world.mobileClient.menuScreen.MenuActivity;
+import com.belafon.world.mobileClient.Screen;
+import com.belafon.world.mobileClient.game.Fragments;
+import com.belafon.world.mobileClient.game.Stats;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.example.world.menuScreen;
+package com.belafon.world.mobileClient.menuScreen;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.world.R;
+import com.belafon.world.mobileClient.R;
 
 public class ConnectToServerFragment extends Fragment {
     @Override

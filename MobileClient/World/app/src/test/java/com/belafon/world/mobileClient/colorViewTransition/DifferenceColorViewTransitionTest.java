@@ -1,4 +1,4 @@
-package com.example.world.colorViewTransition;
+package com.belafon.world.mobileClient.colorViewTransition;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -7,9 +7,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import com.example.world.game.maps.weather.ColorViewTransition.Color;
-import com.example.world.game.maps.weather.DifferenceColorViewTransition;
-import com.example.world.logs.Logs;
+import com.belafon.world.mobileClient.game.maps.weather.ColorViewTransition.Color;
+import com.belafon.world.mobileClient.game.maps.weather.DifferenceColorViewTransition;
+import com.belafon.world.mobileClient.logs.Logs;
 
 public class DifferenceColorViewTransitionTest {
 

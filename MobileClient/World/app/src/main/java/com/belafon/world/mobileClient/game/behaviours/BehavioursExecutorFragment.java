@@ -1,4 +1,4 @@
-package com.example.world.game.behaviours;
+package com.belafon.world.mobileClient.game.behaviours;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,11 +20,11 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.world.AbstractActivity;
-import com.example.world.R;
-import com.example.world.Screen;
-import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
-import com.example.world.game.visibles.creatures.PlayableCreature;
+import com.belafon.world.mobileClient.AbstractActivity;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.Screen;
+import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.belafon.world.mobileClient.game.visibles.creatures.PlayableCreature;
 
 import java.util.ArrayList;
 import java.util.HashMap;

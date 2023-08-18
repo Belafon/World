@@ -1,4 +1,4 @@
-package com.example.world.game.bodyStats;
+package com.belafon.world.mobileClient.game.bodyStats;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,8 +16,8 @@ import androidx.fragment.app.Fragment;
 
 import java.lang.reflect.Array;
 
-import com.example.world.R;
-import com.example.world.Screen;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.Screen;
 
 public class CreatureStatisticsFragment extends Fragment {
     public CreatureStatisticsFragment(BodyStats stats) {

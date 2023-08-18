@@ -1,4 +1,4 @@
-package com.example.world.game.bodyStats;
+package com.belafon.world.mobileClient.game.bodyStats;
 
 import android.app.Activity;
 import android.content.Context;

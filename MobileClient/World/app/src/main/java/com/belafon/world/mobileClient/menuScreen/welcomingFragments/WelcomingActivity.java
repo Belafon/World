@@ -1,4 +1,4 @@
-package com.example.world.menuScreen.welcomingFragments;
+package com.belafon.world.mobileClient.menuScreen.welcomingFragments;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -12,12 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.world.AbstractActivity;
-import com.example.world.client.Client;
-import com.example.world.MainActivity;
-import com.example.world.menuScreen.MenuActivity;
-import com.example.world.R;
-import com.example.world.Screen;
+import com.belafon.world.mobileClient.AbstractActivity;
+import com.belafon.world.mobileClient.client.Client;
+import com.belafon.world.mobileClient.MainActivity;
+import com.belafon.world.mobileClient.menuScreen.MenuActivity;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.Screen;
 
 public class WelcomingActivity extends AbstractActivity {
     private static final String TAG = "WelcomingActivity";

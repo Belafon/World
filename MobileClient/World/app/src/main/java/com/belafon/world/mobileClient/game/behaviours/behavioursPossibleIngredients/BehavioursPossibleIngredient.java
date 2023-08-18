@@ -1,9 +1,9 @@
-package com.example.world.game.behaviours.behavioursPossibleIngredients;
+package com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients;
 
 import java.util.Collections;
 import java.util.Set;
 
-import com.example.world.game.behaviours.BehavioursRequirement;
+import com.belafon.world.mobileClient.game.behaviours.BehavioursRequirement;
 
 public abstract class BehavioursPossibleIngredient implements Comparable<BehavioursPossibleIngredient>{
     public final Set<BehavioursRequirement> requirements;

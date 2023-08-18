@@ -1,14 +1,14 @@
-package com.example.world.game.behaviours;
+package com.belafon.world.mobileClient.game.behaviours;
 
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.Set;
 
-import com.example.world.AbstractActivity;
-import com.example.world.game.Fragments;
-import com.example.world.game.Stats;
-import com.example.world.game.behaviours.Behaviour.BehaviourBuilder;
+import com.belafon.world.mobileClient.AbstractActivity;
+import com.belafon.world.mobileClient.game.Fragments;
+import com.belafon.world.mobileClient.game.Stats;
+import com.belafon.world.mobileClient.game.behaviours.Behaviour.BehaviourBuilder;
 
 public class Behaviours {
     public final Map<String, Behaviour> allBehaviors = new Hashtable<>();

@@ -1,6 +1,6 @@
-package com.example.world.game.maps.weather;
+package com.belafon.world.mobileClient.game.maps.weather;
 
-import com.example.world.game.maps.weather.ColorViewTransition.Color;
+import com.belafon.world.mobileClient.game.maps.weather.ColorViewTransition.Color;
 
 public class Cloud {
     public final Color finalColor;

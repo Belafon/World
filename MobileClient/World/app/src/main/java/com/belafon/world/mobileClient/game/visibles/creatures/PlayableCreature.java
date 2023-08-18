@@ -1,11 +1,11 @@
-package com.example.world.game.visibles.creatures;
+package com.belafon.world.mobileClient.game.visibles.creatures;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import com.example.world.game.Stats;
-import com.example.world.game.behaviours.BehavioursRequirement;
-import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.belafon.world.mobileClient.game.Stats;
+import com.belafon.world.mobileClient.game.behaviours.BehavioursRequirement;
+import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 
 public class PlayableCreature extends Creature {
     public static final Set<BehavioursPossibleIngredient> allIngredients = new HashSet<>();

@@ -1,15 +1,15 @@
-package com.example.world.game.maps;
+package com.belafon.world.mobileClient.game.maps;
 
 import androidx.fragment.app.Fragment;
-import com.example.world.AbstractActivity;
-import com.example.world.game.Fragments;
-import com.example.world.game.Stats;
-import com.example.world.game.behaviours.BehavioursRequirement;
-import com.example.world.game.maps.playersPlaceFragments.PlacePanel;
-import com.example.world.game.maps.playersPlaceFragments.PlayersPlaceEffect;
-import com.example.world.game.maps.playersPlaceFragments.TypePlace;
-import com.example.world.game.maps.weather.Weather;
-import com.example.world.gameActivity.GameActivity;
+import com.belafon.world.mobileClient.AbstractActivity;
+import com.belafon.world.mobileClient.game.Fragments;
+import com.belafon.world.mobileClient.game.Stats;
+import com.belafon.world.mobileClient.game.behaviours.BehavioursRequirement;
+import com.belafon.world.mobileClient.game.maps.playersPlaceFragments.PlacePanel;
+import com.belafon.world.mobileClient.game.maps.playersPlaceFragments.PlayersPlaceEffect;
+import com.belafon.world.mobileClient.game.maps.playersPlaceFragments.TypePlace;
+import com.belafon.world.mobileClient.game.maps.weather.Weather;
+import com.belafon.world.mobileClient.gameActivity.GameActivity;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Hashtable;

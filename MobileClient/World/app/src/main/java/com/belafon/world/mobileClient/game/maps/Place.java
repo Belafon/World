@@ -1,4 +1,4 @@
-package com.example.world.game.maps;
+package com.belafon.world.mobileClient.game.maps;
 
 import androidx.fragment.app.Fragment;
 
@@ -7,12 +7,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.example.world.game.behaviours.BehavioursRequirement;
-import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
-import com.example.world.game.maps.playersPlaceFragments.PlaceInfoFragment;
-import com.example.world.game.maps.playersPlaceFragments.PlacePanel;
-import com.example.world.game.maps.playersPlaceFragments.PlayersPlaceEffect;
-import com.example.world.game.maps.playersPlaceFragments.TypePlace;
+import com.belafon.world.mobileClient.game.behaviours.BehavioursRequirement;
+import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.belafon.world.mobileClient.game.maps.playersPlaceFragments.PlaceInfoFragment;
+import com.belafon.world.mobileClient.game.maps.playersPlaceFragments.PlacePanel;
+import com.belafon.world.mobileClient.game.maps.playersPlaceFragments.PlayersPlaceEffect;
+import com.belafon.world.mobileClient.game.maps.playersPlaceFragments.TypePlace;
 
 public class Place extends BehavioursPossibleIngredient {
     public static final Place UNKNOWN = new Place("UnboundedPlace|unknown$" + Integer.MIN_VALUE,

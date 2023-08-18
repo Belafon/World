@@ -1,4 +1,4 @@
-package com.example.world.game.visibles.resources;
+package com.belafon.world.mobileClient.game.visibles.resources;
 
 import android.os.Bundle;
 
@@ -10,11 +10,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.world.R;
-import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.IPossibleBehavioursFragment;
-import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.ListOfBehavioursForSetOfIngredients;
-import com.example.world.game.visibles.VisiblesInfoFragment;
-import com.example.world.game.Game;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.game.behaviours.fragmentOfBehavioursListForAIngredient.IPossibleBehavioursFragment;
+import com.belafon.world.mobileClient.game.behaviours.fragmentOfBehavioursListForAIngredient.ListOfBehavioursForSetOfIngredients;
+import com.belafon.world.mobileClient.game.visibles.VisiblesInfoFragment;
+import com.belafon.world.mobileClient.game.Game;
 
 
 public class ResourceInfoFragment extends VisiblesInfoFragment<Resource> implements IPossibleBehavioursFragment {

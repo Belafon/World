@@ -1,9 +1,9 @@
-package com.example.world.gameActivity;
+package com.belafon.world.mobileClient.gameActivity;
 
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.example.world.Screen;
+import com.belafon.world.mobileClient.Screen;
 
 public class SetActivity {
     public static void setGameActivity(GameActivity gameActivity) {

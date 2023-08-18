@@ -1,12 +1,12 @@
-package com.example.world;
+package com.belafon.world.mobileClient;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.world.dataSafe.DataLibrary;
-import com.example.world.menuScreen.MenuActivity;
-import com.example.world.menuScreen.welcomingFragments.WelcomingActivity;
+import com.belafon.world.mobileClient.dataSafe.DataLibrary;
+import com.belafon.world.mobileClient.menuScreen.MenuActivity;
+import com.belafon.world.mobileClient.menuScreen.welcomingFragments.WelcomingActivity;
 
 public class MainActivity extends AbstractActivity {
     private static final String TAG = "MainActivity";

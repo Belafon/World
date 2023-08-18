@@ -1,20 +1,20 @@
-package com.example.world.game.visibles;
+package com.belafon.world.mobileClient.game.visibles;
 
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Set;
 
-import com.example.world.game.behaviours.BehavioursFragment;
-import com.example.world.game.visibles.creatures.Creature;
-import com.example.world.game.visibles.creatures.PlayableCreature;
-import com.example.world.game.visibles.items.Item;
-import com.example.world.game.visibles.items.Item.Food;
-import com.example.world.game.visibles.resources.Resource;
-import com.example.world.game.visibles.resources.ResourceTypes;
-import com.example.world.game.Fragments;
-import com.example.world.game.behaviours.Behaviours;
-import com.example.world.game.behaviours.BehavioursRequirement;
-import com.example.world.game.maps.Place;
+import com.belafon.world.mobileClient.game.behaviours.BehavioursFragment;
+import com.belafon.world.mobileClient.game.visibles.creatures.Creature;
+import com.belafon.world.mobileClient.game.visibles.creatures.PlayableCreature;
+import com.belafon.world.mobileClient.game.visibles.items.Item;
+import com.belafon.world.mobileClient.game.visibles.items.Item.Food;
+import com.belafon.world.mobileClient.game.visibles.resources.Resource;
+import com.belafon.world.mobileClient.game.visibles.resources.ResourceTypes;
+import com.belafon.world.mobileClient.game.Fragments;
+import com.belafon.world.mobileClient.game.behaviours.Behaviours;
+import com.belafon.world.mobileClient.game.behaviours.BehavioursRequirement;
+import com.belafon.world.mobileClient.game.maps.Place;
 
 public class Visibles {
     public final Hashtable<Integer, Item> items = new Hashtable<>();
@@ -255,13 +255,13 @@ public class Visibles {
 /*
  TODO: FATAL EXCEPTION: Thread-5
                                                                                                     Process: com.example.myapplication, PID: 20050
-                                                                                                    java.lang.NullPointerException: Attempt to read from field 'com.example.world.game.visibles.VisiblesFragment com.example.world.game.Fragments.visibles' on a null object reference in method 'void com.example.world.game.visibles.Visibles.addResource(java.lang.String[], com.example.world.game.Fragments, com.example.world.game.behaviours.Behaviours)'
-                                                                                                    	at com.example.world.game.visibles.Visibles.addResource(Visibles.java:139)
-                                                                                                    	at com.example.world.game.client.chatListener.ChatListener.listenSurrounding(ChatListener.java:56)
-                                                                                                    	at com.example.world.game.client.chatListener.ChatListener.listenBase(ChatListener.java:48)
-                                                                                                    	at com.example.world.game.client.chatListener.ChatListener.listen(ChatListener.java:28)
-                                                                                                    	at com.example.world.client.Client.decomposeTheString(Client.java:160)
-                                                                                                    	at com.example.world.client.Client$1.makeThreadWorker(Client.java:139)
-                                                                                                    	at com.example.world.client.Client$1.run(Client.java:1
+                                                                                                    java.lang.NullPointerException: Attempt to read from field 'com.belafon.world.mobileClient.game.visibles.VisiblesFragment com.belafon.world.mobileClient.game.Fragments.visibles' on a null object reference in method 'void com.belafon.world.mobileClient.game.visibles.Visibles.addResource(java.lang.String[], com.belafon.world.mobileClient.game.Fragments, com.belafon.world.mobileClient.game.behaviours.Behaviours)'
+                                                                                                    	at com.belafon.world.mobileClient.game.visibles.Visibles.addResource(Visibles.java:139)
+                                                                                                    	at com.belafon.world.mobileClient.game.client.chatListener.ChatListener.listenSurrounding(ChatListener.java:56)
+                                                                                                    	at com.belafon.world.mobileClient.game.client.chatListener.ChatListener.listenBase(ChatListener.java:48)
+                                                                                                    	at com.belafon.world.mobileClient.game.client.chatListener.ChatListener.listen(ChatListener.java:28)
+                                                                                                    	at com.belafon.world.mobileClient.client.Client.decomposeTheString(Client.java:160)
+                                                                                                    	at com.belafon.world.mobileClient.client.Client$1.makeThreadWorker(Client.java:139)
+                                                                                                    	at com.belafon.world.mobileClient.client.Client$1.run(Client.java:1
 */
 

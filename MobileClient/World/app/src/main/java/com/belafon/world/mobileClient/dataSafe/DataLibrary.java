@@ -1,4 +1,4 @@
-package com.example.world.dataSafe;
+package com.belafon.world.mobileClient.dataSafe;
 
 import android.content.Context;
 import android.content.SharedPreferences;

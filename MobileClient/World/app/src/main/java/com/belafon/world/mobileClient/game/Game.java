@@ -1,8 +1,8 @@
-package com.example.world.game;
+package com.belafon.world.mobileClient.game;
 
-import com.example.world.client.Client;
-import com.example.world.game.visibles.creatures.PlayableCreature;
-import com.example.world.gameActivity.GameActivity;
+import com.belafon.world.mobileClient.client.Client;
+import com.belafon.world.mobileClient.game.visibles.creatures.PlayableCreature;
+import com.belafon.world.mobileClient.gameActivity.GameActivity;
 import java.util.HashSet;
 import java.util.Set;
 

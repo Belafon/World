@@ -1,4 +1,4 @@
-package com.example.world.game.visibles.creatures;
+package com.belafon.world.mobileClient.game.visibles.creatures;
 
 import android.os.Bundle;
 
@@ -9,16 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.world.AbstractActivity;
-import com.example.world.R;
-import com.example.world.game.Stats;
-import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
-import com.example.world.game.visibles.Visibles;
-import com.example.world.game.visibles.VisiblesListFragment;
-import com.example.world.game.visibles.items.Item;
-import com.example.world.game.visibles.items.ItemInfoFragment;
-import com.example.world.game.visibles.resources.Resource;
-import com.example.world.game.visibles.resources.ResourceInfoFragment;
+import com.belafon.world.mobileClient.AbstractActivity;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.game.Stats;
+import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.belafon.world.mobileClient.game.visibles.Visibles;
+import com.belafon.world.mobileClient.game.visibles.VisiblesListFragment;
+import com.belafon.world.mobileClient.game.visibles.items.Item;
+import com.belafon.world.mobileClient.game.visibles.items.ItemInfoFragment;
+import com.belafon.world.mobileClient.game.visibles.resources.Resource;
+import com.belafon.world.mobileClient.game.visibles.resources.ResourceInfoFragment;
 
 
 /**

@@ -1,4 +1,4 @@
-package com.example.world.game.client;
+package com.belafon.world.mobileClient.game.client;
 
 public class MessageSender {
 

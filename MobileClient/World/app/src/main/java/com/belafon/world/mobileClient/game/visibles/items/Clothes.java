@@ -1,10 +1,10 @@
-package com.example.world.game.visibles.items;
+package com.belafon.world.mobileClient.game.visibles.items;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import com.example.world.game.behaviours.BehavioursRequirement;
-import com.example.world.game.inventory.ClothesablePartOfBody;
+import com.belafon.world.mobileClient.game.behaviours.BehavioursRequirement;
+import com.belafon.world.mobileClient.game.inventory.ClothesablePartOfBody;
 
 public class Clothes extends Item {
     public final ClothesablePartOfBody partOfBody;

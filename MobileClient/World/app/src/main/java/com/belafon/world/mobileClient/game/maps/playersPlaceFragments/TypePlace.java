@@ -1,4 +1,4 @@
-package com.example.world.game.maps.playersPlaceFragments;
+package com.belafon.world.mobileClient.game.maps.playersPlaceFragments;
 
 import android.graphics.Color;
 

@@ -1,10 +1,10 @@
-package com.example.world.game.client;
+package com.belafon.world.mobileClient.game.client;
 
 import java.util.List;
 
-import com.example.world.client.Client;
-import com.example.world.game.behaviours.Behaviour;
-import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.belafon.world.mobileClient.client.Client;
+import com.belafon.world.mobileClient.game.behaviours.Behaviour;
+import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 
 public class BehavioursMessage {
 

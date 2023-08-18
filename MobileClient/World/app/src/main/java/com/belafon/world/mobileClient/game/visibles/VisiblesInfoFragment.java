@@ -1,4 +1,4 @@
-package com.example.world.game.visibles;
+package com.belafon.world.mobileClient.game.visibles;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 
 public abstract class VisiblesInfoFragment<T extends Visible> extends Fragment {
     private Fragment previousFragment;

@@ -1,4 +1,4 @@
-package com.example.world.game.visibles;
+package com.belafon.world.mobileClient.game.visibles;
 
 import android.os.Bundle;
 
@@ -10,11 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.world.R;
-import com.example.world.game.Stats;
-import com.example.world.game.visibles.creatures.CreaturesFragment;
-import com.example.world.game.visibles.items.ItemFragment;
-import com.example.world.game.visibles.resources.ResourcesFragment;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.game.Stats;
+import com.belafon.world.mobileClient.game.visibles.creatures.CreaturesFragment;
+import com.belafon.world.mobileClient.game.visibles.items.ItemFragment;
+import com.belafon.world.mobileClient.game.visibles.resources.ResourcesFragment;
 
 public class VisiblesFragment extends Fragment {
     public ItemFragment items;

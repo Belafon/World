@@ -1,4 +1,4 @@
-package com.example.world.client;
+package com.belafon.world.mobileClient.client;
 
 import android.util.Log;
 import android.widget.Toast;

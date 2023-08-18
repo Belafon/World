@@ -1,4 +1,4 @@
-package com.example.world.game.visibles;
+package com.belafon.world.mobileClient.game.visibles;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,9 +16,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.world.R;
-import com.example.world.Screen;
-import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.Screen;
+import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 
 import java.util.Hashtable;
 

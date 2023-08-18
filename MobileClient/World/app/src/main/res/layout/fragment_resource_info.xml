@@ -78,7 +78,7 @@
             android:orientation="vertical">
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/behavioursFragmentContainer"
-                android:name="com.example.world.menuScreen.EmptyFragment"
+                android:name="com.belafon.world.mobileClient.menuScreen.EmptyFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>

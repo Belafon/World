@@ -1,12 +1,12 @@
-package com.example.world.game.client.chatListener;
+package com.belafon.world.mobileClient.game.client.chatListener;
 
 import android.util.Log;
 
-import com.example.world.client.Client;
-import com.example.world.game.Game;
-import com.example.world.game.Fragments;
-import com.example.world.game.Stats;
-import com.example.world.gameActivity.WaitingScreenFragment;
+import com.belafon.world.mobileClient.client.Client;
+import com.belafon.world.mobileClient.game.Game;
+import com.belafon.world.mobileClient.game.Fragments;
+import com.belafon.world.mobileClient.game.Stats;
+import com.belafon.world.mobileClient.gameActivity.WaitingScreenFragment;
 
 public class ChatListener {
     private static final String TAG = "ChatListener";

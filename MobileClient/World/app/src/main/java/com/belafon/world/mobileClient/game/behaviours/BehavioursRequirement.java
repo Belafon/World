@@ -1,4 +1,4 @@
-package com.example.world.game.behaviours;
+package com.belafon.world.mobileClient.game.behaviours;
 
 public class BehavioursRequirement {
 

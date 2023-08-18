@@ -1,7 +1,7 @@
-package com.example.world.game.bodyStats;
+package com.belafon.world.mobileClient.game.bodyStats;
 
 
-import com.example.world.game.Fragments;
+import com.belafon.world.mobileClient.game.Fragments;
 
 import java.util.ArrayList;
 import java.util.List;

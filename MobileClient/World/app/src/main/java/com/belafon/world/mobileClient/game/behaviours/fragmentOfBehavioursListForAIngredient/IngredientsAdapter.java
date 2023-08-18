@@ -1,4 +1,4 @@
-package com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient;
+package com.belafon.world.mobileClient.game.behaviours.fragmentOfBehavioursListForAIngredient;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -10,11 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.world.R;
-import com.example.world.Screen;
-import com.example.world.game.behaviours.Behaviour;
-import com.example.world.game.behaviours.BehavioursExecutorFragment;
-import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.Screen;
+import com.belafon.world.mobileClient.game.behaviours.Behaviour;
+import com.belafon.world.mobileClient.game.behaviours.BehavioursExecutorFragment;
+import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 
 import java.util.List;
 

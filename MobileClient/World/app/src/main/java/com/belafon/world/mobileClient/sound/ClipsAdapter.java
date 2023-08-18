@@ -1,4 +1,4 @@
-package com.example.world.sound;
+package com.belafon.world.mobileClient.sound;
 
 import android.content.Context;
 import android.media.MediaPlayer;

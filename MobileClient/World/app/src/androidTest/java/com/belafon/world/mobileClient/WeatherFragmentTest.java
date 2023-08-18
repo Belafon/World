@@ -1,4 +1,4 @@
-package com.example.world;
+package com.belafon.world.mobileClient;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -7,9 +7,9 @@ import android.view.View;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import com.example.world.game.maps.weather.ColorViewTransition;
-import com.example.world.game.maps.weather.DifferenceColorViewTransition;
-import com.example.world.game.maps.weather.WeatherFragment;
+import com.belafon.world.mobileClient.game.maps.weather.ColorViewTransition;
+import com.belafon.world.mobileClient.game.maps.weather.DifferenceColorViewTransition;
+import com.belafon.world.mobileClient.game.maps.weather.WeatherFragment;
 
 import org.junit.Before;
 import org.junit.Test;

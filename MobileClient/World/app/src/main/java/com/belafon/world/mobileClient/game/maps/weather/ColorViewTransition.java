@@ -1,4 +1,4 @@
-package com.example.world.game.maps.weather;
+package com.belafon.world.mobileClient.game.maps.weather;
 
 public abstract class ColorViewTransition {
 

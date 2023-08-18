@@ -1,4 +1,4 @@
-package com.example.world.sound;
+package com.belafon.world.mobileClient.sound;
 
 import android.content.Context;
 import android.media.AudioAttributes;
@@ -7,7 +7,7 @@ import android.media.SoundPool;
 import android.os.Build;
 import android.util.Log;
 
-import com.example.world.AbstractActivity;
+import com.belafon.world.mobileClient.AbstractActivity;
 
 public class Pool {
     private static final String TAG = "Pool";

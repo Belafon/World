@@ -1,4 +1,4 @@
-package com.example.world.game.maps.playersPlaceFragments;
+package com.belafon.world.mobileClient.game.maps.playersPlaceFragments;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -15,9 +15,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.world.R;
-import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.IPossibleBehavioursFragment;
-import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.ListOfBehavioursForSetOfIngredients;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.game.behaviours.fragmentOfBehavioursListForAIngredient.IPossibleBehavioursFragment;
+import com.belafon.world.mobileClient.game.behaviours.fragmentOfBehavioursListForAIngredient.ListOfBehavioursForSetOfIngredients;
 
 public class PlaceEffectInfoFragment extends Fragment implements IPossibleBehavioursFragment {
 

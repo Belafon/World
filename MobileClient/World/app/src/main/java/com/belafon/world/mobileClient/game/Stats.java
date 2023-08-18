@@ -1,10 +1,10 @@
-package com.example.world.game;
+package com.belafon.world.mobileClient.game;
 
-import com.example.world.game.behaviours.Behaviours;
-import com.example.world.game.bodyStats.BodyStats;
-import com.example.world.game.inventory.Inventory;
-import com.example.world.game.maps.PlayersMaps;
-import com.example.world.game.visibles.Visibles;
+import com.belafon.world.mobileClient.game.behaviours.Behaviours;
+import com.belafon.world.mobileClient.game.bodyStats.BodyStats;
+import com.belafon.world.mobileClient.game.inventory.Inventory;
+import com.belafon.world.mobileClient.game.maps.PlayersMaps;
+import com.belafon.world.mobileClient.game.visibles.Visibles;
 
 public class Stats {
     public final BodyStats body = new BodyStats();

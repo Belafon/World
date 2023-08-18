@@ -1,14 +1,14 @@
-package com.example.world.gameActivity;
+package com.belafon.world.mobileClient.gameActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import androidx.fragment.app.Fragment;
-import com.example.world.AbstractActivity;
-import com.example.world.R;
-import com.example.world.game.Game;
-import com.example.world.menuScreen.EmptyFragment;
+import com.belafon.world.mobileClient.AbstractActivity;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.game.Game;
+import com.belafon.world.mobileClient.menuScreen.EmptyFragment;
 
 
 

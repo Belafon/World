@@ -1,10 +1,10 @@
-package com.example.world.game.visibles.items;
+package com.belafon.world.mobileClient.game.visibles.items;
 
 import java.util.Set;
 
-import com.example.world.game.behaviours.BehavioursRequirement;
-import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
-import com.example.world.game.visibles.Visible;
+import com.belafon.world.mobileClient.game.behaviours.BehavioursRequirement;
+import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.belafon.world.mobileClient.game.visibles.Visible;
 
 public class Item extends Visible {
     private int id;

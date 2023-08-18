@@ -1,6 +1,6 @@
-package com.example.world.game.client;
+package com.belafon.world.mobileClient.game.client;
 
-import com.example.world.client.Client;
+import com.belafon.world.mobileClient.client.Client;
 
 public class ServerMessages {
     public void findMatch() {

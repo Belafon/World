@@ -1,12 +1,12 @@
-package com.example.world.game.behaviours;
+package com.belafon.world.mobileClient.game.behaviours;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.example.world.client.Client;
-import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.belafon.world.mobileClient.client.Client;
+import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 
 public class Behaviour {
     public final String messagesName;

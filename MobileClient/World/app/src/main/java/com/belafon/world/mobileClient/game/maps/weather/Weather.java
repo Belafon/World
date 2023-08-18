@@ -1,13 +1,13 @@
-package com.example.world.game.maps.weather;
+package com.belafon.world.mobileClient.game.maps.weather;
 
 import java.util.HashMap;
 
 import android.util.Log;
 import android.view.View;
-import com.example.world.game.maps.weather.ColorViewTransition.Color;
-import com.example.world.logs.Logs;
+import com.belafon.world.mobileClient.game.maps.weather.ColorViewTransition.Color;
+import com.belafon.world.mobileClient.logs.Logs;
 import java.util.ArrayList;
-import com.example.world.game.maps.weather.Cloud;
+import com.belafon.world.mobileClient.game.maps.weather.Cloud;
 
 public class Weather {
     private static final String TAG = "Weather";

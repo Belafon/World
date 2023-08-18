@@ -1,4 +1,4 @@
-package com.example.world.game.visibles.items;
+package com.belafon.world.mobileClient.game.visibles.items;
 
 import android.os.Bundle;
 
@@ -8,13 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.world.AbstractActivity;
-import com.example.world.R;
-import com.example.world.game.Stats;
-import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
-import com.example.world.game.visibles.Visibles;
-import com.example.world.game.visibles.VisiblesListFragment;
-import com.example.world.game.visibles.resources.Resource;
+import com.belafon.world.mobileClient.AbstractActivity;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.game.Stats;
+import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.belafon.world.mobileClient.game.visibles.Visibles;
+import com.belafon.world.mobileClient.game.visibles.VisiblesListFragment;
+import com.belafon.world.mobileClient.game.visibles.resources.Resource;
 
 /**
  * list of visible items

@@ -1,4 +1,4 @@
-package com.example.world.gameActivity;
+package com.belafon.world.mobileClient.gameActivity;
 
 import android.graphics.Matrix;
 import android.os.Bundle;
@@ -13,9 +13,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.world.AbstractActivity;
-import com.example.world.R;
-import com.example.world.menuScreen.MenuActivity;
+import com.belafon.world.mobileClient.AbstractActivity;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.menuScreen.MenuActivity;
 
 public class WaitingScreenForStartingGame extends Fragment {
 

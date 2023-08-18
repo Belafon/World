@@ -1,4 +1,4 @@
-package com.example.world;
+package com.belafon.world.mobileClient;
 
 import android.app.Activity;
 import android.content.Context;

@@ -1,6 +1,6 @@
-package com.example.world.game.maps;
+package com.belafon.world.mobileClient.game.maps;
 
-import com.example.world.game.maps.playersPlaceFragments.PlacePanel;
+import com.belafon.world.mobileClient.game.maps.playersPlaceFragments.PlacePanel;
 
 public class PlayersMap {
     public final int id;

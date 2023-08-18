@@ -1,4 +1,4 @@
-package com.example.world.game.inventory.fragments;
+package com.belafon.world.mobileClient.game.inventory.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,12 +13,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.world.AbstractActivity;
-import com.example.world.R;
-import com.example.world.game.Fragments;
-import com.example.world.game.inventory.Inventory;
-import com.example.world.game.visibles.items.Item;
-import com.example.world.game.visibles.items.ItemInfoFragment;
+import com.belafon.world.mobileClient.AbstractActivity;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.game.Fragments;
+import com.belafon.world.mobileClient.game.inventory.Inventory;
+import com.belafon.world.mobileClient.game.visibles.items.Item;
+import com.belafon.world.mobileClient.game.visibles.items.ItemInfoFragment;
 
 import java.util.ArrayList;
 import java.util.List;

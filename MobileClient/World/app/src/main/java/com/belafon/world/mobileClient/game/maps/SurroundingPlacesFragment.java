@@ -1,4 +1,4 @@
-package com.example.world.game.maps;
+package com.belafon.world.mobileClient.game.maps;
 
 import android.graphics.BlendMode;
 import android.graphics.BlendModeColorFilter;
@@ -11,10 +11,10 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import androidx.fragment.app.Fragment;
-import com.example.world.AbstractActivity;
-import com.example.world.R;
-import com.example.world.game.maps.playersPlaceFragments.PlaceInfoFragment;
-import com.example.world.game.maps.playersPlaceFragments.PlacePanel;
+import com.belafon.world.mobileClient.AbstractActivity;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.game.maps.playersPlaceFragments.PlaceInfoFragment;
+import com.belafon.world.mobileClient.game.maps.playersPlaceFragments.PlacePanel;
 
 
 public class SurroundingPlacesFragment extends Fragment {

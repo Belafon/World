@@ -1,4 +1,4 @@
-package com.example.world.gameActivity;
+package com.belafon.world.mobileClient.gameActivity;
 
 import android.os.Bundle;
 
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import com.example.world.R;
+import com.belafon.world.mobileClient.R;
 
 public class MainMenuFragment extends Fragment {
     private GameActivity gameActivity;

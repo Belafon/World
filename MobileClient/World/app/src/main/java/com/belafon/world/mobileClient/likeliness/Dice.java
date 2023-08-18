@@ -1,4 +1,4 @@
-package com.example.world.likeliness;
+package com.belafon.world.mobileClient.likeliness;
 
 import java.util.Random;
 

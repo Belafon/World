@@ -1,6 +1,6 @@
-package com.example.world.game.inventory.fragments;
+package com.belafon.world.mobileClient.game.inventory.fragments;
 
-import com.example.world.game.visibles.items.Item;
+import com.belafon.world.mobileClient.game.visibles.items.Item;
 
 public interface OnItemClickListener {
     void onItemClick(Item item);

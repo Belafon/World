@@ -1,4 +1,4 @@
-package com.example.world.logs;
+package com.belafon.world.mobileClient.logs;
 
 /**
  * Contains boolean values for logs filtering

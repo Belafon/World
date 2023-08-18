@@ -1,4 +1,4 @@
-package com.example.world.game.visibles.creatures;
+package com.belafon.world.mobileClient.game.visibles.creatures;
 
 import android.os.Bundle;
 
@@ -11,11 +11,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.world.R;
-import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
-import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.IPossibleBehavioursFragment;
-import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.ListOfBehavioursForSetOfIngredients;
-import com.example.world.game.visibles.VisiblesInfoFragment;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.belafon.world.mobileClient.game.behaviours.fragmentOfBehavioursListForAIngredient.IPossibleBehavioursFragment;
+import com.belafon.world.mobileClient.game.behaviours.fragmentOfBehavioursListForAIngredient.ListOfBehavioursForSetOfIngredients;
+import com.belafon.world.mobileClient.game.visibles.VisiblesInfoFragment;
 
 
 public class CreaturesInfoFragment extends VisiblesInfoFragment<Creature> implements IPossibleBehavioursFragment {

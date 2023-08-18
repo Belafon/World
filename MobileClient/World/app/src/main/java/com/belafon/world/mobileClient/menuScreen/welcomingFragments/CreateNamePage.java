@@ -1,4 +1,4 @@
-package com.example.world.menuScreen.welcomingFragments;
+package com.belafon.world.mobileClient.menuScreen.welcomingFragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.world.R;
+import com.belafon.world.mobileClient.R;
 
 public class CreateNamePage extends Fragment {
     @Override

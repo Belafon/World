@@ -18,7 +18,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/creatures"
-        android:name="com.example.world.menuScreen.EmptyFragment"
+        android:name="com.belafon.world.mobileClient.menuScreen.EmptyFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toStartOf="@id/guideline"
@@ -27,7 +27,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/items"
-        android:name="com.example.world.menuScreen.EmptyFragment"
+        android:name="com.belafon.world.mobileClient.menuScreen.EmptyFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toStartOf="@id/resources"
@@ -36,7 +36,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/resources"
-        android:name="com.example.world.menuScreen.EmptyFragment"
+        android:name="com.belafon.world.mobileClient.menuScreen.EmptyFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"

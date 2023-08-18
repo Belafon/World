@@ -1,19 +1,19 @@
-package com.example.world.game.inventory;
+package com.belafon.world.mobileClient.game.inventory;
 
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
 
-import com.example.world.game.Fragments;
-import com.example.world.game.behaviours.Behaviours;
-import com.example.world.game.behaviours.BehavioursFragment;
-import com.example.world.game.behaviours.BehavioursRequirement;
-import com.example.world.game.visibles.Visibles;
-import com.example.world.game.visibles.creatures.PlayableCreature;
-import com.example.world.game.visibles.items.Clothes;
-import com.example.world.game.visibles.items.Item;
-import com.example.world.game.visibles.items.Item.Food;
+import com.belafon.world.mobileClient.game.Fragments;
+import com.belafon.world.mobileClient.game.behaviours.Behaviours;
+import com.belafon.world.mobileClient.game.behaviours.BehavioursFragment;
+import com.belafon.world.mobileClient.game.behaviours.BehavioursRequirement;
+import com.belafon.world.mobileClient.game.visibles.Visibles;
+import com.belafon.world.mobileClient.game.visibles.creatures.PlayableCreature;
+import com.belafon.world.mobileClient.game.visibles.items.Clothes;
+import com.belafon.world.mobileClient.game.visibles.items.Item;
+import com.belafon.world.mobileClient.game.visibles.items.Item.Food;
 
 public class Inventory {
     public final Map<Integer, Item> items = new Hashtable<>();

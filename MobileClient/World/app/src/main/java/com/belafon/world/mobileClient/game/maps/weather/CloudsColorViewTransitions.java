@@ -1,7 +1,7 @@
-package com.example.world.game.maps.weather;
+package com.belafon.world.mobileClient.game.maps.weather;
 
-import com.example.world.game.maps.weather.ColorViewTransition.Color;
-import com.example.world.likeliness.Dice;
+import com.belafon.world.mobileClient.game.maps.weather.ColorViewTransition.Color;
+import com.belafon.world.mobileClient.likeliness.Dice;
 
 import java.util.Set;
 

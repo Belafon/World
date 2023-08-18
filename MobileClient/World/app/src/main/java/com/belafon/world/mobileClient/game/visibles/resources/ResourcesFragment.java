@@ -1,15 +1,15 @@
-package com.example.world.game.visibles.resources;
+package com.belafon.world.mobileClient.game.visibles.resources;
 
 import android.content.res.Resources;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.world.AbstractActivity;
-import com.example.world.game.Stats;
-import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
-import com.example.world.game.visibles.Visibles;
-import com.example.world.game.visibles.VisiblesListFragment;
-import com.example.world.game.visibles.items.Item;
+import com.belafon.world.mobileClient.AbstractActivity;
+import com.belafon.world.mobileClient.game.Stats;
+import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.belafon.world.mobileClient.game.visibles.Visibles;
+import com.belafon.world.mobileClient.game.visibles.VisiblesListFragment;
+import com.belafon.world.mobileClient.game.visibles.items.Item;
 
 public class ResourcesFragment extends VisiblesListFragment<ResourceInfoFragment> {
     public ResourcesFragment(int fragmentContainerId, Visibles visibles, Fragment returnFragment) {

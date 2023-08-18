@@ -1,14 +1,14 @@
-package com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient;
+package com.belafon.world.mobileClient.game.behaviours.fragmentOfBehavioursListForAIngredient;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.world.AbstractActivity;
-import com.example.world.game.behaviours.Behaviours;
-import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
-import com.example.world.game.behaviours.fragmentOfBehavioursListForAIngredient.ListOfBehavioursForSetOfIngredients;
+import com.belafon.world.mobileClient.AbstractActivity;
+import com.belafon.world.mobileClient.game.behaviours.Behaviours;
+import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
+import com.belafon.world.mobileClient.game.behaviours.fragmentOfBehavioursListForAIngredient.ListOfBehavioursForSetOfIngredients;
 
 public interface IPossibleBehavioursFragment {
     public default ListOfBehavioursForSetOfIngredients setPossibleBehavioursFragment(int fragmentContainer, BehavioursPossibleIngredient ingredient){

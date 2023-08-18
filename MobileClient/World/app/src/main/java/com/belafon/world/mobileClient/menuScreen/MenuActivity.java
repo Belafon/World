@@ -1,4 +1,4 @@
-package com.example.world.menuScreen;
+package com.belafon.world.mobileClient.menuScreen;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,14 +8,14 @@ import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.world.AbstractActivity;
-import com.example.world.client.Client;
-import com.example.world.gameActivity.GameActivity;
-import com.example.world.gameActivity.WaitingScreenFragment;
-import com.example.world.menuScreen.welcomingFragments.WelcomingActivity;
-import com.example.world.R;
-import com.example.world.Screen;
-import com.example.world.sound.Pool;
+import com.belafon.world.mobileClient.AbstractActivity;
+import com.belafon.world.mobileClient.client.Client;
+import com.belafon.world.mobileClient.gameActivity.GameActivity;
+import com.belafon.world.mobileClient.gameActivity.WaitingScreenFragment;
+import com.belafon.world.mobileClient.menuScreen.welcomingFragments.WelcomingActivity;
+import com.belafon.world.mobileClient.R;
+import com.belafon.world.mobileClient.Screen;
+import com.belafon.world.mobileClient.sound.Pool;
 
 public class MenuActivity extends AbstractActivity {
     private static final String TAG = "MenuActivity";

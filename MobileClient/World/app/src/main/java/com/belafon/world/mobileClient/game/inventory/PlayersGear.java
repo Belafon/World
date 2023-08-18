@@ -1,7 +1,7 @@
-package com.example.world.game.inventory;
+package com.belafon.world.mobileClient.game.inventory;
 
-import com.example.world.game.visibles.items.Item;
-import com.example.world.game.visibles.items.Clothes;
+import com.belafon.world.mobileClient.game.visibles.items.Item;
+import com.belafon.world.mobileClient.game.visibles.items.Clothes;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,8 +1,8 @@
-package com.example.world.game.maps.weather;
+package com.belafon.world.mobileClient.game.maps.weather;
 
 import android.util.Log;
 
-import com.example.world.logs.Logs;
+import com.belafon.world.mobileClient.logs.Logs;
 
 import java.util.LinkedList;
 import java.util.Queue;

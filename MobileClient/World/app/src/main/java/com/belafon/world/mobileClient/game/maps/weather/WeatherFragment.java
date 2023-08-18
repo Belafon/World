@@ -1,11 +1,11 @@
-package com.example.world.game.maps.weather;
+package com.belafon.world.mobileClient.game.maps.weather;
 
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
-import com.example.world.logs.Logs;
+import com.belafon.world.mobileClient.logs.Logs;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
