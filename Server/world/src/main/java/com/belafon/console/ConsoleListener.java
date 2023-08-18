@@ -125,10 +125,8 @@ public class ConsoleListener implements Runnable {
                 case "partDay":
                     if(message[2].equals("after_midnight")){
                         server.games.get(0).players.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.after_midnight);
-                    } else if(message[2].equals("sunrise1")){
-                        server.games.get(0).players.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.sunrise_1);
-                    } else if(message[2].equals("sunrise2")){
-                        server.games.get(0).players.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.sunrise_2);
+                    } else if(message[2].equals("sunrise")){
+                        server.games.get(0).players.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.sunrise);
                     } else if(message[2].equals("morning")){
                         server.games.get(0).players.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.morning);
                     } else if(message[2].equals("afternoon")){
@@ -200,6 +198,9 @@ public class ConsoleListener implements Runnable {
                     if (message.length >= 3)
                         server.games.get(0).maps.maps[0].places[Integer.parseInt(message[2])][Integer
                                 .parseInt(message[3])].log();
+                    break;
+                case "time":
+                    Server.clocks.setDelay(Long.parseLong(message[2]));
                     break;
                 default:
                     return;

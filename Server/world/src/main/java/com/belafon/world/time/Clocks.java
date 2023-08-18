@@ -7,7 +7,7 @@ import com.belafon.console.ConsolePrint;
  */
 public class Clocks extends Thread {
     private long time = 0;
-    public final long delay = 200;// 33;
+    private long delay = 200;// 200 -> 12 sec for 1 hour;  -> 268 for a day
     public volatile boolean isRunning = false;
 
     public synchronized long getTime() {
@@ -27,6 +27,11 @@ public class Clocks extends Thread {
         ConsolePrint.serverInfo("Clocks:run: lets start to count the time...");
         while (true) {
             try {
+                long delay = 0;
+                synchronized (this) {
+                    delay = this.delay;
+                }
+
                 Thread.sleep(delay);
             } catch (InterruptedException e) {
                 if (time == Long.MAX_VALUE) {
@@ -54,5 +59,18 @@ public class Clocks extends Thread {
 
     public long milisToTicks(long milis) {
         return milis / delay;
+    }
+
+
+    /**
+     * @param delay can make whole world slower or faster.
+     * With larger delay the world will be slower.
+     */
+    public synchronized void setDelay(long delay) {
+        this.delay = delay;
+    }
+
+    public synchronized long getDelay() {
+        return delay;
     }
 }

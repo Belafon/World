@@ -12,9 +12,9 @@ import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import androidx.fragment.app.Fragment;
 import com.example.world.AbstractActivity;
+import com.example.world.R;
 import com.example.world.game.maps.playersPlaceFragments.PlaceInfoFragment;
-
-
+import com.example.world.game.maps.playersPlaceFragments.PlacePanel;
 
 
 public class SurroundingPlacesFragment extends Fragment {
@@ -107,7 +107,19 @@ public class SurroundingPlacesFragment extends Fragment {
                         .addToBackStack(null)
                         .commit();
             }
-            update();
+
+            if(rootView != null && this.isAdded()
+                    && place instanceof PlacePanel placePanel){
+
+                GridLayout gridLayout = rootView.findViewById(R.id.gridLayout);
+
+                int index = placePanel.positionY * gridLayout.getColumnCount() + placePanel.positionX;
+
+                if (index >= 0 && index < gridLayout.getChildCount()) {
+                    View placeButton = gridLayout.getChildAt(index);
+                    placeButton.setBackgroundColor(Place.UNKNOWN.typePlace.backgroundColor);
+                }
+            }
         });
 
     }

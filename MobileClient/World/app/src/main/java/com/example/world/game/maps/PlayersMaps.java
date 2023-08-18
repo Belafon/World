@@ -5,8 +5,9 @@ import com.example.world.AbstractActivity;
 import com.example.world.game.Fragments;
 import com.example.world.game.Stats;
 import com.example.world.game.behaviours.BehavioursRequirement;
-import com.example.world.game.maps.playersPlaceFragments.PlaceFragment;
+import com.example.world.game.maps.playersPlaceFragments.PlacePanel;
 import com.example.world.game.maps.playersPlaceFragments.PlayersPlaceEffect;
+import com.example.world.game.maps.playersPlaceFragments.TypePlace;
 import com.example.world.game.maps.weather.Weather;
 import com.example.world.gameActivity.GameActivity;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class PlayersMaps {
         maps.put(key, map);
         for (int x = 0; x < map.sizeX; x++) {
             for (int y = 0; y < map.sizeX; y++) {
-                map.places[x][y] = PlaceFragment.getUnknownPlace(x, y);
+                map.places[x][y] = PlacePanel.getUnknownPlace(x, y);
             }
         }
     }
@@ -88,9 +89,12 @@ public class PlayersMaps {
                 default -> currentArg = setSurroundingAtId(currentPlace++, currentArg, args, stats);
             }
         }
-        AbstractActivity.getActualActivity().runOnUiThread(() -> {
-            fragments.surroundingPlaces.update();
-        });
+        if(fragments.surroundingPlaces != null){
+            AbstractActivity.getActualActivity().runOnUiThread(() -> {
+                fragments.surroundingPlaces.update();
+            });
+        }
+
     }
 
     private int setSurroundingAtId(int currentPlace, int currentArg, String[] args, Stats stats) {
@@ -132,7 +136,7 @@ public class PlayersMaps {
 
 
         // lets update the fragment that shows the place in the surrounding
-        PlaceFragment place = new PlaceFragment(id, TypePlace.allTypes.get(typePlacesName), requirements, effects, xInSurrounding, yInSurrounding);
+        PlacePanel place = new PlacePanel(id, TypePlace.allTypes.get(typePlacesName), requirements, effects, xInSurrounding, yInSurrounding);
         surroundingMap.updatePlace(xInSurrounding, yInSurrounding, place);
 
         // lets add the place into ingredients
@@ -149,7 +153,7 @@ public class PlayersMaps {
         return requirements;
     }
 
-    private List<PlayersPlaceEffect> getPlaceEffectsFromMessage(String effectsMessage, PlaceFragment place) {
+    private List<PlayersPlaceEffect> getPlaceEffectsFromMessage(String effectsMessage, PlacePanel place) {
         List<PlayersPlaceEffect> effects = new ArrayList<>();
         for (String effect : effectsMessage.split("\\,")) {
             effects.add(PlayersPlaceEffect.allPlaceEffects.get(effect));

@@ -8,6 +8,10 @@ import com.belafon.world.time.DailyLoop.PartOfDay;
     when the Game is started, the current time from Clocks is saved, 
     getTime returns value current time from clocks - the time saved when the Game started */
 public class Time {
+    private static final long TICKS_PER_HOUR = 60;
+    private static final long TICKS_PER_DAY = 24 * TICKS_PER_HOUR; // 1440
+    private static final long TICKS_PER_MONTH = 30 * TICKS_PER_DAY;
+
     private long inception;
     private Clocks clocks;
     public volatile PartOfDay partOfDay;
@@ -22,34 +26,16 @@ public class Time {
         return clocks.getTime() - inception;
     }
 
-    /*
-     * 20 ticks corresponds to 1 hour
-     * 1 ticks corresponds to 3 minutes
-     * 24x20, 480 ticks corresponds to 1 day
-     * 30x24x20, 1440 ticks corrensponds to 1 month
-     */
     public long ticksOfToday() {
-        return getTime() % 1440;
+        return getTime() % TICKS_PER_DAY;
     }
 
-    /*
-     * 20 ticks corresponds to 1 hour
-     * 1 ticks corresponds to 3 minutes
-     * 24x20, 480 ticks corresponds to 1 day
-     * 30x24x20, 1440 ticks corrensponds to 1 month
-     */
     public long tickOfThisMonth() {
-        return getTime() % 43200;
+        return getTime() % TICKS_PER_MONTH;
     }
 
-    /*
-     * 20 ticks corresponds to 1 hour
-     * 1 ticks corresponds to 3 minutes
-     * 24x20, 480 ticks corresponds to 1 day
-     * 30x24x20, 1440 ticks corrensponds to 1 month
-     */
     public long ticksOfThisHour() {
-        return getTime() % 60;
+        return getTime() % TICKS_PER_HOUR;
     }
 
     public String logDate() {
@@ -57,11 +43,7 @@ public class Time {
                 + "th Day of this Month, " + (getHours(ticksOfToday()) + 1) + "th hour of this day and "
                 + (getMinutes(ticksOfThisHour()) + 1) + "th minute of this hour.";
     }
-    
-    /**
-     * @return Array of long values.
-     * The array represents current month, day, hour, minute
-     */
+
     public long[] getDate() {
         return new long[]{
             getMonth(getTime()) + 1,
@@ -71,45 +53,47 @@ public class Time {
         };
     }
 
-    
-     
     public static long getMinutes(long numberOfTicks) {
         return numberOfTicks;
     }
 
     public static float getHoursFloat(long numberOfTicks) {
-        return ((float) numberOfTicks) / 60f;
+        return ((float) numberOfTicks) / ((float) TICKS_PER_HOUR);
     }
 
     public static long getHours(long numberOfTicks) {
-        return numberOfTicks / 60;
+        return numberOfTicks / TICKS_PER_HOUR;
     }
 
     public static float getDayFloat(long numberOfTicks) {
-        return ((float) numberOfTicks) / 1440f;
+        return ((float) numberOfTicks) / TICKS_PER_DAY;
     }
 
     public static long getDay(long numberOfTicks) {
-        return numberOfTicks / 1440;
+        return numberOfTicks / TICKS_PER_DAY;
     }
 
     public static float getMonthFloat(long numberOfTicks) {
-        return ((float) numberOfTicks) / 43200f;
+        return ((float) numberOfTicks) / TICKS_PER_MONTH;
     }
 
     public static long getMonth(long numberOfTicks) {
-        return numberOfTicks / 43200;
+        return numberOfTicks / TICKS_PER_MONTH;
     }
 
     public static long hoursToTicks(long hours) {
-        return hours * 60;
+        return hours * TICKS_PER_HOUR;
     }
 
     public static long daysToTicks(long days) {
-        return days * 1440;
+        return days * TICKS_PER_DAY;
     }
 
     public static long monthsToTicks(long months) {
-        return months * 43200;
+        return months * TICKS_PER_MONTH;
+    }
+
+    public static long percentsOfDayToTicks(float percents) {
+        return (long) (percents * TICKS_PER_DAY);
     }
 }

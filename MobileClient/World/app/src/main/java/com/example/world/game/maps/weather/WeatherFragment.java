@@ -63,7 +63,9 @@ public class WeatherFragment implements Runnable {
      * @param partOfDay
      */
     public void setPartOfDay(PartOfDay partOfDay) {
-        partOfDayColorViewTransition.addPartOfDay(partOfDay);
+        synchronized (this){
+            partOfDayColorViewTransition.addPartOfDay(partOfDay);
+        }
     }
 
     public synchronized void addColorViewTransition(ColorViewTransition colorViewTransition) {
@@ -80,7 +82,7 @@ public class WeatherFragment implements Runnable {
         Thread.currentThread().setName("BackgroundColorFilter");
         while (true) {
             try {
-                Thread.sleep(25);
+                Thread.sleep(20);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -102,16 +104,13 @@ public class WeatherFragment implements Runnable {
             bTransition = 0;
             aTransition = 0;
 
-            if(Logs.WEATHER_FILTER
-                    && lastColor != null
-                    && (lastColor.r != r
+            if(Logs.WEATHER_FILTER && lastColor != null && (lastColor.r != r
                     || lastColor.g != g
                     || lastColor.b != b
                     || lastColor.a != a))
                 Log.d(TAG, "run: r, g, b, a = " + r + " " + g + " " + b + " " + a);
 
-            if(lastColor != null
-                    && (lastColor.r != r
+            if(lastColor != null && (lastColor.r != r
                     || lastColor.g != g
                     || lastColor.b != b
                     || lastColor.a != a))

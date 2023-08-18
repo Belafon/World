@@ -29,20 +29,18 @@ public class DailyLoop {
      * A list containing the different parts of the day with their start time, name, and temperature change.
      */
     public PartOfDay[] partsOfDay = {
-            new PartOfDay(180, NamePartOfDay.after_midnight, -5),
-            new PartOfDay(330, NamePartOfDay.sunrise_1, -4),
-            new PartOfDay(375, NamePartOfDay.sunrise_2, -3),
-            new PartOfDay(420, NamePartOfDay.morning, -2),
-            new PartOfDay(900, NamePartOfDay.afternoon, 0),
-            new PartOfDay(1110, NamePartOfDay.sunset_1, -2),
-            new PartOfDay(1155, NamePartOfDay.sunset_2, -3),
-            new PartOfDay(1200, NamePartOfDay.night, -4)
+        new PartOfDay(Time.percentsOfDayToTicks(3f / 24), NamePartOfDay.after_midnight, -5),
+        new PartOfDay(Time.percentsOfDayToTicks(5.5f / 24f), NamePartOfDay.sunrise, -4),
+        new PartOfDay(Time.percentsOfDayToTicks(7f / 24f), NamePartOfDay.morning, -2),
+        new PartOfDay(Time.percentsOfDayToTicks(15f / 24f), NamePartOfDay.afternoon, 0),
+        new PartOfDay(Time.percentsOfDayToTicks(18.5f / 24f), NamePartOfDay.sunset_1, -2),
+        new PartOfDay(Time.percentsOfDayToTicks(19.25f / 24f), NamePartOfDay.sunset_2, -3),
+        new PartOfDay(Time.percentsOfDayToTicks(20f / 24f), NamePartOfDay.night, -4)
     };
 
     public static enum NamePartOfDay {
         after_midnight, // starts at 3.0 hours today -> 60 of ticks today
-        sunrise_1, // 5.5 -> 110
-        sunrise_2, // 6.25 -> 125
+        sunrise, // 5.5 -> 110
         morning, // 7.0 -> 140
         afternoon, // 15.0 -> 300
         sunset_1, // 18.5 -> 370
@@ -74,6 +72,6 @@ public class DailyLoop {
         //game.calendar.add(new EventPartOfDay(803, partsOfDay[4], game));
 }
 
-    public record PartOfDay(int start, NamePartOfDay name, int temperatureChange) {
+    public record PartOfDay(long start, NamePartOfDay name, int temperatureChange) {
     }
 }

@@ -33,13 +33,15 @@ You can write log messages by pasting these commands into console:
 - log weather thunderstorm
 
 - log partDay after_midnight
-- log partDay sunrise1
-- log partDay sunrise2
+- log partDay sunrise
 - log partDay morning
 - log partDay afternoon
 - log partDay sunset1
 - log partDay sunset2
 - log partDay night
+
+- log time 200
+	- larger value makes everything in world slower (It makes the delay in the game loop larger). The value should be whole number and should be larger than 0. 200 is a default value and means that one hour in the game takes 12 seconds in real. It means that whole day takes 268 seconds.
 
 - log wind
 - log windDirection

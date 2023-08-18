@@ -2,6 +2,8 @@ package com.example.world.game.maps.weather;
 
 import android.util.Log;
 
+import com.example.world.logs.Logs;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -23,6 +25,7 @@ public class PartOfDayColorViewTransition extends ColorViewTransition {
     }
 
     public synchronized void addPartOfDay(PartOfDay partOfDay) {
+
         colors.add(partOfDay);
 
         if (currentTransition != null && !currentTransition.isTransitionDone())
@@ -71,11 +74,13 @@ public class PartOfDayColorViewTransition extends ColorViewTransition {
                 lastColorLevel = currentPartOfDay.colorLevel;
 
             currentPartOfDay = colors.poll();
-            Log.d(TAG, "run: NEW PART OF DAY = " + currentPartOfDay.name.toString()
-                    + " " + currentPartOfDay.colorLevel.r
-                    + " " + currentPartOfDay.colorLevel.g
-                    + " " + currentPartOfDay.colorLevel.b
-                    + " " + currentPartOfDay.colorLevel.a);
+
+            if(Logs.WEATHER_FILTER)
+                Log.d(TAG, "run: NEW PART OF DAY = " + currentPartOfDay.name.toString()
+                        + " " + currentPartOfDay.colorLevel.r
+                        + " " + currentPartOfDay.colorLevel.g
+                        + " " + currentPartOfDay.colorLevel.b
+                        + " " + currentPartOfDay.colorLevel.a);
 
             currentTransition = new DifferenceColorViewTransition(
                     getColorDifference(currentPartOfDay.colorLevel, currentColor),

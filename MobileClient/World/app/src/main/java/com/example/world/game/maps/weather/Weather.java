@@ -22,8 +22,7 @@ public class Weather {
 
     public enum NamePartOfDay {
         after_midnight, // starts at 3.0 hours today -> 60 of ticks today
-        sunrise_1, // 5.5 -> 110
-        sunrise_2, // 6.25 -> 125
+        sunrise, // 5.5 -> 110
         morning, // 7.0 -> 140
         afternoon, // 15.0 -> 300
         sunset_1, // 18.5 -> 370
@@ -34,29 +33,27 @@ public class Weather {
 
     private final HashMap<NamePartOfDay, PartOfDay> partsOfDay = new HashMap<>() {
         {
-            put(NamePartOfDay.unknown, new PartOfDay(NamePartOfDay.unknown, new Color(0, 0, 50, 120), 4800));
-            put(NamePartOfDay.after_midnight,
-                    new PartOfDay(NamePartOfDay.after_midnight, new Color(0, 0, 30, 180), 4800));
-            put(NamePartOfDay.sunrise_1, new PartOfDay(NamePartOfDay.sunrise_1, new Color(320, 10, 0, 40), 2400));
-            put(NamePartOfDay.sunrise_2, new PartOfDay(NamePartOfDay.sunrise_2, new Color(80, 40, 60, 20), 2160));
-            put(NamePartOfDay.morning, new PartOfDay(NamePartOfDay.morning, new Color(255, 255, 0, 10), 3000));
-            put(NamePartOfDay.afternoon, new PartOfDay(NamePartOfDay.afternoon, new Color(255, 200, 0, 10), 4080));
-            put(NamePartOfDay.sunset_1, new PartOfDay(NamePartOfDay.sunset_1, new Color(320, 10, 0, 40), 2400));
-            put(NamePartOfDay.sunset_2, new PartOfDay(NamePartOfDay.sunset_2, new Color(15, 5, 80, 150), 2160));
-            put(NamePartOfDay.night, new PartOfDay(NamePartOfDay.night, new Color(0, 0, 10, 155), 4800));
+            put(NamePartOfDay.unknown, new PartOfDay(NamePartOfDay.unknown, new Color(0, 0, 50, 120), 1200));
+            put(NamePartOfDay.after_midnight, new PartOfDay(NamePartOfDay.after_midnight, new Color(0, 0, 30, 180), 1000));
+            put(NamePartOfDay.sunrise, new PartOfDay(NamePartOfDay.sunrise, new Color(255, 10, 0, 30), 600));
+            put(NamePartOfDay.morning, new PartOfDay(NamePartOfDay.morning, new Color(255, 255, 0, 10), 750));
+            put(NamePartOfDay.afternoon, new PartOfDay(NamePartOfDay.afternoon, new Color(255, 200, 0, 10), 1020));
+            put(NamePartOfDay.sunset_1, new PartOfDay(NamePartOfDay.sunset_1, new Color(255, 10, 0, 40), 600));
+            put(NamePartOfDay.sunset_2, new PartOfDay(NamePartOfDay.sunset_2, new Color(15, 5, 80, 150), 540));
+            put(NamePartOfDay.night, new PartOfDay(NamePartOfDay.night, new Color(0, 0, 10, 155), 1200));
         }
     };
 
     public final Cloud[] cloudTypes = new Cloud[] {
             new Cloud(new Color(0, 0, 0, 0), 0, 0, 0, false, true, "clear sky"),
-            new Cloud(new Color(-1200, -600, -600, 60), 380, 150, 30, true, true, "clear sky with few small clouds"),
-            new Cloud(new Color(-1200, -600, -600, 80), 240, 140, 60, true, true, "sky with small clouds"),
-            new Cloud(new Color(-1200, -600, -600, 80), 160, 140, 100, true, true, "slightly translucent"),
+            new Cloud(new Color(-1200, -1200, -600, 60), 380, 300, 30, true, true, "clear sky with few small clouds"),
+            new Cloud(new Color(-1200, -1200, -600, 80), 240, 300, 60, true, true, "sky with small clouds"),
+            new Cloud(new Color(-1200, -1200, -600, 80), 160, 300, 100, true, true, "slightly translucent"),
 
-            new Cloud(new Color(-1200, -600, -600, 80), 120, 100, 200, true, true, "partly cloudy"),
-            new Cloud(new Color(-1200, -600, -600, 90), 120, 100, 200, true, true, "cloudy"),
-            new Cloud(new Color(-1200, -600, -600, 90), 0, 100, 1000, true, false, "very cloudy"),
-            new Cloud(new Color(-1200, -600, -600, 90), 0, 100, 1000, true, false, "dark cloudy")
+            new Cloud(new Color(-1200, -1200, -600, 80), 120, 300, 200, true, true, "partly cloudy"),
+            new Cloud(new Color(-1200, -1200, -600, 90), 120, 300, 200, true, true, "cloudy"),
+            new Cloud(new Color(-1200, -1200, -600, 90), 0, 300, 1000, true, false, "very cloudy"),
+            new Cloud(new Color(-1200, -1200, -600, 90), 0, 300, 1000, true, false, "dark cloudy")
     };
 
     private String[] cloudsNames = new String[] {
@@ -82,7 +79,7 @@ public class Weather {
         idle(new Color(0, 0, 0, 0), 0),
         rain(new Color(-1200, -1200, -1200, 110), 0),
         heavy_rain(new Color(-1200, -1200, -1200, 120), 0),
-        storm(new Color(-355, -1200, -1200, 120), 60),
+        storm(new Color(-1200, -1200, -1200, 120), 60),
         thunderstorm(new Color(-1200, -1200, -1200, 120), 30);
 
         public final Color color;
@@ -102,10 +99,10 @@ public class Weather {
      * @param args is the message from the server.
      */
     public void setClouds(String[] args) {
-        cloudsIndex = Integer.parseInt(args[2]);
+        /*cloudsIndex = Integer.parseInt(args[2]);
         Cloud cloud = cloudTypes[cloudsIndex];
         if (fragment != null)
-            fragment.setClouds(cloud);
+            fragment.setClouds(cloud);*/
     }
 
     /**
@@ -116,11 +113,11 @@ public class Weather {
      * @param args is the message from the server.
      */
     public void setWeather(String[] args) {
-        weather = Integer.parseInt(args[2]);
+        /*weather = Integer.parseInt(args[2]);
         String weatherTextDescription = weatherNames[weather];
         WeatherType type = WeatherType.values()[weather];
         if (fragment != null)
-            fragment.setWeather(weatherTextDescription, type);
+            fragment.setWeather(weatherTextDescription, type);*/
     }
 
     /**

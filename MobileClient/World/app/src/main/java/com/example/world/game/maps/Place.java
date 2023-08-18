@@ -10,7 +10,7 @@ import java.util.Set;
 import com.example.world.game.behaviours.BehavioursRequirement;
 import com.example.world.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 import com.example.world.game.maps.playersPlaceFragments.PlaceInfoFragment;
-import com.example.world.game.maps.playersPlaceFragments.PlaceFragment;
+import com.example.world.game.maps.playersPlaceFragments.PlacePanel;
 import com.example.world.game.maps.playersPlaceFragments.PlayersPlaceEffect;
 import com.example.world.game.maps.playersPlaceFragments.TypePlace;
 
@@ -36,7 +36,7 @@ public class Place extends BehavioursPossibleIngredient {
 
     @Override
     protected String getName() {
-        if (this instanceof PlaceFragment fragment)
+        if (this instanceof PlacePanel fragment)
             return typePlace.name + " [" + fragment.positionX + ";" + fragment.positionY + "]";
         return typePlace.name;
     }
@@ -55,7 +55,7 @@ public class Place extends BehavioursPossibleIngredient {
      * @return a fragment with all detailed informations about the place.
      */
     public PlaceInfoFragment getInfoFragment(Fragment lastFragment, int fragmentContainerId) {
-        if(this instanceof PlaceFragment fragment)
+        if(this instanceof PlacePanel fragment)
             return new PlaceInfoFragment(lastFragment, fragmentContainerId, typePlace.name, typePlace.description, placeEffects, this);
         
         return new PlaceInfoFragment(lastFragment, fragmentContainerId, typePlace.name, typePlace.description, placeEffects, this);

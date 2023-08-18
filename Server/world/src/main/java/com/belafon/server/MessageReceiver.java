@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-
 import com.belafon.console.ConsolePrint;
 import com.belafon.server.matchMakingSystems.MatchMakingSystem;
 import com.belafon.world.visibles.creatures.behaviour.BehaviourType;
@@ -63,17 +62,19 @@ public class MessageReceiver implements Runnable {
         String[] message = value.split(" ");
         ConsolePrint.new_message(value, client);
 
-        try {
-            switch (message[0]) {
-                case "game" -> client.getServer().executor.execute(() -> {
+        switch (message[0]) {
+            case "game" -> client.getServer().executor.execute(() -> {
+                try {
                     if (client.player == null)
                         throw new IllegalArgumentException("Client has no player!");
+
                     getGameMessage(message, clientSocket, server);
-                });
-                case "server" -> getServerMessage(message, clientSocket, server);
-            }
-        } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException e) {
-            ConsolePrint.error_big("Recieved message is not correct! \n" + e.getMessage());
+                } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException e) {
+                    ConsolePrint.error_big("Recieved message is not correct! \n" + e.getMessage());
+                }
+
+            });
+            case "server" -> getServerMessage(message, clientSocket, server);
         }
     }
 

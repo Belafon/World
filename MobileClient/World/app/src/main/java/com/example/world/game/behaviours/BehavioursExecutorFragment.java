@@ -129,7 +129,6 @@ public class BehavioursExecutorFragment extends Fragment {
 
     private void executeBehaviour(Behaviour behaviour) {
         execute.setEnabled(false);
-        backButton.setEnabled(false); // TODO BUG when it is enabled
 
         // Get all selected ingredients
         List<BehavioursPossibleIngredient> selectedIngredients = new ArrayList<>();
