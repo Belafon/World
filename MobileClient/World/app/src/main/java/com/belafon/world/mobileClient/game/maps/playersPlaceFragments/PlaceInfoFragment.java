@@ -65,12 +65,7 @@ public class PlaceInfoFragment extends Fragment implements IPossibleBehavioursFr
         lookLabel.setText(look);
 
         Button backButton = rootView.findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goBack();
-            }
-        });
+        backButton.setOnClickListener((View v) -> goBack());
 
         // get list of buttons of each place effects
         // for each place effect add button to the list
@@ -78,12 +73,7 @@ public class PlaceInfoFragment extends Fragment implements IPossibleBehavioursFr
         for (PlayersPlaceEffect effect : placeEffects) {
             Button placeEffectButton = new Button(this.getContext());
             placeEffectButton.setText(effect.name.name());
-            placeEffectButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    displayPlaceEffectInfo(effect);
-                }
-            });
+            placeEffectButton.setOnClickListener((View v) -> displayPlaceEffectInfo(effect));
             placeEffectsList.addView(placeEffectButton);
         }
 

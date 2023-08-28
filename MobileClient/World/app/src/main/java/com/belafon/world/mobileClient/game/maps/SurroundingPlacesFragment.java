@@ -101,6 +101,9 @@ public class SurroundingPlacesFragment extends Fragment {
 
         AbstractActivity.getActualActivity().runOnUiThread(() -> {
             if(!this.isAdded()){
+                if(AbstractActivity.getActualActivity().findViewById(fragmentContainerId) == null)
+                    return;
+
                 getParentFragmentManager()
                         .beginTransaction()
                         .replace(fragmentContainerId, this)

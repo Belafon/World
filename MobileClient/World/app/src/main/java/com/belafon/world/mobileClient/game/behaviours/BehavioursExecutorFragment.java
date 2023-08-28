@@ -310,6 +310,7 @@ public class BehavioursExecutorFragment extends Fragment {
         }
 
         FragmentManager fragmentManager = ((FragmentActivity) AbstractActivity.getActualActivity()).getSupportFragmentManager();
+
         fragmentManager.beginTransaction()
                 .replace(fragmentContainerId, previousFragment)
                 .addToBackStack(null)

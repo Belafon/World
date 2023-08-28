@@ -110,9 +110,7 @@ public class BehavioursFragment extends Fragment {
 
         final BehavioursFragment thisFragment = this;
         // Set up the view as needed for the item label
-        itemLabel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        itemLabel.setOnClickListener((View v) -> {
                 // Create an instance of BehavioursExecutorFragment
                 BehavioursExecutorFragment executorFragment = new BehavioursExecutorFragment(fragmentContainerId,
                         thisFragment, item);
@@ -127,7 +125,6 @@ public class BehavioursFragment extends Fragment {
                 fragmentTransaction.replace(fragmentContainerId, executorFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
-            }
         });
 
         return itemLabel;

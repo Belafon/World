@@ -9,11 +9,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.belafon.world.mobileClient.R;
 import com.belafon.world.mobileClient.game.Game;
 import com.belafon.world.mobileClient.game.behaviours.Behaviour;
 import com.belafon.world.mobileClient.game.behaviours.Behaviours;
-import com.belafon.world.mobileClient.game.behaviours.BehavioursRequirement;
 import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 
 import java.util.ArrayList;
