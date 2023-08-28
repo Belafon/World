@@ -5,5 +5,5 @@ package com.belafon.world.mobileClient.logs;
  * for saying which logs should be printed and which not.
  */
 public class Logs {
-    public static volatile boolean WEATHER_FILTER = true;
+    public static volatile boolean WEATHER_FILTER = false;
 }
