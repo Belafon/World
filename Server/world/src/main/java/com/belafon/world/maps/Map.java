@@ -12,14 +12,13 @@ public class Map {
     public final int sizeY;
     public final Place[][] places;
     public final Sky sky;
-
-    /*public Map(String pathToFile){
-    }*/
     
     public World game;
+    
+    // distance between places in meters
     private final float distanceBetweenPlaces;
 
-    public Map(int sizeX, int sizeY, MapGenerator mapGenerator, int directionOfWind, int strengthOfWind, float distanceBetweenPlaces,World game) {
+    public Map(int sizeX, int sizeY, MapGenerator mapGenerator, int directionOfWind, int strengthOfWind, float distanceBetweenPlaces, World game) {
         this.id = nextId++;
         this.distanceBetweenPlaces = distanceBetweenPlaces;
         this.sizeX = sizeX;

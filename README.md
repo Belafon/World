@@ -17,7 +17,7 @@ zatímco klient může být jakýkoli program posílající zprávy serveru odpo
 kolu, přičemž klient vždy pouze ovládá nějaké jedno stvoření ve světě.
 
 
-## Zápočtový program 
+## Zápočtový program - programming in java 1
 
 Jako svůj zápočtový program jsem pokračaovl na již dřívějším tomto projektu.
 Níže jsou sepsáný změny, ke kterým došlo. Vypsal jsem jen ty nejdůležitější a největší.
@@ -96,3 +96,68 @@ Přijímá messages ze serveru a snaží se je přehledně zobrazovat klientovy.
 Klient se automaticky objeví při zapnutí serveru v rohu mapy. Zobrazují se pouze places ve vzdálenosti 2, a to pouze ty, které hráč vidí. Při tom záleží na altitude daného place. Pokud brání ve výhledu jedno place, places za ním nejsou vidět, pokud se za ním nenachází ještě vyšší.
 
 
+
+## Zápočtový program  -  advanced programming in java
+
+Jedná se o pokračování v projektu.
+Zápočtový program obsahuje rozšíření o umožnění provádění behaviours, 
+tedy jedná se o ovládání postavy hráčem.
+
+Následně byl vytvořen také mobilní klient pro android, jehož kód a spustitelný soubor se nachází v podadresáři MobileClient.
+Minimální verze androidu je Android 10 (API level 29).
+
+Samotný kód využívá javu verzi 17 s gradle 8.0.2.
+
+Pro spuštění musí být server i client spuštěn ve stejné lokální síti.
+
+### Mechanika behaviours
+
+Libovolná creatura může provádět nějaké behaviour pouze pokud splňuje všechny požadavky definovány pomocí BehavioursPossibleReauirementů a jejich počtem, například pro vykonání behaviour Move je zapotřebí splňovat jedenkrát requirements REQUIREMENT_IS_REACHABLE. 
+
+Následně libovolná creatura mlže splnit dané requirements za pomoci BehavioursPossibleIngredient. 
+Například UnbounddedPlace implementuje BehavioursPossibleIngredient, což znamená, že musí implementovat methodu ```List<BehavioursPossibleRequirement> getBehavioursPossibleRequirementType(Creature creature)```, což je metoda, která bere za parametr creaturu a vrací seznam požadavků, které může daná creatura pomocí dané ingredienty splnit.
+
+Následně, pokud pro danou creaturu vrací dané UnboundedPlace list, který obsahuje REQUIREMENT_IS_REACHABLE, tak může daná creatura provést behaviour Move.
+
+Nelze splnit více BehavioursPossibleRequirement pomocí jedné ingredienty.
+
+### MobileClient
+
+Po zapnutí a připojení k serveru se aplikace automaticky pokusí spustit hru,
+přičemž server by měl být nastaven na hru pro jednoho hráče.
+Automaticky vygeneruje svět a vytvoří hráče, který se nachází na mapě na políčku 0, 0.
+
+Zároveň je na serveru nastaveno, že na stejném políčku se vygenerují nějaké předměty,
+resource a cratury, které hráč vidí od začátku,
+protože zatím neobsahuje hra behaviour pro hledání předmětů, nebo reesourcerů.
+
+Celá hra je v jedné aktivitě GameActivity, která obsahuje všechny potřebné komponenty pro hru v jedotlivých 
+fragmentech. Na levé straně je fragment s navigací, kde lze přepínat mezi fragmenty pro:
+- **statistiky postavy**
+- **seznamy s visibles**, které jsou rozděleny do tří sloupců:
+    - creatures, které jsou v okolí na stejném políčku
+    - items na stejném políčku (Place)
+    - resources na stejném políčku
+- **seznam proveditelných behaviours**
+- **mapa okolí**, která zobrazuje políčka v okruhu s poloměrem 3 políčka. Každé je možné rozkliknout a vidět podrobnější informace o daném políčku.
+- **inventář**, který zobrazuje všechny předměty, které má hráč u sebe.
+- **rozhlídnutí po aktuálním políčku**. Je zde pouze pro to, aby si hráč mohl lépe prohlédnout obrázek  v pozadí.
+
+V pozadí aktivity je imageView, který se mění podle aktuální Place na které se hráč nachází.
+Těsně před ním je částečně transparentní view, které mění svou barvu podle aktuálního počasí a denní doby.
+
+Pro lehčí sledování doporučuji zrychlení času pomocí logu `log time 20` do konzole na serveru.
+Pokud budete chtít sledovat vlastní počasí denní dobu, nebo mraky, pak doproučuji naopak zpomalit čas pomocí `log time 3000`,
+aby Vaše logy server neměnil moc často.
+
+Filter je pouze jeden a jeho barva se vypočítává ve WeatherFragment, kde se nachází množina colorViewTransitions dle které dochází k výpočtu.
+
+Implicitně má přibližně 50 FPS.
+
+V případě u transition pro část dne `PartOfDayColorViewTransition` se využívá fronta pro jednotlivé přechody. Pokud je fronta delší, přechody se schválně zrychlí.
+Tyto požadavky jsou definovány pomocí BehaviourPossibleIngredients. 
+
+Zatím lze provádět pouze 3 typy behaviours:
+- **Move**, lze provést přes fragment s mapou, nebo přes fragment se seznamem behaviours. (to platí pro všechny behaviours a info fragmenty o konkrétních ingrediencích).
+- **Eat**, lze provést pouze z inventáře, nebo z fragmentu se seznamem behaviours.
+- **Pick up an item**, lze provést z fragmentu se seznamem behaviours, nebo ze seznamu visibles.

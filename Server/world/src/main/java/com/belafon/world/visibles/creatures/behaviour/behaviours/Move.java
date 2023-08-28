@@ -104,11 +104,15 @@ public class Move extends Behaviour {
         return null;
     }
 
+    /**
+     * @param creature
+     * @param distance in meters
+     * Returns duration of travel in minutes.
+     */
     public int getDurationOfTravel(Creature creature, float distance) {
         float speed = getCurrentSpeed(creature);
 
         // distance / speed = time (+ hours have to be transfered to minutes)
-        // 20 jednotek = 1 hodina -> 1/3 jednotky za minutu
         float durationOfTravel = distance / speed;
 
         // influence by health of player

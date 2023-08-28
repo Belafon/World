@@ -14,7 +14,7 @@ import com.belafon.world.visibles.items.types.Food;
 public class Eat extends Behaviour {
     private final Food food;
 
-    public static boolean checkIngredients(List<BehavioursPossibleIngredient> ingredients) {
+    private static boolean checkIngredients(List<BehavioursPossibleIngredient> ingredients) {
         if (ingredients.size() != 1)
             throw new IllegalArgumentException("Eat behaviour can have only one ingredient.");
         if (!(ingredients.get(0) instanceof Food))
