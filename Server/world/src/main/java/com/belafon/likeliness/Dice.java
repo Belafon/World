@@ -6,8 +6,8 @@ public class Dice {
 	private int numOfFaces;
 	private Random random; 
 	
-    public Dice(int pocetSten) {
-        this.numOfFaces = pocetSten;
+    public Dice(int numOfFaces) {
+        this.numOfFaces = numOfFaces;
         random = new Random();
     }
 	
@@ -25,14 +25,14 @@ public class Dice {
      * @return Simulates the series of tosses with the dice. 
      * It retunrs an array of random numbers from 1 to number of faces range. 
      */
-	public int[] toss(int pocet) {
-		int[] pole = new int[pocet];
-		int i = pocet;
+	public int[] toss(int number) {
+		int[] vectOfoutputs = new int[number];
+		int i = number;
 		while(i > 0) {
-			pole[i - 1] = random.nextInt(this.numOfFaces) + 1;
+			vectOfoutputs[i - 1] = random.nextInt(this.numOfFaces) + 1;
 			i--;
 		}
-		return pole;
+		return vectOfoutputs;
 
 	}
 }

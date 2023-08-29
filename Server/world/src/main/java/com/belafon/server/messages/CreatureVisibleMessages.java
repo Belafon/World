@@ -49,6 +49,10 @@ public interface CreatureVisibleMessages{
     public default void positionChanged(Creature creature) {
     }
 
+    /**
+     * Informs a player about his current place.
+     * @param place
+     */
     public default void setCurrentPlaceInfo(UnboundedPlace place) {
     }
 }

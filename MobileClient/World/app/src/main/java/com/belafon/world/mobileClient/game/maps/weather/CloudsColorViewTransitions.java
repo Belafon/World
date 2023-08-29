@@ -5,6 +5,12 @@ import com.belafon.world.mobileClient.likeliness.Dice;
 
 import java.util.Set;
 
+/**
+ * Handles transitions of clouds and weather.
+ * Contains special thread CloudsAndWeatherColorTransitions, 
+ * that is checking if new lightning, or cloud should be 
+ * shown. 
+ */
 public class CloudsColorViewTransitions {
     private boolean isRaining = false;
     private boolean isCloudy = false;

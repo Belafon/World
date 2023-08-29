@@ -7,6 +7,9 @@ import java.util.Set;
 import com.belafon.world.mobileClient.game.behaviours.BehavioursRequirement;
 import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 
+/**
+ * Holds information about concrete type of resoruce.
+ */
 public class TypeOfResource extends BehavioursPossibleIngredient {
     public final String name;
     public final String id;

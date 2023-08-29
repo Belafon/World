@@ -5,6 +5,9 @@ import java.util.Set;
 
 import com.belafon.world.mobileClient.game.behaviours.BehavioursRequirement;
 
+/**
+ * Can be used for satisfying a behaviour requirement.
+ */
 public abstract class BehavioursPossibleIngredient implements Comparable<BehavioursPossibleIngredient>{
     public final Set<BehavioursRequirement> requirements;
 

@@ -12,6 +12,8 @@ import java.util.Set;
 
 /**
  * All possible place effects and their informations are held here 
+ * Place effect is something that is visible from the players 
+ * position, but it is located in the other place.
  */
 public class PlayersPlaceEffect extends BehavioursPossibleIngredient {
     public static final String visibleTypeName = "placeEffect";

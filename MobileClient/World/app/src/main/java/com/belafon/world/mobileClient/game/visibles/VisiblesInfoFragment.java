@@ -10,6 +10,12 @@ import android.widget.TextView;
 
 import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 
+/**
+ * Holds information about concrete visible.
+ * It contains list of information with list of 
+ * feasible behaviours, that can be executed with 
+ * this visible as an ingredient.
+ */
 public abstract class VisiblesInfoFragment<T extends Visible> extends Fragment {
     private Fragment previousFragment;
     private int fragmentContainerId;
@@ -24,6 +30,9 @@ public abstract class VisiblesInfoFragment<T extends Visible> extends Fragment {
         this.fragmentContainerId = fragmentContainerId;
     }
 
+    /**
+     * Go back to the previous fragment.
+     */
     public void goBack() {
         if(isAdded()){
             FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();

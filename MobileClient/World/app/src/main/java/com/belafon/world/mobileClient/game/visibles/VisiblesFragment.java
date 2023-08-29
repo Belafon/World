@@ -16,6 +16,11 @@ import com.belafon.world.mobileClient.game.visibles.creatures.CreaturesFragment;
 import com.belafon.world.mobileClient.game.visibles.items.ItemFragment;
 import com.belafon.world.mobileClient.game.visibles.resources.ResourcesFragment;
 
+/** 
+ * Main fragment that holds all information about visibles.
+ * It contains three lists of visibles: items, creatures and resources.
+ * It is directly reachable from the main menu of the game.
+ */
 public class VisiblesFragment extends Fragment {
     public ItemFragment items;
     public CreaturesFragment creatures;

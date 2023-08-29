@@ -8,11 +8,18 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * This handles many transitions committed by
- * more new parts of day.
+ * This handles many transitions committed by 
+ * new parts of day.
+ * It has a queue <@link colors> of parts of day,
+ * when new part of day is got from the server, it 
+ * is put into the queue.
+ * 
+ * When there are too many parts of day in the queue,
+ * (more than 1), than the duration of the next transtion
+ * is shorted, so the transition is faster.
  */
 public class PartOfDayColorViewTransition extends ColorViewTransition {
-    private static final String TAG = "PartOfDayColorViewTrans";
+    private static final String TAG = "PartOfDayColorViewTransition";
     private Queue<PartOfDay> colors = new LinkedList<>();
     private Color lastColorLevel;
 

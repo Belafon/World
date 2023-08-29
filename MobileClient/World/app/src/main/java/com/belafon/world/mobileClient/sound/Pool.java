@@ -9,6 +9,10 @@ import android.util.Log;
 
 import com.belafon.world.mobileClient.AbstractActivity;
 
+/**
+ * This class is used to play short sounds in the game,
+ * but larger amount.
+ */
 public class Pool {
     private static final String TAG = "Pool";
 
@@ -23,7 +27,7 @@ public class Pool {
     public static void letsRun() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             AudioAttributes audioAttributes = new AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_GAME) // GAME, mohu nastavit
+                    .setUsage(AudioAttributes.USAGE_GAME) // GAME, can be customized
                     .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
                     .build();
 

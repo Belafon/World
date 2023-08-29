@@ -8,6 +8,10 @@ import java.util.Set;
 import com.belafon.world.mobileClient.client.Client;
 import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 
+/**
+ * If the behaviour is in feasible behaviours, 
+ * then it can be executed.
+ */
 public class Behaviour {
     public final String messagesName;
     public final String name;
@@ -75,6 +79,9 @@ public class Behaviour {
         }
     }
 
+    /**
+     * Requirement extended by number of ingredients that are needed.
+     */
     public static class BehavioursRequirementDetail {
         public BehavioursRequirement requirement;
         public final String description;

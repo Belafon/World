@@ -99,10 +99,10 @@ public class Weather {
      * @param args is the message from the server.
      */
     public void setClouds(String[] args) {
-        /*cloudsIndex = Integer.parseInt(args[2]);
+        cloudsIndex = Integer.parseInt(args[2]);
         Cloud cloud = cloudTypes[cloudsIndex];
         if (fragment != null)
-            fragment.setClouds(cloud);*/
+            fragment.setClouds(cloud);
     }
 
     /**
@@ -113,11 +113,11 @@ public class Weather {
      * @param args is the message from the server.
      */
     public void setWeather(String[] args) {
-        /*weather = Integer.parseInt(args[2]);
+        weather = Integer.parseInt(args[2]);
         String weatherTextDescription = weatherNames[weather];
         WeatherType type = WeatherType.values()[weather];
         if (fragment != null)
-            fragment.setWeather(weatherTextDescription, type);*/
+            fragment.setWeather(weatherTextDescription, type);
     }
 
     /**

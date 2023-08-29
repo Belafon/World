@@ -7,6 +7,9 @@ import com.belafon.world.mobileClient.game.maps.Place;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * It is a place with coordinates.
+ */
 public class PlacePanel extends Place {
     public final int positionX;
     public final int positionY;

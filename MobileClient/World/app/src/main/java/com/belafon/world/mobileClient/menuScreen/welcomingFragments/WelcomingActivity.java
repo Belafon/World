@@ -51,6 +51,7 @@ public class WelcomingActivity extends AbstractActivity {
             viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
         }
     }
+    
     private class ScreenSlidePagerAdapter extends FragmentStateAdapter {
         public ScreenSlidePagerAdapter(FragmentActivity fa) {
             super(fa);
@@ -66,6 +67,7 @@ public class WelcomingActivity extends AbstractActivity {
             return fragments.length;
         }
     }
+
     public void onNewClientNameClick(View view){
         String name = ((EditText)findViewById(R.id.newClientNameEditText)).getText().toString();
         if(name.length() < 3 || name.length() > 18) {

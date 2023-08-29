@@ -14,6 +14,9 @@ import com.belafon.world.mobileClient.game.maps.playersPlaceFragments.PlacePanel
 import com.belafon.world.mobileClient.game.maps.playersPlaceFragments.PlayersPlaceEffect;
 import com.belafon.world.mobileClient.game.maps.playersPlaceFragments.TypePlace;
 
+/**
+ * Represents a place in the world, that doesnt have to be in a map.
+ */
 public class Place extends BehavioursPossibleIngredient {
     public static final Place UNKNOWN = new Place("UnboundedPlace|unknown$" + Integer.MIN_VALUE,
             TypePlace.allTypes.get("unknown"),

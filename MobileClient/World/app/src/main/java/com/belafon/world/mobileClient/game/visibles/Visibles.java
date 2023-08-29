@@ -16,6 +16,10 @@ import com.belafon.world.mobileClient.game.behaviours.Behaviours;
 import com.belafon.world.mobileClient.game.behaviours.BehavioursRequirement;
 import com.belafon.world.mobileClient.game.maps.Place;
 
+/**
+ * Holds all inforamtion about visibles, views nothing.
+ * Catches messages about visibles from the server and resolves them.
+ */
 public class Visibles {
     public final Hashtable<Integer, Item> items = new Hashtable<>();
     public final Hashtable<Integer, Creature> creatures = new Hashtable<>();
@@ -250,18 +254,4 @@ public class Visibles {
         }
     }
 }
-
-
-/*
- TODO: FATAL EXCEPTION: Thread-5
-                                                                                                    Process: com.example.myapplication, PID: 20050
-                                                                                                    java.lang.NullPointerException: Attempt to read from field 'com.belafon.world.mobileClient.game.visibles.VisiblesFragment com.belafon.world.mobileClient.game.Fragments.visibles' on a null object reference in method 'void com.belafon.world.mobileClient.game.visibles.Visibles.addResource(java.lang.String[], com.belafon.world.mobileClient.game.Fragments, com.belafon.world.mobileClient.game.behaviours.Behaviours)'
-                                                                                                    	at com.belafon.world.mobileClient.game.visibles.Visibles.addResource(Visibles.java:139)
-                                                                                                    	at com.belafon.world.mobileClient.game.client.chatListener.ChatListener.listenSurrounding(ChatListener.java:56)
-                                                                                                    	at com.belafon.world.mobileClient.game.client.chatListener.ChatListener.listenBase(ChatListener.java:48)
-                                                                                                    	at com.belafon.world.mobileClient.game.client.chatListener.ChatListener.listen(ChatListener.java:28)
-                                                                                                    	at com.belafon.world.mobileClient.client.Client.decomposeTheString(Client.java:160)
-                                                                                                    	at com.belafon.world.mobileClient.client.Client$1.makeThreadWorker(Client.java:139)
-                                                                                                    	at com.belafon.world.mobileClient.client.Client$1.run(Client.java:1
-*/
 

@@ -13,7 +13,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-
+/**
+ * Contains main loop for updating the background color filter.
+ * that is updated each 50 milliseconds.
+ * Each update is done with use of {@link colorViewTransitions} set.
+ */
 public class WeatherFragment implements Runnable {
     private static final String TAG = "WeatherFragment";
     private final View view;
@@ -123,6 +127,7 @@ public class WeatherFragment implements Runnable {
         }
     }
 
+    // executor is used to avoid blocking the main thread
     private ExecutorService executor = Executors.newSingleThreadExecutor();
     private Handler handler = new Handler(Looper.getMainLooper());
 

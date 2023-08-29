@@ -174,24 +174,13 @@ public abstract class Creature extends Visible {
                 if (lastLook.visiblePlaces[row][col] == null)
                     continue;
 
-                // if (!surroundingPlaces.isPlaceVisible(lastLook.visiblePlaces[row][col])) {
-                // remove all visibles from the place
                 removeAllVisibles();
-                /*
-                 * } else {
-                 * // find all visible items that are not visible anymore and remove them
-                 * for (Visible visible : currentlyVisibleObjects)
-                 * if (!shouldBeVisibleStillVisible(visible))
-                 * removeVisibleObject(visible);
-                 * }
-                 */
             }
         }
 
-        writer.surrounding.setPosition(surroundingPlaces);
+        writer.surrounding.setInfoAboutSurrounding(surroundingPlaces);
 
         // all players watching that have to get notice that
-        // TODO chack if the watcher can still see the creature
         getWatchers((watchers) -> {
             for (Creature creature : watchers)
                 creature.influencingActivities.otherCreaturesPositionChanged(creature);

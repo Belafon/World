@@ -18,6 +18,9 @@ import com.belafon.world.mobileClient.game.behaviours.fragmentOfBehavioursListFo
 import com.belafon.world.mobileClient.game.visibles.VisiblesInfoFragment;
 
 
+/**
+ * A fragment, that shows information about a creature, that is visible by the creature, that is currently played by the player.
+ */
 public class CreaturesInfoFragment extends VisiblesInfoFragment<Creature> implements IPossibleBehavioursFragment {
 
     private TextView nameTextView;

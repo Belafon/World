@@ -17,6 +17,10 @@ import com.belafon.world.mobileClient.game.maps.playersPlaceFragments.PlaceInfoF
 import com.belafon.world.mobileClient.game.maps.playersPlaceFragments.PlacePanel;
 
 
+/**
+ * A fragment, that shows a map of the surrounding places, that are visible
+ * by the player.
+ */
 public class SurroundingPlacesFragment extends Fragment {
     private static final int SIZE_OF_GAP_IN_PIXELS = 15;
     private static final int SIZE_OF_BUTTON_IN_PIXELS = 100;
@@ -55,6 +59,7 @@ public class SurroundingPlacesFragment extends Fragment {
             for (int y = 0; y < SurroundingMap.NUMBER_OF_PLACES_IN_SIGHT_IN_ONE_AXIS; y++) {
                 Button placeButton = new Button(getContext());
 
+                // set buttons size, color, margins...
                 GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams();
                 layoutParams.height = SIZE_OF_BUTTON_IN_PIXELS;
                 layoutParams.width = SIZE_OF_BUTTON_IN_PIXELS;
@@ -89,12 +94,18 @@ public class SurroundingPlacesFragment extends Fragment {
         placeButton.getBackground().setColorFilter(new BlendModeColorFilter(color, BlendMode.SRC_ATOP));
     }
 
+    /**
+     * redraws the map
+     */
     public void update() {
             if(rootView != null){
                 drawMap(rootView);
             }
     }
 
+    /**
+     * sets concrete place in the map as a unknown
+     */
     public void updateRemovePlace(Place place) {
         if(!activeState)
             return;
@@ -128,6 +139,9 @@ public class SurroundingPlacesFragment extends Fragment {
     }
 
 
+    /**
+     * When a place button is clicked, concrete PlaceInfoFragment is shown.
+     */
     private class PlaceButtonClickListener implements View.OnClickListener {
         private int x;
         private int y;

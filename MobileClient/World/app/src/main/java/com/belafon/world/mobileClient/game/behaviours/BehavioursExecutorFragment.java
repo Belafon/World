@@ -34,6 +34,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Fragment that contains all things that are needed
+ * to be able to execute concrete behaviour.
+ * 
+ * For each requirement there is unique RequirementChooser, 
+ * that holds a list of Spinners for each needed ingredient
+ * (according the count).
+ * 
+ * Also when an ingredient is selected, in other 
+ * RequirementChoosers the ingredient is not able to be
+ * selected anymore.
+ */
 public class BehavioursExecutorFragment extends Fragment {
     private static final int ITEM_BEHAVIOURS_PADDING_IN_PX = Screen.dpToPixels(8);
 
@@ -317,10 +329,10 @@ public class BehavioursExecutorFragment extends Fragment {
                 .commit();
     }
 
-    public void update(Behaviours behaviours) {
+    /*public void update(Behaviours behaviours) {
         setBehaviour(behaviour, behaviours);
         execute.setEnabled(true);
-    }
+    }*/
 
     public Behaviour getCurrentlySelectedBehaviour() {
         return behaviour;

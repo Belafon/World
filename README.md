@@ -161,3 +161,13 @@ Zatím lze provádět pouze 3 typy behaviours:
 - **Move**, lze provést přes fragment s mapou, nebo přes fragment se seznamem behaviours. (to platí pro všechny behaviours a info fragmenty o konkrétních ingrediencích).
 - **Eat**, lze provést pouze z inventáře, nebo z fragmentu se seznamem behaviours.
 - **Pick up an item**, lze provést z fragmentu se seznamem behaviours, nebo ze seznamu visibles.
+
+## Nedokončené části
+
+Určitý kód zatím nemá vliv na výslednou apolikaci, protože je ve fázi vývoje a pro výsledek zatím nebyl považován za tak důležitý, jako jiné části programu.
+
+Je tím například:
+- **WelcomingActivity**, kde WelcomingActivity by se měl zobrazit pouze při prvním spuštění aplikace a obsahovat nějaké uvítací informace.
+- **MenuActivity** obsahuje základní menu, ale zatím funguje pouze tlačítko pro spuštění hry, proto se automaticky hra spustí.
+- **Hudba**, ta je ovládána skrze ClipsAdapter a Pool ve složce sound. 
+- **Vybavení**, neboli PlayersGear by mělo být v inventáři s behaviours nasazení.

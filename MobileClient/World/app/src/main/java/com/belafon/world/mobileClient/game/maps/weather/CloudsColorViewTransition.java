@@ -1,11 +1,18 @@
 package com.belafon.world.mobileClient.game.maps.weather;
 
+/**
+ * Handles a transition for a cloud. 
+ * The sky is covered and then uncovered.
+ */
 public class CloudsColorViewTransition extends ColorViewTransition {
     public enum Phase {
-        coverSun,
-        wholeCloud,
-        unconverSun,
-        done
+        // the transition is approaching the finalColor
+        coverSun, 
+        // the filter is colored with finalColor
+        wholeCloud, 
+        // the transition is approaching the initialColor
+        unconverSun, 
+        done 
     };
 
     public CloudsColorViewTransition(Color finalColor, int speedOfTransition, int durationOfCloud){

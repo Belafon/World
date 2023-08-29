@@ -22,6 +22,9 @@ import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredie
 
 import java.util.Hashtable;
 
+/**
+ * List of some type of visible.
+ */
 public abstract class VisiblesListFragment<T extends VisiblesInfoFragment> extends Fragment {
     private LinearLayout visiblesList;
     private Hashtable<Visible, T> visibleFragments = new Hashtable<>();

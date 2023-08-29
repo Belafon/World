@@ -10,6 +10,13 @@ import com.belafon.world.mobileClient.game.Fragments;
 import com.belafon.world.mobileClient.game.Stats;
 import com.belafon.world.mobileClient.game.behaviours.Behaviour.BehaviourBuilder;
 
+/**
+ * Handles messages from the server about behaviours,
+ * like setup new behaviour, or requirement.
+ * 
+ * Holds information about feasible behaviours and 
+ * currently being carried out.
+ */
 public class Behaviours {
     public final Map<String, Behaviour> allBehaviors = new Hashtable<>();
     public final Map<String, BehavioursRequirement> allRequirements = new Hashtable<>();
@@ -47,6 +54,9 @@ public class Behaviours {
             });
     }
 
+    /**
+     * Handles message from the server.
+     */
     public void setupNewBehaviour(String[] args) {
         String idName = args[2];
         String name = args[3].replaceAll("_", " ");

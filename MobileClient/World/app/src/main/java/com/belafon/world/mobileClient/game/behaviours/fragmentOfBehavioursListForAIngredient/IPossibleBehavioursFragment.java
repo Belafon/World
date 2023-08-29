@@ -10,6 +10,9 @@ import com.belafon.world.mobileClient.game.behaviours.Behaviours;
 import com.belafon.world.mobileClient.game.behaviours.behavioursPossibleIngredients.BehavioursPossibleIngredient;
 import com.belafon.world.mobileClient.game.behaviours.fragmentOfBehavioursListForAIngredient.ListOfBehavioursForSetOfIngredients;
 
+/**
+ * Lables that the fragment is able to show list of behaviours.
+ */
 public interface IPossibleBehavioursFragment {
     public default ListOfBehavioursForSetOfIngredients setPossibleBehavioursFragment(int fragmentContainer, BehavioursPossibleIngredient ingredient){
         ListOfBehavioursForSetOfIngredients listOfBehavioursFragment = new ListOfBehavioursForSetOfIngredients(ingredient, fragmentContainer);

@@ -58,6 +58,11 @@ public interface ConditionCreatureMessages {
     public default void setSpeedOfRun(int speedOfRun) {
     }
 
+    /**
+     * This informs a player that he is doing some behaviour.
+     * @param behaviour
+     * @param duration
+     */
     public default void setBehaviour(Behaviour behaviour, int duration) {
     }
 

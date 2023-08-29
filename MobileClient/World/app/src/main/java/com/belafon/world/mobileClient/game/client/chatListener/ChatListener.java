@@ -8,6 +8,9 @@ import com.belafon.world.mobileClient.game.Fragments;
 import com.belafon.world.mobileClient.game.Stats;
 import com.belafon.world.mobileClient.gameActivity.WaitingScreenFragment;
 
+/**
+ * Listens to the messages from the server.
+ */
 public class ChatListener {
     private static final String TAG = "ChatListener";
     private Stats stats = Game.stats;

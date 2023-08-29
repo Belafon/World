@@ -46,24 +46,6 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
     }
 
     @Override
-    public void setPosition(PlayersLookAround surrounding) {
-        setInfoAboutPlace(surrounding.getViewersPosition());
-        setInfoAboutSurrounding(surrounding);
-    }
-
-    @Override
-    public void setInfoAboutPlace(UnboundedPlace uplace) {
-        // setInfoAboutPlace needs to be filled
-        setTypeOfPlaceInfoDrawableSound(uplace);
-        setResources(uplace); // items which u can find
-        setItems(uplace);
-        if (uplace instanceof Place place) {
-            setWeather(place.map.sky.getWeather(place.positionX, place.positionY));
-            setClouds(place);
-        }
-    }
-
-    @Override
     public void setResources(UnboundedPlace position) {
         StringBuilder message = new StringBuilder("surrounding resources");
         for (Resource resource : position.resourcesSorted)
@@ -91,7 +73,7 @@ public class SurroundingPlayerMessages implements SurroundingMessages {
         // TODO fill setItems method
     }
 
-    @Override
+     @Override
     public void setTypeOfPlaceInfoDrawableSound(UnboundedPlace position) {
         sendMessage.sendLetter("soundDrawable " + position.music + " " + position.picture,
                 PlayersMessageSender.TypeMessage.other);

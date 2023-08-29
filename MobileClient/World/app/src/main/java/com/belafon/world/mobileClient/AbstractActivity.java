@@ -10,7 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
-public class AbstractActivity extends AppCompatActivity {
+public abstract class AbstractActivity extends AppCompatActivity {
     private static final String TAG = "AbstractActivity";
     private static Activity actualActivity = null;
     @Override

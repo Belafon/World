@@ -3,6 +3,10 @@ package com.belafon.world.mobileClient.dataSafe;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+/**
+ * Class for saving data in shared preferences,
+ * that means saving configuration data.
+ */
 public class DataLibrary {
     private volatile SharedPreferences sharedPreferences;
     private String wardrobeName = "";

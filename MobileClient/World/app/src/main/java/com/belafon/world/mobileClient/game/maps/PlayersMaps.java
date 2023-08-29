@@ -17,7 +17,10 @@ import java.util.List;
 import java.util.Set;
 
 
-
+/**
+ * Handles server messages about maps.
+ * Also holds information about all known maps
+ */
 public class PlayersMaps {
     private Hashtable<Integer, PlayersMap> maps = new Hashtable<>();
     private SurroundingMap surroundingMap;

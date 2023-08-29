@@ -16,6 +16,9 @@ import com.belafon.world.mobileClient.AbstractActivity;
 import com.belafon.world.mobileClient.R;
 import com.belafon.world.mobileClient.menuScreen.MenuActivity;
 
+/**
+ * Waiting screen for MenuActivity only.
+ */
 public class WaitingScreenFragment extends Fragment {
     private static final String TAG = "WaitingScreenFragment";
 

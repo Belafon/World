@@ -22,6 +22,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Fragment that holds a list of behaviours that are feasible 
+ * and also that can be done in the support of concrete set of 
+ * ingredients (all of the ingredients in the set has to be able to use
+ * together).
+ */
 public class ListOfBehavioursForSetOfIngredients extends Fragment {
     private List<BehavioursPossibleIngredient> ingredients;
     private RecyclerView recyclerView;
@@ -93,9 +99,7 @@ public class ListOfBehavioursForSetOfIngredients extends Fragment {
 
     public synchronized void removeIngredient(BehavioursPossibleIngredient ingredient) {
         ingredients.remove(ingredient);
-
         getFeasibleBehaviours();
-
         mAdapter.notifyDataSetChanged();
     }
 }

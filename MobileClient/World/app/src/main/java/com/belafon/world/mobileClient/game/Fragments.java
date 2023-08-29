@@ -8,6 +8,10 @@ import com.belafon.world.mobileClient.game.visibles.VisiblesFragment;
 import com.belafon.world.mobileClient.gameActivity.GameActivity;
 import com.belafon.world.mobileClient.gameActivity.ViewFragment;
 
+/**
+ * List of all main fragments in the game,
+ * that can be reachible from the main menu of the game.
+ */
 public class Fragments {
     public final CreatureStatisticsFragment bodyStatistics;
     public final SurroundingPlacesFragment surroundingPlaces;
@@ -24,12 +28,8 @@ public class Fragments {
         this.gameActivity = gameActivity;
         this.bodyStatistics = new CreatureStatisticsFragment(stats.body);
         this.surroundingPlaces = stats.maps.getSurroundingPlacesFragment(null, gameActivity.getGameFragmentContainerID());
-        //this.visibleItems = new ItemFragment(gameActivity.getGameFragmentContainerID());
-        //this.visibleCreatures = new CreaturesFragment(gameActivity.getGameFragmentContainerID());
-        //this.visibleResources = new ResourcesFragment(gameActivity.getGameFragmentContainerID());
         this.visibles = new VisiblesFragment(stats.visibles);
         this.view = new ViewFragment();
-        // this.weatherFragment = stats.maps.weather.getFragment();
         this.behaviours = stats.behaviours.getNewBehaviourListFragment(gameActivity.getGameFragmentContainerID());
         this.inventory = new InventoryFragment(stats.inventory, gameActivity.getGameFragmentContainerID(), this);
     }

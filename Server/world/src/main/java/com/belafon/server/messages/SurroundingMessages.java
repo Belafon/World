@@ -20,12 +20,6 @@ public interface SurroundingMessages {
     public default void setClouds(Place place) {
     }
 
-    public default void setPosition(PlayersLookAround position) {
-    }
-
-    public default void setInfoAboutPlace(UnboundedPlace place) {
-    }
-
     public default void setInfoAboutSurrounding(PlayersLookAround surrounding) {
     }
 
@@ -56,6 +50,11 @@ public interface SurroundingMessages {
     public default void removePlaceFromSight(Place lastPlace, int xInRelativeMap, int yInRelativeMap) {
     }
 
+    /**
+     * This informs player about his current position.
+     * Should be called only when the position changes.
+     * @param place
+     */
     public default void setCurrentPositionInfo(UnboundedPlace place) {
     }
 }

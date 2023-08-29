@@ -4,6 +4,10 @@ import android.util.Log;
 
 import com.belafon.world.mobileClient.logs.Logs;
 
+/**
+ * This class represents a transition between two colors.
+ * It is used for coloring the background filter.
+ */
 public class DifferenceColorViewTransition extends ColorViewTransition {
     private static final String TAG = "DifferenceColorViewTran";
     // says how much times it should be updated before 

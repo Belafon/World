@@ -66,7 +66,7 @@ public class Client {
     // This method sets the connection to server
     public static void connect() {
         Log.d(TAG, "run: CREATE CLIENT --- LETS CONNECT");
-        boolean flow = true; // to gets info about flow
+        boolean flow = true; // to gets info about the flow
         try {
             try {
                 clientSocket = new Socket(ip, port);
@@ -116,29 +116,19 @@ public class Client {
 
     // sets listener of messages from server
     private static void startListener(final BufferedReader in) {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Thread.currentThread().setName("ClientMessageListener");
-                while (true) {
-                    String string = null;
-                    try {
-                        string = in.readLine();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    if (string != null) {
-                        makeThreadWorker(string);
-                    }
+        Thread thread = new Thread(() -> {
+            Thread.currentThread().setName("ClientMessageListener");
+            while (true) {
+                String string = null;
+                try {
+                    string = in.readLine();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            }
 
-            private void makeThreadWorker(final String string) {
-          //      new Thread(() -> {
-                    //Log.d(TAG, "run: NEW MESSAGE : ------->   " + string);
-                    decomposeTheString(string);
-      //          }).start();
+                if (string != null) {
+                    new Thread(() -> decomposeTheString(string)).start();
+                }
             }
         });
         thread.start();
@@ -156,8 +146,8 @@ public class Client {
         Log.d(TAG, "write: text was written  ->  " + message);
     }
 
-    // private static Timer timer;
     public synchronized static void decomposeTheString(String value) {
+        Thread.currentThread().setName("MessageHandler");
         chatListener.listen(value);
     }
 

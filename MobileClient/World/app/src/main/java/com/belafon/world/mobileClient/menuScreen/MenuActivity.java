@@ -39,6 +39,7 @@ public class MenuActivity extends AbstractActivity {
         finish();
     }
 
+    // CONNCET TO SERVER FRAGMENT ---------------------------------------------
     public void showConnectToServerFragment() {
         openFragment(new ConnectToServerFragment(), R.id.menu_fragment);
     }
@@ -114,22 +115,22 @@ public class MenuActivity extends AbstractActivity {
 
     public void Character(View view) {
         float volume = 1;
-        Pool.playMenuSound(1, volume);
+        //Pool.playMenuSound(1, volume);
     }
 
     public void Stats(View view) {
         float volume = 1;
-        Pool.playMenuSound(2, volume);
+        //Pool.playMenuSound(2, volume);
     }
 
     public void StartSettings(View view) {
         float volume = 1;
-        Pool.playMenuSound(3, volume);
+        //Pool.playMenuSound(3, volume);
     }
 
     public void About(View view) {
         float volume = 1;
-        Pool.playMenuSound(4, volume);
+        //Pool.playMenuSound(4, volume);
     }
 
     public void startGame() {

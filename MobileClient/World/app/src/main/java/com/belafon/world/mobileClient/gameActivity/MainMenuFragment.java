@@ -11,6 +11,9 @@ import android.widget.ImageButton;
 
 import com.belafon.world.mobileClient.R;
 
+/**
+ * Main menu navigation bar in the game.
+ */
 public class MainMenuFragment extends Fragment {
     private GameActivity gameActivity;
 

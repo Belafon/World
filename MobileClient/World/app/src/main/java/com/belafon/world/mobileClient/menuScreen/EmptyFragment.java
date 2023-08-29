@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 
 import com.belafon.world.mobileClient.R;
 
+/**
+ * Transparent fragment that is filling empty space.
+ */
 public class EmptyFragment extends Fragment {
     public EmptyFragment() {
         // Required empty public constructor

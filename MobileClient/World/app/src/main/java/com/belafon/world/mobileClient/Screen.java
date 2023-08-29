@@ -13,8 +13,8 @@ import androidx.fragment.app.Fragment;
 
 public class Screen {
     private static final String TAG = "Screen";
-    public static int screenWidth;
-    public static int screenHeight;
+    public volatile static int screenWidth;
+    public volatile static int screenHeight;
     public static void setScreen(MainActivity mainActivity){
         // get size of screen, we needs to sum also the size of navigation bar, which is hidden
         DisplayMetrics displaymetrics = new DisplayMetrics();

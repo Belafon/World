@@ -34,6 +34,7 @@ import java.util.Set;
 public class BehavioursFragment extends Fragment {
     // currently displayed behaviours executors,
     // can be modified concurrently
+    // when more fragments with behaviour executor displayed
     public static final Set<BehavioursExecutorFragment> EXECUTORS = new HashSet<>();
     private LinearLayout behavioursList;
     private final Map<Behaviour, View> itemLabels = new HashMap<>();
@@ -130,6 +131,10 @@ public class BehavioursFragment extends Fragment {
         return itemLabel;
     }
 
+    /**
+     * Updates all behaviours executor fragments,
+     * so new feasible behaviours and ingredients are noticed.
+     */
     public synchronized static void reupdateBehaviour(Behaviours behaviours) {
         synchronized (EXECUTORS){
             if(EXECUTORS.size() == 0)
@@ -153,7 +158,8 @@ public class BehavioursFragment extends Fragment {
      * @param behaviours
      */    
     public static void update(Behaviours behaviours) {
-        synchronized(EXECUTORS){
+        reupdateBehaviour(behaviours);
+        /*synchronized(EXECUTORS){
             if(EXECUTORS.size() == 0)
                 return;
 
@@ -162,6 +168,6 @@ public class BehavioursFragment extends Fragment {
                     executor.update(behaviours);
                 }
             });
-        }
+        }*/
     }
 }

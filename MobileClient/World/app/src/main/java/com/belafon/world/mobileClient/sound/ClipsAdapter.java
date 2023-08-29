@@ -3,6 +3,9 @@ package com.belafon.world.mobileClient.sound;
 import android.content.Context;
 import android.media.MediaPlayer;
 
+/**
+ * This class is used to play music in the game.
+ */
 public class ClipsAdapter {
 
     private static final String TAG = "ClipsAdapter";
@@ -11,7 +14,6 @@ public class ClipsAdapter {
     public float size;
     public float volumeSize;
     public static boolean stopPlay;
-    public static boolean overeni;
     public static boolean backOrExit;
     public static boolean goBack;
     private int currentSong;
@@ -62,12 +64,7 @@ public class ClipsAdapter {
     public float getVolumeSize(){
         return volumeSize;
     }
-    public boolean getOvereni() {
-        return overeni;
-    }
-    public void setOvereni(boolean o) {
-        overeni = o;
-    }
+
     public void setSize(float size){
         this.size = size;
     }

@@ -20,6 +20,9 @@ public class MainActivity extends AbstractActivity {
         Screen.setScreen(this);
 
         boolean isFirstAppStart = startData.LoadDataBool(this, "isFirstStart");
+        
+        isFirstAppStart = false; // TODO: update welcoming activity and remove this line
+        
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
