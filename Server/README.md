@@ -46,9 +46,6 @@ You can write log messages by pasting these commands into console:
 - log wind
 - log windDirection
 - log health
-- **log move x y**
-    - moves with creature 0, the map is implicitly of size of 10x10 places
-    - When more distanced place is selected, the creature will find a way and will go the jurney.
 - log calendar loop
     - prints info about data structure calendar, where all next events are saved.
     - prints the next event.
