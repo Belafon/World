@@ -38,6 +38,8 @@ Server lze spustit jako jar aplikaci ideálně z příkazové řádky.
 
 `java -jar Server/world/target/world-0.1-jar-with-dependencies.jar`.
 
+Dokumentaci lze vygenerovat pomoci příkazu `doxygen` ve složce doc pro daný projekt. 
+
 ### Mechanika behaviours
 
 Libovolná creatura může provádět nějaké behaviour pouze pokud splňuje všechny požadavky definovány pomocí BehavioursPossibleReauirementů a jejich počtem, například pro vykonání behaviour Move je zapotřebí splňovat jedenkrát requirements REQUIREMENT_IS_REACHABLE. 
