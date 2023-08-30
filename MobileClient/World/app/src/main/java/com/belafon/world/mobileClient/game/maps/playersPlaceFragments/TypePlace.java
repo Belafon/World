@@ -22,7 +22,7 @@ public class TypePlace {
         Map<String, TypePlace> types = new HashMap<>();
         types.put("mountein_meadow",
                 new TypePlace("mountein_meadow", "description meadow",
-                        Color.rgb(60, 120, 2)));
+                        Color.rgb(60, 180, 5)));
 
         types.put("meadow",
                 new TypePlace("meadow", "description meadow",

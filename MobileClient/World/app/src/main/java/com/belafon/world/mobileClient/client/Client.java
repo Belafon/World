@@ -125,9 +125,9 @@ public class Client {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-                if (string != null) {
-                    new Thread(() -> decomposeTheString(string)).start();
+                final String message = string;
+                if (message != null) {
+                    decomposeTheString(message);
                 }
             }
         });

@@ -14,11 +14,11 @@ import com.belafon.world.mobileClient.game.behaviours.fragmentOfBehavioursListFo
  * Lables that the fragment is able to show list of behaviours.
  */
 public interface IPossibleBehavioursFragment {
-    public default ListOfBehavioursForSetOfIngredients setPossibleBehavioursFragment(int fragmentContainer, BehavioursPossibleIngredient ingredient){
-        ListOfBehavioursForSetOfIngredients listOfBehavioursFragment = new ListOfBehavioursForSetOfIngredients(ingredient, fragmentContainer);
+    public default ListOfBehavioursForSetOfIngredients setPossibleBehavioursFragment(int fragmentContainer, BehavioursPossibleIngredient ingredient, Fragment currentFragment){
+        ListOfBehavioursForSetOfIngredients listOfBehavioursFragment = new ListOfBehavioursForSetOfIngredients(ingredient, fragmentContainer, currentFragment);
 
-        FragmentManager fragmentManager = ((FragmentActivity) AbstractActivity.getActualActivity()).getSupportFragmentManager();
-        fragmentManager.beginTransaction()
+        currentFragment.getChildFragmentManager()
+                .beginTransaction()
                 .replace(fragmentContainer, listOfBehavioursFragment)
                 .addToBackStack(null)
                 .commit();

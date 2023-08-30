@@ -90,6 +90,9 @@ public class Behaviour {
 
         public BehavioursRequirementDetail(BehavioursRequirement requirement, String description,
                 int numOfConcreteIngredient, int numOfGeneralIngredient) {
+            if(requirement == null)
+                throw new NullPointerException("The requirement is null in constructor");
+
             this.requirement = requirement;
             this.description = description;
             this.numOfConcreteIngredient = numOfConcreteIngredient;

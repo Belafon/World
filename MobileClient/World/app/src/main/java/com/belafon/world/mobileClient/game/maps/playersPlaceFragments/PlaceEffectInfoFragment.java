@@ -47,7 +47,7 @@ public class PlaceEffectInfoFragment extends Fragment implements IPossibleBehavi
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
         LinearLayout rootView = (LinearLayout) inflater.inflate(R.layout.fragment_place_effect_info, container, false);
-        behavioursFragment = setPossibleBehavioursFragment(R.id.behavioursFragmentContainer, effect);
+        behavioursFragment = setPossibleBehavioursFragment(R.id.behavioursFragmentContainer, effect, this);
 
         TextView nameLabel = rootView.findViewById(R.id.nameLabel);
         nameLabel.setText(name.toString());

@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.belafon.world.mobileClient.AbstractActivity;
 import com.belafon.world.mobileClient.R;
 import com.belafon.world.mobileClient.game.maps.playersPlaceFragments.PlaceInfoFragment;
@@ -99,6 +102,19 @@ public class SurroundingPlacesFragment extends Fragment {
      */
     public void update() {
             if(rootView != null){
+
+                if(!this.isAdded()){
+                    if(AbstractActivity.getActualActivity().findViewById(fragmentContainerId) == null)
+                        return;
+
+                    AbstractActivity.getActualActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(fragmentContainerId, this)
+                            .addToBackStack(null)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                            .commit();
+                }
+
                 drawMap(rootView);
             }
     }
@@ -111,16 +127,6 @@ public class SurroundingPlacesFragment extends Fragment {
             return;
 
         AbstractActivity.getActualActivity().runOnUiThread(() -> {
-            if(!this.isAdded()){
-                if(AbstractActivity.getActualActivity().findViewById(fragmentContainerId) == null)
-                    return;
-
-                getParentFragmentManager()
-                        .beginTransaction()
-                        .replace(fragmentContainerId, this)
-                        .addToBackStack(null)
-                        .commit();
-            }
 
             if(rootView != null && this.isAdded()
                     && place instanceof PlacePanel placePanel){
@@ -158,7 +164,7 @@ public class SurroundingPlacesFragment extends Fragment {
         @Override
         public void onClick(View v) {
             PlaceInfoFragment placeInfoFragment = place.getInfoFragment(surroundingPlacesFragment, fragmentContainerId);
-            getParentFragmentManager()
+            AbstractActivity.getActualActivity().getSupportFragmentManager()
                     .beginTransaction()
                     .replace(fragmentContainerId, placeInfoFragment)
                     .addToBackStack(null)

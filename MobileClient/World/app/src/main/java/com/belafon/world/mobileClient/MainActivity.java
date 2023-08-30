@@ -19,19 +19,16 @@ public class MainActivity extends AbstractActivity {
         setContentView(R.layout.activity_main);
         Screen.setScreen(this);
 
-        boolean isFirstAppStart = startData.LoadDataBool(this, "isFirstStart");
+        // boolean isFirstAppStart = startData.LoadDataBool(this, "isFirstStart");
         
-        isFirstAppStart = false; // TODO: update welcoming activity and remove this line
+        final boolean isFirstAppStart = false; // TODO: update welcoming activity and remove this line
         
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        new Handler().postDelayed(() -> {
                 Intent menuIntent = null;
                 if(isFirstAppStart) menuIntent = new Intent(MainActivity.this , WelcomingActivity.class);
                 else menuIntent = new Intent(MainActivity.this , MenuActivity.class);
                 startActivity(menuIntent);
                 finish();
-            }
         }, sizeOfTimeInFirstScreen);
     }
 }

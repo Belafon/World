@@ -25,14 +25,16 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
     private final Fragment goBackFragment;
     private final List<BehavioursPossibleIngredient> ingredients;
     private final Fragment replacingFragment;
+    private final Fragment containerFragment;
 
     private IngredientsAdapter(List<Behaviour> possibleBehavioursList, int fragmentContainer,
-                              Fragment goBackFragment, List<BehavioursPossibleIngredient> ingredients, Fragment replacingFragment) {
+                              Fragment goBackFragment, List<BehavioursPossibleIngredient> ingredients, Fragment replacingFragment, Fragment containerFragment) {
         this.ingredients = ingredients;
         this.possibleBehavioursList = possibleBehavioursList;
         this.fragmentContainer = fragmentContainer;
         this.goBackFragment = goBackFragment;
         this.replacingFragment = replacingFragment;
+        this.containerFragment = containerFragment;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -65,7 +67,8 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
             BehavioursExecutorFragment fragment = new BehavioursExecutorFragment(fragmentContainer,
                     goBackFragment, behaviour, ingredients);
 
-            replacingFragment.requireActivity().getSupportFragmentManager().beginTransaction()
+            containerFragment.getChildFragmentManager()
+                    .beginTransaction()
                     .replace(fragmentContainer, fragment)
                     .addToBackStack(null)
                     .commit();
@@ -83,6 +86,7 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
         private Fragment goBackFragment;
         private List<BehavioursPossibleIngredient> ingredients;
         private Fragment replacingFragment;
+        private Fragment containerFragment;
 
         public IngredientsAdapterBuilder setPossibleBehavioursList(List<Behaviour> possibleBehavioursList) {
             this.possibleBehavioursList = possibleBehavioursList;
@@ -109,6 +113,10 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
             return this;
         }
 
+        public IngredientsAdapterBuilder setContainerFragment(Fragment containerFragment) {
+            this.containerFragment = containerFragment;
+            return this;
+        }
         public IngredientsAdapter build() {
             // Validate that all required values are provided
             if (possibleBehavioursList == null || ingredients == null
@@ -116,8 +124,10 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
                 throw new IllegalStateException("Required values not provided");
             }
 
-            return new IngredientsAdapter(possibleBehavioursList, fragmentContainer, goBackFragment, ingredients, replacingFragment);
+            return new IngredientsAdapter(possibleBehavioursList, fragmentContainer, goBackFragment, ingredients, replacingFragment, containerFragment);
         }
+
+
     }
 
 }

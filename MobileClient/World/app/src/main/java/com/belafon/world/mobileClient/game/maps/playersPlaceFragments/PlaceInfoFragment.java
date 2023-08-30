@@ -55,7 +55,7 @@ public class PlaceInfoFragment extends Fragment implements IPossibleBehavioursFr
                              @Nullable Bundle savedInstanceState) {
         ConstraintLayout rootView = (ConstraintLayout) inflater.inflate(R.layout.fragment_place_info, container, false);
 
-        behavioursFragment = setPossibleBehavioursFragment(R.id.behavioursFragmentContainer, place);
+        behavioursFragment = setPossibleBehavioursFragment(R.id.behavioursFragmentContainer, place, this);
 
         TextView nameLabel = rootView.findViewById(R.id.nameLabel);
         nameLabel.setText(name.toString());

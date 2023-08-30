@@ -41,7 +41,6 @@ public class BehaviourType {
                     client.writer.behaviour.setupPossibleReqirement(requirement);
                 }
             }
-
         }
     }
 

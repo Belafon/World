@@ -68,6 +68,7 @@ public class BehavioursPlayersMessages implements BehavioursMessages {
                 + " "
                 + requirement.name.replaceAll(" ", "_"),
                 PlayersMessageSender.TypeMessage.other);
+
     }
 
 }

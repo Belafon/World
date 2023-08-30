@@ -7,6 +7,7 @@ import com.belafon.world.mobileClient.game.Game;
 import com.belafon.world.mobileClient.game.Fragments;
 import com.belafon.world.mobileClient.game.Stats;
 import com.belafon.world.mobileClient.gameActivity.WaitingScreenFragment;
+import com.belafon.world.mobileClient.logs.Logs;
 
 /**
  * Listens to the messages from the server.
@@ -27,11 +28,13 @@ public class ChatListener {
     public synchronized void listen(String message) {
         String[] args = message.split(" ");
 
+        if(Logs.ALL_SERVER_MESSAGES)
+            Log.d(TAG, "::  " + message);
+
         try {
             listenBase(args);
-        } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
-        } catch (NumberFormatException e) {
+        } catch (IndexOutOfBoundsException | NullPointerException | NumberFormatException e) {
+            Log.e(TAG, "listen: error in message from server");
             e.printStackTrace();
         }
     }

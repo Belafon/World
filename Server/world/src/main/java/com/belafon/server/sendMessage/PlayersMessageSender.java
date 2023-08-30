@@ -70,6 +70,7 @@ public class PlayersMessageSender {
                 ConsolePrint.message_to_player(string, client.name);
         output.println(string); // blank line between headers and content, very important !
         output.flush(); // flush character output stream buffer
+        
     }
 
     public enum TypeMessage {

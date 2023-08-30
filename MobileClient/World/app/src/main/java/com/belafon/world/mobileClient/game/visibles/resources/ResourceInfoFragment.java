@@ -47,7 +47,7 @@ public class ResourceInfoFragment extends VisiblesInfoFragment<Resource> impleme
         descriptionTextView = rootView.findViewById(R.id.descriptionTextView);
         idTextView = rootView.findViewById(R.id.idTextView);
         massTextView = rootView.findViewById(R.id.massTextView);
-        behavioursFragment = setPossibleBehavioursFragment(R.id.behavioursFragmentContainer, visible);
+        behavioursFragment = setPossibleBehavioursFragment(R.id.behavioursFragmentContainer, visible, this);
 
         updateViews();
 

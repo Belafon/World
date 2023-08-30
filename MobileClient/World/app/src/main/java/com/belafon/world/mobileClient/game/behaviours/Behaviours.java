@@ -1,5 +1,7 @@
 package com.belafon.world.mobileClient.game.behaviours;
 
+import android.util.Log;
+
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Map;
@@ -18,6 +20,7 @@ import com.belafon.world.mobileClient.game.behaviours.Behaviour.BehaviourBuilder
  * currently being carried out.
  */
 public class Behaviours {
+    private static final String TAG = "Behaviours";
     public final Map<String, Behaviour> allBehaviors = new Hashtable<>();
     public final Map<String, BehavioursRequirement> allRequirements = new Hashtable<>();
     public final Set<Behaviour> feasibles = new HashSet<>();
@@ -72,6 +75,11 @@ public class Behaviours {
         behaviour.setName(name);
         for (String requirementsName : requirementNames) {
             String[] detailedRequir = requirementsName.split("[|]");
+
+            if(!allRequirements.containsKey(detailedRequir[0])){
+                Log.e(TAG, "setupNewBehaviour: NOT SUCH BEHAVIOURS REQUIREMENT");
+                return;
+            }
 
             behaviour.addRequirement(
                     allRequirements.get(detailedRequir[0]), // id name

@@ -321,7 +321,7 @@ public class BehavioursExecutorFragment extends Fragment {
             BehavioursFragment.EXECUTORS.remove(this);
         }
 
-        FragmentManager fragmentManager = ((FragmentActivity) AbstractActivity.getActualActivity()).getSupportFragmentManager();
+        FragmentManager fragmentManager = getParentFragmentManager();
 
         fragmentManager.beginTransaction()
                 .replace(fragmentContainerId, previousFragment)

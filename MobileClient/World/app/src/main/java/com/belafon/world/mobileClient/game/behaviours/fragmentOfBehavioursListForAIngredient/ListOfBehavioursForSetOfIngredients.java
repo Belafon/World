@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.belafon.world.mobileClient.R;
 import com.belafon.world.mobileClient.game.Game;
 import com.belafon.world.mobileClient.game.behaviours.Behaviour;
 import com.belafon.world.mobileClient.game.behaviours.Behaviours;
@@ -34,19 +35,22 @@ public class ListOfBehavioursForSetOfIngredients extends Fragment {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private final int fragmentContainer;
+    private final Fragment containerFragment;
     private List<Behaviour> listedBehaviours;
 
     public ListOfBehavioursForSetOfIngredients(List<BehavioursPossibleIngredient> ingredients,
-            int fragmentContainer) {
+            int fragmentContainer, Fragment containerFragment) {
         this.ingredients = ingredients;
         this.fragmentContainer = fragmentContainer;
+        this.containerFragment = containerFragment;
     }
 
     public ListOfBehavioursForSetOfIngredients(BehavioursPossibleIngredient ingredient,
-            int fragmentContainer) {
+            int fragmentContainer, Fragment containerFragment) {
         this.ingredients = new ArrayList<>();
         this.ingredients.add(ingredient);
         this.fragmentContainer = fragmentContainer;
+        this.containerFragment = containerFragment;
     }
 
     @Override
@@ -84,6 +88,7 @@ public class ListOfBehavioursForSetOfIngredients extends Fragment {
                     .setGoBackFragment(this)
                     .setIngredients(ingredients)
                     .setReplacingFragment(this)
+                    .setContainerFragment(containerFragment)
                     .build();
         } else {
             listedBehaviours.clear();

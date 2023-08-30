@@ -41,7 +41,7 @@ public class CreaturesInfoFragment extends VisiblesInfoFragment<Creature> implem
         nameTextView = rootView.findViewById(R.id.nameTextView);
         descriptionTextView = rootView.findViewById(R.id.descriptionTextView);
         idTextView = rootView.findViewById(R.id.idTextView);
-        behavioursFragment = setPossibleBehavioursFragment(R.id.behavioursFragmentContainer, visible);
+        behavioursFragment = setPossibleBehavioursFragment(R.id.behavioursFragmentContainer, visible, this);
 
         Button backButton = rootView.findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {

@@ -12,7 +12,7 @@ import android.view.View;
 
 public abstract class AbstractActivity extends AppCompatActivity {
     private static final String TAG = "AbstractActivity";
-    private static Activity actualActivity = null;
+    private static AbstractActivity actualActivity = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,10 +21,10 @@ public abstract class AbstractActivity extends AppCompatActivity {
     }
 
     public void openFragment(Fragment fragment, int oldFragment){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(oldFragment, fragment);
-        fragmentTransaction.commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(oldFragment, fragment)
+                .commit();
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -40,7 +40,7 @@ public abstract class AbstractActivity extends AppCompatActivity {
         }
     }
 
-    public static Activity getActualActivity() {
+    public static AbstractActivity getActualActivity() {
         if(AbstractActivity.actualActivity == null)
             return null;
 
@@ -49,7 +49,7 @@ public abstract class AbstractActivity extends AppCompatActivity {
         }
     }
 
-    public static void setActualActivity(Activity actualActivity) {
+    public static void setActualActivity(AbstractActivity actualActivity) {
         AbstractActivity.actualActivity = actualActivity;
     }
 }

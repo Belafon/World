@@ -21,7 +21,8 @@
             android:layout_height="50dp"
             android:backgroundTint="@color/themeTransparent"
             android:scaleType="fitCenter"
-            android:src="@drawable/lists_48px" />
+            android:src="@drawable/lists_48px"
+            android:visibility="gone"/>
 
         <ImageButton
             android:id="@+id/character"

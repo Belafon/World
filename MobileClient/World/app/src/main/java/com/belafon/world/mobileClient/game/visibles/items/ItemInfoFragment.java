@@ -46,7 +46,7 @@ public class ItemInfoFragment extends VisiblesInfoFragment<Item> implements IPos
         weightTextView = rootView.findViewById(R.id.weightTextView);
         visibilityTextView = rootView.findViewById(R.id.visibilityTextView);
         tossTextView = rootView.findViewById(R.id.tossTextView);
-        behavioursFragment = setPossibleBehavioursFragment(R.id.behavioursFragmentContainer, visible);
+        behavioursFragment = setPossibleBehavioursFragment(R.id.behavioursFragmentContainer, visible, this);
 
         updateViews();
 
