@@ -9,7 +9,6 @@ import com.belafon.world.visibles.resources.ListOfAllTypesOfResources;
 import com.belafon.world.visibles.resources.ListOfAllTypesOfResources.NamesOfTypesOfResources;
 import java.util.Scanner;
 
-
 /**
  * Handles console inputs from server provider.
  * It is used primarry for debuging.
@@ -59,20 +58,20 @@ public class ConsoleListener implements Runnable {
         }
         sc.close();
     }
-    
+
     private void show_log(String[] message) {
         if (message.length < 2)
             return;
-        
+
         String log = "LOG --> " + message[1] + " --> ";
-        
+
         if (server.games.size() != 0)
-            processLogMessage(message, log);
-    
+            log = processLogMessage(message, log);
+
         ConsolePrint.success("ConsoleListener", log);
     }
-    
-    private void processLogMessage(String[] message, String log) {
+
+    private String processLogMessage(String[] message, String log) {
         String messageType = message[1];
 
         log = switch (messageType) {
@@ -88,6 +87,7 @@ public class ConsoleListener implements Runnable {
             case "abilityStats" -> processAbilityStatsMessage(message);
             case "move" -> {
                 // TODO: Implement move logic
+
                 yield "not implemented";
             }
             case "calendar" -> processCalendarMessage(message);
@@ -101,13 +101,13 @@ public class ConsoleListener implements Runnable {
             }
             default -> "Wrong log input!";
         };
-                
-        }
-    
+        return log;
+    }
+
     private String processDayMessage(String[] message, String log) {
         if (message.length < 3)
             throw new IllegalArgumentException("Wrong log input!");
-    
+
         switch (message[2]) {
             case "stop":
                 PlayersMessageSender.setPrintCyclesStatsToConsole(false);
@@ -115,10 +115,11 @@ public class ConsoleListener implements Runnable {
             case "loop":
                 PlayersMessageSender.setPrintCyclesStatsToConsole(true);
                 break;
+            default: return "Wrong log input!";    
         }
         return "done";
     }
-    
+
     private String processCloudsMessage(String[] message, String log) {
         if (message.length >= 3) {
             boolean printCloudsInLoop = message[2].equals("loop");
@@ -130,7 +131,7 @@ public class ConsoleListener implements Runnable {
         }
         return log;
     }
-    
+
     private String processWeatherMessage(String[] message, String log) {
         if (message.length >= 3) {
             boolean printWeatherInLoop = message[2].equals("loop");
@@ -164,11 +165,14 @@ public class ConsoleListener implements Runnable {
         String partOfDay = message[2];
 
         if (partOfDay.matches("after_midnight|sunrise|morning|afternoon|sunset1|sunset2|night")) {
-            server.games.get(0).players.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.valueOf(partOfDay));
+            server.games.get(0).players.get(0).writer.surrounding
+                    .setPartOfDay(DailyLoop.NamePartOfDay.valueOf(partOfDay));
+            return "done";
         } else if (Integer.parseInt(partOfDay) < 8) {
-            server.games.get(0).players.get(0).writer.surrounding.setPartOfDay(DailyLoop.NamePartOfDay.values()[Integer.parseInt(partOfDay)]);
-        }
-        return "done";
+            server.games.get(0).players.get(0).writer.surrounding
+                    .setPartOfDay(DailyLoop.NamePartOfDay.values()[Integer.parseInt(partOfDay)]);
+            return "done";
+        } else return "Wrong log input!";
     }
 
     private String processWindDirectionMessage(String[] message, String log) {
@@ -188,24 +192,25 @@ public class ConsoleListener implements Runnable {
         if (message.length > 2) {
             boolean printAbilityStatsToConsole = message[2].equals("loop");
             PlayersMessageSender.setPrintCreaturesAbuilityStatsToConsole(printAbilityStatsToConsole);
-        }
-        return "done";
+            return "done";
+        } else return "Wrong log input!";
     }
 
     private String processAddResourceMessage(String[] message) {
         if (message.length > 5) {
             server.games.get(0).maps.maps[0].places[Integer.parseInt(message[2])][Integer.parseInt(message[3])]
-                .addResource(ListOfAllTypesOfResources.typesOfResources.get(NamesOfTypesOfResources.valueOf(message[4])),
+                    .addResource(
+                            ListOfAllTypesOfResources.typesOfResources.get(NamesOfTypesOfResources.valueOf(message[4])),
                             Integer.parseInt(message[5]));
-        }
-        return "done";
+            return "done";
+        } else return "Wrong log input!";
     }
 
     private String processPlaceMessage(String[] message) {
         if (message.length >= 3) {
             server.games.get(0).maps.maps[0].places[Integer.parseInt(message[2])][Integer.parseInt(message[3])].log();
-        }
-        return "done";
+            return "done";
+        } else return "Wrong log input!";
     }
 
     private String processMapMessage(String[] message) {
@@ -222,24 +227,15 @@ public class ConsoleListener implements Runnable {
         if (message.length > 2) {
             boolean printCreatureStatsToConsole = message[2].equals("loop");
             PlayersMessageSender.setPrintCreatureStatsToConsole(printCreatureStatsToConsole);
-        }
-        return "done";
+            return "done";
+        } else return "Wrong log input!";
     }
-
-/*    private void processMoveMessage(String[] message) {
-        if (message.length == 4) {
-            server.games.get(0).players.get(0)
-                 .setBehaviour(new Move(server.games.get(0), server.games.get(0).players.get(0),
-                     server.games.get(0).maps.maps[0].places[Integer.parseInt(message[2])][Integer.parseInt(message[3])]));
-        }
-        return "done";
-    } */
 
     private String processCalendarMessage(String[] message) {
         if (message.length >= 3) {
             boolean logLoopThread = message[2].equals("loop");
             server.games.get(0).calendarsLoop.logLoopThread = logLoopThread;
-        }
-        return "done";
-    } 
+            return "done";
+        } else return "Wrong log input!";
+    }
 }
