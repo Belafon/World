@@ -2,6 +2,7 @@ package com.belafon.world.mobileClient.menuScreen;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.EditText;
@@ -39,7 +40,7 @@ public class MenuActivity extends AbstractActivity {
         finish();
     }
 
-    // CONNCET TO SERVER FRAGMENT ---------------------------------------------
+    // CONNECT TO SERVER FRAGMENT ---------------------------------------------
     public void showConnectToServerFragment() {
         openFragment(new ConnectToServerFragment(), R.id.menu_fragment);
     }
@@ -64,10 +65,10 @@ public class MenuActivity extends AbstractActivity {
 
     private boolean getIpAddress() {
         String ip = ((EditText) findViewById(R.id.edit_ip)).getText().toString();
-        if (!isValidIpAddress(ip)) {
-            Screen.info("Too short ip.", 0);
+        /*if (Patterns.IP_ADDRESS.matcher(ip).matches()) {
+            Screen.info("Invalid ip address format.", 0);
             return false;
-        }
+        }*/
         Client.ip = ip;
         return true;
     }
@@ -87,19 +88,6 @@ public class MenuActivity extends AbstractActivity {
         }
         Client.port = port;
         return true;
-    }
-
-    private boolean isValidIpAddress(String ip) {
-        // Check for IPv4 format
-        String ipv4Pattern = "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
-                "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
-                "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
-                "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
-    
-        // Check for IPv6 format
-        String ipv6Pattern = "^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$";
-    
-        return ip.matches(ipv4Pattern) || ip.matches(ipv6Pattern);
     }
     
     // FRAGMENT MENU ----------------------------------------------------------

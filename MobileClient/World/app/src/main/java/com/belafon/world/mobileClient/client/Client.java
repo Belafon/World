@@ -71,6 +71,8 @@ public class Client {
             try {
                 clientSocket = new Socket(ip, port);
             } catch (UnknownHostException e) {
+                MainActivity.getActualActivity().runOnUiThread(
+                        () -> Screen.info("Wrong IP address format, or unknown host...", 0));
                 flow = false;
             } catch (IOException i) {
                 MainActivity.getActualActivity().runOnUiThread(
