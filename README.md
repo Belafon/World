@@ -53,7 +53,7 @@ Nelze splnit více BehavioursPossibleRequirement pomocí jedné ingredienty.
 
 ## logs na serveru
 
-Byly přidány nove log hlášky, které jsou sepsány v README u serverovské aplikace.
+Byly přidány nove log hlášky, které jsou sepsány v `Server/README.md` u serverovské aplikace.
 Jsou přidány log hlášky pro manuální nastavení aktuální denní doby, počasí,
 nebo mraků na aktuální pozici hráče.
 
