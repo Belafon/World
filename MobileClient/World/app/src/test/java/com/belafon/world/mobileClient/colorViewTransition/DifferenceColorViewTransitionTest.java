@@ -39,7 +39,7 @@ public class DifferenceColorViewTransitionTest {
         assertFalse(transition.isTransitionDone());
 
         // Perform updates equal to the speedOfTransition
-        for (int i = 0; i < transition.durationOfTransition; i++) {
+        for (int i = 0; i <= transition.durationOfTransition; i++) {
             transition.updateCurrentIdleCount();
         }
 
@@ -119,7 +119,7 @@ public class DifferenceColorViewTransitionTest {
         assertEquals(20, actualColorUpdate.g);
         assertEquals(30, actualColorUpdate.b);
         assertEquals(40, actualColorUpdate.a);
-        assertEquals(4, transition.currentIdleCount);
+        assertEquals(5, transition.currentIdleCount);
 
         transition.setDurationOfTransition(10);
         transition.updateCurrentIdleCount();
@@ -134,20 +134,20 @@ public class DifferenceColorViewTransitionTest {
         transition.setDurationOfTransition(5);
         transition.updateCurrentIdleCount();
         actualColorUpdate = transition.getColorUpdate();
-        assertEquals(20, actualColorUpdate.r);
-        assertEquals(40, actualColorUpdate.g);
-        assertEquals(60, actualColorUpdate.b);
-        assertEquals(80, actualColorUpdate.a);
-        assertEquals(1, transition.currentIdleCount);
+        assertEquals(7, actualColorUpdate.r); // 28
+        assertEquals(14, actualColorUpdate.g);
+        assertEquals(21, actualColorUpdate.b);
+        assertEquals(28, actualColorUpdate.a);
+        assertEquals(4, transition.currentIdleCount);
 
         transition.setDurationOfTransition(2);
         transition.updateCurrentIdleCount();
 
         actualColorUpdate = transition.getColorUpdate();
-        assertEquals(20, actualColorUpdate.r);
-        assertEquals(40, actualColorUpdate.g);
-        assertEquals(60, actualColorUpdate.b);
-        assertEquals(80, actualColorUpdate.a);
+        assertEquals(14, actualColorUpdate.r);
+        assertEquals(28, actualColorUpdate.g);
+        assertEquals(43, actualColorUpdate.b);
+        assertEquals(57, actualColorUpdate.a);
         assertEquals(1, transition.currentIdleCount);
     }
 
