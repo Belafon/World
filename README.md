@@ -25,7 +25,7 @@ tedy jedná se o ovládání postavy hráčem.
 Následně byl vytvořen také mobilní klient pro android, jehož kód a spustitelný soubor se nachází v podadresáři MobileClient.
 Minimální verze androidu je Android 10 (API level 29).
 
-Samotný kód využívá javu verzi 17 s gradle 8.0.2.
+Samotný kód mobilního klienta využívá javu verzi 17 s gradle 8.0.2.
 
 Pro spuštění musí být server i client spuštěn ve stejné lokální síti.
 
