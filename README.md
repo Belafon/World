@@ -80,9 +80,9 @@ Celá hra je v jedné aktivitě GameActivity, která obsahuje všechny potřebn�
 fragmentech. Na levé straně je fragment s navigací, kde lze přepínat mezi fragmenty pro:
 - **statistiky postavy**
 - **seznamy s visibles**, které jsou rozděleny do tří sloupců:
-    - creatures, které jsou v okolí na stejném políčku
-    - items na stejném políčku (Place)
-    - resources na stejném políčku
+    - creatures, které jsou v okolí na stejném políčku jako hráč
+    - items na stejném place jako hráč
+    - resources nápodobně
 - **seznam proveditelných behaviours**
 - **mapa okolí**, která zobrazuje políčka v okruhu s poloměrem 3 políčka. Každé je možné rozkliknout a vidět podrobnější informace o daném políčku.
 - **inventář**, který zobrazuje všechny předměty, které má hráč u sebe.
@@ -95,8 +95,15 @@ Filter je pouze jeden a jeho barva se vypočítává ve WeatherFragment, kde se 
 
 Implicitně má přibližně 50 FPS.
 
-V případě u transition pro část dne `PartOfDayColorViewTransition` se využívá fronta pro jednotlivé přechody. Pokud je fronta delší, přechody se schválně zrychlí.
-Tyto požadavky jsou definovány pomocí BehaviourPossibleIngredients. 
+Zatím je filter ovlivněn 2 typy událostí:
+- **denní dobou**, neustále se opakuje jednou denně.
+- **počasím**, 
+    - **při dešti** se ztmaví a zesvětlí,
+    - **při bouřce** se ztmaví a může docházet k bleskům
+    - **při oblačnu** záleží na velikosti mraků. Pokud není zcela zataženo, může docházet k občasnému zatmavení a s následným zesvětlením. Naopak, pokud je zcela zataženo, tak se filter zatmaví, dokud nedojde ke změně mraků.
+  
+
+V případě u transition pro část dne `PartOfDayColorViewTransition` se využívá fronta pro jednotlivé přechody. Pokud je fronta delší, přechody se schválně zrychlí. Tyto požadavky jsou definovány pomocí BehaviourPossibleIngredients. Přechod se ovšem nezrychlí uprostřed, ale pouze při začátku. Pokud se tedy zrychlí čas moc, může se stát, že jeden přechod jede normálně rychle, ale mezi tím se fronta naplnila tak, že další transmition skoro okamžitě skončí, což vede k blikání. Děje se to ale jen při velmi vysokém zrychlení času. 
 
 Zatím lze provádět pouze 3 typy behaviours:
 - **Move**, lze provést přes fragment s mapou, nebo přes fragment se seznamem behaviours. (to platí pro všechny behaviours a info fragmenty o konkrétních ingrediencích).
@@ -108,7 +115,8 @@ Zatím lze provádět pouze 3 typy behaviours:
 Určitý kód zatím nemá vliv na výslednou apolikaci, protože není zcela hotov.
 
 Je tím například:
-- **WelcomingActivity**, kde WelcomingActivity by se měl zobrazit pouze při prvním spuštění aplikace a obsahovat nějaké uvítací informace.
+- **WelcomingActivity**, kde WelcomingActivity by se měl zobrazit pouze při prvním spuštění aplikace a obsahovat nějaké uvítací informace. Hotové je částečně, ale nevěděl jsem co zde zatím přidat kromě výběru jména.
 - **MenuActivity** obsahuje základní menu, ale zatím funguje pouze tlačítko pro spuštění hry, proto se automaticky hra spustí.
-- **Hudba**, ta je ovládána skrze ClipsAdapter a Pool ve složce sound. 
-- **Vybavení**, neboli PlayersGear by mělo být v inventáři s behaviours nasazení.
+- **Hudba**, ta je ovládána skrze ClipsAdapter a Pool ve složce sound. Pool slouží pro krátké zvuky, ClipsAdapter pak pro delší hudbu, nebo zvuk.
+- **Vybavení**, neboli PlayersGear by mělo být v inventáři s behaviours nasazení. Nasazené oblečení by mělo přidávat postavě nějaké staty.
+- **Behaviour hledání resources na nějakém políčku** - teoreticky je hotové, ale není odladěno. Hledání a pozorování jiných visibles funguje podle hodnoty viditelnosti. V případě resource se jedná o hodnotu mass. Následně při hledání něčeho nějakou creaturou jsou nejviditelnější visibles viditelné ihned, následně čím méně jsou visibles viditelné oproti ostatním visibles, tím těžší je je nalézt. Ovšem poté, co je nějaké visible nalezeno, creatura by si měla její pozici zapamatovat a do doby, než visible změní svoji pozici, mělo by být viditelné pro danou creaturu.
