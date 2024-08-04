@@ -10,12 +10,10 @@ public class ClipsAdapter {
 
     private static final String TAG = "ClipsAdapter";
 
-    public MediaPlayer mMediaPlayer;
-    public float size;
-    public float volumeSize;
-    public static boolean stopPlay;
-    public static boolean backOrExit;
-    public static boolean goBack;
+    private MediaPlayer mMediaPlayer;
+    private float size;
+    private float volumeSize;
+    private static boolean stopPlay;
     private int currentSong;
 
     public void play(Context context, int type, boolean isLoop, float volumeSize) {
@@ -27,11 +25,6 @@ public class ClipsAdapter {
         setVolume(volumeSize);
         setVolumeSize(volumeSize);
     }
-
-    // 1 = default speed
-   /* public void setSpeed(float speed){
-        mMediaPlayer.getPlaybackParams().setSpeed(speed);
-    }*/
     public void setVolume(float size){
         mMediaPlayer.setVolume(size, size);
         this.size = size;
@@ -64,7 +57,6 @@ public class ClipsAdapter {
     public float getVolumeSize(){
         return volumeSize;
     }
-
     public void setSize(float size){
         this.size = size;
     }
