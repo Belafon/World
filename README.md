@@ -1,5 +1,7 @@
 # World
-Discrete simulation of the World 
+Discrete simulation of the World
+
+Documentation written in documentation_cz.pdf using czech language only.
 
 ## Getting Started
 
